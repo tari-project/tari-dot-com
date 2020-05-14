@@ -25,8 +25,8 @@
   checksum: 2a5e4ec5031acf9b24bf39573041b74a388a0c5a34790199542ad533287ac12c
   version: MacOS 10.15.0 (Catalina) and higher
   source: https://github.com/tari-project/tari
-  background-image: /assets/img/downloads/Mac.mp4
-  video-poster: /assets/img/downloads/Mac.png
+  background-image: /assets/img/downloads/mac.mp4
+  video-poster: /assets/img/downloads/mac.png
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
