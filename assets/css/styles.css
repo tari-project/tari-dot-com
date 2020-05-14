@@ -2348,7 +2348,33 @@ body.page- #call-to-action {
   left: 40px;
 }
 
+@media only screen and (max-width: 767px){
 
+
+
+.subpage #viewport section.main img {
+    height: 120px;
+   }
+
+   .blog-area {
+    margin-top: 60px;
+}
+
+@media only screen and (max-width: 550px){
+
+
+.subpage #viewport section.main .updates-area p {
+
+    margin: unset;
+    }
+}
+
+@media only screen and (max-width: 550px){
+.subpage #viewport section.main h1 {
+    font-size: 2.8rem;
+    line-height: 4rem;
+    margin: 6rem 0 3rem 0;
+}
 
 /* 404 */
 
