@@ -97,7 +97,7 @@
   max-height: 370px;
 }
 
-.version {
+.version, .checksum {
   font-family: Avenir-Medium;
   font-size: 12px;
   color: #a0a0a0;
@@ -107,12 +107,13 @@
   word-break: break-all;
 }
 
-.source {
+.source, .tutorial-video {
   font-family: Avenir-Heavy;
   font-size: 16px;
   color: #9330ff;
   letter-spacing: 0;
   text-decoration: none;
+  line-height: 15px;
 }
 
 

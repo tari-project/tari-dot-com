@@ -27,34 +27,55 @@
     {% for os in site.data.downloads %}
         <div class="download-content" id="{{ os.elementID }}">
             <div class="dl-card">
-                <div class="dl-info-holder col-lg-6 col-md-6 col-sm-12">
+                <div class="dl-info-holder col-lg-7 col-md-7 col-sm-12">
                     <h2 class="dl-title">{{ os.title }}</h2>
                     <p class="dl-subtitle">
                         {{ os.subtitle }}
                     </p>
+                    {% if os.version %}
+                    <div class="version">
+                        For {{ os.version }}
+                       
+                    </div>
+                    {% endif %}
 
                     {% if os.download %}
                     <a class="btn " href="{{ site.baseurl}}/{{ os.download }}">{{os.ctaText}}</a>
                     {% endif %}
-                    {% if os.version %}
-                    <div class="version">
-                        For {{ os.version }}
+
+                    {% if os.tutorial-video %}
+                    <a href="{{ os.tutorial-video }}" class="tutorial-video">
+              <span
+              ><img
+                      src="{{ site.baseurl }}/assets/img/downloads/video-icon.svg"
+                      alt=""
+                      style="margin-top: -2px; max-width: 30px;"
+              /></span>
+                        View the installation guide
                         <br/><br/>
-                        SHA256: {{ os.checksum }} 
-                        <br/><br/>
-                        
-                    </div>
+                    </a>
                     {% endif %}
+
                     {% if os.source %}
                     <a href="{{ os.source }}" class="source">
               <span
               ><img
                       src="{{ site.baseurl }}/assets/img/downloads/github-logo.svg"
                       alt=""
+                      style="margin-top: -3px;"
               /></span>
                         Build from source for {{ os.type }}
+                        <br/><br/>
                     </a>
                     {% endif %}
+                    {% if os.checksum %}
+                    <div class="checksum">
+                        SHA256: {{ os.checksum }} 
+                        
+                    </div>
+                    {% endif %}
+
+                    
                 </div>
                 <video class="dl-machine-img" muted autoplay playsinline poster="{{ site.baseurl }}{{os.video-poster}}">
                     <source src="{{ site.baseurl }}{{os.background-image}}" type="video/mp4">
