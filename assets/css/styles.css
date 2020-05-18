@@ -2348,6 +2348,18 @@ body.page- #call-to-action {
   left: 40px;
 }
 
+.update .post img{
+  max-width: 100% !important;
+  width: 80rem;
+}
+
+.update .post h3 + p a img{
+  max-width: 100% !important;
+  width: 500px;
+}
+
+
+
 @media only screen and (max-width: 767px){
 
 
