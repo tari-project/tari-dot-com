@@ -1,18 +1,4 @@
-function getTelegramData() {
-  $.ajax({
-    url: Tari.telegramCachingURL,
-    headers: { "Access-Control-Allow-Origin": "*" },
-    success: function(res) {
-      const { online = "" } = res;
-      const telegramCountEl = document.getElementById("telegram-counter");
-      const mobileTelegramCountEl = document.getElementById("mobile-telegram-counter");
-      if (telegramCountEl) {
-        telegramCountEl.innerText = online.trim() + " PEOPLE ONLINE";
-        mobileTelegramCountEl.innerText = online.trim() + " PEOPLE ONLINE";
-      }
-    }
-  });
-}
+
 //get data
 function getIssuesData() {
   $.ajax({
@@ -220,3 +206,5 @@ function daysBetween(date1String, date2String) {
   let d2 = new Date(date2String);
   return Math.round((d2 - d1) / (1000 * 3600 * 24));
 }
+
+getIssuesData()

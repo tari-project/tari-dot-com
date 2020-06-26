@@ -1,4 +1,19 @@
 (function() {
+    function getTelegramData() {
+        $.ajax({
+            url: Tari.telegramCachingURL,
+            headers: { "Access-Control-Allow-Origin": "*" },
+            success: function(res) {
+                const { online = "" } = res;
+                const telegramCountEl = document.getElementById("telegram-counter");
+                const mobileTelegramCountEl = document.getElementById("mobile-telegram-counter");
+                if (telegramCountEl) {
+                    telegramCountEl.innerText = online.trim() + " PEOPLE ONLINE";
+                    mobileTelegramCountEl.innerText = online.trim() + " PEOPLE ONLINE";
+                }
+            }
+        });
+    }
     const site = window.location.origin;
     let updateHash = false;
     const homepage = window.location.href.split('/#')[0] === site || window.location.href.replace(/\/$/, "") === site;
@@ -86,13 +101,8 @@
                 const hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
                 href = "#" + hash;
                 $(href).scrollToElement(function () {
-                    if (homepage) {
-                        getIssuesData();
-                    }
                 });
 
-            } else if (!window.location.hash) {
-                getIssuesData();
             }
         }
 
@@ -199,7 +209,7 @@
 	         $(this).removeClass("faq-active");
 	         $(this).find('.arrow').removeClass("arrow-rotate");
 	         $(this).addClass("faq-not-active");
-	     }		
+	     }
 	 });
 
 	});
