@@ -1,0 +1,38 @@
+---
+permalink: /redirect/
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tari | Store Redirect</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <img src="https://www.tari.com/assets/img/tari-logo.svg" alt="Tari logo" title="Tari">
+    <noscript>Sorry this redirect requires JavaScript!</noscript>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        const network = getUrlParameter("network") || "stibbons";
+        const pubkey = getUrlParameter("pubkey") || "4e06732134453e59a4254cfcaad582017eb1975a63e57bca2853c049653c0d07";
+        const amount = getUrlParameter("amount") || "0";
+        const note = getUrlParameter("note") || "TARI-";
+
+        const url = `tari://${network}/pubkey/${pubkey}?amount=${amount}&note=${note}`;
+        document.write("<p>Redirecting to Tari Aurora...</p>");
+        document.write(`<p><a href="${url}">${url}</a></p>`);
+
+        window.location.href = url;
+    </script>
+</body>
+
+</html>
