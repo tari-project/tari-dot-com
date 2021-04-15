@@ -5,7 +5,7 @@ date: 2020-04-17 12:00
 author: Cayle Sharrock
 thumbnail: learn-how-tari-works.png
 lead: A high level view of the world of Tari and how it works
-subtitle: 
+subtitle:
 class: subpage
 ---
 
@@ -70,10 +70,7 @@ On the downside, it’s significantly slower than a central database. You can fi
 with a single lookup; while a lookup on the DHT takes log(n) queries. In practise, peer lookups on the Tari network can
 take up to 60 seconds, especially with the added complexity of Tor thrown into the mix.
 
-[^2]: An earlier version of the comms stack used symmetric encryption with a shared Diffie-Hellman key, which meant that
-the sender had to share his public with the message; so everyone one would know that Alice was sending a message to Bob.
-We got tired of the gossip and speculation that there was something going on between those two, so we switched to the
-more private method.
+[^2]: An earlier version of the comms stack used symmetric encryption with a shared Diffie-Hellman key, which meant that the sender had to share his public key with the message; so everyone one would know that Alice was sending a message to Bob. We got tired of the gossip and speculation that there was something going on between those two, so we switched to the more private method.
 
 
 ### Tari and Tor
@@ -102,14 +99,12 @@ This last feature is what sets Tari aside from most other cryptocurrency project
 including the Bitcoin Lightning Network. Lightning wallets cannot open channels directly from phone to phone over the
 wider internet, but have to go through a server-based lightning router. Try it. I’ll wait.
 
-It’s a bit of a pain, isn’t it? This is a major usability drawback and one which Tari is proud to have solved to some
-degree [^3].
+It’s a bit of a pain, isn’t it? This is a major usability drawback and one which Tari is proud to have solved to some degree [^3].
 
 The drawback of using Tor, as we mentioned above is that all this bouncing around the internet makes the Tari network
 significantly slower. But you know what? It’s a bit like those cosmetics products: worth it.
 
-[^3]: We haven’t solved it fully; wallets do need to talk to a node to obtain blockchain information for some things,
-including watching for transaction confirmations, but we have some ideas on how to reduce this in the future.
+[^3]: We haven’t solved it fully; wallets do need to talk to a node to obtain blockchain information for some things, including watching for transaction confirmations, but we have some ideas on how to reduce this in the future.
 
 
 ## How do we have “addresses”? I thought Tari used Mimblewimble.
@@ -186,5 +181,4 @@ security point of view in the long run [^5].
 
 [^4]: But we have some pretty exciting ideas on how this can change in the future.
 
-[^5]: The current testnet version of Tari Aurora does not have the staged security process. This feature is planned
-ahead of the mainnet release version.
+[^5]: The current testnet version of Tari Aurora does not have the staged security process. This feature is planned ahead of the mainnet release version.
