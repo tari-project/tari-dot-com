@@ -73,12 +73,6 @@ a {
   color: #9330ff;
   transition: 0.2s;
 }
-.align-right {
-  text-align: right;
-}
-.align-left {
-  text-align: left;
-}
 
 ul,
 ol {
