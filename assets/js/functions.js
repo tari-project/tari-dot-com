@@ -17,12 +17,33 @@ function getTelegramData() {
 
     const site = window.location.origin;
     let updateHash = false;
+    let previousHash = "";
     const homepage = window.location.href.split('/#')[0] === site || window.location.href.replace(/\/$/, "") === site;
 
     // Cache ajax requests by default
     jQuery.ajaxSetup({
         cache: true
     });
+
+    // Returns a function, that, as long as it continues to be invoked, will not
+    // be triggered. The function will be called after it stops being called for
+    // N milliseconds. If `immediate` is passed, trigger the function on the
+    // leading edge, instead of the trailing.
+    // https://davidwalsh.name/javascript-debounce-function
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
 
     jQuery(document).ready(function ($) {
         //Telegram data
@@ -80,7 +101,11 @@ function getTelegramData() {
                         href = "#" + $(this).attr('id'); //if scrolling not click
                     }
                     if ($(this).isInViewport()) { /* section is visible */
-                        history.pushState({}, "", site + '/#' + $(this).attr('id'));
+                        let currentHash = $(this).attr('id');
+                        if (currentHash !== previousHash) {
+                            history.pushState({}, "", site + '/#' + $(this).attr('id'));
+                            previousHash = currentHash;
+                        }
                         if ($('.navmenu li.current a, #mobileMenu li.current a').attr('href') != href) {
                             $('.navmenu li.current, #mobileMenu li.current').removeClass('current');
                             $('.navmenu li a[href="' + href + '"], #mobileMenu li a[href="' + href + '"]').parent().addClass('current');
@@ -138,7 +163,7 @@ function getTelegramData() {
         $('.main').on('scroll', indicate);
         //Mobile scrolling update navigation indicator
         $(window).on('scroll', function (e) {
-            indicate();
+            debounce(indicate, 300);
         });
 
         /* mobile menu */

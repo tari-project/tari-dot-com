@@ -1,22 +1,21 @@
-
 //get data
 function getIssuesData() {
   $.ajax({
     url: Tari.issuesCachingURL,
     headers: { "Access-Control-Allow-Origin": "*" },
-    success: function(res) {
+    success: function (res) {
       renderIssues(res);
-    }
+    },
   });
 }
 
 function renderIssues(issuesData) {
   const githubIssues = Tari.githubIssues;
-  githubIssues.forEach(repo => {
+  githubIssues.forEach((repo) => {
     let data = issuesData[repo.dataKey];
     let buckets = data.buckets;
 
-    Object.keys(buckets).forEach(function(key) {
+    Object.keys(buckets).forEach(function (key) {
       renderTariIssues(buckets[key].data, `${repo.elementPrefix}-${key}`);
 
       renderSubtotalCount(
@@ -89,7 +88,7 @@ function renderTariIssues(data, containerID) {
       issueBody.className = "issue-body";
 
       //get length & trim if need be
-      let body = data[i].body;
+      let body = data[i].body || "";
       if (body.length > 90) {
         body = body.substring(0, 90) + "...";
       }
@@ -104,7 +103,7 @@ function renderTariIssues(data, containerID) {
 
       tags.forEach(renderTags);
 
-      tags.forEach(function(tag) {
+      tags.forEach(function (tag) {
         tagHolder.appendChild(renderTags(tag));
       });
 
@@ -207,4 +206,4 @@ function daysBetween(date1String, date2String) {
   return Math.round((d2 - d1) / (1000 * 3600 * 24));
 }
 renderIssues(Tari.githubIssuesPlaceholder);
-getIssuesData()
+getIssuesData();
