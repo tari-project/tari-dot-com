@@ -5,6 +5,7 @@ _site
 vendor
 .DS_Store
 .idea
+.vscode
 
 deploy.yaml
 .env
