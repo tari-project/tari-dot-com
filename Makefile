@@ -4,7 +4,7 @@ install:
 
 .phony: serve
 serve:
-	bundle exec jekyll serve
+	bundle exec jekyll serve --future
 
 .phony: build
 build:
