@@ -78,7 +78,7 @@ back to the original sender. Once Alice receives the signed response from Bob, h
 then sign the completed transaction.
 
 At this point the transaction is ready to be broadcast to the blockchain. This entails the node sending a copy of the
-transaction to its peers. They in turn, wil validate it, and if it is valid propagate it further to the rest of the
+transaction to its peers. They in turn, will validate it, and if it is valid propagate it further to the rest of the
 network.
 
 Phew. There’s a lot going on there. Here’s a sequence diagram illustrating this process:
