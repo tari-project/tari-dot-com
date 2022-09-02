@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy site to production
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Build static Jekyll site
+        # Specify the Jekyll source location as a parameter
+        uses: helaili/jekyll-action@v2
+        with:
+          jekyll_src: '.'
+          build_dir: "_site"
+          build_only: true
+      - name: Deploy to S3
+        uses: reggionick/s3-deploy@v3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          folder: "_site"
+          bucket: ${{ secrets.S3_BUCKET }}
+          bucket-region: ${{ secrets.S3_REGION }}
+          dist-id: ${{ secrets.CDN_ID }}
+          delete-removed: true
+          private: false
+
