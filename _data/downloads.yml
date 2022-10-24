@@ -11,7 +11,7 @@
   source: https://github.com/tari-project/tari
   background-image: /assets/img/downloads/ubuntu.mp4
   video-poster: /assets/img/downloads/ubuntu.png
-  tutorial-video: /updates/2020-05-14-update-12.html
+  tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/ubuntu-logo.svg
   logo-active: /img/downloads/ubuntu-logo-active.svg
   defaultActive: active
@@ -30,7 +30,7 @@
   source: https://github.com/tari-project/tari
   background-image: /assets/img/downloads/mac.mp4
   video-poster: /assets/img/downloads/mac.png
-  tutorial-video: /updates/2020-05-14-update-12.html
+  tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
@@ -48,7 +48,7 @@
   source: https://github.com/tari-project/tari
   background-image: /assets/img/downloads/windows.mp4
   video-poster: /assets/img/downloads/windows.png
-  tutorial-video: /updates/2020-05-14-update-12.html
+  tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/windows-logo.svg
   logo-active: /img/downloads/windows-logo-active.svg
   ctaText: Download for Windows
