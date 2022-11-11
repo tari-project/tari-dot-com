@@ -111,16 +111,14 @@ h5{
 pre.highlight {
   background-color: #292929;
   color: #e0e0e0;
-  padding: 10px
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
 }
 
 pre code {
   font-size: 16px !important;
-  white-space: pre-wrap; /* css-3 */
-  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
 iframe,
