@@ -17,7 +17,7 @@
   padding: 70px;
 }
 
-.dl-card .btn{
+.dl-card .btn {
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
@@ -97,7 +97,8 @@
   max-height: 370px;
 }
 
-.version, .checksum {
+.version,
+.checksum {
   font-family: Avenir-Medium;
   font-size: 12px;
   color: #a0a0a0;
@@ -107,7 +108,8 @@
   word-break: break-all;
 }
 
-.source, .tutorial-video {
+.source,
+.tutorial-video {
   font-family: Avenir-Heavy;
   font-size: 16px;
   color: #9330ff;
@@ -115,7 +117,6 @@
   text-decoration: none;
   line-height: 15px;
 }
-
 
 .binaries-container {
   max-width: 80rem;
@@ -178,6 +179,66 @@ div#support.download-content > .dl-card div.dl-info-holder {
   justify-content: center;
 }
 
+.past-versions-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 80rem;
+}
+
+.current {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.past {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.hide {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .select-network {
+    width: 100%;
+  }
+}
+
+.select-network {
+  margin: 1rem 1rem 1rem 0 !important;
+  font-size: 1.5rem !important;
+}
+
+.chip {
+  background: #ebebeb;
+  border-radius: 30px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: #000000;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.chip:hover {
+  cursor: pointer;
+  background: #9330ff;
+  color: #ffffff;
+}
+
+.active-chip {
+  background: #9330ff;
+  color: #ffffff;
+}
+
 @media only screen and (max-width: 1100px) and (min-width: 900px) {
   .dl-machine-img {
     max-height: 220px;
@@ -205,6 +266,11 @@ div#support.download-content > .dl-card div.dl-info-holder {
 }
 
 @media only screen and (max-width: 768px) {
+  .past-versions-header {
+    display: flex;
+    flex-direction: column;
+  }
+
   #downloads {
     padding-top: 0;
   }

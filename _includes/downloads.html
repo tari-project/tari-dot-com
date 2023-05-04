@@ -40,6 +40,14 @@
                     {% endif %}
 
                     {% if os.downloadBtnID %}
+                    <div>
+                        <p class="select-network">Select Network: </p>
+                        <div class="current">
+                            <button id="mainnet" class="chip">Stagenet</button>
+                            <button id="nextnet" class="chip">Nextnet</button>
+                            <button id="testnet" class="chip">Testnet</button>
+                        </div>
+                    </div>
                     <a class="btn" id="{{ os.downloadBtnID }}">{{os.ctaText}}</a>
                     {% endif %}
 
@@ -73,9 +81,6 @@
                     <div id="{{ os.checksumDivID }}" class="checksum"></div>
                     {% endif %}
 
-
-
-
                 </div>
                 <video class="dl-machine-img" muted autoplay playsinline poster="{{ site.baseurl }}{{os.video-poster}}">
                     <source src="{{ site.baseurl }}{{os.background-image}}" type="video/mp4">
@@ -84,8 +89,18 @@
 
 
             <div class="past-versions-container">
-                <h2>Past Versions</h2>
-
+                <div class="past-versions-header">
+                    <h2>Past Versions</h2>
+                    {% if os.downloadBtnID %}
+                    <div class="past">
+                        <p class="select-network">Filter by Network: </p>
+                        <button id="mainnet" class="chip">Stagenet</button>
+                        <button id="nextnet" class="chip">Nextnet</button>
+                        <button id="testnet" class="chip">Testnet</button>
+                        <button id="all-networks" class="chip">All</button>
+                    </div>
+                    {% endif %}
+                </div>
                 <div class="binaries-container">
                     <div class="bin-headers">
                         <div class="bin-header">
