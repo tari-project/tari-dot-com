@@ -91,7 +91,6 @@ jQuery(document).ready(function ($) {
         groupDataByOs(res);
         setLatest(res);
         setDownloadLink();
-        console.log('Data received', res)
       },
     });
   }
@@ -110,7 +109,15 @@ jQuery(document).ready(function ($) {
 
     binContainer.innerHTML = data
       // The url comparison is to sort the zip/sha256 files.
-      .sort((a, b) => a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? -1 : 1)
+       .sort((a, b) =>  {
+        if (os === "libWallet") {
+          return a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? -1 : 1
+        } else {
+          const pathA = a.path.split("/").pop();
+          const pathB = b.path.split("/").pop();
+          return pathA > pathB || (pathA == pathB && a.lastModified > b.lastModified) ? -1 : 1
+        }
+       })
       .map((binary, index) => {
         const lastMod = new Date(binary.lastModified);
         const formattedDate = lastMod.toLocaleString(undefined, dateOptions);
