@@ -1861,14 +1861,12 @@ body.page- #call-to-action {
 }
 
 .nav-wallet-icon{
-  position: absolute;
   max-width: 18px;
       margin-left: 6px;
     margin-top: 1px;
 }
 
 .nav-explorer-icon{
-  position: absolute;
   max-width: 15px;
       margin-left: 6px;
     margin-top: 1px;
