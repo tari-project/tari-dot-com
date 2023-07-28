@@ -917,6 +917,20 @@ lottie-player {
 #newsletter button span#emailSubmitText.hidden {
   opacity: 0;
 }
+#newsletter .success {
+  max-width: 380px !important;
+  font-size: 1.3rem !important;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0 !important;
+}
+#newsletter .error {
+  max-width: 380px !important;
+  font-size: 1.3rem !important;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0 !important;
+}
 
 /* copyright */
 #copyright {

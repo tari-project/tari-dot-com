@@ -1,22 +1,21 @@
 <div id="newsletter">
-  <form name="newsletterForm">
-    <input
-      required="required"
-      id="emailInput"
-      name="email"
-      type="email"
-      placeholder="Enter your email to get updates"
-    />
-    <button id="emailSubmit" type="submit">
-      <span id="emailSubmitText">
-        Subscribe
-      </span>
-      <img
-        id="emailSubmitImg"
-        class="email-success"
-        src="{{ site.baseurl }}/assets/icons/check.svg"
-        alt="success icon"
-      />
-    </button>
-  </form>
+  <div id="custom-substack-embed"></div>
 </div>
+
+<script>
+  window.CustomSubstackWidget = {
+    substackUrl: "tari.substack.com",
+    placeholder: "Enter your email to get updates",
+    buttonText: "Subscribe",
+    theme: "custom",
+    colors: {
+      primary: "#ffffff",
+      input: "#FFFFFF",
+      email: "#000000",
+      text: "#FFFFFF",
+    }
+  };
+  </script>
+  <script src="https://substackapi.com/widget.js" async></script>
+  
+
