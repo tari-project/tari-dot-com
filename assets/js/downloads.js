@@ -5,6 +5,16 @@ let pastNetwork = "mainnet";
 let networkUrlData = {}
 let currentOS = "";
 
+function ignoreFolders(data, foldersToIgnore) {
+  return Object.entries(data).reduce((acc, [os, binaries]) => {
+    const filteredBinaries = binaries.filter(binary => {
+      return !foldersToIgnore.some(folder => binary.path.includes(folder));
+    });
+    acc[os] = filteredBinaries;
+    return acc;
+  }, {});
+}
+
 function filterByNetwork(network) {
   $(".bin-row").addClass("hide");
   currentOS === "libWallet" ? $(".bin-row").removeClass("hide") : $(`.${network}`).removeClass("hide");
@@ -82,14 +92,16 @@ jQuery(document).ready(function ($) {
   $(`.past #${pastNetwork}.chip`).addClass("active-chip");
 
   getS3Data();
-  //get data
+  // get data
   function getS3Data() {
     $.ajax({
       url: Tari.s3BucketURL,
       headers: { "Access-Control-Allow-Origin": "*" },
       success: function (res) {
-        groupDataByOs(res);
-        setLatest(res);
+        const foldersToIgnore = ["diag-utils"];
+        const data = ignoreFolders(res, foldersToIgnore);
+        groupDataByOs(data);
+        setLatest(data);
         setDownloadLink();
       },
     });
