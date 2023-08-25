@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 20rem;
+  flex-grow: 1;
   padding-bottom: 17px;
 }
 .os-logo-img {

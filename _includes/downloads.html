@@ -1,7 +1,7 @@
 <div class="downloads-container">
     <div class="tab-button-holder">
         {% for os in site.data.downloads %}
-
+            {% if os.type != 'Libraries' %}
             <div
                     id="{{ os.elementTabButtonID }}"
                     class="tab-button"
@@ -21,6 +21,7 @@
               >
                 {{ os.type}}
             </div>
+            {% endif %}
         {% endfor %}
     </div>
 
