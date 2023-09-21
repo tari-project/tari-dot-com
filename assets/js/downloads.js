@@ -76,7 +76,7 @@ function selectedOs(element, cardElement) {
     default:
       currentOS = "linux";
   }
-  $(`.current #${currentNetwork}.chip`).addClass("active-chip");
+  $(`.dl-current #${currentNetwork}.chip`).addClass("active-chip");
   filterByNetwork(pastNetwork);
   setDownloadLink();
 }
@@ -88,7 +88,7 @@ function removeClass(elems) {
 }
 
 jQuery(document).ready(function ($) {
-  $(`.current #${currentNetwork}.chip`).addClass("active-chip");
+  $(`.dl-current #${currentNetwork}.chip`).addClass("active-chip");
   $(`.past #${pastNetwork}.chip`).addClass("active-chip");
 
   getS3Data();
@@ -136,7 +136,7 @@ jQuery(document).ready(function ($) {
         const formattedTime = lastMod.getHours() + ":" + lastMod.getMinutes();
         const altClass = index % 2 ? "" : "alt-colour";
         const path = binary.path.split("/").pop();
-    
+
         let networkClass = "";
         if (binary.path.includes("stagenet")) {
           networkClass = "stagenet";
@@ -163,7 +163,7 @@ jQuery(document).ready(function ($) {
 
 
   function setLatest(data) {
-  
+
     Object.keys(data).forEach((os) => {
       let rawOs = os.replace("current/", "");
       if (rawOs === os) {
@@ -182,12 +182,12 @@ jQuery(document).ready(function ($) {
         // The url comparison is to sort the zip/sha256 files.
         let latest = nets.reduce((a, b) => a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? a : b)
         let checksum = latest.sha256;
-        
+
 
         if (checksum) {
           sha256 = checksum.split(" ")[0];
         }
-        
+
         latest.checksum = checksum ? `SHA256: ${sha256}` : ""
 
         latest.button = btn;
@@ -229,10 +229,10 @@ jQuery(document).ready(function ($) {
   }
   setInitialActive(OS);
 
-  $(".current .chip").click(function() {
+  $(".dl-current .chip").click(function() {
     currentNetwork = $(this).attr("id");
-    $(".current .chip").removeClass("active-chip");
-    $(this).addClass("active-chip");  
+    $(".dl-current .chip").removeClass("active-chip");
+    $(this).addClass("active-chip");
     setDownloadLink();
   });
 

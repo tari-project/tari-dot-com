@@ -30,7 +30,7 @@ div > .result {
 
 .playpen,
 .tutorials .card {
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
 }
 
 .playpen .result {
@@ -44,8 +44,8 @@ div > .result {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  padding: 1.25rem;
+  border-radius: calc(0.25 * var(--root-size));
+  padding: calc(1.25 * var(--root-size));
 }
 
 .playpen .result {
@@ -63,5 +63,5 @@ div > .result {
 }
 
 .tutorials .card {
-  font-size: 1.5rem;
+  font-size: calc(1.5 * var(--root-size));
 }

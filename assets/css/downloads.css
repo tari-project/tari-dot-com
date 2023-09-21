@@ -9,7 +9,7 @@
   background: #ffffff;
   box-shadow: 0 10px 15px 0 rgba(236, 236, 236, 0.5);
   border-radius: 10px;
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
   margin: 45px 0 45px 0;
   flex-wrap: wrap;
 }
@@ -119,7 +119,7 @@
 }
 
 .binaries-container {
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
 }
 
 .binaries-container > .bin-headers {
@@ -184,10 +184,10 @@ div#support.download-content > .dl-card div.dl-info-holder {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
 }
 
-.current {
+.dl-current {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -213,8 +213,8 @@ div#support.download-content > .dl-card div.dl-info-holder {
 }
 
 .select-network {
-  margin: 1rem 1rem 1rem 0 !important;
-  font-size: 1.5rem !important;
+  margin: calc(1 * var(--root-size)) calc(1 * var(--root-size)) calc(1 * var(--root-size)) 0 !important;
+  font-size: calc(1.5 * var(--root-size)) !important;
 }
 
 .chip {
@@ -222,10 +222,10 @@ div#support.download-content > .dl-card div.dl-info-holder {
   border-radius: 30px;
   padding: 5px 15px;
   margin-right: 10px;
-  font-size: 1.5rem;
+  font-size: calc(1.5 * var(--root-size));
   color: #000000;
   border: none;
-  font-size: 1.5rem;
+  font-size: calc(1.5 * var(--root-size));
 }
 
 .chip:hover {

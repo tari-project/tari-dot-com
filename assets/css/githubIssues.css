@@ -1,7 +1,7 @@
 /*Styling for GitHub Issues*/
 
 .tab-container {
-  max-width: 80rem;
+  max-width: calc(80 * var(--root-size));
   height: auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.085);
   background-color: #fff;
@@ -87,7 +87,7 @@
 .tab-content.active-tab {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: calc(2 * var(--root-size));
 }
 
 #tab-one-h.tab-header.active-header {
