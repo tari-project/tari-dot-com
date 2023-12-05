@@ -1,6 +1,8 @@
 - type: Ubuntu
   elementID: ubuntu
   binaryDivID: linuxBinID
+  archDropdownID: linuxArchID
+  networkDropdownID: linuxNetworkID
   elementTabButtonID: ubuntu-btn
   title: Tari Base Node for Ubuntu
   subtitle: Download the binary, click through to install. Then you'll be
@@ -17,9 +19,19 @@
   defaultActive: active
   ctaText: Download for Ubuntu
   filter_spec: ubuntu
+  archOptions:
+    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
+  networkOptions:
+    [
+      { value: mainnet, label: Stagenet },
+      { value: nextnet, label: Nextnet },
+      { value: testnet, label: Testnet },
+    ]
 - type: Mac
   elementID: mac
   binaryDivID: osxBinID
+  archDropdownID: osxArchID
+  networkDropdownID: osxNetworkID
   elementTabButtonID: mac-btn
   title: Tari Base Node for Mac
   subtitle: Download the binary, click through to install. Then you'll be
@@ -35,9 +47,19 @@
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
   filter_spec: osx-10.15
+  archOptions:
+    [{ value: x86_64, label: x86_64 }, { value: arm64, label: arm64 }]
+  networkOptions:
+    [
+      { value: mainnet, label: Stagenet },
+      { value: nextnet, label: Nextnet },
+      { value: testnet, label: Testnet },
+    ]
 - type: Windows
   elementID: windows
   binaryDivID: windowsBinID
+  archDropdownID: windowsArchID
+  networkDropdownID: windowsNetworkID
   elementTabButtonID: windows-btn
   title: Tari Base Node for Windows
   subtitle: Download the binary, click through to install. Then you'll be
@@ -53,6 +75,13 @@
   logo-active: /img/downloads/windows-logo-active.svg
   ctaText: Download for Windows
   filter_spec: windows
+  archOptions: [{ value: x64, label: x64 }]
+  networkOptions:
+    [
+      { value: mainnet, label: Stagenet },
+      { value: nextnet, label: Nextnet },
+      { value: testnet, label: Testnet },
+    ]
 - type: Libraries
   elementID: support
   binaryDivID: libWalletBinID

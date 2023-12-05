@@ -1,9 +1,52 @@
 let OS = "";
 const networks = ["mainnet", "testnet", "nextnet"]
-let currentNetwork = "mainnet";
-let pastNetwork = "mainnet";
-let networkUrlData = {}
+let options = [{
+  os: "linux",
+  arch: [],
+  network: [],
+},{
+  os: "osx",
+  arch: [],
+  network: [],
+},{
+  os: "windows",
+  arch: [],
+  network: [],
+}];
+let currentNetwork = networks[0];
+let pastNetwork = networks[0];
+let networkUrlData = {};
 let currentOS = "";
+let currentArch = "";
+
+function getArchValues() {
+  options.forEach(({os, arch}) => {
+    let selectElement = document.getElementById(`${os}ArchID`) || "";
+
+    if (selectElement !== "") {
+      for (let i = 0; i < selectElement.options.length; i++) {
+        let optionValue = selectElement.options[i].value;
+        arch.push(optionValue);
+      }
+      currentArch = arch[0];
+    }
+  });
+}
+getArchValues();
+
+function getNetworkValues() {
+  options.forEach(({os, network}) => {
+    let selectElement = document.getElementById(`${os}NetworkID`) || "";
+
+    if (selectElement !== "") {
+      for (let i = 0; i < selectElement.options.length; i++) {
+        let optionValue = selectElement.options[i].value;
+        network.push(optionValue);
+      }
+    }
+  });
+}
+getNetworkValues();
 
 function ignoreFolders(data, foldersToIgnore) {
   return Object.entries(data).reduce((acc, [os, binaries]) => {
@@ -21,9 +64,26 @@ function filterByNetwork(network) {
   network === "all-networks" && $(".bin-row").removeClass("hide");
 }
 
-function setDownloadLink() {
-  networkUrlData[currentOS][currentNetwork].button.href = networkUrlData[currentOS][currentNetwork].url;
-  networkUrlData[currentOS][currentNetwork].checksumDiv.innerHTML = networkUrlData[currentOS][currentNetwork].checksum;
+function downloadSelection() {
+  $(`#${currentOS}NetworkID`).on("change", function() {
+      var selectedValue = $(this).val();
+      currentNetwork = selectedValue;
+      setDownloadLink(currentOS, currentNetwork, currentArch);
+  });
+
+  $(`#${currentOS}ArchID`).on("change", function() {
+      var selectedValue = $(this).val();
+      currentArch = selectedValue;
+      setDownloadLink(currentOS, currentNetwork, currentArch);
+  });
+}
+
+function setDownloadLink(dlos, dlnetwork, dlarch) {
+  currentOS = dlos;
+  currentNetwork = dlnetwork;
+  currentArch = dlarch;
+  networkUrlData[dlos][dlnetwork][dlarch].button.href = networkUrlData[dlos][dlnetwork][dlarch].url;
+  networkUrlData[dlos][dlnetwork][dlarch].checksumDiv.innerHTML = networkUrlData[dlos][dlnetwork][dlarch].checksum;
 }
 
 function getOS() {
@@ -43,7 +103,6 @@ function getOS() {
   OS = os;
 }
 getOS();
-
 
 function selectedOs(element, cardElement) {
   let el = document.getElementById(element);
@@ -76,9 +135,19 @@ function selectedOs(element, cardElement) {
     default:
       currentOS = "linux";
   }
-  $(`.dl-current #${currentNetwork}.chip`).addClass("active-chip");
+
+  // set default select values when switching OS
+  $(`#${currentOS}NetworkID`).val(networks[0]);
+  $(`#${currentOS}ArchID`).val(options.find(option => option.os === currentOS).arch[0]);
+
+  // get values from select elements
+  downloadSelection();
+
+  // filter past versions by network
   filterByNetwork(pastNetwork);
-  setDownloadLink();
+
+  // set download link to latest version
+  setDownloadLink(currentOS, networks[0], options.find(option => option.os === currentOS).arch[0]);
 }
 
 function removeClass(elems) {
@@ -88,7 +157,6 @@ function removeClass(elems) {
 }
 
 jQuery(document).ready(function ($) {
-  $(`.dl-current #${currentNetwork}.chip`).addClass("active-chip");
   $(`.past #${pastNetwork}.chip`).addClass("active-chip");
 
   getS3Data();
@@ -102,7 +170,7 @@ jQuery(document).ready(function ($) {
         const data = ignoreFolders(res, foldersToIgnore);
         groupDataByOs(data);
         setLatest(data);
-        setDownloadLink();
+        setDownloadLink(currentOS, networks[0], options.find(option => option.os === currentOS).arch[0]);
       },
     });
   }
@@ -161,9 +229,8 @@ jQuery(document).ready(function ($) {
       filterByNetwork(pastNetwork);
   }
 
-
   function setLatest(data) {
-
+    // filter by os
     Object.keys(data).forEach((os) => {
       let rawOs = os.replace("current/", "");
       if (rawOs === os) {
@@ -171,42 +238,58 @@ jQuery(document).ready(function ($) {
       }
       if (rawOs !== "libwallet") {
 
+        // filter by network
         networks.forEach((network) => {
-        let nets = data[os].filter((key) => key.path.includes(network));
-        if(nets.length > 0) {
-        let btn = document.getElementById(`${rawOs}DL`);
-        let checkSumDiv = document.getElementById(`${rawOs}CSID`);
+          let nets = data[os].filter((key) => key.path.includes(network));
 
+          // filter by architecture
+          if (nets.length > 0) {
+            let btn = document.getElementById(`${rawOs}DL`);
+            let checkSumDiv = document.getElementById(`${rawOs}CSID`);
 
-        let sha256 = "";
-        // The url comparison is to sort the zip/sha256 files.
-        let latest = nets.reduce((a, b) => a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? a : b)
-        let checksum = latest.sha256;
+            let filteredUrls = {};
+            options.forEach(({ os: archOs, arch: archList }) => {
+              if (rawOs === archOs) {
+                archList.forEach((archItem) => {
+                  let filteredNet = nets.filter((net) => net.path.includes(archItem));
+                  if (filteredNet.length > 0) {
+                    let latest = filteredNet.reduce((a, b) => a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? a : b);
+                    filteredUrls[archItem] = latest;
+                  }
+                });
+              }
+            });
 
+            // create object for each arch/network
+            Object.keys(filteredUrls).forEach((arch) => {
+              let latest = filteredUrls[arch];
+              let sha256 = "";
+              let checksum = latest.sha256;
 
-        if (checksum) {
-          sha256 = checksum.split(" ")[0];
-        }
+              if (checksum) {
+                sha256 = checksum.split(" ")[0];
+              }
 
-        latest.checksum = checksum ? `SHA256: ${sha256}` : ""
+              latest.checksum = checksum ? `SHA256: ${sha256}` : "";
+              latest.button = btn;
+              latest.checksumDiv = checkSumDiv;
+              latest.arch = arch;
 
-        latest.button = btn;
-        latest.checksumDiv = checkSumDiv;
+              if (!networkUrlData[rawOs]) {
+                networkUrlData[rawOs] = {};
+              }
 
-        if(!networkUrlData[rawOs]) {
-          networkUrlData[rawOs] = {}
-        }
+              if (!networkUrlData[rawOs][network]) {
+                networkUrlData[rawOs][network] = {};
+              }
 
-        if(!networkUrlData[rawOs][network]) {
-          networkUrlData[rawOs][network] = {}
-        }
-
-        networkUrlData[rawOs][network] = latest;
+              networkUrlData[rawOs][network][arch] = latest;
+            });
+          }
+        });
       }
     });
   }
-});
-}
 
   function setInitialActive(os) {
     switch (os) {
@@ -229,13 +312,6 @@ jQuery(document).ready(function ($) {
   }
   setInitialActive(OS);
 
-  $(".dl-current .chip").click(function() {
-    currentNetwork = $(this).attr("id");
-    $(".dl-current .chip").removeClass("active-chip");
-    $(this).addClass("active-chip");
-    setDownloadLink();
-  });
-
   $(".past .chip").click(function() {
       pastNetwork = $(this).attr("id");
       $(".past .chip").removeClass("active-chip");
@@ -243,4 +319,6 @@ jQuery(document).ready(function ($) {
       filterByNetwork(pastNetwork);
   });
 
+  // get values from select elements
+  downloadSelection();
 });

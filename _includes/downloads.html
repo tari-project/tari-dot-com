@@ -41,14 +41,28 @@
                     {% endif %}
 
                     {% if os.downloadBtnID %}
-                    <div>
-                        <p class="select-network">Select Network: </p>
-                        <div class="dl-current">
-                            <button id="mainnet" class="chip">Stagenet</button>
-                            <button id="nextnet" class="chip">Nextnet</button>
-                            <button id="testnet" class="chip">Testnet</button>
+                    {% if os.networkOptions %}
+                        <div class="dropdown-container">
+                            <p class="dropdown-label">Network</p>
+                            
+                            <select id="{{os.networkDropdownID}}">
+                                {% for option in os.networkOptions %}
+                                <option value="{{ option.value }}">{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                    </div>
+                     {% endif %}
+                    {% if os.archOptions %}
+                        <div class="dropdown-container">
+                            <p class="dropdown-label">Architecture</p>
+                            
+                            <select id="{{os.archDropdownID}}">
+                                {% for option in os.archOptions %}
+                                <option value="{{ option.value }}">{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                     {% endif %}
                     <a class="btn" id="{{ os.downloadBtnID }}">{{os.ctaText}}</a>
                     {% endif %}
 
@@ -117,5 +131,8 @@
             </div>
 
         </div>
+
     {% endfor %}
+
 </div>
+

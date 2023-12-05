@@ -194,6 +194,13 @@ div#support.download-content > .dl-card div.dl-info-holder {
   justify-content: flex-start;
 }
 
+.dl-current-arch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .past {
   display: flex;
   flex-direction: row;
@@ -213,7 +220,7 @@ div#support.download-content > .dl-card div.dl-info-holder {
 }
 
 .select-network {
-  margin: calc(1 * var(--root-size)) calc(1 * var(--root-size)) calc(1 * var(--root-size)) 0 !important;
+  margin: 10px 10px 10px 0 !important;
   font-size: calc(1.5 * var(--root-size)) !important;
 }
 
@@ -316,4 +323,30 @@ div#support.download-content > .dl-card div.dl-info-holder {
   div.bin-header {
     width: 47%;
   }
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dropdown-label {
+  margin-bottom: 0 !important;
+  flex-grow: 1;
+}
+
+/* #linuxArchID,
+#osxArchID,
+#windowsArchID  */
+.dropdown-container select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  flex-grow: 1;
+  min-width: 200px;
 }
