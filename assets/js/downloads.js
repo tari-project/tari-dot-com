@@ -1,5 +1,5 @@
 let OS = "";
-const networks = ["mainnet", "testnet", "nextnet"]
+const networks = ["nextnet", "testnet"]
 let options = [{
   os: "linux",
   arch: [],

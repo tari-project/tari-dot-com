@@ -22,11 +22,7 @@
   archOptions:
     [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
   networkOptions:
-    [
-      { value: mainnet, label: Stagenet },
-      { value: nextnet, label: Nextnet },
-      { value: testnet, label: Testnet },
-    ]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Mac
   elementID: mac
   binaryDivID: osxBinID
@@ -48,13 +44,9 @@
   ctaText: Download for Mac
   filter_spec: osx-10.15
   archOptions:
-    [{ value: x86_64, label: x86_64 }, { value: arm64, label: arm64 }]
+    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
   networkOptions:
-    [
-      { value: mainnet, label: Stagenet },
-      { value: nextnet, label: Nextnet },
-      { value: testnet, label: Testnet },
-    ]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Windows
   elementID: windows
   binaryDivID: windowsBinID
@@ -77,11 +69,7 @@
   filter_spec: windows
   archOptions: [{ value: x64, label: x64 }]
   networkOptions:
-    [
-      { value: mainnet, label: Stagenet },
-      { value: nextnet, label: Nextnet },
-      { value: testnet, label: Testnet },
-    ]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Libraries
   elementID: support
   binaryDivID: libWalletBinID
