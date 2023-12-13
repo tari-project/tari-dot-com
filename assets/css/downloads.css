@@ -339,10 +339,13 @@ div#support.download-content > .dl-card div.dl-info-holder {
   flex-grow: 1;
 }
 
-/* #linuxArchID,
+.dropdown-container select,
+#linuxArchID,
 #osxArchID,
-#windowsArchID  */
-.dropdown-container select {
+#windowsArchID,
+#linuxNetworkID,
+#osxNetworkID,
+#windowsNetworkID {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ebebeb;

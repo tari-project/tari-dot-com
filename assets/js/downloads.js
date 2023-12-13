@@ -2,15 +2,15 @@ let OS = "";
 const networks = ["nextnet", "testnet"]
 let options = [{
   os: "linux",
-  arch: [],
+  arch: ['arm64', 'x86_64'],
   network: [],
 },{
   os: "osx",
-  arch: [],
+  arch: ['arm64', 'x86_64'],
   network: [],
 },{
   os: "windows",
-  arch: [],
+  arch: ['x64'],
   network: [],
 }];
 let currentNetwork = networks[0];
@@ -19,34 +19,34 @@ let networkUrlData = {};
 let currentOS = "";
 let currentArch = "";
 
-function getArchValues() {
-  options.forEach(({os, arch}) => {
-    let selectElement = document.getElementById(`${os}ArchID`) || "";
+// function getArchValues() {
+//   options.forEach(({os, arch}) => {
+//     let selectElement = document.getElementById(`${os}ArchID`) || "";
 
-    if (selectElement !== "") {
-      for (let i = 0; i < selectElement.options.length; i++) {
-        let optionValue = selectElement.options[i].value;
-        arch.push(optionValue);
-      }
-      currentArch = arch[0];
-    }
-  });
-}
-getArchValues();
+//     if (selectElement !== "") {
+//       for (let i = 0; i < selectElement.options.length; i++) {
+//         let optionValue = selectElement.options[i].value;
+//         arch.push(optionValue);
+//       }
+//       currentArch = arch[0];
+//     }
+//   });
+// }
+// getArchValues();
 
-function getNetworkValues() {
-  options.forEach(({os, network}) => {
-    let selectElement = document.getElementById(`${os}NetworkID`) || "";
+// function getNetworkValues() {
+//   options.forEach(({os, network}) => {
+//     let selectElement = document.getElementById(`${os}NetworkID`) || "";
 
-    if (selectElement !== "") {
-      for (let i = 0; i < selectElement.options.length; i++) {
-        let optionValue = selectElement.options[i].value;
-        network.push(optionValue);
-      }
-    }
-  });
-}
-getNetworkValues();
+//     if (selectElement !== "") {
+//       for (let i = 0; i < selectElement.options.length; i++) {
+//         let optionValue = selectElement.options[i].value;
+//         network.push(optionValue);
+//       }
+//     }
+//   });
+// }
+// getNetworkValues();
 
 function ignoreFolders(data, foldersToIgnore) {
   return Object.entries(data).reduce((acc, [os, binaries]) => {
@@ -237,21 +237,24 @@ jQuery(document).ready(function ($) {
         return;
       }
       if (rawOs !== "libwallet") {
-
+  
         // filter by network
         networks.forEach((network) => {
           let nets = data[os].filter((key) => key.path.includes(network));
-
+  
           // filter by architecture
           if (nets.length > 0) {
             let btn = document.getElementById(`${rawOs}DL`);
             let checkSumDiv = document.getElementById(`${rawOs}CSID`);
-
+  
             let filteredUrls = {};
             options.forEach(({ os: archOs, arch: archList }) => {
               if (rawOs === archOs) {
+  
+                let filteredNetWithoutSha256 = nets.filter(net => !net.url.endsWith(".sha256"));
+  
                 archList.forEach((archItem) => {
-                  let filteredNet = nets.filter((net) => net.path.includes(archItem));
+                  let filteredNet = filteredNetWithoutSha256.filter((net) => net.path.includes(archItem));
                   if (filteredNet.length > 0) {
                     let latest = filteredNet.reduce((a, b) => a.lastModified > b.lastModified || (a.lastModified == b.lastModified && a.url < b.url) ? a : b);
                     filteredUrls[archItem] = latest;
@@ -259,37 +262,39 @@ jQuery(document).ready(function ($) {
                 });
               }
             });
-
+  
             // create object for each arch/network
             Object.keys(filteredUrls).forEach((arch) => {
               let latest = filteredUrls[arch];
               let sha256 = "";
               let checksum = latest.sha256;
-
+  
               if (checksum) {
                 sha256 = checksum.split(" ")[0];
               }
-
+  
               latest.checksum = checksum ? `SHA256: ${sha256}` : "";
               latest.button = btn;
               latest.checksumDiv = checkSumDiv;
               latest.arch = arch;
-
+  
               if (!networkUrlData[rawOs]) {
                 networkUrlData[rawOs] = {};
               }
-
+  
               if (!networkUrlData[rawOs][network]) {
                 networkUrlData[rawOs][network] = {};
               }
-
+  
               networkUrlData[rawOs][network][arch] = latest;
+
             });
           }
         });
       }
     });
   }
+  
 
   function setInitialActive(os) {
     switch (os) {
