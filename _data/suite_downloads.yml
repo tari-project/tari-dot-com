@@ -1,0 +1,86 @@
+- type: Ubuntu
+  elementID: ubuntu
+  binaryDivID: linuxBinID
+  archDropdownID: linuxArchID
+  networkDropdownID: linuxNetworkID
+  elementTabButtonID: ubuntu-btn
+  title: Tari Base Node for Ubuntu
+  subtitle: Download the binary, click through to install. Then you'll be
+    automatically connected to the Tari blockchain.
+  downloadBtnID: linuxDL
+  checksumDivID: linuxCSID
+  version: Ubuntu 18.04 and higher
+  source: https://github.com/tari-project/tari
+  background-image: /assets/img/downloads/ubuntu.mp4
+  video-poster: /assets/img/downloads/ubuntu.png
+  tutorial-video: /dibbler-install-guides/
+  logo: /img/downloads/ubuntu-logo.svg
+  logo-active: /img/downloads/ubuntu-logo-active.svg
+  defaultActive: active
+  ctaText: Download for Ubuntu
+  filter_spec: ubuntu
+  archOptions:
+    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
+  networkOptions:
+    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+- type: Mac
+  elementID: mac
+  binaryDivID: osxBinID
+  archDropdownID: osxArchID
+  networkDropdownID: osxNetworkID
+  elementTabButtonID: mac-btn
+  title: Tari Base Node for Mac
+  subtitle: Download the binary, click through to install. Then you'll be
+    automatically connected to the Tari blockchain.
+  downloadBtnID: osxDL
+  checksumDivID: osxCSID
+  version: MacOS 10.15.0 (Catalina) and higher
+  source: https://github.com/tari-project/tari
+  background-image: /assets/img/downloads/mac.mp4
+  video-poster: /assets/img/downloads/mac.png
+  tutorial-video: /dibbler-install-guides/
+  logo: /img/downloads/apple-logo.svg
+  logo-active: /img/downloads/apple-logo-active.svg
+  ctaText: Download for Mac
+  filter_spec: osx-10.15
+  archOptions:
+    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
+  networkOptions:
+    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+- type: Windows
+  elementID: windows
+  binaryDivID: windowsBinID
+  archDropdownID: windowsArchID
+  networkDropdownID: windowsNetworkID
+  elementTabButtonID: windows-btn
+  title: Tari Base Node for Windows
+  subtitle: Download the binary, click through to install. Then you'll be
+    automatically connected to the Tari blockchain.
+  downloadBtnID: windowsDL
+  checksumDivID: windowsCSID
+  version: Windows 10 and higher
+  source: https://github.com/tari-project/tari
+  background-image: /assets/img/downloads/windows.mp4
+  video-poster: /assets/img/downloads/windows.png
+  tutorial-video: /dibbler-install-guides/
+  logo: /img/downloads/windows-logo.svg
+  logo-active: /img/downloads/windows-logo-active.svg
+  ctaText: Download for Windows
+  filter_spec: windows
+  archOptions: [{ value: x64, label: x64 }]
+  networkOptions:
+    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+- type: Libraries
+  elementID: support
+  binaryDivID: libWalletBinID
+  elementTabButtonID: support-btn
+  title: Tari Support Libraries
+  subtitle: Additional miscellaneous binaries and files to enable developers.
+  downloadBtnID: null
+  tutorial-video: null
+  background-image: /assets/img/downloads/support.mp4
+  video-poster: /assets/img/downloads/support.png
+  logo: /img/downloads/support-logo.svg
+  logo-active: /img/downloads/support-logo-active.svg
+  ctaText: Support libraries
+  filter_spec: libwallet

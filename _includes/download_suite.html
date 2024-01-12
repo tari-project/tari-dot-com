@@ -1,6 +1,6 @@
 <div class="downloads-container">
     <div class="tab-button-holder">
-        {% for os in site.data.downloads %}
+        {% for os in site.data.suite_downloads %}
             {% if os.type != 'Libraries' %}
             <div
                     id="{{ os.elementTabButtonID }}"
@@ -25,7 +25,7 @@
         {% endfor %}
     </div>
 
-    {% for os in site.data.downloads %}
+    {% for os in site.data.suite_downloads %}
         <div class="download-content" id="{{ os.elementID }}">
             <div class="dl-card">
                 <div class="dl-info-holder col-lg-7 col-md-7 col-sm-12">
@@ -44,7 +44,7 @@
                     {% if os.networkOptions %}
                         <div class="dropdown-container">
                             <p class="dropdown-label">Network</p>
-                            
+
                             <select id="{{os.networkDropdownID}}">
                                 {% for option in os.networkOptions %}
                                 <option value="{{ option.value }}">{{ option.label }}</option>
@@ -55,7 +55,7 @@
                     {% if os.archOptions %}
                         <div class="dropdown-container">
                             <p class="dropdown-label">Architecture</p>
-                            
+
                             <select id="{{os.archDropdownID}}">
                                 {% for option in os.archOptions %}
                                 <option value="{{ option.value }}">{{ option.label }}</option>

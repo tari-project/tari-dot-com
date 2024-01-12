@@ -1,0 +1,138 @@
+<div class="downloads-container">
+    <div class="tab-button-holder">
+        {% for os in site.data.launchpad_downloads %}
+            {% if os.type != 'Libraries' %}
+            <div
+                    id="{{ os.elementTabButtonID }}"
+                    class="tab-button"
+                    onclick="selectedOs('{{ os.elementTabButtonID }}','{{ os.elementID }}')"
+            >
+              <span>
+                <img
+                        class="os-logo-img"
+                        src="{{ site.baseurl }}/assets{{os.logo}}"
+                        alt="{{os.elementID}}-Logo"
+                />
+                <img
+                        class="os-logo-img-active"
+                        src="{{ site.baseurl }}/assets{{os.logo-active}}"
+                        alt="{{os.elementID}}-Logo"
+                /> </span
+              >
+                {{ os.type}}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% for os in site.data.launchpad_downloads %}
+        <div class="download-content" id="{{ os.elementID }}">
+            <div class="dl-card">
+                <div class="dl-info-holder col-lg-7 col-md-7 col-sm-12">
+                    <h2 class="dl-title">{{ os.title }}</h2>
+                    <p class="dl-subtitle">
+                        {{ os.subtitle }}
+                    </p>
+                    {% if os.version %}
+                    <div class="version">
+                        For {{ os.version }}
+
+                    </div>
+                    {% endif %}
+
+                    {% if os.downloadBtnID %}
+                    {% if os.networkOptions %}
+                        <div class="dropdown-container">
+                            <p class="dropdown-label">Network</p>
+
+                            <select id="{{os.networkDropdownID}}">
+                                {% for option in os.networkOptions %}
+                                <option value="{{ option.value }}">{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                     {% endif %}
+                    {% if os.archOptions %}
+                        <div class="dropdown-container">
+                            <p class="dropdown-label">Architecture</p>
+
+                            <select id="{{os.archDropdownID}}">
+                                {% for option in os.archOptions %}
+                                <option value="{{ option.value }}">{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                     {% endif %}
+                    <a class="btn" id="{{ os.downloadBtnID }}">{{os.ctaText}}</a>
+                    {% endif %}
+
+                    {% if os.tutorial-video %}
+                    <a href="{{ os.tutorial-video }}" class="tutorial-video">
+              <span
+              ><img
+                      src="{{ site.baseurl }}/assets/img/downloads/video-icon.svg"
+                      alt=""
+                      style="margin-top: -2px; max-width: 30px;"
+              /></span>
+                        View the installation guide
+                        <br/><br/>
+                    </a>
+                    {% endif %}
+
+                    {% if os.source %}
+                    <a href="{{ os.source }}" class="source">
+              <span
+              ><img
+                      src="{{ site.baseurl }}/assets/img/downloads/github-logo.svg"
+                      alt=""
+                      style="margin-top: -3px;"
+              /></span>
+                        Build from source for {{ os.type }}
+                        <br/><br/>
+                    </a>
+                    {% endif %}
+
+                    {% if os.checksumDivID %}
+                    <div id="{{ os.checksumDivID }}" class="checksum"></div>
+                    {% endif %}
+
+                </div>
+                <video class="dl-machine-img" muted autoplay playsinline poster="{{ site.baseurl }}{{os.video-poster}}">
+                    <source src="{{ site.baseurl }}{{os.background-image}}" type="video/mp4">
+                </video>
+            </div>
+
+
+            <div class="past-versions-container">
+                <div class="past-versions-header">
+                    <h2>Past Versions</h2>
+                    {% if os.downloadBtnID %}
+                    <div class="past">
+                        <p class="select-network">Filter by Network: </p>
+                        <!-- <button id="mainnet" class="chip">Stagenet</button> -->
+                        <button id="nextnet" class="chip">Nextnet</button>
+                        <button id="testnet" class="chip">Testnet</button>
+                        <button id="all-networks" class="chip">All</button>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="binaries-container">
+                    <div class="bin-headers">
+                        <div class="bin-header">
+                            <div class="header-text">Filename</div>
+                        </div>
+                        <div class="bin-header">
+                            <div class="header-text">Last modified</div>
+                        </div>
+                    </div>
+                    <div id="{{ os.binaryDivID }}" class="bin-content">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
