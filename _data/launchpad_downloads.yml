@@ -11,7 +11,7 @@
   checksumDivID: linuxCSID
   version: Ubuntu 18.04 and higher
   source: https://github.com/Minotari-project/Minotari-launchpad
-  background-image: /assets/img/downloads/ubuntu.mp4
+  background-image: /assets/img/downloads/launchpad-ubuntu.mp4
   video-poster: /assets/img/downloads/ubuntu.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/ubuntu-logo.svg
@@ -22,7 +22,7 @@
   archOptions:
     [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
   networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Mac
   elementID: mac
   binaryDivID: osxBinID
@@ -36,7 +36,7 @@
   checksumDivID: osxCSID
   version: MacOS 10.15.0 (Catalina) and higher
   source: https://github.com/Minotari-project/Minotari
-  background-image: /assets/img/downloads/mac.mp4
+  background-image: /assets/img/downloads/launchpad-mac.mp4
   video-poster: /assets/img/downloads/mac.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/apple-logo.svg
@@ -46,7 +46,7 @@
   archOptions:
     [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
   networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Windows
   elementID: windows
   binaryDivID: windowsBinID
@@ -60,7 +60,7 @@
   checksumDivID: windowsCSID
   version: Windows 10 and higher
   source: https://github.com/Minotari-project/Minotari
-  background-image: /assets/img/downloads/windows.mp4
+  background-image: /assets/img/downloads/launchpad-windows.mp4
   video-poster: /assets/img/downloads/windows.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/windows-logo.svg
@@ -69,7 +69,7 @@
   filter_spec: windows
   archOptions: [{ value: x64, label: x64 }]
   networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
 - type: Libraries
   elementID: support
   binaryDivID: libWalletBinID

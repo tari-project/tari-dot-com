@@ -18,6 +18,8 @@ let pastNetwork = networks[0];
 let networkUrlData = {};
 let currentOS = "";
 let currentArch = "";
+const pageLocation = window.location.href.split("/")[3];
+const fetchUrl = pageLocation === "downloads" ? Tari.s3BucketURL : "https://launchpadUrl"
 
 // function getArchValues() {
 //   options.forEach(({os, arch}) => {
@@ -163,7 +165,7 @@ jQuery(document).ready(function ($) {
   // get data
   function getS3Data() {
     $.ajax({
-      url: Tari.s3BucketURL,
+      url: fetchUrl,
       headers: { "Access-Control-Allow-Origin": "*" },
       success: function (res) {
         const foldersToIgnore = ["diag-utils"];
