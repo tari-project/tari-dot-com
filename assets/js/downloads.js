@@ -173,6 +173,7 @@ jQuery(document).ready(function ($) {
       url: Tari.s3BucketURL,
       headers: { "Access-Control-Allow-Origin": "*" },
       success: function (res) {
+        console.log("res", res)
         const foldersToIgnore = ["diag-utils"];
         const data = ignoreFolders(res, foldersToIgnore);
         const filteredKeys = Object.keys(data).filter(key => key.startsWith(fileLocation));
