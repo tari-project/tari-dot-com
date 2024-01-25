@@ -19,10 +19,8 @@
   defaultActive: active
   ctaText: Download for Ubuntu
   filter_spec: ubuntu
-  archOptions:
-    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
+  archOptions: [{ value: x86_64, label: x86_64 }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Mac
   elementID: mac
   binaryDivID: osxBinID
@@ -43,10 +41,8 @@
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
   filter_spec: osx-10.15
-  archOptions:
-    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
+  archOptions: [{ value: x86_64, label: x86_64 }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Windows
   elementID: windows
   binaryDivID: windowsBinID
@@ -68,8 +64,7 @@
   ctaText: Download for Windows
   filter_spec: windows
   archOptions: [{ value: x64, label: x64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: testnet, label: Testnet }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Libraries
   elementID: support
   binaryDivID: libWalletBinID
