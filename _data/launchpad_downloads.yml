@@ -11,7 +11,7 @@
   checksumDivID: linuxCSID
   version: Ubuntu 18.04 and higher
   source: https://github.com/Minotari-project/Minotari-launchpad
-  background-image: /assets/img/downloads/ubuntu.mp4
+  background-image: /assets/img/downloads/launchpad-ubuntu.mp4
   video-poster: /assets/img/downloads/ubuntu.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/ubuntu-logo.svg
@@ -19,10 +19,8 @@
   defaultActive: active
   ctaText: Download for Ubuntu
   filter_spec: ubuntu
-  archOptions:
-    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+  archOptions: [{ value: x86_64, label: x86_64 }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Mac
   elementID: mac
   binaryDivID: osxBinID
@@ -36,17 +34,15 @@
   checksumDivID: osxCSID
   version: MacOS 10.15.0 (Catalina) and higher
   source: https://github.com/Minotari-project/Minotari
-  background-image: /assets/img/downloads/mac.mp4
+  background-image: /assets/img/downloads/launchpad-mac.mp4
   video-poster: /assets/img/downloads/mac.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
   filter_spec: osx-10.15
-  archOptions:
-    [{ value: arm64, label: arm64 }, { value: x86_64, label: x86_64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+  archOptions: [{ value: x86_64, label: x86_64 }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Windows
   elementID: windows
   binaryDivID: windowsBinID
@@ -60,7 +56,7 @@
   checksumDivID: windowsCSID
   version: Windows 10 and higher
   source: https://github.com/Minotari-project/Minotari
-  background-image: /assets/img/downloads/windows.mp4
+  background-image: /assets/img/downloads/launchpad-windows.mp4
   video-poster: /assets/img/downloads/windows.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/windows-logo.svg
@@ -68,8 +64,7 @@
   ctaText: Download for Windows
   filter_spec: windows
   archOptions: [{ value: x64, label: x64 }]
-  networkOptions:
-    [{ value: nextnet, label: Nextnet }, { value: stagenet, label: Stagenet }]
+  networkOptions: [{ value: nextnet, label: Nextnet }]
 - type: Libraries
   elementID: support
   binaryDivID: libWalletBinID

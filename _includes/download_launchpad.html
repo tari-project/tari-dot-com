@@ -108,10 +108,10 @@
                     <h2>Past Versions</h2>
                     {% if os.downloadBtnID %}
                     <div class="past">
-                        <p class="select-network">Filter by Network: </p>
-                        <!-- <button id="mainnet" class="chip">Stagenet</button> -->
-                        <button id="nextnet" class="chip">Nextnet</button>
-                        <button id="testnet" class="chip">Testnet</button>
+                        <p class="select-network">Filter by Network: </p>                        
+                        {% for network in os.networkOptions %}
+                            <button id="{{ network.value }}" class="chip">{{ network.label }}</button>
+                        {% endfor %}
                         <button id="all-networks" class="chip">All</button>
                     </div>
                     {% endif %}
@@ -129,7 +129,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
     {% endfor %}

@@ -1,52 +1,59 @@
 let OS = "";
-const networks = ["nextnet", "testnet"]
+const networks = []
 let options = [{
   os: "linux",
-  arch: ['arm64', 'x86_64'],
+  arch: [],
   network: [],
-},{
-  os: "osx",
-  arch: ['arm64', 'x86_64'],
-  network: [],
-},{
+},
+{
   os: "windows",
-  arch: ['x64'],
+  arch: [],
   network: [],
-}];
+},
+{
+  os: "osx",
+  arch: [],
+  network: [],
+}
+];
 let currentNetwork = networks[0];
 let pastNetwork = networks[0];
 let networkUrlData = {};
 let currentOS = "";
 let currentArch = "";
+const pageLocation = window.location.href.split("/")[3];
+const fileLocation = pageLocation === "launchpad" ? "launchpad/current" : "current";
 
-// function getArchValues() {
-//   options.forEach(({os, arch}) => {
-//     let selectElement = document.getElementById(`${os}ArchID`) || "";
+function getArchValues() {
+  options.forEach(({os, arch}) => {
+    let selectElement = document.getElementById(`${os}ArchID`) || "";
 
-//     if (selectElement !== "") {
-//       for (let i = 0; i < selectElement.options.length; i++) {
-//         let optionValue = selectElement.options[i].value;
-//         arch.push(optionValue);
-//       }
-//       currentArch = arch[0];
-//     }
-//   });
-// }
-// getArchValues();
+    if (selectElement !== "") {
+      for (let i = 0; i < selectElement.options.length; i++) {
+        let optionValue = selectElement.options[i].value;
+        arch.push(optionValue);
+      }
+      currentArch = arch[0];
+    }
+  });
+}
+getArchValues();
 
-// function getNetworkValues() {
-//   options.forEach(({os, network}) => {
-//     let selectElement = document.getElementById(`${os}NetworkID`) || "";
+function getNetworkValues() {
+  options.forEach(({os, network}) => {
+    let selectElement = document.getElementById(`${os}NetworkID`) || "";
 
-//     if (selectElement !== "") {
-//       for (let i = 0; i < selectElement.options.length; i++) {
-//         let optionValue = selectElement.options[i].value;
-//         network.push(optionValue);
-//       }
-//     }
-//   });
-// }
-// getNetworkValues();
+    if (selectElement !== "") {
+      for (let i = 0; i < selectElement.options.length; i++) {
+        let optionValue = selectElement.options[i].value;
+        network.push(optionValue);
+      }
+    }
+  });
+  networks.push(...options[0].network);
+  pastNetwork = networks[0];
+}
+getNetworkValues();
 
 function ignoreFolders(data, foldersToIgnore) {
   return Object.entries(data).reduce((acc, [os, binaries]) => {
@@ -166,24 +173,29 @@ jQuery(document).ready(function ($) {
       url: Tari.s3BucketURL,
       headers: { "Access-Control-Allow-Origin": "*" },
       success: function (res) {
+        console.log("res", res)
         const foldersToIgnore = ["diag-utils"];
         const data = ignoreFolders(res, foldersToIgnore);
-        groupDataByOs(data);
-        setLatest(data);
+        const filteredKeys = Object.keys(data).filter(key => key.startsWith(fileLocation));
+        const filteredData = {};
+        filteredKeys.forEach(key => {
+          filteredData[key] = data[key];
+        });
+        groupDataByOs(filteredData);
+        setLatest(filteredData);
         setDownloadLink(currentOS, networks[0], options.find(option => option.os === currentOS).arch[0]);
       },
     });
   }
 
   function groupDataByOs(data) {
-    renderBinaries(data["current/linux"], "linux");
-    renderBinaries(data["current/windows"], "windows");
-    renderBinaries(data["current/osx"], "osx");
-    renderBinaries(data["current/libwallet"], "libWallet");
+    renderBinaries(data[`${fileLocation}/linux`], "linux");
+    renderBinaries(data[`${fileLocation}/windows`], "windows");
+    renderBinaries(data[`${fileLocation}/osx`], "osx");
   }
 
   function renderBinaries(data, os) {
-    let rawOs = os.replace("current/", "");
+    let rawOs = os.replace(`${fileLocation}/`, "");
     let binContainer = document.getElementById(`${rawOs}BinID`);
     const dateOptions = { weekday: "long", month: "short", day: "numeric" };
 
@@ -206,14 +218,10 @@ jQuery(document).ready(function ($) {
         const path = binary.path.split("/").pop();
 
         let networkClass = "";
-        if (binary.path.includes("stagenet")) {
-          networkClass = "stagenet";
-        } else if (binary.path.includes("mainnet")) {
-          networkClass = "mainnet";
-        } else if (binary.path.includes("testnet")) {
-          networkClass = "testnet";
-        } else if (binary.path.includes("nextnet")) {
-          networkClass = "nextnet";
+        for (let i = 0; i < networks.length; i++) {
+          if (binary.path.includes(networks[i])) {
+            networkClass = networks[i];
+          }
         }
 
         return `<div class="bin-row ${altClass} ${networkClass} all-networks hide">
@@ -232,7 +240,7 @@ jQuery(document).ready(function ($) {
   function setLatest(data) {
     // filter by os
     Object.keys(data).forEach((os) => {
-      let rawOs = os.replace("current/", "");
+      let rawOs = os.replace(`${fileLocation}/`, "");
       if (rawOs === os) {
         return;
       }
@@ -288,6 +296,8 @@ jQuery(document).ready(function ($) {
   
               networkUrlData[rawOs][network][arch] = latest;
 
+              console.log("latest", latest)
+
             });
           }
         });
@@ -326,4 +336,5 @@ jQuery(document).ready(function ($) {
 
   // get values from select elements
   downloadSelection();
+  console.log("options", options)
 });
