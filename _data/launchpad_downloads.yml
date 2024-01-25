@@ -10,10 +10,10 @@
   downloadBtnID: linuxDL
   checksumDivID: linuxCSID
   version: Ubuntu 18.04 and higher
-  source: https://github.com/Minotari-project/Minotari-launchpad
+  source: https://github.com/tari-project/tari-launchpad
   background-image: /assets/img/downloads/launchpad-ubuntu.mp4
   video-poster: /assets/img/downloads/ubuntu.png
-  tutorial-video: /dibbler-install-guides/
+  tutorial-video: /launchpad-guide/
   logo: /img/downloads/ubuntu-logo.svg
   logo-active: /img/downloads/ubuntu-logo-active.svg
   defaultActive: active
@@ -33,10 +33,10 @@
   downloadBtnID: osxDL
   checksumDivID: osxCSID
   version: MacOS 10.15.0 (Catalina) and higher
-  source: https://github.com/Minotari-project/Minotari
+  source: https://github.com/tari-project/tari-launchpad
   background-image: /assets/img/downloads/launchpad-mac.mp4
   video-poster: /assets/img/downloads/mac.png
-  tutorial-video: /dibbler-install-guides/
+  tutorial-video: /launchpad-guide/
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg
   ctaText: Download for Mac
@@ -55,10 +55,10 @@
   downloadBtnID: windowsDL
   checksumDivID: windowsCSID
   version: Windows 10 and higher
-  source: https://github.com/Minotari-project/Minotari
+  source: https://github.com/tari-project/tari-launchpad
   background-image: /assets/img/downloads/launchpad-windows.mp4
   video-poster: /assets/img/downloads/windows.png
-  tutorial-video: /dibbler-install-guides/
+  tutorial-video: /launchpad-guide/
   logo: /img/downloads/windows-logo.svg
   logo-active: /img/downloads/windows-logo-active.svg
   ctaText: Download for Windows
@@ -72,7 +72,7 @@
   title: Minotari Support Libraries
   subtitle: Additional miscellaneous binaries and files to enable developers.
   downloadBtnID: null
-  tutorial-video: null
+  tutorial-video: /launchpad-guide/
   background-image: /assets/img/downloads/support.mp4
   video-poster: /assets/img/downloads/support.png
   logo: /img/downloads/support-logo.svg
