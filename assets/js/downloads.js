@@ -86,11 +86,22 @@ function downloadSelection() {
 }
 
 function setDownloadLink(dlos, dlnetwork, dlarch) {
-  currentOS = dlos;
-  currentNetwork = dlnetwork;
-  currentArch = dlarch;
-  networkUrlData[dlos][dlnetwork][dlarch].button.href = networkUrlData[dlos][dlnetwork][dlarch].url;
-  networkUrlData[dlos][dlnetwork][dlarch].checksumDiv.innerHTML = networkUrlData[dlos][dlnetwork][dlarch].checksum;
+  if (
+    networkUrlData[dlos] &&
+    networkUrlData[dlos][dlnetwork] &&
+    networkUrlData[dlos][dlnetwork][dlarch]
+  ) {
+    currentOS = dlos;
+    currentNetwork = dlnetwork;
+    currentArch = dlarch;
+    networkUrlData[dlos][dlnetwork][dlarch].button.href = networkUrlData[dlos][dlnetwork][dlarch].url;
+    networkUrlData[dlos][dlnetwork][dlarch].checksumDiv.innerHTML = networkUrlData[dlos][dlnetwork][dlarch].checksum;
+    $(`#${currentOS}DL`).text(`Download for ${dlos === "osx" ? "Mac" : dlos === "windows" ? "Windows" : "Linux"}`);
+    $(`#${currentOS}DL`).removeClass("disabled");
+  } else {
+    $(`#${currentOS}DL`).text("Download Unavailable");
+    $(`#${currentOS}DL`).addClass("disabled");
+  }
 }
 
 function getOS() {
@@ -173,7 +184,6 @@ jQuery(document).ready(function ($) {
       url: Tari.s3BucketURL,
       headers: { "Access-Control-Allow-Origin": "*" },
       success: function (res) {
-        console.log("res", res)
         const foldersToIgnore = ["diag-utils"];
         const data = ignoreFolders(res, foldersToIgnore);
         const filteredKeys = Object.keys(data).filter(key => key.startsWith(fileLocation));
@@ -296,8 +306,6 @@ jQuery(document).ready(function ($) {
   
               networkUrlData[rawOs][network][arch] = latest;
 
-              console.log("latest", latest)
-
             });
           }
         });
@@ -336,5 +344,5 @@ jQuery(document).ready(function ($) {
 
   // get values from select elements
   downloadSelection();
-  console.log("options", options)
+
 });
