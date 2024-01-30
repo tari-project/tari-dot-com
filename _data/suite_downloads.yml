@@ -37,7 +37,7 @@
   version: MacOS 10.15.0 (Catalina) and higher
   source: https://github.com/tari-project/tari
   background-image: /assets/img/downloads/mac.mp4
-  video-poster: /assets/img/downloads/mac.png
+  video-poster: /assets/img/downloads/Mac.png
   tutorial-video: /dibbler-install-guides/
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg

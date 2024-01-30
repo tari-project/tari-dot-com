@@ -35,7 +35,7 @@
   version: MacOS 10.15.0 (Catalina) and higher
   source: https://github.com/tari-project/tari-launchpad
   background-image: /assets/img/downloads/launchpad-mac.mp4
-  video-poster: /assets/img/downloads/mac.png
+  video-poster: /assets/img/downloads/Mac.png
   tutorial-video: /launchpad-guide/
   logo: /img/downloads/apple-logo.svg
   logo-active: /img/downloads/apple-logo-active.svg
