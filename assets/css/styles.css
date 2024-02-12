@@ -2,10 +2,6 @@
 title: CSS stylesheet
 ---
 
-:root {
-  --root-size: 10px;
-}
-
 .avbl {
   font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
 }
@@ -29,6 +25,11 @@ title: CSS stylesheet
 }
 .dinb {
   font-family: Din-Bold, "Din-Bold", "Myriad Pro", Arial, Verdana !important;
+}
+
+:root {
+  --root-size: 10px;
+  --max-content-width: 800px;
 }
 
 /* body */
@@ -762,6 +763,7 @@ lottie-player {
 .blog-post {
   padding: calc(20 * var(--root-size)) 0 calc(5 * var(--root-size)) 0;
   /*min-height: 100%;*/
+  max-width: var(--max-content-width);
 }
 
 .blog-post {
@@ -870,6 +872,11 @@ lottie-player {
   height: auto;
   /*  margin: calc(5 * var(--root-size)) 0;*/
 }
+.responsive-image {
+  width: 100%;
+}
+
+
 /* newsletter */
 #newsletter {
   position: absolute;
@@ -2592,4 +2599,8 @@ body.page- #call-to-action {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.responsive-image {
+  width: 100%;
 }
