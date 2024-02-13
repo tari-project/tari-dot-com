@@ -759,27 +759,21 @@ lottie-player {
   padding: 0 5%;
   position: relative;
 }
-.blog #viewport section.main .content,
-.blog-post {
-  padding: calc(20 * var(--root-size)) 0 calc(5 * var(--root-size)) 0;
-  /*min-height: 100%;*/
+.blog #viewport section.main .content {
+  padding: 200px 0 100px 0;
   max-width: var(--max-content-width);
 }
-
 .blog-post {
-  padding-top: calc(20 * var(--root-size)) !important;
-  padding-bottom: calc(10 * var(--root-size)) !important;
+  max-width: 100%;
+  padding-top: 200px !important;
+  padding-bottom: 100px !important;
 }
 .subpage #viewport section.main h1 {
   font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
   font-size: calc(4.8 * var(--root-size));
   line-height: calc(5.4 * var(--root-size));
-  /* margin: calc(13 * var(--root-size)) 0 calc(2 * var(--root-size)) 0;*/
   max-width: calc(80 * var(--root-size));
 }
-/*.subpage #viewport section.main h1:first-of-type {
-  margin-top: calc(2 * var(--root-size));
-}*/
 
 .subpage #viewport section.main h1 + p {
   font-family: Avenir-Light, "Avenir-Light", "Myriad Pro", Arial, Verdana !important;
