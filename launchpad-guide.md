@@ -9,6 +9,9 @@ class: subpage blog
 
 ## Step 1 - ⚓️ Docker ⚓️
 
+Docker is a tool that packages software into standardized units called containers that have everything the software 
+needs to run including libraries, system tools, code, and runtime.
+
 Launchpad uses [Docker](https://www.docker.com/) to install, configure, and manage the 6 different services that
 make up the Tari Layer One suite.
 
@@ -48,23 +51,50 @@ You will be greeted by the Tari Launchpad dashboard.
 
 ## Step 4 - ⚙️ Configure launchpad ⚙️
 
-### Tari wallet address
+### Copy your wallet's emoji id
 
-Copy your Tari wallet address into the "Wallet payment address" field.
+Firstly, you need to copy your Tari wallet address into the "Wallet payment address" field. 
 
-You can find your wallet address in **Aurora** by clicking on the big emoji icon on Aurora's home screen, then tap
-on your emoji id to expand it, and then tap "Copy emoji id".
+Depending on the Tari wallet you're using, grab a copy of your wallet's emoji id using the instructions from 
+the relevant section below, then transfer the copied emoji id to the machine running Tari Launchpad.
 
-Transfer the copied emoji id to the machine running Tari Launchpad by emailing it to yourself, or via any other
-suitable method.
+You can do this by emailing the emoji id to yourself, send yourself an IM, or via any other suitable method.
 
 On your launchpad machine, copy the emoji id into your clipboard, and then select the _Wallet payment address_ field
-so that it turns yellow. You can then paste the emoji id into the field.
+and hit **enter** so that it turns **yellow**. You can then paste the emoji id into the field using CTRL-V (or CMD-V 
+on a Mac). 
+
+Hit **enter** again to accept the changes. The input box changes back to **purple**.
+      
+#### From Tari Aurora
+
+If you use the [Tari Aurora mobile wallet](https://aurora.tari.com), 
+you can find your wallet address by clicking on the big emoji icon on Aurora's home screen, then tap
+on your emoji id to expand it, and then tap "Copy emoji id".
+
+The following video shows you how to copy your emoji id to your phone's clipboard.
+             
+<div align="center">
+  <iframe width="560" height="315"  src="https://www.youtube.com/embed/Tg-uKtk5uPw?si=SOYa1rPzD_KRY9Tf" 
+    title="Receiving Minotari" 
+    allow="autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowfullscreen>
+  </iframe>
+</div>
+
+
+#### From Minotari console wallet
+If you use the [Tari CLI wallet](https://tari.com/download), your wallet address printed on the "Receive" tab, as 
+shown below:
+
+<img src="/assets/launchpad/console-wallet.png" alt="Console wallet Emoji ID" class="responsive-image">               
 
 ### (Optional) Monero mining address
 
 Follow the same procedure you used to copy your Tari wallet address to copy your Monero mining address from your
 Monero wallet to Launchpad.
+
+If you don't have a Monero address, that's okay. You can still mine Tari without it.
 
 ## Step 5 - ⛏️ Mine! ⛏️
 
@@ -87,7 +117,7 @@ You'll see the `Sha3Miner` container fire up, and it will taking up 50% - 100% o
 
 ## Step 6 - 📈️ Profit 📈️
 
-If you find a block, it will reflect in your Aurora wallet a few seconds to a few seconds after the block is found.
+If you find a block, it will reflect in your wallet a few seconds after the block is found.
 Be patient. Depending on your luck, and how many other miners are on the network, it can take a anything from a few
 minutes to a few days to find a block.
 
