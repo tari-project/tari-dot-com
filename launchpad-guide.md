@@ -125,6 +125,12 @@ minutes to a few days to find a block.
 
 # 🎬️ Tari Launchpad Video Guide 🎬️
 
-We're still getting this ready for you, so please check back SOON™️
+All of the information above, but in moving picture format!
 
-<img src="/assets/img/filming_mining.jpg" alt="Filming mining" class="responsive-image"/>
+<div align="center">
+  <iframe width="800" height="600"  src="https://www.youtube.com/embed/Z_43z5Gx3v4" 
+    title="Receiving Minotari" 
+    allow="autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowfullscreen>
+  </iframe>
+</div>
