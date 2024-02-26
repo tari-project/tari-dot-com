@@ -194,6 +194,7 @@ jQuery(document).ready(function ($) {
         groupDataByOs(filteredData);
         setLatest(filteredData);
         setDownloadLink(currentOS, networks[0], options.find(option => option.os === currentOS).arch[0]);
+        console.log("filteredData", filteredData);
       },
     });
   }
@@ -207,7 +208,15 @@ jQuery(document).ready(function ($) {
   function renderBinaries(data, os) {
     let rawOs = os.replace(`${fileLocation}/`, "");
     let binContainer = document.getElementById(`${rawOs}BinID`);
-    const dateOptions = { weekday: "long", month: "short", day: "numeric" };
+    const dateOptions = { weekday: "short", month: "short", day: "numeric" };
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
 
     binContainer.innerHTML = data
       // The url comparison is to sort the zip/sha256 files.
@@ -226,6 +235,7 @@ jQuery(document).ready(function ($) {
         const formattedTime = lastMod.getHours() + ":" + lastMod.getMinutes();
         const altClass = index % 2 ? "" : "alt-colour";
         const path = binary.path.split("/").pop();
+        const formattedSize = formatFileSize(binary.size);
 
         let networkClass = "";
         for (let i = 0; i < networks.length; i++) {
@@ -241,6 +251,7 @@ jQuery(document).ready(function ($) {
                 </a>
                 </div>
               <div class="bin-row-item bin-right">${formattedDate} at ${formattedTime}</div>
+              <div class="bin-row-item bin-right">${formattedSize}</div>
             </div>`;
       })
       .join("");

@@ -5,24 +5,22 @@ title: { { page.title | append: "| Tari" } }
 
 <section class="main blog-post">
   {% include newsletter-subscribe.html %}
-  <div class="post content" style="max-width: calc(80 * var(--root-size));">
+  <div class="post content" style="max-width: var(--max-content-width);">
     <div class="post-img" style="background-image:url({% if page.thumbnail %}{{ site.baseurl }}/assets/updates/img/{{ page.thumbnail }}{% else %}{{ site.baseurl }}/assets/updates/img/placeholder-thumbnail.jpg{% endif %})">
       <div><h1 class="update-page-title">{{ page.date | date: '%B %d, %Y' }}</h1></div>
       <img src="{{ site.baseurl }}/assets/img/posts/placeholder-spacer.gif" />
     </div>
 
     <div class="post-head">
-      <div>
+      <div style="margin-bottom: 40px;">
         <p class="meta">
           By {{ page.author }}
         </p>
-        <h1 style="margin-bottom: calc(5 * var(--root-size));">{{ page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         {% if page.subtitle %}
-        <div class="lead">
-          <h2 style="margin-bottom: calc(2 * var(--root-size)); margin-top: 0px;">
+          <h2 class="subtitle" style="margin-top: 10px; font-family: Avenir-Light, 'Avenir-Light' !important;">
             {{ page.subtitle }}
           </h2>
-        </div>
         {% endif %}
         <!-- {% if page.author %}<strong class="post-author">{{ page.author }}</strong>{% endif %} -->
       </div>

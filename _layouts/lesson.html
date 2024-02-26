@@ -5,7 +5,7 @@ title: { { page.title | append: "| Tari" } }
 
 <section class="main blog-post">
   {% include newsletter-subscribe.html %}
-  <div class="post content" style="max-width: calc(80 * var(--root-size));">
+  <div class="post content" style="max-width: var(--max-content-width);">
     <div
       class="post-img"
       style="background-image:url({% if page.thumbnail %}{{ site.baseurl }}/assets/lessons/img/{{ page.thumbnail }}{% else %}{{ site.baseurl }}/assets/lessons/img/placeholder-thumbnail.jpg{% endif %})"

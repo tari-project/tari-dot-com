@@ -29,7 +29,7 @@ title: CSS stylesheet
 
 :root {
   --root-size: 10px;
-  --max-content-width: 800px;
+  --max-content-width: 1000px;
 }
 
 /* body */
@@ -93,7 +93,7 @@ a:hover {
 
 hr {
   margin: 80px 0px 80px 0px;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 h5{
@@ -130,7 +130,7 @@ pre code {
 iframe,
 object,
 embed {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 
   -webkit-border-radius: 10px !important;
   -ms-border-radius: 10px !important;
@@ -148,7 +148,7 @@ lottie-player {
 }
 
 .video-wrapper-full {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   display: block;
   padding-right: 15px;
     padding-left: 15px;
@@ -190,11 +190,10 @@ lottie-player {
   /*visibility: hidden;*/
 }
 .row {
-  /*max-width: calc(144 * var(--root-size));*/
   height: inherit;
-  max-width: calc(80 * var(--root-size));
-  /*  margin: 0 auto;*/
-  /*padding: 0 calc(3 * var(--root-size));*/
+  max-width: var(--max-content-width);
+  margin-left: 0;
+  margin-right: 0;
 }
 
 @media (min-width: 1200px) {
@@ -594,7 +593,7 @@ lottie-player {
   color: #0088CC;
   font-size: 11px;
 
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana;
+  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana;
   text-transform: uppercase;
   margin-bottom: 0px;
 }
@@ -678,7 +677,7 @@ lottie-player {
   font-size: calc(2.4 * var(--root-size));
   line-height: calc(4 * var(--root-size));
   color: #444;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   margin: calc(4 * var(--root-size)) 0;
 }
 
@@ -729,10 +728,10 @@ lottie-player {
   font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
 }
 .home #viewport section.main .intro .animated-text p {
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
   margin-top: 0;
   text-transform: uppercase;
-  font-size: calc(10 * var(--root-size));
+  font-size: calc(9 * var(--root-size));
   line-height: calc(10 * var(--root-size));
   color: #000;
   max-width: calc(105 * var(--root-size));
@@ -756,7 +755,7 @@ lottie-player {
 
 /* Subpage */
 .subpage #viewport section.main {
-  padding: 0 5%;
+  padding: 0 8%;
   position: relative;
 }
 .blog #viewport section.main .content {
@@ -770,16 +769,16 @@ lottie-player {
 }
 .subpage #viewport section.main h1 {
   font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
-  font-size: calc(4.8 * var(--root-size));
-  line-height: calc(5.4 * var(--root-size));
-  max-width: calc(80 * var(--root-size));
+  font-size: 40px;
+  line-height: 48px;
+  max-width: var(--max-content-width);
 }
 
 .subpage #viewport section.main h1 + p {
   font-family: Avenir-Light, "Avenir-Light", "Myriad Pro", Arial, Verdana !important;
-  font-size: calc(3 * var(--root-size));
-  line-height: calc(4.5 * var(--root-size));
-  margin: 0 0 calc(4 * var(--root-size)) 0;
+  font-size: 26px;
+  line-height: 40px;
+  margin: 0 0 40px 0;
   color: black;
 }
 
@@ -791,35 +790,35 @@ lottie-player {
   line-height: calc(2.6 * var(--root-size));
   margin: 0 0 calc(2.5 * var(--root-size)) 0;
   color: #444;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 .subpage #viewport section.main h2 {
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
-  font-size: calc(3 * var(--root-size));
+  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
+  font-size: calc(2.6 * var(--root-size));
   line-height: calc(4.2 * var(--root-size));
   margin: calc(6 * var(--root-size)) 0 calc(2 * var(--root-size)) 0;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h2 + p {
   margin-top: calc(2 * var(--root-size));
 }
 .subpage #viewport section.main h3 {
-  font-family: Avenir-Heavy, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
-  font-size: calc(2.4 * var(--root-size));
+  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
+  font-size: calc(2.2 * var(--root-size));
   line-height: calc(3.6 * var(--root-size));
   margin: calc(4 * var(--root-size)) 0 0 0;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h3 + p {
   margin-top: calc(2 * var(--root-size));
 }
 .subpage #viewport section.main h4 {
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
   font-size: calc(2.2 * var(--root-size));
   line-height: calc(3 * var(--root-size));
   margin: calc(4 * var(--root-size)) 0 calc(2 * var(--root-size)) 0;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h4 + p {
   margin-top: calc(2 * var(--root-size));
@@ -837,7 +836,7 @@ lottie-player {
   line-height: calc(2.6 * var(--root-size));
   margin: 0 0 calc(2.5 * var(--root-size)) 0;
   color: #444;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 .subpage #viewport section.main p a:hover {
@@ -849,7 +848,7 @@ lottie-player {
 .subpage #viewport section.main ul,
 .subpage #viewport section.main ol {
   margin: calc(2 * var(--root-size)) 0;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   padding: 0 0 0 calc(2 * var(--root-size));
 }
 .subpage #viewport section.main ul li,
@@ -862,12 +861,13 @@ lottie-player {
   color: #444;
 }
 .subpage #viewport section.main img {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   height: auto;
   /*  margin: calc(5 * var(--root-size)) 0;*/
 }
 .responsive-image {
   width: 100%;
+  border-radius: 10px;
 }
 
 
@@ -1513,7 +1513,7 @@ body.page- #call-to-action {
 .blog-section,
 .learn-section {
   position: relative;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   padding-top: 50px;
 }
 
@@ -1551,7 +1551,7 @@ body.page- #call-to-action {
 
 .post-title {
   font-weight: 300;
-  font-size: 25px !important;
+  font-size: 22px !important;
   margin-bottom: 15px;
 }
 
@@ -1578,7 +1578,7 @@ body.page- #call-to-action {
   background-position: center;
   background-size: cover;
   position: relative;
-  max-height: 250px;
+  max-height: 270px;
   border-radius: 10px;
 }
 
@@ -1601,6 +1601,7 @@ body.page- #call-to-action {
 .post img {
   max-width: 100%;
   margin-top: 15px;
+  border-radius: 10px;
 }
 
 .post small {
@@ -1692,9 +1693,8 @@ body.page- #call-to-action {
   display: flex;
   padding-top: 40px;
   position: relative !important;
-  max-width: calc(83 * var(--root-size));
-  padding-right: 15px;
-    padding-left: 15px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .graphic-box,
@@ -1780,7 +1780,6 @@ body.page- #call-to-action {
   display: flex;
   margin-top: 40px;
   position: relative !important;
-  max-width: calc(83 * var(--root-size));
 }
 .graphic-boxes-small-wrapper a {
   color: black;
@@ -1843,7 +1842,7 @@ body.page- #call-to-action {
   min-height: 250px;
   padding: 50px;
   color: white !important;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   border-radius: 10px;
   box-shadow: 0 15px 30px 0 rgba(78, 19, 126, 0.3);
   display: flex;
@@ -2129,7 +2128,7 @@ body.page- #call-to-action {
     margin-top: 100px;
     margin-bottom: 200px;
    position: relative;
-   min-height: 360px;
+   min-height: 400px;
    max-height: 400px;
    height: 100%;
    overflow: hidden;
@@ -2144,7 +2143,7 @@ body.page- #call-to-action {
   }
 
   .home-block-explorer-container video{
-    max-width: 680px;
+    max-width: 880px;
     position: absolute;
     bottom: 40px;
   }
@@ -2231,7 +2230,7 @@ body.page- #call-to-action {
   .updates-banner{
 
     margin-top: 40px;
-    max-width: calc(80 * var(--root-size));
+    max-width: var(--max-content-width);
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
@@ -2526,7 +2525,7 @@ body.page- #call-to-action {
 
 .post img{
   max-width: 100% !important;
-  width: calc(80 * var(--root-size));
+  width: var(--max-content-width);
 }
 
 .post h3 + p a img{
@@ -2597,4 +2596,9 @@ body.page- #call-to-action {
 
 .responsive-image {
   width: 100%;
+}
+
+.subtitle h2 {
+  font-family: Avenir-Light, "Avenir-Light", "Myriad Pro", Arial, Verdana !important;
+  color: #ff0000
 }

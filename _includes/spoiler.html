@@ -3,7 +3,7 @@
             aria-expanded="false" aria-controls="collapseExample">
         Toggle hint
     </button>
-    <div class="collapse" style="max-width: calc(80 * var(--root-size));" id="spoiler-{{ include.id }}">
+    <div class="collapse" style="max-width: var(--max-content-width);" id="spoiler-{{ include.id }}">
         <div class="card card-body">{{ include.content | markdownify }}</div>
     </div>
 

@@ -30,7 +30,7 @@ div > .result {
 
 .playpen,
 .tutorials .card {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 .playpen .result {

@@ -1,7 +1,7 @@
 /*Styling for GitHub Issues*/
 
 .tab-container {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   height: auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.085);
   background-color: #fff;
@@ -45,9 +45,8 @@
 }
 
 .tab-header .tab-title {
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Black, 'Avenir-Black', 'Myriad Pro', Arial, Verdana !important;
   font-size: 18px;
-  font-weight: bold;
   line-height: 20px;
   color: #b6b6b6;
 }
@@ -143,7 +142,7 @@
   text-decoration: none;
   font-size: 18px;
   line-height: 20px;
-  font-family: Avenir-Black, "Avenir-Black", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Black, 'Avenir-Black', 'Myriad Pro', Arial, Verdana !important;
 }
 
 .issue-list .issue-container .issue-info div.issue-tagline {
@@ -168,7 +167,7 @@
 
 .issue-label {
   border-radius: 3px;
-  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Black, 'Avenir-Black', 'Myriad Pro', Arial, Verdana !important;
   font-size: 12px;
   color: #fff;
   letter-spacing: 0;
@@ -217,7 +216,7 @@ a.view-issue-link:hover {
   cursor: pointer;
 }
 .tab-nav-item {
-  font-family: Avenir-Roman, "Avenir-Roman", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Roman, 'Avenir-Roman', 'Myriad Pro', Arial, Verdana !important;
   font-size: 18px;
   color: #000000;
   margin-right: 20px;
@@ -226,7 +225,7 @@ a.view-issue-link:hover {
 }
 
 .tab-nav-item.active {
-  font-family: Avenir-Heavy, "Avenir-Heavy", "Myriad Pro", Arial, Verdana, serif !important;
+  font-family: Avenir-Black, 'Avenir-Black', 'Myriad Pro', Arial, Verdana, serif !important;
   border-bottom: 2px solid #9330ff;
 }
 
@@ -241,7 +240,7 @@ a.view-issue-link:hover {
 }
 
 .no-issues {
-  font-family: Avenir-Roman, "Avenir-Roman", "Myriad Pro", Arial, Verdana !important;
+  font-family: Avenir-Roman, 'Avenir-Roman', 'Myriad Pro', Arial, Verdana !important;
   font-size: 18px;
   color: #000;
   letter-spacing: 0;
@@ -254,7 +253,7 @@ a.view-issue-link:hover {
 .view-all-text {
   font-size: 15px;
   color: #9330ff;
-  font-family: Avenir-Roman, "Avenir-Roman", "Myriad Pro", Arial, Verdana, serif !important;
+  font-family: Avenir-Roman, 'Avenir-Roman', 'Myriad Pro', Arial, Verdana, serif !important;
   line-height: 12px;
 }
 
@@ -283,7 +282,6 @@ a.view-issue-link:hover {
 }
 
 @media only screen and (max-width: 700px) {
-
   .tab-header .tab-title-holder img.tab-header-img {
     width: 25px;
   }

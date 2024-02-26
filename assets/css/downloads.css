@@ -9,7 +9,7 @@
   background: #ffffff;
   box-shadow: 0 10px 15px 0 rgba(236, 236, 236, 0.5);
   border-radius: 10px;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
@@ -27,12 +27,12 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
   margin: 45px 0 45px 0;
   flex-wrap: wrap;
 }
 .tab-button {
-  font-family: Avenir-Heavy;
+  font-family: Avenir-Black;
   font-size: 18px;
   color: #bcbcbb;
   display: flex;
@@ -110,7 +110,7 @@
 
 .source,
 .tutorial-video {
-  font-family: Avenir-Heavy;
+  font-family: Avenir-Black;
   font-size: 16px;
   color: #9330ff;
   letter-spacing: 0;
@@ -119,7 +119,7 @@
 }
 
 .binaries-container {
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 .binaries-container > .bin-headers {
@@ -130,15 +130,33 @@
   width: 100%;
   padding: 30px 15px;
   border-bottom: 1px solid #ececec;
+  gap: 5px;
 }
 div.bin-header {
   display: flex;
   width: 33%;
 }
 
+.binaries-container > .bin-headers > div,
+.bin-row > div {
+  flex-grow: 1;
+}
+
+.binaries-container > .bin-headers > div:nth-child(2),
+.bin-row > div:nth-child(2) {
+  flex: 0 0 20%;
+  justify-content: center;
+}
+
+.binaries-container > .bin-headers > div:nth-child(3),
+.bin-row > div:nth-child(3) {
+  flex: 0 0 10%;
+  justify-content: center;
+}
+
 .header-text {
-  font-family: Avenir-Heavy;
-  font-size: 24px;
+  font-family: Avenir-Heavy, 'Avenir-Heavy', 'Myriad Pro', Arial, Verdana;
+  font-size: 18px;
   color: #000000;
   letter-spacing: 0;
   line-height: 35px;
@@ -151,6 +169,7 @@ div.bin-header {
   width: 100%;
   padding: 15px 15px;
   background: #f7f7f7;
+  gap: 5px;
 }
 
 .bin-row.alt-colour {
@@ -173,6 +192,7 @@ div.bin-row-item.bin-left {
 div.bin-row-item.bin-right {
   color: #626262;
   width: 33%;
+  justify-content: center;
 }
 
 div#support.download-content > .dl-card div.dl-info-holder {
@@ -184,7 +204,7 @@ div#support.download-content > .dl-card div.dl-info-holder {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  max-width: calc(80 * var(--root-size));
+  max-width: var(--max-content-width);
 }
 
 .dl-current {
@@ -310,7 +330,7 @@ div#support.download-content > .dl-card div.dl-info-holder {
   }
 
   .header-text {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 14px;
   }
   div.bin-row-item.bin-right,

@@ -5,9 +5,9 @@ title: {{ page.title | append: "| Tari" }}
 
 <section class="main blog-post">
   {% include newsletter-subscribe.html %}
-  <div class="post content" style="max-width: calc(80 * var(--root-size));">
+  <div class="post content" style="max-width: var(--max-content-width);">
 
-    <div class="post-img" style="background-image:url({% if page.thumbnail %}{{ site.baseurl }}/{{ page.thumbnail }}{% else %}{{ site.baseurl }}/assets/img/posts/placeholder-thumbnail.jpg{% endif %})">
+    <div class="post-img" style="background-image: url({% if page.thumbnail %}{{ site.baseurl }}/{{ page.thumbnail }}{% else %}{{ site.baseurl }}/assets/img/posts/placeholder-thumbnail.jpg{% endif %})">
       <img src="{{ site.baseurl }}/assets/img/posts/placeholder-spacer.gif" />
     </div>
 
@@ -17,13 +17,13 @@ title: {{ page.title | append: "| Tari" }}
         <!-- {% if page.author %}<strong class="post-author">{{ page.author }}</strong>{% endif %} -->
         <p class="meta">{{ page.date | date: '%B %d, %Y' }}</p>
       </div>
-      <h1 class="pb-5">{{ page.title }}</h1>
+      <h1 class="pb-3">{{ page.title }}</h1>
       <div class="addthis_inline_share_toolbox"></div>
 
     </div>
     <section id="post">
       <div class="block">
-        {% if page.subtitle %}<div class="lead"><h2>{{ page.subtitle }}</h2></div>{% endif %}
+        {% if page.subtitle %}<h2 class="subtitle" style="font-family: Avenir-Light, 'Avenir-Light' !important;">{{ page.subtitle }}</h2>{% endif %}
         {{ content }}
       </div>
     </section>

@@ -7,7 +7,7 @@ class: subpage
 
 <section class="main faq">
 
-	<div id="faq" style="max-width: calc(80 * var(--root-size));">
+	<div id="faq" style="max-width: var(--max-content-width);">
 		<div class="new-section">
 			<h1>Frequently Asked Questions</h1>
 		</div>
@@ -17,7 +17,7 @@ class: subpage
         {% for faq in site.data.faq %}
         <div class="faq-container faq-not-active">
           <img class="arrow" src="{{ site.baseurl }}/assets/img/arrow.svg">
-          <h3 style="margin: 0px;" id={{ faq.id }}>{{ faq.title }}</h3>
+          <h3 style="margin: 0px;" id="{{ faq.id }}">{{ faq.title }}</h3>
           <div>{{ faq.text | markdownify }}</div>
         </div>
         {% endfor %}
