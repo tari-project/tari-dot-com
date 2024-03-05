@@ -5,7 +5,7 @@ title: { { page.title | append: "| Tari" } }
 
 <section class="main blog-post">
   {% include newsletter-subscribe.html %}
-  <div class="post content" style="max-width: var(--max-content-width);">
+  <div class="post content center-content" style="max-width: var(--max-content-width);">
     <div class="post-img" style="background-image:url({% if page.thumbnail %}{{ site.baseurl }}/assets/updates/img/{{ page.thumbnail }}{% else %}{{ site.baseurl }}/assets/updates/img/placeholder-thumbnail.jpg{% endif %})">
       <div><h1 class="update-page-title">{{ page.date | date: '%B %d, %Y' }}</h1></div>
       <img src="{{ site.baseurl }}/assets/img/posts/placeholder-spacer.gif" />

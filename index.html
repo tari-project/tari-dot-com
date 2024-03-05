@@ -33,7 +33,7 @@ class: subpage home
   <div id="for-everyone">
     <!-- What is Tari -->
     <div id="what-is-tari" class="what-is-tari anchor">
-      <div class="content">
+      <div class="content center-content">
         <div class="what-is-tari">
           <div class="new-section">
             <h1>What is Tari?</h1>
@@ -166,31 +166,33 @@ class: subpage home
 
     <!-- Mobile Wallet -->
     <div id="mobile-wallet" class="mobile-wallet anchor">
-      <div class="mobile-wallet">
-        <div class="new-section">
-          <h1>Mobile Wallet</h1>
-          <p style="">
-            Meet Tari Aurora. Aurora is a simple, beautiful Tari wallet developed by the Tari community.
+      <div class="content center-content">
+        <div class="mobile-wallet">
+          <div class="new-section">
+            <h1>Mobile Wallet</h1>
+            <p style="">
+              Meet Tari Aurora. Aurora is a simple, beautiful Tari wallet developed by the Tari community.
+            </p>
+          </div>
+          <p>
+            Aurora is being developed as a reference-design. Creators and developers can use the Aurora libraries and codebase as a starting point for developing their own Tari wallets and applications. In its production-ready state, Aurora will be a fully functional Tari wallet focused on Tari as a default-private digital currency.
           </p>
-        </div>
-        <p>
-          Aurora is being developed as a reference-design. Creators and developers can use the Aurora libraries and codebase as a starting point for developing their own Tari wallets and applications. In its production-ready state, Aurora will be a fully functional Tari wallet focused on Tari as a default-private digital currency.
-        </p>
-        <div class="row">
-          <div class="col-12">
-            <div class="wallet-banner-wrapper">
+          <div class="row">
+            <div class="col-12">
+              <div class="wallet-banner-wrapper">
 
-              <div class="col-lg-6 col-md-6 col-sm-12 align-self-center">
-                <img src="{{ site.baseurl }}/assets/img/tari-aurora-logo.svg" alt="" >
-                <p class="pb-5">The Tari Wallet of your dreams. <strong>Beautiful. Radically Simple. Open&nbsp;Source.</strong></p>
-                <a style="width: 100%; max-width: 150px;" href="https://aurora.tari.com" target="_blank" class="btn">Learn More</a>
-              </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 align-self-center">
+                  <img src="{{ site.baseurl }}/assets/img/tari-aurora-logo.svg" alt="" >
+                  <p class="pb-5">The Tari Wallet of your dreams. <strong>Beautiful. Radically Simple. Open&nbsp;Source.</strong></p>
+                  <a style="width: 100%; max-width: 150px;" href="https://aurora.tari.com" target="_blank" class="btn">Learn More</a>
+                </div>
 
-              <div class="col-lg-6 col-md-6 col-sm-12 justify-content-center align-self-center phone-wrapper">
-                <img class="wallet-banner-phones" src="{{ site.baseurl }}/assets/img/tari-aurora.png" alt="" >
+                <div class="col-lg-6 col-md-6 col-sm-12 justify-content-center align-self-center phone-wrapper">
+                  <img class="wallet-banner-phones" src="{{ site.baseurl }}/assets/img/tari-aurora.png" alt="" >
+                </div>
               </div>
+              <img class="dots_image" src="{{ site.baseurl }}/assets/img/dots.png" alt="" >
             </div>
-            <img class="dots_image" src="{{ site.baseurl }}/assets/img/dots.png" alt="" >
           </div>
         </div>
       </div>
@@ -202,26 +204,27 @@ class: subpage home
     <!-- Block Explorer -->
 
     <div id="block-explorer" class="block-explorer anchor">
-      <div class="block-explorer">
-        <div class="new-section">
-          <h1>Block Explorer</h1>
-          <p>
-            Dive into the current and historical state of the Tari blockchain through the block explorer. Don't expect to look up your address or find a friend's balance, Tari is private by default so all of that information is confidential.
-          </p>
+      <div class="content center-content">
+        <div class="block-explorer">
+          <div class="new-section">
+            <h1>Block Explorer</h1>
+            <p>
+              Dive into the current and historical state of the Tari blockchain through the block explorer. Don't expect to look up your address or find a friend's balance, Tari is private by default so all of that information is confidential.
+            </p>
+          </div>
+          <div class="row home-block-explorer-container">
+            <div class="col-sm-7 home-block-explorer-copy ">
+              <h2 class="pt-3">Tari Block Explorer</h2>
+            </div>
+
+            <div class="col-sm-5">
+              <a class="btn" href="https://explore.tari.com">View the Block Explorer</a>
+            </div>
+            <video class="" muted autoplay playsinline poster="{{ site.baseurl }}/assets/img/block-explorer.svg">
+              <source src="{{ site.baseurl }}/assets/vid/block-explorer-animation.mp4" type="video/mp4">
+              </video>
+            </div>
         </div>
-        <div class="row home-block-explorer-container">
-          <div class="col-sm-7 home-block-explorer-copy ">
-            <h2 class="pt-3">Tari Block Explorer</h2>
-          </div>
-
-           <div class="col-sm-5">
-            <a class="btn" href="https://explore.tari.com">View the Block Explorer</a>
-          </div>
-          <video class="" muted autoplay playsinline poster="{{ site.baseurl }}/assets/img/block-explorer.svg">
-            <source src="{{ site.baseurl }}/assets/vid/block-explorer-animation.mp4" type="video/mp4">
-            </video>
-          </div>
-
       </div>
     </div>
 
@@ -230,6 +233,7 @@ class: subpage home
     <!-- Downloads -->
 
     <div id="downloads" class="downloads anchor">
+      <div class="content center-content">
       <div class="downloads">
         <div class="new-section">
           <h1>Downloads</h1>
@@ -265,12 +269,14 @@ class: subpage home
             <img src="{{ site.baseurl }}/assets/img/graphic1.png" alt=""/>
         </div>
       </div>
+      </div>
     </div>
     <!-- END Downloads -->
 
 
     <!-- Get Involved -->
     <div  id="get-involved" class="anchor">
+      <div class="content center-content">
       <div class="get-involved">
         <div class="new-section">
           <h1>Get Involved</h1>
@@ -296,6 +302,7 @@ class: subpage home
         </p>
         {% include social-links.html %}
       </div>
+      </div>
     </div>
 
 
@@ -309,7 +316,7 @@ class: subpage home
     <!-- Get Started -->
     <div id="get-started" class="anchor">
       <div class="get-started">
-        <div class="content">
+        <div class="content center-content">
           <div class="new-section">
             <h1>Get Started</h1>
             <p>
@@ -382,6 +389,7 @@ class: subpage home
     <!-- Explore  -->
 
     <div id="explore-the-protocol" class="explore-the-protocol anchor">
+      <div class="content center-content">
       <div class="explore-the-protocol">
         <div class="new-section">
           <h1>Explore the Protocol</h1>
@@ -443,171 +451,178 @@ class: subpage home
           {% endfor %}
         </div>
       </div>
+      </div>
 
     </div>
 
 
     <!-- Contribute -->
     <div id="contribute" class="anchor">
-      <div class="contribute">
+      <div class="content center-content">
+        <div class="contribute">
 
-        <div class="new-section">
-          <h1>Make Tari Better</h1>
-          <p>
-            Tari will always be a work in progress.
+          <div class="new-section">
+            <h1>Make Tari Better</h1>
+            <p>
+              Tari will always be a work in progress.
+            </p>
+          </div>
+          <p>The Tari community believes that it needs to continually improve and evolve to achieve its stated goal: to be the most useful decentralized platform that empowers anyone to create digitally scarce things people love. How does it improve? Because people choose to dedicate their time, creativity, and brilliance to working on the project.
           </p>
+
+          <h3>Why Should You Consider Contributing to a Project like Tari?</h3>
+
+          <div class="row" style="margin-top: 50px;">
+              <div class="col-md-4">
+                <h5>Sharpen your skills</h5>
+              </div>
+              <div class="col-md-8">
+                <p>Sharpen your skills. Want to learn about distributed systems, cryptography, production Rust systems, web 3, decentralized finance, or digital assets? Contributing to the Tari project is a great way to improve your skills. The Tari community is open, inclusive, and helpful.</p>
+              </div>
+              <div class="col-md-4">
+                <h5>You want to use Tari in your application</h5>
+              </div>
+              <div class="col-md-8">
+                <p>Contributing to the Tari project is a great way to make a meaningful impact, advocate for features you think the community should consider, and fix bugs you find along the way.</p>
+              </div>
+              <div class="col-md-4">
+                <h5>You care about freedom enhancing software</h5>
+              </div>
+              <div class="col-md-8">
+                <p>The Tari community believes that the world is out of balance. The internet is an incredible blessing for society, but there are tradeoffs. One of those tradeoffs is privacy. The only way to solve this imbalance is to build new layers of the internet that are private by default. The Tari network will be such a layer. Unfortunately, there is no such thing as perfect privacy. Privacy is a spectrum, and a cat and mouse game. The goal of the Tari community is to strike the best possible balance between usability, usefulness, and privacy. Want to learn more about the decisions the community has made so far?
+                  Please visit the Tari GitHub repos, and connect with us on Discord or IRC. The Tari community is low ego, doesn’t believe in not invented here syndrome, and believes that great ideas can come from anywhere. We’d love to hear your feedback and collaborate with you to make Tari the most useful freedom enhancing protocol in the world.</p>
+              </div>
+          </div>
+
+
+          <h3>What Makes Tari Unique?</h3>
+          <p>
+            There are many privacy-focused open source projects in the world. What sets Tari apart is the Tari community's relentless drive to create a protocol that strikes a balance between meaningful privacy, and mainstream usefulness. Through beautiful user experience patterns and reference designs that help developers obfuscate complexity, and tooling that makes it easy for developers to create successful applications, the Tari protocol is a <a href="https://www.coindesk.com/2019-the-inflection-point-for-data-privacy" target="_blank">privacy trojan horse</a>. The Tari protocol is intended to be used for real-world, at-scale applications, not prototypes.
+          </p>
+
+          <h3>Get Involved</h3>
+          <p>Tari is an ecosystem of projects. Each project varies in complexity and sophistication. Some projects are easy to get started contributing to, and others have a meaningful learning curve. The common thread that runs through all Tari projects is that we (the Tari community) are united in making Tari useful, conducting ourselves in a  low ego manner, and warmly welcoming everyone regardless of skill level or background. Projects that need your help and support:</p>
+
+
+          <div class="row graphic-boxes-wrapper">
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="graphic-box">
+                <div class="graphic-box-content">
+                  <img src="{{ site.baseurl }}/assets/img/phones.png" alt="" />
+                  <h4>Tari Aurora</h4>
+                  <p>
+                    Aurora is a native reference design wallet application for iOS and Android. The core of Aurora is lib_tariwallet, a highly efficient and extensible library written in Rust with C-bindings for JNI and Swift codebases. Contributing to Aurora is a great way to learn how Rust functions in mobile environments, and to how end users will interact with the Tari digital currency, and network in the future. Contribute to Tari Aurora wallet application for <a href="https://github.com/tari-project/wallet-ios" target="_blank">iOS</a> and <a href="https://github.com/tari-project/wallet-android" target="_blank">Android</a>.
+                  </p>
+
+                </div>
+                <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="https://aurora.tari.com">View Tari Aurora</a>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="graphic-box">
+                <div class="graphic-box-content">
+                  <img src="{{ site.baseurl }}/assets/img/tari_u.png" alt="" />
+                  <h4>Tari Labs University</h4>
+                  <p>
+                  The goal for Tari Labs University (TLU) is to create the best free, open source educational resource for the many technologies that comprise blockchain systems. If you are interested in researching cryptography such as bulletproofs to scriptless scripts and blockchain technologies such as layer-2 scaling to merge mining, contributing to TLU is your calling.
+                  </p>
+
+                </div>
+                <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="https://tlu.tarilabs.com/">Tari Labs University</a>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="graphic-box">
+                <div class="graphic-box-content">
+                  <img src="{{ site.baseurl }}/assets/img/tutorials.png" alt="" />
+                  <h4>Rust Tutorials</h4>
+                  <p>One of the newest editions to the Tari ecosystem, the Rust tutorials, enables developers to experiment with Tari Rust libraries in a browser environment without downloading anything. Try your hand at creating something new with the Tari Rust libraries and sharpen your Rust skills.</p>
+                </div>
+                <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="{{ site.baseurl }}/explore-the-protocol">Explore Rust Tutorials</a>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="graphic-box">
+                <div class="graphic-box-content">
+                  <img src="{{ site.baseurl }}/assets/img/base-node.png" alt="" />
+                  <h4>Tari Base Layer</h4>
+                  <p>
+                    The main Tari repository comprises all the main crates that make up the backbone of the Tari base Layer. It's all written in Rust and  includes: the base node application, the blockchain consensus code and database, the Tari communications stack, and Tari wallet.
+                  </p>
+
+                </div>
+                <a class="btn2" style="margin-top: 20px; width: 100%;" href="https://github.com/tari-project/tari">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+
+          <h3>Bug Hunting</h3>
+          <p>Found a bug? If it's a noncritical bug, please report it as a GitHub issue <a href="https://github.com/tari-project/tari/issues/new?assignees=&labels=bug-report&template=bug_report.md&title=%5BThanks%20for%20making%20Tari%20better%5D" target="_blank">here</a>. Thank you for helping to make the Tari project more robust, and reliable.</p>
+
+          <h3>The Beginning of Your Journey</h3>
+          <p>The Tari project is undergoing continuous evolution. As a result there are always issues to tackle and improvements to make. The Tari community makes an effort to maintain a number of open issues that are a good place to start for new contributors. These issues are labeled in Tari project repos as “good first issue” and are usually refreshed every few months. Have questions? Please feel free to ask any question you have in #tari-dev on Libera.Chat, or on <a href="https://discord.gg/q3Sfzb8S2V" target="_blank">Discord#dev</a>. </p>
+
+          <h3>Protocol Issues</h3>
+          <p>Oftentimes new contributors start with documentation related issues that tend to be quick wins and help them understand the protocol in greater detail before moving towards test writing and focusing on core protocol code. But feel free to choose your own adventure
+          </p>
+
+          {% include github-issues.html %}
+
+          <p>Once you’ve found an issue you wish to pursue, stop by  #tari-dev on Libera.Chat and someone will assign you the issue in GitHub. Before you start, please read the project <a href="https://github.com/tari-project/tari/blob/development/Contributing.md" target="_blank">contributing guidelines</a> which includes a style guide and a useful PR template. Thank you for your contributions to the Tari project. Together we can make useful freedom enhancing software that everyone wants to use.  </p>
+
+
         </div>
-        <p>The Tari community believes that it needs to continually improve and evolve to achieve its stated goal: to be the most useful decentralized platform that empowers anyone to create digitally scarce things people love. How does it improve? Because people choose to dedicate their time, creativity, and brilliance to working on the project.
-        </p>
-
-        <h3>Why Should You Consider Contributing to a Project like Tari?</h3>
-
-        <div class="row" style="margin-top: 50px;">
-            <div class="col-md-4">
-              <h5>Sharpen your skills</h5>
-            </div>
-            <div class="col-md-8">
-              <p>Sharpen your skills. Want to learn about distributed systems, cryptography, production Rust systems, web 3, decentralized finance, or digital assets? Contributing to the Tari project is a great way to improve your skills. The Tari community is open, inclusive, and helpful.</p>
-            </div>
-            <div class="col-md-4">
-              <h5>You want to use Tari in your application</h5>
-            </div>
-            <div class="col-md-8">
-              <p>Contributing to the Tari project is a great way to make a meaningful impact, advocate for features you think the community should consider, and fix bugs you find along the way.</p>
-            </div>
-            <div class="col-md-4">
-              <h5>You care about freedom enhancing software</h5>
-            </div>
-            <div class="col-md-8">
-              <p>The Tari community believes that the world is out of balance. The internet is an incredible blessing for society, but there are tradeoffs. One of those tradeoffs is privacy. The only way to solve this imbalance is to build new layers of the internet that are private by default. The Tari network will be such a layer. Unfortunately, there is no such thing as perfect privacy. Privacy is a spectrum, and a cat and mouse game. The goal of the Tari community is to strike the best possible balance between usability, usefulness, and privacy. Want to learn more about the decisions the community has made so far?
-                Please visit the Tari GitHub repos, and connect with us on Discord or IRC. The Tari community is low ego, doesn’t believe in not invented here syndrome, and believes that great ideas can come from anywhere. We’d love to hear your feedback and collaborate with you to make Tari the most useful freedom enhancing protocol in the world.</p>
-            </div>
-        </div>
-
-
-        <h3>What Makes Tari Unique?</h3>
-        <p>
-          There are many privacy-focused open source projects in the world. What sets Tari apart is the Tari community's relentless drive to create a protocol that strikes a balance between meaningful privacy, and mainstream usefulness. Through beautiful user experience patterns and reference designs that help developers obfuscate complexity, and tooling that makes it easy for developers to create successful applications, the Tari protocol is a <a href="https://www.coindesk.com/2019-the-inflection-point-for-data-privacy" target="_blank">privacy trojan horse</a>. The Tari protocol is intended to be used for real-world, at-scale applications, not prototypes.
-        </p>
-
-        <h3>Get Involved</h3>
-        <p>Tari is an ecosystem of projects. Each project varies in complexity and sophistication. Some projects are easy to get started contributing to, and others have a meaningful learning curve. The common thread that runs through all Tari projects is that we (the Tari community) are united in making Tari useful, conducting ourselves in a  low ego manner, and warmly welcoming everyone regardless of skill level or background. Projects that need your help and support:</p>
-
-
-        <div class="row graphic-boxes-wrapper">
-
-
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="graphic-box">
-              <div class="graphic-box-content">
-                <img src="{{ site.baseurl }}/assets/img/phones.png" alt="" />
-                <h4>Tari Aurora</h4>
-                <p>
-                  Aurora is a native reference design wallet application for iOS and Android. The core of Aurora is lib_tariwallet, a highly efficient and extensible library written in Rust with C-bindings for JNI and Swift codebases. Contributing to Aurora is a great way to learn how Rust functions in mobile environments, and to how end users will interact with the Tari digital currency, and network in the future. Contribute to Tari Aurora wallet application for <a href="https://github.com/tari-project/wallet-ios" target="_blank">iOS</a> and <a href="https://github.com/tari-project/wallet-android" target="_blank">Android</a>.
-                </p>
-
-              </div>
-              <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="https://aurora.tari.com">View Tari Aurora</a>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="graphic-box">
-              <div class="graphic-box-content">
-                <img src="{{ site.baseurl }}/assets/img/tari_u.png" alt="" />
-                <h4>Tari Labs University</h4>
-                <p>
-                 The goal for Tari Labs University (TLU) is to create the best free, open source educational resource for the many technologies that comprise blockchain systems. If you are interested in researching cryptography such as bulletproofs to scriptless scripts and blockchain technologies such as layer-2 scaling to merge mining, contributing to TLU is your calling.
-                </p>
-
-              </div>
-              <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="https://tlu.tarilabs.com/">Tari Labs University</a>
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="graphic-box">
-              <div class="graphic-box-content">
-                <img src="{{ site.baseurl }}/assets/img/tutorials.png" alt="" />
-                <h4>Rust Tutorials</h4>
-                <p>One of the newest editions to the Tari ecosystem, the Rust tutorials, enables developers to experiment with Tari Rust libraries in a browser environment without downloading anything. Try your hand at creating something new with the Tari Rust libraries and sharpen your Rust skills.</p>
-              </div>
-              <a class="btn2" target="_blank" style="margin-top: 20px; width: 100%;" href="{{ site.baseurl }}/explore-the-protocol">Explore Rust Tutorials</a>
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="graphic-box">
-              <div class="graphic-box-content">
-                <img src="{{ site.baseurl }}/assets/img/base-node.png" alt="" />
-                <h4>Tari Base Layer</h4>
-                <p>
-                  The main Tari repository comprises all the main crates that make up the backbone of the Tari base Layer. It's all written in Rust and  includes: the base node application, the blockchain consensus code and database, the Tari communications stack, and Tari wallet.
-                </p>
-
-              </div>
-              <a class="btn2" style="margin-top: 20px; width: 100%;" href="https://github.com/tari-project/tari">Get Started</a>
-            </div>
-          </div>
-        </div>
-
-
-        <h3>Bug Hunting</h3>
-        <p>Found a bug? If it's a noncritical bug, please report it as a GitHub issue <a href="https://github.com/tari-project/tari/issues/new?assignees=&labels=bug-report&template=bug_report.md&title=%5BThanks%20for%20making%20Tari%20better%5D" target="_blank">here</a>. Thank you for helping to make the Tari project more robust, and reliable.</p>
-
-        <h3>The Beginning of Your Journey</h3>
-        <p>The Tari project is undergoing continuous evolution. As a result there are always issues to tackle and improvements to make. The Tari community makes an effort to maintain a number of open issues that are a good place to start for new contributors. These issues are labeled in Tari project repos as “good first issue” and are usually refreshed every few months. Have questions? Please feel free to ask any question you have in #tari-dev on Libera.Chat, or on <a href="https://discord.gg/q3Sfzb8S2V" target="_blank">Discord#dev</a>. </p>
-
-        <h3>Protocol Issues</h3>
-        <p>Oftentimes new contributors start with documentation related issues that tend to be quick wins and help them understand the protocol in greater detail before moving towards test writing and focusing on core protocol code. But feel free to choose your own adventure
-        </p>
-
-        {% include github-issues.html %}
-
-        <p>Once you’ve found an issue you wish to pursue, stop by  #tari-dev on Libera.Chat and someone will assign you the issue in GitHub. Before you start, please read the project <a href="https://github.com/tari-project/tari/blob/development/Contributing.md" target="_blank">contributing guidelines</a> which includes a style guide and a useful PR template. Thank you for your contributions to the Tari project. Together we can make useful freedom enhancing software that everyone wants to use.  </p>
-
-
       </div>
     </div>
 
     <!-- Dev Community -->
     <div id="dev-community" class="dev-community anchor">
-      <div class="dev-community">
-        <div class="new-section">
-          <h1>Developer Community</h1>
-          <p>
-            The Tari community operates across various platforms, each with its own
-            character and focus areas.
-          </p>
+      <div class="content center-content">
+        <div class="dev-community">
+          <div class="new-section">
+            <h1>Developer Community</h1>
+            <p>
+              The Tari community operates across various platforms, each with its own
+              character and focus areas.
+            </p>
+          </div>
+          {% include social-links.html %}
         </div>
-        {% include social-links.html %}
       </div>
     </div>
 
     <!-- RFC Docs -->
 
     <div id="rfc-docs" class="rfc-docs anchor">
-      <div class="rfc-docs">
-        <div class="new-section">
-          <h1>Documentation</h1>
-          <p>
-            The Tari RFCs (request for comments) are the starting point for the Tari project. Ideas that start as discussions on IRC are formalized here before implementation by the Tari community.
-          </p>
-        </div>
+      <div class="content center-content">
+        <div class="rfc-docs">
+          <div class="new-section">
+            <h1>Documentation</h1>
+            <p>
+              The Tari RFCs (request for comments) are the starting point for the Tari project. Ideas that start as discussions on IRC are formalized here before implementation by the Tari community.
+            </p>
+          </div>
 
-        <div class="row graphic-boxes-wrapper">
-          <div class="col-12" style="padding: 0;">
-            <div class="graphic-box">
-              <div class="graphic-box-content">
-                <img src="{{ site.baseurl }}/assets/img/rfc_icon.png" alt="" />
-                <h4>Request For Comment Documentation</h4>
-                <p>Check out the Tari RFC docs to dive into the features and functionality of the Tari ecosystem, and learn how the Tari community makes decisions.</p>
-                <a class="btn2" target="_blank" style="margin-top: 20px; max-width: 250px; width: 100%;" href="https://rfc.tari.com/">RFC Docs</a>
+          <div class="row graphic-boxes-wrapper">
+            <div class="col-12" style="padding: 0;">
+              <div class="graphic-box">
+                <div class="graphic-box-content">
+                  <img src="{{ site.baseurl }}/assets/img/rfc_icon.png" alt="" />
+                  <h4>Request For Comment Documentation</h4>
+                  <p>Check out the Tari RFC docs to dive into the features and functionality of the Tari ecosystem, and learn how the Tari community makes decisions.</p>
+                  <a class="btn2" target="_blank" style="margin-top: 20px; max-width: 250px; width: 100%;" href="https://rfc.tari.com/">RFC Docs</a>
+                </div>
               </div>
             </div>
           </div>
@@ -619,41 +634,43 @@ class: subpage home
 
   <!-- For Creators -->
   <div id="for-creators">
+    <div class="content center-content">
     <!-- Tari for Creators -->
-    <div id="tari-for-creators" class="tari-for-creators anchor" style="padding-bottom: 60px;">
-      <div class="new-section">
-        <h1>Tari for Creators</h1>
-        <p>What is a Tari digital asset? It is a programmable canvas for telling stories.</p>
+      <div id="tari-for-creators" class="tari-for-creators anchor" style="padding-bottom: 60px;">
+        <div class="new-section">
+          <h1>Tari for Creators</h1>
+          <p>What is a Tari digital asset? It is a programmable canvas for telling stories.</p>
+        </div>
+        <p>It can be a legendary collectible like the sword of Excalibur, shrouded in a misty forest waiting for the right person to discover it and wield it in battle. Or it can be a coveted ticket that grants access to a sold-out concert, and then access to a personal message from an iconic artist. It can also be a token that represents the economic unit for a new virtual world.
+
+        </p>
+        <img class="mb-5" style="width: 100%;" src="{{ site.baseurl }}/assets/img/for-creators.png" />
+        <p>
+          A Tari digital asset can be truly digitally scarce. Someone can prove that they own it in a verifiable manner, and trust that it cannot be easily copied. They can be as secure in their ownership of an asset as they are about any material thing they possess. And a Tari digital asset can have rules that stay with it for as long as it matters. For example, every time an asset changes hands, the creator may choose to receive a fraction of the transaction. The Tari community is designing the Tari protocol to support all of these use cases and more.
+        </p>
+
+        <h2>How does Tari help creators?</h2>
+        <ul>
+          <li>Create new, permanent revenue streams around your creations. For example, earn revenue every time your creation is transferred from one party to another</li>
+          <li>Turn your creations into programmable, evolving keys that can unlock anything now or in the future. For example, a creation issued today can unlock access, an experience, or a new creation in the future</li>
+          <li>Build deeper connections with your fans by enabling them to truly own your creations while retaining influence and opportunity via rulesets</li>
+          <li>Create digital things that stand the test of time. As long as the Tari blockchain exists, records of your creation will persist</li>
+          <li>Use creations issued on Tari in any application from games, to ticketing systems, to exchanges, and beyond. Tari is permissionless and open source.</li>
+        </ul>
+        <h2>Why use Tari?</h2>
+        <ul>
+          <li>Purpose-built for creating digitally scarce things that people love</li>
+          <li>Scalable to support many millions of users and many thousands of transactions per second</li>
+          <li>Default-private to keep confidential business data private, and protect the privacy of your fans</li>
+          <li>Well documented and easy to integrate with many commonly used platforms and technologies. All Tari software is opensource </li>
+          <li>An inclusive community that cares deeply about each other, freedom, our world, and what you are creating</li>
+        </ul>
+        <h2>Learn More</h2>
+        <p>The best place to start is by engaging with the Tari community on <a href="https://discord.gg/q3Sfzb8S2V" target="_blank">Discord</a> or IRC.
+          We would love to hear about what you are working on, and how Tari can best support you.</p>
+
+
       </div>
-      <p>It can be a legendary collectible like the sword of Excalibur, shrouded in a misty forest waiting for the right person to discover it and wield it in battle. Or it can be a coveted ticket that grants access to a sold-out concert, and then access to a personal message from an iconic artist. It can also be a token that represents the economic unit for a new virtual world.
-
-      </p>
-      <img class="mb-5" style="width: 100%;" src="{{ site.baseurl }}/assets/img/for-creators.png" />
-      <p>
-        A Tari digital asset can be truly digitally scarce. Someone can prove that they own it in a verifiable manner, and trust that it cannot be easily copied. They can be as secure in their ownership of an asset as they are about any material thing they possess. And a Tari digital asset can have rules that stay with it for as long as it matters. For example, every time an asset changes hands, the creator may choose to receive a fraction of the transaction. The Tari community is designing the Tari protocol to support all of these use cases and more.
-      </p>
-
-      <h2>How does Tari help creators?</h2>
-      <ul>
-        <li>Create new, permanent revenue streams around your creations. For example, earn revenue every time your creation is transferred from one party to another</li>
-        <li>Turn your creations into programmable, evolving keys that can unlock anything now or in the future. For example, a creation issued today can unlock access, an experience, or a new creation in the future</li>
-        <li>Build deeper connections with your fans by enabling them to truly own your creations while retaining influence and opportunity via rulesets</li>
-        <li>Create digital things that stand the test of time. As long as the Tari blockchain exists, records of your creation will persist</li>
-        <li>Use creations issued on Tari in any application from games, to ticketing systems, to exchanges, and beyond. Tari is permissionless and open source.</li>
-      </ul>
-      <h2>Why use Tari?</h2>
-      <ul>
-        <li>Purpose-built for creating digitally scarce things that people love</li>
-        <li>Scalable to support many millions of users and many thousands of transactions per second</li>
-        <li>Default-private to keep confidential business data private, and protect the privacy of your fans</li>
-        <li>Well documented and easy to integrate with many commonly used platforms and technologies. All Tari software is opensource </li>
-        <li>An inclusive community that cares deeply about each other, freedom, our world, and what you are creating</li>
-      </ul>
-      <h2>Learn More</h2>
-      <p>The best place to start is by engaging with the Tari community on <a href="https://discord.gg/q3Sfzb8S2V" target="_blank">Discord</a> or IRC.
-        We would love to hear about what you are working on, and how Tari can best support you.</p>
-
-
     </div>
   </div>
 </section>
