@@ -42,7 +42,7 @@ If it does, you can still contribute! Localization requires writers, proofreader
 ## Step 2 - Creating a new branch for your localization work
 You will need to create a new branch on your repository. Branching allows you to create a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others. 
 
-At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. the standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
+At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
 
 Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch to be able to view it in your remote list.
 
@@ -117,7 +117,7 @@ Note that each of these files has a “U” against it. You need to commit these
 
 Go to the Source Control tab and open up the Changes panel. The new folder and files you created will be listed here. You will need to commit these changes to the repository. In the comment section, provide a short comment explaining what the changes are - an example would be “Created template files and folder for Esperanto localization” - and press the “Commit” button.
 
-> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix and chore.
+> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
 
 ![commit_sync_changes.png](../assets/lessons/img/adding-languages/commit_sync_changes.png)
 
@@ -130,16 +130,16 @@ If you have started a new localization, open the files created in the previous s
 * Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
 * Do not change any text that is within braces e.g. {{version}}
 
-At a high-level, each of the JSON files are for the following:
+Below, you can find a description of what each JSON file affects within Tari Universe:
 |**File**|**Description**|
 |--------|---------------|
-|airdrop.json| Fields related to the Tari Airdrop game integrarion in Tari Universe|
+|airdrop.json| Fields related to the Tari Airdrop game integration in Tari Universe|
 |common.json | Common terms used across the application, such as "version" and "hashrate" |
 |components.json| Component failure messages |
 |mining-view.json| UI of the main screen, and the status of the mining button |
 |settings.json| Text related to the Settings component of Tari Universe |
 |setup-view.json| Messages displayed when Tari Universe is booting up |
-|sidebar.json| UI elements in the side bar of the main Tari Universe screen |
+|sidebar.json| UI elements in the sidebar of the main Tari Universe screen |
 |tribes-view.json| The title for the Squad View section in Settings. |
 
 ## Step 5 - Creating a pull request (PR) for your localization
@@ -166,7 +166,7 @@ Once you have completed the form, press the “Create pull request” button. Th
 
 If the maintainers are happy with your additions, they will accept the PR and merge it into the main project. It might still be some time until the localization is incorporated into the main interface.
 
-## Conclusion
+# Conclusion
 Adding new localizations, or improving existing ones, ensures Tari Universe is easily useable by a wide audience.
 
 
