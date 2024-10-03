@@ -53,11 +53,11 @@ Congratulations! You’re now ready to start working on your localization.
 # How does Tari’s language feature work?
 Available languages for Tari Universe are available in a drop-down within the Settings → General Settings section of the application. The user can also select to use the system’s language (or locale) to determine which language Tari Universe will use.
 
-![settings_languages.png](../assets/lessons/img/adding-languages/settings_languages.png)
+<img src="../assets/lessons/img/adding-languages/settings_languages.png" width=600>
 
 These languages are derived from the Tari Universe project - specifically, from the ~/public/locales folder. Each locale consists of several JSON files stored in a folder that utilizes the ISO-639 standard Set 1 two-letter naming convention for countries. In VS Code, go to the Explorer Tab, expand the public/locales folder, then select the “en” locale folder.
 
-![folder_structure.png](../assets/lessons/img/adding-languages/folder_structure.png)
+<img src="../assets/lessons/img/adding-languages/folder_structure.png" width=600>
 
 Each JSON file corresponds to a different part of the app. Let’s have a look inside the “setup-view.json” file, that contains many of the start-up messages displayed when Tari Universe boots up.
 
@@ -119,7 +119,7 @@ Go to the Source Control tab and open up the Changes panel. The new folder and f
 
 > **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
 
-![commit_sync_changes.png](../assets/lessons/img/adding-languages/commit_sync_changes.png)
+<img src="../assets/lessons/img/adding-languages/commit_sync_changes.png" width=600>
 
 You’ll be warned that this is not a staged commit and asked if you wish to commit this directly. Select “Yes” to continue. You’ll notice that the “Commit” button has changed to “Sync changes.” Doing this will sync the commits you’ve made to your remote repository on GitHub. You can click “Sync Changes” immediately, or make some additional commits before syncing.
 
@@ -149,11 +149,11 @@ Before you begin this process, confirm that you have committed and synced all of
 
 The easiest way to create a PR is via GitHub. Go to your fork on GitHub and make sure you have your branch selected. A message below the main title of the project will indicate that changes have been made, and give you an option to compare and create a PR.
 
-![compare_pull_request.png](../assets/lessons/img/adding-languages/compare_pull_request.png)
+<img src="../assets/lessons/img/adding-languages/compare_pull_request.png" width=500>
 
 Click on the “Compare & Pull Request” button to open the “Open a Pull Request” screen. The first thing to note is the block showing you which repositories and branches are being compared, and the direction of the changes. Yours should show an arrow pointing from your repository/branch to the main project, which indicates that this PR is about pulling your changes into the main project.
 
-![pull_request_form.png](../assets/lessons/img/adding-languages/compare_pull_request.png)
+<img src="../assets/lessons/img/adding-languages/compare_pull_request.png" width=500>
 
 Below this is the form for capturing details about the PR. Follow these conventions when providing information:
 The title of the PR should read, “feat: added new localization for [your language]”
