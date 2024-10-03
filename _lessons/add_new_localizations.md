@@ -124,10 +124,10 @@ You’ll be warned that this is not a staged commit and asked if you wish to com
 
 ### Step 4 - Edit the JSON files
 If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of what you’re doing, as you work through, save frequently and commit your changes, syncing as necessary. As you work, please keep the following guidelines in mind:
-If possible, avoid machine translation. While workable, being fluent in the language is preferable.
-Proofread your work to catch any errors you may introduce.
-Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
-Do not change any text that is within braces e.g. {{version}}
+* If possible, avoid machine translation. While workable, being fluent in the language is preferable.
+* Proofread your work to catch any errors you may introduce.
+* Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
+* Do not change any text that is within braces e.g. {{version}}
 
 ### Step 5 - Creating a pull request (PR) for your localization
 Once you’ve completed your localization changes, you will need to submit them via a pull request (PR) - essentially, an official Git request that asks the main project maintainers to review and incorporate your localization into the main project.
@@ -135,8 +135,6 @@ Once you’ve completed your localization changes, you will need to submit them 
 Before you begin this process, confirm that you have committed and synced all of your changes and double-check that no new locale variables have been added to the JSON files.
 
 The easiest way to create a PR is via GitHub. Go to your fork on GitHub and make sure you have your branch selected. A message below the main title of the project will indicate that changes have been made, and give you an option to compare and create a PR.
-
-<img src="../assets/lessons/img/adding-languages/compare_pull_request.png>
 
 ![compare_pull_request.png](../assets/lessons/img/adding-languages/compare_pull_request.png)
 
