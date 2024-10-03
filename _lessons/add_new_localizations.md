@@ -1,6 +1,6 @@
 ---
 layout: lesson
-title: Adding New Languages to Tari Universe
+title: Your guide to adding new languages to the Tari Universe project
 date: 2024-10-04 12:00
 author: Solivagant
 thumbnail: learn-the-tari-codebase.png
@@ -9,7 +9,7 @@ subtitle:
 class: subpage
 ---
 
-# Adding New Languages to Tari Universe
+# Your Guide to adding new languages to the Tari Universe project
 Tari Universe will use a user’s system locale to determine which language the application should use when launching for the first time. If the system locale is unavailable, the initial language displayed will be English. Users can, however, select their preferred language manually. This is important in making the application - and its various settings - understandable to a much larger audience.
 
 Right now, we have a limited number of languages available; and with your help, we’d like to expand the selection. It’s a great way to dip your feet into the world of open-source projects, and contributing translations requires minimal programming skills (although perhaps this is a stepping stone to a whole new skill set?).
