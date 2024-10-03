@@ -129,6 +129,18 @@ If you have started a new localization, open the files created in the previous s
 * Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
 * Do not change any text that is within braces e.g. {{version}}
 
+At a high-level, each of the JSON files are for the following:
+|**File**|**Description**|
+|--------|---------------|
+|airdrop.json| Description placeholder|
+|common.json |
+|components.json|
+|mining-view.json|
+|settings.json|
+|setup-view.json|
+|sidebar.json|
+|tribes-view.json|
+
 ### Step 5 - Creating a pull request (PR) for your localization
 Once you’ve completed your localization changes, you will need to submit them via a pull request (PR) - essentially, an official Git request that asks the main project maintainers to review and incorporate your localization into the main project.
 
