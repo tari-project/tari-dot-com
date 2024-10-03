@@ -11,7 +11,7 @@ class: subpage
 
 When launching for the first time, Tari Universe will use a user’s system locale to determine which language the application should display. If the system locale is unavailable, the initial language displayed will be English. Users can, however, select their preferred language manually from within the settings. This is important in making the application understandable to a much larger audience.
 
-Right now, we have a limited number of languages available; and with your help, we’d like to expand the selection. It’s a great way to dip your feet into the world of open-source projects, and contributing translations requires minimal programming skills.
+Right now, we have a limited number of languages available; and with your help, we’d like to expand the selection. Contributing a localization is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills.
 
 In this guide, we’ll explain how to go about contributing new languages - or localizations - to Tari Universe. 
 
@@ -73,9 +73,14 @@ Once you’ve done so, there’ll be a brief delay while GitHub creates the fork
 
 <img src="../assets/lessons/img/adding-languages/new_fork_created.png" width=600>
 
-
 ## Step 2 - Creating a new branch for your localization work
-You will need to create a new branch on your repository. Branching allows you to create a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others.
+Now that you have your own fork of the project, you will need to create a new branch. Branching creates a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others.
+
+Users can create a branch in two ways.
+
+### Create a branch in GitHub
+
+
 
 At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
 
