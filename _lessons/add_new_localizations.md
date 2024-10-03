@@ -38,38 +38,38 @@ In this guide, we’ll cover the following:
 If you already have a GitHub account, you can skip this step. To sign up to GitHub, follow the instructions provided at GitHub’s documentation site (https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 
 While the steps may vary over time, you will need to perform the following actions:
-* Provide your desired username, password and email address
+* Provide your desired username, password, and email address
 * Verify your email address
 
 Once you’re done, you’ll be redirected to the GitHub dashboard.
 
-While not necessary for this guide, a useful introduction to basic development concepts is the Hello World tutorial (https://docs.github.com/en/get-started/start-your-journey/hello-world) provided by GitHub. This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits and more.
+While not necessary for this guide, a useful introduction to basic development concepts is the Hello World tutorial (https://docs.github.com/en/get-started/start-your-journey/hello-world) provided by GitHub. This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits, and more.
 
 ## Step 2 - Check the current localizations
-Before you start working, you need to check if the localization you want add already exists or not. The quickest way to do this is to go to the [Tari Universe locales folder](https://github.com/tari-project/universe/tree/main/public/locales) and look through the currently available localizations.
+Before you start working, you need to check if the localization you want to add already exists or not. The quickest way to do this is to go to the [Tari Universe locales folder](https://github.com/tari-project/universe/tree/main/public/locales) and look through the currently available localizations.
 
 If the one you wanted to add already exists, you can still contribute! Localization requires writers, proofreaders, and editors; all are necessary to ensure quality translations. You can simply work on an existing localization you're interested in. We’ll explain this in more detail in Step 4.
 
 ## Step 3 - Forking the Tari Universe repo
-Next, we will fork the Tari Universe repo. Forking the Tari repo allows you to create your own copy of the the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impact the main project.
+Next, we will fork the Tari Universe repo. Forking the Tari repo allows you to create your copy of the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impacting the main project.
 
 Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo **[here](https://github.com/tari-project/universe)**. Look to the top-right corner of the screen for the **Fork** button.
 
 <img src="../assets/lessons/img/adding-languages/forking_process.png" width=600>
 
-Click on the drop-down and note that forks available. It should be blank. Click on the **Create a new fork** option to bring up the **Create a new fork** page.
+Click on the drop-down and note the forks available. It should be blank. Click on the **Create a new fork** option to bring up the **Create a new fork** page.
 
 <img src="../assets/lessons/img/adding-languages/new_fork_form.png" width=600>
 
 When filling out the form, keep the following in mind:
 * The owner should be your GitHub username
 * The repo name will be automatically filled in based on the repo name from the existing project. Leave it as is.
-* You can provide a description of the projection. Descriptions and comments are a good habit to get into, so fill this out with a suitable description of the localization you are adding.
-* Make sure the **Copy the main branch only** is checked. If you uncheck the option, you will copy all available branches from the existing repo, which will make things difficult to manage.
+* You can provide a description of the project. Descriptions and comments are a good habit to get into, so fill this out with a suitable description of the localization you are adding.
+* Make sure the **Copy the main branch only** option is checked. If you uncheck the option, you will copy all available branches from the existing repo, which will make things difficult to manage.
 
 Click the **Create fork** button to continue.
 
-Once you’ve done so, there’ll be a brief delay while GitHub creates the fork. Once done, you’ll be redirected to the new fork’s home page. Look at the top-left corner, and you should see something that reads **[Your Username]/[Your Repo Name]**. This is a good way to check that you are on the right repo. Additionally, you’ll see a message under the repo that reads, “forked from tari-project/universe”, which let’s you know which project you forked from, and is a quick indicator that you’re on your fork.
+Once you’ve done so, there’ll be a brief delay while GitHub creates the fork. Once done, you’ll be redirected to the new fork’s home page. Look at the top-left corner, and you should see something that reads **[Your Username]/[Your Repo Name]**. This is a good way to check that you are on the right repo. Additionally, you’ll see a message under the repo that reads, “forked from tari-project/universe” and is a quick indicator that you’re on your fork.
 
 <img src="../assets/lessons/img/adding-languages/new_fork_created.png" width=600>
 
@@ -96,7 +96,7 @@ These languages are derived from the Tari Universe project - specifically, from 
 
 # How the localization JSONs work
 
-Each JSON file corresponds to a different part of the app. Let’s have a look inside the **setup-view.json** file, that contains many of the start-up messages displayed when Tari Universe boots up:
+Each JSON file corresponds to a different part of the app. Let’s have a look inside the **setup-view.json** file, which contains many of the start-up messages displayed when Tari Universe boots up:
 
 ```json
 {
@@ -154,7 +154,7 @@ Go to the Source Control tab and open up the Changes panel. The new folder and f
 
 You’ll be warned that this is not a staged commit and asked if you wish to commit this directly. Select **Yes** to continue. You’ll notice that the **Commit** button has changed to **Sync changes.** Doing this will sync the commits you’ve made to your remote repository on GitHub. You can click **Sync Changes** immediately, or make some additional commits before syncing.
 
-> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
+> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatsheet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
 
 ## Step 6 - Edit the JSON files
 If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of the activity, as you work, save frequently and commit your changes, syncing as necessary. In addition, please keep the following guidelines in mind:
