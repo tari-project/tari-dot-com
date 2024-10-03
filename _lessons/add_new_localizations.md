@@ -153,7 +153,7 @@ The easiest way to create a PR is via GitHub. Go to your fork on GitHub and make
 
 Click on the “Compare & Pull Request” button to open the “Open a Pull Request” screen. The first thing to note is the block showing you which repositories and branches are being compared, and the direction of the changes. Yours should show an arrow pointing from your repository/branch to the main project, which indicates that this PR is about pulling your changes into the main project.
 
-<img src="../assets/lessons/img/adding-languages/compare_pull_request.png" width=500>
+<img src="../assets/lessons/img/adding-languages/pull_request form.png" width=600>
 
 Below this is the form for capturing details about the PR. Follow these conventions when providing information:
 The title of the PR should read, “feat: added new localization for [your language]”
