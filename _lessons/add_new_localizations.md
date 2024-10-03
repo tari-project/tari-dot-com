@@ -11,7 +11,7 @@ class: subpage
 
 When launching for the first time, Tari Universe will use a user’s system locale to determine which language the application should display. If the system locale is unavailable, the initial language displayed will be English. Users can, however, select their preferred language manually from within the settings. This is important in making the application understandable to a much larger audience.
 
-Right now, we have a limited number of languages available; and with your help, we’d like to expand the selection. Contributing a localization is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills.
+Right now, Tari Universe has a limited number of languages available; with your help, we’d like to expand the selection. Contributing a localization is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills.
 
 In this guide, we’ll explain how to go about contributing new languages - or localizations - to Tari Universe. 
 
@@ -25,7 +25,7 @@ This is the bare minimum you require to contribute a new localization: you can u
 
 However, this guide assumes the use of VS Code as your integrated development environment (IDE). This has some additional prerequisites, such as installing the IDE itself and supporting applications such as git, nvm, cargo, and more.
 
-Most of the above is covered in our [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html). It is recommended that you read through that guide first before you proceed with the rest of this guide.
+Most of the above is covered in our [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html).
 
 In this guide, we’ll cover the following:
 * Checking whether the localization you want to add already exists
@@ -76,12 +76,12 @@ Once you’ve done so, there’ll be a brief delay while GitHub creates the fork
 ## Step 4 - Creating a new branch for your localization work
 Now that you have your own fork of the project, you will need to create a new branch. Branching creates a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others.
 
-Open up VS Code, and ensure you have your repository open. If you're not sure what is meant by this, be sure to check out the [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html) and confirm you've completed the necessary steps before continuing. 
+Open up VS Code, and ensure you have your repository open. If you're not sure what is meant by this, be sure to check out the [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html) and confirm you've completed the necessary steps before continuing.
 
-* At the bottom-left corner of VS Code’s status bar, click on the “main” branch. In the Command Palette, you will see that you have the option to create a new branch. 
+* At the bottom-left corner of VS Code’s status bar, click on the “main” branch. In the Command Palette, you will see that you have the option to create a new branch.
 * Select the **Create Branch** option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization” or "editing-french-airdrop-json".
 * Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch.
-* Click on the little cloud upload button next to the branch. In the Command Palette, you will have the option of publishing it to Origin or Upstream (if you’re not familiar with these terms or understand what is being discussed, consult the “How to become a Tari Contributor” guide). Select Origin. You will now see the new branch in your list.
+* Click on the little cloud upload button next to the branch. In the Command Palette, you will have the option of publishing it to **Origin** or **Upstream**. Select **Origin**. You will now see the new branch in your list.
 
 Congratulations! You’re now ready to start working on your localization.
 
@@ -94,11 +94,9 @@ These languages are derived from the Tari Universe project - specifically, from 
 
 <img src="../assets/lessons/img/adding-languages/folder_structure.png" width=600>
 
-Each JSON file corresponds to a different part of the app. Let’s have a look inside the **setup-view.json** file, that contains many of the start-up messages displayed when Tari Universe boots up.
-
 # How the localization JSONs work
 
-Below is a sample of the **setup-view.json** file:
+Each JSON file corresponds to a different part of the app. Let’s have a look inside the **setup-view.json** file, that contains many of the start-up messages displayed when Tari Universe boots up:
 
 ```json
 {
@@ -133,16 +131,16 @@ Below is a sample of the **setup-view.json** file:
 
 As we can see, **setup-view.json** consists of several variables that hook up to UI elements in Tari Universe. Text strings are stored against each variable, and Tari Universe displays that text. So while the variable name will always remain the same, the text string will change when a user selects a different locale.
 
-Returning to the file, there are a couple of additional noteworthy elements to consider. Looking at the **title** variable, note several additional fields associated with it, starting with **starting-up** and continuing through to **waiting-for-block-sync**. The **title** variable is a property whose text will change depending on the state of the variable; in this case, as Tari Universe gets to a new setup step, the title text will change to reflect the step it is currently on.
+Returning to the contents, there are additional elements to consider. Looking at the **title** variable, note several additional fields associated with it in their own set of braces, starting with **starting-up** and continuing through to **waiting-for-block-sync**. The **title** variable is a property whose text will change depending on the state of the variable; in this case, as Tari Universe gets to a new setup step, the title text will change to reflect the step it is currently on.
 
-Lastly, some of the strings have text enclosed in braces, such as the string, **“Would you like to install Tari Universe {{version}} now?”**. These are variables that Tari Universe calls and inserts into displayed text so it can be dynamically updated. When editing these strings, ensure these remain unaltered.
+Lastly, some of the strings have text enclosed in braces, such as the string, **“Would you like to install Tari Universe {{version}} now?”**. These are variables that Tari Universe calls and inserts into displayed text so it can be dynamically updated. When editing these messages, ensure these variables remain unaltered.
 
 ## Step 5 - Duplicate an existing locale folder
 The easiest way to get started is to duplicate one of the existing locale folders. You can skip this step if you are simply going to be editing an existing localization.
 
 First, check what the ISO-639 Set 1 code is for the language you are adding. You can get a [full list here](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes).
 
-Right-click on the locale folder in Explorer and select the **Create Folder** option. You will see a new, blank folder is created. Enter the two-letter code you noted earlier to create the folder.
+Right-click on the locale folder in VS Code's Explorer and select the **Create Folder** option. You will see a new, blank folder is created. Enter the two-letter code you noted earlier to create the folder.
 
 Next, select all the files in the **en** folder, right-click, and select **Copy**. Then, open your newly created folder, right-click, and select **Paste**. The files will be copied into the folder as new files. 
 
@@ -152,15 +150,15 @@ Note that each of these files has a **"U"** against it. You need to commit these
 
 Go to the Source Control tab and open up the Changes panel. The new folder and files you created will be listed here. You will need to commit these changes to the repository. In the comment section, provide a short comment explaining what the changes are - an example would be “Created template files and folder for Esperanto localization” - and press the **Commit** button.
 
-> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
-
 <img src="../assets/lessons/img/adding-languages/commit_sync_changes.png" width=600>
 
 You’ll be warned that this is not a staged commit and asked if you wish to commit this directly. Select **Yes** to continue. You’ll notice that the **Commit** button has changed to **Sync changes.** Doing this will sync the commits you’ve made to your remote repository on GitHub. You can click **Sync Changes** immediately, or make some additional commits before syncing.
 
+> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
+
 ## Step 6 - Edit the JSON files
-If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of what you’re doing, as you work through, save frequently and commit your changes, syncing as necessary. As you work, please keep the following guidelines in mind:
-* If possible, avoid machine translation. While workable, being fluent in the language is preferable.
+If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of the activity, as you work, save frequently and commit your changes, syncing as necessary. In addition, please keep the following guidelines in mind:
+* Avoid machine translation where possible. While workable, being fluent in the language is preferable.
 * Proofread your work to catch any errors you may introduce.
 * Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
 * Do not change any text that is within braces e.g. {{version}}
@@ -180,30 +178,29 @@ Below, you can find a description of what each JSON file affects within Tari Uni
 ## Step 7 - Creating a pull request (PR) for your localization
 Once you’ve completed your localization changes, you will need to submit them via a pull request (PR) - essentially, an official Git request that asks the main project maintainers to review and incorporate your localization into the main project.
 
-Before you begin this process, confirm that you have committed and synced all of your changes and double-check that no new locale variables have been added to the JSON files.
+Before you begin this process, confirm that you have committed and synced all of your changes and double-check that no new locale variables have been added to the JSON files that you need to account for.
 
-The easiest way to create a PR is via GitHub. Go to your fork on GitHub and make sure you have your branch selected. A message below the main title of the project will indicate that changes have been made, and give you an option to compare and create a PR.
+The easiest way to create a PR is via GitHub. Go to your fork on GitHub and make sure you have the branch you have been making the changes to selected. A message below the main title of the project will indicate that changes have been made, and give you an option to compare and create a PR.
 
 <img src="../assets/lessons/img/adding-languages/compare_pull_request.png" width=500>
 
-Click on the **Compare & Pull Request** button to open the **Open a Pull Request** screen. The first thing to note is the block showing you which repositories and branches are being compared, and the direction of the changes. Yours should show an arrow pointing from your repository/branch to the main project, which indicates that this PR is about pulling your changes into the main project.
+Click on the **Compare & Pull Request** button to open the **Open a Pull Request** screen. The first thing to note is the block showing you which repositories and branches are being compared, and the direction of the changes. Yours should show an arrow pointing from your repository/branch to the main project, which indicates that this PR will "pull" your changes into the main project.
 
 <img src="../assets/lessons/img/adding-languages/pull_request_form.png" width=600>
 
 Below this is the form for capturing details about the PR. Follow these conventions when providing information:
-* The title of the PR should read, “feat: added new localization for [your language]”
-* By default, GitHub has a standard template for capturing details against the PR. It’s best to follow the template when capturing info.
+* The title of the PR should read, “Feat: added new localization for [your language]”
+* By default, GitHub has a standard template for capturing details against the PR. It’s best to follow the template when capturing info. You can refer to [this PR](https://github.com/tari-project/universe/pull/715) as a good example of the typical information provided.
 * Below the form and submission button is a summary of the changes that are being made.
 
 Once you have completed the form, press the **Create pull request** button. This will both create a pull request and notify the maintainers that your code should be reviewed.
 
 > **_TIP:_** Once a PR has been submitted, be sure to follow up on the PR regularly. Reviewers may have questions or changes that need to be reviewed by you before they can continue. In this case, they will assign the PR back to you for action.
 
-If the maintainers are happy with your additions, they will accept the PR and merge it into the main project. It might still be some time until the localization is incorporated into the main interface.
+If the maintainers are happy with your additions, they will accept the PR and merge it into the main project. It might still be some time until the localization is incorporated into the main interface, though, so if it has been accepted, please be patient!
 
 # Conclusion
 Adding new localizations, or improving existing ones, ensures Tari Universe is easily useable by a wide audience.
-
 
 
 
