@@ -35,30 +35,31 @@ In this guide, we’ll cover the following:
 * Committing your localization for review and inclusion in Tari Universe via a pull request.
 
 ## Step 1 - Create a GitHub account
-If you already have a GitHub account, you can skip this step. To sign up to GitHub, the best method is to follow the instructions provided at GitHub’s documentation site (https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+If you already have a GitHub account, you can skip this step. To sign up to GitHub, follow the instructions provided at GitHub’s documentation site (https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 
 While the steps may vary over time, you will need to perform the following actions:
 * Provide your desired username, password and email address
-Verify your email address
-* Once you’re done, you’ll be redirected to the GitHub dashboard.
+* Verify your email address
+
+Once you’re done, you’ll be redirected to the GitHub dashboard.
 
 While not necessary for this guide, a useful introduction to basic development concepts is the Hello World tutorial (https://docs.github.com/en/get-started/start-your-journey/hello-world) provided by GitHub. This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits and more.
 
 ## Step 2 - Check the current localizations
-The quickest way to do this is to go to the [Tari Universe locales folder](https://github.com/tari-project/universe/tree/main/public/locales) and look through the files and folders to see if the language you want to add already exists.
+Before you start working, you need to check if the localization you want add already exists or not. The quickest way to do this is to go to the [Tari Universe locales folder](https://github.com/tari-project/universe/tree/main/public/locales) and look through the currently available localizations.
 
-If it does, you can still contribute! Localization requires writers, proofreaders, and editors. You can simply work on an existing localization you're interested in. We’ll explain this in more detail in Step 4.
+If the one you wanted to add already exists, you can still contribute! Localization requires writers, proofreaders, and editors; all are necessary to ensure quality translations. You can simply work on an existing localization you're interested in. We’ll explain this in more detail in Step 4.
 
 ## Step 3 - Forking the Tari Universe repo
-
 Next, we will fork the Tari Universe repo. Forking the Tari repo allows you to create your own copy of the the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impact the main project.
 
-Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo **[here](https://github.com/tari-project/universe)**. Look to the top-right corner of the screen for the Fork button. 
+Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo **[here](https://github.com/tari-project/universe)**. Look to the top-right corner of the screen for the **Fork** button.
 
+<img src="../assets/lessons/img/adding-languages/forking_process.png" width=600>
 
+Click on the drop-down and note that forks available. It should be blank. Click on the **Create a new fork** option to bring up the **Create a new fork** page.
 
-Click on the drop-down and note that forks available. It should be blank. Click on the “Create a new fork” option to bring up the “Create a new fork” page.
-
+<img src="../assets/lessons/img/adding-languages/new_fork_form.png" width=600>
 
 When filling out the form, keep the following in mind:
 * The owner should be your GitHub username
@@ -70,7 +71,7 @@ Click the **Create fork** button to continue.
 
 Once you’ve done so, there’ll be a brief delay while GitHub creates the fork. Once done, you’ll be redirected to the new fork’s home page. Look at the top-left corner, and you should see something that reads **[Your Username]/[Your Repo Name]**. This is a good way to check that you are on the right repo. Additionally, you’ll see a message under the repo that reads, “forked from tari-project/universe”, which let’s you know which project you forked from, and is a quick indicator that you’re on your fork.
 
-
+<img src="../assets/lessons/img/adding-languages/new_fork_created.png" width=600>
 
 
 ## Step 2 - Creating a new branch for your localization work
