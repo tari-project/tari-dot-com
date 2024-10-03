@@ -43,7 +43,7 @@ If it does, you can still contribute! Localization requires writers, proofreader
 ### Step 2 - Creating a New Branch for your localization work
 You will need to create a new branch on your repository. Branching allows you to create a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others. 
 
-At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. Standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
+At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. the standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
 
 Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch to be able to view it in your remote list.
 
@@ -116,7 +116,9 @@ Note that each of these files has a “U” against it. You need to commit these
 
 > **_TIP:_** Commit changes often. Getting into the habit of committing your changes regularly ensures your changes are saved, making it easy to revert changes if required.
 
-Go to the Source Control tab and open up the Changes panel. The new folder and files you created will be listed here. You will need to commit these changes to the repository. In the comment section, provide a short comment explaining what the changes are - an example would be “Created template files and folder for Esperanto localization” - and press the “Commit” button. 
+Go to the Source Control tab and open up the Changes panel. The new folder and files you created will be listed here. You will need to commit these changes to the repository. In the comment section, provide a short comment explaining what the changes are - an example would be “Created template files and folder for Esperanto localization” - and press the “Commit” button.
+
+> **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatshet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix and chore.
 
 ![commit_sync_changes.png](../assets/lessons/img/adding-languages/commit_sync_changes.png)
 
