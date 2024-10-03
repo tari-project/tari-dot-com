@@ -4,7 +4,7 @@ title: Guide for adding new languages to the Tari Universe project
 date: 2024-10-04 12:00
 author: Solivagant
 thumbnail: learn-the-tari-codebase.png
-lead: A guide on the localization system and how you can contribute.
+lead: A guide to Tari's localization system and how you can contribute new languages.
 subtitle: 
 class: subpage
 ---
@@ -73,20 +73,15 @@ Once you’ve done so, there’ll be a brief delay while GitHub creates the fork
 
 <img src="../assets/lessons/img/adding-languages/new_fork_created.png" width=600>
 
-## Step 2 - Creating a new branch for your localization work
+## Step 4 - Creating a new branch for your localization work
 Now that you have your own fork of the project, you will need to create a new branch. Branching creates a copy of the code at a point in time, allowing you to work on your specific changes without impacting the work of others.
 
-Users can create a branch in two ways.
+Open up VS Code, and ensure you have your repository open. If you're not sure what is meant by this, be sure to check out the [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html) and confirm you've completed the necessary steps before continuing. 
 
-### Create a branch in GitHub
-
-
-
-At the bottom-left corner of the screen, inside VS Code’s status bar, click on the “main” branch. In the Command Prompt, you will see that you have the option to create a new branch. Select the “Create Branch” option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization”
-
-Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch to be able to view it in your remote list.
-
-Click on the little cloud upload button next to the branch. In the Command Prompt, you will have the option of publishing it to Origin or Upstream (if you’re not familiar with these terms or understand what is being discussed, consult the “How to become a Tari Contributor” guide). Select Origin. You will now see the new branch in your list.
+* At the bottom-left corner of VS Code’s status bar, click on the “main” branch. In the Command Palette, you will see that you have the option to create a new branch. 
+* Select the **Create Branch** option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization” or "editing-french-airdrop-json".
+* Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch.
+* Click on the little cloud upload button next to the branch. In the Command Palette, you will have the option of publishing it to Origin or Upstream (if you’re not familiar with these terms or understand what is being discussed, consult the “How to become a Tari Contributor” guide). Select Origin. You will now see the new branch in your list.
 
 Congratulations! You’re now ready to start working on your localization.
 
@@ -142,7 +137,7 @@ Returning to the file, there are a couple of additional noteworthy elements to c
 
 Lastly, some of the strings have text enclosed in braces, such as the string, **“Would you like to install Tari Universe {{version}} now?”**. These are variables that Tari Universe calls and inserts into displayed text so it can be dynamically updated. When editing these strings, ensure these remain unaltered.
 
-## Step 3 - Duplicate an existing locale folder
+## Step 5 - Duplicate an existing locale folder
 The easiest way to get started is to duplicate one of the existing locale folders. You can skip this step if you are simply going to be editing an existing localization.
 
 First, check what the ISO-639 Set 1 code is for the language you are adding. You can get a [full list here](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes).
@@ -163,7 +158,7 @@ Go to the Source Control tab and open up the Changes panel. The new folder and f
 
 You’ll be warned that this is not a staged commit and asked if you wish to commit this directly. Select **Yes** to continue. You’ll notice that the **Commit** button has changed to **Sync changes.** Doing this will sync the commits you’ve made to your remote repository on GitHub. You can click **Sync Changes** immediately, or make some additional commits before syncing.
 
-## Step 4 - Edit the JSON files
+## Step 6 - Edit the JSON files
 If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of what you’re doing, as you work through, save frequently and commit your changes, syncing as necessary. As you work, please keep the following guidelines in mind:
 * If possible, avoid machine translation. While workable, being fluent in the language is preferable.
 * Proofread your work to catch any errors you may introduce.
@@ -182,7 +177,7 @@ Below, you can find a description of what each JSON file affects within Tari Uni
 |sidebar.json| UI elements in the sidebar of the main Tari Universe screen |
 |tribes-view.json| The title for the Squad View section in Settings. |
 
-## Step 5 - Creating a pull request (PR) for your localization
+## Step 7 - Creating a pull request (PR) for your localization
 Once you’ve completed your localization changes, you will need to submit them via a pull request (PR) - essentially, an official Git request that asks the main project maintainers to review and incorporate your localization into the main project.
 
 Before you begin this process, confirm that you have committed and synced all of your changes and double-check that no new locale variables have been added to the JSON files.
