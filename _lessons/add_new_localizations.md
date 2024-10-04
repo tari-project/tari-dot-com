@@ -9,7 +9,7 @@ subtitle:
 class: subpage
 ---
 
-At Tari, our approach has always leaned towards greater accessibility. Tari Universe, our desktop mining app, provides an easy entry point for those unfamiliar with the more complicated aspects of setting up and mining Tari. Right now, Tari Universe has a limited number of languages available; with your help, we’d like to expand the selection.
+At Tari, our approach has always leaned towards greater usability. Tari Universe, our desktop mining app, provides an easy entry point for those unfamiliar with the more complicated aspects of setting up and mining Tari. Right now, Tari Universe has a limited number of languages available; with your help, we’d like to expand the selection.
 
 Adding a new language is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills. Whether you're familiar with programming or are looking for a way to start familiarising yourself with development, this guide is for you. We’ll explain how to go about contributing new languages - or localizations - to Tari Universe. 
 
