@@ -35,7 +35,7 @@ In this guide, we’ll cover the following:
 * Committing your localization for review and inclusion in Tari Universe via a pull request.
 
 ## Step 1 - Create a GitHub account
-If you already have a GitHub account, you can skip this step. To sign up to GitHub, follow the instructions provided at GitHub’s documentation site (https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+If you already have a GitHub account, you can skip this step. To sign up to GitHub, follow the instructions provided [at GitHub’s documentation site](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 
 While the steps may vary over time, you will need to perform the following actions:
 * Provide your desired username, password, and email address
@@ -43,7 +43,7 @@ While the steps may vary over time, you will need to perform the following actio
 
 Once you’re done, you’ll be redirected to the GitHub dashboard.
 
-A useful introduction to basic development concepts is the Hello World tutorial (https://docs.github.com/en/get-started/start-your-journey/hello-world) provided by GitHub. This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits, and more.
+A useful introduction to basic development concepts is the [Hello World tutorial provided by GitHub](https://docs.github.com/en/get-started/start-your-journey/hello-world). This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits, and more.
 
 ## Step 2 - Check the current localizations
 Before you start working, you need to check if the localization you want to add already exists or not. Go to the [Tari Universe project](https://github.com/tari-project/universe/tree/main/public/locales) and browse through the locales folders for currently available localizations.
