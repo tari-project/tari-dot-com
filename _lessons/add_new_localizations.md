@@ -20,8 +20,6 @@ To contribute a localization, you’ll need these at the bare minimum:
 * A fork of the Tari Universe repository.
 * Git
 
-With the above, you can use GitHub and/or Git commands combined with a text editor of choice to work on your new localization either directly on GitHub or via a local repository.
-
 However, this guide assumes the use of VS Code as your integrated development environment (IDE). This has some additional prerequisites, such as installing the IDE itself and supporting applications such as Git, nvm, Rust, and more.
 
 Most of the above is covered in our [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html). If you're not already familiar with development practices and tools, this is a good place to start.
