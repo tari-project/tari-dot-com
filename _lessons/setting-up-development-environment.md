@@ -119,4 +119,4 @@ Next, you will require the Tari Universe URL from the main project. Go to https:
 
 ## You're Done!
 
-You should now have your environment set up to start working on Tari's various projects. Check out [Tari's main page on GitHub](https://github.com/tari-project) to explore some of your options. We're excited to see what you can bring!
+You should now have your environment set up to start working on Tari's various projects. Check out [Tari's main page on GitHub](https://github.com/tari-project) to explore some of your options. We're excited to see what you can bring.
