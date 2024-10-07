@@ -1,5 +1,5 @@
 # Setting up your development environment
-The following guide will take you through setting up an appropriate development environment on your local machine so you can work with Tari’s various projects, and specifically Tari Universe.
+The following guide will take you through setting up an appropriate development environment on your local machine so you can work with Tari’s various projects. We'll use Tari Universe as the project example to cover elements such as forking and cloning, but you should be able to apply this to any of the [Tari projects](https://github.com/tari-project).
 
 In this guide, we’ll cover:
 * Setting up a GitHub account
@@ -61,11 +61,11 @@ Next, we will fork the Tari Universe repo. Forking allows you to create your cop
 
 Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo here. Look to the top-right corner of the screen for the Fork button.
 
-
+<img src="../assets/lessons/img/adding-languages/forking_process.png" width=600>
 
 Click on the drop-down and note the forks available. It should be blank. Click on the Create a new fork option to bring up the **Create a new fork** form.
 
-
+<img src="../assets/lessons/img/adding-languages/new_fork_form.png" width=600>
 
 When filling out the form, keep the following in mind:
 * The owner should be your GitHub username
@@ -84,14 +84,11 @@ This is a good time to start developing good practices around organizing your pr
 
 In VS Code, you have several options for cloning the repository, but the easiest way is to use the Command Pallete. Click on the View menu, and select “Command Pallete…”. You’ll also be able to see the shortcut here for your particular environment so you can use that to get to the Command Pallete in the future.
 
+In the Command Pallete, Type “Git: Clone” and select the Git Clone option from the drop-down. You'll you’ll need to select a folder to put the local repository in.
 
-
-In the Command Pallete, Type “Git: Clone” and select the Git Clone option from the drop-down. You'll you’ll need to select a folder to put the local repository in:
+<img src="../assets/lessons/img/settingupenviro_lesson/clonefromgithub.png" width=600>
 
 Next, enter the repository URL directly in the Command Pallete. In your forked GitHub repository, look to the top-right of the your project and locate the “Code <>” button, colored green. Clicking on the button will open a dialog box with the option to clone the repository via three methods. Select the SSH tab, and copy the string. It should look like **git clone git@github.com:yourusername/yourrepo.git**
-
-
-
 
 Now, navigate to the folder you created earlier and select it, then click the “Select as Repository Destination” button.
 
@@ -101,7 +98,7 @@ Because you are dealing with code that can be executed as a normal application, 
 
 If you are uncomfortable with trusting the repo, you can select the “No, I don’t trust the authors”, which result in VS Code accessing the folder via Restricted Mode ([you can read up more about this here](https://code.visualstudio.com/docs/editor/workspace-trust#:~:text=Restricted%20Mode%20tries%20to%20prevent,%2C%20workspace%20settings%2C%20and%20extensions.)).
 
-While doing so should not have a negative impact, note that this guide has been written with the assumption that you trust the authors, so some functions or steps may not match up to your experience.
+While doing so should not have a negative impact, note that this guide has been written with the assumption that you trust the project, so some functions or steps may not match up to your experience.
 
 Once cloned, you will also be asked to install some recommended extensions in VS Code. These are not required for this guide, so you can skip installing them.
 
@@ -112,12 +109,14 @@ This is commonly referred to as the Upstream repository - this represents the or
 
 In VS Code, select the Source Control tab (this can be accessed via the View menu), and open up the Remotes panel. You should see only one item, called origin, in the list.
 
- 
+ <img src="../assets/lessons/img/settingupenviro_lesson/repoorigin.png" width=600>
 
 To add the Tari Universe repository as the upstream remote, hover over the Remotes header, and then click on the plus icon. You will be asked to provide a name for the remote repository - call it “Upstream”.
 
-Next, you will require the Tari Universe URL from the main project. Go to https://github.com/tari-project/universe and copy the repository’s URL in the same manner described in Step 5. Paste this URL into the field to add the repository, then select the “Add Remote and Fetch” option.
+Next, you will require the Tari Universe URL from the main project. Go to https://github.com/tari-project/universe and copy the repository’s URL string in the same manner described in Step 5. Paste this URL into the field to add the repository, then select the “Add Remote and Fetch” option. You will now see the Tari Universe in your list of remote repositories.
 
+ <img src="../assets/lessons/img/settingupenviro_lesson/remoterepo.png" width=600>
 
+## You're Done!
 
-You will now see the Tari Universe in your list of remote repositories.
+You should now have your environment set up to start working on Tari's various projects. Check out [Tari's main page on GitHub](https://github.com/tari-project) to explore some of your options. We're excited to see what you can bring!
