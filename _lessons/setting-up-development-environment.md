@@ -5,6 +5,7 @@ In this guide, we’ll cover:
 * Setting up a GitHub account
 * Installing VS Code as your integrated development environment (IDE)
 * Installing development prerequisites (Git, Rust and nvm)
+* Setting up your credentials to easily work in GitHub using SSH
 * Forking a repository you are interested in contributing to
 * Cloning the repository on your local machine
 
@@ -34,10 +35,6 @@ Follow the instructions, then launch VS Code to confirm it’s working as intend
 ## Step 3 - Installing Development Prerequisites
 While an IDE is generally the only thing you would require if you were programming your own small projects, modern development environments rely heavily on several applications and services that improves the overall process of development:
 
-Version control system: a system for tracking, controlling and managing changes made to your project over time.
-Package managers: more complicated development projects often rely on packages from several sources. A package manager simplifies the process of managing and updating required packages and ensuring you have the right package for each project.
-Programming languages: these will determine what languages your system supports. Projects will often be developed in different languages.
-
 Below we’ve listed several items which will be useful to have when working with Tari projects.
 
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -45,18 +42,28 @@ Below we’ve listed several items which will be useful to have when working wit
 * MacOS: [Homebrew](https://brew.sh/).
 * [Rust language](https://www.rust-lang.org/tools/install)
 * [Protocol Buffers](https://grpc.io/docs/protoc-installation/)
-* [Cmake](https://cmake.org/download/)
+* [Cmake](https://cmake.org/download/) and make
+* [OpenSSL](https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl)
 
-It’s best to follow the official instructions for installing these items. We’ve linked to each one’s current installation page as a quick reference. Also note that you might already have some of these prerequisites installed. Check each project’s page for the command to check the version - this is usually the quickest method to find out if the application is installed or not.
+It’s best to follow the official instructions for installing these items. We’ve linked to each one’s current installation page as a quick reference. Also note that you might already have some of these prerequisites installed.
 
-## Step 3 - Forking the Tari Universe repo
-Next, we will fork the Tari Universe repo. Forking the Tari repo allows you to create your copy of the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impacting the main project.
+> :bulb: **Tip:** Check each project’s page for the command to check the version - this is usually the quickest method to find out if the application is installed or not.
+
+> :bulb: **Tip:** Note that there is a distinction between installing things *globally* and *locally*. The above projects are generally fine to install on a global level. However, project dependencies are a different story - if you are working with two repos, and both use a different version of a dependency, there's usually no way to cleanly install a global version for both. That's where package managers like npm come in to handle local dependencies on a case-by-case basis.
+
+## Step 4 - Setting up your GitHub access in VS Code
+To simplify the process of working with your GitHub repositories, a secure method to do so is via SSH. This is the preferred method for committing code to the Tari repos. SSH works by generating a private and public key that can then be used to interact securely with GitHub.
+
+* To set up SSH, you should refer to [the following guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+## Step 5 - Forking the Tari Universe repo
+Next, we will fork the Tari Universe repo. Forking allows you to create your copy of the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impacting the main project.
 
 Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo here. Look to the top-right corner of the screen for the Fork button.
 
 
 
-Click on the drop-down and note the forks available. It should be blank. Click on the Create a new fork option to bring up the Create a new fork form.
+Click on the drop-down and note the forks available. It should be blank. Click on the Create a new fork option to bring up the **Create a new fork** form.
 
 
 
@@ -64,22 +71,11 @@ When filling out the form, keep the following in mind:
 * The owner should be your GitHub username
 * The repo name will be automatically filled in based on the repo name from the existing project. Leave it as is.
 * You can provide a description of the project. Descriptions and comments are a good habit to get into, so fill this out with a suitable description.
-* Make sure the Copy the main branch only option is checked. If you uncheck the option, you will copy all available branches from the existing repo, which will make things difficult to manage.
+* Make sure the **Copy the main branch only** option is checked. If you uncheck the option, you will copy all available branches from the existing repo.
 
-Click the Create fork button to continue.
+Click the **Create fork button** to continue.
 
 Once you’ve done so, there’ll be a brief delay while GitHub creates the fork, then you’ll be redirected to the new fork’s home page. Look at the top-left corner, and you should see something that reads [Your Username]/[Your Repo Name]. This is a good way to check that you are on the right repo. Additionally, you’ll see a message under the repo that reads, “forked from tari-project/universe” and is a quick indicator that you’re on your fork.
-
-
-## Step 5 - Setting up your GitHub credentials in VS Code
-To simplify the process of working with your GitHub repositories, you should set up your GitHub username and password in git. This can be done from the terminal/command line in your operating system or via VS Code’s terminal. We’ll use the VS Code terminal for this guide.
-
-In VS Code, click on the Terminal menu and select “New Terminal”. Next, enter the following commands, replacing the text inside the quotation marks with your details:
-
-Git config –global user.email “youremail@example.com”
-Git config –global user.name “YourUsername”
-
-To confirm that it’s working, you can use “git config –global –list” to check if your credentials are listed.
 
 ## Step 6 - Cloning your repository in VS Code
 Okay, so now that we have your GitHub credentials set up and available for VS Code, we’ll create a local repository - essentially a local version of the repo we created in GitHub - by cloning it.
@@ -90,13 +86,10 @@ In VS Code, you have several options for cloning the repository, but the easiest
 
 
 
-In the Command Pallete, Type “Git: Clone” and select the Git Clone option from the drop-down. At this point, you have two means for cloning the repository. In both cases, you’ll need to select a folder to put the local repository in:
+In the Command Pallete, Type “Git: Clone” and select the Git Clone option from the drop-down. You'll you’ll need to select a folder to put the local repository in:
 
-Since you have set up your credentials in Git, you can simply choose the “Clone From GitHub” option. This will present a list of repositories you have access to through your GitHub account. Click on the repository you want to clone.
+Next, enter the repository URL directly in the Command Pallete. In your forked GitHub repository, look to the top-right of the your project and locate the “Code <>” button, colored green. Clicking on the button will open a dialog box with the option to clone the repository via three methods. Select the SSH tab, and copy the string. It should look like **git clone git@github.com:yourusername/yourrepo.git**
 
-
-
-Alternatively, you can enter the repository URL directly in the Command Pallete. In your forked GitHub repository, look to the top-right of the your project and locate the “Code <>” button, colored green. Clicking on the button will open a dialog box with the option to clone the repository via three methods. For this guide, we’ll stick with the HTTPS URL for now. Copy this URL.
 
 
 
