@@ -112,7 +112,7 @@ In VS Code, select the Source Control tab (this can be accessed via the View men
  <img src="../assets/lessons/img/settingupenviro_lesson/repoorigin.png" width=600>
 
 To add the Tari Universe repository as the upstream remote, hover over the Remotes header, and then click on the plus icon. You will be asked to provide a name for the remote repository - call it “Upstream”.
-
+S
 Next, you will require the Tari Universe URL from the main project. Go to https://github.com/tari-project/universe and copy the repository’s URL string in the same manner described in Step 5. Paste this URL into the field to add the repository, then select the “Add Remote and Fetch” option. You will now see the Tari Universe in your list of remote repositories.
 
  <img src="../assets/lessons/img/settingupenviro_lesson/remoterepo.png" width=600>
