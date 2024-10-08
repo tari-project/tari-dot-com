@@ -23,7 +23,7 @@ A useful introduction to basic development concepts is the [Hello World tutorial
 ## Step 2 - Installing your IDE
 An IDE is a software application that provides various tools and functions for editing code and managing development projects. There are many different IDEs available for use, but we will be using VS Code for the guide.
 
-Rather than explain the exact process for installing VS Code, it is best to follow the official instructions for installing VS Code, as the installation steps may change over time.
+Rather than explain the exact process for installing VS Code, it is best to follow the official instructions for installing VS Code, as the installation steps may change over time and differ for different environments.
 
 Use one of the following links below, depending on your operating system, to install VS Code:
 [Linux: https://code.visualstudio.com/docs/setup/linux](https://code.visualstudio.com/docs/setup/linux)
@@ -52,9 +52,12 @@ Itâ€™s best to follow the official instructions for installing these items. Weâ€
 > :bulb: **Tip:** Note that there is a distinction between installing things *globally* and *locally*. The above projects are generally fine to install on a global level. However, project dependencies are a different story - if you are working with two repos, and both use a different version of a dependency, there's usually no way to cleanly install a global version for both. That's where package managers like npm come in to handle local dependencies on a case-by-case basis.
 
 ## Step 4 - Setting up your GitHub access in VS Code
-To simplify the process of working with your GitHub repositories, a secure method to do so is via SSH. This is the preferred method for committing code to the Tari repos. SSH works by generating a private and public key that can then be used to interact securely with GitHub.
+To simplify the process of working with your GitHub repositories, the typical means for doing so is via GPG and SSH. SSH is primarily used for authenticating while GPG is used for signing your commits - in other words, when you make changes, you'll be signing them so others can confirm it's actually you making the changes.
+
+These are the preferred method for committing code to the Tari repos. Both SSH and GPG work by generating a private and public key that can then be used to interact securely with GitHub.
 
 * To set up SSH, you should refer to [the following guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+* To set up GPG, you should refer to [this guide](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
 
 ## Step 5 - Forking the Tari Universe repo
 Next, we will fork the Tari Universe repo. Forking allows you to create your copy of the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impacting the main project.
@@ -102,7 +105,7 @@ While doing so should not have a negative impact, note that this guide has been 
 
 Once cloned, you will also be asked to install some recommended extensions in VS Code. These are not required for this guide, so you can skip installing them.
 
-## Step 6 - Adding the original Tari Universe Repository to your remotes.
+## Step 7 - Adding the original Tari Universe Repository to your remotes.
 We also need to add the original Tari Universe repository to your project. This is important because when you eventually start committing your new locale to your project, you will want to be able to feed those changes as recommendations to be incorporated into the main project.
 
 This is commonly referred to as the Upstream repository - this represents the original project to which changes are made and releases are generated.
@@ -118,5 +121,4 @@ Next, you will require the Tari Universe URL from the main project. Go to https:
  <img src="../assets/lessons/img/settingupenviro_lesson/remoterepo.png" width=600>
 
 ## You're Done!
-
-You should now have your environment set up to start working on Tari's various projects. Check out [Tari's main page on GitHub](https://github.com/tari-project) to explore some of your options. We're excited to see what you can bring.
+You should now have your environment set up to start working on Tari's various projects. Check out [Tari's main page on GitHub](https://github.com/tari-project) to explore some of your options. We're excited to see what you can bring to the table.
