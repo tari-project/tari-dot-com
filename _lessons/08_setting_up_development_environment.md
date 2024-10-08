@@ -1,4 +1,14 @@
-# Setting up your development environment
+---
+layout: lesson
+title: Setting Up Your Development Environment
+date: 2024-10-08 12:00
+author: Solivagant
+thumbnail: learn-the-tari-codebase.png
+lead: How to get your system setup to start working with Tari projects
+subtitle: 
+class: subpage
+---
+
 The following guide will take you through setting up an appropriate development environment on your local machine so you can work with Tari’s various projects. We'll use Tari Universe as the project example to cover elements such as forking and cloning, but you should be able to apply this to any of the [Tari projects](https://github.com/tari-project).
 
 In this guide, we’ll cover:
