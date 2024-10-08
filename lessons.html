@@ -26,7 +26,7 @@ class: subpage blog
       data-in-view-count="1"
       data-in-view-offset="75%"
     >
-      {% for post in site.lessons  %} {% include lesson-area.html %} {% endfor %}
+      {% for post in site.lessons reversed %} {% include lesson-area.html %} {% endfor %}
     </div>
   </div>
 </section>

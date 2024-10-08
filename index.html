@@ -471,7 +471,7 @@ class: subpage home
             <div class="row js-stagger-delay js-add-class-in-view" data-stagger-selector=".js-stagger-delay-post-panel"
               data-stagger-property="animation" data-stagger-interval=".1408" data-stagger-direction="forwards"
               data-in-view-count="1" data-in-view-offset="75%">
-              {% assign lessons = site.lessons %}
+              {% assign lessons = site.lessons | reverse %}
               {% for post in lessons limit: 2 %}
               {% include lesson-area.html %}
               {% endfor %}
