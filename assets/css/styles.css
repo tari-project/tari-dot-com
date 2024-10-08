@@ -794,14 +794,13 @@ lottie-player {
   line-height: 48px;
   max-width: var(--max-content-width);
 }
-
-.subpage #viewport section.main h1 + p {
+/* .subpage #viewport section.main h1 + p {
   font-family: Avenir-Light, 'Avenir-Light', 'Myriad Pro', Arial, Verdana !important;
   font-size: 26px;
   line-height: 40px;
   margin: 0 0 40px 0;
   color: black;
-}
+} */
 
 .privacy_policy #viewport section.main h1 + p,
 .user_agreement #viewport section.main h1 + p,
@@ -1641,46 +1640,31 @@ body.page- #call-to-action {
   position: relative;
 }
 
-/*#post h1:before,
-#post h2:before,
-#post h3:before {
-  max-width: 33.3%;
-  width: 40px;
-  height: 2px;
-  display: block;
-  content: "";
-  background-color: #545454;
-  margin-bottom: 20px;
-}
-*/
 .post blockquote {
   position: relative;
-  padding-top: 20px;
-  padding-left: 0;
-  margin-bottom: 20px;
+  padding: 0 10px 10px 60px;
   border-left: 0;
   display: block;
-  font-size: 28px;
   line-height: 1;
-  font-family: 'AvenirLTStd-Heavy', Arial, san-serif;
-  text-transform: uppercase;
-  color: #9330ff;
+  font-family: 'AvenirLTStd-Heavy', Arial, sans-serif;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
 }
 
 .post blockquote p {
-  margin: 0;
-  display: inline;
+  margin: 0 !important;
+  display: block;
   font-size: inherit;
+  padding-top: 18px;
 }
 
-.post blockquote:before {
+.post blockquote::before {
   content: '“';
-  display: inline;
-}
-
-.post blockquote:after {
-  content: '”';
-  display: inline;
+  color: #cacaca;
+  font-size: 120px;
+  position: absolute;
+  left: 10px;
+  top: 0;
 }
 
 .post .col-md-4 h1 {
