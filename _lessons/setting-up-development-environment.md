@@ -44,8 +44,11 @@ Below we’ve listed several items which will be useful to have when working wit
 * [Protocol Buffers](https://grpc.io/docs/protoc-installation/)
 * [Cmake](https://cmake.org/download/) and make
 * [OpenSSL](https://docs.openssl.org/3.2/man7/ossl-guide-introduction/#getting-and-installing-openssl)
+* [Perl]https://learn.perl.org/installing/
+* LLVM
+* Tor (Optional)
 
-It’s best to follow the official instructions for installing these items. We’ve linked to each one’s current installation page as a quick reference. Also note that you might already have some of these prerequisites installed.
+It’s best to follow the official instructions for installing these items. We’ve linked to each one’s current installation page as a quick reference. Also note that you might already have some of these prerequisites installed. You can [also review the Tari home page for additional requirements](https://github.com/tari-project/tari)
 
 > :bulb: **Tip:** Check each project’s page for the command to check the version - this is usually the quickest method to find out if the application is installed or not.
 
