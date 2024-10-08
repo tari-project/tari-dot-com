@@ -22,7 +22,7 @@ To contribute a localization, you’ll need these at the bare minimum:
 
 However, this guide assumes the use of VS Code as your integrated development environment (IDE). This has some additional prerequisites, such as installing the IDE itself and supporting applications such as Git, nvm, Rust, and more.
 
-Most of the above is covered in our [“Setting up your development environment” guide](/lessons/how_to_become_a_tari_contributor.html). If you're not already familiar with development practices and tools, this is a good place to start.
+Most of the above is covered in our [“Setting up your development environment” guide](/lessons/08_setting_up_development_environment.html). If you're not already familiar with development practices and tools, this is a good place to start.
 
 In this guide, we’ll cover the following:
 * Creating a GitHub account
