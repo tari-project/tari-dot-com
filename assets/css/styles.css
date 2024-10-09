@@ -817,7 +817,7 @@ lottie-player {
   font-family: Avenir-Heavy, 'Avenir-Heavy', 'Myriad Pro', Arial, Verdana !important;
   font-size: calc(2.6 * var(--root-size));
   line-height: calc(4.2 * var(--root-size));
-  margin: calc(6 * var(--root-size)) 0 calc(2 * var(--root-size)) 0;
+  margin: 30px 0 10px 0;
   max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h2 + p {
@@ -827,7 +827,7 @@ lottie-player {
   font-family: Avenir-Heavy, 'Avenir-Heavy', 'Myriad Pro', Arial, Verdana !important;
   font-size: calc(2.2 * var(--root-size));
   line-height: calc(3.6 * var(--root-size));
-  margin: calc(4 * var(--root-size)) 0 0 0;
+  margin: 30px 0 10px 0;
   max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h3 + p {
@@ -837,7 +837,7 @@ lottie-player {
   font-family: Avenir-Heavy, 'Avenir-Heavy', 'Myriad Pro', Arial, Verdana !important;
   font-size: calc(2.2 * var(--root-size));
   line-height: calc(3 * var(--root-size));
-  margin: calc(4 * var(--root-size)) 0 calc(2 * var(--root-size)) 0;
+  margin: 30px 0 10px 0;
   max-width: var(--max-content-width);
 }
 .subpage #viewport section.main h4 + p {
@@ -1547,6 +1547,7 @@ body.page- #call-to-action {
 
 .post .meta {
   padding-top: 60px;
+  margin-bottom: -20px !important;
 }
 
 .post-wrapper ul {
