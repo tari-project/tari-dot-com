@@ -17,8 +17,7 @@
     </div>
 
     <div class="post-content {% if site.posts.size == 1 %}col-md-6{% endif %}">
-      <p class="post-date">{{ post.date | date: '%B %d, %Y' }}</p>
-      <p>{{ post.tag | strip_html }}</p>
+      <p>{{ post.tag | strip_html }} | {{ post.date | date: '%B %d, %Y' }}</p>
       <h3 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | strip_html }}</a></h3>
       <ul>
          {% for topic in post.topics %}
@@ -30,7 +29,6 @@
           
         </p>
         <div class="post-meta">
-        <!-- {% if post.author %}<strong class="post-author">{{ post.author }}</strong>{% endif %} -->
         
       </div>
         <a class="btn2" style="width: 100%;" href="{{ post.url | prepend: site.baseurl }}">Read more</a>
