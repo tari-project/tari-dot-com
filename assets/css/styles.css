@@ -1300,6 +1300,7 @@ input:-moz-placeholder {
   .subpage #viewport section.main p.meta {
     font-size: calc(1.4 * var(--root-size));
     line-height: calc(2 * var(--root-size));
+    margin-bottom: 10px !important;
   }
   .subpage #viewport section.main h1 {
     font-size: calc(3.8 * var(--root-size));
