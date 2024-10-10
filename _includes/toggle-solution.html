@@ -1,0 +1,25 @@
+<div class="tutorial_expected">
+  <button
+    class="btn btn-primary mt-4 mb-4"
+    type="button"
+    data-toggle="collapse"
+    data-target="#spoiler-{{ include.id }}"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    {{ include.header }}
+  </button>
+  <div
+    class="collapse"
+    style="max-width: var(--max-content-width)"
+    id="spoiler-{{ include.id }}"
+  >
+    <div>{{ include.content | markdownify }}</div>
+    <div class="playpen">
+      <div class="editable">
+        {% highlight rust %}{% include_relative code/{{ include.code }} %}{%
+        endhighlight %}
+      </div>
+    </div>
+  </div>
+</div>
