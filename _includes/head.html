@@ -7,12 +7,20 @@
 
 <meta property="og:title" content="Tari" />
 <meta property="og:description" content="The protocol for digital assets" />
-<meta property="og:image" content="{{ site.url }}assets/img/meta-image.jpg" />
+{% if page.og_image %}
+    <meta property="og:image" content="{{ site.url }}{{ page.og_image }}" />
+{% else %}
+    <meta property="og:image" content="{{ site.url }}assets/img/meta-image.jpg" />
+{% endif %}
 <meta property="og:url" content="{{ site.url }}" />
 
 <meta name="twitter:title" content="Tari" />
 <meta name="twitter:description" content="The protocol for digital assets" />
-<meta name="twitter:image" content="{{ site.url }}assets/img/meta-image.jpg" />
+{% if page.og_image %}
+    <meta name="twitter:image" content="{{ site.url }}{{ page.og_image }}" />
+{% else %}
+    <meta name="twitter:image" content="{{ site.url }}assets/img/meta-image.jpg" />
+{% endif %}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@tari" />
 
