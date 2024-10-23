@@ -7,6 +7,9 @@ subtitle:
 class: subpage
 ---
 
+## IMPORTANT
+MINOTARI HAS NOT BEEN REGISTERED UNDER THE SECURITIES ACT OF 1933, AS AMENDED, AND MAY NOT BE OFFERED OR SOLD IN THE U.S. OR TO U.S. PERSONS (AS SUCH TERM IS DEFINED IN RULE 902 AS PROMULGATED BY THE U.S. SECURITIES AND EXCHANGE COMMISSION) UNLESS IT IS REGISTERED UNDER SUCH ACT, OR AN EXEMPTION FROM THE REGISTRATION REQUIREMENTS OF SUCH ACT IS AVAILABLE.
+
 ## Node Setup
 In order to accept Tari, you will need to have a base layer Minotari node. You can either run it yourself, or find a node 
 that has the correct GRPC methods exposed to the internet. It is recommended that you run your own node.
