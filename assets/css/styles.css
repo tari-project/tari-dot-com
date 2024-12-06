@@ -1012,7 +1012,7 @@ lottie-player {
 }
 
 .btn2 {
-  height: calc(5.3 * var(--root-size));
+  min-height: calc(5.3 * var(--root-size));
   display: inline-block;
   border-radius: calc(0.3 * var(--root-size));
   padding: calc(1.7 * var(--root-size)) calc(2 * var(--root-size));
@@ -1786,10 +1786,13 @@ body.page- #call-to-action {
 }
 
 .graphic-boxes-small-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 40px;
   position: relative !important;
+  gap: 20px;
 }
+
 .graphic-boxes-small-wrapper a {
   color: black;
 }
@@ -1815,7 +1818,7 @@ body.page- #call-to-action {
 
 .graphic-box-small-content h4 {
   margin: 0 !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 4px !important;
 }
 
 .graphic-box-small:hover {
@@ -1828,17 +1831,34 @@ body.page- #call-to-action {
   position: relative;
   display: flex;
   width: 100%;
+  align-items: center;
+
+  gap: 30px;
 }
 
 .graphic-box-small-content img {
-  max-width: 50px !important;
+  width: 50px !important;
+  height: 50px !important;
   position: relative;
   border-radius: 5px;
+  flex: unset !important;
 }
 
 .graphic-box-small-content p {
   margin: 0px !important;
   line-height: 20px !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .graphic-boxes-small-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .graphic-box-small-content {
+    gap: 20px;
+    align-items: unset;
+  }
 }
 
 /* Wallet Banner */
