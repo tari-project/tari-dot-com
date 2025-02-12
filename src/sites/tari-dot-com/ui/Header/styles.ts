@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import styled from 'styled-components';
+import headerBgImage from './images/header-bg.png';
 
 export const Wrapper = styled.div`
     position: fixed;
@@ -32,15 +33,12 @@ const BaseHeader = styled(motion.div)`
     border-radius: 15px;
 `;
 
-export const HeaderLight = styled(BaseHeader)`
-    background: #0c0718;
-    color: #fff;
-`;
-
 export const HeaderDark = styled(BaseHeader)`
-    background: #fff;
-    color: #000;
-    top: 0;
-    left: 0;
-    will-change: transform;
+    color: #fff;
+    background: #0c0718;
+    background-image: url(${headerBgImage.src});
+    background-position: center;
+    background-repeat: repeat;
+    background-size: contain;
+    background-color: #0c0718;
 `;

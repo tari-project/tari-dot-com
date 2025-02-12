@@ -2,10 +2,10 @@
 
 import { Container, Wrapper } from './styles';
 
-export default function Tari() {
+export default function TariSection() {
     return (
         <Wrapper>
-            <Container>Tari</Container>
+            <Container>TariSection</Container>
         </Wrapper>
     );
 }

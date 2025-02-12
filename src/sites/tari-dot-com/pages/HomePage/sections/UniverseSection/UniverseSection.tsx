@@ -2,6 +2,6 @@
 
 import { Wrapper } from './styles';
 
-export default function Universe() {
+export default function UniverseSection() {
     return <Wrapper>Universe</Wrapper>;
 }
