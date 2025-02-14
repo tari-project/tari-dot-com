@@ -25,7 +25,12 @@ const AllianceFont = localFont({
 const PoppinsFont = localFont({
     src: [
         {
-            path: '../../assets/fonts/Poppins/Poppins-Bold.ttf',
+            path: '../../assets/fonts/Poppins/Poppins-Regular.woff2',
+            weight: '500',
+            style: 'normal',
+        },
+        {
+            path: '../../assets/fonts/Poppins/Poppins-Bold.woff2',
             weight: '700',
             style: 'normal',
         },
@@ -37,8 +42,13 @@ const PoppinsFont = localFont({
 const DrukFont = localFont({
     src: [
         {
-            path: '../../assets/fonts/Druk/DrukWideLCG-Bold.ttf',
+            path: '../../assets/fonts/Druk/DrukLCG-Bold.ttf',
             weight: '700',
+            style: 'normal',
+        },
+        {
+            path: '../../assets/fonts/Druk/DrukLCG-Heavy.ttf',
+            weight: '800',
             style: 'normal',
         },
     ],
