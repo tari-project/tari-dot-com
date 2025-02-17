@@ -1,6 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
+import backgroundImage from './images/background.png';
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -17,5 +18,8 @@ export const DarkBackground = styled.div`
     flex-direction: column;
 
     color: #fff;
+
+    background: url(${backgroundImage.src}) no-repeat;
+    background-size: contain;
     background-color: #111;
 `;
