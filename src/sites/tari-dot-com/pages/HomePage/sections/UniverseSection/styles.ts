@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
 
     gap: 40px;
-    padding: 155px 60px 50px 60px;
+    padding: 155px 60px 70px 60px;
 
     position: relative;
 `;

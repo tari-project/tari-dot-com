@@ -22,7 +22,7 @@ const rotateCounterClockwise = keyframes`
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 100dvh;
+    max-height: 1610px;
     aspect-ratio: 1 / 1;
 
     display: flex;
@@ -30,6 +30,7 @@ export const Wrapper = styled.div`
     justify-content: center;
 
     position: relative;
+    overflow: hidden;
 `;
 
 export const TextMiddle = styled.div`

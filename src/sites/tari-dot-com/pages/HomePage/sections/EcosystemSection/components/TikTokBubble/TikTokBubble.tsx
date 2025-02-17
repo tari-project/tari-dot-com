@@ -2,14 +2,14 @@
 
 import { Wrapper, TextWrapper, Username, Followers, InsideBorder } from './styles';
 
-interface TikTokBubbleProps {
+interface Props {
     image: string;
     username: string;
     followers: string;
     style?: React.CSSProperties;
 }
 
-export default function TikTokBubble({ username, followers, image, style }: TikTokBubbleProps) {
+export default function TikTokBubble({ username, followers, image, style }: Props) {
     return (
         <Wrapper $image={image} style={style}>
             <InsideBorder />

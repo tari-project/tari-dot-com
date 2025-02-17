@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ReactNode, HTMLAttributes } from 'react';
 
-interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     padding?: number;
     disabled?: boolean;
@@ -11,7 +11,7 @@ interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
     innerClassName?: string;
 }
 
-const Magnet: React.FC<MagnetProps> = ({
+const Magnet: React.FC<Props> = ({
     children,
     padding = 100,
     disabled = false,
