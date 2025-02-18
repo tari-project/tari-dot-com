@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.66.0",
+    "embla-carousel-auto-scroll": "^8.5.2",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "motion": "^12.4.2",
     "next": "15.1.6",
     "react": "^19.0.0",

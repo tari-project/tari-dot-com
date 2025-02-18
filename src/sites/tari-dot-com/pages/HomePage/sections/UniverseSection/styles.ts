@@ -75,18 +75,15 @@ export const Step = styled.div`
     backdrop-filter: blur(50px);
 `;
 
-export const StepIcon = styled.div`
-    width: 72px;
-    height: 72px;
-    background: purple;
-    border-radius: 10px;
+export const StepIcon = styled.img`
+    width: 90px;
+    height: 90px;
     flex-shrink: 0;
 `;
 
 export const TextInner = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 5px;
 `;
 
 export const StepTitle = styled.div`

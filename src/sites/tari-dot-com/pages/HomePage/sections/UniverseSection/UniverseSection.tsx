@@ -16,6 +16,10 @@ import {
     StepText,
 } from './styles';
 
+import tariIcon from './images/tari-icon.png';
+import runIcon from './images/run-icon.png';
+import earnIcon from './images/earn-icon.png';
+
 export default function UniverseSection() {
     return (
         <Wrapper>
@@ -35,7 +39,7 @@ export default function UniverseSection() {
 
             <StepsWrapper>
                 <Step>
-                    <StepIcon />
+                    <StepIcon src={tariIcon.src} alt="" />
                     <TextInner>
                         <StepTitle>Download & install</StepTitle>
                         <StepText>
@@ -44,7 +48,7 @@ export default function UniverseSection() {
                     </TextInner>
                 </Step>
                 <Step>
-                    <StepIcon />
+                    <StepIcon src={runIcon.src} alt="" />
                     <TextInner>
                         <StepTitle>Run</StepTitle>
                         <StepText>
@@ -53,7 +57,7 @@ export default function UniverseSection() {
                     </TextInner>
                 </Step>
                 <Step>
-                    <StepIcon />
+                    <StepIcon src={earnIcon.src} alt="" />
                     <TextInner>
                         <StepTitle>Earn</StepTitle>
                         <StepText>
