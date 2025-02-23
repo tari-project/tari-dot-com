@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 100dvh;
+    min-height: 1037px;
+    height: 100dvh;
     display: flex;
+    background-color: #e4e3ec;
 `;
 
 export const Holder = styled.div`

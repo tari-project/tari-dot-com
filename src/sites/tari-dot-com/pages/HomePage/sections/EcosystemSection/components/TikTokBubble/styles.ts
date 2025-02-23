@@ -64,6 +64,7 @@ export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    gap: 7px;
     padding: 20px;
 
     position: absolute;
@@ -83,6 +84,15 @@ export const Username = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    svg {
+        width: 23px;
+        height: 23px;
+    }
 `;
 
 export const Followers = styled.div`

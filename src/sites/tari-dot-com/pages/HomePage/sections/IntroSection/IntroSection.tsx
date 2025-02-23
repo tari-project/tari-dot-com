@@ -6,7 +6,6 @@ import {
     EyebrowWrapper,
     EyebrowText,
     EyebrowPill,
-    Title,
     Text,
     ContentWrapper,
     MainImage,
@@ -14,6 +13,7 @@ import {
     TitleWrapper,
 } from './styles';
 import mainImage from './images/main-image.png';
+import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 
 export default function IntroSection() {
     return (
@@ -28,7 +28,8 @@ export default function IntroSection() {
                     </EyebrowWrapper>
 
                     <TitleWrapper>
-                        <Title>Put your device to work earning steady income</Title>
+                        <TitleAnimation text={`Put your device to work earning steady income`} color="#000" />
+
                         <Text>
                             Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you
                             don’t have to give up your personal information.

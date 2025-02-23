@@ -1,20 +1,26 @@
 'use client';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 100dvh;
+    height: 300vh; // Exactly 3 viewport heights
+    position: relative;
+`;
+
+export const StickyHolder = styled.div`
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    padding: 200px 60px 70px 60px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-
     gap: 40px;
-    padding: 155px 60px 70px 60px;
-
-    position: relative;
 `;
 
 export const TextWrapper = styled.div`
@@ -49,11 +55,25 @@ export const Text = styled.div`
     line-height: 130%;
 `;
 
-export const StageWrapper = styled.div``;
+export const StageWrapper = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
+`;
 
-export const OuterGlow = styled.div``;
-
-export const TariIcon = styled.div``;
+export const StageNumber = styled.div<{ $active: boolean }>`
+    position: absolute;
+    font-size: 120px;
+    font-weight: bold;
+    color: ${(props) => (props.$active ? '#FF6B4A' : '#333')};
+    opacity: ${(props) => (props.$active ? 1 : 0)};
+    transition: all 0.5s ease;
+    text-align: center;
+    width: 100%;
+`;
 
 export const StepsWrapper = styled.div`
     display: flex;
@@ -61,7 +81,7 @@ export const StepsWrapper = styled.div`
     max-width: 1480px;
 `;
 
-export const Step = styled.div`
+export const Step = styled.div<{ $active: boolean }>`
     display: flex;
     align-items: center;
     gap: 10px;
@@ -73,6 +93,15 @@ export const Step = styled.div`
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset;
     backdrop-filter: blur(50px);
+
+    transition: all 0.5s ease;
+    opacity: 0.1;
+
+    ${({ $active }) =>
+        $active &&
+        css`
+            opacity: 1;
+        `}
 `;
 
 export const StepIcon = styled.img`

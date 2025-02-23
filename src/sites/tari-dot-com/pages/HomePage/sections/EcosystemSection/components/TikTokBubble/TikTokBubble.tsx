@@ -1,5 +1,6 @@
 'use client';
 
+import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/icons/TikTokIcon';
 import { Wrapper, TextWrapper, Username, Followers, InsideBorder } from './styles';
 
 interface Props {
@@ -14,7 +15,9 @@ export default function TikTokBubble({ username, followers, image, style }: Prop
         <Wrapper $image={image} style={style}>
             <InsideBorder />
             <TextWrapper>
-                <Username>{username}</Username>
+                <Username>
+                    <TikTokIcon /> {username}
+                </Username>
                 <Followers>{followers}</Followers>
             </TextWrapper>
         </Wrapper>

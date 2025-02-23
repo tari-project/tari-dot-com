@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     width: 100%;
+    max-width: 1604px;
 
     padding: 105px 60px;
 

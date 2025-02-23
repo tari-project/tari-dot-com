@@ -1,19 +1,23 @@
 'use client';
 
 import React from 'react';
-import { HeaderDark, Wrapper } from './styles';
+import { HeaderDark } from './styles';
 import Navigation from './Navigation/Navigation';
 import MinersCTA from './MinersCTA/MinersCTA';
 import TariLogo from '../TariLogo/TariLogo';
 
 export default function Header() {
+    const headerContent = (
+        <>
+            <TariLogo />
+            <Navigation />
+            <MinersCTA />
+        </>
+    );
+
     return (
-        <Wrapper>
-            <HeaderDark>
-                <TariLogo />
-                <Navigation />
-                <MinersCTA />
-            </HeaderDark>
-        </Wrapper>
+        <>
+            <HeaderDark>{headerContent}</HeaderDark>
+        </>
     );
 }
