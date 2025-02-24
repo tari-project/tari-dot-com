@@ -1,10 +1,11 @@
 'use client';
 
 import styled, { css } from 'styled-components';
+import { motion } from 'motion/react';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 300vh; // Exactly 3 viewport heights
+    height: 300vh;
     position: relative;
 `;
 
@@ -14,7 +15,7 @@ export const StickyHolder = styled.div`
 
     width: 100%;
     height: 100vh;
-    padding: 200px 60px 70px 60px;
+    padding: 160px 60px 70px 60px;
 
     display: flex;
     align-items: center;
@@ -55,26 +56,6 @@ export const Text = styled.div`
     line-height: 130%;
 `;
 
-export const StageWrapper = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    width: 200px;
-`;
-
-export const StageNumber = styled.div<{ $active: boolean }>`
-    position: absolute;
-    font-size: 120px;
-    font-weight: bold;
-    color: ${(props) => (props.$active ? '#FF6B4A' : '#333')};
-    opacity: ${(props) => (props.$active ? 1 : 0)};
-    transition: all 0.5s ease;
-    text-align: center;
-    width: 100%;
-`;
-
 export const StepsWrapper = styled.div`
     display: flex;
     gap: 20px;
@@ -82,7 +63,10 @@ export const StepsWrapper = styled.div`
 `;
 
 export const Step = styled.div<{ $active: boolean }>`
+    position: relative;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
 
@@ -102,6 +86,33 @@ export const Step = styled.div<{ $active: boolean }>`
         css`
             opacity: 1;
         `}
+`;
+
+export const StepInside = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`;
+
+export const StepProgress = styled.div<{ $progress: number }>`
+    width: 95%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: ${(props) => props.$progress}%;
+        background: rgba(255, 255, 255, 0.15);
+        transition: width 0.2s ease-out;
+        border-radius: 30px;
+    }
 `;
 
 export const StepIcon = styled.img`
@@ -133,4 +144,74 @@ export const StepText = styled.div`
     font-weight: 700;
     line-height: 130%;
     max-width: 282px;
+`;
+
+export const StageWrapper = styled.div`
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    max-width: 1312px;
+`;
+
+export const TariIcon = styled(motion.img)`
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+`;
+
+export const FolderImage = styled(motion.img)`
+    width: 206px;
+    height: 200px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+`;
+
+export const GlowSquare = styled(motion.div)`
+    width: 286px;
+    height: 286px;
+
+    border-radius: 94px;
+    opacity: 0.4;
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: 0px 10px 23px 0px rgba(255, 255, 255, 0.45) inset;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+`;
+
+export const VideoPlayer = styled(motion.div)`
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 16 / 9;
+
+    background-color: #000;
+    border-radius: 20px;
+    overflow: hidden;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: none;
+    }
 `;
