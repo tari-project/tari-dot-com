@@ -178,6 +178,7 @@ export const FolderImage = styled(motion.img)`
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
+    z-index: 2;
 `;
 
 export const GlowSquare = styled(motion.div)`
@@ -201,6 +202,7 @@ export const VideoPlayer = styled(motion.div)`
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 3;
     transform: translate(-50%, -50%);
     aspect-ratio: 16 / 9;
 

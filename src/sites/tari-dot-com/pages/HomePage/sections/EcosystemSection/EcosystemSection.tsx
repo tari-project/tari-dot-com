@@ -15,6 +15,7 @@ import tiktok1Img from './images/tiktok1.png';
 import tiktok2Img from './images/tiktok2.png';
 import tiktok3Img from './images/tiktok3.png';
 import tiktok4Img from './images/tiktok4.png';
+import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 
 export default function EcosystemSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -30,7 +31,9 @@ export default function EcosystemSection() {
         <Wrapper onMouseMove={handleMouseMove}>
             <TextMiddle>
                 <Eyebrow>PEOPLE &nbsp;❤️&nbsp; MINING TARI</Eyebrow>
-                <Title>ECHOES FROM THE ECOSYSTEM</Title>
+                <Title>
+                    <TitleAnimation text={`ECHOES FROM THE ECOSYSTEM`} align="center" />
+                </Title>
                 <Text>People from all around the world with tiers of computers are mining Tari everyday.</Text>
             </TextMiddle>
 

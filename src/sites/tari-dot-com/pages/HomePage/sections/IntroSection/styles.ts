@@ -78,7 +78,7 @@ export const Title = styled.div`
     font-weight: 800;
     line-height: 84.2%;
     text-transform: uppercase;
-    max-width: 612px;
+    max-width: 622px;
 `;
 
 export const Text = styled.div`

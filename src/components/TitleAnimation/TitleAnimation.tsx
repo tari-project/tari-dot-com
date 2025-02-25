@@ -1,37 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import { motion, Variants } from 'motion/react';
+import { Variants, useInView } from 'motion/react';
+import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper } from './styles';
 
-interface TextAnimationProps {
+interface Props {
     text: string;
     delay?: number;
     initialDelay?: number;
     className?: string;
     color?: string;
+    align?: 'left' | 'center' | 'right';
+    staggerDelay?: number;
 }
-
-const TextWrapper = styled(motion.div)`
-    display: flex;
-    flex-wrap: wrap;
-`;
-
-const WordWrapper = styled.span<{ $color?: string }>`
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-druk), sans-serif;
-    font-size: 120px;
-    font-weight: 800;
-    font-style: normal;
-    text-transform: uppercase;
-    color: ${(props) => props.$color || '#fff'};
-    margin-right: 16px;
-    overflow: hidden;
-    height: 105px;
-`;
-
-const WordAnimation = styled(motion.span)`
-    display: inline-block;
-`;
 
 const wordVariants: Variants = {
     hidden: {
@@ -52,36 +31,43 @@ const wordVariants: Variants = {
 
 const containerVariants: Variants = {
     hidden: { opacity: 1 },
-    visible: (delay: number) => ({
+    visible: ({ delay, staggerDelay }) => ({
         transition: {
             delayChildren: delay,
-            staggerChildren: 0.15,
+            staggerChildren: staggerDelay,
             ease: 'easeInOut',
             staggerDirection: 1,
         },
     }),
 };
 
-export const TitleAnimation: React.FC<TextAnimationProps> = ({ text, initialDelay = 500, className, color }) => {
-    const words = text.split(' ').filter((word) => word.length > 0);
+export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 200, align = 'left', staggerDelay = 0.15 }) => {
+    const ref = React.useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const words = text.split(/(\s+)/).filter((segment) => segment.length > 0);
 
     return (
-        <TextWrapper
-            className={className}
-            as={motion.div}
+        <Wrapper
+            ref={ref}
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
-            custom={initialDelay / 1000}
+            animate={isInView ? 'visible' : 'hidden'}
+            custom={{ delay: initialDelay / 1000, staggerDelay }}
+            $align={align}
         >
-            {words.map((word, i) => (
-                <WordWrapper key={`${word}-${i}`} $color={color}>
-                    <WordAnimation key={`${word}-${i}-ani`} variants={wordVariants} custom={i}>
-                        {word}
-                    </WordAnimation>
-                </WordWrapper>
-            ))}
-        </TextWrapper>
+            {words.map((segment, i) =>
+                segment.trim().length === 0 ? (
+                    <Space key={`space-${i}`}>&nbsp;</Space>
+                ) : (
+                    <WordWrapper key={`word-${i}`}>
+                        <WordAnimation variants={wordVariants} custom={i}>
+                            {segment}
+                        </WordAnimation>
+                        <WordSpacer>{segment}</WordSpacer>
+                    </WordWrapper>
+                )
+            )}
+        </Wrapper>
     );
 };
 

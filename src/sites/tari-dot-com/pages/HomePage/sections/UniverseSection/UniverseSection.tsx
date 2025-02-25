@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { AnimatePresence, useMotionValue, useTransform } from 'motion/react';
+import { useMotionValue, useTransform } from 'motion/react';
 
 import {
     Wrapper,
@@ -20,7 +20,6 @@ import {
     GlowSquare,
     FolderImage,
     VideoPlayer,
-    StepProgress,
     StepInside,
 } from './styles';
 
@@ -29,19 +28,28 @@ import runIcon from './images/run-icon.png';
 import earnIcon from './images/earn-icon.png';
 import tariIconLarge from './images/tari-icon-large.png';
 import folderImage from './images/folder.png';
+import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 
 export default function UniverseSection() {
     const [activeStep, setActiveStep] = useState(1);
-    const [progressInSection, setProgressInSection] = useState(0);
+    //const [progressInSection, setProgressInSection] = useState(0);
     const sectionRef = useRef<HTMLDivElement>(null);
     const progressMotion = useMotionValue(0);
 
-    const folderScale = useTransform(progressMotion, [0, 100], [0, 1]);
-    const folderOpacity = useTransform(progressMotion, [0, 100], [0, 1]);
-    const glowScale = useTransform(progressMotion, [0, 100], [0.3, 1]);
+    const tariIconX = useTransform(progressMotion, [33, 50, 55, 60, 66], ['-50%', '-175%', '-170%', '-50%', '-50%']);
+    const tariIconY = useTransform(progressMotion, [33, 50, 60, 66], ['-50%', '-50%', '-170%', '-50%']);
+    const tariIconRotation = useTransform(progressMotion, [33, 50, 55, 66], [0, 0, 0, 77]);
+    const tariIconOpacity = useTransform(progressMotion, [0, 33, 66, 80], [0, 1, 1, 0]);
+    const tariIconScale = useTransform(progressMotion, [0, 33, 50, 66], [0.3, 1, 1, 0.6]);
 
-    //const showFolder = useTransform(progressMotion, [0, 50], [0, 1]);
-    //const tariX = useTransform(progressMotion, [30, 50], ['0%', '-150%']);
+    const folderX = useTransform(progressMotion, [33, 50], ['50%', '-50%']);
+    const folderOpacity = useTransform(progressMotion, [33, 50], [0, 1]);
+
+    const glowOpacity = useTransform(progressMotion, [10, 33, 50], [0, 1, 0]);
+    const glowScale = useTransform(progressMotion, [10, 33, 50], [0, 1, 1.5]);
+
+    const videoScale = useTransform(progressMotion, [70, 90], [0.4, 1]);
+    const videoOpacity = useTransform(progressMotion, [0, 70, 90], [0, 0, 1]);
 
     const handleScroll = useCallback(() => {
         const section = sectionRef.current;
@@ -55,15 +63,13 @@ export default function UniverseSection() {
         const overallProgress = Math.max(0, Math.min(1, scrolledAmount / totalScrollDistance));
 
         const currentStep = Math.floor(overallProgress * 3);
-        const currentProgress = ((overallProgress * 3) % 1) * 100;
-
-        // Ensure final section stays at 100% when reaching the end
-        const finalProgress =
-            overallProgress >= 0.99 ? 100 : currentStep === 2 ? Math.min(100, currentProgress) : currentProgress;
+        // const currentProgress = ((overallProgress * 3) % 1) * 100;
+        //const sectionProgress = overallProgress >= 0.99 ? 100 : currentStep === 2 ? Math.min(100, currentProgress) : currentProgress;
 
         setActiveStep(Math.min(Math.max(currentStep + 1, 1), 3));
-        setProgressInSection(finalProgress);
-        progressMotion.set(finalProgress);
+        //setProgressInSection(sectionProgress);
+
+        progressMotion.set(overallProgress * 100);
     }, [progressMotion]);
 
     useEffect(() => {
@@ -72,87 +78,80 @@ export default function UniverseSection() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
 
+    /*
     const getStepProgress = (step: number): number => {
         if (activeStep > step) return 100;
         if (activeStep < step) return 0;
         return progressInSection;
     };
+    */
 
     return (
         <Wrapper ref={sectionRef}>
             <StickyHolder>
                 <TextWrapper>
-                    <Title>Get rewarded for helping secure the network </Title>
+                    <Title>
+                        <TitleAnimation text={`Get rewarded for helping secure the network`} align="center" />
+                    </Title>
                     <Text>
-                        Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you don’t
-                        have to give up your personal information.
+                        <TitleAnimation
+                            text={`Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
+                            initialDelay={1300}
+                            staggerDelay={0.03}
+                            align="center"
+                        />
                     </Text>
                 </TextWrapper>
 
                 <StageWrapper>
-                    <AnimatePresence>
-                        {activeStep === 1 && (
-                            <FolderImage
-                                src={folderImage.src}
-                                alt=""
-                                style={{
-                                    scale: folderScale,
-                                    opacity: folderOpacity,
-                                    x: '-50%',
-                                    y: '-50%',
-                                }}
-                            />
-                        )}
-                    </AnimatePresence>
+                    <FolderImage
+                        src={folderImage.src}
+                        alt=""
+                        style={{
+                            x: folderX,
+                            y: '-50%',
+                            opacity: folderOpacity,
+                        }}
+                    />
 
-                    <AnimatePresence>
-                        {activeStep === 2 && (
-                            <TariIcon
-                                src={tariIconLarge.src}
-                                alt=""
-                                style={{
-                                    scale: folderScale,
-                                    opacity: folderOpacity,
-                                    x: '-50%',
-                                    y: '-50%',
-                                }}
-                            />
-                        )}
-                    </AnimatePresence>
+                    <TariIcon
+                        src={tariIconLarge.src}
+                        alt=""
+                        style={{
+                            x: tariIconX,
+                            y: tariIconY,
+                            rotate: tariIconRotation,
+                            opacity: tariIconOpacity,
+                            scale: tariIconScale,
+                        }}
+                    />
 
-                    <AnimatePresence>
-                        {activeStep === 2 && (
-                            <GlowSquare
-                                style={{
-                                    scale: glowScale,
-                                    x: '-50%',
-                                    y: '-50%',
-                                }}
-                            />
-                        )}
-                    </AnimatePresence>
+                    <GlowSquare
+                        style={{
+                            x: '-50%',
+                            y: '-50%',
+                            opacity: glowOpacity,
+                            scale: glowScale,
+                        }}
+                    />
 
-                    <AnimatePresence>
-                        {activeStep === 3 && (
-                            <VideoPlayer
-                                key="video-player-step3"
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.5 }}
-                                style={{
-                                    x: '-50%',
-                                    y: '-50%',
-                                }}
-                            >
-                                <iframe
-                                    src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/25949d56fb76cf8ddc29f61ca47af7e6/iframe?preload=true&loop=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F25949d56fb76cf8ddc29f61ca47af7e6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&autoplay=true&muted=true"
-                                    loading="eager"
-                                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
-                                    allowFullScreen
-                                ></iframe>
-                            </VideoPlayer>
-                        )}
-                    </AnimatePresence>
+                    {activeStep === 3 && (
+                        <VideoPlayer
+                            style={{
+                                x: '-50%',
+                                y: '-50%',
+                                scale: videoScale,
+                                opacity: videoOpacity,
+                            }}
+                        >
+                            <iframe
+                                src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/25949d56fb76cf8ddc29f61ca47af7e6/iframe?preload=true&loop=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F25949d56fb76cf8ddc29f61ca47af7e6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&autoplay=true&muted=true"
+                                loading="eager"
+                                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                                allowFullScreen
+                            ></iframe>
+                        </VideoPlayer>
+                    )}
                 </StageWrapper>
 
                 <StepsWrapper>
@@ -166,7 +165,6 @@ export default function UniverseSection() {
                                 </StepText>
                             </TextInner>
                         </StepInside>
-                        <StepProgress $progress={getStepProgress(1)} />
                     </Step>
                     <Step $active={activeStep >= 2}>
                         <StepInside>
@@ -178,7 +176,6 @@ export default function UniverseSection() {
                                 </StepText>
                             </TextInner>
                         </StepInside>
-                        <StepProgress $progress={getStepProgress(2)} />
                     </Step>
                     <Step $active={activeStep >= 3}>
                         <StepInside>
@@ -190,7 +187,6 @@ export default function UniverseSection() {
                                 </StepText>
                             </TextInner>
                         </StepInside>
-                        <StepProgress $progress={getStepProgress(3)} />
                     </Step>
                 </StepsWrapper>
             </StickyHolder>
