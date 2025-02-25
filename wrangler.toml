@@ -1,0 +1,4 @@
+name = "tari-dot-com-2025"
+compatibility_date = "2025-02-19"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
