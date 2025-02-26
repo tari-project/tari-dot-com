@@ -166,7 +166,20 @@ export const TariIcon = styled(motion.img)`
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
+`;
+
+export const FolderFront = styled(motion.img)`
+    width: 206px;
+    height: 147px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3;
+    margin-top: 27px;
 `;
 
 export const FolderImage = styled(motion.img)`
@@ -178,7 +191,7 @@ export const FolderImage = styled(motion.img)`
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 1;
 `;
 
 export const GlowSquare = styled(motion.div)`

@@ -21,6 +21,7 @@ import {
     FolderImage,
     VideoPlayer,
     StepInside,
+    FolderFront,
 } from './styles';
 
 import tariIcon from './images/tari-icon.png';
@@ -28,6 +29,7 @@ import runIcon from './images/run-icon.png';
 import earnIcon from './images/earn-icon.png';
 import tariIconLarge from './images/tari-icon-large.png';
 import folderImage from './images/folder.png';
+import folderFrontImage from './images/folder-front.png';
 import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 
 export default function UniverseSection() {
@@ -50,6 +52,8 @@ export default function UniverseSection() {
 
     const videoScale = useTransform(progressMotion, [70, 90], [0.4, 1]);
     const videoOpacity = useTransform(progressMotion, [0, 70, 90], [0, 0, 1]);
+
+    const folderFrontOpacity = useTransform(progressMotion, [0, 50, 51], [0, 0, 1]);
 
     const handleScroll = useCallback(() => {
         const section = sectionRef.current;
@@ -104,6 +108,14 @@ export default function UniverseSection() {
                 </TextWrapper>
 
                 <StageWrapper>
+                    <FolderFront
+                        src={folderFrontImage.src}
+                        alt=""
+                        style={{
+                            opacity: folderFrontOpacity,
+                        }}
+                    />
+
                     <FolderImage
                         src={folderImage.src}
                         alt=""
