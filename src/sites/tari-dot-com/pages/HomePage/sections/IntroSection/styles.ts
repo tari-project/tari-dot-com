@@ -4,10 +4,19 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 1037px;
+    min-height: 900px;
     height: 100dvh;
     display: flex;
     background-color: #e4e3ec;
+
+    padding: 0 20px;
+
+    @media (max-width: 807px) {
+        min-height: auto;
+        height: auto;
+
+        padding: 130px 20px 100px 20px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -16,10 +25,23 @@ export const Holder = styled.div`
     justify-content: center;
     gap: 60px;
     margin: 0 auto;
+
+    @media (max-width: 1320px) {
+        gap: 0px;
+    }
+
+    @media (max-width: 807px) {
+        flex-direction: column;
+        gap: 30px;
+    }
 `;
 
 export const MainImage = styled.img`
     width: 50%;
+
+    @media (max-height: 900px) {
+        max-height: 600px;
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -28,6 +50,10 @@ export const ContentWrapper = styled.div`
     gap: 30px;
     max-width: 629px;
     width: 100%;
+
+    @media (max-width: 807px) {
+        align-items: center;
+    }
 `;
 
 export const EyebrowWrapper = styled.div`
@@ -43,25 +69,14 @@ export const EyebrowText = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
-`;
 
-export const EyebrowPill = styled.div`
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
+    @media (max-width: 999px) {
+        font-size: 16px;
+    }
 
-    border-radius: 50px;
-    background: linear-gradient(0deg, #111 0%, #111 100%), #fff;
-
-    height: 39px;
-    padding: 0px 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @media (max-width: 807px) {
+        font-size: 14px;
+    }
 `;
 
 export const TitleWrapper = styled.div`
@@ -79,6 +94,18 @@ export const Title = styled.div`
     line-height: 84.2%;
     text-transform: uppercase;
     max-width: 622px;
+
+    @media (max-width: 1181px) {
+        font-size: 100px;
+    }
+
+    @media (max-width: 999px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 60px;
+    }
 `;
 
 export const Text = styled.div`
@@ -87,4 +114,12 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+
+    @media (max-width: 999px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 14px;
+    }
 `;

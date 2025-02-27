@@ -12,6 +12,7 @@
     "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
+    "@number-flow/react": "^0.5.5",
     "@tanstack/react-query": "^5.66.0",
     "embla-carousel-auto-scroll": "^8.5.2",
     "embla-carousel-autoplay": "^8.5.2",
@@ -20,6 +21,7 @@
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-rewards": "^2.1.0",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {

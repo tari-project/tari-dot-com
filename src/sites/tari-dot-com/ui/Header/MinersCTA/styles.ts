@@ -1,6 +1,17 @@
 'use client';
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const radarPulse = keyframes`
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+`;
 
 export const Wrapper = styled.div`
     display: flex;
@@ -13,12 +24,28 @@ export const Wrapper = styled.div`
 
     height: 54px;
     padding: 10px 6px 10px 18px;
+
+    position: relative;
+
+    @media (max-width: 1000px) {
+        border: none;
+        background: none;
+    }
+
+    @media (max-width: 666px) {
+        display: none;
+    }
 `;
 
 export const TextWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 11px;
+    position: relative;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 `;
 
 export const Dot = styled.div`
@@ -26,22 +53,46 @@ export const Dot = styled.div`
     height: 11px;
     background: linear-gradient(180deg, #0f9 0%, #b0d636 100%);
     border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%) translateY(1px);
+    z-index: 1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        border-radius: 50%;
+        z-index: -1;
+        animation: ${radarPulse} 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
 `;
 
 export const Text = styled.div`
-    background: linear-gradient(180deg, #00ff99 0%, #b0d636 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #71ee73;
     font-family: var(--font-alliance), sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
     line-height: 94.2%;
     letter-spacing: -0.75px;
+    font-variant-numeric: tabular-nums;
+`;
+
+export const ButtonWrapper = styled.div`
+    position: relative;
+    z-index: 1;
 `;
 
 export const Button = styled.div`
+    position: relative;
+    z-index: 1;
     border-radius: 10px;
     background: #fff;
 
@@ -62,4 +113,37 @@ export const Button = styled.div`
     font-weight: 700;
     line-height: 94.2%;
     letter-spacing: -0.75px;
+
+    transition: transform 0.3s ease;
+
+    .arrow-icon {
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+
+        .arrow-icon {
+            transform: translateX(5px);
+        }
+    }
+`;
+
+export const ConfettiTarget = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -70%);
+    pointer-events: none;
+    z-index: 0;
+`;
+
+export const NumberWrapper = styled.span`
+    display: inline-block;
+    min-width: 45px;
+    text-align: right;
+    margin-right: 4px;
+    margin-left: 14px;
+    text-transform: lowercase;
+    transform: translateY(0.3px);
 `;

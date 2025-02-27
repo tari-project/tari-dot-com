@@ -4,22 +4,32 @@ import { motion } from 'motion/react';
 import styled from 'styled-components';
 import headerBgImage from './images/header-bg.png';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+    width: 100%;
+    padding: 20px 60px 0 60px;
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1000px) {
+        padding: 20px 20px 0 20px;
+    }
+`;
 
 const BaseHeader = styled(motion.div)`
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-
     padding: 14px 20px 14px 30px;
+    pointer-events: auto;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    border-radius: 15px;
 
     width: 100%;
     height: 82px;
@@ -27,6 +37,25 @@ const BaseHeader = styled(motion.div)`
 
     border-radius: 15px;
     box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
+
+    .tari-logo {
+        width: 121px;
+    }
+
+    @media (max-width: 1000px) {
+        .tari-logo {
+            width: 100px;
+        }
+    }
+
+    @media (max-width: 666px) {
+        height: 72px;
+        padding: 23px 28px;
+
+        .tari-logo {
+            width: 80px;
+        }
+    }
 `;
 
 export const HeaderDark = styled(BaseHeader)`

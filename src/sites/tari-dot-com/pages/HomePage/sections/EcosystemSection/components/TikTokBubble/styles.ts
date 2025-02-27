@@ -21,13 +21,14 @@ export const Wrapper = styled.div<{ $image: string }>`
     background-image: url(${(props) => props.$image});
     background-size: cover;
     background-position: center;
+    background-color: #292929;
 
     border-radius: 20px;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5);
 
     width: 295px;
-    height: 371px;
     overflow: hidden;
+    aspect-ratio: 295 / 371;
 
     animation: ${float} 3s ease-in-out infinite;
     transition: scale 2s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -46,8 +47,12 @@ export const Wrapper = styled.div<{ $image: string }>`
         animation-delay: -2s;
     }
 
-    &:hover {
-        scale: 1.1;
+    @media (max-width: 1297px) {
+        width: 230px;
+    }
+
+    @media (max-width: 1035px) {
+        display: none;
     }
 `;
 
@@ -92,6 +97,7 @@ export const Username = styled.div`
     svg {
         width: 23px;
         height: 23px;
+        transform: translateY(2px);
     }
 `;
 

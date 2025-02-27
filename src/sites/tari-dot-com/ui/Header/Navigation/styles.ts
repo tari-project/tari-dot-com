@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 50px;
+
+    @media (max-width: 1000px) {
+        gap: 30px;
+    }
+
+    @media (max-width: 666px) {
+        display: none;
+    }
 `;
 
 export const NavLink = styled(Link)`
@@ -17,4 +25,8 @@ export const NavLink = styled(Link)`
     font-weight: 600;
     line-height: 94.2%;
     letter-spacing: -0.85px;
+
+    @media (max-width: 1000px) {
+        font-size: 15px;
+    }
 `;

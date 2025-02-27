@@ -26,7 +26,7 @@ export default function Footer() {
     return (
         <Wrapper>
             <Holder>
-                <TariLogo width={109} href="/" />
+                <TariLogo href="/" />
 
                 <Middle>
                     <LinksWrapper>

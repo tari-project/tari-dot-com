@@ -5,11 +5,10 @@ import { Wrapper } from './styles';
 import Link from 'next/link';
 
 interface Props {
-    width?: number;
     href?: string;
 }
 
-export default function TariLogo({ width = 121, href }: Props) {
+export default function TariLogo({ href }: Props) {
     const logo = (
         <svg viewBox="0 0 121 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_258_2)">
@@ -39,5 +38,5 @@ export default function TariLogo({ width = 121, href }: Props) {
         </svg>
     );
 
-    return <Wrapper $width={width}>{href ? <Link href={href}>{logo}</Link> : logo}</Wrapper>;
+    return <Wrapper className="tari-logo">{href ? <Link href={href}>{logo}</Link> : logo}</Wrapper>;
 }

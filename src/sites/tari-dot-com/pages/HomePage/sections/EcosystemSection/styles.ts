@@ -44,6 +44,10 @@ export const TextMiddle = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 1158px) {
+        gap: 15px;
+    }
 `;
 
 export const Eyebrow = styled.div`
@@ -67,6 +71,15 @@ export const Title = styled.div`
     text-transform: uppercase;
 
     max-width: 790px;
+
+    @media (max-width: 1334px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 1158px) {
+        font-size: 60px;
+        max-width: 400px;
+    }
 `;
 
 export const Text = styled.div`
@@ -79,6 +92,10 @@ export const Text = styled.div`
     line-height: 130%;
 
     max-width: 434px;
+
+    @media (max-width: 1158px) {
+        font-size: 16px;
+    }
 `;
 
 export const FloatingElements = styled.div`

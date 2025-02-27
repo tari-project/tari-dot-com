@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
     justify-content: center;
 
     padding: 50px 60px 65px 60px;
+
+    @media (max-width: 1000px) {
+        padding: 50px 20px 65px 20px;
+    }
 `;
 
 export const Container = styled.div`
@@ -25,6 +29,10 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 1000px) {
+        padding: 80px 40px;
+    }
 `;
 
 export const Middle = styled.div`
@@ -35,6 +43,14 @@ export const Middle = styled.div`
     align-items: center;
     justify-content: center;
     gap: 40px;
+
+    @media (max-width: 1000px) {
+        gap: 30px;
+    }
+
+    @media (max-width: 666px) {
+        gap: 20px;
+    }
 `;
 
 export const Eyebrow = styled.div`
@@ -45,6 +61,10 @@ export const Eyebrow = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
+
+    @media (max-width: 666px) {
+        font-size: 12px;
+    }
 `;
 
 export const MainText = styled.div`
@@ -58,6 +78,14 @@ export const MainText = styled.div`
     text-transform: uppercase;
 
     max-width: 790px;
+
+    @media (max-width: 1000px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 666px) {
+        font-size: 60px;
+    }
 `;
 
 export const Text = styled.div`
@@ -70,4 +98,8 @@ export const Text = styled.div`
     line-height: 130%;
 
     max-width: 650px;
+
+    @media (max-width: 666px) {
+        font-size: 16px;
+    }
 `;

@@ -7,6 +7,10 @@ export const Wrapper = styled.footer`
     padding: 80px 80px;
     color: #fff;
     font-family: var(--font-alliance), sans-serif;
+
+    .tari-logo {
+        width: 109px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -38,6 +42,7 @@ export const LinksWrapper = styled.div`
     gap: 86px;
     max-width: 624px;
     padding-bottom: 62px;
+    flex-wrap: wrap;
 `;
 
 export const Column = styled.div`
@@ -67,12 +72,13 @@ export const StyledLink = styled(Link)`
     line-height: 140%;
 
     opacity: 0.75;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     text-decoration: none;
 
     &:hover {
         opacity: 1;
-        text-decoration: underline;
+        text-decoration: none;
+        transform: scale(1.05);
     }
 `;
 
@@ -116,9 +122,14 @@ export const SocialIcon = styled(Link)`
     align-items: center;
     justify-content: center;
     opacity: 0.75;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    svg {
+        height: 20px;
+    }
 
     &:hover {
         opacity: 1;
+        transform: scale(1.05);
     }
 `;

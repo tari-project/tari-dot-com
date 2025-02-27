@@ -45,8 +45,12 @@ export const Wrapper = styled.div`
         animation-delay: -2s;
     }
 
-    &:hover {
-        scale: 1.1;
+    @media (max-width: 1297px) {
+        padding: 15px 20px;
+    }
+
+    @media (max-width: 1035px) {
+        display: none;
     }
 `;
 
@@ -67,21 +71,29 @@ export const TextWrapper = styled.div`
 export const Text = styled.div`
     color: #fff;
     font-family: var(--font-alliance), sans-serif;
-    font-size: 19.628px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 110%;
     letter-spacing: -0.981px;
+
+    @media (max-width: 1297px) {
+        font-size: 16px;
+    }
 `;
 
 export const Username = styled.div`
     color: #fff;
     font-family: var(--font-alliance), sans-serif;
-    font-size: 15.703px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
     letter-spacing: -0.785px;
 
     opacity: 0.5;
+
+    @media (max-width: 1297px) {
+        font-size: 14px;
+    }
 `;

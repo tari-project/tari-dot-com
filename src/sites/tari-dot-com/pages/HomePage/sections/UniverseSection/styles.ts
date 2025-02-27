@@ -15,6 +15,7 @@ export const StickyHolder = styled.div`
 
     width: 100%;
     height: 100vh;
+    min-height: 1000px;
     padding: 160px 60px 70px 60px;
 
     display: flex;
@@ -22,6 +23,15 @@ export const StickyHolder = styled.div`
     justify-content: space-between;
     flex-direction: column;
     gap: 40px;
+
+    @media (max-width: 1228px) {
+        padding: 160px 20px 70px 20px;
+        height: auto;
+    }
+
+    @media (max-width: 807px) {
+        padding: 140px 20px 70px 20px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -32,6 +42,14 @@ export const TextWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
+
+    @media (max-width: 1228px) {
+        max-width: 700px;
+    }
+
+    @media (max-width: 807px) {
+        max-width: 600px;
+    }
 `;
 
 export const Title = styled.div`
@@ -43,6 +61,18 @@ export const Title = styled.div`
     font-weight: 800;
     line-height: 94.2%;
     text-transform: uppercase;
+
+    @media (max-width: 1181px) {
+        font-size: 100px;
+    }
+
+    @media (max-width: 999px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 60px;
+    }
 `;
 
 export const Text = styled.div`
@@ -54,12 +84,25 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+
+    @media (max-width: 999px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 14px;
+    }
 `;
 
 export const StepsWrapper = styled.div`
     display: flex;
     gap: 20px;
     max-width: 1480px;
+
+    @media (max-width: 838px) {
+        flex-direction: column;
+        gap: 15px;
+    }
 `;
 
 export const Step = styled.div<{ $active: boolean }>`
@@ -86,6 +129,10 @@ export const Step = styled.div<{ $active: boolean }>`
         css`
             opacity: 1;
         `}
+
+    @media (max-width: 1228px) {
+        padding: 14px;
+    }
 `;
 
 export const StepInside = styled.div`
@@ -94,31 +141,15 @@ export const StepInside = styled.div`
     gap: 10px;
 `;
 
-export const StepProgress = styled.div<{ $progress: number }>`
-    width: 95%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: ${(props) => props.$progress}%;
-        background: rgba(255, 255, 255, 0.15);
-        transition: width 0.2s ease-out;
-        border-radius: 30px;
-    }
-`;
-
 export const StepIcon = styled.img`
     width: 90px;
     height: 90px;
     flex-shrink: 0;
+
+    @media (max-width: 1228px) {
+        width: 70px;
+        height: 70px;
+    }
 `;
 
 export const TextInner = styled.div`
@@ -132,8 +163,12 @@ export const StepTitle = styled.div`
     font-size: 36px;
     font-style: normal;
     font-weight: 700;
-    line-height: 130%;
+    line-height: 100%;
     text-transform: uppercase;
+
+    @media (max-width: 1228px) {
+        font-size: 26px;
+    }
 `;
 
 export const StepText = styled.div`
@@ -144,6 +179,10 @@ export const StepText = styled.div`
     font-weight: 700;
     line-height: 130%;
     max-width: 282px;
+
+    @media (max-width: 1228px) {
+        font-size: 10px;
+    }
 `;
 
 export const StageWrapper = styled.div`
@@ -156,6 +195,16 @@ export const StageWrapper = styled.div`
     height: 100%;
     width: 100%;
     max-width: 1312px;
+    min-height: 300px;
+
+    @media (max-width: 653px) {
+        width: unset;
+        height: unset;
+        min-height: 200px;
+        max-width: 100%;
+        pading: 0 20px;
+        aspect-ratio: 16 / 9;
+    }
 `;
 
 export const TariIcon = styled(motion.img)`
@@ -228,5 +277,10 @@ export const VideoPlayer = styled(motion.div)`
         height: 100%;
         object-fit: cover;
         border: none;
+    }
+
+    @media (max-width: 653px) {
+        height: auto;
+        width: 100%;
     }
 `;

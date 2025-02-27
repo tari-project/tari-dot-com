@@ -5,7 +5,6 @@ import {
     Wrapper,
     EyebrowWrapper,
     EyebrowText,
-    EyebrowPill,
     Text,
     ContentWrapper,
     MainImage,
@@ -15,6 +14,7 @@ import {
 } from './styles';
 import mainImage from './images/main-image.png';
 import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
+import TextPill from './TextPill/TextPill';
 
 export default function IntroSection() {
     return (
@@ -31,7 +31,8 @@ export default function IntroSection() {
                                 staggerDelay={0.03}
                             />
                         </EyebrowText>
-                        <EyebrowPill>everyone</EyebrowPill>
+
+                        <TextPill />
                     </EyebrowWrapper>
 
                     <TitleWrapper>

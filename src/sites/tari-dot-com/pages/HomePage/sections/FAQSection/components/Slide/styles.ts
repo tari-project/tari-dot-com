@@ -8,12 +8,23 @@ export const Wrapper = styled.div`
     padding: 35px;
     color: #111;
     width: 682px;
-    height: 456px;
+    aspect-ratio: 682 / 456;
+
     flex: 0 0 auto;
     position: relative;
     display: flex;
     align-items: center;
     user-select: none;
+
+    @media (max-width: 1000px) {
+        padding: 25px;
+        width: 500px;
+    }
+
+    @media (max-width: 666px) {
+        padding: 20px;
+        width: 300px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -32,6 +43,14 @@ export const Title = styled.div`
     font-weight: 800;
     line-height: 87.2%;
     text-transform: uppercase;
+
+    @media (max-width: 1000px) {
+        font-size: 60px;
+    }
+
+    @media (max-width: 666px) {
+        font-size: 45px;
+    }
 `;
 
 export const Text = styled.div`
@@ -41,6 +60,10 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+
+    @media (max-width: 666px) {
+        font-size: 12px;
+    }
 `;
 
 export const ImageWrapper = styled.div<{ $image?: string }>`

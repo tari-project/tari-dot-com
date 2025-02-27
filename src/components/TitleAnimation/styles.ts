@@ -14,6 +14,10 @@ export const Wrapper = styled(motion.div)<{ $align?: 'left' | 'center' | 'right'
                 return 'flex-start';
         }
     }};
+
+    @media (max-width: 807px) {
+        justify-content: center;
+    }
 `;
 
 export const WordWrapper = styled.span`
