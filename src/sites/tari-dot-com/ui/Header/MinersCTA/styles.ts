@@ -1,6 +1,6 @@
 'use client';
 
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const radarPulse = keyframes`
     0% {
@@ -13,7 +13,7 @@ const radarPulse = keyframes`
     }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
     display: flex;
     align-items: center;
     gap: 17px;
@@ -26,6 +26,14 @@ export const Wrapper = styled.div`
     padding: 10px 6px 10px 18px;
 
     position: relative;
+
+    ${({ $theme }) =>
+        $theme === 'light' &&
+        css`
+            border: none;
+            background: none;
+            padding: 0;
+        `}
 
     @media (max-width: 1000px) {
         border: none;
@@ -48,7 +56,7 @@ export const TextWrapper = styled.div`
     }
 `;
 
-export const Dot = styled.div`
+export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
     width: 11px;
     height: 11px;
     background: linear-gradient(180deg, #0f9 0%, #b0d636 100%);
@@ -74,7 +82,7 @@ export const Dot = styled.div`
     }
 `;
 
-export const Text = styled.div`
+export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
     color: #71ee73;
     font-family: var(--font-alliance), sans-serif;
     font-size: 15px;
@@ -83,6 +91,12 @@ export const Text = styled.div`
     line-height: 94.2%;
     letter-spacing: -0.75px;
     font-variant-numeric: tabular-nums;
+
+    ${({ $theme }) =>
+        $theme === 'light' &&
+        css`
+            color: #26764e;
+        `}
 `;
 
 export const ButtonWrapper = styled.div`
@@ -90,7 +104,7 @@ export const ButtonWrapper = styled.div`
     z-index: 1;
 `;
 
-export const Button = styled.div`
+export const Button = styled.div<{ $theme: 'light' | 'dark' }>`
     position: relative;
     z-index: 1;
     border-radius: 10px;
@@ -115,6 +129,14 @@ export const Button = styled.div`
     letter-spacing: -0.75px;
 
     transition: transform 0.3s ease;
+    user-select: none;
+
+    ${({ $theme }) =>
+        $theme === 'light' &&
+        css`
+            background: #000;
+            color: #fff;
+        `}
 
     .arrow-icon {
         transition: transform 0.3s ease;
@@ -140,10 +162,11 @@ export const ConfettiTarget = styled.div`
 
 export const NumberWrapper = styled.span`
     display: inline-block;
-    min-width: 45px;
     text-align: right;
     margin-right: 4px;
-    margin-left: 14px;
+    margin-left: 24px;
     text-transform: lowercase;
     transform: translateY(0.3px);
+    transition: width 0.3s ease;
+    min-width: 26px;
 `;

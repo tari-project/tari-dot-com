@@ -30,7 +30,7 @@ import earnIcon from './images/earn-icon.png';
 import tariIconLarge from './images/tari-icon-large.png';
 import folderImage from './images/folder.png';
 import folderFrontImage from './images/folder-front.png';
-import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
+import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 
 export default function UniverseSection() {
     const [activeStep, setActiveStep] = useState(1);

@@ -1,21 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-`;
-
-const Canvas = styled.canvas`
-    display: block;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(-1);
-`;
+import { GradientCanvas, Wrapper } from './styles';
 
 const GradientBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -232,9 +216,9 @@ const GradientBackground = () => {
     }, []);
 
     return (
-        <Container>
-            <Canvas ref={canvasRef} />
-        </Container>
+        <Wrapper>
+            <GradientCanvas ref={canvasRef} />
+        </Wrapper>
     );
 };
 

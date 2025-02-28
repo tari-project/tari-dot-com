@@ -9,7 +9,7 @@ import EcosystemSection from './sections/EcosystemSection/EcosystemSection';
 import TariSection from './sections/TariSection/TariSection';
 import FAQSection from './sections/FAQSection/FAQSection';
 import Footer from '../../ui/Footer/Footer';
-import GradientBackground from './GradientBackground';
+import GradientBackground from '../../ui/GradientBackground/GradientBackground';
 
 export default function HomePage() {
     return (

@@ -17,6 +17,10 @@ export const Wrapper = styled.div`
 
         padding: 130px 20px 100px 20px;
     }
+
+    @media (max-height: 900px) {
+        padding-top: 80px;
+    }
 `;
 
 export const Holder = styled.div`

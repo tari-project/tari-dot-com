@@ -1,4 +1,4 @@
-import Layout from '@/layouts/Layout/Layout';
+import Layout from '@/ui-shared/layouts/Layout/Layout';
 import { Viewport } from 'next';
 
 export const viewport: Viewport = {
@@ -16,19 +16,6 @@ export const generateMetadata = async () => {
         description:
             'Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
         icons: [{ url: '/favicon.svg?v=2', type: 'image/svg+xml' }],
-        /*
-        openGraph: {
-            images: [
-                {
-                    url: 'https://static.tari.com/airdrop-og-image.png',
-                    width: 1200,
-                    height: 600,
-                    alt: '',
-                },
-            ],
-        },
-
-        */
     };
 
     return metadata;

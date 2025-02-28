@@ -2,7 +2,7 @@
 
 import { Container, Wrapper, Eyebrow, MainText, Text, Middle } from './styles';
 import ImageSpinner from './components/ImageSpinner/ImageSpinner';
-import MinersCTA from './components/MinersCTA/MinersCTA';
+import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 
 export default function TariSection() {
     return (
@@ -23,7 +23,7 @@ export default function TariSection() {
                         of its power in your hands.
                     </Text>
 
-                    <MinersCTA />
+                    <MinersCTA theme="light" id="tari-section-miners" />
                 </Middle>
             </Container>
         </Wrapper>

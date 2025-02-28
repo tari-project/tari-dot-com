@@ -15,7 +15,6 @@ export const StickyHolder = styled.div`
 
     width: 100%;
     height: 100vh;
-    min-height: 1000px;
     padding: 160px 60px 70px 60px;
 
     display: flex;
@@ -27,6 +26,11 @@ export const StickyHolder = styled.div`
     @media (max-width: 1228px) {
         padding: 160px 20px 70px 20px;
         height: auto;
+    }
+
+    @media (max-height: 900px) {
+        padding: 140px 20px 70px 20px;
+        gap: 30px;
     }
 
     @media (max-width: 807px) {
@@ -47,6 +51,10 @@ export const TextWrapper = styled.div`
         max-width: 700px;
     }
 
+    @media (max-height: 900px) {
+        max-width: 700px;
+    }
+
     @media (max-width: 807px) {
         max-width: 600px;
     }
@@ -62,8 +70,8 @@ export const Title = styled.div`
     line-height: 94.2%;
     text-transform: uppercase;
 
-    @media (max-width: 1181px) {
-        font-size: 100px;
+    @media (max-height: 900px) {
+        font-size: 80px;
     }
 
     @media (max-width: 999px) {
@@ -133,6 +141,10 @@ export const Step = styled.div<{ $active: boolean }>`
     @media (max-width: 1228px) {
         padding: 14px;
     }
+
+    @media (max-height: 900px) {
+        padding: 14px;
+    }
 `;
 
 export const StepInside = styled.div`
@@ -147,6 +159,11 @@ export const StepIcon = styled.img`
     flex-shrink: 0;
 
     @media (max-width: 1228px) {
+        width: 70px;
+        height: 70px;
+    }
+
+    @media (max-height: 900px) {
         width: 70px;
         height: 70px;
     }
@@ -169,6 +186,10 @@ export const StepTitle = styled.div`
     @media (max-width: 1228px) {
         font-size: 26px;
     }
+
+    @media (max-height: 900px) {
+        font-size: 26px;
+    }
 `;
 
 export const StepText = styled.div`
@@ -181,6 +202,10 @@ export const StepText = styled.div`
     max-width: 282px;
 
     @media (max-width: 1228px) {
+        font-size: 10px;
+    }
+
+    @media (max-height: 900px) {
         font-size: 10px;
     }
 `;
@@ -198,6 +223,15 @@ export const StageWrapper = styled.div`
     min-height: 300px;
 
     @media (max-width: 653px) {
+        width: unset;
+        height: unset;
+        min-height: 200px;
+        max-width: 100%;
+        pading: 0 20px;
+        aspect-ratio: 16 / 9;
+    }
+
+    @media (max-height: 900px) {
         width: unset;
         height: unset;
         min-height: 200px;
