@@ -18,7 +18,7 @@
         "embla-carousel-autoplay": "^8.5.2",
         "embla-carousel-react": "^8.5.2",
         "motion": "^12.4.7",
-        "next": "15.2.0",
+        "next": "15.1.6",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-rewards": "^2.1.0",
