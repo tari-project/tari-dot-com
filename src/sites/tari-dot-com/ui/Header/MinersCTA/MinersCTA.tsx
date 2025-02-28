@@ -4,8 +4,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Button, ButtonWrapper, ConfettiTarget, Dot, NumberWrapper, Text, TextWrapper, Wrapper } from './styles';
 import ArrowIcon from './ArrowIcon';
 import { useReward } from 'react-rewards';
-import NumberFlow from '@number-flow/react';
 import { useMinerStats } from '@/services/api/useMinerStats';
+
+import dynamic from 'next/dynamic';
+const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
     id: string;

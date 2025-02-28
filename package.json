@@ -1,38 +1,38 @@
 {
-  "name": "tari",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
-  },
-  "dependencies": {
-    "@number-flow/react": "^0.5.5",
-    "@tanstack/react-query": "^5.66.9",
-    "embla-carousel-auto-scroll": "^8.5.2",
-    "embla-carousel-autoplay": "^8.5.2",
-    "embla-carousel-react": "^8.5.2",
-    "motion": "^12.4.2",
-    "next": "15.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-rewards": "^2.1.0",
-    "styled-components": "^6.1.15"
-  },
-  "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.8",
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/styled-components": "^5.1.34",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.0",
-    "typescript": "^5"
-  }
+    "name": "tari-dot-com-2025",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "pages:build": "npx @cloudflare/next-on-pages",
+        "preview": "npm run pages:build && wrangler pages dev",
+        "deploy": "npm run pages:build && wrangler pages deploy"
+    },
+    "dependencies": {
+        "@number-flow/react": "^0.5.5",
+        "@tanstack/react-query": "^5.66.9",
+        "embla-carousel-auto-scroll": "^8.5.2",
+        "embla-carousel-autoplay": "^8.5.2",
+        "embla-carousel-react": "^8.5.2",
+        "motion": "^12.4.7",
+        "next": "15.2.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-rewards": "^2.1.0",
+        "styled-components": "^6.1.15"
+    },
+    "devDependencies": {
+        "@cloudflare/next-on-pages": "^1.13.8",
+        "@eslint/eslintrc": "^3",
+        "@types/node": "^22",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@types/styled-components": "^5.1.34",
+        "eslint": "^9",
+        "eslint-config-next": "15.2.0",
+        "typescript": "^5"
+    }
 }
