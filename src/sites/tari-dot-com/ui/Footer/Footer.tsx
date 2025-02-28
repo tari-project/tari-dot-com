@@ -38,7 +38,7 @@ export default function Footer() {
                                 <StyledLink href="#">Airdrop</StyledLink>
                                 <StyledLink href="#">Tokenomics</StyledLink>
                                 <StyledLink href="#">Block Explorer</StyledLink>
-                                <StyledLink href="#">Downloads</StyledLink>
+                                <StyledLink href="/downloads">Downloads</StyledLink>
                             </Links>
                         </Column>
 

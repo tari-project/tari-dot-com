@@ -11,7 +11,7 @@ export default function Header() {
     return (
         <Wrapper>
             <HeaderDark>
-                <TariLogo />
+                <TariLogo href="/" />
                 <Navigation />
                 <MinersCTA theme="dark" id="minsers-cta-header-reward" />
                 <MobileMenu />
