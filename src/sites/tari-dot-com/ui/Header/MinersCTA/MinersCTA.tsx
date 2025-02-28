@@ -1,15 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Button, ButtonWrapper, ConfettiTarget, Dot, NumberWrapper, Text, TextWrapper, Wrapper } from './styles';
 import ArrowIcon from './ArrowIcon';
 import { useReward } from 'react-rewards';
-import { useCountUp } from '@/hooks/useCountUp';
 import NumberFlow from '@number-flow/react';
+import { useMinerStats } from '@/services/api/useMinerStats';
 
-export default function MinersCTA() {
-    const count = useCountUp(37500);
-    const { reward } = useReward('minsers-cta-header-reward', 'emoji', {
+interface Props {
+    id: string;
+    theme: 'light' | 'dark';
+}
+
+export default function MinersCTA({ id, theme }: Props) {
+    const { data } = useMinerStats();
+    const countValue = data?.totalMiners ?? 0;
+    const [numberWidth, setNumberWidth] = useState(26);
+    const numberRef = useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+        if (numberRef.current) {
+            const width = numberRef.current.offsetWidth;
+            setNumberWidth(width > 0 ? width : 26);
+        }
+    }, [countValue]);
+
+    const { reward } = useReward(id, 'emoji', {
         emoji: ['🤑', '💰', '💎'],
         angle: 90,
         decay: 0.91,
@@ -21,28 +37,30 @@ export default function MinersCTA() {
     });
 
     return (
-        <Wrapper>
+        <Wrapper $theme={theme}>
             <TextWrapper>
-                <Dot />
-                <Text>
-                    <NumberWrapper>
-                        <NumberFlow
-                            value={count}
-                            format={{
-                                notation: 'compact',
-                                compactDisplay: 'short',
-                                maximumFractionDigits: 1,
-                            }}
-                        />
+                <Dot $theme={theme} />
+                <Text $theme={theme}>
+                    <NumberWrapper style={{ width: `${numberWidth}px` }}>
+                        <span ref={numberRef}>
+                            <NumberFlow
+                                value={countValue}
+                                format={{
+                                    notation: 'compact',
+                                    compactDisplay: 'short',
+                                    maximumFractionDigits: 1,
+                                }}
+                            />
+                        </span>
                     </NumberWrapper>
                     active miners
                 </Text>
             </TextWrapper>
             <ButtonWrapper>
-                <Button onClick={reward}>
+                <Button onClick={reward} $theme={theme}>
                     <span>Start Earning</span> <ArrowIcon className="arrow-icon" />
                 </Button>
-                <ConfettiTarget id="minsers-cta-header-reward" />
+                <ConfettiTarget id={id} />
             </ButtonWrapper>
         </Wrapper>
     );

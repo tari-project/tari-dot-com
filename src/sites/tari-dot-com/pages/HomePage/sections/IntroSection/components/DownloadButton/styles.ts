@@ -21,6 +21,7 @@ export const Button = styled.button`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    user-select: none;
 
     border-radius: 70px;
     background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),

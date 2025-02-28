@@ -1,4 +1,4 @@
-import Layout from '@/layouts/Layout/Layout';
+import Layout from '@/ui-shared/layouts/Layout/Layout';
 import { Viewport } from 'next';
 
 export const viewport: Viewport = {

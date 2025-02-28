@@ -1,6 +1,5 @@
 'use client';
 
-import DownloadButton from './DownloadButton/DownloadButton';
 import {
     Wrapper,
     EyebrowWrapper,
@@ -13,8 +12,9 @@ import {
     Title,
 } from './styles';
 import mainImage from './images/main-image.png';
-import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
-import TextPill from './TextPill/TextPill';
+import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import TextPill from './components/TextPill/TextPill';
+import DownloadButton from './components/DownloadButton/DownloadButton';
 
 export default function IntroSection() {
     return (

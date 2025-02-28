@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Variants } from 'motion/react';
 import { LetterAnimation, LetterWrapper, LetterSpacer, ContentContainer, Wrapper, Pill } from './styles';
 
-const words = ['creators', 'builders', 'developers', 'everyone'];
+const words = ['creators', 'builders', 'everyone'];
 
 const EXIT_ANIMATION_DURATION = 600;
 const ENTRANCE_ANIMATION_DURATION = 600;

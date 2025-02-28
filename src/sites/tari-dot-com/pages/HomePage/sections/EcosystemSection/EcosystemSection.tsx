@@ -15,7 +15,7 @@ import tiktok1Img from './images/tiktok1.png';
 import tiktok2Img from './images/tiktok2.png';
 import tiktok3Img from './images/tiktok3.png';
 import tiktok4Img from './images/tiktok4.png';
-import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
+import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 
 export default function EcosystemSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
