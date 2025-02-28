@@ -1,8 +1,8 @@
 'use client';
+import DropDown from '@/ui-shared/components/DropDown/DropDown';
 import { OptionsWrapper } from './styles';
 import { useState, useEffect } from 'react';
-import NewDownloadButton from '@/components/DownloadButton/DownloadButton';
-import DropDown from '@/components/DropDown/DropDown';
+import DownloadButton from '@/ui-shared/components/DownloadButton/DownloadButton';
 
 type Os = 'Mac' | 'Windows' | 'Linux';
 
@@ -40,7 +40,7 @@ function DownloadOptions() {
                 selected={selectedOs}
                 onChange={handleOsChange}
             />
-            <NewDownloadButton selectedOs={selectedOs} handleDownload={handleDownload} />
+            <DownloadButton selectedOs={selectedOs} handleDownload={handleDownload} />
         </OptionsWrapper>
     );
 }

@@ -12,11 +12,11 @@ import {
 } from './styles';
 import universe from './images/universe.png';
 import { Divider } from '../../styles';
-import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 import DownloadOptions from './components/DownloadOptions';
 import playStoreButton from './images/PlayStoreButton.svg';
 import appStoreButton from './images/AppStoreButton.svg';
 import Image from 'next/image';
+import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 
 export default function UniverseSection() {
     return (

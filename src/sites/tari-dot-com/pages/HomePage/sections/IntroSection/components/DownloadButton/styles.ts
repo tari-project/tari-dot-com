@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
@@ -8,7 +9,7 @@ export const Wrapper = styled(motion.div)`
     width: fit-content;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -22,6 +23,7 @@ export const Button = styled.button`
     align-items: center;
     gap: 10px;
     user-select: none;
+    text-decoration: none;
 
     border-radius: 70px;
     background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
@@ -37,6 +39,7 @@ export const Button = styled.button`
         box-shadow: 0 6px 8px -1px rgba(90, 99, 211, 0.15), 0 4px 6px -1px rgba(51, 66, 255, 0.1),
             0 15px 25px -3px rgba(129, 59, 245, 0.15), 0 25px 35px -4px rgba(90, 99, 211, 0.15),
             0 0 30px 0px rgba(51, 66, 255, 0.25);
+        text-decoration: none;
     }
 `;
 

@@ -6,7 +6,7 @@ import Header from '../../ui/Header/Header';
 import UniverseSection from './sections/UniverseSection/UniverseSection';
 import BaseNodeSection from './sections/BaseNodeSection/BaseNodeSection';
 import Footer from '../../ui/Footer/Footer';
-import GradientBackground from './GradientBackground';
+import GradientBackground from '../../ui/GradientBackground/GradientBackground';
 
 export default function DownloadsPage() {
     return (

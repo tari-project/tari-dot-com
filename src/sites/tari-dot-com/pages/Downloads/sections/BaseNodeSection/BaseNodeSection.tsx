@@ -10,9 +10,9 @@ import {
 } from './styles';
 import { Divider } from '../../styles';
 import blueComputer from './images/blue-computer.png';
-import TitleAnimation from '@/components/TitleAnimation/TitleAnimation';
 import DownloadOptions from './components/DownloadOptions';
 import OsSelector from './components/OsSelector';
+import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 
 export default function UniverseSection() {
     return (
