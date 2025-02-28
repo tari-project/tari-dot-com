@@ -1,8 +1,24 @@
 'use client';
 
-import React from 'react';
-import { Wrapper } from './styles';
+import React, { useState } from 'react';
+import { MenuTrigger, MenuWrapper, Wrapper } from './styles';
+import MenuIcon from './MenuIcon';
+import Navigation from '../Navigation/Navigation';
 
 export default function MobileMenu() {
-    return <Wrapper>Mobile Menu</Wrapper>;
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <Wrapper>
+            <MenuTrigger onClick={() => setIsOpen(!isOpen)}>
+                <MenuIcon />
+            </MenuTrigger>
+
+            {isOpen && (
+                <MenuWrapper>
+                    <Navigation />
+                </MenuWrapper>
+            )}
+        </Wrapper>
+    );
 }

@@ -21,6 +21,10 @@ export const Wrapper = styled.div`
     @media (max-width: 1000px) {
         padding: 20px 20px 0 20px;
     }
+
+    @media (max-width: 666px) {
+        padding: 11px 8px 0 8px;
+    }
 `;
 
 const BaseHeader = styled(motion.div)`
