@@ -36,7 +36,7 @@ export default function Footer() {
                             <Links>
                                 <StyledLink href="#">Mine</StyledLink>
                                 <StyledLink href="https://airdrop.tari.com/">Airdrop</StyledLink>
-                                <StyledLink href="https://airdrop.tari.com/tokenomics ">Tokenomics</StyledLink>
+                                <StyledLink href="https://airdrop.tari.com/tokenomics">Tokenomics</StyledLink>
                                 <StyledLink href="https://explore-nextnet.tari.com/">Block Explorer</StyledLink>
                                 <StyledLink href="/downloads">Downloads</StyledLink>
                             </Links>
@@ -47,7 +47,7 @@ export default function Footer() {
 
                             <Links>
                                 <StyledLink href="#">Docs</StyledLink>
-                                <StyledLink href="#">Tari Tracker</StyledLink>
+                                <StyledLink href="#">Tari Tracker (Block Explorer)</StyledLink>
                                 <StyledLink href="#">Tari Labs University</StyledLink>
                             </Links>
                         </Column>

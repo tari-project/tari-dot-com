@@ -53,7 +53,7 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    max-width: 629px;
+    max-width: 656px;
     width: 100%;
 
     @media (max-width: 807px) {
@@ -98,7 +98,6 @@ export const Title = styled.div`
     font-weight: 800;
     line-height: 84.2%;
     text-transform: uppercase;
-    max-width: 622px;
 
     @media (max-width: 1181px) {
         font-size: 100px;

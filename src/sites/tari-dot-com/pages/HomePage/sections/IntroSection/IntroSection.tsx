@@ -39,7 +39,7 @@ export default function IntroSection() {
 
                     <TitleWrapper>
                         <Title>
-                            <TitleAnimation text={`Put your device to work earning steady income`} />
+                            <TitleAnimation text={`Turn Your computer Into a Money Machine`} />
                         </Title>
 
                         <Text>
