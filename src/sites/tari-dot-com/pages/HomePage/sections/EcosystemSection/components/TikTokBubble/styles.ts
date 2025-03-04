@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled, { keyframes } from 'styled-components';
 
 const float = keyframes`
@@ -14,10 +15,13 @@ const float = keyframes`
   }
 `;
 
-export const Wrapper = styled.div<{ $image: string }>`
+export const OuterWrapper = styled.div`
     position: absolute;
     z-index: 2;
+    animation: ${float} 3s ease-in-out infinite;
+`;
 
+export const Wrapper = styled(motion.div)<{ $image: string }>`
     background-image: url(${(props) => props.$image});
     background-size: cover;
     background-position: center;
@@ -30,8 +34,6 @@ export const Wrapper = styled.div<{ $image: string }>`
     overflow: hidden;
     aspect-ratio: 295 / 371;
 
-    animation: ${float} 3s ease-in-out infinite;
-    transition: scale 2s cubic-bezier(0.215, 0.61, 0.355, 1);
     will-change: transform, scale;
 
     &:nth-child(1) {

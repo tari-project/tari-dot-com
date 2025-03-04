@@ -252,31 +252,6 @@ export const TariIcon = styled(motion.img)`
     z-index: 2;
 `;
 
-export const FolderFront = styled(motion.img)`
-    width: 206px;
-    height: 147px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 3;
-    margin-top: 27px;
-`;
-
-export const FolderImage = styled(motion.img)`
-    width: 206px;
-    height: 200px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 1;
-`;
-
 export const GlowSquare = styled(motion.div)`
     width: 286px;
     height: 286px;
@@ -317,4 +292,14 @@ export const VideoPlayer = styled(motion.div)`
         height: auto;
         width: 100%;
     }
+`;
+
+export const ProgressDonut = styled(motion.svg)`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 286px;
+    height: 286px;
+    pointer-events: none;
+    z-index: 2;
 `;

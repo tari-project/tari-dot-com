@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -40,7 +41,7 @@ export const Holder = styled.div`
     }
 `;
 
-export const MainImage = styled.img`
+export const MainImage = styled(motion.img)`
     width: 50%;
 
     @media (max-height: 900px) {

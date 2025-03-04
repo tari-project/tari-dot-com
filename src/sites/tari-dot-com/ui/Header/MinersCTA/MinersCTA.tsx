@@ -48,7 +48,7 @@ export default function MinersCTA({ id, theme }: Props) {
                             <NumberFlow
                                 value={countValue}
                                 format={{
-                                    notation: 'compact',
+                                    notation: countValue > 10000 ? 'compact' : 'standard',
                                     compactDisplay: 'short',
                                     maximumFractionDigits: 1,
                                 }}

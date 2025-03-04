@@ -18,7 +18,7 @@ export default function UniverseSection() {
     return (
         <SectionHolder>
             <Title>
-                <TitleAnimation text={`Tari Base Node`} align="center" />
+                <TitleAnimation text={`Tari Base Node`} />
             </Title>
             <InfoWrapper>
                 <TextWrapper>

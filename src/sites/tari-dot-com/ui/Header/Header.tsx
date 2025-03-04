@@ -13,7 +13,7 @@ export default function Header() {
             <HeaderDark>
                 <TariLogo href="/" />
                 <Navigation />
-                <MinersCTA theme="dark" id="minsers-cta-header-reward" />
+                <MinersCTA theme="dark" id="miners-cta-header-reward" />
                 <MobileMenu />
             </HeaderDark>
         </Wrapper>

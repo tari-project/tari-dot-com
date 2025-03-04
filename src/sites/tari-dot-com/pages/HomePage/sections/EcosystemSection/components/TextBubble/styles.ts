@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled, { keyframes } from 'styled-components';
 
 const float = keyframes`
@@ -14,10 +15,14 @@ const float = keyframes`
   }
 `;
 
-export const Wrapper = styled.div`
+export const OuterWrapper = styled.div`
     position: absolute;
     z-index: 3;
+    animation: ${float} 3s ease-in-out infinite;
+    perspective: 1000px;
+`;
 
+export const Wrapper = styled(motion.div)`
     display: flex;
     align-items: center;
     gap: 15px;
@@ -27,13 +32,18 @@ export const Wrapper = styled.div`
     background: #292929;
 
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
 
     flex-shrink: 0;
     padding: 18px 30px;
 
-    animation: ${float} 3s ease-in-out infinite;
-    transition: scale 2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    will-change: transform, scale;
+    will-change: transform;
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+
+    &:hover {
+        box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.6);
+    }
 
     &:nth-child(1) {
         animation-delay: 0s;
@@ -61,11 +71,13 @@ export const Avatar = styled.div<{ $image: string }>`
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+    transform: translateZ(10px);
 `;
 
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    transform: translateZ(5px);
 `;
 
 export const Text = styled.div`

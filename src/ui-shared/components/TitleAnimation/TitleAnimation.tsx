@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Variants, useInView } from 'motion/react';
 import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper } from './styles';
 
@@ -8,7 +8,6 @@ interface Props {
     initialDelay?: number;
     className?: string;
     color?: string;
-    align?: 'left' | 'center' | 'right';
     staggerDelay?: number;
 }
 
@@ -41,10 +40,10 @@ const containerVariants: Variants = {
     }),
 };
 
-export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 200, align = 'left', staggerDelay = 0.15 }) => {
+export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, staggerDelay = 0.03 }) => {
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true });
-    const words = text.split(/(\s+)/).filter((segment) => segment.length > 0);
+    const words = useMemo(() => text.split(/(\s+)/).filter((segment) => segment.length > 0), [text]);
 
     return (
         <Wrapper
@@ -53,7 +52,6 @@ export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 200, alig
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
             custom={{ delay: initialDelay / 1000, staggerDelay }}
-            $align={align}
         >
             {words.map((segment, i) =>
                 segment.trim().length === 0 ? (

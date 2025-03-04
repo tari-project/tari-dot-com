@@ -24,7 +24,7 @@ export default function DownloadButton() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ delay: 2.4 }}
+            transition={{ delay: 0.5 }}
         >
             <Button href="/downloads">
                 <Text>Download Tari Universe</Text>

@@ -1,8 +1,9 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -13,17 +14,18 @@ export const Wrapper = styled.div`
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.1);
 
-    transform: translateY(-11px);
     margin: 0 4px;
+
+    top: -11px;
 
     @media (max-width: 1000px) {
         width: 100px;
-        transform: translateY(-9px);
+        topl: -9px;
     }
 
     @media (max-width: 666px) {
         width: 80px;
-        transform: translateY(-7px);
+        top: -7px;
     }
 `;
 

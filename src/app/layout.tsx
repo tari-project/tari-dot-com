@@ -15,7 +15,7 @@ export const generateMetadata = async () => {
         title: 'Tari',
         description:
             'Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
-        icons: [{ url: '/favicon.svg?v=2', type: 'image/svg+xml' }],
+        icons: [{ url: '/favicon-white.svg?v=3', type: 'image/svg+xml' }],
     };
 
     return metadata;
