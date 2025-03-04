@@ -20,16 +20,18 @@ export default function IntroSection() {
     return (
         <Wrapper>
             <Holder>
-                <MainImage src={mainImage.src} alt="" />
+                <MainImage
+                    src={mainImage.src}
+                    alt=""
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.25 }}
+                />
 
                 <ContentWrapper>
                     <EyebrowWrapper>
                         <EyebrowText>
-                            <TitleAnimation
-                                text={`Making mining accessible for`}
-                                initialDelay={0}
-                                staggerDelay={0.03}
-                            />
+                            <TitleAnimation text={`Making mining accessible for`} />
                         </EyebrowText>
 
                         <TextPill />
@@ -37,14 +39,13 @@ export default function IntroSection() {
 
                     <TitleWrapper>
                         <Title>
-                            <TitleAnimation text={`Put your device to work earning steady income`} initialDelay={400} />
+                            <TitleAnimation text={`Put your device to work earning steady income`} />
                         </Title>
 
                         <Text>
                             <TitleAnimation
                                 text={`Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
-                                initialDelay={1400}
-                                staggerDelay={0.03}
+                                staggerDelay={0.009}
                             />
                         </Text>
                     </TitleWrapper>

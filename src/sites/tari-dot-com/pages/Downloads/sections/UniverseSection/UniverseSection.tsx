@@ -22,7 +22,7 @@ export default function UniverseSection() {
     return (
         <SectionHolder>
             <Title>
-                <TitleAnimation text={`Tari Universe`} align="center" />
+                <TitleAnimation text={`Tari Universe`} />
             </Title>
             <InfoWrapper>
                 <UniverseImageHolder>

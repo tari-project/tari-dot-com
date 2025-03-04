@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Wrapper, Image } from './styles';
+import { useInView } from 'motion/react';
 
 import image1 from '../../images/image1.png';
 import image2 from '../../images/image2.png';
@@ -19,6 +20,8 @@ export default function ImageSpinner({ defaultImage }: Props) {
     const [currentImage, setCurrentImage] = useState<number>(defaultImage - 1);
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
 
     useEffect(() => {
         if (isHovered) {
@@ -40,7 +43,14 @@ export default function ImageSpinner({ defaultImage }: Props) {
     }, [isHovered, defaultImage]);
 
     return (
-        <Wrapper onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <Wrapper
+            ref={ref}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.1 }}
+        >
             {images.map((img, index) => (
                 <Image key={index} src={img.src} alt="" $isActive={index === currentImage} />
             ))}

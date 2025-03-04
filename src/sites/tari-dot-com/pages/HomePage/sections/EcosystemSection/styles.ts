@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled, { keyframes } from 'styled-components';
 
 const rotateClockwise = keyframes`
@@ -98,7 +99,7 @@ export const Text = styled.div`
     }
 `;
 
-export const FloatingElements = styled.div`
+export const FloatingElements = styled(motion.div)`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -107,6 +108,18 @@ export const FloatingElements = styled.div`
     aspect-ratio: 1 / 1;
     max-width: 1554px;
 
+    transform: translate(-50%, -50%) perspective(1000px);
+`;
+
+export const CircleHolder = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) perspective(1000px);
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
     will-change: transform;
