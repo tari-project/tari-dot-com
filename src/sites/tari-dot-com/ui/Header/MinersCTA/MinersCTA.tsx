@@ -60,7 +60,7 @@ export default function MinersCTA({ id, theme }: Props) {
             </TextWrapper>
             <ButtonWrapper>
                 <Button onClick={reward} $theme={theme}>
-                    <span>Start Earning</span> <ArrowIcon className="arrow-icon" />
+                    <span>Start Earning Tari</span> <ArrowIcon className="arrow-icon" />
                 </Button>
                 <ConfettiTarget id={id} />
             </ButtonWrapper>

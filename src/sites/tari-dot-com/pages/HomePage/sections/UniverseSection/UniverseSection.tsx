@@ -82,11 +82,11 @@ export default function UniverseSection() {
             <StickyHolder>
                 <TextWrapper>
                     <Title>
-                        <TitleAnimation text={`Get rewarded for helping secure the network`} />
+                        <TitleAnimation text={`Get Rewarded for Helping Secure the Network`} />
                     </Title>
                     <Text>
                         <TitleAnimation
-                            text={`Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
+                            text={`Tari Universe is the easiest-to-use tool in the web3 space. Earn XTR in 3 clicks and you don’t have to give up your personal information.`}
                             staggerDelay={0.01}
                         />
                     </Text>
@@ -161,10 +161,8 @@ export default function UniverseSection() {
                         <StepInside>
                             <StepIcon src={tariIcon.src} alt="" />
                             <TextInner>
-                                <StepTitle>Download & install</StepTitle>
-                                <StepText>
-                                    Tari Universe is available on PC, Mac and Linux. It will also run on most machines.
-                                </StepText>
+                                <StepTitle>Download Tari Universe</StepTitle>
+                                <StepText>Available on PC, Mac, and Linux.</StepText>
                             </TextInner>
                         </StepInside>
                     </Step>
@@ -172,10 +170,8 @@ export default function UniverseSection() {
                         <StepInside>
                             <StepIcon src={runIcon.src} alt="" />
                             <TextInner>
-                                <StepTitle>Run</StepTitle>
-                                <StepText>
-                                    Tari Universe is available on PC, Mac and Linux. It will also run on most machines.
-                                </StepText>
+                                <StepTitle>Install It</StepTitle>
+                                <StepText>Tari installs effortlessly on most machines.</StepText>
                             </TextInner>
                         </StepInside>
                     </Step>
@@ -183,10 +179,8 @@ export default function UniverseSection() {
                         <StepInside>
                             <StepIcon src={earnIcon.src} alt="" />
                             <TextInner>
-                                <StepTitle>Earn</StepTitle>
-                                <StepText>
-                                    Tari Universe is available on PC, Mac and Linux. It will also run on most machines.
-                                </StepText>
+                                <StepTitle>Run It</StepTitle>
+                                <StepText>Start mining and earning instantly.</StepText>
                             </TextInner>
                         </StepInside>
                     </Step>
