@@ -1,35 +1,25 @@
 'use client';
 
+import { motion } from 'motion/react';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-    display: none;
-
-    @media (max-width: 666px) {
-        display: block;
-    }
-`;
-
-export const MenuTrigger = styled.button`
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transform: translateX(10px);
-    cursor: pointer;
-`;
-
-export const MenuWrapper = styled.div`
-    position: fixed;
+export const Wrapper = styled(motion.div)`
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 80;
-    background-color: #000;
-    width: 100%;
+    width: 100vw;
     height: 100dvh;
 
-    display: none;
+    background-color: #000;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+
+    pointer-events: all;
+
+    padding: 120px 20px 40px 20px;
 `;

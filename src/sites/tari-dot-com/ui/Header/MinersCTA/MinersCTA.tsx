@@ -1,20 +1,18 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Button, ButtonWrapper, ConfettiTarget, Dot, NumberWrapper, Text, TextWrapper, Wrapper } from './styles';
+import { Button, ButtonWrapper, Dot, NumberWrapper, Text, TextWrapper, Wrapper } from './styles';
 import ArrowIcon from './ArrowIcon';
-import { useReward } from 'react-rewards';
 import { useMinerStats } from '@/services/api/useMinerStats';
 
 import dynamic from 'next/dynamic';
 const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
-    id: string;
     theme: 'light' | 'dark';
 }
 
-export default function MinersCTA({ id, theme }: Props) {
+export default function MinersCTA({ theme }: Props) {
     const { data } = useMinerStats();
     const countValue = data?.totalMiners ?? 0;
     const [numberWidth, setNumberWidth] = useState(26);
@@ -26,17 +24,6 @@ export default function MinersCTA({ id, theme }: Props) {
             setNumberWidth(width > 0 ? width : 26);
         }
     }, [countValue]);
-
-    const { reward } = useReward(id, 'emoji', {
-        emoji: ['🤑', '💰', '💎'],
-        angle: 90,
-        decay: 0.91,
-        spread: 60,
-        startVelocity: 20,
-        elementCount: 20,
-        elementSize: 20,
-        lifetime: 100,
-    });
 
     return (
         <Wrapper $theme={theme}>
@@ -59,10 +46,9 @@ export default function MinersCTA({ id, theme }: Props) {
                 </Text>
             </TextWrapper>
             <ButtonWrapper>
-                <Button onClick={reward} $theme={theme}>
+                <Button $theme={theme} href="/downloads">
                     <span>Start Earning Tari</span> <ArrowIcon className="arrow-icon" />
                 </Button>
-                <ConfettiTarget id={id} />
             </ButtonWrapper>
         </Wrapper>
     );

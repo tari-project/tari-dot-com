@@ -1,24 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
-import { MenuTrigger, MenuWrapper, Wrapper } from './styles';
-import MenuIcon from './MenuIcon';
-import Navigation from '../Navigation/Navigation';
+import React, { useEffect } from 'react';
+import { Wrapper } from './styles';
+import MinersCTA from '../MinersCTA/MinersCTA';
+import { AnimatePresence } from 'motion/react';
+import { useMainStore } from '@/services/stores/useMainStore';
+import MobileLinks from './MobileLinks/MobileLinks';
+import SocialLinks from '../../Footer/components/SocialLinks/SocialLinks';
 
 export default function MobileMenu() {
-    const [isOpen, setIsOpen] = useState(false);
+    const { showMobileMenu, setShowMobileMenu } = useMainStore();
+
+    useEffect(() => {
+        setShowMobileMenu(false);
+    }, [setShowMobileMenu]);
+
+    useEffect(() => {
+        if (showMobileMenu) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [showMobileMenu]);
 
     return (
-        <Wrapper>
-            <MenuTrigger onClick={() => setIsOpen(!isOpen)}>
-                <MenuIcon />
-            </MenuTrigger>
-
-            {isOpen && (
-                <MenuWrapper>
-                    <Navigation />
-                </MenuWrapper>
+        <AnimatePresence>
+            {showMobileMenu && (
+                <Wrapper
+                    initial={{ y: '-100%' }}
+                    animate={{ y: 0 }}
+                    exit={{ y: '-100%' }}
+                    transition={{ type: 'tween', duration: 0.4, ease: 'circInOut' }}
+                >
+                    <MobileLinks />
+                    <MinersCTA theme="dark" />
+                    <SocialLinks />
+                </Wrapper>
             )}
-        </Wrapper>
+        </AnimatePresence>
     );
 }

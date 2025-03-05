@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styled, { css, keyframes } from 'styled-components';
 
 const radarPulse = keyframes`
@@ -26,6 +27,7 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
     padding: 10px 6px 10px 18px;
 
     position: relative;
+    flex-shrink: 0;
 
     ${({ $theme }) =>
         $theme === 'light' &&
@@ -35,13 +37,10 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
             padding: 0;
         `}
 
-    @media (max-width: 1000px) {
-        border: none;
-        background: none;
-    }
-
-    @media (max-width: 666px) {
-        display: none;
+    @media (max-width: 450px) {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
     }
 `;
 
@@ -50,10 +49,6 @@ export const TextWrapper = styled.div`
     align-items: center;
     gap: 11px;
     position: relative;
-
-    @media (max-width: 1000px) {
-        display: none;
-    }
 `;
 
 export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
@@ -104,7 +99,7 @@ export const ButtonWrapper = styled.div`
     z-index: 1;
 `;
 
-export const Button = styled.div<{ $theme: 'light' | 'dark' }>`
+export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
     position: relative;
     z-index: 1;
     border-radius: 10px;
@@ -149,15 +144,6 @@ export const Button = styled.div<{ $theme: 'light' | 'dark' }>`
             transform: translateX(5px);
         }
     }
-`;
-
-export const ConfettiTarget = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-70%, -70%);
-    pointer-events: none;
-    z-index: 0;
 `;
 
 export const NumberWrapper = styled.span`
