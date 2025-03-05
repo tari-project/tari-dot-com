@@ -11,6 +11,14 @@ export const Wrapper = styled.footer`
     .tari-logo {
         width: 109px;
     }
+
+    @media (max-width: 1107px) {
+        padding: 80px 50px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 80px 30px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -26,6 +34,10 @@ export const Holder = styled.div`
     @media (max-width: 1107px) {
         flex-direction: column;
         align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        align-items: flex-start;
     }
 `;
 
@@ -43,12 +55,30 @@ export const LinksWrapper = styled.div`
     max-width: 624px;
     padding-bottom: 62px;
     flex-wrap: wrap;
+
+    @media (max-width: 1107px) {
+        gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+        padding-bottom: 40px;
+        justify-content: flex-start;
+    }
 `;
 
 export const Column = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
+
+    @media (max-width: 1107px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        width: 40%;
+        min-width: 210px;
+    }
 `;
 
 export const Title = styled.h3`
@@ -102,34 +132,11 @@ export const Copyright = styled.div`
         align-items: center;
         justify-content: center;
     }
-`;
 
-export const SocialWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 14px;
-    padding-top: 26px;
-    border-top: 1px solid rgba(223, 229, 242, 0.3);
-
-    @media (max-width: 1107px) {
-        justify-content: center;
-    }
-`;
-
-export const SocialIcon = styled(Link)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.75;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-
-    svg {
-        height: 20px;
-    }
-
-    &:hover {
-        opacity: 1;
-        transform: scale(1.1);
+    @media (max-width: 768px) {
+        max-width: 100%;
+        text-align: left;
+        align-items: center;
+        justify-content: flex-start;
     }
 `;

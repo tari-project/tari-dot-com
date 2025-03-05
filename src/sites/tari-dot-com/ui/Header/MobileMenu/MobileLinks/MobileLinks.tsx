@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { NavLink, Wrapper } from './styles';
-import { headerLinks } from '../Header';
+import { headerLinks } from '../../Header';
 
-export default function Navigation() {
+export default function MobileLinks() {
     return (
         <Wrapper>
             {headerLinks.map(({ href, title }) => (

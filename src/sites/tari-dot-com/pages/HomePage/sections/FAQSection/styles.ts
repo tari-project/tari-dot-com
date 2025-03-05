@@ -6,6 +6,10 @@ export const Wrapper = styled.section`
     padding: 65px 0;
     overflow: hidden;
     width: 100%;
+
+    @media (max-width: 666px) {
+        padding: 20px 0;
+    }
 `;
 
 export const Carousel = styled.div`

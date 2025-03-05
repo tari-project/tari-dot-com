@@ -51,6 +51,7 @@ export const Text = styled.div`
     font-weight: 700;
     line-height: 94.2%;
     letter-spacing: -0.75px;
+    white-space: nowrap;
 `;
 
 export const Icons = styled.div`
@@ -62,13 +63,4 @@ export const Icons = styled.div`
 
     border-radius: 50px;
     background: rgba(0, 0, 0, 0.2);
-`;
-
-export const ConfettiTarget = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
 `;

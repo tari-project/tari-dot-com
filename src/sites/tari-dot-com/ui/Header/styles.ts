@@ -70,10 +70,23 @@ export const HeaderDark = styled(BaseHeader)`
     background-repeat: repeat;
     background-size: contain;
     background-color: #0c0718;
+    position: relative;
+    z-index: 9;
 `;
 
 export const HeaderLight = styled(BaseHeader)`
     color: #0c0718;
     background: #fff;
     z-index: 9;
+`;
+
+export const DesktopOnly = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (max-width: 886px) {
+        display: none;
+    }
 `;

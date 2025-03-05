@@ -35,7 +35,7 @@ export default function TariSection() {
                         />
                     </Text>
 
-                    <MinersCTA theme="light" id="tari-section-miners" />
+                    <MinersCTA theme="light" />
                 </Middle>
             </Container>
         </Wrapper>

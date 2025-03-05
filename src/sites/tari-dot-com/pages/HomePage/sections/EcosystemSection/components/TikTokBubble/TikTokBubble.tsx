@@ -1,8 +1,8 @@
 'use client';
 
 import { useMotionValue, useSpring } from 'motion/react';
-import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/icons/TikTokIcon';
 import { OuterWrapper, Wrapper, TextWrapper, Username, Followers, InsideBorder } from './styles';
+import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/components/SocialLinks/icons/TikTokIcon';
 
 interface Props {
     image: string;

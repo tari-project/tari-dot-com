@@ -14,13 +14,11 @@ export const Wrapper = styled.div`
 
     @media (max-width: 807px) {
         min-height: auto;
-        height: auto;
-
         padding: 130px 20px 100px 20px;
     }
 
-    @media (max-height: 900px) {
-        padding-top: 80px;
+    @media (max-width: 900px) {
+        padding-top: 110px;
     }
 `;
 
@@ -65,6 +63,10 @@ export const EyebrowWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @media (max-width: 807px) {
+        display: none;
+    }
 `;
 
 export const EyebrowText = styled.div`
