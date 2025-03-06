@@ -5,8 +5,8 @@ import { OuterWrapper, Wrapper, Avatar, TextWrapper, Text, Username } from './st
 
 interface Props {
     avatarImage: string;
-    text: string;
-    username: string;
+    text?: string;
+    username?: string;
     style?: React.CSSProperties;
     mouseX?: number;
     mouseY?: number;

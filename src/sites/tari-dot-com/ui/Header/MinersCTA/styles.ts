@@ -125,6 +125,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
 
     transition: transform 0.3s ease;
     user-select: none;
+    text-decoration: none;
 
     ${({ $theme }) =>
         $theme === 'light' &&
@@ -139,6 +140,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
 
     &:hover {
         transform: scale(1.05);
+        text-decoration: none;
 
         .arrow-icon {
             transform: translateX(5px);

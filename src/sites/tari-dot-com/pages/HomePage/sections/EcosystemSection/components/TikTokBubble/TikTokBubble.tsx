@@ -1,27 +1,31 @@
 'use client';
 
 import { useMotionValue, useSpring } from 'motion/react';
-import { OuterWrapper, Wrapper, TextWrapper, Username, Followers, InsideBorder } from './styles';
+import { OuterWrapper, Wrapper, TextWrapper, Username, Followers, InsideBorder, ImageWrapper, Image } from './styles';
 import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/components/SocialLinks/icons/TikTokIcon';
 
 interface Props {
-    image: string;
-    username: string;
-    followers: string;
+    image?: string;
+    video?: string | null;
+    username?: string;
+    followers?: string;
     style?: React.CSSProperties;
     mouseX?: number;
     mouseY?: number;
     depth?: number;
+    aspectRatio?: string;
 }
 
 export default function TikTokBubble({
     username,
     followers,
     image,
+    video,
     style,
     mouseX = 0,
     mouseY = 0,
     depth = 1.5,
+    aspectRatio = '9/16',
 }: Props) {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -36,22 +40,47 @@ export default function TikTokBubble({
         y.set(mouseY * 18 * depth);
     }
 
+    const isLandscape = aspectRatio === '16/9';
+
     return (
         <OuterWrapper style={style}>
             <Wrapper
-                $image={image}
                 style={{
                     x: springX,
                     y: springY,
                 }}
+                $isLandscape={isLandscape}
             >
                 <InsideBorder />
                 <TextWrapper>
-                    <Username>
-                        <TikTokIcon /> {username}
-                    </Username>
-                    <Followers>{followers}</Followers>
+                    {Boolean(username) && (
+                        <Username>
+                            {/* <TikTokIcon /> {username} */}
+                            {username}
+                        </Username>
+                    )}
+                    {Boolean(followers) && <Followers>{followers}</Followers>}
                 </TextWrapper>
+                <ImageWrapper>
+                    {video ? (
+                        <iframe
+                            src={video}
+                            loading="lazy"
+                            style={{
+                                border: 'none',
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                height: '100%',
+                                width: '100%',
+                            }}
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                            allowFullScreen={true}
+                        ></iframe>
+                    ) : image ? (
+                        <Image src={image} alt={`${username} content`} />
+                    ) : null}
+                </ImageWrapper>
             </Wrapper>
         </OuterWrapper>
     );

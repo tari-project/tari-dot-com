@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const float = keyframes`
   0% {
@@ -21,19 +21,25 @@ export const OuterWrapper = styled.div`
     animation: ${float} 3s ease-in-out infinite;
 `;
 
-export const Wrapper = styled(motion.div)<{ $image: string }>`
-    background-image: url(${(props) => props.$image});
-    background-size: cover;
-    background-position: center;
+export const Wrapper = styled(motion.div)<{ $isLandscape: boolean }>`
     background-color: #292929;
-
     border-radius: 20px;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5);
 
     width: 295px;
-    overflow: hidden;
     aspect-ratio: 295 / 371;
 
+    ${({ $isLandscape }) =>
+        $isLandscape &&
+        css`
+            iframe,
+            img {
+                transform: scale(2.3) !important;
+            }
+        `}
+
+    position: relative;
+    overflow: hidden;
     will-change: transform, scale;
 
     &:nth-child(1) {
@@ -47,10 +53,6 @@ export const Wrapper = styled(motion.div)<{ $image: string }>`
     }
     &:nth-child(4) {
         animation-delay: -2s;
-    }
-
-    @media (max-width: 1297px) {
-        width: 230px;
     }
 
     @media (max-width: 1035px) {
@@ -67,6 +69,25 @@ export const InsideBorder = styled.div`
     mix-blend-mode: overlay;
 `;
 
+export const ImageWrapper = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    iframe,
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        transform: scale(1.4);
+    }
+`;
+
+export const Image = styled.img``;
+
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -77,7 +98,7 @@ export const TextWrapper = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     width: 100%;
     height: 50%;
 
