@@ -2,7 +2,7 @@
 
 import { useMotionValue, useSpring } from 'motion/react';
 import { OuterWrapper, Wrapper, TextWrapper, Username, Followers, InsideBorder, ImageWrapper, Image } from './styles';
-import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/components/SocialLinks/icons/TikTokIcon';
+//import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/components/SocialLinks/icons/TikTokIcon';
 
 interface Props {
     image?: string;
