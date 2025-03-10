@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     padding: 20px 60px 0 60px;
     pointer-events: none;
 
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 99;
@@ -18,12 +18,15 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
 
+    margin-bottom: -102px;
+
     @media (max-width: 1000px) {
         padding: 20px 20px 0 20px;
     }
 
     @media (max-width: 666px) {
         padding: 11px 8px 0 8px;
+        margin-bottom: -92px;
     }
 `;
 

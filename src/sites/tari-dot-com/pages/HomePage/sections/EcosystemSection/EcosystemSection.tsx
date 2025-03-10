@@ -25,6 +25,7 @@ import avatar3Img from './images/avatar3.jpg';
 
 import tiktok4Img from './images/Udi-2.jpeg';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import Community from './components/Community/Community';
 
 const textBubbleData: {
     text: string;
@@ -107,22 +108,22 @@ export default function EcosystemSection() {
 
     return (
         <Wrapper onMouseMove={handleMouseMove}>
-            <TextMiddle>
-                <Eyebrow>
-                    <TitleAnimation text={`PEOPLE ❤️ MINING TARI`} />
-                </Eyebrow>
-                <Title>
-                    <TitleAnimation text={`ECHOES FROM THE ECOSYSTEM`} />
-                </Title>
-                <Text>
-                    <TitleAnimation
-                        text={`People from all around the world with tiers of computers are mining Tari everyday.`}
-                        staggerDelay={0.01}
-                    />
-                </Text>
-            </TextMiddle>
-
             <FloatingElements>
+                <TextMiddle>
+                    <Eyebrow>
+                        <TitleAnimation text={`PEOPLE ❤️ MINING TARI`} />
+                    </Eyebrow>
+                    <Title>
+                        <TitleAnimation text={`347,000+ people like you love Tari`} />
+                    </Title>
+                    <Text>
+                        <TitleAnimation
+                            text={`People from all walks of life are mining and earning Tari. Join us. The water is warm (we promise!)`}
+                            staggerDelay={0.01}
+                        />
+                    </Text>
+                </TextMiddle>
+
                 {textBubbleData.map((bubble, index) => (
                     <TextBubble
                         key={`text-bubble-${index}`}
@@ -161,6 +162,8 @@ export default function EcosystemSection() {
                     <Circle3 />
                 </CircleHolder>
             </FloatingElements>
+
+            <Community />
         </Wrapper>
     );
 }

@@ -7,12 +7,14 @@ import UniverseSection from './sections/UniverseSection/UniverseSection';
 import BaseNodeSection from './sections/BaseNodeSection/BaseNodeSection';
 import Footer from '../../ui/Footer/Footer';
 import GradientBackground from '../../ui/GradientBackground/GradientBackground';
+import Banner from '../../ui/Banner/Banner';
 
 export default function DownloadsPage() {
     return (
         <Wrapper>
+            <Banner />
+            <Header />
             <Container>
-                <Header />
                 <UniverseSection />
                 <Divider />
                 <BaseNodeSection />

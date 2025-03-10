@@ -33,7 +33,7 @@ export default function MobileMenu() {
                     transition={{ type: 'tween', duration: 0.4, ease: 'circInOut' }}
                 >
                     <MobileLinks />
-                    <MinersCTA theme="dark" />
+                    <MinersCTA theme="dark" buttonText={`Download Tari Universe`} />
                     <SocialLinks />
                 </Wrapper>
             )}
