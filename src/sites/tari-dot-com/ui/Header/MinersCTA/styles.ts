@@ -19,7 +19,7 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
     align-items: center;
     gap: 17px;
 
-    border-radius: 10px;
+    border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
 
@@ -156,5 +156,5 @@ export const NumberWrapper = styled.span`
     text-transform: lowercase;
     transform: translateY(0.3px);
     transition: width 0.3s ease;
-    min-width: 26px;
+    min-width: 37px;
 `;

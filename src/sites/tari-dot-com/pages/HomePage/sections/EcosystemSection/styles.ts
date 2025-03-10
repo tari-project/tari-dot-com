@@ -23,15 +23,10 @@ const rotateCounterClockwise = keyframes`
 
 export const Wrapper = styled.div`
     width: 100%;
-    max-height: 1610px;
-    aspect-ratio: 1 / 1;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: relative;
-    overflow: hidden;
+    flex-direction: column;
 `;
 
 export const TextMiddle = styled.div`
@@ -45,6 +40,7 @@ export const TextMiddle = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 
     @media (max-width: 1158px) {
         gap: 15px;
@@ -71,7 +67,7 @@ export const Title = styled.div`
     line-height: 94.2%;
     text-transform: uppercase;
 
-    max-width: 790px;
+    max-width: 670px;
 
     @media (max-width: 1334px) {
         font-size: 80px;
@@ -92,7 +88,7 @@ export const Text = styled.div`
     font-weight: 500;
     line-height: 130%;
 
-    max-width: 434px;
+    max-width: 524px;
 
     @media (max-width: 1158px) {
         font-size: 16px;
@@ -100,15 +96,12 @@ export const Text = styled.div`
 `;
 
 export const FloatingElements = styled(motion.div)`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
+    position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
     max-width: 1554px;
-
-    transform: translate(-50%, -50%) perspective(1000px);
+    margin: auto;
+    overflow: hidden;
 `;
 
 export const CircleHolder = styled.div`

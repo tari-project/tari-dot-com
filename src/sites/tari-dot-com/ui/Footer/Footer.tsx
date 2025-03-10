@@ -15,9 +15,8 @@ export default function Footer() {
                     <LinksWrapper>
                         <Column>
                             <Title>Participate</Title>
-
                             <Links>
-                                <StyledLink href="#">Mine</StyledLink>
+                                <StyledLink href="/downloads">Mine</StyledLink>
                                 <StyledLink href="https://airdrop.tari.com/">Airdrop</StyledLink>
                                 <StyledLink href="https://airdrop.tari.com/tokenomics">Tokenomics</StyledLink>
                                 <StyledLink href="https://explore-nextnet.tari.com/">Block Explorer</StyledLink>
@@ -27,22 +26,17 @@ export default function Footer() {
 
                         <Column>
                             <Title>Build</Title>
-
                             <Links>
-                                <StyledLink href="#">Docs</StyledLink>
-                                <StyledLink href="https://explore-nextnet.tari.com/">
-                                    Tari Tracker (Block Explorer)
-                                </StyledLink>
-                                <StyledLink href="#">Tari Labs University</StyledLink>
+                                <StyledLink href="https://rfc.tari.com/">Docs</StyledLink>
+                                <StyledLink href="https://tlu.tarilabs.com/">Tari Labs University</StyledLink>
                             </Links>
                         </Column>
 
                         <Column>
                             <Title>Community</Title>
-
                             <Links>
-                                <StyledLink href="#">Tari Labs</StyledLink>
-                                <StyledLink href="#">Updates</StyledLink>
+                                <StyledLink href="https://tarilabs.com/">Tari Labs</StyledLink>
+                                <StyledLink href="/updates">Updates</StyledLink>
                                 <StyledLink href="https://store.tarilabs.com/">TTL Store</StyledLink>
                             </Links>
                         </Column>

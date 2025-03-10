@@ -15,27 +15,28 @@ export default function TariSection() {
                     </Eyebrow>
 
                     <MainText>
-                        <TitleAnimation text={`Tari`} /> <TitleAnimation text={`is`} />{' '}
-                        <TitleAnimation text={`built`} /> <ImageSpinner defaultImage={1} />{' '}
-                        <TitleAnimation text={`to`} /> <TitleAnimation text={`empower`} />{' '}
-                        <ImageSpinner defaultImage={2} /> <TitleAnimation text={`creators`} />{' '}
-                        <TitleAnimation text={`and`} /> <TitleAnimation text={`communities`} />{' '}
-                        <ImageSpinner defaultImage={3} /> <TitleAnimation text={`to`} />{' '}
-                        <TitleAnimation text={`securely`} /> <TitleAnimation text={`manage`} />{' '}
-                        <TitleAnimation text={`digital`} /> <TitleAnimation text={`assets`} />{' '}
-                        <ImageSpinner defaultImage={4} /> <TitleAnimation text={`with`} />{' '}
-                        <TitleAnimation text={`privacy`} /> <ImageSpinner defaultImage={5} />{' '}
-                        <TitleAnimation text={`and`} /> <TitleAnimation text={`flexibility.`} />
+                        <TitleAnimation text={`TARI`} /> <TitleAnimation text={`IS`} /> <TitleAnimation text={`A`} />{' '}
+                        <TitleAnimation text={`NEW`} /> <ImageSpinner defaultImage={1} />{' '}
+                        <TitleAnimation text={`FINANCIAL`} /> <ImageSpinner defaultImage={2} />{' '}
+                        <TitleAnimation text={`SYSTEM`} /> <TitleAnimation text={`BUILT`} />{' '}
+                        <TitleAnimation text={`TO`} /> <TitleAnimation text={`EMPOWER`} />{' '}
+                        <TitleAnimation text={`BUILDERS`} /> <TitleAnimation text={`AND`} />{' '}
+                        <TitleAnimation text={`CREATORS.`} /> <TitleAnimation text={`IT'S`} />{' '}
+                        <ImageSpinner defaultImage={3} /> <TitleAnimation text={`OPEN`} />{' '}
+                        <TitleAnimation text={`SOURCE,`} /> <TitleAnimation text={`BEAUTIFULLY`} />{' '}
+                        <TitleAnimation text={`SIMPLE,`} /> <TitleAnimation text={`AND`} />{' '}
+                        <TitleAnimation text={`KEEPS`} /> <ImageSpinner defaultImage={4} />{' '}
+                        <TitleAnimation text={`YOU`} /> <TitleAnimation text={`SAFE.`} />
                     </MainText>
 
                     <Text>
                         <TitleAnimation
-                            text={`Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.`}
+                            text={`Tari is a revolutionary blockchain protocol powered by you. Proof of work. Default confidential. And for the first time, easy to use. Tari Universe puts all the power of Tari in your hands.`}
                             staggerDelay={0.009}
                         />
                     </Text>
 
-                    <MinersCTA theme="light" />
+                    <MinersCTA theme="light" buttonText={`Download Tari Universe`} />
                 </Middle>
             </Container>
         </Wrapper>

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     width: 100%;
     min-height: 900px;
-    height: 100dvh;
+    height: calc(100vh - 57px);
     display: flex;
     background-color: #e4e3ec;
 
@@ -26,7 +26,7 @@ export const Holder = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 80px;
     margin: 0 auto;
 
     @media (max-width: 1320px) {
@@ -34,7 +34,7 @@ export const Holder = styled.div`
     }
 
     @media (max-width: 807px) {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
     }
 `;
@@ -120,6 +120,7 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+    max-width: 590px;
 
     @media (max-width: 999px) {
         font-size: 16px;

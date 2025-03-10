@@ -20,14 +20,6 @@ export default function IntroSection() {
     return (
         <Wrapper>
             <Holder>
-                <MainImage
-                    src={mainImage.src}
-                    alt=""
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.25 }}
-                />
-
                 <ContentWrapper>
                     <EyebrowWrapper>
                         <EyebrowText>
@@ -39,12 +31,12 @@ export default function IntroSection() {
 
                     <TitleWrapper>
                         <Title>
-                            <TitleAnimation text={`Turn Your computer Into a Money Machine`} />
+                            <TitleAnimation text={`Turn Your Computer Into a Money Machine`} />
                         </Title>
 
                         <Text>
                             <TitleAnimation
-                                text={`Tari Universe is the easiest to use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
+                                text={`Put your computer to work earning Tari (XTR), a revolutionary new cryptocurrency. Tari is fast, safe, and so easy to use, that your Grandma can do it.`}
                                 staggerDelay={0.009}
                             />
                         </Text>
@@ -52,6 +44,14 @@ export default function IntroSection() {
 
                     <DownloadButton />
                 </ContentWrapper>
+
+                <MainImage
+                    src={mainImage.src}
+                    alt=""
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.25 }}
+                />
             </Holder>
         </Wrapper>
     );

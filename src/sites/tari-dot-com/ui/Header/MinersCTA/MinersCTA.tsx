@@ -10,9 +10,10 @@ const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
     theme: 'light' | 'dark';
+    buttonText: string;
 }
 
-export default function MinersCTA({ theme }: Props) {
+export default function MinersCTA({ theme, buttonText }: Props) {
     const { data } = useMinerStats();
     const countValue = data?.totalMiners ?? 0;
     const [numberWidth, setNumberWidth] = useState(26);
@@ -47,7 +48,7 @@ export default function MinersCTA({ theme }: Props) {
             </TextWrapper>
             <ButtonWrapper>
                 <Button $theme={theme} href="/downloads">
-                    <span>Start Earning Tari</span> <ArrowIcon className="arrow-icon" />
+                    <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />
                 </Button>
             </ButtonWrapper>
         </Wrapper>

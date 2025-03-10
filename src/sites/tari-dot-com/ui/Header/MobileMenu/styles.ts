@@ -4,11 +4,12 @@ import { motion } from 'motion/react';
 import styled from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100dvh;
+    z-index: 98;
 
     background-color: #000;
     color: #fff;

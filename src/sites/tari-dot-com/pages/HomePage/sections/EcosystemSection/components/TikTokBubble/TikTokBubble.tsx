@@ -65,7 +65,6 @@ export default function TikTokBubble({
                     {video ? (
                         <iframe
                             src={video}
-                            loading="lazy"
                             style={{
                                 border: 'none',
                                 position: 'absolute',
