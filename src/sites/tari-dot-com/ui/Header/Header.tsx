@@ -6,12 +6,7 @@ import Navigation from './Navigation/Navigation';
 import MinersCTA from './MinersCTA/MinersCTA';
 import TariLogo from '../TariLogo/TariLogo';
 import MobileMenuButton from './MobileMenuButton/MobileMenuButton';
-
-export const headerLinks = [
-    { title: 'How it Works', href: '/#how-it-works' },
-    { title: 'Mine Tari', href: '/downloads' },
-    { title: 'Air Drop', href: 'https://airdrop.tari.com/' },
-];
+import SuperMenu from './SuperMenu/SuperMenu';
 
 export default function Header() {
     return (
@@ -23,6 +18,7 @@ export default function Header() {
                     <MinersCTA theme="dark" buttonText={`Download`} />
                 </DesktopOnly>
                 <MobileMenuButton />
+                <SuperMenu />
             </HeaderDark>
         </Wrapper>
     );
