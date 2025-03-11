@@ -1,6 +1,6 @@
 'use client';
 
-import { Wrapper, Holder, Text, GradientText, Button } from './styles';
+import { Wrapper, Holder, Text, GradientText } from './styles';
 
 export default function Banner() {
     return (
@@ -9,8 +9,6 @@ export default function Banner() {
                 <Text>
                     Tari is in Testnet. <GradientText>Mainnet launches in April 2025!</GradientText>
                 </Text>
-
-                <Button href="/">Learn More</Button>
             </Holder>
         </Wrapper>
     );

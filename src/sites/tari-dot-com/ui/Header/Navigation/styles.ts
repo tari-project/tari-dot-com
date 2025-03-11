@@ -1,21 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import styled from 'styled-components';
+import { motion } from 'motion/react';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 50px;
-
-    @media (max-width: 1000px) {
-        gap: 30px;
-    }
+    gap: 10px;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.button<{ $active?: boolean }>`
     color: #fff;
     font-family: var(--font-alliance), sans-serif;
     font-size: 17px;
@@ -23,8 +19,50 @@ export const NavLink = styled(Link)`
     font-weight: 600;
     line-height: 94.2%;
     letter-spacing: -0.85px;
+    position: relative;
 
-    @media (max-width: 1000px) {
-        font-size: 15px;
+    padding: 0 20px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    span {
+        z-index: 1;
+        transition: all 0.3s ease;
     }
+
+    &:hover {
+        text-decoration: none;
+        span {
+            color: #000;
+        }
+    }
+
+    &:active {
+        span {
+            transform: scale(0.9);
+        }
+    }
+
+    ${({ $active }) =>
+        $active &&
+        css`
+            pointer-events: none;
+            span {
+                color: #000;
+            }
+        `}
+`;
+
+export const HoverBox = styled(motion.div)`
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 0;
 `;

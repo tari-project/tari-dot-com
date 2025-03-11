@@ -11,6 +11,8 @@ const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 interface Props {
     theme: 'light' | 'dark';
     buttonText: string;
+    hoverAnimation?: boolean;
+    hoverText?: string;
 }
 
 export default function MinersCTA({ theme, buttonText }: Props) {

@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { NavLink, Wrapper } from './styles';
-import { headerLinks } from '../../Header';
 import { usePathname, useRouter } from 'next/navigation';
 import { scrollToElement } from '@/sites/tari-dot-com/utils/scrollUtils';
 import { useMainStore } from '@/services/stores/useMainStore';
+
+const headerLinks = [
+    { title: 'How it Works', href: '/#how-it-works' },
+    { title: 'Mine Tari', href: '/downloads' },
+    { title: 'Air Drop', href: 'https://airdrop.tari.com/' },
+];
 
 export default function MobileLinks({}) {
     const { setShowMobileMenu } = useMainStore();
