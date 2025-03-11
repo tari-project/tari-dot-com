@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 export const generateMetadata = async () => {
     const metadata = {
-        title: 'Tari / Downloads',
+        title: 'Tari / Tokenomics',
     };
 
     return metadata;
