@@ -104,6 +104,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
     z-index: 1;
     border-radius: 10px;
     background: #fff;
+    background-image: linear-gradient(90deg, #fff 0%, #fff 100%);
 
     cursor: pointer;
 
@@ -123,29 +124,36 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
     line-height: 94.2%;
     letter-spacing: -0.75px;
 
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     user-select: none;
     text-decoration: none;
+
+    .arrow-icon {
+        transition: transform 0.3s ease;
+        transform: rotate(90deg);
+        transform-origin: center center;
+    }
+
+    &:hover {
+        text-decoration: none;
+        background-image: linear-gradient(90deg, #c9eb00 0%, #fff 100%);
+
+        .arrow-icon {
+            transform: rotate(0deg);
+            transform-origin: center center;
+        }
+    }
 
     ${({ $theme }) =>
         $theme === 'light' &&
         css`
             background: #000;
             color: #fff;
+
+            &:hover {
+                background: #000;
+            }
         `}
-
-    .arrow-icon {
-        transition: transform 0.3s ease;
-    }
-
-    &:hover {
-        transform: scale(1.05);
-        text-decoration: none;
-
-        .arrow-icon {
-            transform: translateX(5px);
-        }
-    }
 `;
 
 export const NumberWrapper = styled.span`

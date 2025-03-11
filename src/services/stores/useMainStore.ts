@@ -14,6 +14,6 @@ export const useMainStore = create<Store>()((set) => ({
     setIsLoading: (isLoading: boolean) => set({ isLoading }),
     showMobileMenu: false,
     setShowMobileMenu: (showMobileMenu: boolean) => set({ showMobileMenu }),
-    showSuperMenu: true,
+    showSuperMenu: false,
     setShowSuperMenu: (showSuperMenu: boolean) => set({ showSuperMenu }),
 }));

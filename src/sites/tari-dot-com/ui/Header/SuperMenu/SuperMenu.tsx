@@ -30,7 +30,7 @@ export default function SuperMenu() {
         timeoutRef.current = setTimeout(() => {
             setShowSuperMenu(false);
             timeoutRef.current = null;
-        }, 500);
+        }, 350);
     };
 
     const handleEnter = () => {
@@ -62,9 +62,9 @@ export default function SuperMenu() {
                 <Wrapper
                     ref={wrapperRef}
                     as={motion.div}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, y: -8, transition: { duration: 0.2 } }}
                     onMouseLeave={handleLeave}
                     onMouseEnter={handleEnter}
                 >
@@ -73,32 +73,32 @@ export default function SuperMenu() {
 
                         <ContentHolder>
                             <Links>
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="/tokenomics">
                                     <LinkTitle>Tokenomics</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="https://github.com/tari-project" target="_blank">
                                     <LinkTitle>GitHub Repos</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="https://tlu.tarilabs.com/" target="_blank">
                                     <LinkTitle>Tari Labs University</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="https://explore-nextnet.tari.com/" target="_blank">
                                     <LinkTitle>Block Explorer</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="https://store.tarilabs.com/" target="_blank">
                                     <LinkTitle>TTL Store</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="#">
+                                <LinkButton as={Link} href="/updates">
                                     <LinkTitle>Dev updates</LinkTitle>
                                     <LinkText>Learn about Tari tokenomics</LinkText>
                                 </LinkButton>

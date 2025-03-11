@@ -27,6 +27,7 @@ export const NavLink = styled.button<{ $active?: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 
     span {
         z-index: 1;
@@ -49,6 +50,7 @@ export const NavLink = styled.button<{ $active?: boolean }>`
     ${({ $active }) =>
         $active &&
         css`
+            pointer-events: none;
             span {
                 color: #000;
             }

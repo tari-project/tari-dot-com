@@ -15,7 +15,7 @@ export default function Header() {
                 <TariLogo href="/" />
                 <DesktopOnly>
                     <Navigation />
-                    <MinersCTA theme="dark" buttonText={`Download`} />
+                    <MinersCTA theme="dark" buttonText={`Download`} hoverText={`Download Tari Universe`} />
                 </DesktopOnly>
                 <MobileMenuButton />
                 <SuperMenu />
