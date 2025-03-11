@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styled from 'styled-components';
+import backgroundImage from './images/background.png';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -10,6 +11,9 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 57px;
     background-color: #1e1e25;
+    background-image: url(${backgroundImage.src});
+    background-size: cover;
+    background-position: center;
 
     position: relative;
     z-index: 99;
