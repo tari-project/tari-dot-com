@@ -93,10 +93,10 @@ export const LinkButton = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-        background-color: #0a2540;
+        background-color: #111;
 
         text-decoration: none;
 

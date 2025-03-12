@@ -102,7 +102,7 @@ export const VideoPlayer = styled(motion.div)`
     width: 100%;
     z-index: 3;
     aspect-ratio: 16 / 9;
-    max-width: 1288px;
+    max-width: 1604px;
 
     background-color: #000;
     border-radius: 20px;

@@ -9,20 +9,19 @@
         "lint": "next lint",
         "pages:build": "npx @cloudflare/next-on-pages",
         "preview": "npm run pages:build && wrangler pages dev",
-        "deploy": "npm run pages:build && wrangler pages deploy"
+        "deploy": "npm run pages:build && wrangler pages deploy",
+        "prebuild": "node scripts/generate-posts-data.js"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.5",
         "@number-flow/react": "^0.5.5",
         "@tanstack/react-query": "^5.66.9",
-        "embla-carousel-auto-scroll": "^8.5.2",
-        "embla-carousel-autoplay": "^8.5.2",
-        "embla-carousel-react": "^8.5.2",
+        "gray-matter": "^4.0.3",
         "motion": "^12.4.7",
         "next": "15.1.6",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "react-rewards": "^2.1.0",
+        "react-markdown": "^10.1.0",
         "styled-components": "^6.1.15",
         "zustand": "^5.0.3"
     },

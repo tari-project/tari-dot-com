@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -39,8 +39,18 @@ export const Holder = styled.div`
     }
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 export const MainImage = styled(motion.img)`
     width: 50%;
+    animation: ${rotate} 200s linear infinite;
 
     @media (max-height: 900px) {
         max-height: 600px;

@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow: hidden;
 `;
 
 export const TextMiddle = styled.div`
@@ -101,7 +102,6 @@ export const FloatingElements = styled(motion.div)`
     aspect-ratio: 1 / 1;
     max-width: 1554px;
     margin: auto;
-    overflow: hidden;
 `;
 
 export const CircleHolder = styled.div`
