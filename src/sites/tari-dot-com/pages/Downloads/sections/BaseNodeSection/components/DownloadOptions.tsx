@@ -1,70 +1,44 @@
 'use client';
 
 import { OptionsWrapper } from './styles';
-import { useState, useEffect } from 'react';
 import DropDown from '@/ui-shared/components/DropDown/DropDown';
 import DownloadButton from '@/ui-shared/components/DownloadButton/DownloadButton';
+import { Network, MacArch, WindowsArch, LinuxArch } from '@/ui-shared/types/downloadTypes';
+import { networkOptions, architectureOptions } from '@/ui-shared/hooks/useSetDownloads';
+import { useDownloadStore } from '@/services/stores/useDownloadStore';
 
-type Os = 'Mac' | 'Windows' | 'Linux';
-type Network = 'Mainnet' | 'Nextnet' | 'Testnet';
-type Arch = 'x86_64';
-
-function DownloadOptions() {
-    const [selectedOs, setSelectedOs] = useState<Os>('Linux');
-    const [selectedNetwork, setSelectedNetwork] = useState<string>('Mainnet');
-    const [selectedArch, setSelectedArch] = useState<string>('Arm64');
-
-    useEffect(() => {
-        const userAgent = window.navigator.userAgent;
-        if (userAgent.indexOf('Mac') !== -1) {
-            setSelectedOs('Mac');
-        } else if (userAgent.indexOf('Windows') !== -1) {
-            setSelectedOs('Windows');
-        } else if (userAgent.indexOf('Linux') !== -1) {
-            setSelectedOs('Linux');
-        }
-    }, []);
-
+function DownloadSelector() {
+    const downloadOptions = useDownloadStore((state) => state.downloadOptions);
+    const setDownloadOptions = useDownloadStore((state) => state.setDownloadOptions);
     const handleDownload = () => {
         console.log('Download button clicked');
     };
 
-    // const handleOsChange = (selected: string) => {
-    //     setSelectedOs(selected as Os);
-    // };
-
-    const handleNetworkChange = (selected: string) => {
-        setSelectedNetwork(selected as Network);
+    const handleArchitectureChange = (selected: string) => {
+        setDownloadOptions({ ...downloadOptions, architecture: selected as MacArch | WindowsArch | LinuxArch });
     };
 
-    const handleArchChange = (selected: string) => {
-        setSelectedArch(selected as Arch);
+    const handleNetworkChange = (selected: string) => {
+        setDownloadOptions({ ...downloadOptions, network: selected as Network });
     };
 
     return (
         <OptionsWrapper>
             <DropDown
-                options={[
-                    { value: 'Mainnet', label: 'Mainnet' },
-                    { value: 'Nextnet', label: 'Nextnet' },
-                    { value: 'Testnet', label: 'Testnet' },
-                ]}
+                options={networkOptions}
                 label="Network"
-                selected={selectedNetwork}
+                selected={downloadOptions.network}
                 onChange={handleNetworkChange}
             />
             <DropDown
-                options={[
-                    { value: 'Arm64', label: 'Arm64' },
-                    { value: 'x86_64', label: 'x86_64' },
-                ]}
+                options={architectureOptions(downloadOptions.os)}
                 label="Architecture"
-                selected={selectedArch}
-                onChange={handleArchChange}
+                selected={downloadOptions.architecture}
+                onChange={handleArchitectureChange}
             />
-            <DownloadButton selectedOs={selectedOs} handleDownload={handleDownload} />
+            <DownloadButton selectedOs={downloadOptions.os} handleDownload={handleDownload} />
         </OptionsWrapper>
     );
 }
 
-export default DownloadOptions;
+export default DownloadSelector;

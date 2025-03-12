@@ -1,7 +1,5 @@
 import {
     TextInner,
-    Title,
-    SubTitle,
     InfoWrapper,
     Text,
     SectionHolder,
@@ -9,45 +7,54 @@ import {
     UniverseImageHolder,
     ButtonsWrapper,
     TextWrapper,
+    RatingsWrapper,
 } from './styles';
 import universe from './images/universe.png';
 import { Divider } from '../../styles';
-import DownloadOptions from './components/DownloadOptions';
-import playStoreButton from './images/PlayStoreButton.svg';
-import appStoreButton from './images/AppStoreButton.svg';
 import Image from 'next/image';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import Typography from '@/ui-shared/components/Typography/Typography';
+import QRPopup from './components/QRPopup';
+import Star from './images/star.svg';
+import DownloadForOs from '@/ui-shared/components/DownloadButton/DownloadForOs';
 
 export default function UniverseSection() {
     return (
         <SectionHolder>
-            <Title>
+            <Typography $variant="sectionTitle">
                 <TitleAnimation text={`Tari Universe`} />
-            </Title>
+            </Typography>
             <InfoWrapper>
                 <UniverseImageHolder>
                     <UniverseImage src={universe.src} alt="Universe Ecosystem" />
                 </UniverseImageHolder>
                 <TextWrapper>
                     <TextInner>
-                        <SubTitle>Mine on desktop</SubTitle>
+                        <Typography $variant="subTitle">Mine on desktop</Typography>
                         <Text>
                             Tari is a decentralized, open-source protocol that empowers creators and communities to
                             securely manage digital assets with privacy and flexbility.
                         </Text>
-                        <DownloadOptions />
+                        <DownloadForOs />
                     </TextInner>
                     <Divider />
                     <TextInner>
-                        <SubTitle>Track & transact on mobile</SubTitle>
+                        <Typography $variant="subTitle">Track & transact on mobile</Typography>
                         <Text>
                             Use the companion app to keep track of your rig, get notified when you win, and stay updated
                             with new activities and rewards.
                         </Text>
                         <ButtonsWrapper>
-                            <Image src={playStoreButton.src} alt="Play Store Button" width={169} height={50} />
-                            <Image src={appStoreButton.src} alt="App Store Button" width={169} height={50} />
+                            <QRPopup os="Android" />
+                            <QRPopup os="iOS" />
                         </ButtonsWrapper>
+                        <RatingsWrapper>
+                            {Array(5)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <Image key={index} src={Star} alt="Star" width={24} height={24} />
+                                ))}
+                        </RatingsWrapper>
                     </TextInner>
                 </TextWrapper>
             </InfoWrapper>

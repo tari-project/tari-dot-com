@@ -10,8 +10,12 @@ export const OptionsWrapper = styled.div`
 export const OsWrapper = styled.div`
     display: flex;
     gap: 20px;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+
+    @media (min-width: 769px) {
+        flex-direction: row;
+    }
 `;
 
 export const OsLabel = styled.label`
@@ -23,29 +27,40 @@ export const OsLabel = styled.label`
 `;
 
 export const OsButton = styled.button<{ selected: boolean }>`
-    background-color: ${({ selected }) => (selected ? '#c9eb00' : 'rgba(255, 255, 255, 0.05)')};
-    border: ${({ selected }) => (selected ? '1px solid #c9eb00' : '1px solid rgba(255, 255, 255, 0.3)')};
     display: flex;
-    width: 100%;
-    padding: 10px 30px;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 60px;
+    padding: 6px 10px;
     border-radius: 70px;
-    font-family: var(--font-poppins), sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%;
-    transition: background 0.3s, color 0.3s;
     color: ${({ selected }) => (selected ? '#000' : '#fff')};
+    background: ${({ selected }) => (selected ? '#c9eb00' : 'rgba(255, 255, 255, 0.05)')};
+    font-weight: 600;
+    font-family: var(--font-druk), sans-serif;
+    transition: background 0.3s;
+    text-transform: uppercase;
+    flex: 1;
+    font-size: 24px;
+    border: ${({ selected }) => (selected ? '2px solid #c9eb00' : '2px solid rgba(255, 255, 255, 0.3)')};
+    min-width: 348px;
 
     &:hover {
-        background-color: ${({ selected }) => (selected ? '#c9eb00' : '#b3d800')};
+        background: #b3d800;
         color: #000;
+    }
+
+    @media (min-width: 769px) {
+        min-width: 140px;
     }
 `;
 
 export const ButtonsWrapper = styled.div`
     display: flex;
     gap: 10px;
-    flex-direction: row;
+    flex-direction: column;
+
+    @media (min-width: 769px) {
+        flex-direction: row;
+    }
 `;

@@ -1,4 +1,6 @@
+'use client';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const DropdownContainer = styled.div`
     position: relative;
@@ -17,22 +19,43 @@ export const DropdownSelected = styled.div`
     justify-content: space-between;
 `;
 
-export const DropdownOptions = styled.div`
+export const DropdownOptions = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    border: 1px solid #ccc;
     padding: 10px;
     background-color: #fff;
     border-radius: 20px;
-    z-index: 1000;
+    z-index: 100;
 `;
 
-export const DropdownOption = styled.div`
-    padding: 10px;
+export const DropdownOption = styled(motion.div)`
+    padding: 12px;
     cursor: pointer;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #fff;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+`;
+
+export const DropdownOptionSelected = styled(motion.div)`
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #fff;
 
     &:hover {
         background-color: #f0f0f0;

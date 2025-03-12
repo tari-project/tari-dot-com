@@ -1,35 +1,37 @@
-import {
-    TextInner,
-    Title,
-    InfoWrapper,
-    Text,
-    SectionHolder,
-    UniverseImage,
-    UniverseImageHolder,
-    TextWrapper,
-} from './styles';
+'use client';
+import { TextInner, InfoWrapper, Text, SectionHolder, UniverseImage, UniverseImageHolder, TextWrapper } from './styles';
 import { Divider } from '../../styles';
 import blueComputer from './images/blue-computer.png';
-import DownloadOptions from './components/DownloadOptions';
-import OsSelector from './components/OsSelector';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import Typography from '@/ui-shared/components/Typography/Typography';
+import OsSelector from './components/OsSelector';
+import { Os } from '@/ui-shared/types/downloadTypes';
+import DownloadOptions from './components/DownloadOptions';
+import { useDownloadStore } from '@/services/stores/useDownloadStore';
 
 export default function UniverseSection() {
+    const downloadOptions = useDownloadStore((state) => state.downloadOptions);
+
+    const osTexts = {
+        [Os.Mac]: { compatible: `For MacOS 10.15.0 (Catalina) and higher` },
+        [Os.Windows]: { compatible: `For Windows 10 and higher` },
+        [Os.Linux]: { compatible: `For Ubuntu 18.04 and higher` },
+    };
+
+    const currentText = osTexts[downloadOptions.os] || osTexts[Os.Mac];
+
     return (
         <SectionHolder>
-            <Title>
+            <Typography $variant="sectionTitle">
                 <TitleAnimation text={`Tari Base Node`} />
-            </Title>
+            </Typography>
             <InfoWrapper>
                 <TextWrapper>
                     <OsSelector />
                     <Divider />
                     <TextInner>
-                        <Text>
-                            Download the binary, click through to install. Then you&apos;ll be automatically connected
-                            to the Tari blockchain.
-                        </Text>
-                        <Text>For MacOS 10.15.0 (Catalina) and higher</Text>
+                        <Text>{`Download the binary, click through to install. Then you'll be automatically connected to the Tari blockchain.`}</Text>
+                        <Text>{currentText.compatible}</Text>
                     </TextInner>
                     <DownloadOptions />
                 </TextWrapper>
@@ -37,6 +39,7 @@ export default function UniverseSection() {
                     <UniverseImage src={blueComputer.src} alt="Universe Ecosystem" />
                 </UniverseImageHolder>
             </InfoWrapper>
+            <Divider />
         </SectionHolder>
     );
 }
