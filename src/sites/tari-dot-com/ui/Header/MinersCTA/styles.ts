@@ -28,6 +28,7 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
 
     position: relative;
     flex-shrink: 0;
+    width: fit-content;
 
     ${({ $theme }) =>
         $theme === 'light' &&
@@ -38,9 +39,11 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
         `}
 
     @media (max-width: 450px) {
-        flex-direction: column;
+        gap: 12px;
+        padding: 10px 8px 10px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
         height: auto;
-        padding: 20px;
     }
 `;
 
@@ -87,12 +90,17 @@ export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
     letter-spacing: -0.75px;
     line-height: 100%;
     transform: translateY(1px);
+    white-space: nowrap;
 
     ${({ $theme }) =>
         $theme === 'light' &&
         css`
             color: #26764e;
         `}
+
+    @media (max-width: 450px) {
+        font-size: 14px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -124,6 +132,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -0.75px;
+    white-space: nowrap;
 
     transition: all 0.3s ease;
     user-select: none;
@@ -133,6 +142,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
         transition: transform 0.3s ease;
         transform: rotate(90deg);
         transform-origin: center center;
+        flex-shrink: 0;
     }
 
     &:hover {

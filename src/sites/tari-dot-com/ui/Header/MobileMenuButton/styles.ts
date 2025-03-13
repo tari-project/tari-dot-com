@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import styled from 'styled-components';
 
 export const Wrapper = styled.button`
-    display: none;
+    display: flex;
 
     width: 50px;
     height: 50px;
@@ -14,10 +14,6 @@ export const Wrapper = styled.button`
 
     transform: translateX(10px);
     cursor: pointer;
-
-    @media (max-width: 886px) {
-        display: flex;
-    }
 `;
 
 export const IconContainer = styled.div`

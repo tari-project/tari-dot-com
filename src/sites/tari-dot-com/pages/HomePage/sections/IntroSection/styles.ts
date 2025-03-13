@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -17,8 +16,9 @@ export const Wrapper = styled.div`
         padding: 130px 20px 100px 20px;
     }
 
-    @media (max-width: 900px) {
-        padding-top: 110px;
+    @media (max-width: 807px) {
+        height: auto;
+        padding-top: 50px;
     }
 `;
 
@@ -40,24 +40,6 @@ export const Holder = styled.div`
     @media (max-width: 807px) {
         flex-direction: column-reverse;
         gap: 30px;
-    }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-export const MainImage = styled(motion.img)`
-    width: 50%;
-    animation: ${rotate} 200s linear infinite;
-
-    @media (max-height: 900px) {
-        max-height: 600px;
     }
 `;
 
@@ -150,6 +132,9 @@ export const Text = styled.div`
 
 export const Spacer = styled.div`
     width: 50%;
+    @media (max-width: 807px) {
+        display: none;
+    }
 `;
 
 export const VideoWrapper = styled.div`
@@ -168,6 +153,16 @@ export const VideoWrapper = styled.div`
         width: 100%;
         height: 100%;
         border: none;
+    }
+
+    @media (max-width: 807px) {
+        position: relative;
+        max-width: 100%;
+        transform: translateY(0);
+        right: unset;
+        top: unset;
+        margin-top: 0px;
+        margin-bottom: -60px;
     }
 `;
 

@@ -16,31 +16,13 @@ export type PostsMap = {
 export type AllPosts = Post[];
 
 export async function getAllPosts(): Promise<Post[]> {
-    const fetchUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/posts`;
-
-    const response = await fetch(fetchUrl, {
-        next: { revalidate: 60 },
-    });
-
-    if (!response.ok) {
-        return [];
-    }
-
-    return response.json();
+    const allPostsData = await import('../../generated/all-posts.json');
+    return allPostsData.default as Post[];
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
-    const fetchUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/posts/${slug}`;
-
-    const response = await fetch(fetchUrl, {
-        next: { revalidate: 60 },
-    });
-
-    if (!response.ok) {
-        return undefined;
-    }
-
-    return response.json();
+    const posts = await getAllPosts();
+    return posts.find((post) => post.slug === slug);
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {

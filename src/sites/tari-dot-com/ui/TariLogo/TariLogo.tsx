@@ -6,9 +6,10 @@ import Link from 'next/link';
 
 interface Props {
     href?: string;
+    onClick?: () => void;
 }
 
-export default function TariLogo({ href }: Props) {
+export default function TariLogo({ href, onClick }: Props) {
     const logo = (
         <svg viewBox="0 0 121 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_258_2)">
@@ -38,5 +39,15 @@ export default function TariLogo({ href }: Props) {
         </svg>
     );
 
-    return <Wrapper className="tari-logo">{href ? <Link href={href}>{logo}</Link> : logo}</Wrapper>;
+    return (
+        <Wrapper className="tari-logo">
+            {href ? (
+                <Link href={href} onClick={onClick}>
+                    {logo}
+                </Link>
+            ) : (
+                logo
+            )}
+        </Wrapper>
+    );
 }

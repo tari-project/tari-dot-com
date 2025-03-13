@@ -1,5 +1,5 @@
+import { getAllPosts } from '@/services/lib/posts';
 import UpdatesPage from '@/sites/tari-dot-com/pages/UpdatesPage/UpdatesPage';
-import { getAllPosts } from '@/lib/posts';
 
 export const runtime = 'edge';
 

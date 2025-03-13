@@ -41,32 +41,12 @@ export default function Navigation() {
 
             <NavLink
                 as={Link}
-                href={`https://universe.tari.com/`}
-                target="_blank"
-                onMouseEnter={() => handleEnter(2)}
-                onMouseLeave={handleLeave}
-            >
-                <span>Tari Universe</span>
-
-                <AnimatePresence>
-                    {hovered === 2 && (
-                        <HoverBox
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                        />
-                    )}
-                </AnimatePresence>
-            </NavLink>
-
-            <NavLink
-                as={Link}
                 href={`https://airdrop.tari.com/`}
                 target="_blank"
                 onMouseEnter={() => handleEnter(3)}
                 onMouseLeave={handleLeave}
             >
-                <span>Air Drop</span>
+                <span>Airdrop</span>
                 <AnimatePresence>
                     {hovered === 3 && (
                         <HoverBox

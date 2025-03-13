@@ -11,6 +11,15 @@ export const Wrapper = styled.article`
     display: flex;
     align-items: center;
     gap: 60px;
+
+    @media (max-width: 1228px) {
+        padding: 30px 0;
+    }
+
+    @media (max-width: 807px) {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 `;
 
 export const ArticleInfo = styled.div`
@@ -28,6 +37,14 @@ export const Title = styled(Link)`
     font-weight: 600;
     line-height: 100%;
     letter-spacing: -0.7px;
+
+    @media (max-width: 807px) {
+        font-size: 30px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 25px;
+    }
 `;
 
 export const Excerpt = styled.div`
@@ -40,6 +57,10 @@ export const Excerpt = styled.div`
     letter-spacing: -0.34px;
     max-width: 742px;
     margin-bottom: 10px;
+
+    @media (max-width: 807px) {
+        font-size: 15px;
+    }
 `;
 
 export const Tags = styled.span`
@@ -58,6 +79,10 @@ export const Date = styled.div`
 
     min-height: 15px;
     margin-bottom: 10px;
+
+    @media (max-width: 807px) {
+        font-size: 13px;
+    }
 `;
 
 export const ReadMoreButton = styled(Link)`
@@ -103,4 +128,9 @@ export const Thumbnail = styled(Link)<{ $image: string; $backgroundPosition: str
     background-repeat: no-repeat;
     border-radius: 15px;
     background-color: #f5f5f5;
+
+    @media (max-width: 807px) {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
 `;

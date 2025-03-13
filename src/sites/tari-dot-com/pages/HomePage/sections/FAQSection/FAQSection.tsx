@@ -10,7 +10,7 @@ const faqData = [
     },
     {
         question: `When do I get paid?`,
-        answer: `Testnet mining rewards you with tXTM and gems 💎. 💎can be converted to XTM post launch! Mainnet mining earns $XTM and is transferred to your Tari wallet the moment you win a block. The more miners, the tougher the competition.`,
+        answer: `Testnet mining rewards you with tXTM and gems 💎. 💎 can be converted to XTM post launch! Mainnet mining earns $XTM and is transferred to your Tari wallet the moment you win a block. The more miners, the tougher the competition.`,
     },
     {
         question: `Why should I mine on Testnet?`,

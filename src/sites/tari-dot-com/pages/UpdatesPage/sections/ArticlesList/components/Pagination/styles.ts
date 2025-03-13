@@ -58,4 +58,8 @@ export const PageNumbers = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0 40px;
+
+    @media (max-width: 807px) {
+        display: none;
+    }
 `;

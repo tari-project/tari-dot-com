@@ -13,6 +13,16 @@ export const Wrapper = styled.div`
     padding: 0 20px;
     padding-top: 200px;
     padding-bottom: 200px;
+
+    @media (max-width: 1228px) {
+        padding-top: 160px;
+        padding-bottom: 160px;
+    }
+
+    @media (max-height: 900px) {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -33,4 +43,17 @@ export const PageTitle = styled.div`
     width: 100%;
     padding-bottom: 57px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    @media (max-height: 900px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 999px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 60px;
+        padding-bottom: 40px;
+    }
 `;
