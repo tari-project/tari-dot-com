@@ -108,7 +108,7 @@ export const VideoPlayer = styled(motion.div)`
     border-radius: 74px;
     overflow: hidden;
 
-    padding: 26px;
+    padding: 20px;
     background-color: #ececfb66;
     border: 1px solid #fff;
 
@@ -121,5 +121,15 @@ export const VideoPlayer = styled(motion.div)`
         border: 1px solid #fff;
         aspect-ratio: 16 / 9;
         background-color: #000;
+        display: block;
+    }
+
+    @media (max-width: 807px) {
+        border-radius: 10px;
+        padding: 6px;
+
+        iframe {
+            border-radius: 10px;
+        }
     }
 `;

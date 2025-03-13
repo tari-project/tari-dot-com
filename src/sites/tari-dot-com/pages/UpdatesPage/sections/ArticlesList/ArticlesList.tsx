@@ -1,7 +1,7 @@
-import { Post } from '@/lib/posts';
 import { Holder, Wrapper, PageTitle } from './styles';
 import Pagination from './components/Pagination/Pagination';
 import ArticleEntry from './components/ArticleEntry/ArticleEntry';
+import { Post } from '@/services/lib/posts';
 
 interface ArticlesListProps {
     posts: Post[];

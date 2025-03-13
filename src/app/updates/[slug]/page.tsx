@@ -1,9 +1,9 @@
+import { getPostBySlug } from '@/services/lib/posts';
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
-import { getPostBySlug } from '@/lib/posts';
+
 import { notFound } from 'next/navigation';
 
 export const runtime = 'edge';
-export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {

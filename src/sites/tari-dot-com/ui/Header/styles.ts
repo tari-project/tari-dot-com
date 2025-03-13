@@ -20,17 +20,12 @@ export const Wrapper = styled.div`
 
     margin-bottom: -102px;
 
-    @media (max-width: 1000px) {
-        padding: 20px 20px 0 20px;
-    }
-
-    @media (max-width: 666px) {
-        padding: 11px 8px 0 8px;
-        margin-bottom: -92px;
+    @media (max-width: 1090px) {
+        display: none;
     }
 `;
 
-const BaseHeader = styled(motion.div)`
+export const HeaderBox = styled(motion.div)`
     padding: 14px 20px 14px 30px;
     pointer-events: auto;
 
@@ -44,6 +39,16 @@ const BaseHeader = styled(motion.div)`
 
     border-radius: 15px;
     box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
+
+    color: #fff;
+    background: #0c0718;
+    background-image: url(${headerBgImage.src});
+    background-position: center;
+    background-repeat: repeat;
+    background-size: contain;
+    background-color: #0c0718;
+    position: relative;
+    z-index: 9;
 
     .tari-logo {
         width: 121px;
@@ -62,34 +67,5 @@ const BaseHeader = styled(motion.div)`
         .tari-logo {
             width: 80px;
         }
-    }
-`;
-
-export const HeaderDark = styled(BaseHeader)`
-    color: #fff;
-    background: #0c0718;
-    background-image: url(${headerBgImage.src});
-    background-position: center;
-    background-repeat: repeat;
-    background-size: contain;
-    background-color: #0c0718;
-    position: relative;
-    z-index: 9;
-`;
-
-export const HeaderLight = styled(BaseHeader)`
-    color: #0c0718;
-    background: #fff;
-    z-index: 9;
-`;
-
-export const DesktopOnly = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-
-    @media (max-width: 886px) {
-        display: none;
     }
 `;

@@ -1,6 +1,6 @@
-import { Post } from '@/lib/posts';
 import { ArticleInfo, Date, Excerpt, ReadMoreButton, Tags, Thumbnail, Title, Wrapper } from './styles';
 import ArticleDate from './ArticleDate';
+import { Post } from '@/services/lib/posts';
 
 interface Props {
     post: Post;

@@ -1,4 +1,4 @@
-import { Post } from '@/lib/posts';
+import { Post } from '@/services/lib/posts';
 import { Holder, Wrapper, PostTitle, PostDate, PostBody } from './styles';
 import ReactMarkdown from 'react-markdown';
 

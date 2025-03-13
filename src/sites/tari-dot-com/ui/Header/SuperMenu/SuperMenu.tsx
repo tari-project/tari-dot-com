@@ -40,6 +40,10 @@ export default function SuperMenu() {
         }
     };
 
+    const handleLinkClick = () => {
+        setShowSuperMenu(false);
+    };
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
@@ -77,32 +81,52 @@ export default function SuperMenu() {
 
                         <ContentHolder>
                             <Links>
-                                <LinkButton as={Link} href="/tokenomics">
+                                <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
                                     <LinkTitle>Tokenomics</LinkTitle>
-                                    <LinkText>Explore Tari’s economy</LinkText>
+                                    <LinkText>Explore Tari&apos;s economy</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="https://explore-nextnet.tari.com/" target="_blank">
+                                <LinkButton
+                                    as={Link}
+                                    href="https://explore-nextnet.tari.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
                                     <LinkTitle>Block Explorer</LinkTitle>
                                     <LinkText>View network activity</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="https://github.com/tari-project" target="_blank">
+                                <LinkButton
+                                    as={Link}
+                                    href="https://github.com/tari-project"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
                                     <LinkTitle>GitHub Repos</LinkTitle>
                                     <LinkText>Explore Tari&apos;s open-source code and projects</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="https://store.tarilabs.com/" target="_blank">
+                                <LinkButton
+                                    as={Link}
+                                    href="https://store.tarilabs.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
                                     <LinkTitle>TTL Store</LinkTitle>
                                     <LinkText>Shop Tari merch with your tXTM</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="https://tlu.tarilabs.com/" target="_blank">
+                                <LinkButton
+                                    as={Link}
+                                    href="https://tlu.tarilabs.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
                                     <LinkTitle>Tari Labs University</LinkTitle>
                                     <LinkText>Learn about blockchain and Tari technology</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="/updates">
+                                <LinkButton as={Link} href="/updates" onClick={handleLinkClick}>
                                     <LinkTitle>Dev updates</LinkTitle>
                                     <LinkText>Get the latest dev news</LinkText>
                                 </LinkButton>
