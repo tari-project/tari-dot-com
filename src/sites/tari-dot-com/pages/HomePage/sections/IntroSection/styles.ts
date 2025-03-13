@@ -170,3 +170,12 @@ export const VideoWrapper = styled.div`
         border: none;
     }
 `;
+
+export const StyledIframe = styled.iframe<{ $isLoaded: boolean }>`
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+`;
