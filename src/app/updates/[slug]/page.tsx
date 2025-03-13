@@ -3,39 +3,37 @@ import { getPostBySlug } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 
 export const runtime = 'edge';
-
-//export const dynamicParams = true;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
+    try {
+        const { slug } = await params;
 
-    if (!slug) {
-        return {
-            title: 'Tari / Updates / Post Not Found',
-        };
+        if (!slug) {
+            return { title: 'Tari / Updates / Post Not Found' };
+        }
+
+        const post = await getPostBySlug(slug);
+
+        if (!post) {
+            return { title: 'Tari / Updates / Post Not Found' };
+        }
+
+        return { title: `Tari / Updates / ${post.title}` };
+    } catch (error) {
+        console.error('Error in generateMetadata:', error);
+        return { title: 'Tari / Updates' };
     }
-
-    const post = await getPostBySlug(slug);
-
-    if (!post) {
-        return {
-            title: 'Tari / Updates / Post Not Found',
-        };
-    }
-
-    return {
-        title: `Tari / Updates / ${post.title}`,
-    };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
-
-    if (!slug) {
-        notFound();
-    }
-
     try {
+        const { slug } = await params;
+
+        if (!slug) {
+            notFound();
+        }
+
         const post = await getPostBySlug(slug);
 
         if (!post) {

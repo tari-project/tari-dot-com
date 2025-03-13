@@ -1,11 +1,38 @@
 'use client';
 
+import { useState } from 'react';
 import AppleIcon from './icons/AppleIcon';
 import LinuxIcon from './icons/LinuxIcon';
 import WindowsIcon from './icons/WindowsIcon';
-import { Button, Icons, Text, Wrapper } from './styles';
+import { Button, HoverGradient, Icons, Text, Word, Wrapper } from './styles';
+import { AnimatePresence } from 'motion/react';
+
+const containerVariants = {
+    visible: {
+        transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+    },
+    exit: {
+        transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+};
+
+const wordVariants = {
+    hidden: { y: 15, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.5, ease: 'circInOut' },
+    },
+    exit: {
+        y: 15,
+        opacity: 0,
+        transition: { duration: 0.5, ease: 'circInOut' },
+    },
+};
 
 export default function DownloadButton() {
+    const [hovering, setHovering] = useState(false);
+
     return (
         <Wrapper
             initial={{ opacity: 0, scale: 0.9 }}
@@ -13,13 +40,36 @@ export default function DownloadButton() {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ delay: 0.5 }}
         >
-            <Button href="/downloads">
-                <Text>Download Tari Universe</Text>
+            <Button href="/downloads" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+                <AnimatePresence mode="popLayout">
+                    {!hovering && (
+                        <Text key="default" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+                            <Word variants={wordVariants}>Download</Word> <Word variants={wordVariants}>Tari</Word>{' '}
+                            <Word variants={wordVariants}>Universe</Word>
+                        </Text>
+                    )}
+                    {hovering && (
+                        <Text key="hover" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+                            <Word variants={wordVariants}>Start</Word> <Word variants={wordVariants}>Earning</Word>{' '}
+                            <Word variants={wordVariants}>XTM</Word> <Word variants={wordVariants}>Today</Word>
+                        </Text>
+                    )}
+                </AnimatePresence>
                 <Icons>
                     <WindowsIcon />
                     <AppleIcon />
                     <LinuxIcon />
                 </Icons>
+                <AnimatePresence>
+                    {hovering && (
+                        <HoverGradient
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.7 }}
+                        />
+                    )}
+                </AnimatePresence>
             </Button>
         </Wrapper>
     );

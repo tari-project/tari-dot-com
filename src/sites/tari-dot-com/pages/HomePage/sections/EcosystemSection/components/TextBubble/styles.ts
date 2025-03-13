@@ -19,15 +19,15 @@ export const OuterWrapper = styled.div`
     position: absolute;
     z-index: 3;
     animation: ${float} 3s ease-in-out infinite;
-    perspective: 1000px;
 `;
 
 export const Wrapper = styled(motion.div)`
     display: flex;
     align-items: center;
     gap: 15px;
+    max-width: 305px;
 
-    border-radius: 56px;
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     background: #292929;
 
@@ -35,7 +35,7 @@ export const Wrapper = styled(motion.div)`
     transform-style: preserve-3d;
 
     flex-shrink: 0;
-    padding: 18px 30px;
+    padding: 20px 30px 20px 20px;
 
     will-change: transform;
     transition: box-shadow 0.3s ease;
@@ -72,18 +72,20 @@ export const Avatar = styled.div<{ $image: string }>`
     background-position: center;
     border-radius: 50%;
     transform: translateZ(10px);
+    flex-shrink: 0;
 `;
 
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     transform: translateZ(5px);
+    gap: 4px;
 `;
 
 export const Text = styled.div`
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
-    font-size: 20px;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 17px;
     font-style: normal;
     font-weight: 400;
     line-height: 110%;
@@ -95,15 +97,17 @@ export const Text = styled.div`
 `;
 
 export const Username = styled.div`
-    color: #fff;
-    font-family: var(--font-alliance), sans-serif;
-    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
     letter-spacing: -0.785px;
 
-    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     @media (max-width: 1297px) {
         font-size: 14px;

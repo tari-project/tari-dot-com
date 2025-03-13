@@ -107,7 +107,7 @@ export const TextWrapper = styled.div`
 
 export const Username = styled.div`
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -126,9 +126,9 @@ export const Username = styled.div`
 
 export const Followers = styled.div`
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 14px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
 `;

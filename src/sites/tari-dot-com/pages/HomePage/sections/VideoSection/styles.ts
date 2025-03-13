@@ -101,17 +101,25 @@ export const Text = styled.div`
 export const VideoPlayer = styled(motion.div)`
     width: 100%;
     z-index: 3;
-    aspect-ratio: 16 / 9;
+
     max-width: 1604px;
 
     background-color: #000;
-    border-radius: 20px;
+    border-radius: 74px;
     overflow: hidden;
+
+    padding: 26px;
+    background-color: #ececfb66;
+    border: 1px solid #fff;
 
     iframe {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border: none;
+        border-radius: 50px;
+        border: 1px solid #fff;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
     }
 `;

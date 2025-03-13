@@ -34,22 +34,22 @@ const textBubbleData: {
     style: React.CSSProperties;
 }[] = [
     {
-        text: '85% win rate',
-        username: '@itsplats',
-        avatarImage: avatar1Img.src,
+        text: 'Tari Universe is like ASMR!',
+        username: '@betty_nft',
+        avatarImage: avatar2Img.src,
         style: { top: '11%', left: '41.8%' },
     },
     {
-        text: 'It is the Apple of mining!',
-        username: '@BoredElon',
-        avatarImage: avatar3Img.src,
-        style: { top: '42%', left: '4.5%' },
+        text: 'History is being written in front of us!',
+        username: '@itsplats',
+        avatarImage: avatar1Img.src,
+        style: { top: '53%', right: '3%' },
     },
     {
-        text: 'Tari Universe is like ASMR',
-        username: '@betty_nft',
-        avatarImage: avatar2Img.src,
-        style: { top: '54%', right: '1%' },
+        text: 'Tari Universe is like the Apple of mining!',
+        username: '@boredelonmusk',
+        avatarImage: avatar3Img.src,
+        style: { top: '42.5%', left: '3.5%' },
     },
 ];
 
@@ -64,19 +64,19 @@ const tikTokBubbleData: {
     {
         username: 'CryptøJ',
         video: 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/a97e4e57206a63d2f9baaaee2cce3ce0/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2Fa97e4e57206a63d2f9baaaee2cce3ce0%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false',
-        style: { top: '10%', left: '15%' },
+        style: { top: '9%', left: '13%' },
         aspectRatio: '16/9',
     },
     {
         username: '@tari_xtr',
         video: 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/5795a98e217a08b75b230529340c01f6/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F5795a98e217a08b75b230529340c01f6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false',
-        style: { top: '18%', right: '8%' },
+        style: { top: '18%', right: '7%' },
         aspectRatio: '9/16',
     },
     {
         username: 'Lit🔥🍀🚫',
         video: 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/5c86c0e92bc7091ec97d976c1b5ff5fe/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F5c86c0e92bc7091ec97d976c1b5ff5fe%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false',
-        style: { top: '68%', right: '22%' },
+        style: { top: '69%', right: '20%' },
 
         aspectRatio: '9/16',
     },

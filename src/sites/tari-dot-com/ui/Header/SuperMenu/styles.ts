@@ -114,4 +114,6 @@ export const LinkButton = styled.div`
     }
 `;
 
-export const TariImage = styled.img``;
+export const TariImage = styled.img`
+    width: 363px;
+`;

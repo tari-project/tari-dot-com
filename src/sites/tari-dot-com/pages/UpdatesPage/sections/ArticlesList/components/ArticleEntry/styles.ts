@@ -62,14 +62,15 @@ export const Date = styled.div`
 
 export const ReadMoreButton = styled(Link)`
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 700;
     line-height: 94.2%; /* 14.13px */
     letter-spacing: -0.75px;
 
-    width: 113px;
+    min-width: 113px;
+    width: fit-content;
     height: 43px;
     padding: 0px 20px;
 
