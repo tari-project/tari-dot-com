@@ -1,5 +1,3 @@
-'use client';
-
 import Banner from '../../ui/Banner/Banner';
 import Footer from '../../ui/Footer/Footer';
 import GradientBackground from '../../ui/GradientBackground/GradientBackground';

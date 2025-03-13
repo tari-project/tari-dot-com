@@ -1,44 +1,41 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { OsWrapper, OsLabel, OsButton, ButtonsWrapper } from './styles';
+import { useState } from 'react';
+import { OsButton, OsLabel, OsWrapper as Wrapper, ButtonsWrapper } from './styles';
+import { Os, MacArch, WindowsArch, LinuxArch } from '@/ui-shared/types/downloadTypes';
+import { useDownloadStore } from '@/services/stores/useDownloadStore';
+import MacIcon from '@/ui-shared/components/Icons/MacIcon';
+import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
+import WindowsIcon from '@/ui-shared/components/Icons/WindowsIcon';
 
-import React from 'react';
+const osOptions = [
+    { os: Os.Mac, arch: MacArch, label: 'Mac', Icon: MacIcon },
+    { os: Os.Windows, arch: WindowsArch, label: 'Windows', Icon: WindowsIcon },
+    { os: Os.Linux, arch: LinuxArch, label: 'Linux', Icon: LinuxIcon },
+];
 
-type Os = 'Mac' | 'Windows' | 'Linux';
-
-function OsSelector() {
-    const [selectedOs, setSelectedOs] = useState<Os>('Linux');
-    useEffect(() => {
-        const userAgent = window.navigator.userAgent;
-        if (userAgent.indexOf('Mac') !== -1) {
-            setSelectedOs('Mac');
-        } else if (userAgent.indexOf('Windows') !== -1) {
-            setSelectedOs('Windows');
-        } else if (userAgent.indexOf('Linux') !== -1) {
-            setSelectedOs('Linux');
-        }
-    }, []);
-
-    const handleOsChange = (os: Os) => {
-        setSelectedOs(os);
-    };
+export default function OsSelector() {
+    const [hoveredOs, setHoveredOs] = useState<Os | null>(null);
+    const downloadOptions = useDownloadStore((state) => state.downloadOptions);
+    const setDownloadOptions = useDownloadStore((state) => state.setDownloadOptions);
 
     return (
-        <OsWrapper>
-            <OsLabel>Download for </OsLabel>
+        <Wrapper>
+            <OsLabel>Download for</OsLabel>
             <ButtonsWrapper>
-                <OsButton onClick={() => handleOsChange('Mac')} selected={selectedOs === 'Mac'}>
-                    Mac
-                </OsButton>
-                <OsButton onClick={() => handleOsChange('Windows')} selected={selectedOs === 'Windows'}>
-                    Windows
-                </OsButton>
-                <OsButton onClick={() => handleOsChange('Linux')} selected={selectedOs === 'Linux'}>
-                    Linux
-                </OsButton>
+                {osOptions.map(({ os, arch, label, Icon }) => (
+                    <OsButton
+                        key={os}
+                        onClick={() =>
+                            setDownloadOptions({ ...downloadOptions, os, architecture: Object.values(arch)[0] })
+                        }
+                        selected={downloadOptions.os === os}
+                        onMouseEnter={() => setHoveredOs(os)}
+                        onMouseLeave={() => setHoveredOs(null)}
+                    >
+                        {label}
+                        <Icon fill={downloadOptions.os === os || hoveredOs === os ? '#000' : '#FFF'} />
+                    </OsButton>
+                ))}
             </ButtonsWrapper>
-        </OsWrapper>
+        </Wrapper>
     );
 }
-
-export default OsSelector;

@@ -56,6 +56,10 @@ export default function SuperMenu() {
         };
     }, [showSuperMenu, setShowSuperMenu]);
 
+    useEffect(() => {
+        setShowSuperMenu(false);
+    }, [setShowSuperMenu]);
+
     return (
         <AnimatePresence>
             {showSuperMenu && (
@@ -75,32 +79,32 @@ export default function SuperMenu() {
                             <Links>
                                 <LinkButton as={Link} href="/tokenomics">
                                     <LinkTitle>Tokenomics</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
-                                </LinkButton>
-
-                                <LinkButton as={Link} href="https://github.com/tari-project" target="_blank">
-                                    <LinkTitle>GitHub Repos</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
-                                </LinkButton>
-
-                                <LinkButton as={Link} href="https://tlu.tarilabs.com/" target="_blank">
-                                    <LinkTitle>Tari Labs University</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
+                                    <LinkText>Explore Tari’s economy</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="https://explore-nextnet.tari.com/" target="_blank">
                                     <LinkTitle>Block Explorer</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
+                                    <LinkText>View network activity</LinkText>
+                                </LinkButton>
+
+                                <LinkButton as={Link} href="https://github.com/tari-project" target="_blank">
+                                    <LinkTitle>GitHub Repos</LinkTitle>
+                                    <LinkText>Explore Tari&apos;s open-source code and projects</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="https://store.tarilabs.com/" target="_blank">
                                     <LinkTitle>TTL Store</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
+                                    <LinkText>Shop Tari merch with your tXTM</LinkText>
+                                </LinkButton>
+
+                                <LinkButton as={Link} href="https://tlu.tarilabs.com/" target="_blank">
+                                    <LinkTitle>Tari Labs University</LinkTitle>
+                                    <LinkText>Learn about blockchain and Tari technology</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="/updates">
                                     <LinkTitle>Dev updates</LinkTitle>
-                                    <LinkText>Learn about Tari tokenomics</LinkText>
+                                    <LinkText>Get the latest dev news</LinkText>
                                 </LinkButton>
                             </Links>
 

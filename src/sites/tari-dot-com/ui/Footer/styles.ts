@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.footer`
     padding: 80px 80px;
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
 
     .tari-logo {
         width: 109px;

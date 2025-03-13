@@ -13,13 +13,14 @@ export const Wrapper = styled.div`
 
 export const NavLink = styled.button<{ $active?: boolean }>`
     color: #fff;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 17px;
     font-style: normal;
     font-weight: 600;
-    line-height: 94.2%;
+    line-height: 100%;
     letter-spacing: -0.85px;
     position: relative;
+    transform: translateY(1px);
 
     padding: 0 20px;
     height: 43px;

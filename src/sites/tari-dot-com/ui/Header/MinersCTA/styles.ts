@@ -79,13 +79,14 @@ export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
 
 export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
     color: #71ee73;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
-    line-height: 94.2%;
+
     letter-spacing: -0.75px;
-    font-variant-numeric: tabular-nums;
+    line-height: 100%;
+    transform: translateY(1px);
 
     ${({ $theme }) =>
         $theme === 'light' &&
@@ -117,11 +118,11 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
     padding: 0px 15px 0px 20px;
 
     color: #1b1b1b;
-    font-family: var(--font-alliance), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 700;
-    line-height: 94.2%;
+    line-height: 100%;
     letter-spacing: -0.75px;
 
     transition: all 0.3s ease;
@@ -162,7 +163,7 @@ export const NumberWrapper = styled.span`
     margin-right: 4px;
     margin-left: 24px;
     text-transform: lowercase;
-    transform: translateY(0.3px);
+
     transition: width 0.3s ease;
     min-width: 37px;
 `;

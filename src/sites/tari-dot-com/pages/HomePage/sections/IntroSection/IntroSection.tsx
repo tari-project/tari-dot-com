@@ -6,12 +6,13 @@ import {
     EyebrowText,
     Text,
     ContentWrapper,
-    MainImage,
     Holder,
     TitleWrapper,
     Title,
+    VideoWrapper,
+    Spacer,
 } from './styles';
-import mainImage from './images/main-image.png';
+
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import TextPill from './components/TextPill/TextPill';
 import DownloadButton from './components/DownloadButton/DownloadButton';
@@ -45,13 +46,15 @@ export default function IntroSection() {
                     <DownloadButton />
                 </ContentWrapper>
 
-                <MainImage
-                    src={mainImage.src}
-                    alt=""
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.25 }}
-                />
+                <Spacer />
+
+                <VideoWrapper>
+                    <iframe
+                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/78d0a2cac96deb5892780f5e78262786/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F78d0a2cac96deb5892780f5e78262786%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                        allowFullScreen={false}
+                    ></iframe>
+                </VideoWrapper>
             </Holder>
         </Wrapper>
     );

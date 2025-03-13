@@ -1,14 +1,14 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
     min-height: 900px;
     height: calc(100vh - 57px);
     display: flex;
-    background-color: #e4e3ec;
+    background-color: #e8e7ef;
 
     padding: 0 20px;
 
@@ -28,6 +28,10 @@ export const Holder = styled.div`
     justify-content: center;
     gap: 80px;
     margin: 0 auto;
+    position: relative;
+
+    width: 100%;
+    max-width: 1300px;
 
     @media (max-width: 1320px) {
         gap: 0px;
@@ -39,8 +43,18 @@ export const Holder = styled.div`
     }
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 export const MainImage = styled(motion.img)`
     width: 50%;
+    animation: ${rotate} 200s linear infinite;
 
     @media (max-height: 900px) {
         max-height: 600px;
@@ -53,6 +67,9 @@ export const ContentWrapper = styled.div`
     gap: 30px;
     max-width: 656px;
     width: 100%;
+
+    position: relative;
+    z-index: 1;
 
     @media (max-width: 807px) {
         align-items: center;
@@ -120,7 +137,7 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
-    max-width: 590px;
+    max-width: 595px;
 
     @media (max-width: 999px) {
         font-size: 16px;
@@ -128,5 +145,28 @@ export const Text = styled.div`
 
     @media (max-width: 807px) {
         font-size: 14px;
+    }
+`;
+
+export const Spacer = styled.div`
+    width: 50%;
+`;
+
+export const VideoWrapper = styled.div`
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 65%;
+    pointer-events: none;
+
+    position: absolute;
+    top: 50%;
+    right: -6%;
+    transform: translateY(-55%);
+    z-index: 0;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
     }
 `;

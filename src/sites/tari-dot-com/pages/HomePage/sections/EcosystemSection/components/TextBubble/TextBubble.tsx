@@ -2,6 +2,7 @@
 
 import { useMotionValue, useSpring } from 'motion/react';
 import { OuterWrapper, Wrapper, Avatar, TextWrapper, Text, Username } from './styles';
+import BlueCheckIcon from './BlueCheckIcon';
 
 interface Props {
     avatarImage: string;
@@ -38,7 +39,9 @@ export default function TextBubble({ avatarImage, text, username, style, mouseX 
                 <Avatar $image={avatarImage} />
                 <TextWrapper>
                     <Text>{text}</Text>
-                    <Username>{username}</Username>
+                    <Username>
+                        {username} <BlueCheckIcon />
+                    </Username>
                 </TextWrapper>
             </Wrapper>
         </OuterWrapper>

@@ -3,22 +3,16 @@ import DropDown from '@/ui-shared/components/DropDown/DropDown';
 import { OptionsWrapper } from './styles';
 import { useState, useEffect } from 'react';
 import DownloadButton from '@/ui-shared/components/DownloadButton/DownloadButton';
-
-type Os = 'Mac' | 'Windows' | 'Linux';
+import useDetectOs from '@/ui-shared/hooks/useDetectOs';
+import { Os } from '../../../../../../../ui-shared/types/downloadTypes';
 
 function DownloadOptions() {
-    const [selectedOs, setSelectedOs] = useState<Os>('Linux');
+    const detectedOs = useDetectOs();
+    const [selectedOs, setSelectedOs] = useState<Os>(Os.Mac);
 
     useEffect(() => {
-        const userAgent = window.navigator.userAgent;
-        if (userAgent.indexOf('Mac') !== -1) {
-            setSelectedOs('Mac');
-        } else if (userAgent.indexOf('Windows') !== -1) {
-            setSelectedOs('Windows');
-        } else if (userAgent.indexOf('Linux') !== -1) {
-            setSelectedOs('Linux');
-        }
-    }, []);
+        setSelectedOs(detectedOs);
+    }, [detectedOs]);
 
     const handleDownload = () => {
         console.log('Download button clicked');
@@ -32,9 +26,9 @@ function DownloadOptions() {
         <OptionsWrapper>
             <DropDown
                 options={[
-                    { value: 'Mac', label: 'Mac' },
-                    { value: 'Windows', label: 'Windows' },
-                    { value: 'Linux', label: 'Linux' },
+                    { value: Os.Mac, label: 'Mac' },
+                    { value: Os.Windows, label: 'Windows' },
+                    { value: Os.Linux, label: 'Linux' },
                 ]}
                 label="Operating System"
                 selected={selectedOs}
