@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'motion/react';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
@@ -9,7 +8,7 @@ export const Wrapper = styled(motion.div)`
     width: 362px;
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.button`
     position: relative;
     z-index: 1;
     cursor: pointer;

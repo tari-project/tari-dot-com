@@ -6,6 +6,7 @@ import ArrowIcon from './ArrowIcon';
 import { useMinerStats } from '@/services/api/useMinerStats';
 
 import dynamic from 'next/dynamic';
+import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
@@ -28,6 +29,8 @@ export default function MinersCTA({ theme, buttonText }: Props) {
         }
     }, [countValue]);
 
+    const { handleDownloadClick } = useDownloadUniverse();
+
     return (
         <Wrapper $theme={theme}>
             <TextWrapper>
@@ -49,7 +52,7 @@ export default function MinersCTA({ theme, buttonText }: Props) {
                 </Text>
             </TextWrapper>
             <ButtonWrapper>
-                <Button $theme={theme} href="/downloads">
+                <Button $theme={theme} href="/downloads" onClick={handleDownloadClick}>
                     <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />
                 </Button>
             </ButtonWrapper>

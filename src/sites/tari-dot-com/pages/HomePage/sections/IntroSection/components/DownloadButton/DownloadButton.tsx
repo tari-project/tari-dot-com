@@ -6,6 +6,8 @@ import LinuxIcon from './icons/LinuxIcon';
 import WindowsIcon from './icons/WindowsIcon';
 import { Button, HoverGradient, Icons, Text, Word, Wrapper } from './styles';
 import { AnimatePresence } from 'motion/react';
+import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
+import Link from 'next/link';
 
 const containerVariants = {
     visible: {
@@ -33,6 +35,8 @@ const wordVariants = {
 export default function DownloadButton() {
     const [hovering, setHovering] = useState(false);
 
+    const { handleDownloadClick } = useDownloadUniverse();
+
     return (
         <Wrapper
             initial={{ opacity: 0, scale: 0.9 }}
@@ -40,7 +44,13 @@ export default function DownloadButton() {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ delay: 0.5 }}
         >
-            <Button href="/downloads" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+            <Button
+                as={Link}
+                href="/downloads"
+                onClick={handleDownloadClick}
+                onMouseEnter={() => setHovering(true)}
+                onMouseLeave={() => setHovering(false)}
+            >
                 <AnimatePresence mode="popLayout">
                     {!hovering && (
                         <Text key="default" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
