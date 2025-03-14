@@ -105,10 +105,10 @@ export const VideoPlayer = styled(motion.div)`
     max-width: 1604px;
 
     background-color: #000;
-    border-radius: 74px;
+    border-radius: 60px;
     overflow: hidden;
 
-    padding: 20px;
+    padding: 10px;
     background-color: #ececfb66;
     border: 1px solid #fff;
 
@@ -126,7 +126,7 @@ export const VideoPlayer = styled(motion.div)`
 
     @media (max-width: 807px) {
         border-radius: 10px;
-        padding: 6px;
+        padding: 4px;
 
         iframe {
             border-radius: 10px;
