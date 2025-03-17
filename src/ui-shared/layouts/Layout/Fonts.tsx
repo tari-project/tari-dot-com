@@ -18,7 +18,7 @@ const PoppinsFont = localFont({
             style: 'normal',
         },
     ],
-    display: 'swap',
+    display: 'block',
     variable: '--font-poppins',
 });
 
@@ -35,7 +35,7 @@ const DrukFont = localFont({
             style: 'normal',
         },
     ],
-    display: 'swap',
+    display: 'block',
     variable: '--font-druk',
 });
 

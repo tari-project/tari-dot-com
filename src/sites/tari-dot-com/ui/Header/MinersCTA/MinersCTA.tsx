@@ -14,9 +14,10 @@ interface Props {
     buttonText: string;
     hoverAnimation?: boolean;
     hoverText?: string;
+    noBackground?: boolean;
 }
 
-export default function MinersCTA({ theme, buttonText }: Props) {
+export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
     const { data } = useMinerStats();
     const countValue = data?.totalMiners ?? 0;
     const [numberWidth, setNumberWidth] = useState(26);
@@ -32,7 +33,7 @@ export default function MinersCTA({ theme, buttonText }: Props) {
     const { handleDownloadClick } = useDownloadUniverse();
 
     return (
-        <Wrapper $theme={theme}>
+        <Wrapper $theme={theme} $noBackground={noBackground}>
             <TextWrapper>
                 <Dot $theme={theme} />
                 <Text $theme={theme}>

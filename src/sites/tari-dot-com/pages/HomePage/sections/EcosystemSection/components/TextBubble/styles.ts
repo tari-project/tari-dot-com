@@ -55,12 +55,10 @@ export const Wrapper = styled(motion.div)`
         animation-delay: -2s;
     }
 
-    @media (max-width: 1297px) {
-        padding: 15px 20px;
-    }
-
-    @media (max-width: 1035px) {
-        display: none;
+    @media (max-width: 1250px) {
+        padding: 12px 18px;
+        width: 100%;
+        max-width: 220px;
     }
 `;
 
@@ -73,6 +71,11 @@ export const Avatar = styled.div<{ $image: string }>`
     border-radius: 50%;
     transform: translateZ(10px);
     flex-shrink: 0;
+
+    @media (max-width: 1250px) {
+        width: 30px;
+        height: 30px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -91,8 +94,8 @@ export const Text = styled.div`
     line-height: 110%;
     letter-spacing: -0.981px;
 
-    @media (max-width: 1297px) {
-        font-size: 16px;
+    @media (max-width: 1250px) {
+        font-size: 14px;
     }
 `;
 
@@ -109,7 +112,7 @@ export const Username = styled.div`
     align-items: center;
     gap: 5px;
 
-    @media (max-width: 1297px) {
-        font-size: 14px;
+    @media (max-width: 1250px) {
+        font-size: 12px;
     }
 `;

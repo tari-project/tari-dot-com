@@ -14,7 +14,7 @@ const radarPulse = keyframes`
     }
 `;
 
-export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
+export const Wrapper = styled.div<{ $theme: 'light' | 'dark'; $noBackground?: boolean }>`
     display: flex;
     align-items: center;
     gap: 17px;
@@ -33,8 +33,15 @@ export const Wrapper = styled.div<{ $theme: 'light' | 'dark' }>`
     ${({ $theme }) =>
         $theme === 'light' &&
         css`
-            border: none;
+            border: 1px solid rgba(17, 17, 17, 0.2);
+            background: rgba(17, 17, 17, 0.05);
+        `}
+
+    ${({ $noBackground }) =>
+        $noBackground &&
+        css`
             background: none;
+            border: none;
             padding: 0;
         `}
 
@@ -175,5 +182,5 @@ export const NumberWrapper = styled.span`
     text-transform: lowercase;
 
     transition: width 0.3s ease;
-    min-width: 37px;
+    min-width: 34px;
 `;

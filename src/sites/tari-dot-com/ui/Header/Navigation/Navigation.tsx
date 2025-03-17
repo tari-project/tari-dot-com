@@ -6,31 +6,36 @@ import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
 import { useMainStore } from '@/services/stores/useMainStore';
 
-export default function Navigation() {
-    const [hovered, setHovered] = useState(0);
+interface NavigationProps {
+    theme?: 'dark' | 'light';
+}
+
+export default function Navigation({ theme = 'dark' }: NavigationProps) {
+    const [hoveredLink, setHoveredLink] = useState<number | null>(null);
     const { showSuperMenu, setShowSuperMenu } = useMainStore();
 
     const handleAboutEnter = () => {
-        setHovered(1);
+        setHoveredLink(1);
         setShowSuperMenu(true);
     };
 
-    const handleEnter = (index: number) => {
-        setHovered(index);
+    const handleMouseEnter = (index: number) => {
+        setHoveredLink(index);
         setShowSuperMenu(false);
     };
 
-    const handleLeave = () => {
-        setHovered(0);
+    const handleMouseLeave = () => {
+        setHoveredLink(null);
     };
 
     return (
         <Wrapper>
-            <NavLink onMouseEnter={handleAboutEnter} $active={showSuperMenu}>
+            <NavLink onMouseEnter={handleAboutEnter} $active={showSuperMenu} $theme={theme}>
                 <span>About Tari</span>
                 <AnimatePresence>
                     {showSuperMenu && (
                         <HoverBox
+                            $theme={theme}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
@@ -43,13 +48,15 @@ export default function Navigation() {
                 as={Link}
                 href={`https://airdrop.tari.com/`}
                 target="_blank"
-                onMouseEnter={() => handleEnter(3)}
-                onMouseLeave={handleLeave}
+                onMouseEnter={() => handleMouseEnter(3)}
+                onMouseLeave={handleMouseLeave}
+                $theme={theme}
             >
                 <span>Airdrop</span>
                 <AnimatePresence>
-                    {hovered === 3 && (
+                    {hoveredLink === 3 && (
                         <HoverBox
+                            $theme={theme}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}

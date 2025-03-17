@@ -27,6 +27,12 @@ export const Wrapper = styled(motion.div)`
         width: 80px;
         top: -7px;
     }
+
+    @media (max-width: 460px) {
+        width: 60px;
+        top: -5px;
+        border-radius: 12px;
+    }
 `;
 
 export const Image = styled.img<{ $isActive: boolean }>`

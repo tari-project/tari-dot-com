@@ -21,7 +21,7 @@ export default function VideoSection() {
 
                 <VideoPlayer>
                     <iframe
-                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/9e28f4ccfda42bd43d3c2d77e06a81ad/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F9e28f4ccfda42bd43d3c2d77e06a81ad%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/9e28f4ccfda42bd43d3c2d77e06a81ad/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F9e28f4ccfda42bd43d3c2d77e06a81ad%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&background=#fff"
                         loading="lazy"
                         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                         allowFullScreen={true}

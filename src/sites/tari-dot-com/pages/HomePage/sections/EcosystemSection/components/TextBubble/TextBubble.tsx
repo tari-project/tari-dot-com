@@ -12,9 +12,19 @@ interface Props {
     mouseX?: number;
     mouseY?: number;
     depth?: number;
+    className?: string;
 }
 
-export default function TextBubble({ avatarImage, text, username, style, mouseX = 0, mouseY = 0, depth = 1.2 }: Props) {
+export default function TextBubble({
+    avatarImage,
+    text,
+    username,
+    style,
+    mouseX = 0,
+    mouseY = 0,
+    depth = 1.2,
+    className,
+}: Props) {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -29,7 +39,7 @@ export default function TextBubble({ avatarImage, text, username, style, mouseX 
     }
 
     return (
-        <OuterWrapper style={style}>
+        <OuterWrapper style={style} className={className}>
             <Wrapper
                 style={{
                     x: springX,
