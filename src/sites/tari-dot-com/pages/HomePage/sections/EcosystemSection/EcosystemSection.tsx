@@ -151,6 +151,7 @@ export default function EcosystemSection() {
                         mouseX={mousePosition.x}
                         mouseY={mousePosition.y}
                         className={bubble.className}
+                        depth={1.5}
                     />
                 ))}
 
@@ -166,6 +167,7 @@ export default function EcosystemSection() {
                         mouseY={mousePosition.y}
                         aspectRatio={bubble.aspectRatio}
                         className={bubble.className}
+                        depth={1}
                     />
                 ))}
 

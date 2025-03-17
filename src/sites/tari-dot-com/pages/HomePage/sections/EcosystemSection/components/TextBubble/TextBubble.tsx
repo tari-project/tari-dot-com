@@ -1,7 +1,7 @@
 'use client';
 
 import { useMotionValue, useSpring } from 'motion/react';
-import { OuterWrapper, Wrapper, Avatar, TextWrapper, Text, Username } from './styles';
+import { FloatingWrapper, Wrapper, Avatar, TextWrapper, Text, Username, InViewWrapper } from './styles';
 import BlueCheckIcon from './BlueCheckIcon';
 
 interface Props {
@@ -39,21 +39,27 @@ export default function TextBubble({
     }
 
     return (
-        <OuterWrapper style={style} className={className}>
-            <Wrapper
-                style={{
-                    x: springX,
-                    y: springY,
-                }}
+        <FloatingWrapper style={style} className={className}>
+            <InViewWrapper
+                initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.15, 0, 0, 0.97] }}
             >
-                <Avatar $image={avatarImage} />
-                <TextWrapper>
-                    <Text>{text}</Text>
-                    <Username>
-                        {username} <BlueCheckIcon />
-                    </Username>
-                </TextWrapper>
-            </Wrapper>
-        </OuterWrapper>
+                <Wrapper
+                    style={{
+                        x: springX,
+                        y: springY,
+                    }}
+                >
+                    <Avatar $image={avatarImage} />
+                    <TextWrapper>
+                        <Text>{text}</Text>
+                        <Username>
+                            {username} <BlueCheckIcon />
+                        </Username>
+                    </TextWrapper>
+                </Wrapper>
+            </InViewWrapper>
+        </FloatingWrapper>
     );
 }

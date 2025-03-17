@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
 `;
