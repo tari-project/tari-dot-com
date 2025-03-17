@@ -189,5 +189,5 @@ export const StyledVideo = styled.video<{ $isLoaded: boolean }>`
     transition: opacity 0.5s ease-in-out;
     opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
     will-change: opacity;
-    border-radius: 8px; // Adjust as needed for your design
+    background-color: transparent;
 `;
