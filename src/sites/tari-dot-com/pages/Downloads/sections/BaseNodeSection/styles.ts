@@ -60,3 +60,7 @@ export const ButtonsWrapper = styled.div`
     display: flex;
     gap: 20px;
 `;
+
+export const DownloadLink = styled.a`
+    text-decoration: none;
+`;

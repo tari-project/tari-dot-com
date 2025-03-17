@@ -1,5 +1,14 @@
 'use client';
-import { TextInner, InfoWrapper, Text, SectionHolder, UniverseImage, UniverseImageHolder, TextWrapper } from './styles';
+import {
+    TextInner,
+    InfoWrapper,
+    Text,
+    SectionHolder,
+    UniverseImage,
+    UniverseImageHolder,
+    TextWrapper,
+    DownloadLink,
+} from './styles';
 import { Divider } from '../../styles';
 import blueComputer from './images/blue-computer.png';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
@@ -9,8 +18,9 @@ import { Os } from '@/ui-shared/types/downloadTypes';
 import DownloadOptions from './components/DownloadOptions';
 import { useDownloadStore } from '@/services/stores/useDownloadStore';
 
-export default function UniverseSection() {
+export default function BaseNodeSection() {
     const downloadOptions = useDownloadStore((state) => state.downloadOptions);
+    const sourceLink = 'https://github.com/tari-project/tari';
 
     const osTexts = {
         [Os.Mac]: { compatible: `For MacOS 10.15.0 (Catalina) and higher` },
@@ -34,6 +44,9 @@ export default function UniverseSection() {
                         <Text>{currentText.compatible}</Text>
                     </TextInner>
                     <DownloadOptions />
+                    <DownloadLink href={sourceLink} target="_blank" rel="noopener noreferrer">
+                        <Typography $variant="h6">Build from source</Typography>
+                    </DownloadLink>
                 </TextWrapper>
                 <UniverseImageHolder>
                     <UniverseImage src={blueComputer.src} alt="Universe Ecosystem" />

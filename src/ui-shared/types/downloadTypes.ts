@@ -5,9 +5,8 @@ export enum Os {
 }
 
 export enum Network {
-    Mainnet = 'mainnet',
     Nextnet = 'nextnet',
-    Testnet = 'testnet',
+    Mainnet = 'mainnet',
 }
 
 export enum MacArch {
@@ -17,7 +16,6 @@ export enum MacArch {
 
 export enum WindowsArch {
     X64 = 'x64',
-    X86 = 'x86',
 }
 
 export enum LinuxArch {
@@ -26,7 +24,7 @@ export enum LinuxArch {
 }
 
 export type MacArchType = MacArch.Arm64 | MacArch.X86_64;
-export type WindowsArchType = WindowsArch.X64 | WindowsArch.X86;
+export type WindowsArchType = WindowsArch.X64;
 export type LinuxArchType = LinuxArch.Arm64 | LinuxArch.X86_64;
 
 export type ArchMapType = {
