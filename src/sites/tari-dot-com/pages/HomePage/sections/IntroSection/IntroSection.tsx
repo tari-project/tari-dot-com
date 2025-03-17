@@ -1,7 +1,5 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-
 import {
     Wrapper,
     EyebrowWrapper,
@@ -13,45 +11,20 @@ import {
     Title,
     VideoWrapper,
     Spacer,
-    StyledVideo,
+    StyledIframe,
 } from './styles';
 
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import TextPill from './components/TextPill/TextPill';
 import DownloadButton from './components/DownloadButton/DownloadButton';
-import { useHlsScript } from '@/ui-shared/hooks/useHlsScript';
+import { useState } from 'react';
 
 export default function IntroSection() {
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const hlsLoaded = useHlsScript();
 
-    useEffect(() => {
-        if (!hlsLoaded || !videoRef.current) return;
-
-        const video = videoRef.current;
-        const videoSrc =
-            'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/78d0a2cac96deb5892780f5e78262786/manifest/video.m3u8';
-
-        const handleLoad = () => setVideoLoaded(true);
-        video.addEventListener('loadeddata', handleLoad);
-
-        if (window.Hls.isSupported()) {
-            const hls = new window.Hls();
-            hls.loadSource(videoSrc);
-            hls.attachMedia(video);
-            hls.on(window.Hls.Events.MANIFEST_PARSED, () => {
-                video.play().catch((err) => console.log('Auto-play prevented:', err));
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = videoSrc;
-            video.play().catch((err) => console.log('Auto-play prevented:', err));
-        }
-
-        return () => {
-            video.removeEventListener('loadeddata', handleLoad);
-        };
-    }, [hlsLoaded]);
+    const handleVideoLoaded = () => {
+        setVideoLoaded(true);
+    };
 
     return (
         <Wrapper>
@@ -84,7 +57,13 @@ export default function IntroSection() {
                 <Spacer />
 
                 <VideoWrapper>
-                    <StyledVideo ref={videoRef} muted autoPlay playsInline loop $isLoaded={videoLoaded} />
+                    <StyledIframe
+                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/78d0a2cac96deb5892780f5e78262786/iframe?muted=true&preload=true&loop=true&autoplay=true&controls=false&playsinline=true&background=false"
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media;"
+                        allowFullScreen={false}
+                        onLoad={handleVideoLoaded}
+                        $isLoaded={videoLoaded}
+                    />
                 </VideoWrapper>
             </Holder>
         </Wrapper>

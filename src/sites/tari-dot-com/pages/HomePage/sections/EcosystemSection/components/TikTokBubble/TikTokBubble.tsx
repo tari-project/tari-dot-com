@@ -1,8 +1,17 @@
 'use client';
 
 import { useMotionValue, useSpring } from 'motion/react';
-import { OuterWrapper, Wrapper, TextWrapper, Username, Followers, InsideBorder, ImageWrapper, Image } from './styles';
-//import TikTokIcon from '@/sites/tari-dot-com/ui/Footer/components/SocialLinks/icons/TikTokIcon';
+import {
+    FloatingWrapper,
+    Wrapper,
+    TextWrapper,
+    Username,
+    Followers,
+    InsideBorder,
+    ImageWrapper,
+    Image,
+} from './styles';
+import { InViewWrapper } from '../TextBubble/styles';
 
 interface Props {
     image?: string;
@@ -45,44 +54,50 @@ export default function TikTokBubble({
     const isLandscape = aspectRatio === '16/9';
 
     return (
-        <OuterWrapper style={style} className={className}>
-            <Wrapper
-                style={{
-                    x: springX,
-                    y: springY,
-                }}
-                $isLandscape={isLandscape}
+        <FloatingWrapper style={style} className={className}>
+            <InViewWrapper
+                initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.15, 0, 0, 0.97] }}
             >
-                <InsideBorder />
-                <TextWrapper>
-                    {Boolean(username) && (
-                        <Username>
-                            {/* <TikTokIcon /> {username} */}
-                            {username}
-                        </Username>
-                    )}
-                    {Boolean(followers) && <Followers>{followers}</Followers>}
-                </TextWrapper>
-                <ImageWrapper>
-                    {video ? (
-                        <iframe
-                            src={video}
-                            style={{
-                                border: 'none',
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                height: '100%',
-                                width: '100%',
-                            }}
-                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                            allowFullScreen={true}
-                        ></iframe>
-                    ) : image ? (
-                        <Image src={image} alt={`${username} content`} />
-                    ) : null}
-                </ImageWrapper>
-            </Wrapper>
-        </OuterWrapper>
+                <Wrapper
+                    style={{
+                        x: springX,
+                        y: springY,
+                    }}
+                    $isLandscape={isLandscape}
+                >
+                    <InsideBorder />
+                    <TextWrapper>
+                        {Boolean(username) && (
+                            <Username>
+                                {/* <TikTokIcon /> {username} */}
+                                {username}
+                            </Username>
+                        )}
+                        {Boolean(followers) && <Followers>{followers}</Followers>}
+                    </TextWrapper>
+                    <ImageWrapper>
+                        {video ? (
+                            <iframe
+                                src={video}
+                                style={{
+                                    border: 'none',
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    height: '100%',
+                                    width: '100%',
+                                }}
+                                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                allowFullScreen={true}
+                            ></iframe>
+                        ) : image ? (
+                            <Image src={image} alt={`${username} content`} />
+                        ) : null}
+                    </ImageWrapper>
+                </Wrapper>
+            </InViewWrapper>
+        </FloatingWrapper>
     );
 }

@@ -17,7 +17,11 @@ export default function FAQEntry({ question, answer }: FAQEntryProps) {
     };
 
     return (
-        <Wrapper>
+        <Wrapper
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            whileInView={{ scale: 1, opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.15, 0, 0, 0.97] }}
+        >
             <Question onClick={toggleOpen}>
                 <QuestionText>{question}</QuestionText>
 

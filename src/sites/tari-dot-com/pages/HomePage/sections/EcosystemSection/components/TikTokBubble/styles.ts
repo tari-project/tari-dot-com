@@ -15,7 +15,7 @@ const float = keyframes`
   }
 `;
 
-export const OuterWrapper = styled.div`
+export const FloatingWrapper = styled.div`
     position: absolute;
     z-index: 2;
     animation: ${float} 3s ease-in-out infinite;
