@@ -18,11 +18,6 @@ export const Wrapper = styled.div`
         padding-top: 160px;
         padding-bottom: 160px;
     }
-
-    @media (max-height: 900px) {
-        padding-top: 140px;
-        padding-bottom: 140px;
-    }
 `;
 
 export const Holder = styled.div`
@@ -44,10 +39,6 @@ export const PageTitle = styled.div`
     padding-bottom: 57px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-    @media (max-height: 900px) {
-        font-size: 80px;
-    }
-
     @media (max-width: 999px) {
         font-size: 80px;
     }
@@ -55,5 +46,9 @@ export const PageTitle = styled.div`
     @media (max-width: 807px) {
         font-size: 60px;
         padding-bottom: 40px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
     }
 `;

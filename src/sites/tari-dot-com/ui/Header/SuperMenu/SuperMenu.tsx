@@ -30,7 +30,7 @@ export default function SuperMenu() {
         timeoutRef.current = setTimeout(() => {
             setShowSuperMenu(false);
             timeoutRef.current = null;
-        }, 350);
+        }, 250);
     };
 
     const handleEnter = () => {

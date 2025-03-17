@@ -11,8 +11,7 @@ export const Wrapper = styled.div`
     gap: 10px;
 `;
 
-export const NavLink = styled.button<{ $active?: boolean }>`
-    color: #fff;
+export const NavLink = styled.button<{ $active?: boolean; $theme?: 'dark' | 'light' }>`
     font-family: var(--font-poppins), sans-serif;
     font-size: 17px;
     font-style: normal;
@@ -30,6 +29,8 @@ export const NavLink = styled.button<{ $active?: boolean }>`
     justify-content: center;
     user-select: none;
 
+    color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
+
     span {
         z-index: 1;
         transition: all 0.3s ease;
@@ -38,7 +39,7 @@ export const NavLink = styled.button<{ $active?: boolean }>`
     &:hover {
         text-decoration: none;
         span {
-            color: #000;
+            color: ${({ $theme }) => ($theme === 'light' ? '#fff' : '#000')};
         }
     }
 
@@ -48,22 +49,22 @@ export const NavLink = styled.button<{ $active?: boolean }>`
         }
     }
 
-    ${({ $active }) =>
+    ${({ $active, $theme }) =>
         $active &&
         css`
             pointer-events: none;
             span {
-                color: #000;
+                color: ${$theme === 'light' ? '#fff' : '#000'};
             }
         `}
 `;
 
-export const HoverBox = styled(motion.div)`
+export const HoverBox = styled(motion.div)<{ $theme?: 'dark' | 'light' }>`
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: ${({ $theme }) => ($theme === 'light' ? '#0c0718' : '#fff')};
     border-radius: 10px;
     z-index: 0;
 `;

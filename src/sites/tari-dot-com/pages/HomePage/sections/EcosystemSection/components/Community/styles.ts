@@ -16,6 +16,11 @@ export const Holder = styled(motion.div)`
     gap: 40px;
 
     padding: 60px 20px;
+
+    @media (max-width: 960px) {
+        padding-top: 80px;
+        padding-bottom: 10px;
+    }
 `;
 
 export const Image = styled.img``;

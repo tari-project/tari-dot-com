@@ -81,6 +81,10 @@ export const Title = styled.div`
     @media (max-width: 807px) {
         font-size: 60px;
     }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
+    }
 `;
 
 export const Text = styled.div`

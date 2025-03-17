@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     left: 0;
     width: 100%;
     padding-top: 8px;
+    pointer-events: all;
 `;
 
 export const ContentBox = styled.div`

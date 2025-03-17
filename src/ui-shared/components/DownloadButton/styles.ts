@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+interface ButtonProps {
+    $isDisabled: boolean;
+}
+
+export const Button = styled.button<ButtonProps>`
     display: flex;
     width: 348px;
     height: 60px;
@@ -14,9 +18,11 @@ export const Button = styled.button`
     font-size: 24px;
     transition: background 0.3s;
     text-transform: uppercase;
+    cursor: ${({ $isDisabled }) => ($isDisabled ? 'not-allowed' : 'pointer')};
+    opacity: ${({ $isDisabled }) => ($isDisabled ? 0.5 : 1)};
 
     &:hover {
-        background: #b3d800;
+        background: ${({ $isDisabled }) => ($isDisabled ? '#c9eb00' : '#b3d800')};
     }
 `;
 

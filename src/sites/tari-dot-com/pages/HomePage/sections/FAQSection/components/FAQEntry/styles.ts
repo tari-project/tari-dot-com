@@ -21,6 +21,7 @@ export const Question = styled.div`
 
     @media (max-width: 666px) {
         gap: 20px;
+        padding: 20px 0;
     }
 `;
 
@@ -37,7 +38,7 @@ export const QuestionText = styled.div`
     }
 
     @media (max-width: 989px) {
-        font-size: 24px;
+        font-size: 22px;
     }
 `;
 
@@ -67,6 +68,10 @@ export const Answer = styled(motion.div)`
 
 export const AnswerPadding = styled.div`
     padding-bottom: 30px;
+
+    @media (max-width: 666px) {
+        padding-bottom: 20px;
+    }
 `;
 
 export const ToggleIcon = styled.button`

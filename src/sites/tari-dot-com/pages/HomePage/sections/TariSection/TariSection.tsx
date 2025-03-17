@@ -36,7 +36,7 @@ export default function TariSection() {
                         />
                     </Text>
 
-                    <MinersCTA theme="light" buttonText={`Download Tari Universe`} />
+                    <MinersCTA theme="light" buttonText={`Download Tari Universe`} noBackground={true} />
                 </Middle>
             </Container>
         </Wrapper>

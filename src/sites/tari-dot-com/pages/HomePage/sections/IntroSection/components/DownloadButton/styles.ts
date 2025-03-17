@@ -32,6 +32,9 @@ export const Button = styled.button`
     &:hover {
         text-decoration: none;
     }
+
+    @media (max-width: 600px) {
+    }
 `;
 
 export const Text = styled(motion.div)`
@@ -46,6 +49,10 @@ export const Text = styled(motion.div)`
 
     position: relative;
     z-index: 1;
+
+    @media (max-width: 600px) {
+        font-size: 14px;
+    }
 `;
 
 export const Icons = styled.div`
@@ -64,6 +71,10 @@ export const HoverGradient = styled(motion.div)`
     background: linear-gradient(270deg, #6656d3 1.03%, #d080cf 49.03%, #e88f5b 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
     z-index: 0;
+
+    @media (max-width: 400px) {
+        display: none;
+    }
 `;
 
 export const Word = styled(motion.span)`

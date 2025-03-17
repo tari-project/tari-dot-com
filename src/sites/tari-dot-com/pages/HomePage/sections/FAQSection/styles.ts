@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     width: 100%;
 
     @media (max-width: 666px) {
-        padding: 80px 20px;
+        padding: 90px 20px 10px 20px;
     }
 `;
 
@@ -35,7 +35,10 @@ export const Title = styled.div`
 
     @media (max-width: 1158px) {
         font-size: 60px;
-        max-width: 400px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
     }
 `;
 

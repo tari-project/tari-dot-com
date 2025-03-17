@@ -1,8 +1,44 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import headerBgImage from './images/header-bg.png';
+
+const darkToLightAnimation = keyframes`
+  0% {
+    clip-path: inset(0 0 0% 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+`;
+
+const lightToDarkAnimation = keyframes`
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0% 0);
+  }
+`;
+
+const lightFromTopAnimation = keyframes`
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0% 0 0 0);
+  }
+`;
+
+const hideTopAnimation = keyframes`
+  0% {
+    clip-path: inset(0% 0 0 0);
+  }
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+`;
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -25,7 +61,21 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const HeaderBox = styled(motion.div)`
+export const Holder = styled.div`
+    max-width: 1151px;
+    height: 82px;
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
+    background-color: #fff;
+
+    @media (max-width: 666px) {
+        height: 72px;
+    }
+`;
+
+export const HeaderDark = styled(motion.div)<{ $isLightTheme: boolean; $isInitialRender?: boolean }>`
     padding: 14px 20px 14px 30px;
     pointer-events: auto;
 
@@ -35,10 +85,7 @@ export const HeaderBox = styled(motion.div)`
 
     width: 100%;
     height: 82px;
-    max-width: 1151px;
-
     border-radius: 15px;
-    box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
 
     color: #fff;
     background: #0c0718;
@@ -47,8 +94,20 @@ export const HeaderBox = styled(motion.div)`
     background-repeat: repeat;
     background-size: contain;
     background-color: #0c0718;
-    position: relative;
+
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 9;
+
+    will-change: clip-path;
+
+    ${({ $isLightTheme, $isInitialRender }) =>
+        !$isInitialRender &&
+        css`
+            animation: ${$isLightTheme ? darkToLightAnimation : lightToDarkAnimation} 0.5s
+                cubic-bezier(0.15, 0, 0, 0.97) forwards;
+        `}
 
     .tari-logo {
         width: 121px;
@@ -68,4 +127,17 @@ export const HeaderBox = styled(motion.div)`
             width: 80px;
         }
     }
+`;
+
+export const HeaderLight = styled(HeaderDark)`
+    background: #fff;
+    color: #0c0718;
+    z-index: 8;
+    clip-path: inset(100% 0 0 0);
+
+    ${({ $isLightTheme }) =>
+        css`
+            animation: ${$isLightTheme ? lightFromTopAnimation : hideTopAnimation} 0.7s cubic-bezier(0.15, 0, 0, 0.97)
+                forwards;
+        `}
 `;

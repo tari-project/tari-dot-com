@@ -43,8 +43,14 @@ export const TextMiddle = styled.div`
     transform: translate(-50%, -50%);
     z-index: 2;
 
+    @media (max-width: 1334px) {
+        width: 100%;
+        max-width: 500px;
+    }
+
     @media (max-width: 1158px) {
         gap: 15px;
+        max-width: 342px;
     }
 `;
 
@@ -76,7 +82,10 @@ export const Title = styled.div`
 
     @media (max-width: 1158px) {
         font-size: 60px;
-        max-width: 400px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
     }
 `;
 
@@ -102,6 +111,11 @@ export const FloatingElements = styled(motion.div)`
     aspect-ratio: 1 / 1;
     max-width: 1554px;
     margin: auto;
+
+    @media (max-width: 960px) {
+        margin-top: -70px;
+        min-height: 650px;
+    }
 `;
 
 export const CircleHolder = styled.div`
@@ -116,6 +130,8 @@ export const CircleHolder = styled.div`
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
     will-change: transform;
+
+    pointer-events: none;
 `;
 
 export const Circle1 = styled.div`

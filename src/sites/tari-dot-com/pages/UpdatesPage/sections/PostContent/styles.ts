@@ -11,8 +11,13 @@ export const Wrapper = styled.div`
     background-color: #e4e3ec;
 
     padding: 0 20px;
-    padding-top: 200px;
+    padding-top: 180px;
     padding-bottom: 200px;
+
+    @media (max-width: 1228px) {
+        padding-top: 160px;
+        padding-bottom: 160px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -20,26 +25,62 @@ export const Holder = styled.div`
     max-width: 867px;
     width: 100%;
     margin: auto;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const PostImage = styled.img`
+    margin-bottom: 57px;
+    border-radius: 20px;
+    aspect-ratio: 867 / 242;
+
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+    }
 `;
 
 export const PostTitle = styled.h1`
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 2rem;
+    color: #111;
+    font-family: var(--font-druk), sans-serif;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 94.2%;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 999px) {
+        font-size: 60px;
+    }
+
+    @media (max-width: 807px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
+    }
 `;
 
 export const PostDate = styled.p`
-    font-size: 0.9rem;
+    font-size: 16px;
     color: #666;
     margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 `;
 
 export const PostBody = styled.div`
-    line-height: 1.6;
+    color: #111;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 40px;
 
     h1,
     h2,
@@ -47,12 +88,12 @@ export const PostBody = styled.div`
     h4,
     h5,
     h6 {
-        margin-top: 1.5rem;
-        margin-bottom: 1rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
     }
 
     p {
-        margin-bottom: 1rem;
+        margin-bottom: 20px;
     }
 
     img {
@@ -71,5 +112,47 @@ export const PostBody = styled.div`
         padding: 1rem;
         border-radius: 5px;
         overflow-x: auto;
+    }
+
+    ul,
+    ol,
+    li {
+        margin-bottom: 20px;
+    }
+
+    blockquote {
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-left: 5px solid #111;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: #111;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #111;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+`;
+
+export const BackButton = styled.a`
+    color: #111;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
     }
 `;

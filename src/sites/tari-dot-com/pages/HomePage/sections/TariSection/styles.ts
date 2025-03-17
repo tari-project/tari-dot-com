@@ -9,10 +9,14 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
 
-    padding: 50px 60px 65px 60px;
+    padding: 50px 40px 65px 40px;
 
     @media (max-width: 1000px) {
-        padding: 50px 20px 65px 20px;
+        padding: 50px 20px 50px 20px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 40px 8px 0px 8px;
     }
 `;
 
@@ -32,6 +36,10 @@ export const Container = styled.div`
 
     @media (max-width: 1000px) {
         padding: 80px 40px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 40px 20px;
     }
 `;
 
@@ -86,6 +94,10 @@ export const MainText = styled.div`
     @media (max-width: 666px) {
         font-size: 60px;
     }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
+    }
 `;
 
 export const Text = styled.div`
@@ -101,5 +113,9 @@ export const Text = styled.div`
 
     @media (max-width: 666px) {
         font-size: 16px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 14px;
     }
 `;

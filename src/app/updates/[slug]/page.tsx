@@ -1,4 +1,4 @@
-import { getPostBySlug } from '@/services/lib/posts';
+import { getPostBySlug, getAllPosts } from '@/services/lib/posts';
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
@@ -40,7 +40,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             notFound();
         }
 
-        return <PostPage post={post} />;
+        const allPosts = await getAllPosts();
+
+        const nextPosts = allPosts
+            .filter((p) => p.slug !== slug)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(0, 3);
+
+        return <PostPage post={post} nextPosts={nextPosts} />;
     } catch (error) {
         console.error('Error fetching post:', error);
         notFound();

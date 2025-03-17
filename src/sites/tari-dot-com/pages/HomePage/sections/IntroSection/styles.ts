@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 900px;
-    height: calc(100vh - 57px);
+    min-height: 973px;
     display: flex;
     background-color: #e8e7ef;
 
@@ -17,7 +16,6 @@ export const Wrapper = styled.div`
     }
 
     @media (max-width: 807px) {
-        height: auto;
         padding-top: 50px;
     }
 `;
@@ -52,6 +50,7 @@ export const ContentWrapper = styled.div`
 
     position: relative;
     z-index: 1;
+    top: 30px;
 
     @media (max-width: 807px) {
         align-items: center;
@@ -111,6 +110,10 @@ export const Title = styled.div`
     @media (max-width: 807px) {
         font-size: 60px;
     }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
+    }
 `;
 
 export const Text = styled.div`
@@ -127,6 +130,10 @@ export const Text = styled.div`
 
     @media (max-width: 807px) {
         font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+        max-width: 300px;
     }
 `;
 
@@ -173,4 +180,14 @@ export const StyledIframe = styled.iframe<{ $isLoaded: boolean }>`
     opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
     transition: opacity 0.3s ease-in-out;
     will-change: opacity;
+`;
+
+export const StyledVideo = styled.video<{ $isLoaded: boolean }>`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+    opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
+    will-change: opacity;
+    border-radius: 8px; // Adjust as needed for your design
 `;

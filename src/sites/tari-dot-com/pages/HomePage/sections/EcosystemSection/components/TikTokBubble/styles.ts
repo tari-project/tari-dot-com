@@ -19,6 +19,12 @@ export const OuterWrapper = styled.div`
     position: absolute;
     z-index: 2;
     animation: ${float} 3s ease-in-out infinite;
+
+    @media (max-width: 960px) {
+        &.mobile-hide {
+            display: none;
+        }
+    }
 `;
 
 export const Wrapper = styled(motion.div)<{ $isLandscape: boolean }>`
@@ -55,8 +61,12 @@ export const Wrapper = styled(motion.div)<{ $isLandscape: boolean }>`
         animation-delay: -2s;
     }
 
-    @media (max-width: 1035px) {
-        display: none;
+    @media (max-width: 1250px) {
+        width: 230px;
+    }
+
+    @media (max-width: 1045px) {
+        width: 190px;
     }
 `;
 
@@ -122,6 +132,10 @@ export const Username = styled.div`
         height: 23px;
         transform: translateY(2px);
     }
+
+    @media (max-width: 1045px) {
+        font-size: 15px;
+    }
 `;
 
 export const Followers = styled.div`
@@ -131,4 +145,8 @@ export const Followers = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media (max-width: 1045px) {
+        font-size: 12px;
+    }
 `;

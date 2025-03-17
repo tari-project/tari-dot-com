@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
     padding: 0 20px;
     padding-top: 200px;
     padding-bottom: 200px;
+
+    @media (max-width: 768px) {
+        padding-top: 140px;
+        padding-bottom: 60px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -46,7 +51,7 @@ export const Holder = styled.div`
     }
 
     @media (max-width: 768px) {
-        font-size: 12px;
+        font-size: 14px;
 
         p {
             margin-bottom: 20px;

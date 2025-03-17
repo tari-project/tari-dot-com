@@ -14,6 +14,7 @@ interface Props {
     mouseY?: number;
     depth?: number;
     aspectRatio?: string;
+    className?: string;
 }
 
 export default function TikTokBubble({
@@ -26,6 +27,7 @@ export default function TikTokBubble({
     mouseY = 0,
     depth = 1.5,
     aspectRatio = '9/16',
+    className,
 }: Props) {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -43,7 +45,7 @@ export default function TikTokBubble({
     const isLandscape = aspectRatio === '16/9';
 
     return (
-        <OuterWrapper style={style}>
+        <OuterWrapper style={style} className={className}>
             <Wrapper
                 style={{
                     x: springX,

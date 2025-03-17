@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    min-height: 100dvh;
     position: relative;
 `;
 
@@ -22,15 +21,11 @@ export const Holder = styled.div`
     gap: 57px;
 
     @media (max-width: 1228px) {
-        padding: 160px 20px 70px 20px;
-    }
-
-    @media (max-height: 900px) {
-        padding: 140px 20px 70px 20px;
+        padding: 160px 20px 100px 20px;
     }
 
     @media (max-width: 807px) {
-        padding: 140px 20px 70px 20px;
+        padding: 100px 20px 100px 20px;
     }
 `;
 
@@ -44,10 +39,6 @@ export const TextWrapper = styled.div`
     gap: 20px;
 
     @media (max-width: 1228px) {
-        max-width: 700px;
-    }
-
-    @media (max-height: 900px) {
         max-width: 700px;
     }
 
@@ -66,16 +57,16 @@ export const Title = styled.div`
     line-height: 94.2%;
     text-transform: uppercase;
 
-    @media (max-height: 900px) {
-        font-size: 80px;
-    }
-
     @media (max-width: 999px) {
         font-size: 80px;
     }
 
     @media (max-width: 807px) {
         font-size: 60px;
+    }
+
+    @media (max-width: 460px) {
+        font-size: 55px;
     }
 `;
 
