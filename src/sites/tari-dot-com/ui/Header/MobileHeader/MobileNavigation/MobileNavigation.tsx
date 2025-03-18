@@ -34,6 +34,9 @@ export default function MobileNavigation() {
                         <NavLink onClick={() => setShowGroupTwo(true)}>
                             About Tari <ChevronRight />
                         </NavLink>
+                        <NavLink as={Link} href={`/#how-it-works`} onClick={handleLinkClick}>
+                            How it works
+                        </NavLink>
                         <NavLink
                             as={Link}
                             href={`https://universe.tari.com/`}

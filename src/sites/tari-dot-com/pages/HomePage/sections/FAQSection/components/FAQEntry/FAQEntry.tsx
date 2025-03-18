@@ -59,7 +59,7 @@ export default function FAQEntry({ question, answer }: FAQEntryProps) {
                         exit={{ opacity: 0, scaleY: 0, height: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: 'circInOut' }}
                     >
-                        <AnswerPadding>{answer}</AnswerPadding>
+                        <AnswerPadding dangerouslySetInnerHTML={{ __html: answer }} />
                     </Answer>
                 )}
             </AnimatePresence>

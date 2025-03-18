@@ -3,7 +3,21 @@
 import TariLogo from '../TariLogo/TariLogo';
 import SocialLinks from './components/SocialLinks/SocialLinks';
 
-import { Wrapper, LinksWrapper, Column, Title, Links, StyledLink, Copyright, Holder, Middle } from './styles';
+import {
+    Wrapper,
+    LinksWrapper,
+    Column,
+    Title,
+    Links,
+    StyledLink,
+    Copyright,
+    Holder,
+    Middle,
+    RightSide,
+    TariElementImage,
+} from './styles';
+
+import tariElement from './images/tari-element.png';
 
 export default function Footer() {
     return (
@@ -57,7 +71,10 @@ export default function Footer() {
                     <SocialLinks />
                 </Middle>
 
-                <Copyright>© {new Date().getFullYear()} — Tari Labs All Rights Reserved</Copyright>
+                <RightSide>
+                    <TariElementImage src={tariElement.src} alt="Tari Element" />
+                    <Copyright>© {new Date().getFullYear()} — Tari Labs All Rights Reserved</Copyright>
+                </RightSide>
             </Holder>
         </Wrapper>
     );

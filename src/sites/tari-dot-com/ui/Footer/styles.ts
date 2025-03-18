@@ -30,6 +30,7 @@ export const Holder = styled.div`
     width: 100%;
 
     gap: 60px;
+    position: relative;
 
     @media (max-width: 1107px) {
         flex-direction: column;
@@ -112,7 +113,23 @@ export const StyledLink = styled(Link)`
     }
 `;
 
+export const RightSide = styled.div`
+    display: flex;
+    align-items: flex-end;
+    transform: translateY(-125px);
+    height: 452px;
+
+    @media (max-width: 1107px) {
+        height: auto;
+        transform: unset;
+    }
+`;
+
 export const Copyright = styled.div`
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
     display: flex;
     align-items: flex-end;
 
@@ -123,7 +140,7 @@ export const Copyright = styled.div`
     line-height: 140%;
 
     opacity: 0.25;
-    max-width: 114px;
+    max-width: 120px;
     width: 100%;
 
     @media (max-width: 1107px) {
@@ -131,6 +148,10 @@ export const Copyright = styled.div`
         text-align: center;
         align-items: center;
         justify-content: center;
+
+        position: relative;
+        bottom: unset;
+        right: unset;
     }
 
     @media (max-width: 768px) {
@@ -138,5 +159,11 @@ export const Copyright = styled.div`
         text-align: left;
         align-items: center;
         justify-content: flex-start;
+    }
+`;
+
+export const TariElementImage = styled.img`
+    @media (max-width: 1107px) {
+        display: none;
     }
 `;

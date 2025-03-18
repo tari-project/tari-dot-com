@@ -55,6 +55,19 @@ export const Answer = styled(motion.div)`
 
     padding-right: 166px;
 
+    p {
+        margin-bottom: 20px;
+    }
+
+    ul,
+    ol {
+        padding-left: 20px;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
     @media (max-width: 1158px) {
         padding-right: 100px;
         font-size: 16px;
