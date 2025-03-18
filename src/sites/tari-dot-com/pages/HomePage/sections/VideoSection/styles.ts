@@ -43,7 +43,7 @@ export const TextWrapper = styled.div`
     }
 
     @media (max-width: 807px) {
-        max-width: 600px;
+        max-width: 400px;
     }
 `;
 
