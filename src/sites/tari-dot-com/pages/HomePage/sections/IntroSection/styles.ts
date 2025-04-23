@@ -6,9 +6,15 @@ export const Wrapper = styled.div`
     width: 100%;
     min-height: 973px;
     display: flex;
-    background-color: #e8e7ef;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-color: #fbf7ef;
 
     padding: 0 20px;
+    overflow: hidden;
 
     @media (max-width: 807px) {
         min-height: auto;
@@ -145,18 +151,19 @@ export const Spacer = styled.div`
 `;
 
 export const VideoWrapper = styled.div`
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 0.72;
     width: 100%;
     max-width: 65%;
     pointer-events: none;
 
     position: absolute;
     top: 50%;
-    right: -6%;
-    transform: translateY(-55%);
+    right: -10%;
+    transform: translateY(-42%);
     z-index: 0;
 
-    iframe {
+    iframe,
+    video {
         width: 100%;
         height: 100%;
         border: none;
@@ -168,8 +175,8 @@ export const VideoWrapper = styled.div`
         transform: translateY(0);
         right: unset;
         top: unset;
-        margin-top: 0px;
-        margin-bottom: -60px;
+        margin-top: 60px;
+        margin-bottom: -40px;
     }
 `;
 

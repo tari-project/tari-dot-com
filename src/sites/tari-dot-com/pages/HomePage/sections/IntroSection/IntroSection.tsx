@@ -11,20 +11,20 @@ import {
     Title,
     VideoWrapper,
     Spacer,
-    StyledIframe,
+    //StyledIframe,
 } from './styles';
 
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import TextPill from './components/TextPill/TextPill';
 import DownloadButton from './components/DownloadButton/DownloadButton';
-import { useState } from 'react';
+import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 export default function IntroSection() {
-    const [videoLoaded, setVideoLoaded] = useState(false);
+    // const [videoLoaded, setVideoLoaded] = useState(false);
 
-    const handleVideoLoaded = () => {
-        setVideoLoaded(true);
-    };
+    // const handleVideoLoaded = () => {
+    //     setVideoLoaded(true);
+    // };
 
     return (
         <Wrapper>
@@ -57,12 +57,11 @@ export default function IntroSection() {
                 <Spacer />
 
                 <VideoWrapper>
-                    <StyledIframe
-                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/78d0a2cac96deb5892780f5e78262786/iframe?muted=true&preload=true&loop=true&autoplay=true&controls=false&playsinline=true&background=false"
-                        allow="accelerometer; gyroscope; autoplay; encrypted-media;"
-                        allowFullScreen={false}
-                        onLoad={handleVideoLoaded}
-                        $isLoaded={videoLoaded}
+                    <VideoPlayer
+                        src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/d47e48d7d48b9a0a6835af9546075d88/manifest/video.m3u8"
+                        autoPlay={true}
+                        muted={true}
+                        loop={true}
                     />
                 </VideoWrapper>
             </Holder>
