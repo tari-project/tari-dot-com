@@ -20,12 +20,6 @@ import DownloadButton from './components/DownloadButton/DownloadButton';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 export default function IntroSection() {
-    // const [videoLoaded, setVideoLoaded] = useState(false);
-
-    // const handleVideoLoaded = () => {
-    //     setVideoLoaded(true);
-    // };
-
     return (
         <Wrapper>
             <Holder>
