@@ -8,8 +8,6 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: flex-end;
     gap: 14px;
-    padding-top: 26px;
-    border-top: 1px solid rgba(223, 229, 242, 0.3);
 
     @media (max-width: 1107px) {
         justify-content: center;

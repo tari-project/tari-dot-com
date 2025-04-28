@@ -36,8 +36,8 @@ export const Holder = styled.div`
     }
 
     h2 {
-        font-weight: 600;
-        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 24px;
+        margin-top: 48px;
     }
 
     p,
@@ -57,9 +57,4 @@ export const Holder = styled.div`
             margin-bottom: 20px;
         }
     }
-`;
-
-export const Image = styled.img`
-    width: 100%;
-    margin-bottom: 40px;
 `;

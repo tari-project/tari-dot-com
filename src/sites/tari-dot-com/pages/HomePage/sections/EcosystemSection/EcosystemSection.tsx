@@ -78,7 +78,7 @@ const tikTokBubbleData: {
         aspectRatio: '16/9',
     },
     {
-        username: '@tari_xtr',
+        username: '@tari_xtm',
         video: 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/5795a98e217a08b75b230529340c01f6/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F5795a98e217a08b75b230529340c01f6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false',
         style: { top: '18%', right: '7%' },
         mobileStyle: { top: '18%', right: '7%' },

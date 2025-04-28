@@ -2,7 +2,7 @@
 
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import FAQEntry from './components/FAQEntry/FAQEntry';
-import { Holder, Wrapper, Title, List } from './styles';
+import { Holder, Wrapper, Title, List, SeeAllButton } from './styles';
 
 const faqData = [
     {
@@ -14,7 +14,7 @@ const faqData = [
         answer: `No catch—just run the app and start earning. Tari's mission is to the next-generation financial system accessible to everyone.`,
     },
     {
-        question: `Is this legitimate and safe?`,
+        question: `Is this safe?`,
         answer: `Yes. Tari is developed by a talented group of technologists, and designers with a unique vision for the future of money. Tari Universe (and all software associated with the Tari protocol) is open source (meaning anyone can inspect and use the source code). It doesn't access your files and puts you in control of how much computational power you want it to use.`,
     },
     {
@@ -79,19 +79,36 @@ const faqData = [
     },
 ];
 
-export default function FAQSection() {
+interface Props {
+    lightMode?: boolean;
+    maxWidth?: number;
+    maxEntries?: number;
+    disableAnimation?: boolean;
+}
+
+export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAnimation }: Props) {
+    const displayedFaqs = maxEntries !== undefined ? faqData.slice(0, maxEntries) : faqData;
+
     return (
-        <Wrapper>
-            <Holder>
+        <Wrapper $lightMode={lightMode}>
+            <Holder $maxWidth={maxWidth}>
                 <Title>
                     <TitleAnimation text={`Frequently asked questions`} />
                 </Title>
 
                 <List>
-                    {faqData.map(({ question, answer }, index) => (
-                        <FAQEntry key={index} question={question} answer={answer} />
+                    {displayedFaqs.map(({ question, answer }, index) => (
+                        <FAQEntry
+                            key={index}
+                            question={question}
+                            answer={answer}
+                            lightMode={lightMode}
+                            disableAnimation={disableAnimation}
+                        />
                     ))}
                 </List>
+
+                {maxEntries && <SeeAllButton href={`/faq`}>See all</SeeAllButton>}
             </Holder>
         </Wrapper>
     );

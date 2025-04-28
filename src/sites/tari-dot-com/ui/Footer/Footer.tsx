@@ -15,9 +15,12 @@ import {
     Middle,
     RightSide,
     TariElementImage,
+    BottomWrapper,
+    LegalLinks,
 } from './styles';
 
 import tariElement from './images/tari-element.png';
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -57,9 +60,6 @@ export default function Footer() {
                         <Column>
                             <Title>Community</Title>
                             <Links>
-                                <StyledLink href="https://tarilabs.com/" target="_blank">
-                                    Tari Labs
-                                </StyledLink>
                                 <StyledLink href="/updates">Updates</StyledLink>
                                 <StyledLink href="https://store.tarilabs.com/" target="_blank">
                                     TTL Store
@@ -68,12 +68,20 @@ export default function Footer() {
                         </Column>
                     </LinksWrapper>
 
-                    <SocialLinks />
+                    <BottomWrapper>
+                        <Copyright>
+                            © {new Date().getFullYear()}. All Rights Reserved.
+                            <LegalLinks>
+                                <Link href="/privacy_policy">Privacy Policy</Link>
+                                <Link href="/user_agreement">User Agreement</Link>
+                            </LegalLinks>
+                        </Copyright>
+                        <SocialLinks />
+                    </BottomWrapper>
                 </Middle>
 
                 <RightSide>
                     <TariElementImage src={tariElement.src} alt="Tari Element" />
-                    <Copyright>© {new Date().getFullYear()} — Tari Labs All Rights Reserved</Copyright>
                 </RightSide>
             </Holder>
         </Wrapper>

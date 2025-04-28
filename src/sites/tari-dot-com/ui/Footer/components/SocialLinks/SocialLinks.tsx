@@ -29,7 +29,7 @@ export const SocialIconButtons = () => {
                 <DiscordIcon />
             </SocialIcon>
             <SocialIcon
-                href="https://www.tiktok.com/@tari_xtr"
+                href="https://www.tiktok.com/@tari_xtm"
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
@@ -53,7 +53,7 @@ export const SocialIconButtons = () => {
                 <YoutubeIcon />
             </SocialIcon>
             <SocialIcon
-                href="https://www.instagram.com/tari_xtr"
+                href="https://www.instagram.com/tari_xtm"
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
