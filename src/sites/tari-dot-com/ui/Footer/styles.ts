@@ -43,7 +43,7 @@ export const Holder = styled.div`
 `;
 
 export const Middle = styled.div`
-    max-width: 624px;
+    max-width: 643px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -126,44 +126,64 @@ export const RightSide = styled.div`
 `;
 
 export const Copyright = styled.div`
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-
     display: flex;
     align-items: flex-end;
+    flex-wrap: wrap;
 
-    color: #dfe5f2;
+    color: rgba(255, 255, 255, 0.5);
     text-align: right;
     font-size: 12px;
     font-style: normal;
     line-height: 140%;
 
-    opacity: 0.25;
-    max-width: 120px;
-    width: 100%;
-
-    @media (max-width: 1107px) {
-        max-width: 100%;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-
-        position: relative;
-        bottom: unset;
-        right: unset;
+    a {
+        &:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
     }
 
-    @media (max-width: 768px) {
-        max-width: 100%;
+    @media (max-width: 360px) {
         text-align: left;
-        align-items: center;
-        justify-content: flex-start;
+        flex-direction: column-reverse;
+        align-items: flex-start;
     }
 `;
 
 export const TariElementImage = styled.img`
     @media (max-width: 1107px) {
         display: none;
+    }
+`;
+
+export const BottomWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    width: 100%;
+
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    @media (max-width: 650px) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 20px;
+    }
+`;
+
+export const LegalLinks = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+
+    @media (max-width: 360px) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        padding-bottom: 10px;
     }
 `;

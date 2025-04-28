@@ -86,7 +86,7 @@ export default function UniverseSection() {
                     </Title>
                     <Text>
                         <TitleAnimation
-                            text={`Tari Universe is the easiest-to-use tool in the web3 space. Earn XTR in 3 clicks and you don’t have to give up your personal information.`}
+                            text={`Tari Universe is the easiest-to-use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
                             staggerDelay={0.01}
                         />
                     </Text>

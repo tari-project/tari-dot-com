@@ -7,7 +7,7 @@ export default function Banner() {
         <Wrapper>
             <Holder>
                 <Text>
-                    Tari is in Testnet. <GradientText>Mainnet launches in April 2025!</GradientText>
+                    tari Mainnet <GradientText>is live</GradientText>
                 </Text>
             </Holder>
         </Wrapper>

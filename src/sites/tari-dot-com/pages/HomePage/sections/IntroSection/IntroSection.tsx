@@ -45,7 +45,7 @@ export default function IntroSection() {
 
                         <Text>
                             <TitleAnimation
-                                text={`Put your computer to work earning Tari (XTR), a revolutionary new cryptocurrency. Tari is fast, safe, and so easy to use, that your Grandma can do it.`}
+                                text={`Put your computer to work earning Tari (XTM), a revolutionary new cryptocurrency. Tari is fast, safe, and so easy to use, that your Grandma can do it.`}
                                 staggerDelay={0.009}
                             />
                         </Text>

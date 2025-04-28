@@ -1,11 +1,17 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled(motion.div)<{ $lightMode?: boolean }>`
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
+
+    ${({ $lightMode }) =>
+        $lightMode &&
+        css`
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        `}
 `;
 
 export const Question = styled.div`
@@ -26,7 +32,6 @@ export const Question = styled.div`
 `;
 
 export const QuestionText = styled.div`
-    color: #fff;
     font-family: var(--font-poppins), sans-serif;
     font-size: 36px;
     font-style: normal;
@@ -43,7 +48,6 @@ export const QuestionText = styled.div`
 `;
 
 export const Answer = styled(motion.div)`
-    color: #fff;
     font-family: var(--font-poppins), sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -93,6 +97,8 @@ export const ToggleIcon = styled.button`
 
     width: 51px;
     height: 51px;
+
+    color: inherit;
 
     svg {
         width: 100%;
