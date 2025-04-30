@@ -45,6 +45,10 @@ export const QuestionText = styled.div`
     @media (max-width: 989px) {
         font-size: 22px;
     }
+
+    @media (max-width: 666px) {
+        font-size: 18px;
+    }
 `;
 
 export const Answer = styled(motion.div)`
@@ -106,7 +110,7 @@ export const ToggleIcon = styled.button`
     }
 
     @media (max-width: 666px) {
-        width: 44px;
-        height: 44px;
+        width: 38px;
+        height: 38px;
     }
 `;

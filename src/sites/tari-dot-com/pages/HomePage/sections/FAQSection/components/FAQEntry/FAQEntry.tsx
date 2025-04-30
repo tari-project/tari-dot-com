@@ -11,20 +11,12 @@ export interface FAQEntryProps {
     disableAnimation?: boolean;
 }
 
-export default function FAQEntry({ question, answer, lightMode, disableAnimation }: FAQEntryProps) {
+export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     };
-
-    const wrapperMotionProps = disableAnimation
-        ? {}
-        : {
-              initial: { scale: 0.8, opacity: 0, y: 50 },
-              whileInView: { scale: 1, opacity: 1, y: 0 },
-              transition: { duration: 0.5, ease: [0.15, 0, 0, 0.97] },
-          };
 
     const answerMotionProps = {
         initial: {
@@ -35,11 +27,11 @@ export default function FAQEntry({ question, answer, lightMode, disableAnimation
         },
         animate: { opacity: 1, scaleY: 1, height: 'auto', y: -10 },
         exit: { opacity: 0, scaleY: 0, height: 0, y: -10 },
-        transition: { duration: 0.3, ease: 'circInOut' },
+        transition: { duration: 0.3, ease: [0.15, 0, 0, 0.97] },
     };
 
     return (
-        <Wrapper {...wrapperMotionProps} $lightMode={lightMode}>
+        <Wrapper $lightMode={lightMode}>
             <Question onClick={toggleOpen}>
                 <QuestionText>{question}</QuestionText>
 

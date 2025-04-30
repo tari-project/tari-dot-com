@@ -1,10 +1,11 @@
 'use client';
 
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div<{ $lightMode?: boolean }>`
-    padding: 160px 40px;
+    padding: 120px 80px;
     width: 100%;
     color: #fff;
 
@@ -13,6 +14,14 @@ export const Wrapper = styled.div<{ $lightMode?: boolean }>`
         css`
             color: #000;
         `}
+
+    @media (max-width: 1400px) {
+        padding: 120px 60px;
+    }
+
+    @media (max-width: 1000px) {
+        padding: 100px 40px 60px 40px;
+    }
 
     @media (max-width: 666px) {
         padding: 90px 20px 10px 20px;
@@ -101,4 +110,9 @@ export const SeeAllButton = styled(Link)`
         font-size: 16px;
         padding: 12px 40px;
     }
+`;
+
+export const ShowMoreList = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
 `;
