@@ -1,8 +1,9 @@
 'use client';
 
-import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import { useState } from 'react';
 import FAQEntry from './components/FAQEntry/FAQEntry';
-import { Holder, Wrapper, Title, List, SeeAllButton } from './styles';
+import { Holder, Wrapper, Title, List, SeeAllButton, ShowMoreList } from './styles';
+import { AnimatePresence } from 'motion/react';
 
 const faqData = [
     {
@@ -87,28 +88,62 @@ interface Props {
 }
 
 export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAnimation }: Props) {
-    const displayedFaqs = maxEntries !== undefined ? faqData.slice(0, maxEntries) : faqData;
+    const [showAll, setShowAll] = useState(false);
+
+    const handleSeeAllClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setShowAll(!showAll);
+    };
+
+    const visibleEntries = maxEntries !== undefined ? faqData.slice(0, maxEntries) : faqData;
+    const hiddenEntries = maxEntries !== undefined ? faqData.slice(maxEntries) : [];
 
     return (
         <Wrapper $lightMode={lightMode}>
             <Holder $maxWidth={maxWidth}>
-                <Title>
-                    <TitleAnimation text={`Frequently asked questions`} />
-                </Title>
+                <Title>Frequently asked questions</Title>
 
                 <List>
-                    {displayedFaqs.map(({ question, answer }, index) => (
-                        <FAQEntry
-                            key={index}
-                            question={question}
-                            answer={answer}
-                            lightMode={lightMode}
-                            disableAnimation={disableAnimation}
-                        />
-                    ))}
+                    {visibleEntries.map(({ question, answer }, index) => {
+                        return (
+                            <FAQEntry
+                                key={index}
+                                question={question}
+                                answer={answer}
+                                lightMode={lightMode}
+                                disableAnimation={disableAnimation}
+                            />
+                        );
+                    })}
+                    <AnimatePresence>
+                        {showAll && (
+                            <ShowMoreList
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.5, ease: [0.15, 0, 0, 0.97] }}
+                            >
+                                {hiddenEntries.map(({ question, answer }, index) => {
+                                    return (
+                                        <FAQEntry
+                                            key={index}
+                                            question={question}
+                                            answer={answer}
+                                            lightMode={lightMode}
+                                            disableAnimation={disableAnimation}
+                                        />
+                                    );
+                                })}
+                            </ShowMoreList>
+                        )}
+                    </AnimatePresence>
                 </List>
 
-                {maxEntries && <SeeAllButton href={`/faq`}>See all</SeeAllButton>}
+                {maxEntries && (
+                    <SeeAllButton href={`/faq`} onClick={handleSeeAllClick}>
+                        {showAll ? 'See less' : 'See all'}
+                    </SeeAllButton>
+                )}
             </Holder>
         </Wrapper>
     );
