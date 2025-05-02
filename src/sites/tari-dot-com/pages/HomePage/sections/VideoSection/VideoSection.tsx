@@ -13,7 +13,7 @@ export default function VideoSection() {
                     </Title>
                     <Text>
                         <TitleAnimation
-                            text={`Our Tari Universe mining application is stunningly beautiful, safe and easy to use. When its running, you’re helping to secure the Tari network. This is no free lunch. You’ll earn XTM tokens for your (computers!) hard work.`}
+                            text={`Our Tari Universe mining application is stunningly beautiful, safe and easy to use. When its running, you’re helping to secure the Tari network. This is no free lunch. You’ll earn XTM tokens for your (computer's!) hard work.`}
                             staggerDelay={0.01}
                         />
                     </Text>

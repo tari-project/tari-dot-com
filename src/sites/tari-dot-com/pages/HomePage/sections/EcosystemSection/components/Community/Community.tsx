@@ -1,6 +1,6 @@
 'use client';
 
-import { Holder, Image, Track, TrackWidth, TrackWrapper, Wrapper } from './styles';
+import { Eyebrow, Holder, Image, Track, TrackWidth, TrackWrapper, Wrapper } from './styles';
 
 import BlockchainCapital from './images/blockchain_capital.png';
 import CMTDigital from './images/cmtdigital.png';
@@ -18,6 +18,7 @@ export default function Community() {
             transition={{ duration: 0.5, ease: [0.15, 0, 0, 0.97] }}
         >
             <Holder>
+                <Eyebrow>Supported by</Eyebrow>
                 <TrackWrapper>
                     <TrackWidth>
                         <Track
