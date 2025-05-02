@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
     width: 100%;
+    padding-top: 40px;
+
+    @media (max-width: 960px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 `;
 
 export const Holder = styled(motion.div)`
@@ -13,7 +19,7 @@ export const Holder = styled(motion.div)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
 
     padding: 60px 20px;
 
@@ -70,5 +76,19 @@ export const Copy = styled.div`
         font-size: 24px;
         line-height: 120%;
         padding-top: 50px;
+    }
+`;
+
+export const Eyebrow = styled.div`
+    color: #dfe5f2;
+    text-align: center;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
     }
 `;

@@ -83,7 +83,7 @@ export default function SuperMenu() {
                             <Links>
                                 <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
                                     <LinkTitle>Tokenomics</LinkTitle>
-                                    <LinkText>Explore Tari&apos;s economy</LinkText>
+                                    <LinkText>Learn about the Tari XTM token</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
@@ -93,7 +93,7 @@ export default function SuperMenu() {
                                     onClick={handleLinkClick}
                                 >
                                     <LinkTitle>Block Explorer</LinkTitle>
-                                    <LinkText>View network activity</LinkText>
+                                    <LinkText>View Tari network activity</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
@@ -102,8 +102,8 @@ export default function SuperMenu() {
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>GitHub Repos</LinkTitle>
-                                    <LinkText>Explore Tari&apos;s open-source code and projects</LinkText>
+                                    <LinkTitle>GitHub</LinkTitle>
+                                    <LinkText>{`Explore Tari's codebase (it's open source!)`}</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
@@ -112,8 +112,8 @@ export default function SuperMenu() {
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>TTL Store</LinkTitle>
-                                    <LinkText>Shop Tari merch with your tXTM</LinkText>
+                                    <LinkTitle>Tari Genesis Store</LinkTitle>
+                                    <LinkText>Buy limited edition Tari merch with XTM</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
@@ -123,12 +123,12 @@ export default function SuperMenu() {
                                     onClick={handleLinkClick}
                                 >
                                     <LinkTitle>Tari Labs University</LinkTitle>
-                                    <LinkText>Learn about blockchain and Tari technology</LinkText>
+                                    <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="/updates" onClick={handleLinkClick}>
-                                    <LinkTitle>Dev updates</LinkTitle>
-                                    <LinkText>Get the latest dev news</LinkText>
+                                    <LinkTitle>Developer Updates</LinkTitle>
+                                    <LinkText>Get the latest updates from Tari contributors</LinkText>
                                 </LinkButton>
                             </Links>
 

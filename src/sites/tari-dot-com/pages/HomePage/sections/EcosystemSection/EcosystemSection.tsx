@@ -131,7 +131,7 @@ export default function EcosystemSection() {
                         <TitleAnimation text={`PEOPLE ❤️ MINING TARI`} />
                     </Eyebrow>
                     <Title>
-                        <TitleAnimation text={`347,000+ people like you love Tari`} />
+                        <TitleAnimation text={`700,000+ people like you love Tari`} />
                     </Title>
                     <Text>
                         <TitleAnimation

@@ -128,7 +128,7 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
-    max-width: 595px;
+    max-width: 598px;
 
     @media (max-width: 999px) {
         font-size: 16px;
