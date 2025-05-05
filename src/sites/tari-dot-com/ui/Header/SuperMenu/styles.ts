@@ -67,6 +67,30 @@ export const LinkTitle = styled.div`
     line-height: 130%;
     position: relative;
     z-index: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+`;
+
+export const Chip = styled.div`
+    background: #0a2540;
+    border-radius: 100px;
+    padding: 0px 6px;
+    color: #fff;
+
+    width: fit-content;
+    height: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 130%;
+    text-align: center;
+    text-transform: uppercase;
 `;
 
 export const LinkText = styled.div`
@@ -107,6 +131,11 @@ export const LinkButton = styled.div`
 
         ${LinkText} {
             color: #fff;
+        }
+
+        ${Chip} {
+            background: #fff;
+            color: #111;
         }
     }
 
