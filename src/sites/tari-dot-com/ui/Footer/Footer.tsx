@@ -38,7 +38,7 @@ export default function Footer() {
                                     Airdrop
                                 </StyledLink>
                                 <StyledLink href="/tokenomics">Tokenomics</StyledLink>
-                                <StyledLink href="https://explore-nextnet.tari.com/" target="_blank">
+                                <StyledLink href="https://explore.tari.com/" target="_blank">
                                     Block Explorer
                                 </StyledLink>
                                 <StyledLink href="/downloads">Downloads</StyledLink>
