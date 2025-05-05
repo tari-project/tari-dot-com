@@ -73,7 +73,7 @@ const faqData = [
     },
     {
         question: `What is Mainnet, and when does it launch?`,
-        answer: `The Tari mainnet is the real deal. It's the network that one day will process countless transactions and enable millions of people to participate. Tari contributors have set the launch time frame for the Tari mainnet for April 2025. Leading up to April, Tari is hosting mining parties, community giveaways, and special events to celebrate the journey to mainnet. This is your chance to get involved early, earn rewards, and be part of the Tari movement from the very beginning!`,
+        answer: `The Tari mainnet is the real deal. It's the network that one day will process countless transactions and enable millions of people to participate. Tari contributors have set the launch date for May 6, 2025. This is your chance to get involved early, earn rewards, and be part of the Tari movement from the very beginning!`,
     },
     {
         question: `How do I get started?`,
