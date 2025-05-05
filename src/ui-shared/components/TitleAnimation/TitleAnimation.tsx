@@ -42,7 +42,7 @@ const containerVariants: Variants = {
 
 export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, staggerDelay = 0.03 }) => {
     const ref = React.useRef(null);
-    const isInView = useInView(ref, { once: false, amount: 'all' });
+    const isInView = useInView(ref, { once: true, amount: 'all' });
     const words = useMemo(() => text.split(/(\s+)/).filter((segment) => segment.length > 0), [text]);
 
     return (

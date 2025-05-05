@@ -28,19 +28,27 @@ export const InfoWrapper = styled.div`
     }
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
     color: #dfe5f2;
     font-family: var(--font-poppins), sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+
+    p {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 `;
 
 export const TextInner = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 `;
 
 export const TextWrapper = styled.div`
