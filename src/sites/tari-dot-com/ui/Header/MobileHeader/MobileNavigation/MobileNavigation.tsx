@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { GroupOne, GroupTwo, NavLink, Wrapper } from './styles';
+import { Chip, GroupOne, GroupTwo, NavLink, Wrapper } from './styles';
 import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
 import { useMainStore } from '@/services/stores/useMainStore';
@@ -66,11 +66,13 @@ export default function MobileNavigation() {
                             target="_blank"
                             onClick={handleLinkClick}
                         >
-                            GitHub Repos
+                            GitHub
                         </NavLink>
 
                         <NavLink as={Link} href="https://store.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            TTL Store
+                            <span>
+                                Tari Genesis Store <Chip>coming soon</Chip>
+                            </span>
                         </NavLink>
 
                         <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
@@ -78,7 +80,7 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="/updates" onClick={handleLinkClick}>
-                            Dev updates
+                            Developer Updates
                         </NavLink>
                     </GroupTwo>
                 )}

@@ -39,6 +39,12 @@ export const NavLink = styled.button`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 `;
 
 export const GroupOne = styled(motion.div)`
@@ -53,4 +59,25 @@ export const GroupTwo = styled(motion.div)`
     flex-direction: column;
     gap: 5px;
     width: 100%;
+`;
+
+export const Chip = styled.div`
+    background: #fff;
+    border-radius: 100px;
+    padding: 0px 6px;
+    color: #000;
+
+    width: fit-content;
+    height: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 130%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
 `;

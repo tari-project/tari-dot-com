@@ -23,6 +23,13 @@ const faqData = [
         answer: `Tari contributors are very blessed to have the support of high-profile investors, including Blockchain Capital, Pantera, Trinity, Redpoint, Slow Ventures, and many more.`,
     },
     {
+        question: `What is the network “warm-up” period, and what does that mean for miners?`,
+        answer: `<p>The birth of a proof-of-work network is special. In the early days, the network needs time to stabilize and find its rhythm. We call this the “warm-up phase.”</p>
+        <p>Contributors and early supporters of the Tari network (like exchanges and infrastructure partners) expect the warm-up phase to last ~15 days (until ~May 20, 2025). After that, the network will transition to a more stable state.</p>
+        <p>During the warm-up phase, some quirks are normal. You might see block time fluctuations, temporary disconnections, syncing delays, or even short-lived forks that require your node to reconnect to the main chain.</p>
+        <p>The warm-up phase is a great time to mine because rewards are highest per block. We hope the early days of the Tari network are rewarding for you. </p>`,
+    },
+    {
         question: `Will this slow down my computer?`,
         answer: `Tari Universe is designed to use only the resources you allow. You can easily set limits on how much processing power is dedicated to mining, and you can pause or stop mining with a single click anytime. Tari Universe always puts you in full control.`,
     },
