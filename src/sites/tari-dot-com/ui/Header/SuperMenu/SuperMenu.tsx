@@ -89,7 +89,7 @@ export default function SuperMenu() {
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://explore-nextnet.tari.com/"
+                                    href="https://explore.tari.com/"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
