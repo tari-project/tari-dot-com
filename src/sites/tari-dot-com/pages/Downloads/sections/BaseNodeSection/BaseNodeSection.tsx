@@ -45,7 +45,7 @@ export default function BaseNodeSection() {
                     </TextInner>
                     <DownloadOptions />
                     <DownloadLink href={sourceLink} target="_blank" rel="noopener noreferrer">
-                        <Typography $variant="h6">Build from source</Typography>
+                        Build from source
                     </DownloadLink>
                 </TextWrapper>
                 <UniverseImageHolder>

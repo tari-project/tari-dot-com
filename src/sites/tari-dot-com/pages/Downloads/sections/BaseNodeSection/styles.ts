@@ -62,5 +62,10 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const DownloadLink = styled.a`
-    text-decoration: none;
+    width: fit-content;
+    color: #fff;
+
+    &:hover {
+        text-decoration: underline;
+    }
 `;
