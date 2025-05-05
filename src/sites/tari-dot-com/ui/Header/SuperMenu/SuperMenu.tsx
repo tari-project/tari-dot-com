@@ -11,6 +11,7 @@ import {
     LinkText,
     TariImage,
     ContentBox,
+    Chip,
 } from './styles';
 import tariImage from '../images/tari-built.png';
 import Link from 'next/link';
@@ -112,7 +113,9 @@ export default function SuperMenu() {
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Tari Genesis Store</LinkTitle>
+                                    <LinkTitle>
+                                        Tari Genesis Store <Chip>coming soon</Chip>
+                                    </LinkTitle>
                                     <LinkText>Buy limited edition Tari merch with XTM</LinkText>
                                 </LinkButton>
 
