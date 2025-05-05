@@ -18,16 +18,41 @@ const faqData = [
         question: `Is this safe?`,
         answer: `Yes. Tari is developed by a talented group of technologists, and designers with a unique vision for the future of money. Tari Universe (and all software associated with the Tari protocol) is open source (meaning anyone can inspect and use the source code). It doesn't access your files and puts you in control of how much computational power you want it to use.`,
     },
-    {
-        question: `Who is behind Tari?`,
-        answer: `Tari contributors are very blessed to have the support of high-profile investors, including Blockchain Capital, Pantera, Trinity, Redpoint, Slow Ventures, and many more.`,
-    },
+
     {
         question: `What is the network “warm-up” period, and what does that mean for miners?`,
         answer: `<p>The birth of a proof-of-work network is special. In the early days, the network needs time to stabilize and find its rhythm. We call this the “warm-up phase.”</p>
         <p>Contributors and early supporters of the Tari network (like exchanges and infrastructure partners) expect the warm-up phase to last ~15 days (until ~May 20, 2025). After that, the network will transition to a more stable state.</p>
         <p>During the warm-up phase, some quirks are normal. You might see block time fluctuations, temporary disconnections, syncing delays, or even short-lived forks that require your node to reconnect to the main chain.</p>
         <p>The warm-up phase is a great time to mine because rewards are highest per block. We hope the early days of the Tari network are rewarding for you. </p>`,
+    },
+    {
+        question: `What are the minimum system requirements to mine Tari?`,
+        answer: `<p>To mine effectively with Tari Universe, you’ll need a reasonably modern computer with enough memory, storage, and internet bandwidth. Here’s what we recommend:</p>
+        <p>🪟 For Windows users:</p>
+        <ul>
+<li>OS: Windows 10 (64-bit) or Windows 11</li>
+<li>CPU: Intel i5 (6th gen or newer) or AMD Ryzen 5</li>
+<li>GPU: NVIDIA GTX 1650 or AMD RX 580 (4GB VRAM minimum)</li>
+<li>Memory: 16 GB RAM</li>
+<li>Storage: 100 GB free SSD space</li>
+<li>Network: Stable internet connection (20 Mbps down / 5 Mbps up recommended)</li>
+</ul>
+
+<p>🍎 For macOS users:</p>
+<ul>
+<li>OS: macOS 12 Monterey or newer</li>
+<li>CPU: Apple M1 chip (recommended) or Intel i5 (2018 or newer)</li>
+<li>GPU: Apple integrated GPU (M1 and later — no dedicated GPU needed)</li>
+<li>Memory: 16 GB RAM</li>
+<li>Storage: 100 GB free SSD space</li>
+<li>Network: Stable internet connection (20 Mbps down / 5 Mbps up recommended)</li>
+</ul>
+        `,
+    },
+    {
+        question: `Who is behind Tari?`,
+        answer: `Tari contributors are very blessed to have the support of high-profile investors, including Blockchain Capital, Pantera, Trinity, Redpoint, Slow Ventures, and many more.`,
     },
     {
         question: `Will this slow down my computer?`,

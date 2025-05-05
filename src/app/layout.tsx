@@ -20,10 +20,10 @@ export const generateMetadata = async () => {
         openGraph: {
             images: [
                 {
-                    url: '/tari-og.png',
+                    url: '/tari-og.png?v=2',
                     width: 1200,
-                    height: 600,
-                    alt: '',
+                    height: 630,
+                    alt: 'Tari',
                 },
             ],
         },

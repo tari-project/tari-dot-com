@@ -45,9 +45,9 @@ export const Text = styled.p`
     color: #fff;
     text-align: center;
     font-family: var(--font-poppins), sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 94.2%;
     text-transform: uppercase;
 

@@ -70,6 +70,7 @@ export const Answer = styled(motion.div)`
     ul,
     ol {
         padding-left: 20px;
+        margin-bottom: 20px;
     }
 
     a {
