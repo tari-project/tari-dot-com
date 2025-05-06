@@ -15,12 +15,11 @@ export const generateMetadata = async () => {
         title: 'Tari',
         description:
             'Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
-        icons: [{ url: '/favicon.png?v=1', type: 'image/png' }],
-        themeColor: '#000000',
+        icons: [{ url: 'https://tari.com//favicon.png?v=1', type: 'image/png' }],
         openGraph: {
             images: [
                 {
-                    url: '/tari-og.png?v=2',
+                    url: 'https://tari.com/tari-og.png?v=2',
                     width: 1200,
                     height: 630,
                     alt: 'Tari',
