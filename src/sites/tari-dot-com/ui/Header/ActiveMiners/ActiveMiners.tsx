@@ -1,7 +1,9 @@
 import { useMinerStats } from "@/services/api/useMinerStats";
 import { Dot, TextWrapper, Text, NumberWrapper, } from "./styles";
 import { useEffect, useRef, useState } from "react";
-import NumberFlow from "@number-flow/react";
+import dynamic from "next/dynamic";
+const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
+
 
 interface Props {
     theme: 'light' | 'dark';
@@ -15,7 +17,7 @@ export default function ActiveMiners({ theme, }: Props) {
 
     useEffect(() => {
         if (numberRef.current) {
-            const width = numberRef.current.offsetWidth;
+            const width = numberRef?.current?.offsetWidth || 0;
             setNumberWidth(width > 0 ? width : 26);
         }
     }, [countValue]);
