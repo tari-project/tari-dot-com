@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Footer />
                         <GradientBackground />
                     </App>
-                    <GoogleAnalytics gaId={`G-61WER6XQRY`} />
+                    <GoogleAnalytics gaId={`G-K7EWCBLYHN`} />
                     <Script
                         src="https://widget.kapa.ai/kapa-widget.bundle.js"
                         data-website-id="42b8765f-d05f-44b3-9136-8ee736194767"
