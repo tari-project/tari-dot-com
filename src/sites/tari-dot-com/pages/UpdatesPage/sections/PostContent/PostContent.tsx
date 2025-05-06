@@ -1,4 +1,4 @@
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 import { Holder, Wrapper, PostTitle, PostDate, PostBody, PostImage, BackButton } from './styles';
 import ReactMarkdown from 'react-markdown';
 import ArticleDate from '../ArticlesList/components/ArticleEntry/ArticleDate';
@@ -6,8 +6,8 @@ import Link from 'next/link';
 import NextArticles from './components/NextArticles/NextArticles';
 
 interface PostContentProps {
-    post: Post;
-    nextPosts?: Post[];
+    post: Update;
+    nextPosts?: Update[];
 }
 
 export default function PostContent({ post, nextPosts = [] }: PostContentProps) {

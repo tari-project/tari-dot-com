@@ -10,7 +10,10 @@
         "pages:build": "npx @cloudflare/next-on-pages",
         "preview": "npm run pages:build && wrangler pages dev",
         "deploy": "npm run pages:build && wrangler pages deploy",
-        "prebuild": "node scripts/generate-posts-data.js"
+        "prebuild-updates": "node scripts/generate-updates-data.js",
+        "prebuild-lessons": "node scripts/generate-lessons-data.js",
+        "prebuild-posts": "node scripts/generate-posts-data.js",
+        "prebuild-all": "npm run prebuild-updates && npm run prebuild-lessons && npm run prebuild-posts"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.5",

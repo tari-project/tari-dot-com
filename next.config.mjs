@@ -8,6 +8,18 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
+    async rewrites() {
+        return [
+            {
+                source: '/updates/:slug.html',
+                destination: '/updates/:slug',
+            },
+            {
+                source: '/lessons/:slug.html',
+                destination: '/lessons/:slug',
+            },
+        ];
+    },
 };
 
 export default nextConfig;

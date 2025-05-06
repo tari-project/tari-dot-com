@@ -1,13 +1,13 @@
 'use client';
 
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 import PostContent from './sections/PostContent/PostContent';
 
 import { Wrapper } from './styles';
 
 interface PostPageProps {
-    post?: Post;
-    nextPosts?: Post[];
+    post?: Update;
+    nextPosts?: Update[];
 }
 
 export default function PostPage({ post, nextPosts = [] }: PostPageProps) {

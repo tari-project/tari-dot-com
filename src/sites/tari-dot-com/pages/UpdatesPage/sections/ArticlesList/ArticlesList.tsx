@@ -1,10 +1,10 @@
 import { Holder, Wrapper, PageTitle } from './styles';
 import Pagination from './components/Pagination/Pagination';
 import ArticleEntry from './components/ArticleEntry/ArticleEntry';
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 
 interface ArticlesListProps {
-    posts: Post[];
+    posts: Update[];
     pagination?: {
         currentPage: number;
         totalPages: number;
