@@ -60,9 +60,9 @@ export default function Footer() {
                         <Column>
                             <Title>Community</Title>
                             <Links>
-                                <StyledLink href="/updates">Updates</StyledLink>
+                                <StyledLink href="/updates">Developer Updates</StyledLink>
                                 <StyledLink href="https://store.tarilabs.com/" target="_blank">
-                                    TTL Store
+                                    Tari Genesis Store
                                 </StyledLink>
                             </Links>
                         </Column>

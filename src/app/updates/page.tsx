@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/services/lib/posts';
+import { getAllUpdates } from '@/services/lib/updates';
 import UpdatesPage from '@/sites/tari-dot-com/pages/UpdatesPage/UpdatesPage';
 
 export const runtime = 'edge';
@@ -16,7 +16,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
     const currentPage = resolvedParams.page ? parseInt(resolvedParams.page) : 1;
     const postsPerPage = 10;
 
-    const allPosts = await getAllPosts();
+    const allPosts = await getAllUpdates();
     const totalPosts = allPosts.length;
     const totalPages = Math.ceil(totalPosts / postsPerPage);
 

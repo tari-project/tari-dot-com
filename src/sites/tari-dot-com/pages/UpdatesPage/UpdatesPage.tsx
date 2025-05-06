@@ -1,9 +1,9 @@
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 import ArticlesList from './sections/ArticlesList/ArticlesList';
 import { Wrapper } from './styles';
 
 interface UpdatesPageProps {
-    posts: Post[];
+    posts: Update[];
     pagination?: {
         currentPage: number;
         totalPages: number;

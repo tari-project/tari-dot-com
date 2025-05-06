@@ -1,11 +1,11 @@
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 import { Wrapper, Card, Image, Title, Meta } from './styles';
 import Link from 'next/link';
 import ArticleDate from '../../../ArticlesList/components/ArticleEntry/ArticleDate';
 import { ReadMoreButton } from '../../../ArticlesList/components/ArticleEntry/styles';
 
 interface NextArticlesProps {
-    posts: Post[];
+    posts: Update[];
 }
 
 export default function NextArticles({ posts }: NextArticlesProps) {

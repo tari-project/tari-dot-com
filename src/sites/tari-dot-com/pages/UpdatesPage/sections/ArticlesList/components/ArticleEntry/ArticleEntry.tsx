@@ -1,9 +1,9 @@
 import { ArticleInfo, Date, Excerpt, ReadMoreButton, Tags, Thumbnail, Title, Wrapper } from './styles';
 import ArticleDate from './ArticleDate';
-import { Post } from '@/services/lib/posts';
+import { Update } from '@/services/lib/updates';
 
 interface Props {
-    post: Post;
+    post: Update;
 }
 
 export default function ArticleEntry({ post }: Props) {

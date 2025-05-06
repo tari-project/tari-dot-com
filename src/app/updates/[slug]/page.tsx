@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPosts } from '@/services/lib/posts';
+import { getUpdatesBySlug, getAllUpdates } from '@/services/lib/updates';
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             return { title: 'Tari / Updates / Post Not Found' };
         }
 
-        const post = await getPostBySlug(slug);
+        const post = await getUpdatesBySlug(slug);
 
         if (!post) {
             return { title: 'Tari / Updates / Post Not Found' };
@@ -34,13 +34,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             notFound();
         }
 
-        const post = await getPostBySlug(slug);
+        const post = await getUpdatesBySlug(slug);
 
         if (!post) {
             notFound();
         }
 
-        const allPosts = await getAllPosts();
+        const allPosts = await getAllUpdates();
 
         const nextPosts = allPosts
             .filter((p) => p.slug !== slug)
