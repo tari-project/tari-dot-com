@@ -30,7 +30,7 @@ export const InfoWrapper = styled.div`
 export const Text = styled.p`
     color: #dfe5f2;
     font-family: var(--font-poppins), sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
@@ -67,5 +67,25 @@ export const DownloadLink = styled.a`
 
     &:hover {
         text-decoration: underline;
+    }
+`;
+
+export const GithubLink = styled.button`
+    color: #fff;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 16px;
+    background-color: rgba(0255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    padding: 10px 30px 10px 10px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 40px;
+    width: fit-content;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        cursor: pointer;
     }
 `;

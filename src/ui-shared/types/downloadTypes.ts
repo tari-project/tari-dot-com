@@ -5,8 +5,8 @@ export enum Os {
 }
 
 export enum Network {
-    Nextnet = 'nextnet',
     Mainnet = 'mainnet',
+    Nextnet = 'nextnet',
 }
 
 export enum MacArch {
