@@ -31,7 +31,7 @@ export const InfoWrapper = styled.div`
 export const Text = styled.div`
     color: #dfe5f2;
     font-family: var(--font-poppins), sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
