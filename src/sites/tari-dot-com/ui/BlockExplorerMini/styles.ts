@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     position: relative;
     margin: auto;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1300px;
 
     padding-left: calc(329px + 30px); /* Space for the sticky element (entry width + gap) */
 `;
