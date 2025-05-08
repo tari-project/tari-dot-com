@@ -49,7 +49,7 @@ export default function BaseNodeSection() {
                     <Divider />
                     <TextInner>
                         <Text>{`Not seeing the version you need?`}</Text>
-                        <GithubLink onClick={() => window.open(sourceLink, '_blank', 'noopener,noreferrer')}>
+                        <GithubLink href={sourceLink} target="_blank" rel="noopener noreferrer">
                             <Image src={githubMark.src} alt="Github" width="38" height="37" />
                             Download the latest releases from Github
                         </GithubLink>

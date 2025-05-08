@@ -1,27 +1,23 @@
-'use client';
 import { OsButton, ButtonsWrapper } from './styles';
 import MacIcon from '../Icons/MacIcon';
 import LinuxIcon from '../Icons/LinuxIcon';
 import WindowsIcon from '../Icons/WindowsIcon';
 import Typography from '../Typography/Typography';
-import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 
 function DownloadForOs() {
-    const { handleDownloadClick } = useDownloadUniverse();
-
     return (
         <>
             <Typography $variant="h5">Download Tari Universe now</Typography>
             <ButtonsWrapper>
-                <OsButton onClick={(e) => handleDownloadClick(e, 'macos')}>
+                <OsButton href="https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com">
                     Mac
                     <MacIcon fill="#000" />
                 </OsButton>
-                <OsButton onClick={(e) => handleDownloadClick(e, 'windows')}>
+                <OsButton href="https://airdrop.tari.com/api/miner/download/windows?universeReferral=tari-dot-com">
                     Windows
                     <WindowsIcon fill="#000" />
                 </OsButton>
-                <OsButton onClick={(e) => handleDownloadClick(e, 'linux')}>
+                <OsButton href="https://airdrop.tari.com/api/miner/download/linux?universeReferral=tari-dot-com">
                     Linux
                     <LinuxIcon fill="#000" />
                 </OsButton>

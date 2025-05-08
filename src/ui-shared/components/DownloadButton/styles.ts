@@ -32,7 +32,7 @@ export const IconWrapper = styled.div`
     border-radius: 50%;
 `;
 
-export const OsButton = styled.button`
+export const OsButton = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,9 +49,11 @@ export const OsButton = styled.button`
     font-size: 24px;
     border: 2px solid #c9eb00;
     min-width: 348px;
+    color: #000;
 
     &:hover {
         background: #b3d800;
+        text-decoration: none;
     }
 
     @media (min-width: 769px) {
