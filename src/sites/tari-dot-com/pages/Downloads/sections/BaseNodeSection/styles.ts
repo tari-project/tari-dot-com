@@ -70,7 +70,7 @@ export const DownloadLink = styled.a`
     }
 `;
 
-export const GithubLink = styled.button`
+export const GithubLink = styled.a`
     color: #fff;
     font-family: var(--font-poppins), sans-serif;
     font-size: 16px;
@@ -87,5 +87,6 @@ export const GithubLink = styled.button`
         background-color: rgba(255, 255, 255, 0.1);
         border: 2px solid rgba(255, 255, 255, 0.4);
         cursor: pointer;
+        text-decoration: none;
     }
 `;
