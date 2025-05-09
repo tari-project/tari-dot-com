@@ -59,7 +59,7 @@ export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks 
                                     )}
                                 </AnimatePresence>
                             </RewardPill>
-                            <TimeAgo>{timeAgo}</TimeAgo>
+                            <TimeAgo>{timeAgo} ago</TimeAgo>
                         </MetaData>
                     </ContentWrapper>
                 </Inside>

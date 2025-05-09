@@ -3,13 +3,13 @@
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import { useMotionValue, useSpring, useAnimation } from 'motion/react';
 import { Wrapper, DragContainer, StickyEntryWrapper, ScrollMask, Divider } from './styles';
-import { BlockData } from './BlockEntry/BlockEntry';
-import { initialBlockData } from './data';
+import { useBlocks, BlockData } from '@/services/api/useBlocks';
 
 const BlockEntry = lazy(() => import('./BlockEntry/BlockEntry'));
 
 export default function BlockExplorerMini() {
-    const [blockData, setBlockData] = useState<BlockData[]>(initialBlockData);
+    const { data, isLoading, isError } = useBlocks();
+    const [stickyEntry, setStickyEntry] = useState<BlockData | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const dragContainerRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -47,57 +47,49 @@ export default function BlockExplorerMini() {
                 resizeObserver.disconnect();
             };
         }
-    }, [blockData]);
+    }, [data]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * (initialBlockData.length - 1)) + 1;
-            const randomEntry = { ...initialBlockData[randomIndex] };
-
-            const newBlockId = parseInt(blockData[0].id.replace(/,/g, '')) + 1;
-            const formattedId = newBlockId.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            randomEntry.id = formattedId;
-
-            randomEntry.minersSolved = Math.floor(Math.random() * 100) + 100;
-            randomEntry.reward = Math.floor(Math.random() * 10) + 445;
-            randomEntry.blocks = Math.floor(Math.random() * 1000);
-
-            setBlockData((prevBlocks) => {
-                const newBlocks = [randomEntry, ...prevBlocks];
-                if (newBlocks.length > 10) {
-                    return newBlocks.slice(0, 10);
-                }
-                return newBlocks;
+        if (data && data.length > 0) {
+            setStickyEntry({
+                ...data[0],
+                id: (parseInt(data[0].id) + 1).toString(),
             });
+        }
 
-            if (!isDragging) {
-                controls.start({
-                    x: 0,
-                    transition: { type: 'spring', stiffness: 50, damping: 10, mass: 1 },
-                });
-            }
-        }, 10000);
+        if (!isDragging) {
+            controls.start({
+                x: 0,
+                transition: { type: 'spring', stiffness: 50, damping: 10, mass: 1 },
+            });
+        }
+    }, [data, controls, isDragging]);
 
-        return () => clearInterval(interval);
-    }, [blockData, controls, isDragging]);
+    if (isLoading) {
+        return <div></div>;
+    }
+    if (isError) {
+        return <div></div>;
+    }
 
-    const stickyEntry = blockData[0];
-    const scrollingEntries = blockData.slice(1);
+    const scrollingEntries = data;
 
     return (
         <Wrapper ref={containerRef}>
             <StickyEntryWrapper>
                 <Suspense fallback={<div></div>}>
-                    <BlockEntry
-                        key={stickyEntry.id}
-                        id={stickyEntry.id}
-                        minersSolved={stickyEntry.minersSolved}
-                        reward={stickyEntry.reward}
-                        timeAgo={stickyEntry.timeAgo}
-                        isSolving={stickyEntry.isSolving}
-                        blocks={stickyEntry.blocks}
-                        isFirstEntry={true}
-                    />
+                    {stickyEntry && (
+                        <BlockEntry
+                            key={stickyEntry.id}
+                            id={stickyEntry.id}
+                            minersSolved={stickyEntry.minersSolved}
+                            reward={stickyEntry.reward}
+                            timeAgo={stickyEntry.timeAgo}
+                            isSolving={stickyEntry.isSolving}
+                            blocks={stickyEntry.blocks}
+                            isFirstEntry={true}
+                        />
+                    )}
                     <Divider />
                 </Suspense>
             </StickyEntryWrapper>
@@ -123,17 +115,18 @@ export default function BlockExplorerMini() {
                     }}
                 >
                     <Suspense fallback={<div></div>}>
-                        {scrollingEntries.map(({ id, minersSolved, reward, timeAgo, isSolving, blocks }) => (
-                            <BlockEntry
-                                key={id}
-                                id={id}
-                                minersSolved={minersSolved}
-                                reward={reward}
-                                timeAgo={timeAgo}
-                                isSolving={isSolving}
-                                blocks={blocks}
-                            />
-                        ))}
+                        {scrollingEntries &&
+                            scrollingEntries.map(({ id, minersSolved, reward, timeAgo, isSolving, blocks }) => (
+                                <BlockEntry
+                                    key={id}
+                                    id={id}
+                                    minersSolved={minersSolved}
+                                    reward={reward}
+                                    timeAgo={timeAgo}
+                                    isSolving={isSolving}
+                                    blocks={blocks}
+                                />
+                            ))}
                     </Suspense>
                 </DragContainer>
             </ScrollMask>

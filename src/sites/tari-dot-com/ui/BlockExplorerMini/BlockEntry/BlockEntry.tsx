@@ -2,16 +2,7 @@
 
 import BlockSolved from './BlockSolved/BlockSolved';
 import BlockSolving from './BlockSolving/BlockSolving';
-
-export interface BlockData {
-    id: string;
-    minersSolved: number;
-    reward?: number; // XTM reward amount
-    timeAgo?: string;
-    isSolving?: boolean;
-    blocks?: number;
-    isFirstEntry?: boolean;
-}
+import { BlockData } from '@/services/api/useBlocks';
 
 interface Props extends BlockData {
     isFirstEntry?: boolean;

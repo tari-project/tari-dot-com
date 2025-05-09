@@ -1,6 +1,6 @@
 'use client';
 
-import { BlockData } from '../BlockEntry';
+import { BlockData } from '@/services/api/useBlocks';
 import BlockTimer from './BlockTimer/BlockTimer';
 
 import { Inside, Wrapper, BoxWrapper, ContentWrapper, Title, VideoWrapper } from './styles';
@@ -13,7 +13,7 @@ interface Props extends BlockData {
     isSolved?: boolean;
 }
 
-export default function BlockSolving({ id }: Props) {
+export default function BlockSolving({ id, minersSolved, timeAgo, reward }: Props) {
     const [isSolved, setIsSolved] = useState(false);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function BlockSolving({ id }: Props) {
         }, 6000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [isSolved]);
 
     return (
         <Wrapper
@@ -49,9 +49,9 @@ export default function BlockSolving({ id }: Props) {
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>#24,745</strong> block is being solved
+                                    <strong>#{id}</strong> block is being solved
                                 </Title>
-                                <BlockTimer time={`12:34`} />
+                                <BlockTimer time={`00:00`} />
                             </ContentWrapper>
                         </Inside>
                     </BoxWrapper>
@@ -70,11 +70,11 @@ export default function BlockSolving({ id }: Props) {
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>28 miners</strong> got rewarded
+                                    <strong>{minersSolved} miners</strong> got rewarded
                                 </Title>
                                 <MetaData>
-                                    <RewardPill>447 XTM</RewardPill>
-                                    <TimeAgo>12 mins ago</TimeAgo>
+                                    <RewardPill>{reward} XTM</RewardPill>
+                                    <TimeAgo>{timeAgo} ago</TimeAgo>
                                 </MetaData>
                             </ContentWrapper>
                         </Inside>
