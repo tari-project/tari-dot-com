@@ -11,13 +11,13 @@ import {
     Title,
     VideoWrapper,
     Spacer,
-    //StyledIframe,
 } from './styles';
 
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import TextPill from './components/TextPill/TextPill';
 import DownloadButton from './components/DownloadButton/DownloadButton';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
+import BlockExplorerMini from '@/sites/tari-dot-com/ui/BlockExplorerMini/BlockExplorerMini';
 
 export default function IntroSection() {
     return (
@@ -59,6 +59,8 @@ export default function IntroSection() {
                     />
                 </VideoWrapper>
             </Holder>
+
+            <BlockExplorerMini />
         </Wrapper>
     );
 }

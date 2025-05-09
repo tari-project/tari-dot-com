@@ -5,24 +5,30 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     width: 100%;
     min-height: 973px;
-    display: flex;
 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+
     background-color: #fbf7ef;
 
-    padding: 0 20px;
     overflow: hidden;
+
+    gap: 110px;
+    padding: 0 20px;
+    padding-top: 170px;
+    padding-bottom: 60px;
 
     @media (max-width: 807px) {
         min-height: auto;
-        padding: 130px 20px 100px 20px;
+        padding: 130px 20px 60px 20px;
+        gap: 100px;
     }
 
     @media (max-width: 807px) {
         padding-top: 50px;
+        padding-bottom: 60px;
     }
 `;
 
