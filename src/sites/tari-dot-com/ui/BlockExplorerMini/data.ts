@@ -1,4 +1,4 @@
-import { BlockData } from './BlockEntry/BlockEntry';
+import { BlockData } from '@/services/api/useBlocks';
 
 export const initialBlockData: BlockData[] = [
     {
