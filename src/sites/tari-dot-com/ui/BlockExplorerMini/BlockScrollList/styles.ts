@@ -32,6 +32,7 @@ export const ScrollMask = styled.div`
         padding: 0;
         mask-image: none;
         -webkit-mask-image: none;
+        width: max-content;
     }
 `;
 

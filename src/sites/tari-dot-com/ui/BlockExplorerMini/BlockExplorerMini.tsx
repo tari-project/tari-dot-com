@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
-import { Wrapper, StickyEntryWrapper, Divider, LoadingPlaceholder, InsideHolder } from './styles';
+import { Wrapper, StickyEntryWrapper, Divider, LoadingPlaceholder, InsideHolder, MobileScroll } from './styles';
 import { useBlocks, BlockData } from '@/services/api/useBlocks';
 
 const BlockEntry = lazy(() => import('./BlockEntry/BlockEntry'));
@@ -32,27 +32,29 @@ export default function BlockExplorerMini() {
 
     return (
         <Wrapper ref={containerRef}>
-            <InsideHolder>
-                <StickyEntryWrapper>
-                    <Suspense fallback={<div />}>
-                        {stickyEntry && (
-                            <BlockEntry
-                                key={stickyEntry.id}
-                                id={stickyEntry.id}
-                                minersSolved={stickyEntry.minersSolved}
-                                reward={stickyEntry.reward}
-                                timeAgo={stickyEntry.timeAgo}
-                                isSolving={stickyEntry.isSolving}
-                                blocks={stickyEntry.blocks}
-                                isFirstEntry={true}
-                            />
-                        )}
-                        <Divider />
-                    </Suspense>
-                </StickyEntryWrapper>
+            <MobileScroll>
+                <InsideHolder>
+                    <StickyEntryWrapper>
+                        <Suspense fallback={<div />}>
+                            {stickyEntry && (
+                                <BlockEntry
+                                    key={stickyEntry.id}
+                                    id={stickyEntry.id}
+                                    minersSolved={stickyEntry.minersSolved}
+                                    reward={stickyEntry.reward}
+                                    timeAgo={stickyEntry.timeAgo}
+                                    isSolving={stickyEntry.isSolving}
+                                    blocks={stickyEntry.blocks}
+                                    isFirstEntry={true}
+                                />
+                            )}
+                            <Divider />
+                        </Suspense>
+                    </StickyEntryWrapper>
 
-                <BlockScrollList data={data} containerRef={containerRef} />
-            </InsideHolder>
+                    <BlockScrollList data={data} containerRef={containerRef} />
+                </InsideHolder>
+            </MobileScroll>
         </Wrapper>
     );
 }

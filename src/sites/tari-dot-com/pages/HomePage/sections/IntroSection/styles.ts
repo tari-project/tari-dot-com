@@ -12,15 +12,22 @@ export const Wrapper = styled.div`
     align-items: center;
 
     background-color: #fbf7ef;
-
     overflow: hidden;
 
-    gap: 110px;
-    padding: 0 20px;
-    padding-top: 170px;
-    padding-bottom: 60px;
+    @media (max-width: 1090px) {
+        min-height: auto;
+    }
+`;
 
-    @media (max-width: 807px) {
+export const Padding = styled.div`
+    display: flex;
+    gap: 110px;
+
+    width: 100%;
+
+    padding: 160px 60px 60px 60px;
+
+    @media (max-width: 1090px) {
         min-height: auto;
         padding: 130px 20px 60px 20px;
         gap: 100px;

@@ -8,21 +8,42 @@ export const Wrapper = styled.div`
     position: relative;
     margin: auto;
     width: 100%;
-    max-width: 1300px;
+
+    padding: 20px 60px 60px 60px;
+
+    @media (max-width: 1090px) {
+        padding: 20px 20px 60px 20px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px 0px 60px 0px;
+    }
+`;
+
+export const MobileScroll = styled.div`
+    display: flex;
+    width: 100%;
 
     @media (max-width: 768px) {
         overflow: hidden;
         overflow-x: scroll;
+        padding-left: 10px;
     }
 `;
 
 export const InsideHolder = styled.div`
     width: max-content;
     height: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
 
     display: flex;
     align-items: center;
     position: relative;
+
+    @media (max-width: 768px) {
+        max-width: unset;
+    }
 `;
 
 export const StickyEntryWrapper = styled.div`
