@@ -1,7 +1,15 @@
 'use client';
 
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
-import { Wrapper, StickyEntryWrapper, Divider, LoadingPlaceholder, InsideHolder, MobileScroll } from './styles';
+import {
+    Wrapper,
+    StickyEntryWrapper,
+    Divider,
+    LoadingPlaceholder,
+    InsideHolder,
+    MobileScroll,
+    BlockEntryPlaceholder,
+} from './styles';
 import { useBlocks, BlockData } from '@/services/api/useBlocks';
 
 const BlockEntry = lazy(() => import('./BlockEntry/BlockEntry'));
@@ -35,7 +43,7 @@ export default function BlockExplorerMini() {
             <MobileScroll>
                 <InsideHolder>
                     <StickyEntryWrapper>
-                        <Suspense fallback={<div />}>
+                        <Suspense fallback={<BlockEntryPlaceholder />}>
                             {stickyEntry && (
                                 <BlockEntry
                                     key={stickyEntry.id}
@@ -48,8 +56,8 @@ export default function BlockExplorerMini() {
                                     isFirstEntry={true}
                                 />
                             )}
-                            <Divider />
                         </Suspense>
+                        <Divider />
                     </StickyEntryWrapper>
 
                     <BlockScrollList data={data} containerRef={containerRef} />

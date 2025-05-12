@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     position: relative;
-    margin: auto;
+    margin: 0 auto;
     width: 100%;
 
     padding: 20px 60px 60px 60px;
@@ -69,5 +69,10 @@ export const Divider = styled.div`
 
 export const LoadingPlaceholder = styled.div`
     width: 100%;
+    height: 89px;
+`;
+
+export const BlockEntryPlaceholder = styled.div`
+    width: 316px;
     height: 89px;
 `;
