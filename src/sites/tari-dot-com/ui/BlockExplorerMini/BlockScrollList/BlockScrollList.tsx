@@ -13,13 +13,26 @@ interface Props {
 
 export default function BlockScrollList({ data, containerRef }: Props) {
     const dragContainerRef = useRef<HTMLDivElement>(null);
-    //const [isDragging, setIsDragging] = useState(false);
     const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0 });
+    const [isMobile, setIsMobile] = useState(false);
 
     const x = useMotionValue(0);
     const springConfig = { stiffness: 400, damping: 100, mass: 1 };
     const springX = useSpring(x, springConfig);
     const controls = useAnimation();
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkIsMobile();
+        window.addEventListener('resize', checkIsMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkIsMobile);
+        };
+    }, []);
 
     useEffect(() => {
         if (containerRef && containerRef.current && dragContainerRef.current) {
@@ -51,7 +64,7 @@ export default function BlockScrollList({ data, containerRef }: Props) {
         <ScrollMask>
             <DragContainer
                 ref={dragContainerRef}
-                drag="x"
+                drag={isMobile ? false : 'x'}
                 dragConstraints={dragConstraints}
                 dragElastic={0.1}
                 style={{ x: springX }}
@@ -61,12 +74,6 @@ export default function BlockScrollList({ data, containerRef }: Props) {
                     modifyTarget: (target) => Math.round(target / 50) * 50,
                 }}
                 animate={controls}
-                // onDragStart={() => {
-                //     setIsDragging(true);
-                // }}
-                // onDragEnd={() => {
-                //     setIsDragging(false);
-                // }}
             >
                 <Suspense fallback={<div></div>}>
                     {data &&

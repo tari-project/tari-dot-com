@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
     display: flex;
+    width: 100%;
 `;
 
 export const BoxWrapper = styled(motion.div)<{ $isSolved?: boolean }>`
