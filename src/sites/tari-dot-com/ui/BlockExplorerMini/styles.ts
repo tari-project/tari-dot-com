@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'motion/react';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -14,27 +13,6 @@ export const Wrapper = styled.div`
     padding-left: calc(329px + 30px); /* Space for the sticky element (entry width + gap) */
 `;
 
-export const ScrollMask = styled(motion.div)`
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: grab;
-
-    gap: 27px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    padding-right: 16px;
-    padding-left: 16px;
-
-    width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 100px), transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 100px), transparent 100%);
-
-    &:active {
-        cursor: grabbing;
-    }
-`;
-
 export const StickyEntryWrapper = styled.div`
     position: absolute;
     left: 0px;
@@ -46,14 +24,6 @@ export const StickyEntryWrapper = styled.div`
     padding-right: 30px;
 `;
 
-export const DragContainer = styled(motion.div)`
-    display: flex;
-    gap: 8px;
-    will-change: transform;
-    padding-right: 600px;
-    width: fit-content;
-`;
-
 export const Divider = styled.div`
     height: 58px;
     width: 1px;
@@ -63,4 +33,9 @@ export const Divider = styled.div`
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
+`;
+
+export const LoadingPlaceholder = styled.div`
+    width: 100%;
+    height: 89px;
 `;

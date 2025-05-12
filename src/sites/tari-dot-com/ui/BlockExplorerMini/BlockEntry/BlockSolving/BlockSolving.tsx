@@ -70,11 +70,11 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward }: Prop
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>{minersSolved} miners</strong> got rewarded
+                                    <strong>{minersSolved} miners</strong> got rewarded {id}
                                 </Title>
                                 <MetaData>
                                     <RewardPill>{reward} XTM</RewardPill>
-                                    <TimeAgo>{timeAgo} ago</TimeAgo>
+                                    {timeAgo && <TimeAgo>{timeAgo} ago</TimeAgo>}
                                 </MetaData>
                             </ContentWrapper>
                         </Inside>

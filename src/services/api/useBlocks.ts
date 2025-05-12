@@ -47,7 +47,7 @@ export function useBlocks() {
                 id: block.height,
                 minersSolved: block.numCoinbases,
                 reward: parseInt(block.totalCoinbaseXtm.split('.')[0].replace(/,/g, ''), 10),
-                timeAgo: '2 mins', // Waiting for the API to provide this data
+                timeAgo: undefined, // Waiting for the API to provide this data
                 blocks: block.numOutputsNoCoinbases,
                 isSolving: true,
             }));

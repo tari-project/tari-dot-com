@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { BlockData } from '../BlockEntry';
 import BlockProgress from './BlockProgress/BlockProgress';
 import PeopleIcon from './PeopleIcon';
 import {
@@ -18,6 +17,7 @@ import {
     RewardPillHoverBg,
 } from './styles';
 import { AnimatePresence } from 'motion/react';
+import { BlockData } from '@/services/api/useBlocks';
 
 export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks }: BlockData) {
     const [isHovering, setIsHovering] = useState(false);
@@ -59,7 +59,7 @@ export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks 
                                     )}
                                 </AnimatePresence>
                             </RewardPill>
-                            <TimeAgo>{timeAgo} ago</TimeAgo>
+                            {timeAgo && <TimeAgo>{timeAgo} ago</TimeAgo>}
                         </MetaData>
                     </ContentWrapper>
                 </Inside>
