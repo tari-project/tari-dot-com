@@ -1,7 +1,7 @@
 export const timeAgo = (timestamp: string): string => {
     const now = Date.now();
-    const timeInSeconds = parseInt(timestamp, 10) * 1000;
-    const difference = now - timeInSeconds;
+    const timeInMilliseconds = new Date(timestamp + ' UTC').getTime();
+    const difference = now - timeInMilliseconds;
 
     const seconds = Math.floor(difference / 1000);
     const minutes = Math.floor(seconds / 60);

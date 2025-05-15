@@ -4,7 +4,7 @@ export const initialBlockData: BlockData[] = [
     {
         id: '24,745',
         minersSolved: 0,
-        isSolving: true,
+        isSolved: true,
     },
     {
         id: '24,289',
@@ -37,7 +37,7 @@ export const initialBlockData: BlockData[] = [
     {
         id: '24,285',
         minersSolved: 0,
-        isSolving: true,
+        isSolved: true,
     },
     {
         id: '24,284',

@@ -5,25 +5,10 @@ import BlockTimer from './BlockTimer/BlockTimer';
 
 import { Inside, Wrapper, BoxWrapper, ContentWrapper, Title, VideoWrapper } from './styles';
 import BlockVideo from './BlockVideo/BlockVideo';
-import { useState, useEffect } from 'react';
 import { MetaData, RewardPill, TimeAgo } from '../BlockSolved/styles';
 import { AnimatePresence } from 'motion/react';
 
-interface Props extends BlockData {
-    isSolved?: boolean;
-}
-
-export default function BlockSolving({ id, minersSolved, timeAgo, reward }: Props) {
-    const [isSolved, setIsSolved] = useState(false);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsSolved(true);
-        }, 6000);
-
-        return () => clearTimeout(timer);
-    }, [isSolved]);
-
+export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolved }: BlockData) {
     return (
         <Wrapper
             layout="position"
