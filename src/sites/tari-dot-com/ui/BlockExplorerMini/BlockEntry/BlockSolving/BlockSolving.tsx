@@ -55,7 +55,10 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolv
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>{minersSolved} miners</strong> got rewarded {id}
+                                    <strong>
+                                        {minersSolved} miner{minersSolved > 1 && 's'}
+                                    </strong>{' '}
+                                    got rewarded {id}
                                 </Title>
                                 <MetaData>
                                     <RewardPill>{reward} XTM</RewardPill>
