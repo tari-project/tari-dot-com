@@ -56,7 +56,7 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolv
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
                                     <strong>
-                                        {minersSolved} miner{minersSolved > 1 && 's'}
+                                        {minersSolved} {minersSolved > 1 ? 'miners' : 'pool'}
                                     </strong>{' '}
                                     got rewarded {id}
                                 </Title>

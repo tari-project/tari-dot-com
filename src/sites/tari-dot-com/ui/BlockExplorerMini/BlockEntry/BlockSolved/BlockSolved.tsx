@@ -18,6 +18,7 @@ import {
 } from './styles';
 import { AnimatePresence } from 'motion/react';
 import { BlockData } from '@/services/api/useBlocks';
+import { formatReward } from '@/sites/tari-dot-com/utils/formatting';
 
 export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks }: BlockData) {
     const [isHovering, setIsHovering] = useState(false);
@@ -43,12 +44,12 @@ export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks 
                         </BlockTitle>
                         <MinersSolved>
                             <PeopleIcon />
-                            {minersSolved} miner{minersSolved > 1 && 's'} solved
+                            {minersSolved} {minersSolved > 1 ? 'miners' : 'pool'} solved
                         </MinersSolved>
 
                         <MetaData>
                             <RewardPill $isHovering={isHovering}>
-                                <span>{reward} XTM</span>
+                                <span>{formatReward(reward || 0)} XTM</span>
                                 <AnimatePresence>
                                     {isHovering && (
                                         <RewardPillHoverBg

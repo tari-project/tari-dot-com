@@ -25,7 +25,7 @@ export const Padding = styled.div`
 
     width: 100%;
 
-    padding: 160px 60px 60px 60px;
+    padding: 140px 60px 60px 60px;
 
     @media (max-width: 1090px) {
         min-height: auto;

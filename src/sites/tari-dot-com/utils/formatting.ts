@@ -13,3 +13,15 @@ export const timeAgo = (timestamp: string): string => {
     if (minutes > 0) return `${minutes} min${minutes > 1 ? 's' : ''}`;
     return `${seconds} sec${seconds > 1 ? 's' : ''}`;
 };
+
+export const formatReward = (number: number): string => {
+    if (number >= 1_000_000_000) {
+        return `${(number / 1_000_000_000).toFixed(1)}B`;
+    } else if (number >= 1_000_000) {
+        return `${(number / 1_000_000).toFixed(1)}M`;
+    } else if (number >= 100_000) {
+        return `${(number / 1_000).toFixed(1)}K`;
+    } else {
+        return number.toLocaleString('en-US');
+    }
+};

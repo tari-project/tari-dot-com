@@ -88,16 +88,17 @@ export const RewardPill = styled.div<{ $isHovering?: boolean }>`
 
     color: #030303;
     font-family: var(--font-poppins), sans-serif;
-    font-size: 7px;
+    font-size: 9px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: normal;
     white-space: nowrap;
     overflow: hidden;
+    letter-spacing: 0.2px;
 
     position: relative;
 
-    padding: 4px 5px;
+    padding: 2px 6px;
     transition: background 0.2s ease;
 
     span {
