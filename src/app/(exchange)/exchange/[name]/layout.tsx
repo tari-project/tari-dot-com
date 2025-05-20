@@ -1,20 +1,14 @@
 import LayoutExchange from '@/ui-shared/layouts/Layout/LayoutExchange';
-import { Viewport } from 'next';
 import { exchangeData } from './page';
 
-export const viewport: Viewport = {
-    themeColor: 'black',
-    initialScale: 1,
-    width: 'device-width',
-    height: 'device-height',
-    minimumScale: 1,
-    maximumScale: 1,
-};
-
-export async function generateMetadata({ params }: { params: { name: string } }) {
+export const generateMetadata = async ({ params }: { params: { name: string } }) => {
     const exchange = exchangeData[params.name] || { name: params.name };
-    return {
+
+    const metadata = {
         title: `Tari x ${exchange.name}`,
+        description:
+            'Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
+        icons: [{ url: 'https://tari.com/favicon.png?v=1', type: 'image/png' }],
         openGraph: {
             images: [
                 {
@@ -26,7 +20,9 @@ export async function generateMetadata({ params }: { params: { name: string } })
             ],
         },
     };
-}
+
+    return metadata;
+};
 
 export default function ExchangeLayout({ children }: { children: React.ReactNode }) {
     return <LayoutExchange>{children}</LayoutExchange>;
