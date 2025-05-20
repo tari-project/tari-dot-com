@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
     z-index: 1;
 `;
 
-export const Number = styled.div`
-    color: #3e86c9;
+export const Number = styled.div<{ $color: string }>`
+    color: ${({ $color }) => $color};
     font-family: var(--font-druk), sans-serif;
     font-size: 39px;
     font-style: italic;

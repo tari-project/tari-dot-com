@@ -3,8 +3,9 @@ import { LeftSide, LogoWrapper, OutlineButton, RightSide, Wrapper } from './styl
 import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 import TariLogo from './logos/TariLogo';
 import CrossIcon from './logos/CrossIcon';
+import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
 
-export default function HeroHeader() {
+export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     return (
         <Wrapper>
             <LeftSide>
@@ -14,7 +15,7 @@ export default function HeroHeader() {
             <LogoWrapper>
                 <TariLogo />
                 <CrossIcon />
-                <TariLogo />
+                {exchange?.logoHeader}
             </LogoWrapper>
 
             <RightSide>

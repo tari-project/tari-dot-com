@@ -42,3 +42,14 @@ export const Title = styled.div`
     line-height: 101%;
     text-transform: uppercase;
 `;
+
+export const BottomWrapper = styled.div`
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+`;

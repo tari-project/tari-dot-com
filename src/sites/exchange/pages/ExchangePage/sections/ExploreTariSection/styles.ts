@@ -51,7 +51,7 @@ export const TitleWrapper = styled.div`
     }
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<{ $color: string }>`
     color: #fff;
     text-align: center;
     font-family: var(--font-druk), sans-serif;
@@ -79,7 +79,7 @@ export const Title = styled.div`
     }
 
     span {
-        color: #3e86c9;
+        color: ${({ $color }) => $color};
         font-style: normal;
     }
 `;
@@ -123,14 +123,14 @@ export const BackgroundWrapper = styled.div`
     pointer-events: none;
 `;
 
-export const DiagonalYellowBox = styled.div`
+export const DiagonalYellowBox = styled.div<{ $color: string }>`
     position: absolute;
     bottom: 14%;
     left: 50%;
     transform: translateX(-50%) rotate(-16deg);
     width: 200%;
     height: 40%;
-    background: #3e86c9;
+    background: ${({ $color }) => $color};
     z-index: 0;
 `;
 

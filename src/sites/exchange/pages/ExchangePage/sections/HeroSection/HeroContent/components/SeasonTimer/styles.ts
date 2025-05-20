@@ -3,16 +3,12 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 287px;
+    background-color: #161616;
+    padding: 20px 20px 20px 40px;
+    border-radius: 20px 0 0 0;
 `;
 
 export const ContentWrapper = styled.div`
-    position: absolute;
-    bottom: 5px;
-    right: 45px;
     display: flex;
     align-items: center;
     gap: 20px;

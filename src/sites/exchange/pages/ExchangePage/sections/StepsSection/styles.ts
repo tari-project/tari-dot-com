@@ -61,6 +61,18 @@ export const StepInside = styled.div`
     border: 1px solid #2b2b2b;
 `;
 
+export const LogoWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+`;
+
+export const Logo = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
 export const StepTitle = styled.div`
     color: #fff;
     font-family: var(--font-druk), sans-serif;
@@ -71,6 +83,8 @@ export const StepTitle = styled.div`
     letter-spacing: 0.35px;
     text-transform: uppercase;
 
+    max-width: 250px;
+
     position: absolute;
     bottom: 10%;
     left: 10%;
@@ -79,4 +93,59 @@ export const StepTitle = styled.div`
 export const BgImage = styled.img`
     width: 100%;
     object-fit: cover;
+    pointer-events: none;
+`;
+
+export const FieldWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 40px;
+
+    position: absolute;
+    top: 44%;
+    left: 0;
+    right: 0;
+`;
+
+export const FieldBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    border-radius: 32.701px;
+    background: rgba(249, 249, 249, 0.2);
+    box-shadow: 0px 0px 152.7px 0px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+
+    padding: 24px 32px;
+`;
+
+export const FieldTitle = styled.div`
+    color: #fff;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.48px;
+`;
+
+export const FieldInput = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+`;
+
+export const Emojis = styled.div`
+    color: #fff;
+    font-family: var(--font-druk), sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
 `;

@@ -4,29 +4,15 @@ import HeroSection from './sections/HeroSection/HeroSection';
 import StepsSection from './sections/StepsSection/StepsSection';
 import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
 import { Wrapper } from './styles';
+import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
 
-interface Props {
-    name: string;
-}
-
-const pageData = {
-    exchange: {
-        name: 'Something',
-        logoHeader: '',
-        logoSquare: '',
-        color: '#3E86C9',
-    },
-};
-
-export default function ExchangePage({ name }: Props) {
-    console.log(name, pageData);
-
+export default function ExchangePage({ exchange }: { exchange: Exchange }) {
     return (
         <Wrapper>
-            <HeroSection />
-            <StepsSection />
+            <HeroSection exchange={exchange} />
+            <StepsSection exchange={exchange} />
             <TrustedBySection />
-            <ExploreTariSection />
+            <ExploreTariSection exchange={exchange} />
             <FAQSection />
         </Wrapper>
     );

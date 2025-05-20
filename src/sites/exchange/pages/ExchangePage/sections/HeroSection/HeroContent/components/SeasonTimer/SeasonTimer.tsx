@@ -11,7 +11,6 @@ import {
     Wrapper,
     Image,
 } from './styles';
-import SeasonTimerBackground from './SeasonTimerBackground';
 import laptopImage from '../../images/laptop.png';
 
 export default function SeasonTimer() {
@@ -30,7 +29,6 @@ export default function SeasonTimer() {
                 </TextContent>
                 <Image src={laptopImage.src} alt="" />
             </ContentWrapper>
-            <SeasonTimerBackground />
         </Wrapper>
     );
 }

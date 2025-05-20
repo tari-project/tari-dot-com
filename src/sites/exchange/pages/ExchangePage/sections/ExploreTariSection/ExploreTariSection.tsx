@@ -11,13 +11,14 @@ import {
     ShadowHolder,
     ShadowWrapper,
 } from './styles';
+import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
 
-export default function ExploreTariSection() {
+export default function ExploreTariSection({ exchange }: { exchange: Exchange }) {
     return (
         <Wrapper>
             <Holder>
                 <TitleWrapper>
-                    <Title>
+                    <Title $color={exchange?.color}>
                         EXPLORE &nbsp;<span>TARI UNIVERSE</span>
                     </Title>
                     <Text>
@@ -46,7 +47,7 @@ export default function ExploreTariSection() {
                         <ShadowBox />
                     </ShadowHolder>
                 </ShadowWrapper>
-                <DiagonalYellowBox />
+                <DiagonalYellowBox $color={exchange?.color} />
             </BackgroundWrapper>
         </Wrapper>
     );
