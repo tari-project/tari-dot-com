@@ -4,7 +4,7 @@ import { RightBorderWrapper } from './styles';
 export default function HeroRightBorder({ color = '#3E86C9' }: { color?: string }) {
     return (
         <RightBorderWrapper>
-            <svg viewBox="-1 -47 140 1161" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-1 -47 140 1161" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <path
                     d="M103.911 26.4215L103.911 -47.4445L138.951 -96L138.951 117.083L103.911 165.639L103.911 91.7727L10.5384 221.17L10.5384 155.818L103.911 26.4215Z"
                     fill={color}

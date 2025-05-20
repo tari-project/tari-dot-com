@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     height: 100dvh;
 
     position: relative;
-    max-width: 1920px;
+
     margin: 0 auto;
 
     display: flex;
@@ -26,6 +26,7 @@ export const MiddleWrapper = styled.div`
 export const ContentWrapper = styled.div`
     width: 100%;
     height: 100%;
+    max-width: 1553px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;

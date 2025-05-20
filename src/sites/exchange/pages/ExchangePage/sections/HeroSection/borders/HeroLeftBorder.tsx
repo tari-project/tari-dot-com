@@ -4,7 +4,7 @@ import { LeftBorderWrapper } from './styles';
 export default function HeroLeftBorder({ color = '#3E86C9' }: { color?: string }) {
     return (
         <LeftBorderWrapper>
-            <svg viewBox="-27 0 139 1211" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-27 0 139 1211" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <path
                     d="M9.01947 1087.96L9.01947 1161.83L-26.0205 1210.39L-26.0205 997.303L9.01947 948.747L9.01947 1022.61L102.392 893.216L102.392 958.567L9.01947 1087.96Z"
                     fill={color}

@@ -11,7 +11,7 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
 
     background-image: url(${({ $bgImage }) => $bgImage});
     background-size: cover;
-    background-position: center;
+    background-position: right bottom;
     background-repeat: no-repeat;
 
     padding: 80px;
