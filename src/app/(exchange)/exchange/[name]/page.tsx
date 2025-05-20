@@ -1,4 +1,5 @@
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export const runtime = 'edge';
 
@@ -8,14 +9,7 @@ interface ExchangePageProps {
     };
 }
 
-export type Exchange = {
-    name: string;
-    color: string;
-    logoHeader: React.ReactNode;
-    logoSquare: React.ReactNode;
-};
-
-export const exchangeData: Record<string, Exchange> = {
+const exchangeData: Record<string, Exchange> = {
     TariBank: {
         name: 'TariBank',
         color: '#FFDC00',

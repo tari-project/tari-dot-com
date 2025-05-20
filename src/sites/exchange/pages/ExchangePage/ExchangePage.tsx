@@ -4,7 +4,7 @@ import HeroSection from './sections/HeroSection/HeroSection';
 import StepsSection from './sections/StepsSection/StepsSection';
 import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
 import { Wrapper } from './styles';
-import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function ExchangePage({ exchange }: { exchange: Exchange }) {
     return (
