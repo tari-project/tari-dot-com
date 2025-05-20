@@ -33,6 +33,22 @@ export const TitleWrapper = styled.div`
     justify-content: center;
     gap: 31px;
     width: 100%;
+
+    @media (max-width: 1200px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+        gap: 15px;
+    }
+
+    @media (max-width: 700px) {
+        gap: 10px;
+    }
+
+    @media (max-width: 500px) {
+        gap: 5px;
+    }
 `;
 
 export const Title = styled.div`
@@ -45,6 +61,22 @@ export const Title = styled.div`
     line-height: 100%;
     letter-spacing: 1.333px;
     text-transform: uppercase;
+
+    @media (max-width: 1200px) {
+        font-size: 100px;
+    }
+
+    @media (max-width: 900px) {
+        font-size: 80px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 60px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 40px;
+    }
 
     span {
         color: #3e86c9;
@@ -63,6 +95,22 @@ export const Text = styled.div`
     width: 100%;
 
     opacity: 0.75;
+
+    @media (max-width: 1200px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 900px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
 `;
 
 export const BackgroundWrapper = styled.div`

@@ -1,8 +1,8 @@
 import FAQSection from '@/sites/tari-dot-com/pages/HomePage/sections/FAQSection/FAQSection';
-import ExploreTariSection from './components/ExploreTariSection/ExploreTariSection';
-import HeroSection from './components/HeroSection/HeroSection';
-import StepsSection from './components/StepsSection/StepsSection';
-import TrustedBySection from './components/TrustedBySection/TrustedBySection';
+import ExploreTariSection from './sections/ExploreTariSection/ExploreTariSection';
+import HeroSection from './sections/HeroSection/HeroSection';
+import StepsSection from './sections/StepsSection/StepsSection';
+import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
 import { Wrapper } from './styles';
 
 interface Props {
