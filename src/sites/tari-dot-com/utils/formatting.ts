@@ -25,3 +25,11 @@ export const formatReward = (number: number): string => {
         return number.toLocaleString('en-US');
     }
 };
+
+export const formatBlockNumber = (number: string): string => {
+    if (number.length > 3) {
+        const formattedNumber = number.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        return formattedNumber;
+    }
+    return number;
+};

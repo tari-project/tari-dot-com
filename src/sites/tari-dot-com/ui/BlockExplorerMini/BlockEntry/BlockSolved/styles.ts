@@ -139,3 +139,19 @@ export const TimeAgo = styled.span`
     line-height: normal;
     opacity: 0.5;
 `;
+
+export const BottomWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+`;
+
+export const RewardPillBlack = styled.div<{ $isSolved?: boolean }>`
+    border-radius: 100px;
+    background: #000;
+    color: ${(props) => (props.$isSolved ? '#fff' : '#ffdd6c')};
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+`;

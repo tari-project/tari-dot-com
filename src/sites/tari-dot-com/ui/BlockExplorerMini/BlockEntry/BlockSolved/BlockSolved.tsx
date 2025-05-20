@@ -18,7 +18,7 @@ import {
 } from './styles';
 import { AnimatePresence } from 'motion/react';
 import { BlockData } from '@/services/api/useBlocks';
-import { formatReward } from '@/sites/tari-dot-com/utils/formatting';
+import { formatReward, formatBlockNumber } from '@/sites/tari-dot-com/utils/formatting';
 
 export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks }: BlockData) {
     const [isHovering, setIsHovering] = useState(false);
@@ -40,7 +40,7 @@ export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks 
                     <Divider />
                     <ContentWrapper>
                         <BlockTitle>
-                            Block: #<strong>{id}</strong>
+                            Block: #<strong>{formatBlockNumber(id)}</strong>
                         </BlockTitle>
                         <MinersSolved>
                             <PeopleIcon />

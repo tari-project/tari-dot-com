@@ -68,7 +68,7 @@ export const ContentWrapper = styled.div<{ $isSolved?: boolean }>`
     right: 0px;
     z-index: 0;
 
-    width: 150px;
+    width: 160px;
     height: 100%;
     padding-right: 20px;
     padding-left: 10px;

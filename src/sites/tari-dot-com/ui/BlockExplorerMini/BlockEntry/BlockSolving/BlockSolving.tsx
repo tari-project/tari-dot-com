@@ -5,8 +5,9 @@ import BlockTimer from './BlockTimer/BlockTimer';
 
 import { Inside, Wrapper, BoxWrapper, ContentWrapper, Title, VideoWrapper } from './styles';
 import BlockVideo from './BlockVideo/BlockVideo';
-import { MetaData, RewardPill, TimeAgo } from '../BlockSolved/styles';
+import { MetaData, TimeAgo, BottomWrapper, RewardPillBlack } from '../BlockSolved/styles';
 import { AnimatePresence } from 'motion/react';
+import { formatReward, formatBlockNumber } from '@/sites/tari-dot-com/utils/formatting';
 
 export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolved }: BlockData) {
     return (
@@ -34,9 +35,16 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolv
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>#{id}</strong> block is being solved
+                                    <strong>#{formatBlockNumber(id)}</strong> block is being solved
                                 </Title>
-                                <BlockTimer time={`00:00`} />
+                                <BottomWrapper>
+                                    {reward && (
+                                        <RewardPillBlack $isSolved={isSolved}>
+                                            <span>{formatReward(reward)} XTM</span>
+                                        </RewardPillBlack>
+                                    )}
+                                    <BlockTimer time={`00:00`} />
+                                </BottomWrapper>
                             </ContentWrapper>
                         </Inside>
                     </BoxWrapper>
@@ -58,10 +66,10 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolv
                                     <strong>
                                         {minersSolved} {minersSolved > 1 ? 'miners' : 'pool'}
                                     </strong>{' '}
-                                    got rewarded {id}
+                                    got rewarded
                                 </Title>
                                 <MetaData>
-                                    <RewardPill>{reward} XTM</RewardPill>
+                                    <RewardPillBlack $isSolved={isSolved}>{reward} XTM</RewardPillBlack>
                                     {timeAgo && <TimeAgo>{timeAgo} ago</TimeAgo>}
                                 </MetaData>
                             </ContentWrapper>
