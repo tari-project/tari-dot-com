@@ -3,12 +3,6 @@ import { Exchange } from '@/sites/exchange/types/exchange';
 
 export const runtime = 'edge';
 
-interface ExchangePageProps {
-    params: {
-        name: string;
-    };
-}
-
 const exchangeData: Record<string, Exchange> = {
     TariBank: {
         name: 'TariBank',
@@ -52,8 +46,9 @@ const exchangeData: Record<string, Exchange> = {
     },
 };
 
-export const generateMetadata = async ({ params }: { params: { name: string } }) => {
-    const exchange = exchangeData[params.name] || { name: params.name };
+export const generateMetadata = async ({ params }: { params: Promise<{ name: string }> }) => {
+    const { name } = await params;
+    const exchange = exchangeData[name] || { name };
 
     return {
         title: `Tari x ${exchange.name}`,
@@ -73,9 +68,8 @@ export const generateMetadata = async ({ params }: { params: { name: string } })
     };
 };
 
-export default function Page({ params }: ExchangePageProps) {
-    const { name } = params;
+export default async function Page({ params }: { params: Promise<{ name: string }> }) {
+    const { name } = await params;
     const exchange = exchangeData[name as keyof typeof exchangeData];
-
     return <ExchangePage exchange={exchange} />;
 }
