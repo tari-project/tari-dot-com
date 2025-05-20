@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     gap: 94px;
 
-    padding: 200px 60px 160px 60px;
+    padding: 200px 60px 200px 60px;
 `;
 
 export const Holder = styled.div`
@@ -40,6 +40,7 @@ export const TitleWrapper = styled.div`
 export const StepsWrapper = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     width: 100%;
 `;
@@ -144,29 +145,12 @@ export const Emojis = styled.div`
     font-weight: 800;
 `;
 
-export const LogoWrapper = styled.div<{ $color: string }>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+export const LogoImage = styled.img`
     width: 150px;
     height: 150px;
 
-    border-radius: 100%;
-
-    background-color: ${({ $color }) => $color};
-
     position: absolute;
-    top: 34px;
+    top: 48px;
     left: 50%;
     transform: translateX(-50%);
-
-    svg {
-        width: 80px;
-        height: 80px;
-
-        path {
-            fill: #171717;
-        }
-    }
 `;

@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    color: #fff;
 `;
 
 export const LeftSide = styled.div`
@@ -57,4 +58,9 @@ export const LogoWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 14px;
+`;
+
+export const LogoImage = styled.img`
+    height: 38px;
+    color: #fff;
 `;

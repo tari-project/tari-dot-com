@@ -14,7 +14,7 @@ import {
     FieldInput,
     Emojis,
     FieldBox,
-    LogoWrapper,
+    LogoImage,
 } from './styles';
 
 import stop1Image from './images/step1.png';
@@ -46,7 +46,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                 <Step>
                     <StepNumber text="Step 2" color={exchange?.color} />
                     <StepInside>
-                        <LogoWrapper $color={exchange?.color}>{exchange?.logoSquare}</LogoWrapper>
+                        <LogoImage src={exchange?.logoSquare} alt="" />
 
                         <FieldWrapper>
                             <FieldBox>

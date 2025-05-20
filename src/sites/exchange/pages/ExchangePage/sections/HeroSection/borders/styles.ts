@@ -13,8 +13,8 @@ export const TopBorderWrapper = styled.div`
 `;
 
 export const LeftBorderWrapper = styled.div`
-    height: 100%;
-    width: 8%;
+    height: 100dvh;
+    width: 7%;
     flex-shrink: 0;
 
     svg {
@@ -32,9 +32,9 @@ export const BottomBorderWrapper = styled.div`
 `;
 
 export const RightBorderWrapper = styled.div`
-    height: 100%;
+    height: 100dvh;
     flex-shrink: 0;
-    width: 8%;
+    width: 7%;
 
     svg {
         height: 100%;

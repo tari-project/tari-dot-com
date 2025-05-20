@@ -1,5 +1,5 @@
 import React from 'react';
-import { LeftSide, LogoWrapper, OutlineButton, RightSide, Wrapper } from './styles';
+import { LeftSide, LogoImage, LogoWrapper, OutlineButton, RightSide, Wrapper } from './styles';
 import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 import TariLogo from './logos/TariLogo';
 import CrossIcon from './logos/CrossIcon';
@@ -15,7 +15,7 @@ export default function HeroHeader({ exchange }: { exchange: Exchange }) {
             <LogoWrapper>
                 <TariLogo />
                 <CrossIcon />
-                {exchange?.logoHeader}
+                <LogoImage src={exchange?.logoHeader} alt="" />
             </LogoWrapper>
 
             <RightSide>
