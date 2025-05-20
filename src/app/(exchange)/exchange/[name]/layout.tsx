@@ -1,5 +1,5 @@
 import LayoutExchange from '@/ui-shared/layouts/Layout/LayoutExchange';
-import { Viewport, Metadata } from 'next';
+import { Viewport } from 'next';
 import { exchangeData } from './page';
 
 export const viewport: Viewport = {
@@ -11,15 +11,10 @@ export const viewport: Viewport = {
     maximumScale: 1,
 };
 
-type Props = {
-    params: { name: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { name } = params;
-    const exchange = exchangeData[name as keyof typeof exchangeData];
+export async function generateMetadata({ params }: { params: { name: string } }) {
+    const exchange = exchangeData[params.name] || { name: params.name };
     return {
-        title: `Tari x ${exchange ? exchange.name : name}`,
+        title: `Tari x ${exchange.name}`,
         openGraph: {
             images: [
                 {
