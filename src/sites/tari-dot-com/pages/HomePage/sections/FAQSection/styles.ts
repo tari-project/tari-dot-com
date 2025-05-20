@@ -8,6 +8,9 @@ export const Wrapper = styled.div<{ $lightMode?: boolean }>`
     padding: 120px 80px;
     width: 100%;
     color: #fff;
+    position: relative;
+    z-index: 1;
+    margin-top: -150px;
 
     ${({ $lightMode }) =>
         $lightMode &&

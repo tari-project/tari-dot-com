@@ -136,7 +136,7 @@ export const DiagonalYellowBox = styled.div<{ $color: string }>`
 
 export const ShadowWrapper = styled.div`
     position: absolute;
-    bottom: 0%;
+    bottom: -10%;
     left: 0;
     width: 100%;
     height: 100%;
@@ -153,10 +153,10 @@ export const ShadowHolder = styled.div`
 
 export const ShadowBox = styled.div`
     width: 200%;
-    height: 40%;
-    background: linear-gradient(140deg, rgba(22, 22, 22, 0.01) 7%, #161616 32%);
+    height: 50%;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.01) 0%, #161616 40%);
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(-16deg);
 `;
