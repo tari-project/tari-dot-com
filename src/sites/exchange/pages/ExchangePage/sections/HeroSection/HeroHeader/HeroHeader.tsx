@@ -3,7 +3,7 @@ import { LeftSide, LogoWrapper, OutlineButton, RightSide, Wrapper } from './styl
 import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 import TariLogo from './logos/TariLogo';
 import CrossIcon from './logos/CrossIcon';
-import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     return (

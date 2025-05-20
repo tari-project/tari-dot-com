@@ -11,7 +11,7 @@ import {
     ShadowHolder,
     ShadowWrapper,
 } from './styles';
-import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function ExploreTariSection({ exchange }: { exchange: Exchange }) {
     return (

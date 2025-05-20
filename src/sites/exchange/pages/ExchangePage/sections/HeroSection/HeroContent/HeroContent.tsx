@@ -4,7 +4,7 @@ import bgImage from './images/background.png';
 import DownloadButton from '@/sites/tari-dot-com/pages/HomePage/sections/IntroSection/components/DownloadButton/DownloadButton';
 import MetaInfo from './components/MetaInfo/MetaInfo';
 import SeasonTimer from './components/SeasonTimer/SeasonTimer';
-import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function HeroContent({ exchange }: { exchange: Exchange }) {
     return (

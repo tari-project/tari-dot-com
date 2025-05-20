@@ -2,10 +2,11 @@ import HeroTopBorder from './borders/HeroTopBorder';
 import HeroContent from './HeroContent/HeroContent';
 import HeroHeader from './HeroHeader/HeroHeader';
 import { Wrapper, ContentWrapper, MiddleWrapper } from './styles';
-import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
+
 import HeroBottomBorder from './borders/HeroBottomBorder';
 import HeroLeftBorder from './borders/HeroLeftBorder';
 import HeroRightBorder from './borders/HeroRightBorder';
+import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function HeroSection({ exchange }: { exchange: Exchange }) {
     return (
