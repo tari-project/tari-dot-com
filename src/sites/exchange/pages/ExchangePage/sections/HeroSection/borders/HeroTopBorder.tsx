@@ -4,7 +4,7 @@ import { TopBorderWrapper } from './styles';
 export default function HeroTopBorder({ color = '#3E86C9' }: { color?: string }) {
     return (
         <TopBorderWrapper>
-            <svg width="100%" height="100%" viewBox="-32 -78 1963 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-32 -78 1963 170" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M85.0792 -77.6943C149.892 -33.3885 214.724 10.9173 279.536 55.2231C346.628 54.8633 413.72 54.5036 480.812 54.1439C495.79 68.6927 510.769 83.2215 525.747 97.7702C437.817 98.4697 349.888 99.1492 261.938 99.8486C163.95 40.6543 65.9415 -18.52 -32.0669 -77.6943H85.0792Z"
                     fill={color}

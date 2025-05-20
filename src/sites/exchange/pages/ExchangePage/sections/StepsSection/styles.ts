@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     gap: 94px;
 
-    padding: 160px 60px;
+    padding: 200px 60px 160px 60px;
 `;
 
 export const Holder = styled.div`
