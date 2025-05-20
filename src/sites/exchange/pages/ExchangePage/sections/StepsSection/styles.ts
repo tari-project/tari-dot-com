@@ -83,6 +83,18 @@ export const StepTitle = styled.div`
     position: absolute;
     bottom: 10%;
     left: 10%;
+
+    @media (max-width: 1400px) {
+        font-size: 30px;
+    }
+
+    @media (max-width: 1000px) {
+        font-size: 25px;
+    }
+
+    @media (max-width: 666px) {
+        font-size: 20px;
+    }
 `;
 
 export const BgImage = styled.img`

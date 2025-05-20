@@ -11,15 +11,9 @@ export const TopBorderWrapper = styled.div`
         width: 110%;
         height: 100%;
     }
-`;
 
-export const LeftBorderWrapper = styled.div`
-    height: 100dvh;
-    width: 7%;
-    flex-shrink: 0;
-
-    svg {
-        height: 100%;
+    @media (max-width: 1400px) {
+        height: 10%;
     }
 `;
 
@@ -32,14 +26,34 @@ export const BottomBorderWrapper = styled.div`
         width: 100%;
         height: 100%;
     }
+
+    @media (max-width: 1400px) {
+        height: 10%;
+    }
+`;
+
+export const LeftBorderWrapper = styled.div`
+    width: 7%;
+    flex-shrink: 0;
+
+    svg {
+        height: 100%;
+    }
+
+    @media (max-width: 1400px) {
+        width: 5%;
+    }
 `;
 
 export const RightBorderWrapper = styled.div`
-    height: 100dvh;
     flex-shrink: 0;
     width: 7%;
 
     svg {
         height: 100%;
+    }
+
+    @media (max-width: 1400px) {
+        width: 5%;
     }
 `;
