@@ -52,29 +52,9 @@ export const OutlineButton = styled.button`
     letter-spacing: -0.71px;
 `;
 
-export const LogoWrapper = styled.div<{ $color: string }>`
+export const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 150px;
-    height: 150px;
-
-    border-radius: 100%;
-
-    background-color: ${({ $color }) => $color};
-
-    position: absolute;
-    top: 34px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    svg {
-        width: 80px;
-        height: 80px;
-
-        path {
-            fill: #171717;
-        }
-    }
+    gap: 14px;
 `;

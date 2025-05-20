@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div<{ $bgImage: string }>`
     width: 100%;
+    height: 680px;
     flex-grow: 1;
 
     border-radius: 20px;
@@ -14,7 +15,11 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
     background-repeat: no-repeat;
 
     padding: 80px;
+    padding-bottom: 160px;
     position: relative;
+
+    display: flex;
+    align-items: flex-end;
 `;
 
 export const TextWrapper = styled.div`
@@ -36,7 +41,7 @@ export const Eyebrow = styled.div`
 export const Title = styled.div`
     color: #fff;
     font-family: var(--font-druk), sans-serif;
-    font-size: 57.567px;
+    font-size: 58px;
     font-style: normal;
     font-weight: 500;
     line-height: 101%;

@@ -61,12 +61,6 @@ export const StepInside = styled.div`
     border: 1px solid #2b2b2b;
 `;
 
-export const LogoWrapper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-`;
-
 export const Logo = styled.img`
     width: 100%;
     height: 100%;
@@ -148,4 +142,31 @@ export const Emojis = styled.div`
     font-size: 20px;
     font-style: normal;
     font-weight: 800;
+`;
+
+export const LogoWrapper = styled.div<{ $color: string }>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 100%;
+
+    background-color: ${({ $color }) => $color};
+
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    svg {
+        width: 80px;
+        height: 80px;
+
+        path {
+            fill: #171717;
+        }
+    }
 `;

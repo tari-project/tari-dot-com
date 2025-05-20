@@ -1,20 +1,20 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled(motion.div)`
     position: relative;
-    width: 362px;
+    width: 368px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ $backgroundColor?: string }>`
     position: relative;
     z-index: 1;
     cursor: pointer;
     width: 100%;
     height: 60px;
-    padding: 20px 18px 20px 30px;
+    padding: 20px 20px 20px 30px;
 
     display: flex;
     justify-content: space-between;
@@ -25,9 +25,16 @@ export const Button = styled.button`
 
     border-radius: 70px;
     overflow: hidden;
+    width: 100%;
 
     background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
+
+    ${({ $backgroundColor }) =>
+        $backgroundColor &&
+        css`
+            background: ${$backgroundColor};
+        `}
 
     &:hover {
         text-decoration: none;
@@ -37,7 +44,7 @@ export const Button = styled.button`
     }
 `;
 
-export const Text = styled(motion.div)`
+export const Text = styled(motion.div)<{ $textColor?: string }>`
     color: #fff;
     font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
@@ -47,6 +54,12 @@ export const Text = styled(motion.div)`
     letter-spacing: -0.75px;
     white-space: nowrap;
 
+    ${({ $textColor }) =>
+        $textColor &&
+        css`
+            color: ${$textColor};
+        `}
+
     position: relative;
     z-index: 1;
 
@@ -55,14 +68,25 @@ export const Text = styled(motion.div)`
     }
 `;
 
-export const Icons = styled.div`
+export const Icons = styled.div<{ $showIconBackground?: boolean }>`
     display: flex;
     align-items: center;
     gap: 6px;
 
-    position: relative;
+    position: absolute;
+    right: 6px;
+    top: 5px;
     z-index: 1;
     flex-shrink: 0;
+
+    border-radius: 50px;
+    padding: 6px 7px;
+
+    ${({ $showIconBackground }) =>
+        $showIconBackground &&
+        css`
+            background: rgba(0, 0, 0, 0.2);
+        `}
 `;
 
 export const HoverGradient = styled(motion.div)`

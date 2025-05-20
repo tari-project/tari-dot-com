@@ -14,13 +14,13 @@ import {
     FieldInput,
     Emojis,
     FieldBox,
+    LogoWrapper,
 } from './styles';
 
 import stop1Image from './images/step1.png';
 import stop2Image from './images/step2.png';
 import stop3Image from './images/step3.png';
 import { Exchange } from '@/app/(exchange)/exchange/[name]/page';
-import { LogoWrapper } from '../HeroSection/HeroHeader/styles';
 import CheckMarkIcon from './icons/CheckMarkIcon';
 
 export default function StepsSection({ exchange }: { exchange: Exchange }) {
