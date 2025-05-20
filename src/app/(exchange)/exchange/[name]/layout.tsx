@@ -1,5 +1,6 @@
 import LayoutExchange from '@/ui-shared/layouts/Layout/LayoutExchange';
-import { Viewport } from 'next';
+import { Viewport, Metadata } from 'next';
+import { exchangeData } from './page';
 
 export const viewport: Viewport = {
     themeColor: 'black',
@@ -10,9 +11,15 @@ export const viewport: Viewport = {
     maximumScale: 1,
 };
 
-export const generateMetadata = async () => {
-    const metadata = {
-        title: 'Tari x [ExchangeHere]',
+type Props = {
+    params: { name: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { name } = params;
+    const exchange = exchangeData[name as keyof typeof exchangeData];
+    return {
+        title: `Tari x ${exchange ? exchange.name : name}`,
         openGraph: {
             images: [
                 {
@@ -24,9 +31,7 @@ export const generateMetadata = async () => {
             ],
         },
     };
-
-    return metadata;
-};
+}
 
 export default function ExchangeLayout({ children }: { children: React.ReactNode }) {
     return <LayoutExchange>{children}</LayoutExchange>;

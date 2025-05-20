@@ -15,7 +15,7 @@ export type Exchange = {
     logoSquare: React.ReactNode;
 };
 
-const exchangeData: Record<string, Exchange> = {
+export const exchangeData: Record<string, Exchange> = {
     TariBank: {
         name: 'TariBank',
         color: '#FFDC00',
