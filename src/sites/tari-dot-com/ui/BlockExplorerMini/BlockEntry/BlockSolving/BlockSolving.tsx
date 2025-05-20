@@ -35,7 +35,9 @@ export default function BlockSolving({ id, minersSolved, timeAgo, reward, isSolv
                             </VideoWrapper>
                             <ContentWrapper $isSolved={isSolved}>
                                 <Title>
-                                    <strong>#{formatBlockNumber(id)}</strong> block is being solved
+                                    <strong>#{formatBlockNumber(id)}</strong> block
+                                    <br />
+                                    is being solved
                                 </Title>
                                 <BottomWrapper>
                                     {reward && (

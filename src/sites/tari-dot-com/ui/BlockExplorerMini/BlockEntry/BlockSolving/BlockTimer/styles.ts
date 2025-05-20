@@ -11,7 +11,7 @@ export const Wrapper = styled(motion.div)`
     border-radius: 100px;
     background: #fff;
 
-    padding: 0px 7px 2px 7px;
+    padding: 0px 7px;
     height: 20px;
 
     color: #030303;
