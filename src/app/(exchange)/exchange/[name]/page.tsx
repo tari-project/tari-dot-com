@@ -1,22 +1,14 @@
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
-import { Exchange } from '@/sites/exchange/types/exchange';
 import TariBankLogoHeader from '../../../../sites/exchange/pages/ExchangePage/images/TariBank/logoHeader.svg';
 import TariBankLogoSquare from '../../../../sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
+import { fetchExchangeData } from '@/services/api/useExchangeData';
 
 export const runtime = 'edge';
 
-const exchangeData: Record<string, Exchange> = {
-    TariBank: {
-        name: 'TariBank',
-        color: '#FFDC00',
-        logoHeader: TariBankLogoHeader.src,
-        logoSquare: TariBankLogoSquare.src,
-    },
-};
 
 export const generateMetadata = async ({ params }: { params: Promise<{ name: string }> }) => {
     const { name } = await params;
-    const exchange = exchangeData[name] || { name };
+    const exchange = await fetchExchangeData(name)
 
     return {
         title: `Tari x ${exchange.name}`,
@@ -38,6 +30,6 @@ export const generateMetadata = async ({ params }: { params: Promise<{ name: str
 
 export default async function Page({ params }: { params: Promise<{ name: string }> }) {
     const { name } = await params;
-    const exchange = exchangeData[name as keyof typeof exchangeData];
+    const exchange = await fetchExchangeData(name)
     return <ExchangePage exchange={exchange} />;
 }
