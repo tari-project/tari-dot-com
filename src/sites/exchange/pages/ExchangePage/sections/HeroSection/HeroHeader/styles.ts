@@ -4,13 +4,17 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 54px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     color: #fff;
+
+    @media (max-width: 980px) {
+        flex-direction: column;
+        gap: 20px;
+    }
 `;
 
 export const LeftSide = styled.div`
@@ -18,19 +22,15 @@ export const LeftSide = styled.div`
     align-items: center;
     gap: 10px;
 
-    position: absolute;
-    left: 0;
-    top: 0;
+    @media (max-width: 980px) {
+        display: none;
+    }
 `;
 
 export const RightSide = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
-
-    position: absolute;
-    right: 0;
-    top: 0;
 `;
 
 export const OutlineButton = styled.button`
@@ -58,6 +58,23 @@ export const LogoWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 14px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 1430px) {
+        left: 154px;
+        transform: translateY(-50%);
+    }
+
+    @media (max-width: 980px) {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+    }
 `;
 
 export const LogoImage = styled.img`

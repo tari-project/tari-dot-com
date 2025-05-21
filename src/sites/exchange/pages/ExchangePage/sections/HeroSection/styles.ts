@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
     height: 100%;
 
     position: relative;
-
     margin: 0 auto;
 
     display: flex;
@@ -32,7 +31,7 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
 
     margin: 0 auto;
 
@@ -40,4 +39,9 @@ export const ContentWrapper = styled.div`
     z-index: 1;
 
     padding: 40px;
+
+    @media (max-width: 980px) {
+        padding: 20px;
+        gap: 20px;
+    }
 `;

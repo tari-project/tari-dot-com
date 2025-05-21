@@ -63,6 +63,7 @@ export const TimeLeft = styled.div`
     align-items: center;
     border-radius: 100px;
     background: #fff;
+    min-width: 160px;
 
     height: 30px;
 
@@ -72,6 +73,8 @@ export const TimeLeft = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
 `;
 
 export const Label = styled.div`
@@ -81,6 +84,7 @@ export const Label = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    white-space: nowrap;
 `;
 
 export const Image = styled.img``;

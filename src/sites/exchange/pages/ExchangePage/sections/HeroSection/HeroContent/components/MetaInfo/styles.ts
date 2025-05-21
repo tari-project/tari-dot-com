@@ -10,12 +10,20 @@ export const Wrapper = styled.div`
     padding: 20px 30px 20px 20px;
 
     border-radius: 0 20px 0 0;
+
+    @media (max-width: 1266px) {
+        width: 100%;
+        border-radius: 0;
+        align-items: center;
+        justify-content: flex-end;
+    }
 `;
 
 export const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 `;
 
 export const IconGroup = styled.div`

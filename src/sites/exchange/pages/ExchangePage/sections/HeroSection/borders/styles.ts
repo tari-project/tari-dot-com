@@ -15,6 +15,12 @@ export const TopBorderWrapper = styled.div`
     @media (max-width: 1400px) {
         height: 10%;
     }
+
+    @media (max-width: 980px) {
+        svg {
+            height: 30px;
+        }
+    }
 `;
 
 export const BottomBorderWrapper = styled.div`
@@ -30,6 +36,12 @@ export const BottomBorderWrapper = styled.div`
     @media (max-width: 1400px) {
         height: 10%;
     }
+
+    @media (max-width: 980px) {
+        svg {
+            height: 30px;
+        }
+    }
 `;
 
 export const LeftBorderWrapper = styled.div`
@@ -43,6 +55,10 @@ export const LeftBorderWrapper = styled.div`
     @media (max-width: 1400px) {
         width: 5%;
     }
+
+    @media (max-width: 980px) {
+        display: none;
+    }
 `;
 
 export const RightBorderWrapper = styled.div`
@@ -55,5 +71,9 @@ export const RightBorderWrapper = styled.div`
 
     @media (max-width: 1400px) {
         width: 5%;
+    }
+
+    @media (max-width: 980px) {
+        display: none;
     }
 `;
