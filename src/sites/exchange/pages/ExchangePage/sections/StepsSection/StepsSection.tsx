@@ -28,7 +28,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
         <Wrapper>
             <Holder>
                 <TitleWrapper>
-                    <Title $color={exchange?.color}>
+                    <Title $color={exchange?.primary_colour}>
                         GET CONNECTED IN &nbsp;<span>Three easy steps</span>
                     </Title>
                     <Text>Get connected and start earning in as little as 60 seconds.</Text>
@@ -37,16 +37,16 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
 
             <StepsWrapper>
                 <Step>
-                    <StepNumber text="Step 1" color={exchange?.color} />
+                    <StepNumber text="Step 1" color={exchange?.primary_colour} />
                     <StepInside>
                         <StepTitle>Download & Install</StepTitle>
                         <BgImage src={stop1Image.src} alt="step1" />
                     </StepInside>
                 </Step>
                 <Step>
-                    <StepNumber text="Step 2" color={exchange?.color} />
+                    <StepNumber text="Step 2" color={exchange?.primary_colour} />
                     <StepInside>
-                        <LogoImage src={exchange?.logoSquare} alt="" />
+                        <LogoImage src={exchange?.logo_img_small_url} alt="" />
 
                         <FieldWrapper>
                             <FieldBox>
@@ -64,7 +64,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                     </StepInside>
                 </Step>
                 <Step>
-                    <StepNumber text="Step 3" color={exchange?.color} />
+                    <StepNumber text="Step 3" color={exchange?.primary_colour} />
                     <StepInside>
                         <StepTitle>Mine & earn</StepTitle>
                         <BgImage src={stop3Image.src} alt="step3" />

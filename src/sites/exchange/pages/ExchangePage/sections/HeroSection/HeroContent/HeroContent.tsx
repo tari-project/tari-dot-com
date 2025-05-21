@@ -12,7 +12,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
             <TextWrapper>
                 <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
                 <Title>MINE DIRECTLY TO {exchange?.name}</Title>
-                <DownloadButton backgroundColor={exchange?.color} textColor={`#161616`} showIconBackground={true} />
+                <DownloadButton backgroundColor={exchange?.primary_colour} textColor={`#161616`} showIconBackground={true} />
             </TextWrapper>
             <BottomWrapper>
                 <MetaInfo />

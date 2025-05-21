@@ -11,16 +11,16 @@ import { Exchange } from '@/sites/exchange/types/exchange';
 export default function HeroSection({ exchange }: { exchange: Exchange }) {
     return (
         <Wrapper>
-            <HeroLeftBorder color={exchange?.color} />
+            <HeroLeftBorder color={exchange?.primary_colour} />
             <MiddleWrapper>
-                <HeroTopBorder color={exchange?.color} />
+                <HeroTopBorder color={exchange?.primary_colour} />
                 <ContentWrapper>
                     <HeroHeader exchange={exchange} />
                     <HeroContent exchange={exchange} />
                 </ContentWrapper>
-                <HeroBottomBorder color={exchange?.color} />
+                <HeroBottomBorder color={exchange?.primary_colour} />
             </MiddleWrapper>
-            <HeroRightBorder color={exchange?.color} />
+            <HeroRightBorder color={exchange?.primary_colour} />
         </Wrapper>
     );
 }
