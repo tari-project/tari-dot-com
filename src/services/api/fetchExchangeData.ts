@@ -1,4 +1,6 @@
 import { Exchange } from '@/sites/exchange/types/exchange';
+import logoHeader from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoHeader.svg';
+import logoSquare from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
 
 export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
     if (process.env.NODE_ENV === 'development') {
@@ -17,8 +19,8 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
             exchange_id: exchangeId,
             primary_colour: '#FFD700',
             secondary_colour: '#161616',
-            logo_img_url: '/mock-logo.png',
-            logo_img_small_url: '/mock-logo-small.png',
+            logo_img_url: logoHeader.src,
+            logo_img_small_url: logoSquare.src,
             hero_img_url: '/mock-hero-img.png',
             is_hidden: false,
         };

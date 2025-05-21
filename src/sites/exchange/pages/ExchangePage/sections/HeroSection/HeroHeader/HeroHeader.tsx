@@ -15,7 +15,7 @@ export default function HeroHeader({ exchange }: { exchange: Exchange }) {
             <LogoWrapper>
                 <TariLogo />
                 <CrossIcon />
-                <LogoImage src={exchange?.logoHeader} alt="" />
+                <LogoImage src={exchange?.logo_img_url} alt="" />
             </LogoWrapper>
 
             <RightSide>

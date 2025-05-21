@@ -6,18 +6,37 @@ export const Wrapper = styled.div`
     background-color: #161616;
     padding: 20px 20px 20px 40px;
     border-radius: 20px 0 0 0;
+
+    @media (max-width: 1266px) {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @media (max-width: 660px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 export const TextContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    @media (max-width: 660px) {
+        align-items: center;
+        text-align: center;
+    }
 `;
 
 export const TitleGroup = styled.div`

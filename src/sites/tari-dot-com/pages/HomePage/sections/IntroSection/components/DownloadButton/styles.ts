@@ -6,6 +6,10 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled(motion.div)`
     position: relative;
     width: 368px;
+
+    @media (max-width: 430px) {
+        width: 100%;
+    }
 `;
 
 export const Button = styled.button<{ $backgroundColor?: string }>`
@@ -38,9 +42,6 @@ export const Button = styled.button<{ $backgroundColor?: string }>`
 
     &:hover {
         text-decoration: none;
-    }
-
-    @media (max-width: 600px) {
     }
 `;
 

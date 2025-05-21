@@ -13,9 +13,10 @@ export const Wrapper = styled.div`
 
     @media (max-width: 1266px) {
         width: 100%;
-        border-radius: 0;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
+        padding-top: 0;
+        border-radius: 0 0 20px 20px;
     }
 `;
 
@@ -24,6 +25,12 @@ export const ContentWrapper = styled.div`
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+
+    @media (max-width: 660px) {
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+    }
 `;
 
 export const IconGroup = styled.div`
@@ -56,4 +63,8 @@ export const Divider = styled.div`
     width: 1px;
     height: 26px;
     background: rgba(255, 255, 255, 0.25);
+
+    @media (max-width: 660px) {
+        display: none;
+    }
 `;

@@ -3,7 +3,7 @@ import ExploreTariSection from './sections/ExploreTariSection/ExploreTariSection
 import HeroSection from './sections/HeroSection/HeroSection';
 import StepsSection from './sections/StepsSection/StepsSection';
 import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
-import { Wrapper } from './styles';
+import { FaqWrapper, Wrapper } from './styles';
 import { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function ExchangePage({ exchange }: { exchange: Exchange }) {
@@ -13,7 +13,9 @@ export default function ExchangePage({ exchange }: { exchange: Exchange }) {
             <StepsSection exchange={exchange} />
             <TrustedBySection />
             <ExploreTariSection exchange={exchange} />
-            <FAQSection />
+            <FaqWrapper>
+                <FAQSection />
+            </FaqWrapper>
         </Wrapper>
     );
 }

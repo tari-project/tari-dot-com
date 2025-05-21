@@ -11,6 +11,14 @@ export const Wrapper = styled.div`
     padding: 100px 60px 300px 60px;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 1545px) {
+        padding: 100px 40px 300px 40px;
+    }
+
+    @media (max-width: 660px) {
+        padding: 60px 10px 200px 10px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -24,6 +32,10 @@ export const Holder = styled.div`
     width: 100%;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 660px) {
+        gap: 40px;
+    }
 `;
 
 export const TitleWrapper = styled.div`
@@ -38,16 +50,8 @@ export const TitleWrapper = styled.div`
         gap: 20px;
     }
 
-    @media (max-width: 900px) {
-        gap: 15px;
-    }
-
-    @media (max-width: 700px) {
+    @media (max-width: 660px) {
         gap: 10px;
-    }
-
-    @media (max-width: 500px) {
-        gap: 5px;
     }
 `;
 
@@ -66,16 +70,8 @@ export const Title = styled.div<{ $color: string }>`
         font-size: 100px;
     }
 
-    @media (max-width: 900px) {
-        font-size: 80px;
-    }
-
     @media (max-width: 700px) {
         font-size: 60px;
-    }
-
-    @media (max-width: 500px) {
-        font-size: 40px;
     }
 
     span {
@@ -100,16 +96,8 @@ export const Text = styled.div`
         font-size: 20px;
     }
 
-    @media (max-width: 900px) {
-        font-size: 18px;
-    }
-
     @media (max-width: 700px) {
         font-size: 16px;
-    }
-
-    @media (max-width: 500px) {
-        font-size: 14px;
     }
 `;
 
@@ -142,6 +130,14 @@ export const ShadowWrapper = styled.div`
     height: 100%;
     z-index: 1;
     padding: 0 20px;
+
+    @media (max-width: 1545px) {
+        padding: 0 10px;
+    }
+
+    @media (max-width: 660px) {
+        padding: 0 2px;
+    }
 `;
 
 export const ShadowHolder = styled.div`

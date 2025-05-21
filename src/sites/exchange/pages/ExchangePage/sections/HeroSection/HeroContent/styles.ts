@@ -23,13 +23,15 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
 
     @media (max-width: 1266px) {
         align-items: center;
+        justify-content: center;
     }
 
-    @media (max-width: 980px) {
-        align-items: flex-start;
-        justify-content: center;
-
-        padding: 40px;
+    @media (max-width: 660px) {
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
     }
 `;
 
@@ -38,11 +40,15 @@ export const TextWrapper = styled.div`
     flex-direction: column;
     gap: 20px;
 
-    @media (max-width: 980px) {
+    @media (max-width: 1266px) {
         align-items: center;
         text-align: center;
-        border: 1px solid red;
-        padding: 20px;
+        margin-top: -100px;
+    }
+
+    @media (max-width: 660px) {
+        margin: 0;
+        padding: 50px 0;
     }
 `;
 
@@ -87,5 +93,11 @@ export const BottomWrapper = styled.div`
     @media (max-width: 1266px) {
         flex-direction: column-reverse;
         align-items: flex-end;
+        padding: 10px;
+    }
+
+    @media (max-width: 660px) {
+        padding: 0px;
+        position: relative;
     }
 `;

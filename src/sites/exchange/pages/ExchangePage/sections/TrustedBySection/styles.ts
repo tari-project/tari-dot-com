@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
     justify-content: center;
 
     padding: 30px 0 100px 0;
+
+    @media (max-width: 660px) {
+        padding: 30px 0 30px 0;
+    }
 `;
 
 export const TopBorder = styled.div`
@@ -39,6 +43,7 @@ export const Label = styled.div`
     line-height: normal;
     text-transform: uppercase;
     background-color: #161616;
+    white-space: nowrap;
 
     padding: 0 30px;
 
@@ -46,6 +51,11 @@ export const Label = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 660px) {
+        font-size: 16px;
+        padding: 0 10px;
+    }
 `;
 
 export const Line = styled.div`

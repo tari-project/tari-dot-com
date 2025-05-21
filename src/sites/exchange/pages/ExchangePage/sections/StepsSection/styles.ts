@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100dvh;
 
     display: flex;
     flex-direction: column;
@@ -13,6 +12,16 @@ export const Wrapper = styled.div`
     gap: 94px;
 
     padding: 200px 60px 200px 60px;
+
+    @media (max-width: 1266px) {
+        padding: 160px 40px 160px 40px;
+        gap: 60px;
+    }
+
+    @media (max-width: 660px) {
+        padding: 100px 20px 100px 20px;
+        gap: 40px;
+    }
 `;
 
 export const Holder = styled.div`
@@ -33,8 +42,12 @@ export const TitleWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0px;
+    gap: 20px;
     width: 100%;
+
+    @media (max-width: 660px) {
+        gap: 10px;
+    }
 `;
 
 export const StepsWrapper = styled.div`
@@ -43,6 +56,16 @@ export const StepsWrapper = styled.div`
     justify-content: center;
     gap: 15px;
     width: 100%;
+
+    @media (max-width: 1266px) {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    @media (max-width: 660px) {
+        flex-direction: column;
+        gap: 20px;
+    }
 `;
 
 export const Step = styled.div`
@@ -62,12 +85,6 @@ export const StepInside = styled.div`
     border: 1px solid #2b2b2b;
 `;
 
-export const Logo = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`;
-
 export const StepTitle = styled.div`
     color: #fff;
     font-family: var(--font-druk), sans-serif;
@@ -78,22 +95,14 @@ export const StepTitle = styled.div`
     letter-spacing: 0.35px;
     text-transform: uppercase;
 
-    max-width: 250px;
+    max-width: 60%;
 
     position: absolute;
     bottom: 10%;
     left: 10%;
 
-    @media (max-width: 1400px) {
-        font-size: 30px;
-    }
-
-    @media (max-width: 1000px) {
-        font-size: 25px;
-    }
-
-    @media (max-width: 666px) {
-        font-size: 20px;
+    @media (max-width: 1545px) {
+        max-width: 100%;
     }
 `;
 
@@ -113,6 +122,11 @@ export const FieldWrapper = styled.div`
     top: 44%;
     left: 0;
     right: 0;
+
+    @media (max-width: 1545px) {
+        top: 40%;
+        padding: 0 20px;
+    }
 `;
 
 export const FieldBox = styled.div`
@@ -126,6 +140,10 @@ export const FieldBox = styled.div`
     backdrop-filter: blur(12px);
 
     padding: 24px 32px;
+
+    @media (max-width: 1545px) {
+        padding: 16px 24px;
+    }
 `;
 
 export const FieldTitle = styled.div`
@@ -136,6 +154,10 @@ export const FieldTitle = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.48px;
+
+    @media (max-width: 1545px) {
+        font-size: 14px;
+    }
 `;
 
 export const FieldInput = styled.div`
@@ -165,4 +187,9 @@ export const LogoImage = styled.img`
     top: 48px;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (max-width: 1545px) {
+        width: 100px;
+        height: 100px;
+    }
 `;
