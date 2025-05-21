@@ -1,14 +1,11 @@
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
-import TariBankLogoHeader from '../../../../sites/exchange/pages/ExchangePage/images/TariBank/logoHeader.svg';
-import TariBankLogoSquare from '../../../../sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
-import { fetchExchangeData } from '@/services/api/useExchangeData';
+import { fetchExchangeData } from '@/services/api/fetchExchangeData';
 
 export const runtime = 'edge';
 
-
 export const generateMetadata = async ({ params }: { params: Promise<{ name: string }> }) => {
     const { name } = await params;
-    const exchange = await fetchExchangeData(name)
+    const exchange = await fetchExchangeData(name);
 
     return {
         title: `Tari x ${exchange.name}`,
@@ -30,6 +27,6 @@ export const generateMetadata = async ({ params }: { params: Promise<{ name: str
 
 export default async function Page({ params }: { params: Promise<{ name: string }> }) {
     const { name } = await params;
-    const exchange = await fetchExchangeData(name)
+    const exchange = await fetchExchangeData(name);
     return <ExchangePage exchange={exchange} />;
 }

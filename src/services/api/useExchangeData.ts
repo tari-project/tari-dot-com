@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 
 export const EXCHANGE_LIST_QUERY_KEY = ['exchange-list'];
 
-
 export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
     const response = await fetch(`https://rwa.y.at/miner/exchanges/${exchangeId}`);
 
@@ -31,5 +30,3 @@ export function useExchangeData(props?: Props) {
         enabled: Boolean(name && !disabled),
     });
 }
-
-

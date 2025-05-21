@@ -18,7 +18,7 @@ export default function ExploreTariSection({ exchange }: { exchange: Exchange })
         <Wrapper>
             <Holder>
                 <TitleWrapper>
-                    <Title $color={exchange?.color}>
+                    <Title $color={exchange?.primary_colour}>
                         EXPLORE &nbsp;<span>TARI UNIVERSE</span>
                     </Title>
                     <Text>
@@ -47,7 +47,7 @@ export default function ExploreTariSection({ exchange }: { exchange: Exchange })
                         <ShadowBox />
                     </ShadowHolder>
                 </ShadowWrapper>
-                <DiagonalYellowBox $color={exchange?.color} />
+                <DiagonalYellowBox $color={exchange?.primary_colour} />
             </BackgroundWrapper>
         </Wrapper>
     );
