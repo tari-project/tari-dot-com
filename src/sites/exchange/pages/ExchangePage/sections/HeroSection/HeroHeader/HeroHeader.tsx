@@ -1,15 +1,16 @@
 import React from 'react';
-import { LeftSide, LogoImage, LogoWrapper, OutlineButton, RightSide, Wrapper } from './styles';
+import { LeftSide, LogoImage, LogoWrapper, RightSide, Wrapper } from './styles';
 import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 import TariLogo from './logos/TariLogo';
 import CrossIcon from './logos/CrossIcon';
 import { Exchange } from '@/sites/exchange/types/exchange';
+import WhatIsTariButton from './WhatIsTariButton';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     return (
         <Wrapper>
             <LeftSide>
-                <OutlineButton>What is Tari?</OutlineButton>
+                <WhatIsTariButton />
             </LeftSide>
 
             <LogoWrapper>

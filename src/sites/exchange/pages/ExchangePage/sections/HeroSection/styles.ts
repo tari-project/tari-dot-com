@@ -4,27 +4,28 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100%;
 
     position: relative;
     margin: 0 auto;
 
     display: flex;
+    align-items: stretch;
 `;
 
 export const MiddleWrapper = styled.div`
     width: 100%;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
+    flex: 1;
+    align-self: stretch;
 `;
 
 export const ContentWrapper = styled.div`
     width: 100%;
-    height: 100%;
+
     max-width: 1553px;
     flex-grow: 1;
     display: flex;

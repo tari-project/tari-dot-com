@@ -51,6 +51,17 @@ export const OutlineButton = styled.button`
     font-weight: 700;
     line-height: 94.2%;
     letter-spacing: -0.71px;
+
+    span {
+        display: block;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+        span {
+            transform: scale(1.1);
+        }
+    }
 `;
 
 export const LogoWrapper = styled.div`

@@ -1,3 +1,4 @@
+import React, { forwardRef } from 'react';
 import { VideoPlayer } from '@/sites/tari-dot-com/pages/HomePage/sections/VideoSection/styles';
 import {
     Holder,
@@ -13,9 +14,9 @@ import {
 } from './styles';
 import { Exchange } from '@/sites/exchange/types/exchange';
 
-export default function ExploreTariSection({ exchange }: { exchange: Exchange }) {
+const ExploreTariSection = forwardRef<HTMLDivElement, { exchange: Exchange }>(({ exchange }, ref) => {
     return (
-        <Wrapper>
+        <Wrapper ref={ref} id="explore-tari-section">
             <Holder>
                 <TitleWrapper>
                     <Title $color={exchange?.primary_colour}>
@@ -51,4 +52,8 @@ export default function ExploreTariSection({ exchange }: { exchange: Exchange })
             </BackgroundWrapper>
         </Wrapper>
     );
-}
+});
+
+ExploreTariSection.displayName = 'ExploreTariSection';
+
+export default ExploreTariSection;

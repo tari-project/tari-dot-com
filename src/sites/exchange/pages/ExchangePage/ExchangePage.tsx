@@ -1,3 +1,4 @@
+import React from 'react';
 import FAQSection from '@/sites/tari-dot-com/pages/HomePage/sections/FAQSection/FAQSection';
 import ExploreTariSection from './sections/ExploreTariSection/ExploreTariSection';
 import HeroSection from './sections/HeroSection/HeroSection';
