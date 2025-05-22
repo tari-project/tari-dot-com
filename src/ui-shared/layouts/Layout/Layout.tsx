@@ -36,6 +36,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         data-search-mode-enabled="true"
                         strategy="afterInteractive"
                     />
+                    <Script
+                        src="https://www.googletagmanager.com/gtag/js?id=G-MG7C9LNNYV"
+                        strategy="afterInteractive"
+                    />
+                    <Script id="gtag-init" strategy="afterInteractive">
+                        {`
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-MG7C9LNNYV');
+                        `}
+                    </Script>
                 </body>
             </html>
         </Providers>
