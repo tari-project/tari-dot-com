@@ -143,7 +143,7 @@ export const TimeAgo = styled.span`
 export const BottomWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 `;
 
 export const RewardPillBlack = styled.div<{ $isSolved?: boolean }>`
@@ -153,5 +153,10 @@ export const RewardPillBlack = styled.div<{ $isSolved?: boolean }>`
     font-family: var(--font-poppins), sans-serif;
     font-size: 11px;
     font-weight: 700;
-    padding: 2px 7px;
+    padding: 1px 7px 0 7px;
+    white-space: nowrap;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

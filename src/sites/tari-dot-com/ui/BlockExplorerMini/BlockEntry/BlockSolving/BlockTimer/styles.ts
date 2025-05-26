@@ -24,6 +24,8 @@ export const Wrapper = styled(motion.div)`
     width: fit-content;
     min-width: 46px;
 
+    font-variant-numeric: tabular-nums;
+
     span {
         transform: translateY(0.5px);
     }

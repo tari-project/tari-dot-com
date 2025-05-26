@@ -53,7 +53,7 @@ export default function BlockExplorerMini() {
                 setTimeout(() => {
                     setStickyEntry((prev) => (prev ? { ...prev, isSolved: false } : null));
                     setScrollList(updateScrollList());
-                }, 3000);
+                }, 4000);
             }
         }
 
