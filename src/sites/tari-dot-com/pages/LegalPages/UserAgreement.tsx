@@ -9,11 +9,11 @@ export default function UserAgreement() {
         <Wrapper>
             <Holder>
                 <h1>Tari User Agreement</h1>
-                <h2>Last updated: 6 May 2025</h2>
+                <h2>Last updated: 27 May 2025</h2>
 
                 <blockquote>
                     <p>
-                        This is an agreement between Tari Labs, LLC ( "Tari Labs", "we", "us", or "our") and you
+                        This is an agreement between Tari Labs, LLC ("Tari Labs", "we", "us", or "our") and you
                         (together with Tari Labs, the "Parties" and each a "Party"). By using any Tari Labs service,
                         whether through Tari Labs, any associated website, API, or desktop or mobile application, you
                         agree that you have read, understood, and accept all of the terms and conditions contained
@@ -23,7 +23,7 @@ export default function UserAgreement() {
 
                     <p>
                         <strong>
-                            The Tari Labs service does not include the Tari Network, which is an open source,
+                            The Tari Labs service does not include the Tari Network, which is an open-source,
                             decentralized layer 1 blockchain protocol. The Tari Network is not controlled by Tari Labs.
                             Tari Labs does not control what third parties may build on the Tari Network, the activity of
                             such parties, any user transacting on the Tari Network, or any data stored on the Tari
@@ -130,7 +130,7 @@ export default function UserAgreement() {
                     </p>
 
                     <p>
-                        <strong>Tari Network</strong> means the open source, decentralized blockchain network currently
+                        <strong>Tari Network</strong> means the open-source, decentralized blockchain network currently
                         known as Tari.
                     </p>
 
@@ -140,9 +140,17 @@ export default function UserAgreement() {
                     </p>
 
                     <p>
-                        <strong>Tari Universe</strong> means the open source desktop application which enables users to
-                        mine XTM, manage a non-custodial wallet, and interact with applications built on or integrated
-                        with the Tari Network. It is offered for personal, non-commercial use.
+                        <strong>Tari Universe</strong> means the open-source desktop application (located at{' '}
+                        <a href="https://github.com/tari-project/universe" target="_blank">
+                            https://github.com/tari-project/universe
+                        </a>
+                        ) which enables users to mine XTM, manage a non-custodial wallet, and interact with applications
+                        built on or integrated with the Tari Network. It is offered for personal, non-commercial use
+                        subject to a license agreement located at{' '}
+                        <a href="https://github.com/tari-project/universe/blob/main/LICENSE.md" target="_blank">
+                            https://github.com/tari-project/universe/blob/main/LICENSE.md
+                        </a>
+                        .
                     </p>
 
                     <p>
