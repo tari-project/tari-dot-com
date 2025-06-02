@@ -2,18 +2,9 @@
 import { Exchange } from '@/sites/exchange/types/exchange';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
+import { fetchExchangeData } from './fetchExchangeData';
 
 export const EXCHANGE_LIST_QUERY_KEY = ['exchange-list'];
-
-export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
-    const response = await fetch(`https://rwa.y.at/miner/exchanges/${exchangeId}`);
-
-    if (!response.ok) {
-        throw new Error('Failed to fetch miner stats');
-    }
-
-    return response.json();
-}
 
 type Props = {
     disabled?: boolean;
