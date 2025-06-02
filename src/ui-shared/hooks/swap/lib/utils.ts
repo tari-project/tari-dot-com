@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { WalletClient, formatUnits as viemFormatUnits } from 'viem';
 import { BrowserProvider, Signer as EthersSigner } from 'ethers';
 import { ChainId, CurrencyAmount, Token, NativeCurrency } from '@uniswap/sdk-core';

@@ -115,7 +115,7 @@ export const useSwapData = () => {
         uiTokenDefinition: toUiTokenDefinition,
         chainId: currentChainId,
         accountAddress: connectedAccount.address,
-        fallbackDefinition: currentChainId ? XTM_SDK_TOKEN[currentChainId] : undefined,
+        fallbackDefinition: currentChainId ? XTM_SDK_TOKEN[currentChainId as ChainId] : undefined,
     });
 
     const handleRefetchBalances = useCallback(async () => {
@@ -155,11 +155,11 @@ export const useSwapData = () => {
         'balance' | 'usdValue' | 'rawBalance' | 'pricePerTokenUSD'
     >[] => {
         const chainId = currentChainId;
-        const xtmDef = XTM_SDK_TOKEN[chainId];
+        const xtmDef = XTM_SDK_TOKEN[chainId as ChainId];
         const tokens: Omit<SelectableTokenInfo, 'balance' | 'usdValue' | 'rawBalance' | 'pricePerTokenUSD'>[] = [];
 
         Object.keys(ENABLED_TOKEN_ADDRESSES).forEach((tokenId) => {
-            const token = TOKEN_DEFINITIONS[tokenId as EnabledTokensEnum]?.[chainId];
+            const token = TOKEN_DEFINITIONS[tokenId as keyof typeof TOKEN_DEFINITIONS]?.[chainId as ChainId];
             if (token) {
                 tokens.push({
                     label: token.name || 'Token',
@@ -403,7 +403,7 @@ export const useSwapData = () => {
                         } else setExecutionPriceDisplay(null);
                     } else setExecutionPriceDisplay(null);
 
-                    if (details.inputToken?.name === XTM_SDK_TOKEN[currentChainId].name) {
+                    if (details.inputToken?.name === XTM_SDK_TOKEN[currentChainId as ChainId]?.name) {
                         if (lastUpdatedField === 'ethTokenField') {
                             setWxtmAmount(formatAmountSmartly(details.inputAmount));
                         } else {
@@ -422,7 +422,7 @@ export const useSwapData = () => {
                     clearCalculatedDetails();
                 }
                 setIsCalculatingQuote(false);
-            } catch (e: any) {
+            } catch {
                 clearCalculatedDetails();
                 setIsCalculatingQuote(false);
             }
