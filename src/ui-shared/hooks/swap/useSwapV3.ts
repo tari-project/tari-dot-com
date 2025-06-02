@@ -279,12 +279,12 @@ export const useUniswapV3Interactions = () => {
                     // Multi-hop swap
                     const pathBytes = encodeV3Path(
                         tradeDetails.path
-                            .map((leg) => leg.tokenIn.wrapped.address as `0x${string}`)
+                            .map((leg: any) => leg.tokenIn.wrapped.address as `0x${string}`)
                             .concat(
                                 tradeDetails.path[tradeDetails.path.length - 1].tokenOut.wrapped
                                     .address as `0x${string}`
                             ),
-                        tradeDetails.path.map((leg) => leg.fee as FeeAmount)
+                        tradeDetails.path.map((leg: any) => leg.fee as FeeAmount)
                     );
                     const params = {
                         path: pathBytes,
@@ -357,9 +357,9 @@ export const useUniswapV3Interactions = () => {
         }
 
         const nftPositionManagerAddr = currentChainId
-            ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[currentChainId]
+            ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[currentChainId as keyof typeof NONFUNGIBLE_POSITION_MANAGER_ADDRESSES]
             : undefined;
-        const factoryAddr = currentChainId ? FACTORY_ADDRESSES_V3[currentChainId] : undefined;
+        const factoryAddr = currentChainId ? FACTORY_ADDRESSES_V3[currentChainId as keyof typeof FACTORY_ADDRESSES_V3] : undefined;
 
         if (!nftPositionManagerAddr || !nonfungiblePositionManagerAbi || !factoryAddr || !uniswapV3FactoryAbi) {
             setErrorHook('NFTPM or Factory address/ABI not configured for the current chain.');

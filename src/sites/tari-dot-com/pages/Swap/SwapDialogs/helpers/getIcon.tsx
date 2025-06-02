@@ -1,4 +1,4 @@
-import { TokenSymbol } from '@app/components/transactions/wallet/Swap/useSwapData';
+import { TokenSymbol } from '../../useSwapData';
 import EthereumIcon from '../icons/chains/ethereumIcon';
 import { PolygonIcon } from '../icons/chains/polygonIcon';
 import { TariIcon } from '../icons/chains/tariIcon';
