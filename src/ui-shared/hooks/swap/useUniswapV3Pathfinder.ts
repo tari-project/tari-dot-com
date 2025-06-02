@@ -34,15 +34,15 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
     const publicClient = usePublicClient({ chainId: currentChainId }) as ViemPublicClient;
 
     const v3QuoterAddress = useMemo(
-        () => (currentChainId ? QUOTER_ADDRESSES_V3[currentChainId] : undefined),
+        () => (currentChainId ? QUOTER_ADDRESSES_V3[currentChainId as keyof typeof QUOTER_ADDRESSES_V3] : undefined),
         [currentChainId]
     );
     const v3FactoryAddress = useMemo(
-        () => (currentChainId ? FACTORY_ADDRESSES_V3[currentChainId] : undefined),
+        () => (currentChainId ? FACTORY_ADDRESSES_V3[currentChainId as keyof typeof FACTORY_ADDRESSES_V3] : undefined),
         [currentChainId]
     );
-    const xtmToken = useMemo(() => (currentChainId ? XTM_SDK_TOKEN[currentChainId] : undefined), [currentChainId]);
-    const usdtToken = useMemo(() => (currentChainId ? USDT_SDK_TOKEN[currentChainId] : undefined), [currentChainId]);
+    const xtmToken = useMemo(() => (currentChainId ? XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN] : undefined), [currentChainId]);
+    const usdtToken = useMemo(() => (currentChainId ? USDT_SDK_TOKEN[currentChainId as keyof typeof USDT_SDK_TOKEN] : undefined), [currentChainId]);
 
     const wethToken = useMemo(() => {
         if (!currentChainId || !WETH9[currentChainId as keyof typeof WETH9]) return undefined;
@@ -129,7 +129,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
                             }
                         }
                     }
-                } catch (_quoteError: any) {
+                } catch {
                     if (signal?.aborted) throw new Error('Aborted');
                 }
             }
@@ -173,7 +173,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
                 // 'ethTokenField' means the amount typed is for the "FROM" UI field, which maps to actualTradeInputToken (uiToken0).
                 // 'wxtmField' means the amount typed is for the "TO" UI field, which maps to actualTradeOutputToken (uiToken1).
 
-                const toXtm = uiToken1.name === XTM_SDK_TOKEN[currentChainId].name;
+                const toXtm = uiToken1.name === XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN]?.name;
                 const calcAmountOut = toXtm ? amountType === 'wxtmField' : amountType === 'ethTokenField';
                 const isExactInputTrade =
                     (toXtm && amountType === 'ethTokenField') || (!toXtm && amountType === 'wxtmField');
