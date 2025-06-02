@@ -25,8 +25,6 @@ export const generateMetadata = async ({ params }: { params: Promise<{ name: str
     };
 };
 
-export default async function Page({ params }: { params: Promise<{ name: string }> }) {
-    const { name } = await params;
-    const exchange = await fetchExchangeData(name);
-    return <ExchangePage exchange={exchange} />;
+export default function Page() {
+    return <ExchangePage />;
 }
