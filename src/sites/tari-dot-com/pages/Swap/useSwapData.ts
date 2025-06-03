@@ -16,7 +16,7 @@ import {
     formatAmountSmartly,
     formatNativeGasFee as utilFormatNativeGasFee,
 } from '@/ui-shared/hooks/swap/lib/utils';
-import { useUniswapV3Interactions } from '@/ui-shared/hooks/swap/useSwapV3';
+import { SwapExecutionProps, useUniswapV3Interactions } from '@/ui-shared/hooks/swap/useSwapV3';
 import { V3TradeDetails, SwapField, SwapTransaction } from '@/ui-shared/hooks/swap/lib/types';
 
 export type TokenSymbol = EnabledTokensEnum;
@@ -43,13 +43,8 @@ export const useSwapData = () => {
 
     const [lastUpdatedField, setLastUpdatedField] = useState<SwapField>('ethTokenField');
 
-    const [reviewSwap, setReviewSwap] = useState(false);
     // isLoading in useSwapData will combine local loading with hook's loading
     const [isCalculatingQuote, setIsCalculatingQuote] = useState(false);
-    const [processingOpen, setProcessingOpen] = useState(false);
-    const [isProcessingPreSwap, setIsProcessingPreSwap] = useState(false); // For permit signing
-    const [isProcessingSwapTx, setIsProcessingSwapTx] = useState(false); // For actual swap tx
-    const [swapSuccess, setSwapSuccess] = useState(false);
     const [tokenSelectOpen, setTokenSelectOpen] = useState(false);
 
     const [priceImpact, setPriceImpact] = useState<string | null>(null);
@@ -79,7 +74,6 @@ export const useSwapData = () => {
         insufficientLiquidity: insufficientLiquidityFromHook,
         error: swapEngineError,
         isLoading: isSwapEngineLoading,
-        isApproving: isSwapEngineSigningPermit, // This is the isApproving from the inner hook
     } = useUniswapV3Interactions();
 
     const currentChainId = useMemo(
@@ -328,18 +322,10 @@ export const useSwapData = () => {
         setTxBlockHash(null);
         setTransactionId(null);
         setPaidTransactionFee(null);
-        setReviewSwap(false);
-        setSwapSuccess(false);
-        setIsProcessingPreSwap(false);
-        setIsProcessingSwapTx(false);
         shouldCalculate.current = true;
     }, []);
 
-    useEffect(() => {
-        if (!processingOpen) {
-            clearCalculatedDetails();
-        }
-    }, [clearCalculatedDetails, processingOpen, swapSuccess, currentChainId]);
+    // Removed processingOpen and swapSuccess effect
 
     const shouldCalculate = useRef(true);
     const calcRef = useRef<NodeJS.Timeout | null>(null);
@@ -507,9 +493,9 @@ export const useSwapData = () => {
         shouldCalculate.current = true;
     }, [direction, setSwapEngineDirection, clearCalculatedDetails]);
 
-    const handleConfirm = async () => {
+    const handleConfirm = async (params?: SwapExecutionProps) => {
+        const { onApproveRequest, onApproveSuccess } = params || {};
         setTransactionId(null);
-        setSwapSuccess(false);
         setPaidTransactionFee(null);
         setTxBlockHash(null);
         setUiError(null);
@@ -523,35 +509,21 @@ export const useSwapData = () => {
             return;
         }
 
-        setProcessingOpen(true);
-        setReviewSwap(false);
-        setIsProcessingPreSwap(true);
-
         try {
-            const swapResult = await executeSwap(tradeDetails);
-
-            setIsProcessingPreSwap(false);
+            const swapResult = await executeSwap({ tradeDetails, onApproveRequest, onApproveSuccess });
 
             if (!swapResult || !swapResult.receipt) {
                 // Check if executeSwap returned null or no receipt
-                setIsProcessingSwapTx(false);
-                setProcessingOpen(false);
                 // Error would have been set by executeSwap, or set a generic one here
                 setUiError(swapEngineError || 'Swap execution failed to return a result.');
                 return;
             }
 
-            setIsProcessingSwapTx(true); // Indicates swap tx is submitted and we are waiting for it
-
             if (swapResult.receipt.status !== 1) {
-                setIsProcessingSwapTx(false);
-                setProcessingOpen(false);
                 setUiError(`Transaction ${swapResult.response.hash} failed on-chain.`);
                 return;
             }
 
-            setIsProcessingSwapTx(false);
-            setSwapSuccess(true);
             setTransactionId(swapResult.response.hash);
             setTxBlockHash(swapResult.receipt.blockHash as `0x${string}`);
 
@@ -569,9 +541,6 @@ export const useSwapData = () => {
             }, 3000);
         } catch (e: any) {
             // This catch is for errors thrown by executeSwap itself before returning
-            setIsProcessingPreSwap(false);
-            setIsProcessingSwapTx(false);
-            setProcessingOpen(false);
             setUiError(e.message || 'An error occurred during the swap process.');
         }
     };
@@ -645,14 +614,7 @@ export const useSwapData = () => {
         notEnoughBalance,
         fromTokenDisplay,
         toTokenDisplay,
-        reviewSwap,
-        setReviewSwap,
         isLoading: combinedIsLoading,
-        processingOpen,
-        setProcessingOpen,
-        isProcessingApproval: isProcessingPreSwap || isSwapEngineSigningPermit, // Combine pre-swap and permit signing
-        isProcessingSwap: isProcessingSwapTx,
-        swapSuccess,
         ethTokenAmount,
         wxtmAmount,
         uiDirection: direction,

@@ -13,14 +13,14 @@ const metadata = {
     icons: ['https://universe.tari.com/assets/tari-logo.png'],
 };
 
-const PROJECT_ID = process.env.PUBLIC_PROJECT_ID || 'c523cd3d3e0246530115c1dc2c016852';
+const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID || 'c523cd3d3e0246530115c1dc2c016852';
 
 const networks: [AppKitNetwork, ...AppKitNetwork[]] = [mainnet, sepolia];
 
 const wagmiAdapterInstance = new WagmiAdapter({
     networks,
     projectId: PROJECT_ID,
-    ssr: false,
+    ssr: true,
     transports: {
         [mainnet.id]: http(RPC_URLS[mainnet.id]),
         [sepolia.id]: http(RPC_URLS[sepolia.id]),
@@ -31,8 +31,12 @@ createAppKit({
     adapters: [wagmiAdapterInstance],
     networks,
     projectId: PROJECT_ID,
-    debug: false,
     metadata,
+    themeMode: "light",
+    themeVariables: {
+        "--w3m-color-mix": "#cdcdcd",
+        "--w3m-color-mix-strength": 40,
+    },
 });
 
 export default function WagmiProviderWrapper({ children }: { children: React.ReactNode }) {

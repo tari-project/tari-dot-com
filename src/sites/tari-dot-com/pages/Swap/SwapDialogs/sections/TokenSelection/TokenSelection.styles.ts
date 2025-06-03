@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { m } from 'motion/react';
 
-export const ModalContent = styled(m.div)``;
+export const ModalContent = styled(m.div)`
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+`;
 
 export const TokenList = styled.div`
-    max-height: 400px; /* Or adjust */
     overflow-y: auto;
     border-radius: 8px;
     padding: 8px;

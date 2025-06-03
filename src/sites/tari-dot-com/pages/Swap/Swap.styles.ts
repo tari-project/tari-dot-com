@@ -21,7 +21,9 @@ export const SwapOption = styled.div<{ $paddingBottom?: number }>`
         `}
 `;
 
-export const SwapsContainer = styled.div``;
+export const SwapsContainer = styled.div`
+    max-width: 100%;
+`;
 
 export const SwapOptionAmount = styled.div`
     display: flex;
@@ -78,6 +80,7 @@ export const SwapAmountInput = styled.input<{
     $loading?: boolean;
     $dynamicFontSize?: number; // Prop for dynamic font size
 }>`
+    width: 100%;
     color: #212121;
     font-family: Poppins, sans-serif;
     font-weight: 500;

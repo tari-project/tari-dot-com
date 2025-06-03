@@ -30,6 +30,13 @@ import { V3TradeDetails, SwapField, SwapDirection } from './lib/types';
 import { useUniswapV3Pathfinder } from './useUniswapV3Pathfinder';
 import { sendTransactionWithWagmiSigner, TransactionState } from './lib/providers';
 
+export type SwapExecutionProps = {
+    onApproveRequest?: () => void,
+    onApproveSuccess?: () => void,
+    onFailure?: (message?: string) => void,
+    onSuccess?: (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => void,
+}
+
 export const useUniswapV3Interactions = () => {
     const [pairTokenAddress, setPairTokenAddress] = useState<`0x${string}` | null>(null);
     const [direction, setDirection] = useState<SwapDirection>('toXtm');
@@ -175,7 +182,7 @@ export const useUniswapV3Interactions = () => {
     );
 
     const approveTokenForV3Router02 = useCallback(
-        async (token: Token, amount: bigint, spender: string) => {
+        async (token: Token, amount: bigint, spender: string, onApproveRequest?: () => void, onApproveSuccess?: () => void) => {
             if (!signer || !accountAddress) throw new Error('Wallet not connected for approval');
             setIsApprovingHook(true);
             setErrorHook(null);
@@ -183,6 +190,7 @@ export const useUniswapV3Interactions = () => {
                 const tokenContract = new Contract(token.address, erc20Abi, signer);
                 const currentAllowance = await tokenContract.allowance(accountAddress, spender);
                 if (BigInt(currentAllowance.toString()) < amount) {
+                    onApproveRequest?.();
                     const approveTxPopulated = await tokenContract.approve.populateTransaction(spender, amount);
                     const approveResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
                     if (approveResult.state !== TransactionState.Sent || !approveResult.receipt) {
@@ -193,6 +201,7 @@ export const useUniswapV3Interactions = () => {
                     console.info(`Sufficient allowance for ${token.symbol} already exists for V3SwapRouter02`);
                 }
                 setIsApprovingHook(false);
+                onApproveSuccess?.();
                 return true;
             } catch (e: any) {
                 console.error(`Approval error for ${token.symbol}:`, e);
@@ -206,7 +215,9 @@ export const useUniswapV3Interactions = () => {
 
     const executeSwapWithV3Router02 = useCallback(
         async (
-            tradeDetails: V3TradeDetails
+            { tradeDetails, onApproveRequest, onApproveSuccess, onSuccess, onFailure }: {
+                tradeDetails: V3TradeDetails,
+            } & SwapExecutionProps
         ): Promise<{ response: TransactionResponse; receipt: TransactionReceipt } | null> => {
             setErrorHook(null);
             setIsLoadingHook(true);
@@ -245,7 +256,9 @@ export const useUniswapV3Interactions = () => {
                     const approvalSuccess = await approveTokenForV3Router02(
                         inputCurrency as Token,
                         amountInBigInt,
-                        v3SwapRouter02Address
+                        v3SwapRouter02Address,
+                        onApproveRequest,
+                        onApproveSuccess
                     );
                     if (!approvalSuccess) {
                         setIsLoadingHook(false);
@@ -308,6 +321,7 @@ export const useUniswapV3Interactions = () => {
                 setIsLoadingHook(false);
 
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
+                    onSuccess?.(txResult);
                     console.info('[V3SwapRouter02] Swap successful!');
                     return { response: txResult.response, receipt: txResult.receipt };
                 } else {
@@ -323,6 +337,7 @@ export const useUniswapV3Interactions = () => {
                 if (error.reason) message = `Swap failed: ${error.reason}`;
                 else if (error.data?.message) message = `Swap failed: ${error.data.message}`;
                 else if (error.message) message = `Swap failed: ${error.message}`;
+                onFailure?.(message);
                 setErrorHook(message);
                 setIsLoadingHook(false);
                 setIsApprovingHook(false);
@@ -631,7 +646,6 @@ export const useUniswapV3Interactions = () => {
         insufficientLiquidity: insufficientLiquidityHook,
         getTradeDetails,
         executeSwap: executeSwapWithV3Router02,
-        executeSwapWithV3Router02,
         isReady: !!publicClient && !!currentChainId && !!quoterAddressV3 && !!signer && !!accountAddress && isConnected,
     };
 };

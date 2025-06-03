@@ -1,7 +1,11 @@
+'use client';
 import { Swap } from "@/sites/tari-dot-com/pages/Swap/Swap";
+import WagmiProviderWrapper from "@/ui-shared/layouts/Providers/WagmiProvider";
 
 export const runtime = 'edge';
 
 export default function Page() {
-    return <Swap />
+    return <WagmiProviderWrapper>
+        <Swap />
+    </WagmiProviderWrapper>;
 }

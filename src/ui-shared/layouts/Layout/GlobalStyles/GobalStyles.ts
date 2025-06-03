@@ -16,6 +16,9 @@ const styles = css`
         overflow-x: hidden;
         overflow-y: scroll;
     }
+    wui-ux-by-reown {
+        display: none;
+    }
 `;
 
 const GlobalStyles = createGlobalStyle`

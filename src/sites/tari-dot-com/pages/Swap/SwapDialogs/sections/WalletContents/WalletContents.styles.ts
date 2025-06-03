@@ -32,10 +32,12 @@ export const ActiveDot = styled.div`
 `;
 
 export const WalletContentsContainer = styled.div`
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 5px;
+    gap: 10px;
 `;
 
 export const TokenList = styled.div`
@@ -43,7 +45,6 @@ export const TokenList = styled.div`
     padding: 8px 0;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
     background: #fff;
 `;
 
@@ -51,7 +52,7 @@ export const TokenItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
+    padding: 10px 20px;
     transition: background-color 0.15s ease-in-out;
 `;
 

@@ -11,6 +11,7 @@ export const WalletActionButton = styled.button<{
     gap: 10px;
     padding: 1px 12px;
     border-radius: 30px;
+    border: none;
     background: #ffffff40;
     cursor: pointer;
     font-weight: 600;

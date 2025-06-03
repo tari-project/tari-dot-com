@@ -1,5 +1,6 @@
 'use client';
 import { memo, useMemo, useRef, useState } from 'react';
+
 import {
     ConnectedWalletWrapper,
     CurrentStep,
@@ -23,16 +24,14 @@ import { useAdaptiveFontSize } from '@/ui-shared/hooks/useAdaptiveFontSize';
 import { getCurrencyIcon } from './helpers/getCurrencyIcon';
 import { truncateMiddle } from '../../utils/truncateMiddle';
 import { EnabledTokensEnum } from '@/ui-shared/hooks/swap/lib/constants';
-import { SwapConfirmation } from './SwapDialogs/sections/SwapConfirmation/SwapConfirmation';
-import { ProcessingTransaction } from './SwapDialogs/sections/ProcessingTransaction/ProcessingTransaction';
 import { TokenSelection } from './SwapDialogs/sections/TokenSelection/TokenSelection';
 import { WalletContents } from './SwapDialogs/sections/WalletContents/WalletContents';
-import { SignApprovalMessage } from './SwapDialogs/sections/SignMessage/SignApprovalMessage';
 import { WalletButton } from './SwapDialogs/components/WalletButton/WalletButton';
 import { ArrowIcon } from './SwapDialogs/icons/elements/ArrowIcon';
 import { ChevronSVG } from './SwapDialogs/icons/chevron';
-// Removed useTranslation import
-
+import { MessageType, postToParentIframe, useIframeMessage } from '@/ui-shared/hooks/swap/useIframeMessage';
+import { TransactionResponse, TransactionReceipt } from 'ethers';
+import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
@@ -43,12 +42,7 @@ export const Swap = memo(function Swap() {
         notEnoughBalance,
         fromTokenDisplay,
         toTokenDisplay,
-        reviewSwap,
         isLoading,
-        processingOpen,
-        isProcessingApproval,
-        isProcessingSwap,
-        swapSuccess,
         ethTokenAmount,
         wxtmAmount,
         uiDirection,
@@ -58,23 +52,63 @@ export const Swap = memo(function Swap() {
         error,
         insufficientLiquidity,
         lastUpdatedField,
-        setProcessingOpen,
         setFromAmount,
         setTargetAmount,
-        setReviewSwap,
         handleToggleUiDirection,
         handleConfirm,
         setTokenSelectOpen,
         handleSelectFromToken,
     } = useSwapData();
 
-    const handleButtonClick = () => {
+
+    const onApproveRequest = () => {
+        postToParentIframe({ type: MessageType.APPROVE_REQUEST });
+    };
+
+    const onApproveSuccess = () => {
+        postToParentIframe({ type: MessageType.APPROVE_SUCCESS });
+        postToParentIframe({ type: MessageType.PROCESSING_STATUS, payload: { status: 'processingapproval' } });
+    };
+
+    const onFailure = (message?: string) => {
+        postToParentIframe({ type: MessageType.ERROR, payload: { message: message || 'Swap execution failed.' } });
+    };
+
+    const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => {
+        postToParentIframe({
+            type: MessageType.PROCESSING_STATUS, payload: {
+                status: 'success',
+                txBlockHash: txResult.receipt?.blockHash as `0x${string}`,
+                transactionId: txResult.response?.hash,
+                fees: {
+                    approval: txResult.receipt?.gasUsed ? txResult.receipt.gasUsed.toString() : null,
+                    swap: txResult.receipt?.gasUsed ? txResult.receipt.gasUsed.toString() : null,
+                }
+            }
+        });
+    };
+
+    const handleReviewSwap = () => {
         if (connectedAccount.address) {
-            setReviewSwap(true);
+            postToParentIframe({ type: MessageType.CONFIRM_REQUEST, payload: { fromTokenDisplay, transaction, toTokenSymbol: toTokenDisplay?.symbol, } });
         } else {
             connect('walletConnect');
+            setTimeout(() => {
+                window.document.querySelector('[href="https://reown.com"]')?.remove();
+                console.log('removed reown')
+            }, 1000);
         }
     };
+
+    useIframeMessage((event) => {
+        switch (event.data.type) {
+            case 'EXECUTE_SWAP':
+                handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });
+                break;
+            default:
+                console.warn('Unknown message type:', event.type);
+        }
+    });
 
     const disabled = useMemo(() => {
         const hasAmount = Number(ethTokenAmount) > 0 || Number(wxtmAmount) > 0; // Check if either has a positive amount
@@ -167,7 +201,7 @@ export const Swap = memo(function Swap() {
             <SubmitButtonWrapper>
                 <WalletButton
                     variant="primary"
-                    onClick={handleButtonClick}
+                    onClick={handleReviewSwap}
                     size="xl"
                     disabled={disabled && !!connectedAccount.address}
                 >
@@ -180,41 +214,6 @@ export const Swap = memo(function Swap() {
             </SubmitButtonWrapper>
             {/* ////////////////////////////////// */}
             {/* Floating Elements */}
-            <SwapConfirmation
-                isOpen={Boolean(
-                    reviewSwap &&
-                    connectedAccount.address &&
-                    !notEnoughBalance &&
-                    (Number(ethTokenAmount) > 0 || Number(wxtmAmount) > 0)
-                )}
-                setIsOpen={setReviewSwap}
-                onConfirm={handleConfirm}
-                transaction={transaction}
-                fromTokenDisplay={fromTokenDisplay}
-                toTokenSymbol={toTokenDisplay?.symbol}
-            />
-            <ProcessingTransaction
-                status={
-                    isProcessingApproval
-                        ? 'processingapproval'
-                        : isProcessingSwap
-                            ? 'processingswap'
-                            : swapSuccess
-                                ? 'success'
-                                : error // If there's an error, set status to 'error'
-                                    ? 'error'
-                                    : 'processingapproval' // Default or handle appropriately
-                }
-                isOpen={processingOpen && !isProcessingApproval}
-                setIsOpen={setProcessingOpen}
-                fees={{
-                    approval: transaction?.paidTransactionFeeApproval ?? null,
-                    swap: transaction?.paidTransactionFeeSwap ?? null,
-                }}
-                txBlockHash={transaction?.txBlockHash ?? undefined}
-                transactionId={transaction?.transactionId ?? undefined}
-                errorMessage={error} // Pass the error message
-            />
             <TokenSelection
                 isOpen={tokenSelectOpen}
                 setIsOpen={setTokenSelectOpen}
@@ -222,7 +221,6 @@ export const Swap = memo(function Swap() {
                 onSelectToken={handleSelectFromToken}
             />
             <WalletContents isOpen={openWallet} setIsOpen={setOpenWallet} availableTokens={selectableFromTokens} />
-            <SignApprovalMessage isOpen={isProcessingApproval && processingOpen} setIsOpen={setProcessingOpen} />
         </SwapsContainer>
     );
 });
