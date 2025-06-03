@@ -90,6 +90,8 @@ export const Swap = memo(function Swap() {
     };
 
     const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => {
+        setFromAmount('');
+        setTargetAmount('');
         postToParentIframe({
             type: MessageType.PROCESSING_STATUS, payload: {
                 status: 'success',
