@@ -101,6 +101,8 @@ export const StepTitle = styled.div`
     bottom: 10%;
     left: 10%;
 
+    padding-right: 20px;
+
     @media (max-width: 1545px) {
         max-width: 100%;
     }
