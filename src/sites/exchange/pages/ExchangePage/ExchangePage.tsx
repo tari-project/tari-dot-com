@@ -10,9 +10,11 @@ import { useExchangeData } from '@/services/api/useExchangeData';
 
 export default function ExchangePage() {
     const { data: exchange } = useExchangeData({});
+
     if (!exchange) {
-        return null;
+        return <Wrapper />;
     }
+
     return (
         <Wrapper>
             <HeroSection exchange={exchange} />

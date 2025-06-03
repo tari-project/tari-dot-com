@@ -46,7 +46,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                 <Step>
                     <StepNumber text="Step 2" color={exchange?.primary_colour} />
                     <StepInside>
-                        <LogoImage src={exchange?.logo_img_small_url} alt="" />
+                        <LogoImage src={exchange?.logo_img_small_url} alt={exchange?.name} />
 
                         <FieldWrapper>
                             <FieldBox>

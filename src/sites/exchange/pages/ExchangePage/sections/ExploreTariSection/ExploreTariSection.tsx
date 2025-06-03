@@ -13,13 +13,16 @@ import {
     ShadowWrapper,
 } from './styles';
 import { Exchange } from '@/sites/exchange/types/exchange';
+import { getValidHexColor } from '@/sites/exchange/utils';
 
 const ExploreTariSection = forwardRef<HTMLDivElement, { exchange: Exchange }>(({ exchange }, ref) => {
+    const color = getValidHexColor(exchange?.primary_colour);
+
     return (
         <Wrapper ref={ref} id="explore-tari-section">
             <Holder>
                 <TitleWrapper>
-                    <Title $color={exchange?.primary_colour}>
+                    <Title $color={color}>
                         EXPLORE &nbsp;<span>TARI UNIVERSE</span>
                     </Title>
                     <Text>
@@ -48,7 +51,7 @@ const ExploreTariSection = forwardRef<HTMLDivElement, { exchange: Exchange }>(({
                         <ShadowBox />
                     </ShadowHolder>
                 </ShadowWrapper>
-                <DiagonalYellowBox $color={exchange?.primary_colour} />
+                <DiagonalYellowBox $color={color} />
             </BackgroundWrapper>
         </Wrapper>
     );

@@ -5,14 +5,18 @@ import DownloadButton from '@/sites/tari-dot-com/pages/HomePage/sections/IntroSe
 import MetaInfo from './components/MetaInfo/MetaInfo';
 import SeasonTimer from './components/SeasonTimer/SeasonTimer';
 import { Exchange } from '@/sites/exchange/types/exchange';
+import { getValidHexColor, getTextColorForBg } from '@/sites/exchange/utils';
 
 export default function HeroContent({ exchange }: { exchange: Exchange }) {
+    const color = getValidHexColor(exchange?.primary_colour);
+    const textColor = getTextColorForBg(color);
+
     return (
         <Wrapper $bgImage={bgImage.src}>
             <TextWrapper>
                 <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
                 <Title>MINE DIRECTLY TO {exchange?.name}</Title>
-                <DownloadButton backgroundColor={exchange?.primary_colour} textColor={`#161616`} showIconBackground={true} />
+                <DownloadButton backgroundColor={color} textColor={textColor} showIconBackground={true} />
             </TextWrapper>
             <BottomWrapper>
                 <MetaInfo />

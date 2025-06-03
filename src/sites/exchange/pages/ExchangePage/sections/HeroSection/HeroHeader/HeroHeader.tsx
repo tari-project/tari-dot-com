@@ -5,6 +5,7 @@ import TariLogo from './logos/TariLogo';
 import CrossIcon from './logos/CrossIcon';
 import { Exchange } from '@/sites/exchange/types/exchange';
 import WhatIsTariButton from './WhatIsTariButton';
+import { isValidImage } from '@/sites/exchange/utils';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     return (
@@ -16,7 +17,11 @@ export default function HeroHeader({ exchange }: { exchange: Exchange }) {
             <LogoWrapper>
                 <TariLogo />
                 <CrossIcon />
-                <LogoImage src={exchange?.logo_img_url} alt="" />
+                {isValidImage(exchange?.logo_img_url) ? (
+                    <LogoImage src={exchange.logo_img_url} alt={exchange?.name} />
+                ) : (
+                    <div style={{ width: 121, height: 38, background: '#444', borderRadius: 8 }} />
+                )}
             </LogoWrapper>
 
             <RightSide>

@@ -7,20 +7,23 @@ import HeroBottomBorder from './borders/HeroBottomBorder';
 import HeroLeftBorder from './borders/HeroLeftBorder';
 import HeroRightBorder from './borders/HeroRightBorder';
 import { Exchange } from '@/sites/exchange/types/exchange';
+import { getValidHexColor } from '@/sites/exchange/utils';
 
 export default function HeroSection({ exchange }: { exchange: Exchange }) {
+    const color = getValidHexColor(exchange?.primary_colour);
+
     return (
         <Wrapper>
-            <HeroLeftBorder color={exchange?.primary_colour} />
+            <HeroLeftBorder color={color} />
             <MiddleWrapper>
-                <HeroTopBorder color={exchange?.primary_colour} />
+                <HeroTopBorder color={color} />
                 <ContentWrapper>
                     <HeroHeader exchange={exchange} />
                     <HeroContent exchange={exchange} />
                 </ContentWrapper>
-                <HeroBottomBorder color={exchange?.primary_colour} />
+                <HeroBottomBorder color={color} />
             </MiddleWrapper>
-            <HeroRightBorder color={exchange?.primary_colour} />
+            <HeroRightBorder color={color} />
         </Wrapper>
     );
 }
