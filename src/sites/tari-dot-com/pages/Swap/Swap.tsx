@@ -36,7 +36,22 @@ import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
     const connectedAccount = useAccount();
-    const { connect } = useAppKitWallet();
+
+    const onOpenWalletConnect = () => {
+        postToParentIframe({ type: MessageType.WALLET_CONNECT, payload: { open: true } });
+    };
+
+    const onCloseWalletConnect = () => {
+        postToParentIframe({ type: MessageType.WALLET_CONNECT, payload: { open: false } });
+    };
+
+
+    const { connect } = useAppKitWallet(
+        {
+            onSuccess: onCloseWalletConnect,
+            onError: onCloseWalletConnect,
+        }
+    );
 
     const {
         notEnoughBalance,
@@ -93,14 +108,13 @@ export const Swap = memo(function Swap() {
             postToParentIframe({ type: MessageType.CONFIRM_REQUEST, payload: { fromTokenDisplay, transaction, toTokenSymbol: toTokenDisplay?.symbol, } });
         } else {
             connect('walletConnect');
-            setTimeout(() => {
-                window.document.querySelector('[href="https://reown.com"]')?.remove();
-                console.log('removed reown')
-            }, 1000);
+            onOpenWalletConnect()
         }
     };
 
     useIframeMessage((event) => {
+
+        console.log(event.data.type)
         switch (event.data.type) {
             case 'EXECUTE_SWAP':
                 handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });

@@ -9,8 +9,8 @@ import { RPC_URLS } from '@/ui-shared/hooks/swap/lib/constants';
 const metadata = {
     name: 'Tari Universe',
     description: 'Tari Universe Wallet',
-    url: 'https://tari.com',
-    icons: ['https://universe.tari.com/assets/tari-logo.png'],
+    url: 'https://www.tari.com',
+    icons: ['https://tari.com/assets/img/node-icon-alt.svg'],
 };
 
 const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID || 'c523cd3d3e0246530115c1dc2c016852';
@@ -31,10 +31,11 @@ createAppKit({
     adapters: [wagmiAdapterInstance],
     networks,
     projectId: PROJECT_ID,
-    metadata,
+    metadata: metadata,
     themeMode: "light",
     themeVariables: {
         "--w3m-color-mix": "#cdcdcd",
+        "--w3m-qr-color": "black",
         "--w3m-color-mix-strength": 40,
     },
 });

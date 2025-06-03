@@ -1,10 +1,7 @@
-import MMFox from '../../icons/mm-fox';
 import { useAccount, useDisconnect } from 'wagmi';
 import { WalletButton } from '../../components/WalletButton/WalletButton';
 import {
-    ActiveDot,
     ConnectedWalletWrapper,
-    StatusWrapper,
     WalletContentsContainer,
     TokenList,
     TokenItem,
@@ -51,11 +48,7 @@ export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) =>
                     <WalletButton variant="error" onClick={handleDisconnect}>
                         Disconnect
                     </WalletButton>
-                    <StatusWrapper>
-                        <ActiveDot />
-                        <MMFox width="25" />
-                        <WalletAddress>{truncateMiddle(accountAddress || '', 5)}</WalletAddress>
-                    </StatusWrapper>
+                    <WalletAddress>{truncateMiddle(accountAddress || '', 5)}</WalletAddress>
                 </ConnectedWalletWrapper>
 
                 <TokenList>

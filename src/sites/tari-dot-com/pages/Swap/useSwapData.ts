@@ -494,7 +494,6 @@ export const useSwapData = () => {
     }, [direction, setSwapEngineDirection, clearCalculatedDetails]);
 
     const handleConfirm = async (params?: SwapExecutionProps) => {
-        const { onApproveRequest, onApproveSuccess } = params || {};
         setTransactionId(null);
         setPaidTransactionFee(null);
         setTxBlockHash(null);
@@ -510,7 +509,7 @@ export const useSwapData = () => {
         }
 
         try {
-            const swapResult = await executeSwap({ tradeDetails, onApproveRequest, onApproveSuccess });
+            const swapResult = await executeSwap({ tradeDetails, ...params });
 
             if (!swapResult || !swapResult.receipt) {
                 // Check if executeSwap returned null or no receipt

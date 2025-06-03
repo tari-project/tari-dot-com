@@ -4,16 +4,20 @@ export const ConnectedWalletWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     gap: 10px;
     padding: 10px 15px 10px 12px;
     border-radius: 60px;
     background: #fff;
+    button {
+        width: 50%;
+    }
 `;
 
 export const StatusWrapper = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 8px;
 `;
 
@@ -100,6 +104,7 @@ export const TokenItemRight = styled.div`
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
+    font-size: 14px;
 `;
 
 export const TokenSeparator = styled.hr`
@@ -113,6 +118,9 @@ export const WalletAddress = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 80%;
-    color: #212121;
+    width: 50%;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 26px;
 `;

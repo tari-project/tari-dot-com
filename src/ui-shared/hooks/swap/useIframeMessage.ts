@@ -10,8 +10,17 @@ export enum MessageType {
     APPROVE_REQUEST = 'APPROVE_REQUEST',
     APPROVE_SUCCESS = 'APPROVE_SUCCESS',
     CONFIRM_REQUEST = 'CONFIRM_REQUEST',
+    WALLET_CONNECT = 'WALLET_CONNECT',
     PROCESSING_STATUS = 'PROCESSING_STATUS',
 }
+
+interface WalletConnectMessage {
+    type: MessageType.WALLET_CONNECT;
+    payload: {
+        open: boolean;
+    };
+}
+
 
 type SwapConfirmation = {
     type: MessageType.CONFIRM_REQUEST;
@@ -69,6 +78,7 @@ type ProcessingMessage = {
 
 export type IframeMessage =
     | ApproveMessage
+    | WalletConnectMessage
     | ApproveSuccessMessage
     | SwapConfirmation
     | ErrorMessage
