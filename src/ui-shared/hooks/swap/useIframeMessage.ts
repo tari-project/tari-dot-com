@@ -2,7 +2,6 @@
 import { SelectableTokenInfo } from "@/sites/tari-dot-com/pages/Swap/useSwapData";
 import { useEffect } from "react";
 import { SwapDirection } from "./lib/types";
-import { SwapStatus } from "@/sites/tari-dot-com/pages/Swap/SwapDialogs/sections/ProcessingTransaction/ProcessingTransaction";
 
 export enum MessageType {
     ERROR = 'ERROR',
@@ -64,6 +63,8 @@ type SuccessMessage = {
         txId?: string;
     }
 }
+
+type SwapStatus = 'processingapproval' | 'processingswap' | 'success' | 'error';
 
 type ProcessingMessage = {
     type: MessageType.PROCESSING_STATUS;
