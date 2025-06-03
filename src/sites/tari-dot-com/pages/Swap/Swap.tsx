@@ -107,7 +107,12 @@ export const Swap = memo(function Swap() {
 
     const handleReviewSwap = () => {
         if (connectedAccount.address) {
-            postToParentIframe({ type: MessageType.CONFIRM_REQUEST, payload: { fromTokenDisplay, transaction, toTokenSymbol: toTokenDisplay?.symbol, } });
+            let { amount, targetAmount } = transaction;
+            if (transaction.direction === 'fromXtm') {
+                amount = transaction.targetAmount;
+                targetAmount = transaction.amount;
+            }
+            postToParentIframe({ type: MessageType.CONFIRM_REQUEST, payload: { fromTokenDisplay, transaction: { ...transaction, amount, targetAmount }, toTokenSymbol: toTokenDisplay?.symbol, } });
         } else {
             connect('walletConnect');
             onOpenWalletConnect()
@@ -115,8 +120,6 @@ export const Swap = memo(function Swap() {
     };
 
     useIframeMessage((event) => {
-
-        console.log(event.data.type)
         switch (event.data.type) {
             case 'EXECUTE_SWAP':
                 handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });
