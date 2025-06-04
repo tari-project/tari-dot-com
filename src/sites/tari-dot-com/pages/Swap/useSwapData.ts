@@ -325,12 +325,10 @@ export const useSwapData = () => {
         setTxBlockHash(null);
         setTransactionId(null);
         setPaidTransactionFee(null);
-        shouldCalculate.current = true;
     }, []);
 
     // Removed processingOpen and swapSuccess effect
 
-    const shouldCalculate = useRef(true);
     const calcRef = useRef<NodeJS.Timeout | null>(null);
 
 
@@ -436,21 +434,10 @@ export const useSwapData = () => {
         abortController.current = new AbortController();
         const signal = abortController.current.signal;
 
-        if (!shouldCalculate.current) return;
         calcRef.current = setTimeout(() => {
-            if (shouldCalculate.current) {
-                shouldCalculate.current = false;
-                calcAmounts(signal);
-            } else setIsCalculatingQuote(false);
+            calcAmounts(signal);
         }, 500);
     }, [calcAmounts]);
-
-    useEffect(() => {
-        if (shouldCalculate.current) debounceCalc();
-        return () => {
-            if (calcRef.current) clearTimeout(calcRef.current);
-        };
-    }, [ethTokenAmount, wxtmAmount, lastUpdatedField, direction, debounceCalc]);
 
     const handleNumberInput = (value: string, field: SwapField) => {
         clearCalculatedDetails();
@@ -467,7 +454,6 @@ export const useSwapData = () => {
                 if (ethTokenAmount !== '') setEthTokenAmount('');
             }
             setLastUpdatedField(field);
-            shouldCalculate.current = false;
             clearCalculatedDetails();
             setIsCalculatingQuote(false);
             if (calcRef.current) clearTimeout(calcRef.current);
@@ -486,7 +472,7 @@ export const useSwapData = () => {
         if (field === 'ethTokenField') setEthTokenAmount(processedValue);
         else setWxtmAmount(processedValue);
         setLastUpdatedField(field);
-        shouldCalculate.current = true;
+        debounceCalc();
         setIsCalculatingQuote(true);
     };
 
@@ -494,8 +480,8 @@ export const useSwapData = () => {
         const newUiDirection = direction === 'toXtm' ? 'fromXtm' : 'toXtm';
         setSwapEngineDirection(newUiDirection);
         clearCalculatedDetails();
-        shouldCalculate.current = true;
-    }, [direction, setSwapEngineDirection, clearCalculatedDetails]);
+        debounceCalc();
+    }, [direction, setSwapEngineDirection, clearCalculatedDetails, debounceCalc]);
 
     const handleConfirm = async (params?: SwapExecutionProps) => {
         setTransactionId(null);
@@ -575,9 +561,9 @@ export const useSwapData = () => {
             setLastUpdatedField('ethTokenField');
             setTokenSelectOpen(false);
             clearCalculatedDetails();
-            shouldCalculate.current = true;
+            debounceCalc();
         },
-        [setPairTokenAddress, clearCalculatedDetails]
+        [setPairTokenAddress, clearCalculatedDetails, debounceCalc]
     );
 
     const combinedError = uiError || swapEngineError; // Prioritize UI error, then hook error

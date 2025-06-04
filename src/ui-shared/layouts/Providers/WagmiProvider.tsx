@@ -3,8 +3,8 @@ import { createAppKit } from '@reown/appkit/react';
 import { AppKitNetwork, mainnet, sepolia } from '@reown/appkit/networks';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { WagmiProvider } from 'wagmi';
-import { http } from 'viem';
-import { RPC_URLS } from '@/ui-shared/hooks/swap/lib/constants';
+// import { http } from 'viem';
+// import { RPC_URLS } from '@/ui-shared/hooks/swap/lib/constants';
 
 const metadata = {
     name: 'Tari Universe',
@@ -21,10 +21,10 @@ const wagmiAdapterInstance = new WagmiAdapter({
     networks,
     projectId: PROJECT_ID,
     ssr: true,
-    transports: {
-        [mainnet.id]: http(RPC_URLS[mainnet.id]),
-        [sepolia.id]: http(RPC_URLS[sepolia.id]),
-    },
+    // transports: {
+    //     [mainnet.id]: http(RPC_URLS[mainnet.id]),
+    //     [sepolia.id]: http(RPC_URLS[sepolia.id]),
+    // },
 });
 
 createAppKit({

@@ -15,9 +15,7 @@ type UIStoreStore = UIStoreState & {
 export const useUIStore = create<UIStoreStore>()(() => ({
     ...initialState,
     setTheme: (theme: 'light' | 'dark') => {
-        console.log('THEME_NAME', theme);
         useUIStore.setState({ theme });
-        console.log(useUIStore.getState());
     },
 }));
 

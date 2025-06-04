@@ -125,15 +125,15 @@ export const Swap = memo(function Swap() {
     useIframeMessage((event) => {
         switch (event.data.type) {
             case 'EXECUTE_SWAP':
+                console.log('EXECUTE_SWAP', event.data);
                 handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });
                 break;
             case 'SET_THEME':
                 if (!event.data.payload.theme) return;
-                console.log('setting theme on event', event.data.payload.theme);
                 setTheme(event.data.payload.theme);
                 break;
             default:
-                console.warn('Unknown message type:', event.type);
+                console.warn('Unknown message type:', event.data);
         }
     });
 
@@ -251,8 +251,9 @@ export const Swap = memo(function Swap() {
                 </SwapOptionAmount>
                 {connectedAccount.address ? <span>{`Balance: ${toTokenDisplay?.balance}`}</span> : null}
             </SwapOption>
+
             {error && <SwapErrorMessage> {error} </SwapErrorMessage>}
-            {/* Show error only if it exists */}
+
             <SubmitButtonWrapper>
                 <WalletButton
                     variant="primary"
@@ -267,8 +268,8 @@ export const Swap = memo(function Swap() {
                         : 'Connect wallet'}
                 </WalletButton>
             </SubmitButtonWrapper>
-            {/* ////////////////////////////////// */}
-            {/* Floating Elements */}
+
+            {/* --- Floating Elements --- */}
             <TokenSelection
                 isOpen={tokenSelectOpen}
                 setIsOpen={setTokenSelectOpen}
@@ -276,6 +277,7 @@ export const Swap = memo(function Swap() {
                 onSelectToken={handleSelectFromToken}
             />
             <WalletContents isOpen={openWallet} setIsOpen={setOpenWallet} availableTokens={selectableFromTokens} />
+            {/* --- END Floating Elements --- */}
         </SwapsContainer>
     );
 });
