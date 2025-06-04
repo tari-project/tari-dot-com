@@ -44,7 +44,7 @@ export default function BlockSolved({ id, minersSolved, reward, timeAgo, blocks 
                         </BlockTitle>
                         <MinersSolved>
                             <PeopleIcon />
-                            {minersSolved} {minersSolved > 1 ? 'miners' : 'pool'} solved
+                            {minersSolved > 1 ? `${minersSolved} miners solved` : `Pool solved`}
                         </MinersSolved>
 
                         <MetaData>
