@@ -319,9 +319,8 @@ export const useUniswapV3Interactions = () => {
 
                 const txResult = await sendTransactionWithWagmiSigner(signer, populatedTx);
                 setIsLoadingHook(false);
-
+                onSuccess?.(txResult);
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
-                    onSuccess?.(txResult);
                     console.info('[V3SwapRouter02] Swap successful!');
                     return { response: txResult.response, receipt: txResult.receipt };
                 } else {
