@@ -89,7 +89,7 @@ const darkPalette: ThemePalette = {
         action: {
             background: {
                 default: alpha.lightAlpha[10],
-                accent: c.grey[850],
+                accent: c.grey?.[800],
                 contrast: '#000',
                 secondary: c.brightGreen[500],
             },
