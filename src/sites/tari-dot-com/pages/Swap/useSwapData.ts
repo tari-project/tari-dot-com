@@ -443,48 +443,9 @@ export const useSwapData = () => {
     }, [calcAmounts]);
 
     useEffect(() => {
-        let interval: NodeJS.Timeout | null = null;
-
-        const startInterval = () => {
-            if (interval) clearInterval(interval);
-            interval = setInterval(() => {
-                if (!shouldCalculate.current) {
-                    shouldCalculate.current = true;
-                    debounceCalc();
-                } else setIsCalculatingQuote(false);
-            }, 20 * 1000);
-        };
-
-        const stopInterval = () => {
-            if (interval) {
-                clearInterval(interval);
-                interval = null;
-            }
-        };
-
-        const handleFocus = () => {
-            // On focus, recalculate immediately
-            shouldCalculate.current = true;
-            debounceCalc();
-            startInterval();
-        };
-
-        const handleBlur = () => {
-            stopInterval();
-        };
-
-        if (document.hasFocus()) {
-            handleFocus();
-        }
-
-        window.addEventListener('focus', handleFocus);
-        window.addEventListener('blur', handleBlur);
-
+        if (shouldCalculate.current) debounceCalc();
         return () => {
             if (calcRef.current) clearTimeout(calcRef.current);
-            stopInterval();
-            window.removeEventListener('focus', handleFocus);
-            window.removeEventListener('blur', handleBlur);
         };
     }, [ethTokenAmount, wxtmAmount, lastUpdatedField, direction, debounceCalc]);
 
