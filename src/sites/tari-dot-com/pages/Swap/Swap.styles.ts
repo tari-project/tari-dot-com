@@ -138,7 +138,7 @@ export const SwapDirectionWrapper = styled.div<{ $direction: SwapDirectionType }
     height: 46px;
     border-radius: 23px;
     border-width: 4px;
-    background: ${({ theme }) => theme.palette.text.secondary};
+    background: black;
 
     ${({ $direction }) =>
         $direction === 'fromXtm' &&
