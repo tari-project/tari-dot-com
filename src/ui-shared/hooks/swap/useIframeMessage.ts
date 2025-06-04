@@ -11,6 +11,7 @@ export enum MessageType {
     CONFIRM_REQUEST = 'CONFIRM_REQUEST',
     WALLET_CONNECT = 'WALLET_CONNECT',
     PROCESSING_STATUS = 'PROCESSING_STATUS',
+    SWAP_HEIGHT_CHANGE = 'SWAP_HEIGHT_CHANGE',
 }
 
 interface WalletConnectMessage {
@@ -20,6 +21,12 @@ interface WalletConnectMessage {
     };
 }
 
+interface SwapHeightChangeMessage {
+    type: MessageType.SWAP_HEIGHT_CHANGE;
+    payload: {
+        height: number;
+    }
+}
 
 type SwapConfirmation = {
     type: MessageType.CONFIRM_REQUEST;
@@ -85,6 +92,7 @@ export type IframeMessage =
     | ErrorMessage
     | SuccessMessage
     | ProcessingMessage
+    | SwapHeightChangeMessage
     ;
 
 // Post a message to the parent window

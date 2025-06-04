@@ -19,6 +19,7 @@ import { getCurrencyIcon } from '../../helpers/getIcon';
 import { truncateMiddle } from '@/sites/tari-dot-com/utils/truncateMiddle';
 import TransactionModal from '../../TransactionModal/TransactionModal';
 import { SelectableTokenInfo } from '../../../useSwapData';
+import { EnabledTokensEnum } from '@/ui-shared/hooks/swap/lib/constants';
 
 interface Props {
     isOpen: boolean;
@@ -48,7 +49,10 @@ export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) =>
                     <WalletButton variant="error" onClick={handleDisconnect}>
                         Disconnect
                     </WalletButton>
-                    <WalletAddress>{truncateMiddle(accountAddress || '', 5)}</WalletAddress>
+                    <WalletAddress>
+                        {getCurrencyIcon({ symbol: EnabledTokensEnum.ETH, width: 20 })}
+                        {truncateMiddle(accountAddress || '', 7)}
+                    </WalletAddress>
                 </ConnectedWalletWrapper>
 
                 <TokenList>

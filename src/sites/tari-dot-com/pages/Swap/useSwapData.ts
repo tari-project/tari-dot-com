@@ -330,6 +330,7 @@ export const useSwapData = () => {
     const shouldCalculate = useRef(true);
     const calcRef = useRef<NodeJS.Timeout | null>(null);
 
+
     const calcAmounts = useCallback(
         async (signal: AbortSignal) => {
             let amountTypedByUserStr: string;
@@ -442,9 +443,48 @@ export const useSwapData = () => {
     }, [calcAmounts]);
 
     useEffect(() => {
-        if (shouldCalculate.current) debounceCalc();
+        let interval: NodeJS.Timeout | null = null;
+
+        const startInterval = () => {
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
+                if (!shouldCalculate.current) {
+                    shouldCalculate.current = true;
+                    debounceCalc();
+                } else setIsCalculatingQuote(false);
+            }, 20 * 1000);
+        };
+
+        const stopInterval = () => {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        };
+
+        const handleFocus = () => {
+            // On focus, recalculate immediately
+            shouldCalculate.current = true;
+            debounceCalc();
+            startInterval();
+        };
+
+        const handleBlur = () => {
+            stopInterval();
+        };
+
+        if (document.hasFocus()) {
+            handleFocus();
+        }
+
+        window.addEventListener('focus', handleFocus);
+        window.addEventListener('blur', handleBlur);
+
         return () => {
             if (calcRef.current) clearTimeout(calcRef.current);
+            stopInterval();
+            window.removeEventListener('focus', handleFocus);
+            window.removeEventListener('blur', handleBlur);
         };
     }, [ethTokenAmount, wxtmAmount, lastUpdatedField, direction, debounceCalc]);
 
@@ -552,6 +592,7 @@ export const useSwapData = () => {
             slippage,
             networkFee,
             priceImpact,
+            destinationAddress: connectedAccount.address,
             minimumReceived: minimumReceivedDisplay,
             executionPrice: executionPriceDisplay,
             transactionId,
@@ -559,19 +600,7 @@ export const useSwapData = () => {
             paidTransactionFeeApproval: null,
             paidTransactionFeeSwap: paidTransactionFee,
         }),
-        [
-            direction,
-            ethTokenAmount,
-            wxtmAmount,
-            slippage,
-            networkFee,
-            priceImpact,
-            minimumReceivedDisplay,
-            executionPriceDisplay,
-            transactionId,
-            txBlockHash,
-            paidTransactionFee,
-        ]
+        [direction, ethTokenAmount, wxtmAmount, slippage, networkFee, priceImpact, connectedAccount.address, minimumReceivedDisplay, executionPriceDisplay, transactionId, txBlockHash, paidTransactionFee]
     );
 
     const handleSelectFromToken = useCallback(

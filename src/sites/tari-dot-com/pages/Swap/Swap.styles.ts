@@ -6,14 +6,16 @@ export const SwapOption = styled.div<{ $paddingBottom?: number }>`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    color: ${({ theme }) => theme.palette.text.primary};
     gap: 3px;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.main};
     border-radius: 20px;
 
     > span {
-    color: #8f91a1;
+    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
         font-size: 10px;
     }
+
     ${({ $paddingBottom }) =>
         $paddingBottom &&
         css`
@@ -23,6 +25,7 @@ export const SwapOption = styled.div<{ $paddingBottom?: number }>`
 
 export const SwapsContainer = styled.div`
     max-width: 100%;
+    color: ${({ theme }) => theme.palette.text.primary};
 `;
 
 export const SwapOptionAmount = styled.div`
@@ -30,8 +33,8 @@ export const SwapOptionAmount = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    color: #212121;
-    font-family: Poppins, sans-serif;
+    color: ${({ theme }) => theme.palette.text.primary};
+    font-family: ${({ theme }) => theme.typography.fontFamily};
     font-weight: 500;
     font-size: 36px;
 `;
@@ -41,14 +44,14 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
     gap: 6px;
     height: 35px;
     padding-inline: 6px;
-    background: #fafafa;
+    background: ${({ theme }) => theme.palette.background.paper};
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
-    border: 1px solid #d8d9df;
-        color: #212121;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
+    color: ${({ theme }) => theme.palette.text.primary};
     span {
-        color: #212121;
+        color: ${({ theme }) => theme.palette.text.primary};
         font-family: Alliance No.1;
         font-weight: 700;
         font-size: 12.85px;
@@ -81,8 +84,8 @@ export const SwapAmountInput = styled.input<{
     $dynamicFontSize?: number; // Prop for dynamic font size
 }>`
     width: 100%;
-    color: #212121;
-    font-family: Poppins, sans-serif;
+    color: ${({ theme }) => theme.palette.text.primary};
+    font-family: ${({ theme }) => theme.typography.fontFamily};
     font-weight: 500;
     font-size: ${({ $dynamicFontSize }) => ($dynamicFontSize ? `${$dynamicFontSize}px` : '28px')};
     line-height: 100%;
@@ -97,13 +100,13 @@ export const SwapAmountInput = styled.input<{
     }
 
     &::placeholder {
-        color: #8f91a1;
+        color: ${({ theme }) => theme.palette.text.secondary};
     }
 
     ${({ $error }) =>
         $error &&
         css`
-    color: #C44B3A;
+            color: ${({ theme }) => theme.palette.error.main};
         `}
 
     ${({ $loading }) =>
@@ -135,7 +138,7 @@ export const SwapDirectionWrapper = styled.div<{ $direction: SwapDirectionType }
     height: 46px;
     border-radius: 23px;
     border-width: 4px;
-    background: black;
+    background: ${({ theme }) => theme.palette.text.secondary};
 
     ${({ $direction }) =>
         $direction === 'fromXtm' &&
@@ -189,9 +192,9 @@ export const CurrentStep = styled.span`
     font-family: Poppins, sans-serif;
     font-weight: 600;
     font-size: 12px;
-    color: #8f91a1;
+    color: ${({ theme }) => theme.palette.text.secondary};
     strong {
-        color: #212121;
+        color: ${({ theme }) => theme.palette.text.primary};
     }
 `;
 
@@ -213,7 +216,7 @@ export const ConnectedWalletWrapper = styled.div`
         opacity: 0.5;
     }
 
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.palette.background.main};
 `;
 
 export const SubmitButtonWrapper = styled.div`
@@ -222,7 +225,7 @@ export const SubmitButtonWrapper = styled.div`
 `;
 
 export const SwapErrorMessage = styled.div`
-    color: #D85240;
+    color: ${({ theme }) => theme.palette.error.main};
     font-size: 12px;
     font-family: Poppins, sans-serif;
     margin-top: 10px;

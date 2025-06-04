@@ -1,5 +1,5 @@
 'use client';
-import { memo, useMemo, useRef, useState } from 'react';
+import { memo, useMemo, useRef, useState, useEffect } from 'react';
 
 import {
     ConnectedWalletWrapper,
@@ -32,10 +32,13 @@ import { ChevronSVG } from './SwapDialogs/icons/chevron';
 import { MessageType, postToParentIframe, useIframeMessage } from '@/ui-shared/hooks/swap/useIframeMessage';
 import { TransactionResponse, TransactionReceipt } from 'ethers';
 import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
+import { useUIStore } from '@/stores/useUiStore';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
     const connectedAccount = useAccount();
+
+    const { setTheme } = useUIStore();
 
     const onOpenWalletConnect = () => {
         postToParentIframe({ type: MessageType.WALLET_CONNECT, payload: { open: true } });
@@ -124,6 +127,11 @@ export const Swap = memo(function Swap() {
             case 'EXECUTE_SWAP':
                 handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });
                 break;
+            case 'SET_THEME':
+                if (!event.data.payload.theme) return;
+                console.log('setting theme on event', event.data.payload.theme);
+                setTheme(event.data.payload.theme);
+                break;
             default:
                 console.warn('Unknown message type:', event.type);
         }
@@ -134,9 +142,37 @@ export const Swap = memo(function Swap() {
         return Boolean(isLoading || !hasAmount || insufficientLiquidity || notEnoughBalance);
     }, [isLoading, notEnoughBalance, insufficientLiquidity, ethTokenAmount, wxtmAmount]);
 
+    // Ref for the root container to observe height changes
+    const containerRef = useRef<HTMLDivElement>(null);
+
     // Refs for the input elements
     const fromInputRef = useRef<HTMLInputElement>(null);
     const toInputRef = useRef<HTMLInputElement>(null);
+
+    // Notify parent window on height changes
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const notifyParent = () => {
+            if (containerRef.current && containerRef.current.offsetHeight) {
+                console.log('containerRef.current.offsetHeight', containerRef.current.offsetHeight);
+                postToParentIframe({ type: MessageType.SWAP_HEIGHT_CHANGE, payload: { height: containerRef.current.offsetHeight + 40 } });
+            }
+        };
+
+        // Initial notify
+        notifyParent();
+
+        const resizeObserver = new window.ResizeObserver(() => {
+            notifyParent();
+        });
+
+        resizeObserver.observe(containerRef.current);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, []);
 
     // Use the hook for each input
     const fromInputFontSize = useAdaptiveFontSize({
@@ -150,7 +186,7 @@ export const Swap = memo(function Swap() {
     });
 
     return (
-        <SwapsContainer>
+        <SwapsContainer ref={containerRef}>
             <HeaderWrapper>
                 <HeaderItem>
                     <StepHeader>Enter amount</StepHeader>

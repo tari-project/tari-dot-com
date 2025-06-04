@@ -20,7 +20,7 @@ export const Entry = styled.div`
 `;
 
 export const Label = styled.div`
-    color: #212121;
+    color: ${({ theme }) => theme.palette.text.primary};
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -50,17 +50,17 @@ export const Value = styled.div<{ $status?: SendStatus }>`
     ${({ $status }) =>
         $status === 'processing' &&
         css`
-            color: #ff7700;
+            color: ${({ theme }) => theme.palette.warning.main};
         `}
 
     ${({ $status }) =>
         $status === 'completed' &&
         css`
-            color: #36c475;
+            color: ${({ theme }) => theme.palette.success.main};
         `}
 
     a {
-        color: #212121;
+        color: ${({ theme }) => theme.palette.text.primary};
     }
 `;
 

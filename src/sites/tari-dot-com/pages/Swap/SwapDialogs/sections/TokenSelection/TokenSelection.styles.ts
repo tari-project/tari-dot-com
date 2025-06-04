@@ -5,13 +5,15 @@ export const ModalContent = styled(m.div)`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const TokenList = styled.div`
     overflow-y: auto;
     border-radius: 8px;
     padding: 8px;
-    background-color: #fff;
+    background: ${({ theme }) => theme.palette.background.accent};
     border-radius: 25px;
 `;
 
@@ -45,7 +47,7 @@ export const TokenDetails = styled.div`
     }
     .symbol {
         font-size: 0.875rem;
-    color: #8f91a1;
+        color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
     }
 `;
 
@@ -58,10 +60,10 @@ export const TokenValue = styled.div`
     }
     .balance {
         font-size: 0.875rem;
-        color: #8f91a1;
+        color: ${({ theme }) => theme.palette.text.secondary};
         border-radius: 100px;
-    background: #fff;
-    border: 1px solid #d8d9df;
+        background: ${({ theme }) => theme.palette.background.accent};
+        border: 1px solid ${({ theme }) => theme.palette.divider};
         padding: 2px 6px;
         margin-top: 4px;
     }

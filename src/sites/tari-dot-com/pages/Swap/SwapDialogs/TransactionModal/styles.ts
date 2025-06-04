@@ -11,7 +11,8 @@ export const Wrapper = styled('div')`
     justify-content: center;
     align-items: center;
     pointer-events: all;
-    background: white;
+    background: ${({ theme }) => theme.palette.background.main};
+    color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
 `;
 
@@ -37,16 +38,17 @@ export const BoxWrapper = styled(m.div)`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     flex-shrink: 0;
     gap: 10px;
     border-radius: 20px;
     position: relative;
     z-index: 1;
-    background-color: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
 `;
 
 export const TopButton = styled('button')`
+    color: ${({ theme }) => theme.palette.text.primary};
     background: none;
     border: none;
     padding: 0;
@@ -62,7 +64,7 @@ export const TopButton = styled('button')`
 `;
 
 export const TopWrapper = styled('div')`
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
