@@ -43,7 +43,6 @@ export const useSwapData = () => {
 
     const [lastUpdatedField, setLastUpdatedField] = useState<SwapField>('ethTokenField');
 
-    // isLoading in useSwapData will combine local loading with hook's loading
     const [isCalculatingQuote, setIsCalculatingQuote] = useState(false);
     const [tokenSelectOpen, setTokenSelectOpen] = useState(false);
 
@@ -73,7 +72,7 @@ export const useSwapData = () => {
         executeSwap,
         insufficientLiquidity: insufficientLiquidityFromHook,
         error: swapEngineError,
-        isLoading: isSwapEngineLoading,
+        // isLoading: isSwapEngineLoading,
     } = useUniswapV3Interactions();
 
     const currentChainId = useMemo(
@@ -92,7 +91,7 @@ export const useSwapData = () => {
 
     const {
         tokenDisplayInfo: fromTokenDisplay,
-        isLoading: isLoadingFromBalance,
+        // isLoading: isLoadingFromBalance,
         refetch: refetchFromToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: fromUiTokenDefinition,
@@ -103,7 +102,7 @@ export const useSwapData = () => {
 
     const {
         tokenDisplayInfo: toTokenDisplay,
-        isLoading: isLoadingToBalance,
+        // isLoading: isLoadingToBalance,
         refetch: refetchToToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: toUiTokenDefinition,
@@ -217,24 +216,28 @@ export const useSwapData = () => {
             );
     }, [connectedAccount.address, baseSelectableTokensForList]);
 
-    const { data: erc20BalancesData, isLoading: isLoadingErc20Balances } = useReadContracts({
+    const { data: erc20BalancesData
+        // , isLoading: isLoadingErc20Balances
+    } = useReadContracts({
         contracts: selectableTokensContracts,
         allowFailure: true,
         query: { enabled: selectableTokensContracts.length > 0 && !!connectedAccount.address },
     });
 
-    const { data: nativeTokenBalanceDataForList, isLoading: isLoadingNativeForList } = useBalance({
+    const { data: nativeTokenBalanceDataForList,
+        // isLoading: isLoadingNativeForList
+    } = useBalance({
         address: connectedAccount.address,
         chainId: currentChainId,
     });
 
     const [tokenPrices, setTokenPrices] = useState<Record<string, number | undefined>>({});
-    const [isLoadingPrices, setIsLoadingPrices] = useState(false);
+    // const [isLoadingPrices, setIsLoadingPrices] = useState(false);
 
     useEffect(() => {
         const fetchAllPrices = async () => {
             if (baseSelectableTokensForList.length === 0 || !currentChainId) return;
-            setIsLoadingPrices(true);
+            // setIsLoadingPrices(true);
             const newPrices: Record<string, number | undefined> = {};
             const promises = baseSelectableTokensForList.map(async (token) => {
                 if (token.symbol) {
@@ -243,7 +246,7 @@ export const useSwapData = () => {
             });
             await Promise.all(promises);
             setTokenPrices((prev) => ({ ...prev, ...newPrices }));
-            setIsLoadingPrices(false);
+            // setIsLoadingPrices(false);
         };
         fetchAllPrices();
     }, [baseSelectableTokensForList, currentChainId]);
@@ -577,33 +580,13 @@ export const useSwapData = () => {
         [setPairTokenAddress, clearCalculatedDetails]
     );
 
-    const combinedIsLoading = useMemo(
-        () =>
-            isCalculatingQuote ||
-            isLoadingFromBalance ||
-            isLoadingToBalance ||
-            isLoadingErc20Balances ||
-            isLoadingNativeForList ||
-            isLoadingPrices ||
-            isSwapEngineLoading,
-        [
-            isCalculatingQuote,
-            isLoadingFromBalance,
-            isLoadingToBalance,
-            isLoadingErc20Balances,
-            isLoadingNativeForList,
-            isLoadingPrices,
-            isSwapEngineLoading,
-        ]
-    );
-
     const combinedError = uiError || swapEngineError; // Prioritize UI error, then hook error
 
     return {
         notEnoughBalance,
         fromTokenDisplay,
         toTokenDisplay,
-        isLoading: combinedIsLoading,
+        isLoading: isCalculatingQuote,
         ethTokenAmount,
         wxtmAmount,
         uiDirection: direction,
