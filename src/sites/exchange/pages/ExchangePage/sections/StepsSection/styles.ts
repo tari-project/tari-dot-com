@@ -95,12 +95,27 @@ export const StepTitle = styled.div`
     letter-spacing: 0.35px;
     text-transform: uppercase;
 
+    @media (max-width: 1628px) {
+        font-size: 30px;
+    }
+`;
+
+export const StepTitleWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+
     position: absolute;
     bottom: 40px;
     left: 40px;
 
-    @media (max-width: 1545px) {
-        max-width: 100%;
+    @media (max-width: 1628px) {
+        gap: 20px;
+
+        bottom: 30px;
+        left: 20px;
     }
 `;
 
@@ -189,5 +204,36 @@ export const LogoImage = styled.img`
     @media (max-width: 1545px) {
         width: 100px;
         height: 100px;
+    }
+`;
+
+export const StepPill = styled.div<{ $color: string }>`
+    color: #111;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    border-radius: 100px;
+    background: ${({ $color }) => $color};
+
+    padding: 0px 11px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const StepRowWrapper = styled(StepTitleWrapper)`
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+
+    ${StepTitle} {
+        max-width: 250px;
     }
 `;

@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     padding: 100px 60px 300px 60px;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 
     @media (max-width: 1545px) {
         padding: 100px 40px 300px 40px;
@@ -32,6 +33,7 @@ export const Holder = styled.div`
     width: 100%;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 
     @media (max-width: 660px) {
         gap: 40px;

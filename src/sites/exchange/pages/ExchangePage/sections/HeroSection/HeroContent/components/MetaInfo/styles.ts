@@ -5,18 +5,18 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     display: flex;
     align-items: flex-end;
+    justify-content: center;
 
     background-color: #161616;
     padding: 20px 30px 20px 20px;
 
     border-radius: 20px 20px 0 0;
 
-    @media (max-width: 1266px) {
+    @media (max-width: 1024px) {
+        padding: 10px 20px;
+        border-radius: 0px;
         width: 100%;
-        align-items: center;
-        justify-content: center;
-        padding-top: 0;
-        border-radius: 0 0 20px 20px;
+        padding-bottom: 20px;
     }
 `;
 
