@@ -259,8 +259,8 @@ export const useUniswapV3Interactions = () => {
                 !tradeDetails.path ||
                 tradeDetails.path.length === 0
             ) {
-                setErrorHook('Unable to start swap. Please ensure your wallet is connected and all fields are filled.');
-                onFailure?.('Swap could not be started. Please check your wallet connection and input values.');
+                setErrorHook('Swap could not start. Make sure your wallet is connected and all inputs are filled.');
+                onFailure?.('Swap could not start. Please check your wallet connection and entered values.');
                 setIsLoadingHook(false);
                 return null;
             }
@@ -284,7 +284,7 @@ export const useUniswapV3Interactions = () => {
                     );
                     if (!approvalSuccess) {
                         setIsLoadingHook(false);
-                        onFailure?.('Token approval was unsuccessful. Please try again.');
+                        onFailure?.('Token approval didn’t go through. Try again or confirm in your wallet.');
                         return null; // Error already set by approveTokenForV3Router02
                     }
                 }
@@ -350,23 +350,14 @@ export const useUniswapV3Interactions = () => {
                     onFailure?.(txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.');
                     setErrorHook(
                         txResult.receipt
-                            ? 'The transaction was submitted but failed on the blockchain. Please check your wallet or try again.'
-                            : 'The transaction could not be submitted. Please check your network connection and try again.'
+                            ? 'Your transaction was sent but failed on-chain. Please check your wallet for more info.'
+                            : 'Couldn’t submit the transaction. Please check your network and try again.'
                     );
                     return null;
                 }
-            } catch (error: any) {
-                let message = 'An unexpected error occurred while processing your swap. Please try again.';
-                if (error.reason) {
-                    // If error.reason is user-friendly, use it; otherwise, fallback
-                    message = `Swap failed: ${error.reason}`.length < 100 ? `Swap failed: ${error.reason}` : 'Swap failed. Please try again.';
-                } else if (error.data?.message) {
-                    message = `Swap failed: ${error.data.message}`.length < 100 ? `Swap failed: ${error.data.message}` : 'Swap failed. Please try again.';
-                } else if (error.message) {
-                    message = `Swap failed: ${error.message}`.length < 100 ? `Swap failed: ${error.message}` : 'Swap failed. Please try again.';
-                }
-                onFailure?.(message);
-                setErrorHook(message);
+            } catch {
+                onFailure?.('Something went wrong while processing your swap. Please try again.')
+                setErrorHook('Something went wrong while processing your swap. Please try again.');
                 setIsLoadingHook(false);
                 setIsApprovingHook(false);
                 return null;

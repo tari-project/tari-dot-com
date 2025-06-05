@@ -1,5 +1,5 @@
-import { Token, CurrencyAmount, Price, NativeCurrency } from '@uniswap/sdk-core';
-import { FeeAmount } from '@uniswap/v3-sdk';
+import { Token, CurrencyAmount, Price, NativeCurrency, TradeType } from '@uniswap/sdk-core';
+import { FeeAmount, Trade } from '@uniswap/v3-sdk';
 
 export interface V3TradeDetails {
     // For QuoterV2 based approach:
@@ -21,6 +21,10 @@ export interface V3TradeDetails {
     priceImpactPercent?: string | null; // Harder to calculate accurately with QuoterV2 alone
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     path?: any;
+    sdkTrade?: Trade<Token, Token, TradeType.EXACT_INPUT | TradeType.EXACT_OUTPUT> | null;
+    midPrice?: Price<Token | NativeCurrency, Token | NativeCurrency> | null;
+    slippageTolerancePercent?: string; // Added field for slippage tolerance
+
 }
 
 export type SwapField = 'ethTokenField' | 'wxtmField';

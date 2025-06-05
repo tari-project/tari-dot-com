@@ -313,10 +313,6 @@ export const useSwapData = () => {
         async (signal: AbortSignal) => {
             let amountTypedByUserStr: string;
             let tokenUsedForParsingAmount: Token | NativeCurrency | undefined;
-
-            // const tradeInputTokenDef = direction === 'toXtm' ? fromUiTokenDefinition : toUiTokenDefinition;
-            // const tradeOutputTokenDef = direction === 'toXtm' ? toUiTokenDefinition : fromUiTokenDefinition;
-
             if (lastUpdatedField === 'ethTokenField') {
                 amountTypedByUserStr = ethTokenAmount;
                 tokenUsedForParsingAmount = fromUiTokenDefinition;
@@ -325,7 +321,6 @@ export const useSwapData = () => {
                 tokenUsedForParsingAmount = toUiTokenDefinition;
             }
 
-                console.log({ tokenUsedForParsingAmount, amountTypedByUserStr });
             if (
                 !tokenUsedForParsingAmount ||
                 !amountTypedByUserStr ||
@@ -352,8 +347,9 @@ export const useSwapData = () => {
                 setTradeDetails(details);
 
                 if (details && details.inputAmount && details.outputAmount) {
+                    console.log({ details });
                     setPriceImpact(details.priceImpactPercent ? `${details.priceImpactPercent}%` : null);
-                    setSlippage(details.priceImpactPercent ? `${details.priceImpactPercent}% (Price Impact)` : null);
+                    // setSlippage(details.priceImpactPercent ? `${details.priceImpactPercent}% (Price Impact)` : null);
                     setNetworkFee(details.estimatedGasFeeNative || null);
                     if (details.minimumReceived && details.minimumReceived.currency.symbol) {
                         setMinimumReceivedDisplay(
@@ -406,7 +402,7 @@ export const useSwapData = () => {
                 }
             }
         },
-        [direction, fromUiTokenDefinition, toUiTokenDefinition, lastUpdatedField, ethTokenAmount, wxtmAmount, clearCalculatedDetails, getTradeDetails, currentChainId]
+        [fromUiTokenDefinition, toUiTokenDefinition, lastUpdatedField, ethTokenAmount, wxtmAmount, clearCalculatedDetails, getTradeDetails, currentChainId]
     );
 
     const calcAmountsFnRef = useRef(calcAmounts);
@@ -470,30 +466,11 @@ export const useSwapData = () => {
     };
 
     const handleToggleUiDirection = useCallback(() => {
-        const newFromAmount = wxtmAmount;
-        const newToAmount = ethTokenAmount;
-
         setSwapEngineDirection(direction === 'toXtm' ? 'fromXtm' : 'toXtm');
-
-        setEthTokenAmount(newFromAmount); // This is now the "from" amount field
-        setWxtmAmount(newToAmount);   // This is now the "to" amount field
-
-        setLastUpdatedField('ethTokenField'); // Assume primary input field is now the source of truth
-
+        setLastUpdatedField('ethTokenField');
         clearCalculatedDetails();
-        if (newFromAmount && Number(newFromAmount) > 0) {
-            debounceCalc(); // Recalculate based on the new "from" amount
-        } else {
-            // If new "from" amount is empty or zero, clear the "to" amount as well
-            // (it might have held the old "from" amount).
-            if (newFromAmount === '' || Number(newFromAmount) <= 0) {
-                setWxtmAmount('');
-            }
-            setIsCalculatingQuote(false);
-            if (calcRef.current) clearTimeout(calcRef.current);
-            if (abortController.current) abortController.current.abort();
-        }
-    }, [direction, setSwapEngineDirection, clearCalculatedDetails, debounceCalc, ethTokenAmount, wxtmAmount]);
+        debounceCalc();
+    }, [direction, setSwapEngineDirection, clearCalculatedDetails, debounceCalc]);
 
     const handleConfirm = async (params?: SwapExecutionProps) => {
         setTransactionId(null);

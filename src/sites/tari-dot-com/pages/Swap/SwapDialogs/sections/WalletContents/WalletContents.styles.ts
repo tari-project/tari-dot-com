@@ -33,7 +33,7 @@ export const TokenList = styled.div`
     padding: 8px 0;
     display: flex;
     flex-direction: column;
-    background: ${({ theme }) => theme.palette.background.paper};
+    // background: ${({ theme }) => theme.palette.background.paper};
 `;
 
 export const TokenItem = styled.div`

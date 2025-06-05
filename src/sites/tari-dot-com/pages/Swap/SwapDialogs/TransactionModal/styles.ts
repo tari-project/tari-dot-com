@@ -44,7 +44,7 @@ export const BoxWrapper = styled(m.div)`
     border-radius: 20px;
     position: relative;
     z-index: 1;
-    background: ${({ theme }) => theme.palette.background.paper};
+    //background: ${({ theme }) => theme.palette.background.splash};
 `;
 
 export const TopButton = styled('button')`

@@ -1,26 +1,33 @@
 import { SwapDirection as SwapDirectionType } from '@/ui-shared/hooks/swap/lib/types';
 import styled, { css } from 'styled-components';
 
-export const SwapOption = styled.div<{ $paddingBottom?: number }>`
+export const OptionContainer = styled.div<{ $paddingBottom?: number }>`
     margin-top: 5px;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    color: ${({ theme }) => theme.palette.text.primary};
     gap: 3px;
+    justify-content: space-between;
+    align-items: center;
+    color: ${({ theme }) => theme.palette.text.primary};
     background: ${({ theme }) => theme.palette.background.main};
     border-radius: 20px;
-
-    > span {
-    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
-        font-size: 10px;
-    }
+    padding: 20px;
 
     ${({ $paddingBottom }) =>
         $paddingBottom &&
         css`
             padding-bottom: ${$paddingBottom}px;
         `}
+`;
+
+export const SwapOption = styled.div<{ $paddingBottom?: number }>`
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    > span {
+    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
+        font-size: 10px;
+    }
 `;
 
 export const SwapsContainer = styled.div`
@@ -43,7 +50,8 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
     border-radius: 60px;
     gap: 6px;
     height: 35px;
-    padding-inline: 6px;
+    padding-left: 6px;
+    padding-right: 10px;
     background: ${({ theme }) => theme.palette.background.paper};
     display: inline-flex;
     align-items: center;
