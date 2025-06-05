@@ -110,15 +110,13 @@ export const Swap = memo(function Swap() {
         let swapFeeUsd = null;
 
         if (txResult.receipt?.gasUsed && txResult.response?.gasPrice && ethUsdPrice) {
-            const gasUsed = BigInt(txResult.receipt.gasUsed.toString());
-            const gasPrice = BigInt(txResult.response.gasPrice?.toString() || '0');
-            const feeWei = gasUsed * gasPrice;
-            const feeEth = Number(feeWei) / 1e18;
+            const feeWei = txResult.receipt.gasUsed;
+            const feeEth = Number(feeWei) * 15 * 1e-9;
             const feeUsd = feeEth * Number(ethUsdPrice);
 
-            approvalFeeGwei = `${txResult.receipt.gasUsed} GWEI`;
+            approvalFeeGwei = `${txResult.receipt.gasUsed} units`;
             approvalFeeUsd = `$${feeUsd.toFixed(2)}`;
-            swapFeeGwei = `${txResult.receipt.gasUsed} GWEI`;
+            swapFeeGwei = `${txResult.receipt.gasUsed} units`;
             swapFeeUsd = `$${feeUsd.toFixed(2)}`;
         }
 
@@ -128,8 +126,8 @@ export const Swap = memo(function Swap() {
                 txBlockHash: txResult.receipt?.blockHash as `0x${string}`,
                 transactionId: txResult.response?.hash,
                 fees: {
-                    approval: approvalFeeGwei && approvalFeeUsd ? `${approvalFeeGwei} (${approvalFeeUsd})` : null,
-                    swap: swapFeeGwei && swapFeeUsd ? `${swapFeeGwei} (${swapFeeUsd})` : null,
+                    swap: approvalFeeGwei && approvalFeeUsd ? approvalFeeUsd : null,
+                    approval: swapFeeGwei && swapFeeUsd ? `${approvalFeeGwei}` : null,
                 }
             }
         });
@@ -143,11 +141,9 @@ export const Swap = memo(function Swap() {
                 targetAmount = transaction.amount;
             }
 
-            // Calculate network fee in USD if possible
             let networkFeeUsd = null;
             if (transaction.networkFee && ethUsdPrice) {
-                // networkFee is in GWEI, convert to ETH
-                const feeEth = Number(transaction.networkFee) / 1e9;
+                const feeEth = Number(transaction.networkFee) * 15 * 1e-9;
                 const feeUsd = feeEth * Number(ethUsdPrice);
                 networkFeeUsd = `$${feeUsd.toFixed(2)}`;
             }
@@ -156,7 +152,8 @@ export const Swap = memo(function Swap() {
                 type: MessageType.CONFIRM_REQUEST, payload: {
                     fromTokenDisplay, transaction: {
                         ...transaction, amount, targetAmount,
-                        networkFee: transaction.networkFee ? `${transaction.networkFee} GWEI (${networkFeeUsd})` : null,
+                        networkFee: transaction.networkFee ? networkFeeUsd : null,
+                        networkFeeNative: transaction.networkFee,
                     }, toTokenSymbol: toTokenDisplay?.symbol,
                 }
             });

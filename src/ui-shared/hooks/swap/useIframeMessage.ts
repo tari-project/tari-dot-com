@@ -39,6 +39,7 @@ type SwapConfirmation = {
             direction: SwapDirection;
             slippage?: string | null;
             networkFee?: string | null;
+            networkFeeNative?: string | null;
             priceImpact?: string | null;
             minimumReceived?: string | null;
             executionPrice?: string | null;
