@@ -5,7 +5,7 @@ export default function TrustedBySection() {
     return (
         <Wrapper>
             <TopBorder>
-                <Label>Tari is trusted by</Label>
+                <Label>Tari is SUPPORTED by</Label>
                 <Line />
             </TopBorder>
             <TrackComponent />

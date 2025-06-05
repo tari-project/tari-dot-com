@@ -11,67 +11,46 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
 
     background-image: url(${({ $bgImage }) => $bgImage});
     background-size: cover;
-    background-position: right bottom;
+    background-position: center center;
     background-repeat: no-repeat;
 
     padding: 80px;
-    padding-bottom: 160px;
+    padding-bottom: 100px;
     position: relative;
 
     display: flex;
     align-items: flex-end;
-
-    @media (max-width: 1266px) {
-        align-items: center;
-        justify-content: center;
-    }
-
-    @media (max-width: 660px) {
-        padding: 5px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        height: auto;
-    }
+    justify-content: center;
 `;
 
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 20px;
-
-    @media (max-width: 1266px) {
-        align-items: center;
-        text-align: center;
-        margin-top: -100px;
-    }
-
-    @media (max-width: 660px) {
-        margin: 0;
-        padding: 50px 0;
-    }
 `;
 
-export const Eyebrow = styled.div`
-    color: #fff;
-    font-family: var(--font-poppins), sans-serif;
-    font-size: 18px;
+export const Eyebrow = styled.div<{ $color: string }>`
+    font-family: var(--font-druk-wide), sans-serif;
+
+    color: ${({ $color }) => $color};
+    text-align: center;
+    font-size: 18.64px;
     font-style: normal;
     font-weight: 500;
     line-height: 84.2%;
     text-transform: uppercase;
-
-    @media (max-width: 980px) {
-        font-size: 16px;
-    }
 `;
 
 export const Title = styled.div`
     color: #fff;
-    font-family: var(--font-druk), sans-serif;
-    font-size: 58px;
+    font-family: var(--font-druk-wide), sans-serif;
+
+    text-align: center;
+    font-size: 57px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 101%;
     text-transform: uppercase;
 
@@ -80,11 +59,21 @@ export const Title = styled.div`
     }
 `;
 
+export const WhiteText = styled.div`
+    color: #fff;
+`;
+
+export const YellowText = styled.div<{ $color: string }>`
+    color: ${({ $color }) => $color};
+    font-style: italic;
+    font-weight: 800;
+`;
+
 export const BottomWrapper = styled.div`
     display: flex;
     gap: 0px;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     left: 0;

@@ -8,5 +8,11 @@ export const Wrapper = styled.div`
 `;
 
 export const FaqWrapper = styled.div`
-    margin-top: -200px;
+    margin-top: 0px;
+`;
+
+export const EcosystemWrapper = styled.div`
+    margin-top: -160px;
+    position: relative;
+    z-index: 1;
 `;

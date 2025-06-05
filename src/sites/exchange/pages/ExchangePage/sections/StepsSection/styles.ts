@@ -87,21 +87,17 @@ export const StepInside = styled.div`
 
 export const StepTitle = styled.div`
     color: #fff;
-    font-family: var(--font-druk), sans-serif;
+    font-family: var(--font-druk-wide), sans-serif;
     font-size: 35px;
     font-style: normal;
     font-weight: 800;
-    line-height: 36px;
+    line-height: 102%;
     letter-spacing: 0.35px;
     text-transform: uppercase;
 
-    max-width: 60%;
-
     position: absolute;
-    bottom: 10%;
-    left: 10%;
-
-    padding-right: 20px;
+    bottom: 40px;
+    left: 40px;
 
     @media (max-width: 1545px) {
         max-width: 100%;

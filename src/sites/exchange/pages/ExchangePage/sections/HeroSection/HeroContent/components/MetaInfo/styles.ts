@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     background-color: #161616;
     padding: 20px 30px 20px 20px;
 
-    border-radius: 0 20px 0 0;
+    border-radius: 20px 20px 0 0;
 
     @media (max-width: 1266px) {
         width: 100%;

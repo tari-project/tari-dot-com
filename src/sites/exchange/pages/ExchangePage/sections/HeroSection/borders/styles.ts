@@ -10,6 +10,7 @@ export const TopBorderWrapper = styled.div`
     svg {
         width: 110%;
         height: 100%;
+        flex-shrink: 0;
     }
 
     @media (max-width: 1400px) {
@@ -17,8 +18,14 @@ export const TopBorderWrapper = styled.div`
     }
 
     @media (max-width: 980px) {
+        height: 10%;
+
         svg {
-            height: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4%;
         }
     }
 `;
@@ -38,9 +45,7 @@ export const BottomBorderWrapper = styled.div`
     }
 
     @media (max-width: 980px) {
-        svg {
-            height: 30px;
-        }
+        height: 6%;
     }
 `;
 

@@ -7,14 +7,9 @@ export const Wrapper = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    position: relative;
-    color: #fff;
+    justify-content: center;
 
-    @media (max-width: 980px) {
-        flex-direction: column;
-        gap: 20px;
-    }
+    color: #fff;
 `;
 
 export const LeftSide = styled.div`
@@ -70,21 +65,8 @@ export const LogoWrapper = styled.div`
     justify-content: center;
     gap: 14px;
 
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    @media (max-width: 1430px) {
-        left: 154px;
-        transform: translateY(-50%);
-    }
-
-    @media (max-width: 980px) {
-        position: relative;
-        left: 0;
-        top: 0;
-        transform: none;
+    svg {
+        flex-shrink: 0;
     }
 `;
 

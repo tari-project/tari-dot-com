@@ -5,8 +5,9 @@ import ExploreTariSection from './sections/ExploreTariSection/ExploreTariSection
 import HeroSection from './sections/HeroSection/HeroSection';
 import StepsSection from './sections/StepsSection/StepsSection';
 import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
-import { FaqWrapper, Wrapper } from './styles';
+import { EcosystemWrapper, FaqWrapper, Wrapper } from './styles';
 import { useExchangeData } from '@/services/api/useExchangeData';
+import EcosystemSection from '@/sites/tari-dot-com/pages/HomePage/sections/EcosystemSection/EcosystemSection';
 
 export default function ExchangePage() {
     const { data: exchange } = useExchangeData({});
@@ -21,8 +22,11 @@ export default function ExchangePage() {
             <StepsSection exchange={exchange} />
             <TrustedBySection />
             <ExploreTariSection exchange={exchange} />
+            <EcosystemWrapper>
+                <EcosystemSection hideSupporters={true} />
+            </EcosystemWrapper>
             <FaqWrapper>
-                <FAQSection />
+                <FAQSection maxEntries={5} />
             </FaqWrapper>
         </Wrapper>
     );

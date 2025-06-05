@@ -9,7 +9,7 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
 
     if (exchangeId === 'mock-id' || exchangeId === 'test') {
         return {
-            name: 'Mock Exchange',
+            name: 'Mock',
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
             id: 'mock-id',
@@ -21,7 +21,7 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
             wallet_label: 'Mock Wallet',
             hero_img: '/mock-hero.png',
             exchange_id: exchangeId,
-            primary_colour: '#FFD700',
+            primary_colour: '#8E7AFF',
             secondary_colour: '#161616',
             logo_img_url: logoHeader.src,
             logo_img_small_url: logoSquare.src,
@@ -30,21 +30,25 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
         };
     }
 
-    const response = await fetch(`https://rwa.y.at/miner/exchanges/${exchangeId}`,
-        {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-                'Accept': 'application/json, text/plain, */*',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Accept-Encoding': 'gzip, deflate, br',
-            }
-        }
-    );
+    const response = await fetch(`https://rwa.y.at/miner/exchanges/${exchangeId}`, {
+        headers: {
+            'User-Agent':
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            Accept: 'application/json, text/plain, */*',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+        },
+    });
 
     if (!response.ok) {
         const errorBody = await response.text();
         console.error('Failed response body:', errorBody); // THIS IS THE CRUCIAL LOG
-        throw new Error(`Failed to fetch miner stats: ${response.status} ${response.statusText}. Body: ${errorBody.substring(0, 500)}`);
+        throw new Error(
+            `Failed to fetch miner stats: ${response.status} ${response.statusText}. Body: ${errorBody.substring(
+                0,
+                500
+            )}`
+        );
     }
     return response.json();
 }

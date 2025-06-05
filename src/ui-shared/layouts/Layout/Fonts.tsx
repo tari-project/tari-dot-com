@@ -39,4 +39,21 @@ const DrukFont = localFont({
     variable: '--font-druk',
 });
 
-export const fontString = `${PoppinsFont.className} ${PoppinsFont.variable} ${DrukFont.className} ${DrukFont.variable}`;
+const DrukWideFont = localFont({
+    src: [
+        {
+            path: '../../assets/fonts/Druk/DrukWideLCG-Bold.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+        {
+            path: '../../assets/fonts/Druk/DrukWideLCG-Medium.ttf',
+            weight: '500',
+            style: 'normal',
+        },
+    ],
+    display: 'block',
+    variable: '--font-druk-wide',
+});
+
+export const fontString = `${PoppinsFont.className} ${PoppinsFont.variable} ${DrukFont.className} ${DrukFont.variable} ${DrukWideFont.className} ${DrukWideFont.variable}`;

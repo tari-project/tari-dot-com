@@ -1,4 +1,4 @@
-import { Text, Title } from '../ExploreTariSection/styles';
+import { Title } from '../ExploreTariSection/styles';
 import StepNumber from './components/StepNumber/StepNumber';
 import {
     Wrapper,
@@ -29,9 +29,8 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
             <Holder>
                 <TitleWrapper>
                     <Title $color={exchange?.primary_colour}>
-                        GET CONNECTED IN &nbsp;<span>Three easy steps</span>
+                        START EARNING IN &nbsp;<span>Three easy steps</span>
                     </Title>
-                    <Text>Get connected and start earning in as little as 60 seconds.</Text>
                 </TitleWrapper>
             </Holder>
 
@@ -39,7 +38,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                 <Step>
                     <StepNumber text="Step 1" color={exchange?.primary_colour} />
                     <StepInside>
-                        <StepTitle>Download & Install</StepTitle>
+                        <StepTitle>Install TARI UNIVERSE</StepTitle>
                         <BgImage src={stop1Image.src} alt="step1" />
                     </StepInside>
                 </Step>
@@ -50,7 +49,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
 
                         <FieldWrapper>
                             <FieldBox>
-                                <FieldTitle>Enter your {exchange?.name} xtm address</FieldTitle>
+                                <FieldTitle>Enter your {exchange?.name} Tari Address</FieldTitle>
                                 <FieldInput>
                                     <Emojis>❤️ 💎 🖖 … ⭐ 👻 🦄</Emojis>
                                     <CheckMarkIcon />
@@ -58,7 +57,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                             </FieldBox>
                         </FieldWrapper>
 
-                        <StepTitle>Enter your {exchange?.name} xtm address</StepTitle>
+                        <StepTitle>Enter your XTM address FROM {exchange?.name}</StepTitle>
 
                         <BgImage src={stop2Image.src} alt="step2" />
                     </StepInside>
