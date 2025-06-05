@@ -49,7 +49,7 @@ export function useTokenDisplayInfo({
         if (uiTokenDefinition?.symbol && chainId) {
             setIsFetchingPrice(true);
             try {
-                const price = await fetchTokenPriceUSD(uiTokenDefinition.symbol, chainId);
+                const price = await fetchTokenPriceUSD(uiTokenDefinition.symbol);
                 setTokenPrice(price);
             } catch (error) {
                 console.error('Failed to fetch token price:', error);

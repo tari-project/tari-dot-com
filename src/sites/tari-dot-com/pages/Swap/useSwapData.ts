@@ -35,6 +35,7 @@ export interface SelectableTokenInfo {
 
 export const useSwapData = () => {
     const connectedAccount = useAccount();
+    const [ethUsdPrice, setEthUsdPrice] = useState<number | undefined>();
 
     const [ethTokenAmount, setEthTokenAmount] = useState<string>('');
     const [wxtmAmount, setWxtmAmount] = useState<string>('');
@@ -230,7 +231,10 @@ export const useSwapData = () => {
             const newPrices: Record<string, number | undefined> = {};
             const promises = baseSelectableTokensForList.map(async (token) => {
                 if (token.symbol) {
-                    newPrices[token.symbol] = await fetchTokenPriceUSD(token.symbol, currentChainId);
+                    newPrices[token.symbol] = await fetchTokenPriceUSD(token.symbol);
+                    if (token.symbol === 'ETH') {
+                        setEthUsdPrice(newPrices[token.symbol]);
+                    }
                 }
             });
             await Promise.all(promises);
@@ -581,6 +585,7 @@ export const useSwapData = () => {
         handleRefetchBalances,
         lastUpdatedField,
         addLiquidityV3,
+        ethUsdPrice,
         setFromAmount: (val: string) => handleNumberInput(val, 'ethTokenField'),
         setTargetAmount: (val: string) => handleNumberInput(val, 'wxtmField'),
     };

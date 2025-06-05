@@ -71,6 +71,7 @@ export const Swap = memo(function Swap() {
         error,
         insufficientLiquidity,
         lastUpdatedField,
+        ethUsdPrice,
         setFromAmount,
         setTargetAmount,
         handleToggleUiDirection,
@@ -85,9 +86,6 @@ export const Swap = memo(function Swap() {
         }
         return null;
     }, [transaction]);
-
-    console.log({ slippage });
-
 
     const onApproveRequest = () => {
         postToParentIframe({ type: MessageType.APPROVE_REQUEST });
@@ -105,14 +103,33 @@ export const Swap = memo(function Swap() {
     const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => {
         setFromAmount('');
         setTargetAmount('');
+
+        let approvalFeeGwei = null;
+        let approvalFeeUsd = null;
+        let swapFeeGwei = null;
+        let swapFeeUsd = null;
+
+        if (txResult.receipt?.gasUsed && txResult.response?.gasPrice && ethUsdPrice) {
+            const gasUsed = BigInt(txResult.receipt.gasUsed.toString());
+            const gasPrice = BigInt(txResult.response.gasPrice?.toString() || '0');
+            const feeWei = gasUsed * gasPrice;
+            const feeEth = Number(feeWei) / 1e18;
+            const feeUsd = feeEth * Number(ethUsdPrice);
+
+            approvalFeeGwei = `${txResult.receipt.gasUsed} GWEI`;
+            approvalFeeUsd = `$${feeUsd.toFixed(2)}`;
+            swapFeeGwei = `${txResult.receipt.gasUsed} GWEI`;
+            swapFeeUsd = `$${feeUsd.toFixed(2)}`;
+        }
+
         postToParentIframe({
             type: MessageType.PROCESSING_STATUS, payload: {
                 status: 'success',
                 txBlockHash: txResult.receipt?.blockHash as `0x${string}`,
                 transactionId: txResult.response?.hash,
                 fees: {
-                    approval: txResult.receipt?.gasUsed ? txResult.receipt.gasUsed.toString() : null,
-                    swap: txResult.receipt?.gasUsed ? txResult.receipt.gasUsed.toString() : null,
+                    approval: approvalFeeGwei && approvalFeeUsd ? `${approvalFeeGwei} (${approvalFeeUsd})` : null,
+                    swap: swapFeeGwei && swapFeeUsd ? `${swapFeeGwei} (${swapFeeUsd})` : null,
                 }
             }
         });
@@ -125,7 +142,24 @@ export const Swap = memo(function Swap() {
                 amount = transaction.targetAmount;
                 targetAmount = transaction.amount;
             }
-            postToParentIframe({ type: MessageType.CONFIRM_REQUEST, payload: { fromTokenDisplay, transaction: { ...transaction, amount, targetAmount }, toTokenSymbol: toTokenDisplay?.symbol, } });
+
+            // Calculate network fee in USD if possible
+            let networkFeeUsd = null;
+            if (transaction.networkFee && ethUsdPrice) {
+                // networkFee is in GWEI, convert to ETH
+                const feeEth = Number(transaction.networkFee) / 1e9;
+                const feeUsd = feeEth * Number(ethUsdPrice);
+                networkFeeUsd = `$${feeUsd.toFixed(2)}`;
+            }
+
+            postToParentIframe({
+                type: MessageType.CONFIRM_REQUEST, payload: {
+                    fromTokenDisplay, transaction: {
+                        ...transaction, amount, targetAmount,
+                        networkFee: transaction.networkFee ? `${transaction.networkFee} GWEI (${networkFeeUsd})` : null,
+                    }, toTokenSymbol: toTokenDisplay?.symbol,
+                }
+            });
         } else {
             connect('walletConnect');
             onOpenWalletConnect()

@@ -45,10 +45,17 @@ export const formatNativeGasFee = (
 };
 
 export const fetchTokenPriceUSD = async (
-    _tokenSymbol: string,
-    _chainId: ChainId | undefined
+    tokenSymbol: string,
 ): Promise<number | undefined> => {
-    return undefined;
+    if (tokenSymbol !== 'ETH') return undefined;
+    return fetch('https://rwa.y.at/miner/exchange-prices/hourly?instruments=ETH-USD')
+        .then(response => response.json())
+        .then(data => {
+            return data['ETH-USD']
+        })
+        .catch(error => {
+            console.error('Error fetching token price:', error);
+        });
 };
 
 interface FormatBalanceOptions {
