@@ -14,13 +14,19 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
     background-position: center center;
     background-repeat: no-repeat;
 
-    padding: 80px;
+    padding: 40px;
     padding-bottom: 100px;
     position: relative;
 
     display: flex;
     align-items: flex-end;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        height: 700px;
+        padding: 10px;
+        padding-bottom: 150px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -41,6 +47,14 @@ export const Eyebrow = styled.div<{ $color: string }>`
     font-weight: 500;
     line-height: 84.2%;
     text-transform: uppercase;
+
+    @media (max-width: 1263px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+    }
 `;
 
 export const Title = styled.div`
@@ -54,8 +68,12 @@ export const Title = styled.div`
     line-height: 101%;
     text-transform: uppercase;
 
-    @media (max-width: 980px) {
+    @media (max-width: 1263px) {
         font-size: 48px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
     }
 `;
 
@@ -78,15 +96,4 @@ export const BottomWrapper = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-
-    @media (max-width: 1266px) {
-        flex-direction: column-reverse;
-        align-items: flex-end;
-        padding: 10px;
-    }
-
-    @media (max-width: 660px) {
-        padding: 0px;
-        position: relative;
-    }
 `;
