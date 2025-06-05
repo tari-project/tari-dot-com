@@ -519,7 +519,7 @@ export const useUniswapV3Interactions = () => {
             for (const { token, amount } of tokensToApproveInfo) {
                 // Read allowance using publicClient (read-only)
                 const currentAllowance = await publicClient.readContract({
-                    address: token.address,
+                    address: token.address as `0x${string}`,
                     abi: erc20Abi,
                     functionName: 'allowance',
                     args: [accountAddress, nftPositionManagerAddr],
