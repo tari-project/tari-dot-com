@@ -6,7 +6,6 @@ export interface Exchange {
     campaign_cta: string;
     campaign_title: string;
     campaign_tagline: string;
-    reward_percentage: number;
     campaign_description: string;
     wallet_label: string;
     hero_img: string;
@@ -17,4 +16,10 @@ export interface Exchange {
     logo_img_small_url: string;
     hero_img_url: string;
     is_hidden: boolean;
+    download_link_mac?: string;
+    download_link_win?: string;
+    download_link_linux?: string;
+    reward_image?: string;
+    reward_expiry_date?: string;
+    reward_percentage?: number;
 }

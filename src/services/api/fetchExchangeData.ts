@@ -27,6 +27,13 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
             logo_img_small_url: logoSquare.src,
             hero_img_url: '/mock-hero-img.png',
             is_hidden: false,
+            // Download links
+            download_link_linux: 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-linux-x86_64-v0.1.0.tar.gz',
+            download_link_mac: 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-macos-x86_64-v0.1.0.tar.gz',
+            download_link_win: 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-windows-x86_64-v0.1.0.zip',
+            // Reward missing fields
+            reward_image: 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-windows-x86_64-v0.1.0.zip',
+            reward_expiry_date: '2025-06-30',
         };
     }
 

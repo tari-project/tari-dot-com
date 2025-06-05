@@ -15,8 +15,8 @@ import {
 } from './styles';
 import laptopImage from '../../images/laptop.png';
 
-export default function SeasonTimer() {
-    const [timeLeft, setTimeLeft] = useState(30 * 24 * 60 * 60); // 30 days in seconds
+export default function SeasonTimer({ date }: { date: Date }) {
+    const [timeLeft, setTimeLeft] = useState(Math.floor(date.getTime() / 1000));
 
     useEffect(() => {
         const interval = setInterval(() => {

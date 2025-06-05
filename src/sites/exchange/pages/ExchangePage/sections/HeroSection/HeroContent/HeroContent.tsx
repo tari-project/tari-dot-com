@@ -16,7 +16,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                 <Eyebrow $color={color}>Tari $xtM is on {exchange?.name}</Eyebrow>
                 <Title>
                     <WhiteText>Mine to {exchange?.name} & Earn</WhiteText>
-                    <YellowText $color={color}>15% Bonus XTM</YellowText>
+                    <YellowText $color={color}>{exchange.reward_percentage}% Bonus XTM</YellowText>
                 </Title>
                 <DownloadButton backgroundColor={color} textColor={textColor} showIconBackground={true} />
             </TextWrapper>
