@@ -219,7 +219,7 @@ export const useUniswapV3Interactions = () => {
                 return true;
             } catch (e: any) {
                 console.error(`Approval error for ${token.symbol}:`, e);
-                setErrorHook(`Approval failed: ${e.message || 'Unknown error'}`);
+                setErrorHook('Token approval failed. Please try again or check your wallet for details.');
                 setIsApprovingHook(false);
                 return false;
             }
@@ -252,8 +252,8 @@ export const useUniswapV3Interactions = () => {
                 !tradeDetails.path ||
                 tradeDetails.path.length === 0
             ) {
-                setErrorHook('Swap (V3Router02) prerequisites not met.');
-                onFailure?.('Swap prerequisites not met.');
+                setErrorHook('Unable to start swap. Please ensure your wallet is connected and all fields are filled.');
+                onFailure?.('Swap could not be started. Please check your wallet connection and input values.');
                 setIsLoadingHook(false);
                 return null;
             }
@@ -277,7 +277,7 @@ export const useUniswapV3Interactions = () => {
                     );
                     if (!approvalSuccess) {
                         setIsLoadingHook(false);
-                        onFailure?.('Approval failed.');
+                        onFailure?.('Token approval was unsuccessful. Please try again.');
                         return null; // Error already set by approveTokenForV3Router02
                     }
                 }
@@ -343,16 +343,21 @@ export const useUniswapV3Interactions = () => {
                     onFailure?.(txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.');
                     setErrorHook(
                         txResult.receipt
-                            ? 'Swap (V3Router02) transaction failed on-chain.'
-                            : 'Swap (V3Router02) transaction submission failed.'
+                            ? 'The transaction was submitted but failed on the blockchain. Please check your wallet or try again.'
+                            : 'The transaction could not be submitted. Please check your network connection and try again.'
                     );
                     return null;
                 }
             } catch (error: any) {
-                let message = 'Unknown error executing V3Router02 swap.';
-                if (error.reason) message = `Swap failed: ${error.reason}`;
-                else if (error.data?.message) message = `Swap failed: ${error.data.message}`;
-                else if (error.message) message = `Swap failed: ${error.message}`;
+                let message = 'An unexpected error occurred while processing your swap. Please try again.';
+                if (error.reason) {
+                    // If error.reason is user-friendly, use it; otherwise, fallback
+                    message = `Swap failed: ${error.reason}`.length < 100 ? `Swap failed: ${error.reason}` : 'Swap failed. Please try again.';
+                } else if (error.data?.message) {
+                    message = `Swap failed: ${error.data.message}`.length < 100 ? `Swap failed: ${error.data.message}` : 'Swap failed. Please try again.';
+                } else if (error.message) {
+                    message = `Swap failed: ${error.message}`.length < 100 ? `Swap failed: ${error.message}` : 'Swap failed. Please try again.';
+                }
                 onFailure?.(message);
                 setErrorHook(message);
                 setIsLoadingHook(false);
@@ -382,7 +387,7 @@ export const useUniswapV3Interactions = () => {
         const finalRecipient = accountAddress;
 
         if (!sdkToken0 || !sdkToken1 || !currentChainId || !signer || !accountAddress || !publicClient) {
-            setErrorHook('Core prerequisites (tokens, chain, signer, account) not available.');
+            setErrorHook('Cannot add liquidity. Please ensure your wallet is connected and all required fields are filled.');
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
@@ -393,18 +398,18 @@ export const useUniswapV3Interactions = () => {
         const factoryAddr = currentChainId ? FACTORY_ADDRESSES_V3[currentChainId as keyof typeof FACTORY_ADDRESSES_V3] : undefined;
 
         if (!nftPositionManagerAddr || !nonfungiblePositionManagerAbi || !factoryAddr || !uniswapV3FactoryAbi) {
-            setErrorHook('NFTPM or Factory address/ABI not configured for the current chain.');
+            setErrorHook('This network is not supported for liquidity operations. Please switch to a supported network.');
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
 
         if (tickLower >= tickUpper) {
-            setErrorHook('tickLower must be less than tickUpper.');
+            setErrorHook('Invalid price range: the lower tick must be less than the upper tick.');
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
         if (tickLower % tickSpacing !== 0 || tickUpper % tickSpacing !== 0) {
-            setErrorHook(`Ticks must be multiples of tickSpacing (${tickSpacing} for fee ${fee}).`);
+            setErrorHook(`Invalid price range: ticks must be multiples of ${tickSpacing} for this fee tier.`);
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
@@ -456,11 +461,11 @@ export const useUniswapV3Interactions = () => {
 
             if (poolAddressOnFactory === zeroAddress) {
                 setIsLoadingHook(true);
-                setErrorHook('Pool does not exist. Attempting to create and initialize...');
+                setErrorHook('No pool found for this pair. Creating and initializing a new pool...');
 
                 if (amountADesired_pool === 0n || amountBDesired_pool === 0n) {
                     setErrorHook(
-                        'Both desired amounts must be greater than 0 to initialize a new pool with a price based on their ratio.'
+                        'To create a new pool, both token amounts must be greater than zero.'
                     );
                     setIsLoadingHook(false);
                     return { state: TransactionState.Failed };
@@ -486,7 +491,7 @@ export const useUniswapV3Interactions = () => {
                 //     createPoolPopulatedTx.gasLimit = (estimatedGas * 120n) / 100n;
                 // } catch (gasError: any) {
                 //     console.warn('[AddLiq] Gas estimation failed for createAndInitializePoolIfNecessary:', gasError);
-                //     setErrorHook(`Gas Est Fail (Create Pool): ${gasError.reason || gasError.message}`);
+                //     setErrorHook('Could not estimate gas for pool creation. Please try again or check your wallet/network.');
                 //     setIsLoadingHook(false);
                 //     return { state: TransactionState.Failed };
                 // }
@@ -496,7 +501,7 @@ export const useUniswapV3Interactions = () => {
                 createPoolReceipt = createPoolTxResult.receipt;
 
                 if (createPoolTxResult.state !== TransactionState.Sent || !createPoolReceipt) {
-                    setErrorHook('Pool creation transaction failed or receipt not found.');
+                    setErrorHook('Pool creation failed. Please try again or check your wallet for details.');
                     setIsLoadingHook(false);
                     return { state: TransactionState.Failed, createPoolResponse, createPoolReceipt };
                 }
@@ -625,7 +630,11 @@ export const useUniswapV3Interactions = () => {
                 const errorMsg = mintReceipt
                     ? 'Mint transaction failed on-chain (NFTPM).'
                     : 'Mint transaction submission failed (NFTPM).';
-                setErrorHook(errorMsg);
+                setErrorHook(
+                    errorMsg === 'Mint transaction failed on-chain (NFTPM).'
+                        ? 'Liquidity addition failed on the blockchain. Please try again.'
+                        : 'Could not submit the liquidity addition transaction. Please try again.'
+                );
                 return {
                     state: TransactionState.Failed,
                     createPoolResponse,
@@ -636,9 +645,9 @@ export const useUniswapV3Interactions = () => {
             }
         } catch (error: any) {
             console.error('[AddLiq] Error in addLiquidityAndCreatePoolIfNeeded:', error);
-            let errorMessage = 'An error occurred during add liquidity.';
-            if (error.message) errorMessage = error.message;
-            else if (error.reason) errorMessage = error.reason;
+            let errorMessage = 'An unexpected error occurred while adding liquidity. Please try again.';
+            if (error.message && error.message.length < 100) errorMessage = error.message;
+            else if (error.reason && error.reason.length < 100) errorMessage = error.reason;
             else if (error.code) errorMessage = `Transaction failed with code: ${error.code}`;
             setErrorHook(errorMessage);
             setIsLoadingHook(false);
