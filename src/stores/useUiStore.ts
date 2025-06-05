@@ -5,7 +5,7 @@ type UIStoreState = {
 };
 
 const initialState: UIStoreState = {
-    theme: 'dark',
+    theme: 'light',
 };
 
 type UIStoreStore = UIStoreState & {
