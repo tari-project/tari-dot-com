@@ -194,11 +194,17 @@ export const useUniswapV3Interactions = () => {
             setIsApprovingHook(true);
             setErrorHook(null);
             try {
-                const tokenContract = new Contract(token.address, erc20Abi, signer);
-                const currentAllowance = await tokenContract.allowance(accountAddress, spender);
+                // Read allowance using publicClient (read-only)
+                const currentAllowance = await publicClient.readContract({
+                    address: token.address,
+                    abi: erc20Abi,
+                    functionName: 'allowance',
+                    args: [accountAddress, spender],
+                });
                 console.info(`[V3SwapRouter02] Current allowance for ${token.symbol}:`, currentAllowance.toString());
                 if (BigInt(currentAllowance.toString()) < amount) {
                     onApproveRequest?.();
+                    const tokenContract = new Contract(token.address, erc20Abi, signer);
                     const approveTxPopulated = await tokenContract.approve.populateTransaction(spender, amount);
                     const approveResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
                     if (approveResult.state !== TransactionState.Sent || !approveResult.receipt) {
@@ -434,15 +440,17 @@ export const useUniswapV3Interactions = () => {
             );
 
             // --- Check if pool exists ---
-            const factoryContract = new Contract(factoryAddr, uniswapV3FactoryAbi, signer.provider); // Use provider for read
-            console.info(
-                `[AddLiq] Checking pool for: ${tokenA_pool.wrapped.address}, ${tokenB_pool.wrapped.address}, fee: ${fee}`
-            );
-            const poolAddressOnFactory = await factoryContract.getPool(
-                tokenA_pool.wrapped.address,
-                tokenB_pool.wrapped.address,
-                fee
-            );
+            // Use publicClient for read-only contract call
+            const poolAddressOnFactory = await publicClient.readContract({
+                address: factoryAddr,
+                abi: uniswapV3FactoryAbi,
+                functionName: 'getPool',
+                args: [
+                    tokenA_pool.wrapped.address,
+                    tokenB_pool.wrapped.address,
+                    fee
+                ],
+            });
             console.info(`[AddLiq] Fetched pool address from factory: ${poolAddressOnFactory}`);
 
             if (poolAddressOnFactory === zeroAddress) {
@@ -509,36 +517,36 @@ export const useUniswapV3Interactions = () => {
             }
 
             for (const { token, amount } of tokensToApproveInfo) {
-                const tokenContract = new Contract(token.address, erc20Abi, signer);
-                try {
-                    const currentAllowance = await tokenContract.allowance(accountAddress, nftPositionManagerAddr);
-                    if (BigInt(currentAllowance.toString()) < amount) {
-                        console.info(`[AddLiq] Approving ${amount.toString()} of ${token.symbol} for NFTPM...`);
-                        const approveTxPopulated = await tokenContract.approve.populateTransaction(
-                            nftPositionManagerAddr,
-                            amount
-                        );
-                        approveTxPopulated.gasLimit = 100000n;
-                        // try {
-                        //     const estimatedGas = await signer.estimateGas(approveTxPopulated);
-                        //     approveTxPopulated.gasLimit = (estimatedGas * 120n) / 100n;
-                        // } catch (gasError) {
-                        //     console.warn(`[AddLiq] Gas estimation failed for ${token.symbol} approval, using default`);
-                        //     console.error(gasError);
-                        //     approveTxPopulated.gasLimit = 100000n;
-                        // }
-                        const approveTxResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
-                        if (approveTxResult.state !== TransactionState.Sent || !approveTxResult.receipt) {
-                            throw new Error(`Approval failed for ${token.symbol}`);
-                        }
-                        console.info(`[AddLiq] Approved ${token.symbol}`);
-                    } else {
-                        console.info(`[AddLiq] Sufficient allowance already exists for ${token.symbol}`);
+                // Read allowance using publicClient (read-only)
+                const currentAllowance = await publicClient.readContract({
+                    address: token.address,
+                    abi: erc20Abi,
+                    functionName: 'allowance',
+                    args: [accountAddress, nftPositionManagerAddr],
+                });
+                if (BigInt(currentAllowance.toString()) < amount) {
+                    console.info(`[AddLiq] Approving ${amount.toString()} of ${token.symbol} for NFTPM...`);
+                    const tokenContract = new Contract(token.address, erc20Abi, signer);
+                    const approveTxPopulated = await tokenContract.approve.populateTransaction(
+                        nftPositionManagerAddr,
+                        amount
+                    );
+                    approveTxPopulated.gasLimit = 100000n;
+                    // try {
+                    //     const estimatedGas = await signer.estimateGas(approveTxPopulated);
+                    //     approveTxPopulated.gasLimit = (estimatedGas * 120n) / 100n;
+                    // } catch (gasError) {
+                    //     console.warn(`[AddLiq] Gas estimation failed for ${token.symbol} approval, using default`);
+                    //     console.error(gasError);
+                    //     approveTxPopulated.gasLimit = 100000n;
+                    // }
+                    const approveTxResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
+                    if (approveTxResult.state !== TransactionState.Sent || !approveTxResult.receipt) {
+                        throw new Error(`Approval failed for ${token.symbol}`);
                     }
-                } catch (approvalError: any) {
-                    console.error(`[AddLiq] Approval error for ${token.symbol}:`, approvalError);
-                    setIsApprovingHook(false);
-                    throw new Error(`Failed to approve ${token.symbol}: ${approvalError.message || approvalError}`);
+                    console.info(`[AddLiq] Approved ${token.symbol}`);
+                } else {
+                    console.info(`[AddLiq] Sufficient allowance already exists for ${token.symbol}`);
                 }
             }
             setIsApprovingHook(false);
