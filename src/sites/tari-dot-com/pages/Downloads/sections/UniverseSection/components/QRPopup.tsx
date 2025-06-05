@@ -14,20 +14,19 @@ export default function QRPopup({ os }: { os: 'Android' | 'iOS' }) {
 
     const handleMouseEnter = () => setIsOpen(true);
     const handleMouseLeave = () => setIsOpen(false);
-    const handleButtonClick = () => {
-        window.open(os === 'Android' ? androidLink : iosLink);
-    };
 
     return (
         <QRPopupContainer>
-            <QRButton onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleButtonClick}>
-                <Image
-                    src={os === 'Android' ? playStoreButton.src : appStoreButton.src}
-                    alt={os === 'Android' ? 'Play Store Button' : 'App Store Button'}
-                    width={169}
-                    height={50}
-                />
-            </QRButton>
+            <a href={os === 'Android' ? androidLink : iosLink} target="_blank" rel="noopener noreferrer">
+                <QRButton onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                    <Image
+                        src={os === 'Android' ? playStoreButton.src : appStoreButton.src}
+                        alt={os === 'Android' ? 'Play Store Button' : 'App Store Button'}
+                        width={169}
+                        height={50}
+                    />
+                </QRButton>
+            </a>
 
             <AnimatePresence>
                 {isOpen && (

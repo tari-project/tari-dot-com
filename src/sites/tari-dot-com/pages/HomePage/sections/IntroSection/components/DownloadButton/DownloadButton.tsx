@@ -32,7 +32,13 @@ const wordVariants = {
     },
 };
 
-export default function DownloadButton() {
+interface Props {
+    backgroundColor?: string;
+    textColor?: string;
+    showIconBackground?: boolean;
+}
+
+export default function DownloadButton({ backgroundColor, textColor, showIconBackground = false }: Props) {
     const [hovering, setHovering] = useState(false);
 
     const { handleDownloadClick } = useDownloadUniverse();
@@ -50,10 +56,18 @@ export default function DownloadButton() {
                 onClick={handleDownloadClick}
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
+                $backgroundColor={backgroundColor}
             >
                 <AnimatePresence mode="popLayout">
                     {!hovering && (
-                        <Text key="default" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+                        <Text
+                            key="default"
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            $textColor={textColor}
+                        >
                             <Word variants={wordVariants}>Download</Word> <Word variants={wordVariants}>Tari</Word>{' '}
                             <Word variants={wordVariants}>Universe</Word>
                         </Text>
@@ -65,7 +79,7 @@ export default function DownloadButton() {
                         </Text>
                     )}
                 </AnimatePresence>
-                <Icons>
+                <Icons $showIconBackground={showIconBackground}>
                     <WindowsIcon />
                     <AppleIcon />
                     <LinuxIcon />

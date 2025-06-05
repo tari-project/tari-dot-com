@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { GradientCanvas, Wrapper } from './styles';
+import { GradientCanvas, Wrapper, FallbackBackground } from './styles';
 
 const GradientBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -220,6 +220,9 @@ const GradientBackground = () => {
     return (
         <Wrapper>
             <GradientCanvas ref={canvasRef} />
+            <noscript>
+                <FallbackBackground />
+            </noscript>
         </Wrapper>
     );
 };

@@ -105,7 +105,7 @@ const tikTokBubbleData: {
     },
 ];
 
-export default function EcosystemSection() {
+export default function EcosystemSection({ hideSupporters }: { hideSupporters?: boolean }) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const mouseX = useMotionValue(0);
@@ -184,7 +184,7 @@ export default function EcosystemSection() {
                 </CircleHolder>
             </FloatingElements>
 
-            <Community />
+            {!hideSupporters && <Community />}
         </Wrapper>
     );
 }

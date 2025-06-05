@@ -2,7 +2,7 @@ import { Os, Network, MacArch, WindowsArch, LinuxArch } from '@/ui-shared/types/
 
 export const networkOptions = Object.values(Network).map((network) => ({
     value: network,
-    label: network === Network.Mainnet ? 'Stagenet' : network.charAt(0).toUpperCase() + network.slice(1),
+    label: network.charAt(0).toUpperCase() + network.slice(1),
 }));
 
 export const architectureOptions = (selectedOs: Os) => {
