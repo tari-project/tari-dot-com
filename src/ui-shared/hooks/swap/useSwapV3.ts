@@ -12,7 +12,6 @@ import {
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
-
 import {
     QUOTER_ADDRESSES_V3,
     XTM_SDK_TOKEN,
@@ -64,11 +63,6 @@ export const useUniswapV3Interactions = () => {
         [currentChainId]
     );
 
-    const xtmTokenForSwap = useMemo(
-        () => (currentChainId ? XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN] : undefined),
-        [currentChainId]
-    );
-
     const [signer, setSigner] = useState<EthersSigner | null>(null);
     useEffect(() => {
         let cancelled = false;
@@ -83,51 +77,64 @@ export const useUniswapV3Interactions = () => {
         };
     }, [walletClient]);
 
-    const sdkPairTokenForSwap = useMemo(() => {
-        if (!currentChainId) return undefined;
-        if (pairTokenAddress === null) return Ether.onChain(currentChainId);
-        const lowerCaseAddress = pairTokenAddress.toLowerCase() as `0x${string}`;
-        const currentWeth = WETH9[currentChainId as keyof typeof WETH9];
-        if (currentWeth && lowerCaseAddress === currentWeth.address.toLowerCase()) {
-            return Ether.onChain(currentChainId);
-        }
-        return KNOWN_SDK_TOKENS[currentChainId as keyof typeof KNOWN_SDK_TOKENS]?.[lowerCaseAddress] || undefined;
-    }, [pairTokenAddress, currentChainId]);
+    const [sdkToken0, setSdkToken0] = useState<Token | Ether | undefined>(Ether.onChain(ChainId.MAINNET));
+    const [sdkToken1, setSdkToken1] = useState<Token | undefined>(XTM_SDK_TOKEN[ChainId.MAINNET]);
 
-    const [sdkToken0, setSdkToken0] = useState<Token | undefined>(undefined);
-    const [sdkToken1, setSdkToken1] = useState<Token | undefined>(undefined);
+    const handleUpdateSdkTokens = useCallback(
+        (pairTokenAddress: string | null, direction: SwapDirection, currentChainId: number | undefined) => {
+            const _xtmUiToken = XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN];
+            if (!currentChainId) return;
+            let _uiInputToken: Token | NativeCurrency | undefined;
+            let _uiOutputToken: Token | NativeCurrency | undefined;
+            let selectedPairSideTokenForSwapUi: Token | NativeCurrency | undefined;
 
-    useEffect(() => {
-        if (!currentChainId) return;
-        let _uiInputToken: Token | NativeCurrency | undefined;
-        let _uiOutputToken: Token | NativeCurrency | undefined;
-        let selectedPairSideTokenForSwapUi: Token | NativeCurrency | undefined;
-
-        if (pairTokenAddress === null) {
-            selectedPairSideTokenForSwapUi = Ether.onChain(currentChainId);
-        } else {
-            const currentWeth = WETH9[currentChainId as keyof typeof WETH9];
-            const lowerCaseAddress = pairTokenAddress.toLowerCase() as `0x${string}`;
-            if (currentWeth && lowerCaseAddress === currentWeth.address.toLowerCase()) {
+            if (pairTokenAddress === null) {
                 selectedPairSideTokenForSwapUi = Ether.onChain(currentChainId);
             } else {
-                selectedPairSideTokenForSwapUi = KNOWN_SDK_TOKENS[currentChainId as keyof typeof KNOWN_SDK_TOKENS]?.[
-                    lowerCaseAddress
-                ];
+                const currentWeth = WETH9[currentChainId as keyof typeof WETH9];
+                const lowerCaseAddress = pairTokenAddress.toLowerCase() as `0x${string}`;
+                if (currentWeth && lowerCaseAddress === currentWeth.address.toLowerCase()) {
+                    selectedPairSideTokenForSwapUi = Ether.onChain(currentChainId);
+                } else {
+                    selectedPairSideTokenForSwapUi = KNOWN_SDK_TOKENS[currentChainId as keyof typeof KNOWN_SDK_TOKENS]?.[
+                        lowerCaseAddress
+                    ];
+                }
             }
-        }
-        const _xtmUiToken = xtmTokenForSwap;
 
-        if (direction === 'toXtm') {
-            _uiInputToken = selectedPairSideTokenForSwapUi;
-            _uiOutputToken = _xtmUiToken;
-        } else {
-            _uiInputToken = _xtmUiToken;
-            _uiOutputToken = selectedPairSideTokenForSwapUi;
-        }
-        setSdkToken0(_uiInputToken as Token);
-        setSdkToken1(_uiOutputToken as Token);
-    }, [currentChainId, direction, pairTokenAddress, sdkPairTokenForSwap, xtmTokenForSwap]);
+            if (direction === 'toXtm') {
+                _uiInputToken = selectedPairSideTokenForSwapUi;
+                _uiOutputToken = _xtmUiToken;
+            } else {
+                _uiInputToken = _xtmUiToken;
+                _uiOutputToken = selectedPairSideTokenForSwapUi;
+            }
+            setSdkToken0(_uiInputToken as Token);
+            setSdkToken1(_uiOutputToken as Token);
+        },
+        []
+    );
+
+    const handeSetPairTokenAddress = useCallback(
+        (pairTokenAddress: string | null) => {
+            setPairTokenAddress(pairTokenAddress as `0x${string}` | null);
+            handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
+        },
+        [direction, currentChainId, handleUpdateSdkTokens]
+    );
+
+    const handleSetDirection = useCallback(
+        (direction: SwapDirection) => {
+            setDirection(direction);
+            handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
+        },
+        [pairTokenAddress, currentChainId, handleUpdateSdkTokens]
+    );
+
+    useEffect(() => {
+        handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentChainId, handleUpdateSdkTokens]);
 
     const abortController = useRef<AbortController | null>(null);
 
@@ -666,8 +673,8 @@ export const useUniswapV3Interactions = () => {
         addLiquidityV3: addLiquidityAndCreatePoolIfNeeded,
         pairTokenAddress,
         direction,
-        setPairTokenAddress,
-        setDirection,
+        setPairTokenAddress: handeSetPairTokenAddress,
+        setDirection: handleSetDirection,
         token0: sdkToken0,
         token1: sdkToken1,
         isLoading: isLoadingHook,

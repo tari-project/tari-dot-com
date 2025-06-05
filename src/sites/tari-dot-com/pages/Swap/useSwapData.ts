@@ -36,10 +36,8 @@ export interface SelectableTokenInfo {
 export const useSwapData = () => {
     const connectedAccount = useAccount();
 
-    const lastEthValue = useRef<string>('1');
-    const lastWxtmValue = useRef<string>('');
-    const [ethTokenAmount, setEthTokenAmount] = useState<string>(lastEthValue.current);
-    const [wxtmAmount, setWxtmAmount] = useState<string>(lastWxtmValue.current);
+    const [ethTokenAmount, setEthTokenAmount] = useState<string>('');
+    const [wxtmAmount, setWxtmAmount] = useState<string>('');
 
     const [lastUpdatedField, setLastUpdatedField] = useState<SwapField>('ethTokenField');
 
@@ -52,7 +50,7 @@ export const useSwapData = () => {
     const [transactionId, setTransactionId] = useState<string | null>(null);
     const [paidTransactionFee, setPaidTransactionFee] = useState<string | null>(null);
     const [txBlockHash, setTxBlockHash] = useState<`0x${string}` | null>(null);
-    const [uiError, setUiError] = useState<string | null>(null); // Error specific to this UI layer
+    const [uiError, setUiError] = useState<string | null>(null);
     const [minimumReceivedDisplay, setMinimumReceivedDisplay] = useState<string | null>(null);
     const [executionPriceDisplay, setExecutionPriceDisplay] = useState<string | null>(null);
 
@@ -72,7 +70,6 @@ export const useSwapData = () => {
         executeSwap,
         insufficientLiquidity: insufficientLiquidityFromHook,
         error: swapEngineError,
-        // isLoading: isSwapEngineLoading,
     } = useUniswapV3Interactions();
 
     const currentChainId = useMemo(
@@ -91,7 +88,6 @@ export const useSwapData = () => {
 
     const {
         tokenDisplayInfo: fromTokenDisplay,
-        // isLoading: isLoadingFromBalance,
         refetch: refetchFromToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: fromUiTokenDefinition,
@@ -102,7 +98,6 @@ export const useSwapData = () => {
 
     const {
         tokenDisplayInfo: toTokenDisplay,
-        // isLoading: isLoadingToBalance,
         refetch: refetchToToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: toUiTokenDefinition,
@@ -117,7 +112,7 @@ export const useSwapData = () => {
 
     const notEnoughBalance = useMemo(() => {
         if (direction === 'toXtm') {
-            if (!fromTokenDisplay?.rawBalance || !ethTokenAmount || !fromTokenDisplay.decimals) return false;
+            if (!fromTokenDisplay?.rawBalance || !ethTokenAmount || !fromTokenDisplay.decimals || Number(ethTokenAmount) <= 0) return false;
             try {
                 const amountBigInt = viemParseUnits(ethTokenAmount, fromTokenDisplay.decimals);
                 return amountBigInt > fromTokenDisplay.rawBalance;
@@ -125,7 +120,7 @@ export const useSwapData = () => {
                 return true;
             }
         } else {
-            if (!toTokenDisplay?.rawBalance || !wxtmAmount || !toTokenDisplay.decimals) return false;
+            if (!toTokenDisplay?.rawBalance || !wxtmAmount || !toTokenDisplay.decimals || Number(wxtmAmount) <= 0) return false;
             try {
                 const amountBigInt = viemParseUnits(wxtmAmount, toTokenDisplay.decimals);
                 return amountBigInt > toTokenDisplay.rawBalance;
@@ -216,28 +211,22 @@ export const useSwapData = () => {
             );
     }, [connectedAccount.address, baseSelectableTokensForList]);
 
-    const { data: erc20BalancesData
-        // , isLoading: isLoadingErc20Balances
-    } = useReadContracts({
+    const { data: erc20BalancesData } = useReadContracts({
         contracts: selectableTokensContracts,
         allowFailure: true,
         query: { enabled: selectableTokensContracts.length > 0 && !!connectedAccount.address },
     });
 
-    const { data: nativeTokenBalanceDataForList,
-        // isLoading: isLoadingNativeForList
-    } = useBalance({
+    const { data: nativeTokenBalanceDataForList } = useBalance({
         address: connectedAccount.address,
         chainId: currentChainId,
     });
 
     const [tokenPrices, setTokenPrices] = useState<Record<string, number | undefined>>({});
-    // const [isLoadingPrices, setIsLoadingPrices] = useState(false);
 
     useEffect(() => {
         const fetchAllPrices = async () => {
             if (baseSelectableTokensForList.length === 0 || !currentChainId) return;
-            // setIsLoadingPrices(true);
             const newPrices: Record<string, number | undefined> = {};
             const promises = baseSelectableTokensForList.map(async (token) => {
                 if (token.symbol) {
@@ -246,15 +235,9 @@ export const useSwapData = () => {
             });
             await Promise.all(promises);
             setTokenPrices((prev) => ({ ...prev, ...newPrices }));
-            // setIsLoadingPrices(false);
         };
         fetchAllPrices();
     }, [baseSelectableTokensForList, currentChainId]);
-
-    useEffect(() => {
-        lastEthValue.current = ethTokenAmount;
-        lastWxtmValue.current = wxtmAmount;
-    }, [ethTokenAmount, wxtmAmount]);
 
     const selectableFromTokens = useMemo((): SelectableTokenInfo[] => {
         return baseSelectableTokensForList
@@ -322,23 +305,17 @@ export const useSwapData = () => {
         setSlippage(null);
         setMinimumReceivedDisplay(null);
         setExecutionPriceDisplay(null);
-        setTxBlockHash(null);
-        setTransactionId(null);
-        setPaidTransactionFee(null);
     }, []);
 
-    // Removed processingOpen and swapSuccess effect
-
     const calcRef = useRef<NodeJS.Timeout | null>(null);
-
 
     const calcAmounts = useCallback(
         async (signal: AbortSignal) => {
             let amountTypedByUserStr: string;
             let tokenUsedForParsingAmount: Token | NativeCurrency | undefined;
 
-            const tradeInputTokenDef = direction === 'toXtm' ? fromUiTokenDefinition : toUiTokenDefinition;
-            const tradeOutputTokenDef = direction === 'toXtm' ? toUiTokenDefinition : fromUiTokenDefinition;
+            // const tradeInputTokenDef = direction === 'toXtm' ? fromUiTokenDefinition : toUiTokenDefinition;
+            // const tradeOutputTokenDef = direction === 'toXtm' ? toUiTokenDefinition : fromUiTokenDefinition;
 
             if (lastUpdatedField === 'ethTokenField') {
                 amountTypedByUserStr = ethTokenAmount;
@@ -348,15 +325,17 @@ export const useSwapData = () => {
                 tokenUsedForParsingAmount = toUiTokenDefinition;
             }
 
+                console.log({ tokenUsedForParsingAmount, amountTypedByUserStr });
             if (
                 !tokenUsedForParsingAmount ||
                 !amountTypedByUserStr ||
                 Number.isNaN(Number(amountTypedByUserStr)) ||
-                Number(amountTypedByUserStr) <= 0 ||
-                !tradeInputTokenDef ||
-                !tradeOutputTokenDef
+                Number(amountTypedByUserStr) <= 0
             ) {
+                console.log({ tokenUsedForParsingAmount, amountTypedByUserStr });
                 clearCalculatedDetails();
+                if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
+                else if (lastUpdatedField === 'wxtmField' && ethTokenAmount !== '') setEthTokenAmount('');
                 setIsCalculatingQuote(false);
                 return;
             }
@@ -365,8 +344,8 @@ export const useSwapData = () => {
             try {
                 const amountForCalcWei = viemParseUnits(amountTypedByUserStr, tokenUsedForParsingAmount.decimals);
                 const details = await getTradeDetails(amountForCalcWei.toString(), lastUpdatedField, signal);
+
                 if (signal.aborted) {
-                    setIsCalculatingQuote(false);
                     return;
                 }
 
@@ -381,6 +360,7 @@ export const useSwapData = () => {
                             `${formatAmountSmartly(details.minimumReceived)} ${details.minimumReceived.currency.symbol}`
                         );
                     } else setMinimumReceivedDisplay(null);
+
                     if (details.executionPrice) {
                         const baseToken = details.executionPrice.baseCurrency;
                         const quoteToken = details.executionPrice.quoteCurrency;
@@ -390,62 +370,74 @@ export const useSwapData = () => {
                             );
                         } else setExecutionPriceDisplay(null);
                     } else setExecutionPriceDisplay(null);
-
                     if (details.inputToken?.name === XTM_SDK_TOKEN[currentChainId as ChainId]?.name) {
                         if (lastUpdatedField === 'ethTokenField') {
                             setWxtmAmount(formatAmountSmartly(details.inputAmount));
                         } else {
                             setEthTokenAmount(formatAmountSmartly(details.outputAmount));
                         }
-                    } else {
+                    }
+
+                    else {
                         if (lastUpdatedField === 'ethTokenField') {
                             setWxtmAmount(formatAmountSmartly(details.outputAmount));
                         } else {
                             setEthTokenAmount(formatAmountSmartly(details.inputAmount));
                         }
                     }
+                    setUiError(null);
                 } else {
                     if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
                     else if (lastUpdatedField === 'wxtmField' && ethTokenAmount !== '') setEthTokenAmount('');
                     clearCalculatedDetails();
                 }
-                setIsCalculatingQuote(false);
-            } catch {
+            } catch (error: any) {
+                if (error.name === 'AbortError') {
+                    return;
+                }
+                console.error("Error in calcAmounts: ", error);
+                setUiError('Failed to fetch quote. Please try again.');
+                if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
+                else if (lastUpdatedField === 'wxtmField' && ethTokenAmount !== '') setEthTokenAmount('');
                 clearCalculatedDetails();
-                setIsCalculatingQuote(false);
+            } finally {
+                if (!signal.aborted) {
+                    setIsCalculatingQuote(false);
+                }
             }
         },
-        [
-            direction,
-            fromUiTokenDefinition,
-            toUiTokenDefinition,
-            lastUpdatedField,
-            ethTokenAmount,
-            wxtmAmount,
-            clearCalculatedDetails,
-            getTradeDetails,
-            currentChainId,
-        ]
+        [direction, fromUiTokenDefinition, toUiTokenDefinition, lastUpdatedField, ethTokenAmount, wxtmAmount, clearCalculatedDetails, getTradeDetails, currentChainId]
     );
+
+    const calcAmountsFnRef = useRef(calcAmounts);
+    useEffect(() => {
+        calcAmountsFnRef.current = calcAmounts;
+    }, [calcAmounts]);
 
     const debounceCalc = useCallback(() => {
         if (calcRef.current) clearTimeout(calcRef.current);
-        if (abortController.current) abortController.current.abort();
+        if (abortController.current) {
+            abortController.current.abort();
+        }
         abortController.current = new AbortController();
         const signal = abortController.current.signal;
 
+        setIsCalculatingQuote(true);
         calcRef.current = setTimeout(() => {
-            calcAmounts(signal);
+            calcAmountsFnRef.current(signal);
         }, 500);
-    }, [calcAmounts]);
+    }, []);
 
     const handleNumberInput = (value: string, field: SwapField) => {
         clearCalculatedDetails();
+
         const currentUiTokenDef = field === 'ethTokenField' ? fromUiTokenDefinition : toUiTokenDefinition;
         const maxDecimals = currentUiTokenDef?.decimals ?? 18;
         let processedValue = value;
 
-        if (processedValue === '' || processedValue === '.' || processedValue === '0') {
+        const isEffectivelyZeroOrInvalid = processedValue === '' || processedValue === '.' || Number(processedValue) <= 0;
+
+        if (isEffectivelyZeroOrInvalid && processedValue !== "0.") { // Allow "0." to continue for typing "0.X"
             if (field === 'ethTokenField') {
                 setEthTokenAmount(processedValue);
                 if (wxtmAmount !== '') setWxtmAmount('');
@@ -454,13 +446,15 @@ export const useSwapData = () => {
                 if (ethTokenAmount !== '') setEthTokenAmount('');
             }
             setLastUpdatedField(field);
-            clearCalculatedDetails();
             setIsCalculatingQuote(false);
             if (calcRef.current) clearTimeout(calcRef.current);
+            if (abortController.current) abortController.current.abort();
             return;
         }
+
         const regex = /^\d*\.?\d*$/;
         if (!regex.test(processedValue) || (processedValue !== '.' && Number.isNaN(Number(processedValue)))) return;
+
         if (processedValue.length > 1 && processedValue.startsWith('0') && !processedValue.startsWith('0.')) {
             processedValue = processedValue.substring(1);
         }
@@ -473,15 +467,33 @@ export const useSwapData = () => {
         else setWxtmAmount(processedValue);
         setLastUpdatedField(field);
         debounceCalc();
-        setIsCalculatingQuote(true);
     };
 
     const handleToggleUiDirection = useCallback(() => {
-        const newUiDirection = direction === 'toXtm' ? 'fromXtm' : 'toXtm';
-        setSwapEngineDirection(newUiDirection);
+        const newFromAmount = wxtmAmount;
+        const newToAmount = ethTokenAmount;
+
+        setSwapEngineDirection(direction === 'toXtm' ? 'fromXtm' : 'toXtm');
+
+        setEthTokenAmount(newFromAmount); // This is now the "from" amount field
+        setWxtmAmount(newToAmount);   // This is now the "to" amount field
+
+        setLastUpdatedField('ethTokenField'); // Assume primary input field is now the source of truth
+
         clearCalculatedDetails();
-        debounceCalc();
-    }, [direction, setSwapEngineDirection, clearCalculatedDetails, debounceCalc]);
+        if (newFromAmount && Number(newFromAmount) > 0) {
+            debounceCalc(); // Recalculate based on the new "from" amount
+        } else {
+            // If new "from" amount is empty or zero, clear the "to" amount as well
+            // (it might have held the old "from" amount).
+            if (newFromAmount === '' || Number(newFromAmount) <= 0) {
+                setWxtmAmount('');
+            }
+            setIsCalculatingQuote(false);
+            if (calcRef.current) clearTimeout(calcRef.current);
+            if (abortController.current) abortController.current.abort();
+        }
+    }, [direction, setSwapEngineDirection, clearCalculatedDetails, debounceCalc, ethTokenAmount, wxtmAmount]);
 
     const handleConfirm = async (params?: SwapExecutionProps) => {
         setTransactionId(null);
@@ -490,11 +502,13 @@ export const useSwapData = () => {
         setUiError(null);
 
         if (!tradeDetails || !tradeDetails.inputAmount || !tradeDetails.outputAmount || !tradeDetails.inputToken) {
+            setUiError('Trade details are missing. Please try again.');
             return;
         }
 
         const inputAmountToExecute = BigInt(tradeDetails.inputAmount.quotient.toString());
         if (!inputAmountToExecute || inputAmountToExecute <= 0n) {
+            setUiError('Input amount is invalid. Please try again.');
             return;
         }
 
@@ -502,10 +516,8 @@ export const useSwapData = () => {
             const swapResult = await executeSwap({ tradeDetails, ...params });
 
             if (!swapResult || !swapResult.receipt) {
-                // Check if executeSwap returned null or no receipt
-                // Error would have been set by executeSwap, or set a generic one here
-                if (swapEngineError) {
-                    setUiError(swapEngineError || 'Swap execution failed to return a result.');
+                if (!swapEngineError) {
+                    setUiError('Swap execution failed to return a confirmed result.');
                 }
                 return;
             }
@@ -519,20 +531,21 @@ export const useSwapData = () => {
             setTxBlockHash(swapResult.receipt.blockHash as `0x${string}`);
 
             if (swapResult.receipt.gasUsed && swapResult.receipt.gasPrice && connectedAccount.chain) {
-                // Use effectiveGasPrice
-                const swapFee =
-                    BigInt(swapResult.receipt.gasUsed.toString()) * BigInt(swapResult.receipt.gasPrice.toString());
+                const swapFee = swapResult.receipt.gasUsed * swapResult.receipt.gasPrice;
                 setPaidTransactionFee(
                     `${utilFormatNativeGasFee(swapFee, connectedAccount.chain.nativeCurrency.decimals, connectedAccount.chain.nativeCurrency.symbol)}`
                 );
             }
 
+            setEthTokenAmount('');
+            setWxtmAmount('');
+            clearCalculatedDetails(); // Clear quote details too
+
             setTimeout(() => {
                 handleRefetchBalances();
             }, 3000);
         } catch (e: any) {
-            // This catch is for errors thrown by executeSwap itself before returning
-            setUiError(e.message || 'An error occurred during the swap process.');
+            setUiError(e.shortMessage || e.message || 'An error occurred during the swap process.');
         }
     };
 
@@ -563,14 +576,12 @@ export const useSwapData = () => {
             setLastUpdatedField('ethTokenField');
             setTokenSelectOpen(false);
             clearCalculatedDetails();
-            setTimeout(() => {
-                debounceCalc();
-            }, 300);
+            debounceCalc();
         },
         [setPairTokenAddress, clearCalculatedDetails, debounceCalc]
     );
 
-    const combinedError = uiError || swapEngineError; // Prioritize UI error, then hook error
+    const combinedError = uiError || swapEngineError;
 
     return {
         notEnoughBalance,
@@ -582,7 +593,7 @@ export const useSwapData = () => {
         uiDirection: direction,
         handleConfirm,
         transaction: transactionForDisplay,
-        error: combinedError, // Use combined error
+        error: combinedError,
         handleSelectFromToken,
         selectableFromTokens,
         tokenSelectOpen,

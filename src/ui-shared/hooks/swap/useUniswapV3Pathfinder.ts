@@ -150,16 +150,19 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
                     !usdtToken ||
                     !publicClient
                 ) {
-                    return { ...emptyPathfinderReturn, error: 'Pathfinder: Prerequisites not met.' };
+                    console.log({ currentChainId, uiToken0, uiToken1, wethToken, xtmToken, usdtToken, publicClient });
+                    return { ...emptyPathfinderReturn, error: 'Invalid or zero amount.' };
                 }
                 if (!/^\d+$/.test(amountRaw) || BigInt(amountRaw) <= 0n) {
-                    return { ...emptyPathfinderReturn, error: 'Pathfinder: Invalid or zero amount.' };
+                    return { ...emptyPathfinderReturn, error: 'Invalid or zero amount.' };
                 }
 
                 // uiToken0 is ALREADY the input token for the trade path, uiToken1 is ALREADY the output.
                 const actualTradeInputToken = uiToken0;
                 const actualTradeOutputToken = uiToken1;
 
+                console.log('actualTradeInputToken', actualTradeInputToken);
+                console.log('actualTradeOutputToken', actualTradeOutputToken);
                 const initialLogicToken = actualTradeInputToken.isNative ? wethToken : (actualTradeInputToken as Token);
                 const finalLogicToken = actualTradeOutputToken.isNative ? wethToken : (actualTradeOutputToken as Token);
 
@@ -308,7 +311,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
                     !bestCalculatedOutputAmount ||
                     BigInt(bestCalculatedOutputAmount.quotient.toString()) === 0n
                 ) {
-                    return { ...emptyPathfinderReturn, error: 'Pathfinder: No viable trade path found.' };
+                    return { ...emptyPathfinderReturn, error: 'Failed to get trade details.' };
                 }
 
                 const finalDisplayInputAmount = CurrencyAmount.fromRawAmount(
@@ -356,7 +359,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1 }: U
                 }
                 return {
                     ...emptyPathfinderReturn,
-                    error: e.message || 'Pathfinder: Failed to get trade details.',
+                    error: e.message || 'Failed to get trade details.',
                     isLoading: false,
                 };
             }
