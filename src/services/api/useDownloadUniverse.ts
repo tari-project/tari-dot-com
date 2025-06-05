@@ -1,4 +1,5 @@
 export type DownloadPlatform = 'windows' | 'macos' | 'linux';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -26,6 +27,7 @@ export const useDownloadUniverse = () => {
             platform = getPlatform();
         }
         const url = `https://airdrop.tari.com/api/miner/download/${platform}?universeReferral=tari-dot-com`;
+        sendGTMEvent({ event: 'download_button_clicked', platform: platform });
 
         window.open(url, '_blank');
     };

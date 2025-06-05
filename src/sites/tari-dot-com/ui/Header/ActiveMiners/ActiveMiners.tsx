@@ -32,7 +32,7 @@ export default function ActiveMiners({ theme }: Props) {
                         <NumberFlow
                             value={countValue}
                             format={{
-                                notation: countValue > 10000 ? 'compact' : 'standard',
+                               notation: countValue > 100000 ? 'compact' : 'standard',
                                 compactDisplay: 'short',
                                 maximumFractionDigits: 1,
                             }}

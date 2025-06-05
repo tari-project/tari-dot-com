@@ -38,11 +38,13 @@ export default function TokenomicsPage() {
                     Tari token (XTR).
                 </p>
                 <p>
-                    There will be 21 billion XTM as the initial supply, with a tail emission of 1% per year. 6.3 billion
-                    tokens, or 30% of the initial supply, will be pre-mined with significant lockups and vesting
-                    schedules. The pre-mined tokens will be used to support protocol infrastructure, offer community
-                    incentives and grants, and ensure a sufficient allocation of tokens for contributors and supporters.
-                    100% of tokens emitted by the protocol after the pre-mine go to miners who secure the Tari network.
+                    There will be a total supply of 21 billion XTM emitted gradually using an exponential decay function
+                    over approximately 27.8 years. Once annual emissions decline to 1% of total supply, a perpetual 1%
+                    tail emission will continue indefinitely, ensuring ongoing miner compensation and network security.
+                    Of this total supply, 6.3 billion XTM (30%) will be pre-mined, subject to significant lockups and
+                    vesting schedules. These pre-mined tokens will support protocol infrastructure, community
+                    incentives, grants, and long-term alignment with contributors. After the pre-mine distribution, all
+                    newly emitted tokens (100%) will go exclusively to miners who secure the Tari network.
                 </p>
                 <p>
                     There is a deep relationship between XTM tokens and XTR tokens. The only way to create XTR is to
