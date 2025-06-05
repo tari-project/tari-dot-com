@@ -504,7 +504,9 @@ export const useSwapData = () => {
             if (!swapResult || !swapResult.receipt) {
                 // Check if executeSwap returned null or no receipt
                 // Error would have been set by executeSwap, or set a generic one here
-                setUiError(swapEngineError || 'Swap execution failed to return a result.');
+                if (swapEngineError) {
+                    setUiError(swapEngineError || 'Swap execution failed to return a result.');
+                }
                 return;
             }
 
