@@ -196,10 +196,10 @@ export const useUniswapV3Interactions = () => {
             try {
                 // Read allowance using publicClient (read-only)
                 const currentAllowance = await publicClient.readContract({
-                    address: token.address,
+                    address: token.address as `0x${string}`,
                     abi: erc20Abi,
                     functionName: 'allowance',
-                    args: [accountAddress, spender],
+                    args: [accountAddress, spender as `0x${string}`],
                 });
                 console.info(`[V3SwapRouter02] Current allowance for ${token.symbol}:`, currentAllowance.toString());
                 if (BigInt(currentAllowance.toString()) < amount) {
@@ -224,7 +224,7 @@ export const useUniswapV3Interactions = () => {
                 return false;
             }
         },
-        [signer, accountAddress]
+        [signer, accountAddress, publicClient]
     );
 
     const executeSwapWithV3Router02 = useCallback(
