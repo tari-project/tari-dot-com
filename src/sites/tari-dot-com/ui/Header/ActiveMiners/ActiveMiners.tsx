@@ -1,3 +1,5 @@
+'use client';
+
 import { useMinerStats } from '@/services/api/useMinerStats';
 import { Dot, TextWrapper, Text, NumberWrapper } from './styles';
 import { useEffect, useRef, useState } from 'react';
@@ -30,7 +32,7 @@ export default function ActiveMiners({ theme }: Props) {
                         <NumberFlow
                             value={countValue}
                             format={{
-                                notation: countValue > 100000 ? 'compact' : 'standard',
+                               notation: countValue > 100000 ? 'compact' : 'standard',
                                 compactDisplay: 'short',
                                 maximumFractionDigits: 1,
                             }}
