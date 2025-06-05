@@ -561,7 +561,9 @@ export const useSwapData = () => {
             setLastUpdatedField('ethTokenField');
             setTokenSelectOpen(false);
             clearCalculatedDetails();
-            debounceCalc();
+            setTimeout(() => {
+                debounceCalc();
+            }, 300);
         },
         [setPairTokenAddress, clearCalculatedDetails, debounceCalc]
     );

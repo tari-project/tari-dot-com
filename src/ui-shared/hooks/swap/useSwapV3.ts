@@ -335,11 +335,12 @@ export const useUniswapV3Interactions = () => {
                 const txResult = await sendTransactionWithWagmiSigner(signer, populatedTx);
                 console.info('[V3SwapRouter02] Swap response:', txResult);
                 setIsLoadingHook(false);
-                onSuccess?.(txResult);
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
+                    onSuccess?.(txResult);
                     console.info('[V3SwapRouter02] Swap successful!');
                     return { response: txResult.response, receipt: txResult.receipt };
                 } else {
+                    onFailure?.(txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.');
                     setErrorHook(
                         txResult.receipt
                             ? 'Swap (V3Router02) transaction failed on-chain.'
