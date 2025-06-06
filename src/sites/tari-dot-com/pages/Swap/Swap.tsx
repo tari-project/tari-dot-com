@@ -74,7 +74,6 @@ export const Swap = memo(function Swap() {
         tokenSelectOpen,
         selectableFromTokens,
         error,
-        insufficientLiquidity,
         lastUpdatedField,
         ethUsdPrice,
         setFromAmount,
@@ -186,8 +185,17 @@ export const Swap = memo(function Swap() {
 
     const disabled = useMemo(() => {
         const hasAmount = Number(ethTokenAmount) > 0 || Number(wxtmAmount) > 0; // Check if either has a positive amount
-        return Boolean(isLoading || !hasAmount || insufficientLiquidity || notEnoughBalance);
-    }, [isLoading, notEnoughBalance, insufficientLiquidity, ethTokenAmount, wxtmAmount]);
+        return Boolean(isLoading || !hasAmount || notEnoughBalance);
+    }, [isLoading, notEnoughBalance, ethTokenAmount, wxtmAmount]);
+
+    const buttonCopy = useMemo(() => {
+        if (!connectedAccount.address) {
+            return 'Connect wallet';
+        }
+        if (notEnoughBalance) return 'Insufficient balance';
+        if (isLoading) return 'Loading...';
+        return 'Review swap';
+    }, [connectedAccount.address, isLoading, notEnoughBalance]);
 
     // Ref for the root container to observe height changes
     const containerRef = useRef<HTMLDivElement>(null);
@@ -375,11 +383,7 @@ export const Swap = memo(function Swap() {
                     size="xl"
                     disabled={disabled && !!connectedAccount.address}
                 >
-                    {connectedAccount.address
-                        ? isLoading
-                            ? 'Loading...'
-                            : 'Review swap'
-                        : 'Connect wallet'}
+                    {buttonCopy}
                 </WalletButton>
             </SubmitButtonWrapper>
 

@@ -497,9 +497,6 @@ export const useSwapData = () => {
             const swapResult = await executeSwap({ tradeDetails, ...params });
 
             if (!swapResult || !swapResult.receipt) {
-                if (!swapEngineError) {
-                    setUiError('Swap execution failed to return a confirmed result.');
-                }
                 return;
             }
 
@@ -526,7 +523,8 @@ export const useSwapData = () => {
                 handleRefetchBalances();
             }, 3000);
         } catch (e: any) {
-            setUiError(e.shortMessage || e.message || 'An error occurred during the swap process.');
+            console.error('Error in handleConfirm:', e);
+            setUiError('An error occurred during the swap process.');
         }
     };
 

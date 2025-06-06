@@ -150,7 +150,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                 if (
                     !currentChainId || !uiToken0 || !uiToken1 || !wethToken || !xtmToken || !usdtToken || !publicClient || !swapRouterAddress
                 ) {
-                    return { ...emptyPathfinderReturn, error: 'Configuration error (tokens, client, or router address missing).' };
+                    return { ...emptyPathfinderReturn, error: 'Error getting trade details' };
                 }
                 if (!/^\d+$/.test(amountRaw) || BigInt(amountRaw) <= 0n) {
                     return { ...emptyPathfinderReturn, error: 'Invalid or zero amount.' };
@@ -162,7 +162,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                 const finalLogicToken = actualTradeOutputToken.isNative ? wethToken : (actualTradeOutputToken as Token);
 
                 if (initialLogicToken.equals(finalLogicToken)) {
-                    return { ...emptyPathfinderReturn, error: 'Pathfinder: Input and output tokens are the same.' };
+                    return { ...emptyPathfinderReturn, error: 'Error getting trade details' };
                 }
 
                 let amountInToQuote: CurrencyAmount<Token> | undefined;
@@ -247,7 +247,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
 
                 if (signal?.aborted) throw new Error('Aborted');
                 if (bestTradePath.length === 0 || !bestCalculatedInputAmount || !bestCalculatedOutputAmount || JSBI.equal(bestCalculatedOutputAmount.quotient, JSBI.BigInt(0))) {
-                    return { ...emptyPathfinderReturn, error: 'Failed to find a valid trade path.' };
+                    return { ...emptyPathfinderReturn };
                 }
 
                 // Amounts for display are in terms of the UI tokens (actualTradeInput/OutputToken)
@@ -418,7 +418,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                     return { ...emptyPathfinderReturn, isLoading: false, error: 'Operation aborted by user.' };
                 }
                 console.error("Error in getBestTradeForAmount:", e);
-                return { ...emptyPathfinderReturn, error: e.message || 'Failed to get trade details.', isLoading: false };
+                return { ...emptyPathfinderReturn, error: 'Failed to get trade details.', isLoading: false };
             }
         },
         [currentChainId, uiToken0, uiToken1, wethToken, xtmToken, usdtToken, findAndQuoteSingleLeg, publicClient, swapRouterAddress, userAccountAddress] // Added v3QuoterAddress
