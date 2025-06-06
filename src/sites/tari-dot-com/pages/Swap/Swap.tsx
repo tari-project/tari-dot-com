@@ -150,6 +150,7 @@ export const Swap = memo(function Swap() {
 
             postToParentIframe({
                 type: MessageType.CONFIRM_REQUEST, payload: {
+                    toTokenDisplay,
                     fromTokenDisplay, transaction: {
                         ...transaction, amount, targetAmount,
                         networkFee: transaction.networkFee ? networkFeeUsd : null,
@@ -226,6 +227,60 @@ export const Swap = memo(function Swap() {
         inputRef: toInputRef,
     });
 
+    const xtmTokenInputMarkup = useMemo(() => {
+        return <OptionContainer>
+            <SwapOption>
+                <span>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</span>
+                <SwapOptionAmount>
+                    <SwapAmountInput
+                        ref={toInputRef} // Assign ref
+                        type="text"
+                        $error={uiDirection === 'fromXtm' ? notEnoughBalance : false}
+                        $loading={isLoading && lastUpdatedField === 'ethTokenField'}
+                        inputMode="decimal"
+                        placeholder="0.00"
+                        onChange={(e) => setTargetAmount(e.target.value)}
+                        value={wxtmAmount}
+                        $dynamicFontSize={toInputFontSize} // Pass dynamic font size
+                    />
+                </SwapOptionAmount>
+                {connectedAccount.address ? <span>{`Balance: ${toTokenDisplay?.balance}`}</span> : null}
+            </SwapOption>
+            <SwapOptionCurrency>
+                {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
+                <span>{'wXTM'}</span>
+            </SwapOptionCurrency>
+        </OptionContainer>
+    }, [connectedAccount.address, isLoading, lastUpdatedField, notEnoughBalance, setTargetAmount, toInputFontSize, toTokenDisplay?.balance, uiDirection, wxtmAmount]);
+
+    const ethTokenInputMarkup = useMemo(() => {
+        return <OptionContainer>
+            <SwapOption $paddingBottom={25}>
+                <span>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</span>
+                <SwapOptionAmount>
+                    <SwapAmountInput
+                        ref={fromInputRef} // Assign ref
+                        type="text"
+                        $error={uiDirection === 'toXtm' ? notEnoughBalance : false}
+                        $loading={isLoading && lastUpdatedField === 'wxtmField'}
+                        inputMode="decimal"
+                        placeholder="0.00"
+                        onChange={(e) => setFromAmount(e.target.value)}
+                        value={ethTokenAmount}
+                        $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
+                    />
+                </SwapOptionAmount>
+                {connectedAccount.address ? <span>{`Balance: ${fromTokenDisplay?.balance}`}</span> : null}
+            </SwapOption>
+            <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
+                {getCurrencyIcon({ symbol: fromTokenDisplay?.symbol || EnabledTokensEnum.ETH, width: 25 })}
+                <span>{fromTokenDisplay?.symbol || 'ETH'}</span>
+                <ChevronSVG width={8} />
+            </SwapOptionCurrency>
+        </OptionContainer>
+    }, [connectedAccount.address, fromInputFontSize, fromTokenDisplay?.balance, fromTokenDisplay?.symbol, isLoading, lastUpdatedField, notEnoughBalance, setFromAmount, setTokenSelectOpen, uiDirection, ethTokenAmount]);
+
+
     return (
         <SwapsContainer ref={containerRef}>
             <HeaderWrapper>
@@ -244,59 +299,13 @@ export const Swap = memo(function Swap() {
                     </ConnectedWalletWrapper>
                 ) : null}
             </HeaderWrapper>
-            <OptionContainer>
-                <SwapOption $paddingBottom={25}>
-                    <span>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</span>
-                    <SwapOptionAmount>
-                        <SwapAmountInput
-                            ref={fromInputRef} // Assign ref
-                            type="text"
-                            $error={uiDirection === 'toXtm' ? notEnoughBalance : false}
-                            $loading={isLoading && lastUpdatedField === 'wxtmField'}
-                            inputMode="decimal"
-                            placeholder="0.00"
-                            onChange={(e) => setFromAmount(e.target.value)}
-                            value={ethTokenAmount}
-                            $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
-                        />
-                    </SwapOptionAmount>
-                    {connectedAccount.address ? <span>{`Balance: ${fromTokenDisplay?.balance}`}</span> : null}
-                </SwapOption>
-                <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
-                    {getCurrencyIcon({ symbol: fromTokenDisplay?.symbol || EnabledTokensEnum.ETH, width: 25 })}
-                    <span>{fromTokenDisplay?.symbol || 'ETH'}</span>
-                    <ChevronSVG width={8} />
-                </SwapOptionCurrency>
-            </OptionContainer>
+            {uiDirection === 'toXtm' ? ethTokenInputMarkup : xtmTokenInputMarkup}
             <SwapDirection>
-                <SwapDirectionWrapper $direction={uiDirection} onClick={handleToggleUiDirection}>
+                <SwapDirectionWrapper $direction={'toXtm'} onClick={handleToggleUiDirection}>
                     <ArrowIcon width={15} />
                 </SwapDirectionWrapper>
             </SwapDirection>
-            <OptionContainer>
-                <SwapOption>
-                    <span>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</span>
-                    <SwapOptionAmount>
-                        <SwapAmountInput
-                            ref={toInputRef} // Assign ref
-                            type="text"
-                            $error={uiDirection === 'fromXtm' ? notEnoughBalance : false}
-                            $loading={isLoading && lastUpdatedField === 'ethTokenField'}
-                            inputMode="decimal"
-                            placeholder="0.00"
-                            onChange={(e) => setTargetAmount(e.target.value)}
-                            value={wxtmAmount}
-                            $dynamicFontSize={toInputFontSize} // Pass dynamic font size
-                        />
-                    </SwapOptionAmount>
-                    {connectedAccount.address ? <span>{`Balance: ${toTokenDisplay?.balance}`}</span> : null}
-                </SwapOption>
-                <SwapOptionCurrency>
-                    {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
-                    <span>{'wXTM'}</span>
-                </SwapOptionCurrency>
-            </OptionContainer>
-
+            {uiDirection === 'toXtm' ? xtmTokenInputMarkup : ethTokenInputMarkup}
             {slippage && Number(slippage) > 0.5 && (
                 <SwapErrorMessage style={{ color: '#FFA500' }}>
                     Warning: Slippage is high ({Number(slippage).toFixed(2)}%). Your received amount may differ.

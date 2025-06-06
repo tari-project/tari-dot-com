@@ -10,7 +10,7 @@ export const OptionContainer = styled.div<{ $paddingBottom?: number }>`
     color: ${({ theme }) => theme.palette.text.primary};
     background: ${({ theme }) => theme.palette.background.main};
     border-radius: 20px;
-    padding: 20px;
+    padding: 25px 15px;
 
     ${({ $paddingBottom }) =>
         $paddingBottom &&

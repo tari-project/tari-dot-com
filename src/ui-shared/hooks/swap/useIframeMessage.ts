@@ -32,6 +32,7 @@ type SwapConfirmation = {
     type: MessageType.CONFIRM_REQUEST;
     payload: {
         fromTokenDisplay?: SelectableTokenInfo;
+        toTokenDisplay?: SelectableTokenInfo;
         toTokenSymbol?: string;
         transaction: {
             amount: string;
