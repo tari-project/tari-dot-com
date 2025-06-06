@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     }
 
     @media (max-width: 660px) {
-        padding: 100px 20px 100px 20px;
+        padding: 100px 10px 100px 10px;
         gap: 40px;
     }
 `;
@@ -116,6 +116,10 @@ export const StepTitleWrapper = styled.div`
 
         bottom: 30px;
         left: 20px;
+    }
+
+    @media (max-width: 660px) {
+        padding-right: 20px;
     }
 `;
 

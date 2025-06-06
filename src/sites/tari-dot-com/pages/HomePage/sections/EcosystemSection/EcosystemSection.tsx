@@ -124,7 +124,7 @@ export default function EcosystemSection({ hideSupporters }: { hideSupporters?: 
     const isMobile = useMedia('(max-width: 960px)', false);
 
     return (
-        <Wrapper onMouseMove={handleMouseMove}>
+        <Wrapper onMouseMove={handleMouseMove} $hideSupporters={hideSupporters}>
             <FloatingElements>
                 <TextMiddle>
                     <Eyebrow>

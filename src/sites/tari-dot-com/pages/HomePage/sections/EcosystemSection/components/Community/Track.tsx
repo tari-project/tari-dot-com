@@ -43,6 +43,34 @@ export default function TrackComponent() {
                     <Image src={GMoney.src} alt="@gmoney" />
                     <Image src={Loomdart.src} alt="@loomdart" />
                     <Image src={LilWayne.src} alt="Lil Wayne" />
+                    <Image src={BlockchainCapital.src} alt="Blockchain Capital" />
+                    <Image src={ParisHilton.src} alt="Paris Hilton" />
+                    <Image src={CMTDigital.src} alt="CMT Digital" />
+                    <Image src={GEAZY.src} alt="G-Eazy" />
+                    <Image src={GMoney.src} alt="@gmoney" />
+                    <Image src={Loomdart.src} alt="@loomdart" />
+                    <Image src={LilWayne.src} alt="Lil Wayne" />
+                    <Image src={BlockchainCapital.src} alt="Blockchain Capital" />
+                    <Image src={ParisHilton.src} alt="Paris Hilton" />
+                    <Image src={CMTDigital.src} alt="CMT Digital" />
+                    <Image src={GEAZY.src} alt="G-Eazy" />
+                    <Image src={GMoney.src} alt="@gmoney" />
+                    <Image src={Loomdart.src} alt="@loomdart" />
+                    <Image src={LilWayne.src} alt="Lil Wayne" />
+                    <Image src={BlockchainCapital.src} alt="Blockchain Capital" />
+                    <Image src={ParisHilton.src} alt="Paris Hilton" />
+                    <Image src={CMTDigital.src} alt="CMT Digital" />
+                    <Image src={GEAZY.src} alt="G-Eazy" />
+                    <Image src={GMoney.src} alt="@gmoney" />
+                    <Image src={Loomdart.src} alt="@loomdart" />
+                    <Image src={LilWayne.src} alt="Lil Wayne" />
+                    <Image src={BlockchainCapital.src} alt="Blockchain Capital" />
+                    <Image src={ParisHilton.src} alt="Paris Hilton" />
+                    <Image src={CMTDigital.src} alt="CMT Digital" />
+                    <Image src={GEAZY.src} alt="G-Eazy" />
+                    <Image src={GMoney.src} alt="@gmoney" />
+                    <Image src={Loomdart.src} alt="@loomdart" />
+                    <Image src={LilWayne.src} alt="Lil Wayne" />
                 </Track>
             </TrackWidth>
         </TrackWrapper>
