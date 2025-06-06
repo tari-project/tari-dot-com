@@ -2,13 +2,13 @@
 import { createAppKit } from '@reown/appkit/react';
 import { AppKitNetwork, mainnet, sepolia } from '@reown/appkit/networks';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { WagmiProvider, http } from 'wagmi';
-import { RPC_URLS } from '@/ui-shared/hooks/swap/lib/constants';
+import { WagmiProvider } from 'wagmi';
+// import { RPC_URLS } from '@/ui-shared/hooks/swap/lib/constants';
 
 
 
-const mainnetRpcUrl = RPC_URLS[mainnet.id];
-const sepoliaRpcUrl = RPC_URLS[sepolia.id];
+// const mainnetRpcUrl = RPC_URLS[mainnet.id];
+// const sepoliaRpcUrl = RPC_URLS[sepolia.id];
 
 const metadata = {
     name: 'Tari Universe',
@@ -21,16 +21,16 @@ const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID || 'c523cd3d3e0246530115c1
 
 const networks: [AppKitNetwork, ...AppKitNetwork[]] = [mainnet, sepolia];
 
-const transports = {
-    [mainnet.id]: http(mainnetRpcUrl),
-    [sepolia.id]: http(sepoliaRpcUrl),
-};
+// const transports = {
+//     [mainnet.id]: http(mainnetRpcUrl),
+//     [sepolia.id]: http(sepoliaRpcUrl),
+// };
 
 const wagmiAdapterInstance = new WagmiAdapter({
     networks,
     projectId: PROJECT_ID,
-    ssr: true,
-    transports,
+    ssr: false
+    // transports,
 });
 
 createAppKit({

@@ -34,9 +34,12 @@ export async function sendTransactionWithWagmiSigner(
 
     try {
         console.info('Sending transaction with ether');
+        console.info('Transaction request:', transactionRequest);
+        console.info(transactionRequest.data);
         const txRes = await signer.sendTransaction(transactionRequest);
         console.info('Transaction sent with ether');
         const receipt = await txRes.wait(1);
+        // const receipt = { status: 1 } as EthersTransactionReceipt;
         console.info('Transaction receipt received');
 
         if (receipt) {

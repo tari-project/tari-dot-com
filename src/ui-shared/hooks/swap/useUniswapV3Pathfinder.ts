@@ -14,8 +14,7 @@ import {
     USDT_SDK_TOKEN,
     XTM_SDK_TOKEN,
     SLIPPAGE_TOLERANCE_PERCENT,
-    V3_SWAP_ROUTER_ADDRESS as
-        SWAP_ROUTER_ADDRESSES,
+    V3_SWAP_ROUTER_ADDRESS as SWAP_ROUTER_ADDRESSES,
     swapRouter02AbiJson,
 } from './lib/constants';
 import { V3TradeDetails, SwapField, TradeLeg } from './lib/types';
