@@ -10,7 +10,8 @@ export const OptionContainer = styled.div<{ $paddingBottom?: number }>`
     color: ${({ theme }) => theme.palette.text.primary};
     background: ${({ theme }) => theme.palette.background.main};
     border-radius: 20px;
-    padding: 25px 15px;
+    padding: 20px 15px;
+    height: 80px;
 
     ${({ $paddingBottom }) =>
         $paddingBottom &&
@@ -23,6 +24,7 @@ export const SwapOption = styled.div<{ $paddingBottom?: number }>`
     display: flex;
     flex-direction: column;
     gap: 3px;
+    height: 100%;
 
     > span {
     color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
@@ -102,6 +104,8 @@ export const SwapAmountInput = styled.input<{
     text-align: left;
     padding: 0;
     margin-right: 10px;
+    margin-top: 10px;
+    height: 40px;
 
     &:focus {
         outline: none;
@@ -114,7 +118,7 @@ export const SwapAmountInput = styled.input<{
     ${({ $error }) =>
         $error &&
         css`
-            color: ${({ theme }) => theme.palette.error.main};
+            color: #E60256;
         `}
 
     ${({ $loading }) =>
@@ -243,3 +247,31 @@ export const SwapErrorMessage = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
+export const SwapOptionCurrencyContianer = styled.div`
+    font-size: 10px;
+    line-height: 26px;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
+    span {
+        white-space: nowrap;
+    }
+`;
+
+export const MaxButton = styled.button`
+    background: ${({ theme }) => theme.palette.background.main};
+    border-radius: 43px;
+    padding: 2px 8px;
+    border-width: 1px;
+    border: 1px solid #0000002E;
+    color: ${({ theme }) => theme.palette.text.primary};
+    font-size: 10px;
+    cursor: pointer;
+    pointer-events: all;
+`
+
+

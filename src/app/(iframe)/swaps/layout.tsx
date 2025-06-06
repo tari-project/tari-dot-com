@@ -9,7 +9,10 @@ export default function SwapsLayout({ children }: { children: React.ReactNode })
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: '"Poppins", sans-serif',
+                margin: 0,
+                padding: 0,
+                marginTop: '10px',
             }}
         >
             <Providers>
