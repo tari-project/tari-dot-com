@@ -77,7 +77,7 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
         `}
 `;
 
-export const  SwapLabel = styled.span`
+export const SwapLabel = styled.span`
     margin-bottom: 10px;
 `
 
@@ -282,3 +282,11 @@ export const BottomWrapper = styled.div`
         white-space: nowrap;
     }
 `
+
+export const SwapInfo = styled.div`
+    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
+    font-size: 12px;
+    margin-top: 10px;
+    padding-left: 20px;
+    display: flex;
+`;

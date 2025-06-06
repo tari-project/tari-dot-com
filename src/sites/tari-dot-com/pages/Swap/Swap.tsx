@@ -20,6 +20,7 @@ import {
     SwapOptionCurrencyContianer,
     BottomWrapper,
     SwapLabel,
+    SwapInfo,
     // MaxButton,
 } from './Swap.styles';
 import { useAccount } from 'wagmi';
@@ -361,6 +362,11 @@ export const Swap = memo(function Swap() {
                 </SwapErrorMessage>
             )}
             {error && <SwapErrorMessage> {error} </SwapErrorMessage>}
+            {transaction.executionPrice && Number(ethTokenAmount) > 0 && Number(wxtmAmount) > 0 ? (
+                <SwapInfo>
+                    {transaction.executionPrice}
+                </SwapInfo>
+            ) : null}
 
             <SubmitButtonWrapper>
                 <WalletButton
