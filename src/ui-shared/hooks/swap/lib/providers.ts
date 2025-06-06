@@ -39,6 +39,7 @@ export async function sendTransactionWithWagmiSigner(
 
         if (receipt) {
             if (receipt.status === 1) {
+                console.info('Transaction succeeded on-chain.');
                 return { state: TransactionState.Sent, response: txRes, receipt };
             } else {
                 console.error('Transaction failed on-chain (status 0).', receipt);

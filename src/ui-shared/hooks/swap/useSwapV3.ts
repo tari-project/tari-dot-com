@@ -207,11 +207,14 @@ export const useUniswapV3Interactions = () => {
                     functionName: 'allowance',
                     args: [accountAddress, spender as `0x${string}`],
                 });
+
+                console.log('currentAllowance', currentAllowance);
                 if (BigInt(currentAllowance.toString()) < amount) {
                     onApproveRequest?.();
                     const tokenContract = new Contract(token.address, erc20Abi, signer);
                     const approveTxPopulated = await tokenContract.approve.populateTransaction(spender, amount);
                     const approveResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
+                    console.log('approveResult', approveResult);
                     if (approveResult.state !== TransactionState.Sent || !approveResult.receipt) {
                         throw new Error(`Approval for ${token.symbol} failed or receipt not found.`);
                     }
