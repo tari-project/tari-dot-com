@@ -240,7 +240,7 @@ export const SwapErrorMessage = styled.div`
     color: ${({ theme }) => theme.palette.error.main};
     font-size: 12px;
     margin-top: 10px;
-    margin-bottom: -10px;
+    padding-left: 20px;
     min-height: 18px;
     display: flex;
     align-items: center;

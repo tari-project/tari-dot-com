@@ -370,12 +370,12 @@ export const Swap = memo(function Swap() {
                     Warning: Slippage is high ({Number(slippage).toFixed(2)}%). Your received amount may differ.
                 </SwapErrorMessage>
             )}
-            {error && <SwapErrorMessage> {error} </SwapErrorMessage>}
             {transaction.executionPrice && Number(ethTokenAmount) > 0 && Number(wxtmAmount) > 0 ? (
                 <SwapInfo>
                     {transaction.executionPrice}
                 </SwapInfo>
             ) : null}
+            {error && <SwapErrorMessage> {error} </SwapErrorMessage>}
 
             <SubmitButtonWrapper>
                 <WalletButton
