@@ -47,10 +47,12 @@ export const SwapOptionAmount = styled.div`
 `;
 
 export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
+    width: 80px;
     border-radius: 60px;
     gap: 6px;
     height: 35px;
     padding-left: 6px;
+    justify-content: space-between;
     padding-right: 10px;
     background: ${({ theme }) => theme.palette.background.paper};
     display: inline-flex;

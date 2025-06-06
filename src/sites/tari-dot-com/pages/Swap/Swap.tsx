@@ -267,6 +267,7 @@ export const Swap = memo(function Swap() {
                         <SwapOptionCurrency>
                             {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
                             <span>{'wXTM'}</span>
+                            <span />
                         </SwapOptionCurrency>
                     </SwapOptionCurrencyContianer>
                 </SwapOptionAmount>
