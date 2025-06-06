@@ -83,7 +83,7 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                                 Mine
                                 <br /> & earn
                             </StepTitle>
-                            <StepPill $color={color}>15% Bonus XTM</StepPill>
+                            <StepPill $color={color}>{exchange.reward_percentage}% Bonus XTM</StepPill>
                         </StepRowWrapper>
                         <BgImage src={step3Image.src} alt="step3" />
                     </StepInside>

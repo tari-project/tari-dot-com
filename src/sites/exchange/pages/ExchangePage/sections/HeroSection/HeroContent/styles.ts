@@ -15,17 +15,19 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
     background-repeat: no-repeat;
 
     padding: 40px;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
     position: relative;
 
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    overflow: hidden;
 
     @media (max-width: 700px) {
         height: 700px;
         padding: 10px;
         padding-bottom: 150px;
+        border-radius: 0px;
     }
 `;
 
@@ -35,12 +37,13 @@ export const TextWrapper = styled.div`
     align-items: center;
     text-align: center;
     gap: 20px;
+    z-index: 2;
 `;
 
-export const Eyebrow = styled.div<{ $color: string }>`
+export const Eyebrow = styled.div`
     font-family: var(--font-druk-wide), sans-serif;
 
-    color: ${({ $color }) => $color};
+    color: #fff;
     text-align: center;
     font-size: 18.64px;
     font-style: normal;
@@ -75,6 +78,10 @@ export const Title = styled.div`
     @media (max-width: 1024px) {
         font-size: 40px;
     }
+
+    @media (max-width: 700px) {
+        font-size: 30px;
+    }
 `;
 
 export const WhiteText = styled.div`
@@ -96,4 +103,40 @@ export const BottomWrapper = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 2;
+
+    @media (max-width: 1024px) {
+        .curve {
+            display: none;
+        }
+    }
+`;
+
+export const VideoWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        object-fit: cover;
+    }
+`;
+
+export const Shadow = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(22, 22, 22, 0.8) 0%, rgba(22, 22, 22, 0) 100%);
+    z-index: 1;
 `;

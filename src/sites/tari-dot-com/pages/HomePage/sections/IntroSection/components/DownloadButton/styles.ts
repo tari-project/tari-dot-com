@@ -3,9 +3,15 @@
 import { motion } from 'motion/react';
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled(motion.div)<{ $subTextComponent?: boolean }>`
     position: relative;
     width: 368px;
+
+    ${({ $subTextComponent }) =>
+        $subTextComponent &&
+        css`
+            width: unset;
+        `}
 
     @media (max-width: 430px) {
         width: 100%;
@@ -18,18 +24,18 @@ export const Button = styled.button<{ $backgroundColor?: string }>`
     cursor: pointer;
     width: 100%;
     height: 60px;
-    padding: 20px 20px 20px 30px;
+    padding: 0px 6px 0px 30px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+
     user-select: none;
     text-decoration: none;
 
     border-radius: 70px;
     overflow: hidden;
-    width: 100%;
 
     background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
@@ -42,6 +48,11 @@ export const Button = styled.button<{ $backgroundColor?: string }>`
 
     &:hover {
         text-decoration: none;
+    }
+
+    @media (max-width: 430px) {
+        padding-left: 20px;
+        gap: 10px;
     }
 `;
 
@@ -74,9 +85,6 @@ export const Icons = styled.div<{ $showIconBackground?: boolean }>`
     align-items: center;
     gap: 6px;
 
-    position: absolute;
-    right: 6px;
-    top: 5px;
     z-index: 1;
     flex-shrink: 0;
 
@@ -104,4 +112,24 @@ export const HoverGradient = styled(motion.div)`
 
 export const Word = styled(motion.span)`
     display: inline-block;
+`;
+
+export const TextGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+`;
+
+export const SubText = styled.div`
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.36px;
+    line-height: 100%;
+    position: relative;
+    z-index: 1;
 `;

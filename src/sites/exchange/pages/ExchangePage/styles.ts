@@ -9,10 +9,12 @@ export const Wrapper = styled.div`
 
 export const FaqWrapper = styled.div`
     margin-top: 0px;
+    position: relative;
+    z-index: 1;
 `;
 
 export const EcosystemWrapper = styled.div`
-    margin-top: -160px;
+    margin-top: -100px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 `;
