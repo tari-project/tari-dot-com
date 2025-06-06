@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Token, WETH9, Ether, NativeCurrency, CurrencyAmount, ChainId } from '@uniswap/sdk-core';
+import { Token, WETH9, Ether, NativeCurrency, CurrencyAmount, ChainId, Price } from '@uniswap/sdk-core'; // Added Percent, Price
 import { encodeSqrtRatioX96, FeeAmount, TickMath } from '@uniswap/v3-sdk';
 import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
 import {
@@ -8,7 +8,7 @@ import {
     TransactionResponse,
     TransactionReceipt,
     zeroPadValue,
-    TransactionRequest,
+    TransactionRequest as EthersTransactionRequest,
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
@@ -22,9 +22,8 @@ import {
     uniswapV3FactoryAbi,
     NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
     V3_SWAP_ROUTER_ADDRESS,
-    swapRouter02AbiJson,
 } from './lib/constants';
-import { encodePath as encodeV3Path, walletClientToSigner } from './lib/utils';
+import { walletClientToSigner } from './lib/utils';
 import { V3TradeDetails, SwapField, SwapDirection } from './lib/types';
 import { useUniswapV3Pathfinder } from './useUniswapV3Pathfinder';
 import { sendTransactionWithWagmiSigner, TransactionState } from './lib/providers';
@@ -58,7 +57,6 @@ export const useUniswapV3Interactions = () => {
     );
 
     const v3SwapRouter02Address = useMemo(
-        // For the V3 SwapRouter02
         () => (currentChainId ? V3_SWAP_ROUTER_ADDRESS[currentChainId as keyof typeof V3_SWAP_ROUTER_ADDRESS] : undefined),
         [currentChainId]
     );
@@ -77,8 +75,8 @@ export const useUniswapV3Interactions = () => {
         };
     }, [walletClient]);
 
-    const [sdkToken0, setSdkToken0] = useState<Token | Ether | undefined>(Ether.onChain(ChainId.MAINNET));
-    const [sdkToken1, setSdkToken1] = useState<Token | undefined>(XTM_SDK_TOKEN[ChainId.MAINNET]);
+    const [sdkToken0, setSdkToken0] = useState<Token | NativeCurrency | undefined>(Ether.onChain(ChainId.MAINNET));
+    const [sdkToken1, setSdkToken1] = useState<Token | NativeCurrency | undefined>(XTM_SDK_TOKEN[ChainId.MAINNET]);
 
     const handleUpdateSdkTokens = useCallback(
         (pairTokenAddress: string | null, direction: SwapDirection, currentChainId: number | undefined) => {
@@ -109,8 +107,8 @@ export const useUniswapV3Interactions = () => {
                 _uiInputToken = _xtmUiToken;
                 _uiOutputToken = selectedPairSideTokenForSwapUi;
             }
-            setSdkToken0(_uiInputToken as Token);
-            setSdkToken1(_uiOutputToken as Token);
+            setSdkToken0(_uiInputToken);
+            setSdkToken1(_uiOutputToken);
         },
         []
     );
@@ -133,8 +131,8 @@ export const useUniswapV3Interactions = () => {
 
     useEffect(() => {
         handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentChainId, handleUpdateSdkTokens]);
+    }, [currentChainId, handleUpdateSdkTokens, pairTokenAddress, direction]);
+
 
     const abortController = useRef<AbortController | null>(null);
 
@@ -148,6 +146,7 @@ export const useUniswapV3Interactions = () => {
         currentChainId,
         uiToken0: sdkToken0,
         uiToken1: sdkToken1,
+        userAccountAddress: accountAddress
     });
 
     const getTradeDetails = useCallback(
@@ -163,12 +162,13 @@ export const useUniswapV3Interactions = () => {
             setIsFetchingPoolHook(false);
             if (result.error) {
                 setErrorHook(result.error);
-                setInsufficientLiquidityHook(true);
+                setInsufficientLiquidityHook(true); // Also set this if error from pathfinder
             }
             const outputAmountQuotient = result.tradeDetails?.outputAmount?.quotient;
-            if (outputAmountQuotient === undefined || BigInt(outputAmountQuotient.toString()) === 0n) {
-                if (!result.error) setInsufficientLiquidityHook(true);
+            if (!result.error && (outputAmountQuotient === undefined || BigInt(outputAmountQuotient.toString()) === 0n)) {
+                setInsufficientLiquidityHook(true);
             }
+
 
             const defaultInputCurrency = sdkToken0 || (currentChainId ? Ether.onChain(currentChainId) : undefined);
             const defaultOutputCurrency = sdkToken1 || (currentChainId ? Ether.onChain(currentChainId) : undefined);
@@ -185,7 +185,7 @@ export const useUniswapV3Interactions = () => {
                 minimumReceived: defaultOutputCurrency
                     ? CurrencyAmount.fromRawAmount(defaultOutputCurrency, '0')
                     : undefined!,
-                executionPrice: undefined!,
+                executionPrice: new Price(defaultInputCurrency!, defaultOutputCurrency!, 1, 0),
                 priceImpactPercent: null,
                 estimatedGasFeeNative: null,
                 path: [],
@@ -201,14 +201,12 @@ export const useUniswapV3Interactions = () => {
             setIsApprovingHook(true);
             setErrorHook(null);
             try {
-                // Read allowance using publicClient (read-only)
                 const currentAllowance = await publicClient.readContract({
                     address: token.address as `0x${string}`,
                     abi: erc20Abi,
                     functionName: 'allowance',
                     args: [accountAddress, spender as `0x${string}`],
                 });
-                console.info(`[V3SwapRouter02] Current allowance for ${token.symbol}:`, currentAllowance.toString());
                 if (BigInt(currentAllowance.toString()) < amount) {
                     onApproveRequest?.();
                     const tokenContract = new Contract(token.address, erc20Abi, signer);
@@ -217,9 +215,6 @@ export const useUniswapV3Interactions = () => {
                     if (approveResult.state !== TransactionState.Sent || !approveResult.receipt) {
                         throw new Error(`Approval for ${token.symbol} failed or receipt not found.`);
                     }
-                    console.info(`${token.symbol} approved for V3SwapRouter02`);
-                } else {
-                    console.info(`Sufficient allowance for ${token.symbol} already exists for V3SwapRouter02`);
                 }
                 setIsApprovingHook(false);
                 onApproveSuccess?.();
@@ -245,7 +240,6 @@ export const useUniswapV3Interactions = () => {
 
             const inputCurrency = tradeDetails?.inputAmount?.currency;
             const amountInRaw = tradeDetails?.inputAmount?.quotient;
-            const amountOutMinRaw = tradeDetails?.minimumReceived?.quotient;
 
             if (
                 !signer ||
@@ -255,109 +249,67 @@ export const useUniswapV3Interactions = () => {
                 !currentChainId ||
                 !inputCurrency ||
                 !amountInRaw ||
-                !amountOutMinRaw ||
-                !tradeDetails.path ||
-                tradeDetails.path.length === 0
+                !tradeDetails.transactionRequest ||
+                !tradeDetails.transactionRequest.to ||
+                !tradeDetails.transactionRequest.data
             ) {
-                setErrorHook('Swap could not start. Make sure your wallet is connected and all inputs are filled.');
-                onFailure?.('Swap could not start. Please check your wallet connection and entered values.');
+                const errorMsg = 'Swap could not start. Invalid trade details or wallet not ready.';
+                setErrorHook(errorMsg);
+                onFailure?.(errorMsg);
                 setIsLoadingHook(false);
                 return null;
             }
 
-            const routerContract = new Contract(v3SwapRouter02Address, swapRouter02AbiJson, signer);
-            const deadline = BigInt(Math.floor(Date.now() / 1000) + DEADLINE_MINUTES * 60);
-            const txOptions: { value?: bigint; gasLimit?: bigint } = {};
-
             const amountInBigInt = BigInt(amountInRaw.toString());
-            const amountOutMinBigInt = BigInt(amountOutMinRaw.toString());
 
             try {
-                // Handle Approval if input is ERC20
                 if (!inputCurrency.isNative) {
                     const approvalSuccess = await approveTokenForV3Router02(
                         inputCurrency as Token,
                         amountInBigInt,
-                        v3SwapRouter02Address,
+                        v3SwapRouter02Address, // Approve the router
                         onApproveRequest,
                         onApproveSuccess
                     );
                     if (!approvalSuccess) {
                         setIsLoadingHook(false);
-                        onFailure?.('Token approval didn’t go through. Try again or confirm in your wallet.');
-                        return null; // Error already set by approveTokenForV3Router02
+                        onFailure?.('Token approval failed.');
+                        return null;
                     }
                 }
-                // Handle ETH value if input is native ETH
-                if (inputCurrency.isNative) {
-                    txOptions.value = amountInBigInt;
+
+                const populatedTx: EthersTransactionRequest = {
+                    to: tradeDetails.transactionRequest.to,
+                    data: tradeDetails.transactionRequest.data,
+                    value: tradeDetails.transactionRequest.value || 0n,
+                };
+
+                // Optional: Gas estimation for the pre-built transaction
+                try {
+                    const estimatedGas = await signer.estimateGas(populatedTx);
+                    populatedTx.gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
+                } catch (gasError: any) {
+                    console.warn('[V3SwapRouter02] Gas estimation for pre-built tx failed, using default or letting wallet decide:', gasError.message);
                 }
-
-                let populatedTx: TransactionRequest;
-
-                if (tradeDetails.path.length === 1) {
-                    // Single hop swap
-                    const leg = tradeDetails.path[0];
-                    const params = {
-                        tokenIn: leg.tokenIn.wrapped.address as `0x${string}`,
-                        tokenOut: leg.tokenOut.wrapped.address as `0x${string}`,
-                        fee: leg.fee as FeeAmount,
-                        recipient: accountAddress as `0x${string}`,
-                        deadline: deadline,
-                        amountIn: amountInBigInt,
-                        amountOutMinimum: amountOutMinBigInt,
-                        sqrtPriceLimitX96: 0n, // Typically 0 for no limit
-                    };
-                    populatedTx = await routerContract.exactInputSingle.populateTransaction(params, txOptions);
-                } else {
-                    // Multi-hop swap
-                    const pathBytes = encodeV3Path(
-                        tradeDetails.path
-                            .map((leg: any) => leg.tokenIn.wrapped.address as `0x${string}`)
-                            .concat(
-                                tradeDetails.path[tradeDetails.path.length - 1].tokenOut.wrapped
-                                    .address as `0x${string}`
-                            ),
-                        tradeDetails.path.map((leg: any) => leg.fee as FeeAmount)
-                    );
-                    const params = {
-                        path: pathBytes,
-                        recipient: accountAddress as `0x${string}`,
-                        deadline: deadline,
-                        amountIn: amountInBigInt,
-                        amountOutMinimum: amountOutMinBigInt,
-                    };
-                    populatedTx = await routerContract.exactInput.populateTransaction(params, txOptions);
-                }
-
-                populatedTx.gasLimit = inputCurrency.isNative ? 200000n : 300000n; // Fallback
-                // try {
-                //     const estimatedGas = await signer.estimateGas(populatedTx);
-                //     populatedTx.gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
-                // } catch (gasError: any) {
-                //     console.warn('[V3SwapRouter02] Gas estimation failed:', gasError);
-                //     populatedTx.gasLimit = inputCurrency.isNative ? 200000n : 300000n; // Fallback
-                // }
 
                 const txResult = await sendTransactionWithWagmiSigner(signer, populatedTx);
-                console.info('[V3SwapRouter02] Swap response:', txResult);
+                console.info('[V3SwapRouter02] Swap response (using pre-built tx):', txResult);
                 setIsLoadingHook(false);
+
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
                     onSuccess?.(txResult);
-                    console.info('[V3SwapRouter02] Swap successful!');
                     return { response: txResult.response, receipt: txResult.receipt };
                 } else {
-                    onFailure?.(txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.');
-                    setErrorHook(
-                        txResult.receipt
-                            ? 'Your transaction was sent but failed on-chain. Please check your wallet for more info.'
-                            : 'Couldn’t submit the transaction. Please check your network and try again.'
-                    );
+                    const failureMsg = txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.';
+                    onFailure?.(failureMsg);
+                    setErrorHook(failureMsg);
                     return null;
                 }
-            } catch {
-                onFailure?.('Something went wrong while processing your swap. Please try again.')
-                setErrorHook('Something went wrong while processing your swap. Please try again.');
+            } catch (e: any) {
+                console.error('[V3SwapRouter02] Error executing swap:', e);
+                const failureMsg = e.message || 'Something went wrong while processing your swap.';
+                onFailure?.(failureMsg);
+                setErrorHook(failureMsg);
                 setIsLoadingHook(false);
                 setIsApprovingHook(false);
                 return null;
@@ -375,8 +327,8 @@ export const useUniswapV3Interactions = () => {
         const tickSpacing = 10;
         const minTick = Math.ceil(TickMath.MIN_TICK / tickSpacing) * tickSpacing;
         const maxTick = Math.floor(TickMath.MAX_TICK / tickSpacing) * tickSpacing;
-        const tickLower = minTick; // Full range for testing
-        const tickUpper = maxTick; // Full range for testing
+        const tickLower = minTick;
+        const tickUpper = maxTick;
         const amountUiToken0DesiredStr = '10000';
         const amountUiToken1DesiredStr = '10000000';
         const amountUiToken0MinStr = '10000';
@@ -420,12 +372,10 @@ export const useUniswapV3Interactions = () => {
         let nftTokenId: bigint | undefined;
 
         try {
-            // --- Determine actual token order for the pool (tokenA address < tokenB address) ---
-            const [tokenA_pool, tokenB_pool] = sdkToken0.wrapped.sortsBefore(sdkToken1.wrapped)
+            const [tokenA_pool, tokenB_pool] = (sdkToken0.wrapped.sortsBefore(sdkToken1.wrapped))
                 ? [sdkToken0, sdkToken1]
                 : [sdkToken1, sdkToken0];
 
-            // --- Convert desired and min amounts based on sorted pool tokens ---
             const amountADesired_pool = parseUnits(
                 tokenA_pool.equals(sdkToken0) ? amountUiToken0DesiredStr : amountUiToken1DesiredStr,
                 tokenA_pool.decimals
@@ -443,36 +393,27 @@ export const useUniswapV3Interactions = () => {
                 tokenB_pool.decimals
             );
 
-            // --- Check if pool exists ---
-            // Use publicClient for read-only contract call
             const poolAddressOnFactory = await publicClient.readContract({
                 address: factoryAddr,
                 abi: uniswapV3FactoryAbi,
                 functionName: 'getPool',
                 args: [
-                    tokenA_pool.wrapped.address,
-                    tokenB_pool.wrapped.address,
+                    tokenA_pool.wrapped.address as `0x${string}`,
+                    tokenB_pool.wrapped.address as `0x${string}`,
                     fee
                 ],
-            });
-            console.info(`[AddLiq] Fetched pool address from factory: ${poolAddressOnFactory}`);
+            }) as `0x${string}`;
 
             if (poolAddressOnFactory === zeroAddress) {
                 setIsLoadingHook(true);
                 setErrorHook('No pool found for this pair. Creating and initializing a new pool...');
 
                 if (amountADesired_pool === 0n || amountBDesired_pool === 0n) {
-                    setErrorHook(
-                        'To create a new pool, both token amounts must be greater than zero.'
-                    );
+                    setErrorHook('To create a new pool, both token amounts must be greater than zero.');
                     setIsLoadingHook(false);
                     return { state: TransactionState.Failed };
                 }
-                // Calculate sqrtPriceX96 for initialization based on the ratio of desired amounts
                 const sqrtPriceX96 = encodeSqrtRatioX96(amountBDesired_pool.toString(), amountADesired_pool.toString());
-                console.info(
-                    `[AddLiq] Pool does not exist. Initializing with sqrtPriceX96: ${sqrtPriceX96.toString()} based on desired amounts ratio.`
-                );
 
                 const createPoolPopulatedTx =
                     await nftpmContract.createAndInitializePoolIfNecessary.populateTransaction(
@@ -481,18 +422,7 @@ export const useUniswapV3Interactions = () => {
                         fee,
                         BigInt(sqrtPriceX96.toString())
                     );
-
-                const defaultGasLimit = 200000n;
-                createPoolPopulatedTx.gasLimit = defaultGasLimit;
-                // try {
-                //     const estimatedGas = await signer.estimateGas(createPoolPopulatedTx);
-                //     createPoolPopulatedTx.gasLimit = (estimatedGas * 120n) / 100n;
-                // } catch (gasError: any) {
-                //     console.warn('[AddLiq] Gas estimation failed for createAndInitializePoolIfNecessary:', gasError);
-                //     setErrorHook('Could not estimate gas for pool creation. Please try again or check your wallet/network.');
-                //     setIsLoadingHook(false);
-                //     return { state: TransactionState.Failed };
-                // }
+                createPoolPopulatedTx.gasLimit = 2000000n;
 
                 const createPoolTxResult = await sendTransactionWithWagmiSigner(signer, createPoolPopulatedTx);
                 createPoolResponse = createPoolTxResult.response;
@@ -504,13 +434,9 @@ export const useUniswapV3Interactions = () => {
                     return { state: TransactionState.Failed, createPoolResponse, createPoolReceipt };
                 }
                 setErrorHook(null);
-                console.info('[AddLiq] Pool created and initialized successfully.');
-            } else {
-                console.info('[AddLiq] Pool already exists at:', poolAddressOnFactory);
             }
 
-            // --- Approvals for NFTPM ---
-            setIsLoadingHook(true); // For approvals and mint
+            setIsLoadingHook(true);
             setIsApprovingHook(true);
             const tokensToApproveInfo: { token: Token; amount: bigint }[] = [];
             if (!tokenA_pool.isNative && amountADesired_pool > 0n) {
@@ -521,49 +447,34 @@ export const useUniswapV3Interactions = () => {
             }
 
             for (const { token, amount } of tokensToApproveInfo) {
-                // Read allowance using publicClient (read-only)
                 const currentAllowance = await publicClient.readContract({
                     address: token.address as `0x${string}`,
                     abi: erc20Abi,
                     functionName: 'allowance',
-                    args: [accountAddress, nftPositionManagerAddr],
+                    args: [accountAddress!, nftPositionManagerAddr],
                 });
                 if (BigInt(currentAllowance.toString()) < amount) {
-                    console.info(`[AddLiq] Approving ${amount.toString()} of ${token.symbol} for NFTPM...`);
                     const tokenContract = new Contract(token.address, erc20Abi, signer);
                     const approveTxPopulated = await tokenContract.approve.populateTransaction(
                         nftPositionManagerAddr,
                         amount
                     );
                     approveTxPopulated.gasLimit = 100000n;
-                    // try {
-                    //     const estimatedGas = await signer.estimateGas(approveTxPopulated);
-                    //     approveTxPopulated.gasLimit = (estimatedGas * 120n) / 100n;
-                    // } catch (gasError) {
-                    //     console.warn(`[AddLiq] Gas estimation failed for ${token.symbol} approval, using default`);
-                    //     console.error(gasError);
-                    //     approveTxPopulated.gasLimit = 100000n;
-                    // }
                     const approveTxResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
                     if (approveTxResult.state !== TransactionState.Sent || !approveTxResult.receipt) {
                         throw new Error(`Approval failed for ${token.symbol}`);
                     }
-                    console.info(`[AddLiq] Approved ${token.symbol}`);
-                } else {
-                    console.info(`[AddLiq] Sufficient allowance already exists for ${token.symbol}`);
                 }
             }
             setIsApprovingHook(false);
 
-            // --- ETH Value for Mint ---
             let ethValueForMint = 0n;
             if (tokenA_pool.isNative && amountADesired_pool > 0n) ethValueForMint = amountADesired_pool;
             else if (tokenB_pool.isNative && amountBDesired_pool > 0n) ethValueForMint = amountBDesired_pool;
 
-            // --- Mint Parameters ---
             const mintParamsForManager = {
-                token0: tokenA_pool.wrapped.address,
-                token1: tokenB_pool.wrapped.address,
+                token0: tokenA_pool.wrapped.address as `0x${string}`,
+                token1: tokenB_pool.wrapped.address as `0x${string}`,
                 fee: fee,
                 tickLower: tickLower,
                 tickUpper: tickUpper,
@@ -574,23 +485,11 @@ export const useUniswapV3Interactions = () => {
                 recipient: finalRecipient as `0x${string}`,
                 deadline: BigInt(Math.floor(Date.now() / 1000) + DEADLINE_MINUTES * 60),
             };
-            console.info(
-                '[AddLiq] Minting with params:',
-                JSON.stringify(mintParamsForManager, (_, v) => (typeof v === 'bigint' ? v.toString() : v))
-            );
 
             const mintPopulatedTx = await nftpmContract.mint.populateTransaction(mintParamsForManager, {
                 value: ethValueForMint > 0n ? ethValueForMint : undefined,
             });
-
-            mintPopulatedTx.gasLimit = 700000n; // Increased fallback for mint
-            // try {
-            //     const estimatedGas = await signer.estimateGas(mintPopulatedTx);
-            //     mintPopulatedTx.gasLimit = (estimatedGas * 130n) / 100n;
-            // } catch (gasError: any) {
-            //     console.warn('[AddLiq] Gas estimation failed for NFTPM mint:', gasError);
-            //     mintPopulatedTx.gasLimit = 700000n; // Increased fallback for mint
-            // }
+            mintPopulatedTx.gasLimit = 700000n;
 
             const mintTxResult = await sendTransactionWithWagmiSigner(signer, mintPopulatedTx);
             mintResponse = mintTxResult.response;
@@ -598,20 +497,18 @@ export const useUniswapV3Interactions = () => {
             setIsLoadingHook(false);
 
             if (mintTxResult.state === TransactionState.Sent && mintReceipt) {
-                console.info('[AddLiq] Liquidity minted successfully!');
                 try {
                     const transferTopic = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
                     const mintEventLog = mintReceipt.logs.find(
-                        (log) =>
+                        (log: any) =>
                             log.address.toLowerCase() === nftPositionManagerAddr?.toLowerCase() &&
-                            log.topics[0] === transferTopic && // Transfer event
+                            log.topics[0] === transferTopic &&
                             log.topics[1].toLowerCase() ===
-                            zeroPadValue('0x0000000000000000000000000000000000000000', 32).toLowerCase() && // From zero address
-                            log.topics[2].toLowerCase() === zeroPadValue(finalRecipient!, 32).toLowerCase() // To recipient
+                            zeroPadValue('0x0000000000000000000000000000000000000000', 32).toLowerCase() &&
+                            log.topics[2].toLowerCase() === zeroPadValue(finalRecipient!, 32).toLowerCase()
                     );
                     if (mintEventLog && mintEventLog.topics[3]) {
                         nftTokenId = BigInt(mintEventLog.topics[3]);
-                        console.info(`[AddLiq] Minted NFT ID: ${nftTokenId}`);
                     }
                 } catch (parseError) {
                     console.warn('[AddLiq] Could not parse tokenId from mint receipt logs:', parseError);
@@ -628,11 +525,7 @@ export const useUniswapV3Interactions = () => {
                 const errorMsg = mintReceipt
                     ? 'Mint transaction failed on-chain (NFTPM).'
                     : 'Mint transaction submission failed (NFTPM).';
-                setErrorHook(
-                    errorMsg === 'Mint transaction failed on-chain (NFTPM).'
-                        ? 'Liquidity addition failed on the blockchain. Please try again.'
-                        : 'Could not submit the liquidity addition transaction. Please try again.'
-                );
+                setErrorHook(errorMsg);
                 return {
                     state: TransactionState.Failed,
                     createPoolResponse,
@@ -642,7 +535,6 @@ export const useUniswapV3Interactions = () => {
                 };
             }
         } catch (error: any) {
-            console.error('[AddLiq] Error in addLiquidityAndCreatePoolIfNeeded:', error);
             let errorMessage = 'An unexpected error occurred while adding liquidity. Please try again.';
             if (error.message && error.message.length < 100) errorMessage = error.message;
             else if (error.reason && error.reason.length < 100) errorMessage = error.reason;
@@ -659,6 +551,7 @@ export const useUniswapV3Interactions = () => {
             };
         }
     }, [sdkToken0, sdkToken1, accountAddress, currentChainId, signer, publicClient]);
+
 
     return {
         addLiquidityV3: addLiquidityAndCreatePoolIfNeeded,

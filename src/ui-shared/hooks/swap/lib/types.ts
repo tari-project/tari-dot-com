@@ -25,6 +25,12 @@ export interface V3TradeDetails {
     midPrice?: Price<Token | NativeCurrency, Token | NativeCurrency> | null;
     slippageTolerancePercent?: string; // Added field for slippage tolerance
 
+    transactionRequest?: { // This is the crucial part
+        to: `0x${string}`;
+        data: `0x${string}`;
+        value?: bigint;
+    };
+
 }
 
 export type SwapField = 'ethTokenField' | 'wxtmField';

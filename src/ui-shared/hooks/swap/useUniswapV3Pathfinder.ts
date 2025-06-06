@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Token, CurrencyAmount, NativeCurrency, Price, Percent, Ether } from '@uniswap/sdk-core';
+import { Token, WETH9, CurrencyAmount, NativeCurrency, Price, Percent } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { usePublicClient } from 'wagmi';
-import { PublicClient as ViemPublicClient, zeroAddress, encodeFunctionData, encodePacked } from 'viem'; // Added encodeFunctionData, encodePacked
+import { PublicClient as ViemPublicClient, zeroAddress, encodeFunctionData, encodePacked } from 'viem';
 import { useCallback, useMemo } from 'react';
 import JSBI from 'jsbi';
 
@@ -24,7 +24,7 @@ interface UseUniswapV3PathfinderArgs {
     currentChainId: number | undefined;
     uiToken0: Token | NativeCurrency | undefined;
     uiToken1: Token | NativeCurrency | undefined;
-    userAccountAddress?: `0x${string}`; // Optional: pass user's address for more accurate gas estimate 'from'
+    userAccountAddress?: `0x${string}`;
 }
 
 interface PathfinderResult {
@@ -55,9 +55,9 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
     const usdtToken = useMemo(() => (currentChainId ? USDT_SDK_TOKEN[currentChainId as keyof typeof USDT_SDK_TOKEN] : undefined), [currentChainId]);
 
     const wethToken = useMemo(() => {
-        if (!currentChainId) return undefined;
-        return Ether.onChain(currentChainId)
-    }, [currentChainId])
+        if (!currentChainId || !WETH9[currentChainId as keyof typeof WETH9]) return undefined;
+        return WETH9[currentChainId as keyof typeof WETH9];
+    }, [currentChainId]) as Token;
 
     const quoteSingleLegWithSpecificFee = useCallback(
         async (
@@ -70,7 +70,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
         ): Promise<{
             outputAmount?: CurrencyAmount<Token>;
             inputAmount?: CurrencyAmount<Token>;
-            gasEstimate: bigint; // This is Quoter's gas estimate, used as fallback
+            gasEstimate: bigint;
             poolAddress: `0x${string}`;
         } | null> => {
             if (!publicClient || !v3FactoryAddress || !v3QuoterAddress || !tIn || !tOut) return null;
@@ -92,24 +92,25 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                             abi: uniswapV3QuoterV2Abi,
                             functionName: 'quoteExactInputSingle',
                             args: [{ tokenIn: tIn.address as `0x${string}`, tokenOut: tOut.address as `0x${string}`, amountIn: amountForLeg.quotient, fee, sqrtPriceLimitX96: 0n, }],
-                        })) as [bigint, bigint, bigint, bigint]; // amountOut, sqrtPriceX96After, initializedTicksCrossed, gasEstimate
+                        })) as [bigint, bigint, bigint, bigint];
                         if (quoteResult[0] > 0n) {
                             return { outputAmount: CurrencyAmount.fromRawAmount(tOut, quoteResult[0].toString()), gasEstimate: quoteResult[3], poolAddress: poolAddr };
                         }
-                    } else { // isExactOutputLeg
+                    } else {
                         const quoteResult = (await publicClient.readContract({
                             address: v3QuoterAddress,
                             abi: uniswapV3QuoterV2Abi,
                             functionName: 'quoteExactOutputSingle',
                             args: [{ tokenIn: tIn.address as `0x${string}`, tokenOut: tOut.address as `0x${string}`, amount: amountForLeg.quotient, fee, sqrtPriceLimitX96: 0n, }],
-                        })) as [bigint, bigint, bigint, bigint]; // amountIn, sqrtPriceX96After, initializedTicksCrossed, gasEstimate
+                        })) as [bigint, bigint, bigint, bigint];
                         if (quoteResult[0] > 0n) {
                             return { inputAmount: CurrencyAmount.fromRawAmount(tIn, quoteResult[0].toString()), gasEstimate: quoteResult[3], poolAddress: poolAddr };
                         }
                     }
                 }
-            } catch {
-                if (signal?.aborted) throw new Error('Aborted');
+            } catch (e) {
+                if (e instanceof Error && e.message.includes('aborted')) throw e;
+                // Non-abort errors are caught and return null
             }
             return null;
         },
@@ -127,7 +128,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
             outputAmount?: CurrencyAmount<Token>;
             inputAmount?: CurrencyAmount<Token>;
             fee: FeeAmount;
-            gasEstimate: bigint; // Quoter's gas estimate
+            gasEstimate: bigint;
             poolAddress: `0x${string}`;
         } | null> => {
             const feeTiersToTry = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.LOWEST, FeeAmount.HIGH];
@@ -166,15 +167,15 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
 
                 let amountInToQuote: CurrencyAmount<Token> | undefined;
                 let amountOutToQuote: CurrencyAmount<Token> | undefined;
-                const toXtm = uiToken1.name === XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN]?.name;
+                const toXtm = uiToken1.name === XTM_SDK_TOKEN[currentChainId as keyof typeof XTM_SDK_TOKEN]?.name; // Assuming XTM is not native
                 const isExactInputTrade = (toXtm && amountType === 'ethTokenField') || (!toXtm && amountType === 'wxtmField');
 
-                if (isExactInputTrade) { // Exact Input trade
+
+                if (isExactInputTrade) {
                     amountInToQuote = CurrencyAmount.fromRawAmount(initialLogicToken, amountRaw);
-                } else { // Exact Output trade
+                } else {
                     amountOutToQuote = CurrencyAmount.fromRawAmount(finalLogicToken, amountRaw);
                 }
-
 
                 const commonIntermediaries = [wethToken, usdtToken].filter(
                     (token) => token && !token.equals(initialLogicToken) && !token.equals(finalLogicToken)
@@ -186,8 +187,8 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
 
                 let bestTradePath: TradeLeg[] = [];
                 let bestCalculatedInputAmount: CurrencyAmount<Token> | undefined;
-                let bestCalculatedOutputAmount: CurrencyAmount<Token> | undefined;
-                let bestQuoterTotalGasEstimate = 0n; // Sum of Quoter's gas estimates, as a fallback
+                let bestCalculatedOutputAmount: CurrencyAmount<Token> | undefined; // This will be for finalLogicToken (e.g. WETH)
+                let bestQuoterTotalGasEstimate = 0n;
 
                 for (const currentPathTokens of possiblePathsTokens) {
                     if (signal?.aborted) throw new Error('Aborted');
@@ -249,48 +250,68 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                     return { ...emptyPathfinderReturn, error: 'Failed to find a valid trade path.' };
                 }
 
+                // Amounts for display are in terms of the UI tokens (actualTradeInput/OutputToken)
                 const finalDisplayInputAmount = CurrencyAmount.fromRawAmount(actualTradeInputToken, bestCalculatedInputAmount.quotient);
+                // bestCalculatedOutputAmount is in terms of finalLogicToken (WETH if output is native ETH)
+                // finalDisplayOutputAmount should be in terms of actualTradeOutputToken (Native ETH if selected)
                 const finalDisplayOutputAmount = CurrencyAmount.fromRawAmount(actualTradeOutputToken, bestCalculatedOutputAmount.quotient);
+
                 const executionPriceForDisplay = new Price(finalDisplayInputAmount.currency, finalDisplayOutputAmount.currency, finalDisplayInputAmount.quotient, finalDisplayOutputAmount.quotient);
                 const slippageAdjustedPercent = ONE_HUNDRED_PERCENT.subtract(SLIPPAGE_TOLERANCE_PERCENT);
+
+                // minimumReceived is the minimum amount of actualTradeOutputToken (e.g. ETH)
+                // It's derived from bestCalculatedOutputAmount (WETH) after slippage
                 const minimumReceivedRaw = bestCalculatedOutputAmount.multiply(slippageAdjustedPercent).quotient;
-                const minimumReceived = CurrencyAmount.fromRawAmount(finalDisplayOutputAmount.currency, minimumReceivedRaw);
+                const minimumReceived = CurrencyAmount.fromRawAmount(actualTradeOutputToken, minimumReceivedRaw); // This is correct for display and for unwrapWETH9's amountMinimum
+
                 const slippagePercentValue = (JSBI.toNumber(SLIPPAGE_TOLERANCE_PERCENT.numerator) * 100) / JSBI.toNumber(SLIPPAGE_TOLERANCE_PERCENT.denominator);
 
-                // --- Accurate Gas Estimation using estimateGas ---
                 let simulatedGasEstimate: bigint | null = null;
+
+                let transactionData: `0x${string}` | undefined;
+                let valueToSend: bigint = 0n;
+
                 if (swapRouterAddress && publicClient && swapRouter02AbiJson) {
                     try {
                         const deadline = BigInt(Math.floor(Date.now() / 1000) + 60 * 20); // 20 minutes
-                        const recipient = userAccountAddress || zeroAddress; // Use provided user address or zeroAddress for estimation
+                        const finalUserRecipient = userAccountAddress || zeroAddress; // Final recipient of ETH or Token
 
-                        let transactionData: `0x${string}` | undefined;
-                        let valueToSend: bigint = 0n;
+                        const commands: `0x${string}`[] = [];
+                        let swapCallData: `0x${string}` | undefined;
+
 
                         if (actualTradeInputToken.isNative) {
                             valueToSend = BigInt(bestCalculatedInputAmount.quotient.toString());
                         }
 
-                        if (bestTradePath.length === 1) { // Single-hop
+                        // Determine recipient for the swap operation
+                        // If output is native ETH, router receives WETH to unwrap it. Otherwise, final user receives token.
+                        const swapRecipient = actualTradeOutputToken.isNative ? swapRouterAddress : finalUserRecipient;
+
+                        if (bestTradePath.length === 1) {
                             const leg = bestTradePath[0];
                             if (isExactInputTrade) {
-                                transactionData = encodeFunctionData({
+                                swapCallData = encodeFunctionData({
                                     abi: swapRouter02AbiJson, functionName: 'exactInputSingle',
                                     args: [{
-                                        tokenIn: leg.tokenIn.address as `0x${string}`, tokenOut: leg.tokenOut.address as `0x${string}`, fee: leg.fee,
-                                        recipient, deadline, amountIn: bestCalculatedInputAmount.quotient, amountOutMinimum: minimumReceived.quotient, sqrtPriceLimitX96: 0n,
+                                        tokenIn: leg?.tokenIn?.address as `0x${string}`, tokenOut: leg?.tokenOut?.address as `0x${string}`, fee: leg.fee,
+                                        recipient: swapRecipient, deadline, amountIn: bestCalculatedInputAmount.quotient,
+                                        amountOutMinimum: minimumReceived.quotient, // This is min amount of finalLogicToken (WETH)
+                                        sqrtPriceLimitX96: 0n,
                                     }],
                                 });
-                            } else { // Exact output single
-                                transactionData = encodeFunctionData({
+                            } else {
+                                swapCallData = encodeFunctionData({
                                     abi: swapRouter02AbiJson, functionName: 'exactOutputSingle',
                                     args: [{
                                         tokenIn: leg.tokenIn.address as `0x${string}`, tokenOut: leg.tokenOut.address as `0x${string}`, fee: leg.fee,
-                                        recipient, deadline, amountOut: bestCalculatedOutputAmount.quotient, amountInMaximum: bestCalculatedInputAmount.quotient, sqrtPriceLimitX96: 0n,
+                                        recipient: swapRecipient, deadline,
+                                        amountOut: bestCalculatedOutputAmount.quotient, // This is exact amount of finalLogicToken (WETH)
+                                        amountInMaximum: bestCalculatedInputAmount.quotient, sqrtPriceLimitX96: 0n,
                                     }],
                                 });
                             }
-                        } else { // Multi-hop
+                        } else {
                             const pathTokens: `0x${string}`[] = [bestTradePath[0].tokenIn.address as `0x${string}`];
                             const pathFees: number[] = [];
                             bestTradePath.forEach(leg => {
@@ -298,43 +319,84 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                                 pathFees.push(leg.fee);
                             });
 
-                            const pathComponents: any[] = [];
-                            const types: string[] = [];
-                            pathComponents.push(pathTokens[0]);
-                            types.push('address');
+                            const types: string[] = ['address'];
+                            const pathComponents: any[] = [pathTokens[0]];
                             for (let i = 0; i < pathFees.length; i++) {
-                                pathComponents.push(pathFees[i]);
-                                types.push('uint24');
-                                pathComponents.push(pathTokens[i + 1]);
-                                types.push('address');
+                                types.push('uint24'); types.push('address');
+                                pathComponents.push(pathFees[i]); pathComponents.push(pathTokens[i + 1]);
                             }
                             const encodedPath = encodePacked(types, pathComponents);
 
                             if (isExactInputTrade) {
-                                transactionData = encodeFunctionData({
+                                swapCallData = encodeFunctionData({
                                     abi: swapRouter02AbiJson, functionName: 'exactInput',
-                                    args: [{ path: encodedPath, recipient, deadline, amountIn: bestCalculatedInputAmount.quotient, amountOutMinimum: minimumReceived.quotient }],
+                                    args: [{
+                                        path: encodedPath, recipient: swapRecipient, deadline, amountIn: bestCalculatedInputAmount.quotient,
+                                        amountOutMinimum: minimumReceived.quotient, // Min amount of finalLogicToken (WETH)
+                                    }],
                                 });
-                            } else { // Exact output multi-hop
-                                transactionData = encodeFunctionData({
+                            } else {
+                                swapCallData = encodeFunctionData({
                                     abi: swapRouter02AbiJson, functionName: 'exactOutput',
-                                    args: [{ path: encodedPath, recipient, deadline, amountOut: bestCalculatedOutputAmount.quotient, amountInMaximum: bestCalculatedInputAmount.quotient }],
+                                    args: [{
+                                        path: encodedPath, recipient: swapRecipient, deadline,
+                                        amountOut: bestCalculatedOutputAmount.quotient, // Exact amount of finalLogicToken (WETH)
+                                        amountInMaximum: bestCalculatedInputAmount.quotient
+                                    }],
                                 });
                             }
                         }
 
+                        if (swapCallData) {
+                            commands.push(swapCallData);
+                        }
+
+                        if (actualTradeOutputToken.isNative && commands.length > 0) {
+                            if (!userAccountAddress) {
+                                console.warn("User address not provided for native ETH output, cannot generate unwrapWETH9 call.");
+                                // Potentially throw error or handle as WETH output
+                            } else {
+                                // Amount for unwrapWETH9 is the amount of WETH expected
+                                const amountToUnwrap = isExactInputTrade ? minimumReceived.quotient : bestCalculatedOutputAmount.quotient;
+                                const unwrapCallData = encodeFunctionData({
+                                    abi: swapRouter02AbiJson,
+                                    functionName: 'unwrapWETH9',
+                                    args: [amountToUnwrap, finalUserRecipient], // amountMinimum (of WETH), recipient (of ETH)
+                                });
+                                commands.push(unwrapCallData);
+                            }
+                        }
+
+                        // If input was native ETH and we are doing a multicall,
+                        // some routers might require an explicit refundETH if not all msg.value was used by the first payable command.
+                        // However, standard routers usually handle this. If issues, add:
+                        // if (actualTradeInputToken.isNative && commands.length > 1) {
+                        //   commands.push(encodeFunctionData({ abi: swapRouter02AbiJson, functionName: 'refundETH' }));
+                        // }
+
+
+                        if (commands.length === 0) {
+                            throw new Error("No transaction commands generated.");
+                        } else if (commands.length === 1) {
+                            transactionData = commands[0];
+                        } else {
+                            transactionData = encodeFunctionData({
+                                abi: swapRouter02AbiJson,
+                                functionName: 'multicall',
+                                args: [commands],
+                            });
+                        }
+
                         if (transactionData) {
-                            const estimationAccount = userAccountAddress || zeroAddress;
+                            const estimationAccount = userAccountAddress || zeroAddress; // For estimation, zeroAddress is fallback
                             simulatedGasEstimate = await publicClient.estimateGas({
                                 account: estimationAccount, to: swapRouterAddress, data: transactionData, value: valueToSend,
                             });
                         }
                     } catch (e: any) {
-                        console.warn("Failed to simulate transaction for gas estimation:", e.message);
-                        // Fallback to quoter's estimate if simulation fails
+                        console.warn("Failed to build transaction or simulate for gas estimation:", e.message);
                     }
                 }
-                // --- End Accurate Gas Estimation ---
 
                 const finalEstimatedGasFeeNativeStr = simulatedGasEstimate
                     ? simulatedGasEstimate.toString()
@@ -346,15 +408,20 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                     minimumReceived, executionPrice: executionPriceForDisplay, priceImpactPercent: null,
                     estimatedGasFeeNative: finalEstimatedGasFeeNativeStr,
                     slippageTolerancePercent: `${slippagePercentValue.toFixed(2)}%`, path: bestTradePath,
+                    transactionRequest: (swapRouterAddress && transactionData)
+                        ? { to: swapRouterAddress, data: transactionData, value: valueToSend }
+                        : undefined,
                 };
                 return { tradeDetails, error: null, isLoading: false };
             } catch (e: any) {
-                if (signal?.aborted) return { ...emptyPathfinderReturn, isLoading: false };
+                if (e instanceof Error && e.message.includes('Aborted')) {
+                    return { ...emptyPathfinderReturn, isLoading: false, error: 'Operation aborted by user.' };
+                }
                 console.error("Error in getBestTradeForAmount:", e);
                 return { ...emptyPathfinderReturn, error: e.message || 'Failed to get trade details.', isLoading: false };
             }
         },
-        [currentChainId, uiToken0, uiToken1, wethToken, xtmToken, usdtToken, findAndQuoteSingleLeg, publicClient, swapRouterAddress, userAccountAddress]
+        [currentChainId, uiToken0, uiToken1, wethToken, xtmToken, usdtToken, findAndQuoteSingleLeg, publicClient, swapRouterAddress, userAccountAddress] // Added v3QuoterAddress
     );
 
     return { getBestTradeForAmount };
