@@ -81,6 +81,7 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
 
 export const SwapLabel = styled.span`
     margin-bottom: 10px;
+    font-size: 12px !important;
 `
 
 export const SwapDirection = styled.div`
@@ -217,7 +218,7 @@ export const ConnectedWalletWrapper = styled.div`
     padding: 5px 10px;
     border-radius: 12px;
 
-    font-family: Poppins, sans-serif;
+    font-family: var(--font-poppins);
     font-weight: 600;
     font-size: 12px;
 
@@ -233,7 +234,7 @@ export const ConnectedWalletWrapper = styled.div`
 
 export const SubmitButtonWrapper = styled.div`
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 `;
 
 export const SwapErrorMessage = styled.div`

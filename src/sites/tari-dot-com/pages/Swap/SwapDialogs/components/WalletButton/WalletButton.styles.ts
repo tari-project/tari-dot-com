@@ -15,6 +15,7 @@ export const WalletActionButton = styled.button<{
     cursor: pointer;
     font-weight: 600;
     font-size: 12px;
+    font-family: var(--font-poppins);
     line-height: 26px;
     letter-spacing: 0.46px;
     text-transform: capitalize;

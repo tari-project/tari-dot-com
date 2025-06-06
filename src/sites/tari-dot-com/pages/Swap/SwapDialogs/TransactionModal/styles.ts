@@ -63,7 +63,7 @@ export const TopButton = styled('button')`
 `;
 
 export const TopWrapper = styled('div')`
-    padding: 10px;
+    padding-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;

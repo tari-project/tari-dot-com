@@ -11,6 +11,7 @@ export default function SwapsLayout({ children }: { children: React.ReactNode })
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontFamily: 'var(--font-poppins)',
+                overflow: 'hidden',
                 margin: 0,
                 padding: 0,
                 marginTop: '10px',

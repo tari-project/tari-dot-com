@@ -12,10 +12,18 @@ export enum MessageType {
     WALLET_CONNECT = 'WALLET_CONNECT',
     PROCESSING_STATUS = 'PROCESSING_STATUS',
     SWAP_HEIGHT_CHANGE = 'SWAP_HEIGHT_CHANGE',
+    SET_FULLSCREEN = 'SET_FULLSCREEN',
 }
 
 interface WalletConnectMessage {
     type: MessageType.WALLET_CONNECT;
+    payload: {
+        open: boolean;
+    };
+}
+
+interface SetFullscreenMessage {
+    type: MessageType.SET_FULLSCREEN;
     payload: {
         open: boolean;
     };
@@ -83,6 +91,10 @@ type ProcessingMessage = {
         transactionId?: string | null; // Hash of the swap transaction
         txBlockHash?: `0x${string}` | null;
         errorMessage?: string | null; // Added for error status
+        fromTokenSymbol?: string;
+        fromTokenAmount?: string;
+        toTokenSymbol?: string;
+        toTokenAmount?: string;
     }
 }
 
@@ -94,6 +106,7 @@ export type IframeMessage =
     | ErrorMessage
     | SuccessMessage
     | ProcessingMessage
+    | SetFullscreenMessage
     | SwapHeightChangeMessage
     ;
 

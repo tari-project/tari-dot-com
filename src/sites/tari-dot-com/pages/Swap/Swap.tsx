@@ -104,6 +104,11 @@ export const Swap = memo(function Swap() {
         postToParentIframe({ type: MessageType.ERROR, payload: { message: message || 'Swap execution failed.' } });
     };
 
+    useEffect(() => {
+        const isOpen = tokenSelectOpen || openWallet
+        postToParentIframe({ type: MessageType.SET_FULLSCREEN, payload: { open: isOpen } });
+    }, [openWallet, tokenSelectOpen]);
+
     const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => {
         setFromAmount('');
         setTargetAmount('');
@@ -132,7 +137,11 @@ export const Swap = memo(function Swap() {
                 fees: {
                     swap: approvalFeeGwei && approvalFeeUsd ? approvalFeeUsd : null,
                     approval: swapFeeGwei && swapFeeUsd ? `${approvalFeeGwei}` : null,
-                }
+                },
+                fromTokenSymbol: fromTokenDisplay?.symbol,
+                fromTokenAmount: uiDirection === 'toXtm' ? ethTokenAmount : wxtmAmount,
+                toTokenSymbol: toTokenDisplay?.symbol,
+                toTokenAmount: uiDirection === 'toXtm' ? wxtmAmount : ethTokenAmount,
             }
         });
     };
@@ -211,7 +220,7 @@ export const Swap = memo(function Swap() {
         const notifyParent = () => {
             if (containerRef.current && containerRef.current.offsetHeight) {
                 console.log('containerRef.current.offsetHeight', containerRef.current.offsetHeight);
-                postToParentIframe({ type: MessageType.SWAP_HEIGHT_CHANGE, payload: { height: containerRef.current.offsetHeight + 40 } });
+                postToParentIframe({ type: MessageType.SWAP_HEIGHT_CHANGE, payload: { height: containerRef.current.offsetHeight + 10 } });
             }
         };
 
