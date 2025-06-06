@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Token, WETH9, CurrencyAmount, NativeCurrency, Price, Percent } from '@uniswap/sdk-core';
+import { Token, CurrencyAmount, NativeCurrency, Price, Percent, Ether } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { usePublicClient } from 'wagmi';
 import { PublicClient as ViemPublicClient, zeroAddress, encodeFunctionData, encodePacked } from 'viem'; // Added encodeFunctionData, encodePacked
@@ -55,9 +55,9 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
     const usdtToken = useMemo(() => (currentChainId ? USDT_SDK_TOKEN[currentChainId as keyof typeof USDT_SDK_TOKEN] : undefined), [currentChainId]);
 
     const wethToken = useMemo(() => {
-        if (!currentChainId || !WETH9[currentChainId as keyof typeof WETH9]) return undefined;
-        return WETH9[currentChainId as keyof typeof WETH9];
-    }, [currentChainId]) as Token;
+        if (!currentChainId) return undefined;
+        return Ether.onChain(currentChainId)
+    }, [currentChainId])
 
     const quoteSingleLegWithSpecificFee = useCallback(
         async (
