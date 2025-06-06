@@ -1,14 +1,14 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const ConnectedWalletWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 10px 15px 10px 12px;
+    padding: 10px 20px;
     border-radius: 60px;
-    background: ${({ theme }) => theme.palette.background.primary};
-    padding: 0 10px;
+    background: ${({ theme }) => theme.palette.background.accent};
     button {
         width: fit-content;
     }
@@ -33,7 +33,7 @@ export const TokenList = styled.div`
     padding: 8px 0;
     display: flex;
     flex-direction: column;
-    // background: ${({ theme }) => theme.palette.background.paper};
+    background: ${({ theme }) => theme.palette.background.paper};
 `;
 
 export const TokenItem = styled.div`
@@ -98,17 +98,40 @@ export const TokenSeparator = styled.hr`
 `;
 
 export const WalletAddress = styled.div`
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: fit-content;
     color: ${({ theme }) => theme.palette.text.primary};
     font-size: 14px;
     line-height: 26px;
-    background: ${({ theme }) => theme.palette.background.main};
-    padding: 5px 10px;
-    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
+    position: relative;
+    transform: translateZ(0);
+
+    .address-content {
+        display: flex;
+        align-items: center;
+        transition: opacity 0.15s ease-in-out;
+    }
+
+    &:hover .address-content {
+        opacity: 0.7;
+    }
+`;
+
+export const CopyText = styled(motion.div)`
+    position: absolute;
+    inset: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 26px;
+    border-radius: 15px;
+    background: #36C475;
+    color: white;
+    z-index: 1;
 `;

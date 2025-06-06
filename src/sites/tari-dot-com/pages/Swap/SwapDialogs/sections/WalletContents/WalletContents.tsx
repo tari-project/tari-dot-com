@@ -13,13 +13,15 @@ import {
     TokenItemRight,
     TokenSeparator,
     WalletAddress,
+    CopyText,
 } from './WalletContents.styles';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { getCurrencyIcon } from '../../helpers/getIcon';
 import { truncateMiddle } from '@/sites/tari-dot-com/utils/truncateMiddle';
 import TransactionModal from '../../TransactionModal/TransactionModal';
 import { SelectableTokenInfo } from '../../../useSwapData';
-import { EnabledTokensEnum } from '@/ui-shared/hooks/swap/lib/constants';
+import { CopyIcon } from '../../icons/CopyIcon';
+import { AnimatePresence } from 'motion/react';
 
 interface Props {
     isOpen: boolean;
@@ -31,12 +33,22 @@ export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) =>
     const { disconnect } = useDisconnect();
     const { address: accountAddress } = useAccount();
 
+    const [copied, setCopied] = useState(false);
+
     const handleDisconnect = useCallback(() => {
         if (accountAddress) {
             disconnect();
         }
         setIsOpen(false);
     }, [accountAddress, disconnect, setIsOpen]);
+
+    const handleCopyAddress = useCallback(() => {
+        if (accountAddress) {
+            navigator.clipboard.writeText(accountAddress);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        }
+    }, [accountAddress]);
 
     return (
         <TransactionModal
@@ -46,12 +58,25 @@ export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) =>
         >
             <WalletContentsContainer>
                 <ConnectedWalletWrapper>
-                    <WalletButton variant="error" onClick={handleDisconnect}>
+                    <WalletButton variant="error" onClick={handleDisconnect} size="small">
                         Disconnect
                     </WalletButton>
-                    <WalletAddress>
-                        {getCurrencyIcon({ symbol: EnabledTokensEnum.ETH, width: 20 })}
-                        {truncateMiddle(accountAddress || '', 7)}
+                    <WalletAddress onClick={handleCopyAddress} title="Copy address">
+                        <span className="address-content">
+                            <CopyIcon width={20} height={20} />
+                            {truncateMiddle(accountAddress || '', 6, 5)}
+                        </span>
+                        <AnimatePresence>
+                            {copied && (
+                                <CopyText
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                >
+                                    Copied!
+                                </CopyText>
+                            )}
+                        </AnimatePresence>
                     </WalletAddress>
                 </ConnectedWalletWrapper>
 

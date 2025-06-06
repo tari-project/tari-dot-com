@@ -3,7 +3,6 @@ import { useAccount, useBalance, useReadContracts } from 'wagmi';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { formatUnits as viemFormatUnits, parseUnits as viemParseUnits, erc20Abi as viemErc20Abi } from 'viem';
 import { Token, NativeCurrency, Ether, ChainId } from '@uniswap/sdk-core';
-import { useTokenDisplayInfo } from './helpers/useTokenInfo';
 import {
     ENABLED_TOKEN_ADDRESSES,
     EnabledTokensEnum,
@@ -18,6 +17,7 @@ import {
 } from '@/ui-shared/hooks/swap/lib/utils';
 import { SwapExecutionProps, useUniswapV3Interactions } from '@/ui-shared/hooks/swap/useSwapV3';
 import { V3TradeDetails, SwapField, SwapTransaction } from '@/ui-shared/hooks/swap/lib/types';
+import { useTokenDisplayInfo } from './helpers/useTokenInfo';
 
 export type TokenSymbol = EnabledTokensEnum;
 export interface SelectableTokenInfo {

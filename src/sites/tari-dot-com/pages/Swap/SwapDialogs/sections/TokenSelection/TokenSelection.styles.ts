@@ -13,7 +13,7 @@ export const TokenList = styled.div`
     overflow-y: auto;
     border-radius: 8px;
     padding: 8px;
-    //background: ${({ theme }) => theme.palette.background.accent};
+    background: ${({ theme }) => theme.palette.background.paper};
     border-radius: 25px;
 `;
 

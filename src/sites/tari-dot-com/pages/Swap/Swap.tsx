@@ -26,7 +26,6 @@ import { useAccount } from 'wagmi';
 import { useAppKitWallet } from '@reown/appkit-wallet-button/react';
 import { useSwapData } from './useSwapData';
 import { useAdaptiveFontSize } from '@/ui-shared/hooks/useAdaptiveFontSize';
-import { getCurrencyIcon } from './helpers/getCurrencyIcon';
 import { truncateMiddle } from '../../utils/truncateMiddle';
 import { EnabledTokensEnum } from '@/ui-shared/hooks/swap/lib/constants';
 import { TokenSelection } from './SwapDialogs/sections/TokenSelection/TokenSelection';
@@ -38,6 +37,7 @@ import { MessageType, postToParentIframe, useIframeMessage } from '@/ui-shared/h
 import { TransactionResponse, TransactionReceipt } from 'ethers';
 import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 import { useUIStore } from '@/stores/useUiStore';
+import { getCurrencyIcon } from './SwapDialogs/helpers/getIcon';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
