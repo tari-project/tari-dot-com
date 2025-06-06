@@ -286,12 +286,12 @@ export const useUniswapV3Interactions = () => {
                 };
 
                 // Optional: Gas estimation for the pre-built transaction
-                try {
-                    const estimatedGas = await signer.estimateGas(populatedTx);
-                    populatedTx.gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
-                } catch (gasError: any) {
-                    console.warn('[V3SwapRouter02] Gas estimation for pre-built tx failed, using default or letting wallet decide:', gasError.message);
-                }
+                // try {
+                //     const estimatedGas = await signer.estimateGas(populatedTx);
+                //     populatedTx.gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
+                // } catch (gasError: any) {
+                //     console.warn('[V3SwapRouter02] Gas estimation for pre-built tx failed, using default or letting wallet decide:', gasError.message);
+                // }
 
                 const txResult = await sendTransactionWithWagmiSigner(signer, populatedTx);
                 console.info('[V3SwapRouter02] Swap response (using pre-built tx):', txResult);

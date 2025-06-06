@@ -187,8 +187,6 @@ export const Swap = memo(function Swap() {
                 if (!event.data.payload.theme) return;
                 setTheme(event.data.payload.theme);
                 break;
-            default:
-                console.warn('Unknown message type:', event.data);
         }
     });
 
