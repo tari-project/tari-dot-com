@@ -18,6 +18,8 @@ import {
     SwapsContainer,
     OptionContainer,
     SwapOptionCurrencyContianer,
+    BottomWrapper,
+    SwapLabel,
     // MaxButton,
 } from './Swap.styles';
 import { useAccount } from 'wagmi';
@@ -239,7 +241,7 @@ export const Swap = memo(function Swap() {
         // }
         return <OptionContainer>
             <SwapOption>
-                <span>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</span>
+                <SwapLabel>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</SwapLabel>
                 <SwapOptionAmount>
                     <SwapAmountInput
                         ref={toInputRef} // Assign ref
@@ -252,20 +254,24 @@ export const Swap = memo(function Swap() {
                         value={wxtmAmount}
                         $dynamicFontSize={toInputFontSize} // Pass dynamic font size
                     />
+                    <SwapOptionCurrencyContianer>
+                        <SwapOptionCurrency>
+                            {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
+                            <span>{'wXTM'}</span>
+                        </SwapOptionCurrency>
+                    </SwapOptionCurrencyContianer>
                 </SwapOptionAmount>
+                <BottomWrapper>
+                    <div />
+                    <span>
+                        {toTokenDisplay?.balance}
+
+                        {
+                            // {uiDirection === 'fromXtm' && toTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
+                        }
+                    </span>
+                </BottomWrapper>
             </SwapOption>
-            <SwapOptionCurrencyContianer>
-                <SwapOptionCurrency>
-                    {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
-                    <span>{'wXTM'}</span>
-                </SwapOptionCurrency>
-                <span>
-                    {toTokenDisplay?.balance}
-                </span>
-                {
-                    // {uiDirection === 'fromXtm' && toTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
-                }
-            </SwapOptionCurrencyContianer>
         </OptionContainer>
     }, [isLoading, lastUpdatedField, notEnoughBalance, setTargetAmount, toInputFontSize, toTokenDisplay, uiDirection, wxtmAmount]);
 
@@ -284,7 +290,7 @@ export const Swap = memo(function Swap() {
 
         return <OptionContainer>
             <SwapOption $paddingBottom={25}>
-                <span>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</span>
+                <SwapLabel>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</SwapLabel>
                 <SwapOptionAmount>
                     <SwapAmountInput
                         ref={fromInputRef} // Assign ref
@@ -297,27 +303,30 @@ export const Swap = memo(function Swap() {
                         value={ethTokenAmount}
                         $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
                     />
+                    <SwapOptionCurrencyContianer>
+                        <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
+                            {getCurrencyIcon({ symbol: fromTokenDisplay?.symbol || EnabledTokensEnum.ETH, width: 25 })}
+                            <span>{fromTokenDisplay?.symbol || 'ETH'}</span>
+                            <ChevronSVG width={8} />
+                        </SwapOptionCurrency>
+                    </SwapOptionCurrencyContianer>
                 </SwapOptionAmount>
-                {usdValue > 0 && (
+                <BottomWrapper>
+                    {usdValue > 0 ? (
+                        <span>
+                            ${usdValue.toFixed(2)}
+                        </span>
+                    ) : (<div> </div>)}
                     <span>
-                        ${usdValue.toFixed(2)}
+                        {fromTokenDisplay?.balance}
+
+                        {
+                            //{uiDirection === 'toXtm' && fromTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
+                        }
                     </span>
-                )}
+                </BottomWrapper>
             </SwapOption>
-            <SwapOptionCurrencyContianer>
-                <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
-                    {getCurrencyIcon({ symbol: fromTokenDisplay?.symbol || EnabledTokensEnum.ETH, width: 25 })}
-                    <span>{fromTokenDisplay?.symbol || 'ETH'}</span>
-                    <ChevronSVG width={8} />
-                </SwapOptionCurrency>
-                <span>
-                    {fromTokenDisplay?.balance}
-                </span>
-                {
-                    //{uiDirection === 'toXtm' && fromTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
-                }
-            </SwapOptionCurrencyContianer>
-        </OptionContainer>
+        </OptionContainer >
     }, [ethTokenAmount, ethUsdPrice, fromInputFontSize, fromTokenDisplay, isLoading, lastUpdatedField, notEnoughBalance, setFromAmount, setTokenSelectOpen, uiDirection]);
 
 

@@ -11,7 +11,7 @@ export const Wrapper = styled('div')`
     justify-content: center;
     align-items: center;
     pointer-events: all;
-    background: ${({ theme }) => theme.palette.background.main};
+    background: ${({ theme }) => theme.mode === 'dark' ? '#2e2e2e' : '#e9e9e9'};
     color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
 `;
@@ -44,7 +44,6 @@ export const BoxWrapper = styled(m.div)`
     border-radius: 20px;
     position: relative;
     z-index: 1;
-    //background: ${({ theme }) => theme.palette.background.splash};
 `;
 
 export const TopButton = styled('button')`
@@ -71,7 +70,6 @@ export const TopWrapper = styled('div')`
 `;
 
 export const Title = styled('div')`
-    font-family: Poppins, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 export const OptionContainer = styled.div<{ $paddingBottom?: number }>`
     margin-top: 5px;
     display: flex;
-    gap: 3px;
     justify-content: space-between;
     align-items: center;
     color: ${({ theme }) => theme.palette.text.primary};
@@ -23,7 +22,6 @@ export const OptionContainer = styled.div<{ $paddingBottom?: number }>`
 export const SwapOption = styled.div<{ $paddingBottom?: number }>`
     display: flex;
     flex-direction: column;
-    gap: 3px;
     height: 100%;
 
     > span {
@@ -79,6 +77,10 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
         `}
 `;
 
+export const  SwapLabel = styled.span`
+    margin-bottom: 10px;
+`
+
 export const SwapDirection = styled.div`
     width: 100%;
     display: flex;
@@ -103,8 +105,6 @@ export const SwapAmountInput = styled.input<{
     border: none;
     text-align: left;
     padding: 0;
-    margin-right: 10px;
-    margin-top: 10px;
     height: 40px;
 
     &:focus {
@@ -194,14 +194,12 @@ export const HeaderItem = styled.div`
     align-items: start;
 `;
 export const StepHeader = styled.h3`
-    font-family: Poppins, sans-serif;
     font-weight: 600;
     font-size: 16px;
     margin: 0;
 `;
 
 export const CurrentStep = styled.span`
-    font-family: Poppins, sans-serif;
     font-weight: 600;
     font-size: 12px;
     color: ${({ theme }) => theme.palette.text.secondary};
@@ -239,7 +237,6 @@ export const SubmitButtonWrapper = styled.div`
 export const SwapErrorMessage = styled.div`
     color: ${({ theme }) => theme.palette.error.main};
     font-size: 12px;
-    font-family: Poppins, sans-serif;
     margin-top: 10px;
     margin-bottom: -10px;
     min-height: 18px;
@@ -249,17 +246,13 @@ export const SwapErrorMessage = styled.div`
 `;
 
 export const SwapOptionCurrencyContianer = styled.div`
-    font-size: 10px;
-    line-height: 26px;
-    text-align: right;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     flex-direction: column;
-    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
-    span {
-        white-space: nowrap;
-    }
+    font-size: 10px;
+    line-height: 26px;
+    text-align: right;
 `;
 
 export const MaxButton = styled.button`
@@ -275,3 +268,17 @@ export const MaxButton = styled.button`
 `
 
 
+export const BottomWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        margin-top: -5px;
+        color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
+        font-size: 10px;
+        line-height: 26px;
+        text-align: right;
+        white-space: nowrap;
+    }
+`

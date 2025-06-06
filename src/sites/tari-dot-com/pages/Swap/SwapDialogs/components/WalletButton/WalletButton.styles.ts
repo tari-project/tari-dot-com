@@ -4,7 +4,6 @@ export const WalletActionButton = styled.button<{
     $variant?: 'primary' | 'secondary' | 'error' | 'success';
     $size?: 'small' | 'medium' | 'large' | 'xl';
 }>`
-    font-family: Poppins, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -9,7 +9,7 @@ export const componentSettings = {
         },
     },
     typography: {
-        fontFamily: '"Poppins", sans-serif',
+        fontFamily: 'var(--font-poppins)',
         fontSize: '16px',
         fontWeight: 400,
         span: {
@@ -26,7 +26,6 @@ export const componentSettings = {
         h1: {
             fontSize: '30px',
             lineHeight: 1.6,
-            fontFamily: '"Poppins", sans-serif',
             letterSpacing: '-0.4px',
             fontWeight: 600,
         },
@@ -34,34 +33,29 @@ export const componentSettings = {
             fontSize: '26px',
             lineHeight: 1.4,
             fontWeight: 600,
-            fontFamily: '"Poppins", sans-serif',
             letterSpacing: '-1.2px',
         },
         h3: {
             fontSize: '24px',
             lineHeight: 1.05,
-            fontFamily: '"Poppins", sans-serif',
             letterSpacing: '-0.5px',
             fontWeight: 600,
         },
         h4: {
             fontSize: '20px',
             lineHeight: 1.3,
-            fontFamily: '"Poppins", sans-serif',
             fontWeight: 600,
             letterSpacing: '-1.6px',
         },
         h5: {
             fontSize: '16px',
             lineHeight: 1.05,
-            fontFamily: '"Poppins", sans-serif',
             letterSpacing: '-0.4px',
             fontWeight: 600,
         },
         h6: {
             fontSize: '14px',
             lineHeight: 1.6,
-            fontFamily: '"Poppins", sans-serif',
             letterSpacing: '-0.4px',
             fontWeight: 500,
         },
