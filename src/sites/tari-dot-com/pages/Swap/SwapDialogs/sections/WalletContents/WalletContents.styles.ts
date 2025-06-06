@@ -88,6 +88,21 @@ export const TokenItemRight = styled.div`
     align-items: flex-end;
     gap: 4px;
     font-size: 14px;
+    .balance {
+        font-size: 12px;
+        font-weight: 700;
+        color: ${({ theme }) => theme.palette.text.secondary};
+        border-radius: 100px;
+        background: ${({ theme }) => theme.palette.background.accent};
+        border: 1px solid ${({ theme }) => theme.palette.divider};
+        padding: 2px 8px;
+        margin-top: 4px;
+    }
+
+    .usd {
+        font-size: 14px;
+        padding-right: 4px;
+    }
 `;
 
 export const TokenSeparator = styled.hr`

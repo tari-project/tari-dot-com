@@ -56,7 +56,8 @@ export const TokenValue = styled.div`
     flex-direction: column;
     align-items: flex-end;
     .usd {
-        font-weight: 500;
+        font-size: 14px;
+        padding-right: 6px;
     }
     .balance {
         font-size: 0.875rem;
@@ -64,7 +65,8 @@ export const TokenValue = styled.div`
         border-radius: 100px;
         background: ${({ theme }) => theme.palette.background.accent};
         border: 1px solid ${({ theme }) => theme.palette.divider};
-        padding: 2px 6px;
+        padding: 2px 8px;
         margin-top: 4px;
+        font-weight: 700;
     }
 `;

@@ -2,6 +2,7 @@ import { getCurrencyIcon } from '../../helpers/getIcon';
 import { ModalContent, TokenDetails, TokenInfo, TokenItem, TokenList, TokenValue } from './TokenSelection.styles';
 import TransactionModal from '../../TransactionModal/TransactionModal';
 import { SelectableTokenInfo } from '../../../useSwapData';
+import { WalletButton } from '../../components/WalletButton/WalletButton';
 
 interface Props {
     isOpen: boolean;
@@ -55,6 +56,11 @@ export const TokenSelection = ({ isOpen, setIsOpen, availableTokens, onSelectTok
                         </div>
                     )}
                 </TokenList>
+                <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+                    <WalletButton variant="secondary" onClick={() => setIsOpen(false)} size="large">
+                        Continue
+                    </WalletButton>
+                </div>
             </ModalContent>
         </TransactionModal>
     );
