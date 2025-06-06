@@ -180,7 +180,7 @@ export const Swap = memo(function Swap() {
     useIframeMessage((event) => {
         switch (event.data.type) {
             case 'EXECUTE_SWAP':
-                console.log('EXECUTE_SWAP', event.data);
+                console.info('EXECUTE_SWAP', event.data);
                 handleConfirm({ onApproveRequest, onApproveSuccess, onFailure, onSuccess });
                 break;
             case 'SET_THEME':
@@ -219,7 +219,6 @@ export const Swap = memo(function Swap() {
 
         const notifyParent = () => {
             if (containerRef.current && containerRef.current.offsetHeight) {
-                console.log('containerRef.current.offsetHeight', containerRef.current.offsetHeight);
                 postToParentIframe({ type: MessageType.SWAP_HEIGHT_CHANGE, payload: { height: containerRef.current.offsetHeight + 10 } });
             }
         };

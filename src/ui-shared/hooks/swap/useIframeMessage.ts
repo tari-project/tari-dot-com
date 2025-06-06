@@ -113,7 +113,7 @@ export type IframeMessage =
 // Post a message to the parent window
 export function postToParentIframe(message: IframeMessage, targetOrigin: string = '*') {
     if (window.parent) {
-        console.log('Posting message to parent:', message);
+        console.info('Posting message to parent:', message);
         window.parent.postMessage(message, targetOrigin);
     }
 }

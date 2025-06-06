@@ -331,7 +331,6 @@ export const useSwapData = () => {
                 Number.isNaN(Number(amountTypedByUserStr)) ||
                 Number(amountTypedByUserStr) <= 0
             ) {
-                console.log({ tokenUsedForParsingAmount, amountTypedByUserStr });
                 clearCalculatedDetails();
                 if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
                 else if (lastUpdatedField === 'wxtmField' && ethTokenAmount !== '') setEthTokenAmount('');
@@ -351,9 +350,7 @@ export const useSwapData = () => {
                 setTradeDetails(details);
 
                 if (details && details.inputAmount && details.outputAmount) {
-                    console.log({ details });
                     setPriceImpact(details.priceImpactPercent ? `${details.priceImpactPercent}%` : null);
-                    // setSlippage(details.priceImpactPercent ? `${details.priceImpactPercent}% (Price Impact)` : null);
                     setNetworkFee(details.estimatedGasFeeNative || null);
                     if (details.minimumReceived && details.minimumReceived.currency.symbol) {
                         setMinimumReceivedDisplay(
