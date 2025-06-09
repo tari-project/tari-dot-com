@@ -40,7 +40,6 @@ import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 import { useUIStore } from '@/stores/useUiStore';
 import { getCurrencyIcon } from './SwapDialogs/helpers/getIcon';
 import { formatNumberWithCommas } from './helpers/formatNumberInputValues';
-import { formatUnits } from 'viem';
 // import { GasIcon } from './SwapDialogs/icons/gasIcon';
 
 export const Swap = memo(function Swap() {

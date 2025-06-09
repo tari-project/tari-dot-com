@@ -9,7 +9,6 @@ import {
     TransactionReceipt,
     zeroPadValue,
     TransactionRequest as EthersTransactionRequest,
-    ethers,
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
