@@ -277,6 +277,8 @@ export const useUniswapV3Interactions = () => {
                         onFailure?.('Token approval failed.');
                         return null;
                     }
+                } else {
+                    onApproveSuccess?.();
                 }
 
                 const populatedTx: EthersTransactionRequest = {

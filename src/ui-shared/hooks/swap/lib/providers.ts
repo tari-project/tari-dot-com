@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     ethers,
     Signer as EthersSigner,
@@ -12,6 +13,7 @@ export enum TransactionState {
     Rejected = 'Rejected',
     Sending = 'Sending',
     Sent = 'Sent',
+    Timeout = 'Timeout',
 }
 
 export async function sendTransactionWithWagmiSigner(
@@ -37,8 +39,10 @@ export async function sendTransactionWithWagmiSigner(
         console.info('Transaction request:', transactionRequest);
         const txRes = await signer.sendTransaction(transactionRequest);
         console.info('Transaction sent with ether');
-        const receipt = await txRes.wait(1);
-        // const receipt = { status: 1 } as EthersTransactionReceipt;
+
+        // Wait for 2 confirmations with a 5-minute timeout
+        const receipt = await signer.provider.waitForTransaction(txRes.hash, 2, 60000 * 5); // 5 minutes
+
         console.info('Transaction receipt received');
 
         if (receipt) {
@@ -50,11 +54,15 @@ export async function sendTransactionWithWagmiSigner(
                 return { state: TransactionState.Failed, response: txRes, receipt };
             }
         } else {
+            // This case will now be caught by the timeout error
             console.error('Transaction receipt was null after waiting.');
             return { state: TransactionState.Failed, response: txRes };
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
+        if (e.code === 'TIMEOUT') {
+            console.error('Transaction timed out.', e);
+            return { state: TransactionState.Timeout };
+        }
         console.error(`Transaction submission or mining error:`, e);
         return { state: TransactionState.Failed };
     }

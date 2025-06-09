@@ -88,7 +88,7 @@ export const useSwapData = () => {
     );
 
     const {
-        tokenDisplayInfo: fromTokenDisplay,
+        tokenDisplayInfo: ethTokenDisplay,
         refetch: refetchFromToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: fromUiTokenDefinition,
@@ -98,7 +98,7 @@ export const useSwapData = () => {
     });
 
     const {
-        tokenDisplayInfo: toTokenDisplay,
+        tokenDisplayInfo: xtmTokenDisplay,
         refetch: refetchToToken,
     } = useTokenDisplayInfo({
         uiTokenDefinition: toUiTokenDefinition,
@@ -113,29 +113,29 @@ export const useSwapData = () => {
 
     const notEnoughBalance = useMemo(() => {
         if (direction === 'toXtm') {
-            if (!fromTokenDisplay?.rawBalance || !ethTokenAmount || !fromTokenDisplay.decimals || Number(ethTokenAmount) <= 0) return false;
+            if (!ethTokenDisplay?.rawBalance || !ethTokenAmount || !ethTokenDisplay.decimals || Number(ethTokenAmount) <= 0) return false;
             try {
-                const amountBigInt = viemParseUnits(ethTokenAmount, fromTokenDisplay.decimals);
-                return amountBigInt > fromTokenDisplay.rawBalance;
+                const amountBigInt = viemParseUnits(ethTokenAmount, ethTokenDisplay.decimals);
+                return amountBigInt > ethTokenDisplay.rawBalance;
             } catch {
                 return true;
             }
         } else {
-            if (!toTokenDisplay?.rawBalance || !wxtmAmount || !toTokenDisplay.decimals || Number(wxtmAmount) <= 0) return false;
+            if (!xtmTokenDisplay?.rawBalance || !wxtmAmount || !xtmTokenDisplay.decimals || Number(wxtmAmount) <= 0) return false;
             try {
-                const amountBigInt = viemParseUnits(wxtmAmount, toTokenDisplay.decimals);
-                return amountBigInt > toTokenDisplay.rawBalance;
+                const amountBigInt = viemParseUnits(wxtmAmount, xtmTokenDisplay.decimals);
+                return amountBigInt > xtmTokenDisplay.rawBalance;
             } catch {
                 return true;
             }
         }
     }, [
         direction,
-        fromTokenDisplay?.rawBalance,
-        fromTokenDisplay?.decimals,
+        ethTokenDisplay?.rawBalance,
+        ethTokenDisplay?.decimals,
         ethTokenAmount,
-        toTokenDisplay?.rawBalance,
-        toTokenDisplay?.decimals,
+        xtmTokenDisplay?.rawBalance,
+        xtmTokenDisplay?.decimals,
         wxtmAmount,
     ]);
 
@@ -561,8 +561,8 @@ export const useSwapData = () => {
 
     return {
         notEnoughBalance,
-        fromTokenDisplay,
-        toTokenDisplay,
+        ethTokenDisplay,
+        xtmTokenDisplay,
         isLoading: isCalculatingQuote,
         ethTokenAmount,
         wxtmAmount,
