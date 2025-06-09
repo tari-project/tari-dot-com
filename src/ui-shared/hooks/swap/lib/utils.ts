@@ -25,7 +25,7 @@ export const formatNativeGasFee = (
     gasAmountWei: bigint | undefined,
     nativeDecimalsParam?: number,
     nativeSymbolParam?: string,
-    minFractionDigits = 2
+    minFractionDigits = 2,
 ): string | null => {
     const nativeDecimals = nativeDecimalsParam ?? 18;
     const nativeSymbol = nativeSymbolParam ?? 'ETH';

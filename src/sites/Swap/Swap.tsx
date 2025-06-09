@@ -35,11 +35,12 @@ import { WalletButton } from './SwapDialogs/components/WalletButton/WalletButton
 import { ArrowIcon } from './SwapDialogs/icons/elements/ArrowIcon';
 import { ChevronSVG } from './SwapDialogs/icons/chevron';
 import { MessageType, postToParentIframe, useIframeMessage } from '@/ui-shared/hooks/swap/useIframeMessage';
-import { TransactionResponse, TransactionReceipt } from 'ethers';
+import { TransactionResponse, TransactionReceipt, ethers } from 'ethers';
 import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 import { useUIStore } from '@/stores/useUiStore';
 import { getCurrencyIcon } from './SwapDialogs/helpers/getIcon';
 import { formatNumberWithCommas } from './helpers/formatNumberInputValues';
+import { formatUnits } from 'viem';
 // import { GasIcon } from './SwapDialogs/icons/gasIcon';
 
 export const Swap = memo(function Swap() {
@@ -111,25 +112,22 @@ export const Swap = memo(function Swap() {
         postToParentIframe({ type: MessageType.SET_FULLSCREEN, payload: { open: isOpen } });
     }, [openWallet, tokenSelectOpen]);
 
-    const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => {
+    const networkFeeUsd = useMemo(() => {
+        // transaction.networkFee is now the fee in ETH, not gas units.
+        if (transaction.networkFee && ethUsdPrice) {
+            const feeEth = parseFloat(transaction.networkFee);
+            const feeUsd = feeEth * ethUsdPrice;
+            return `$${feeUsd.toFixed(2)}`;
+        }
+        return null;
+    }, [transaction.networkFee, ethUsdPrice]);
+
+    const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState; actualFeeWei?: bigint }) => {
         setFromAmount('');
         setTargetAmount('');
 
-        let approvalFeeGwei = null;
-        let approvalFeeUsd = null;
-        let swapFeeGwei = null;
-        let swapFeeUsd = null;
-
-        if (txResult.receipt?.gasUsed && txResult.response?.gasPrice && ethUsdPrice) {
-            const feeWei = txResult.receipt.gasUsed;
-            const feeEth = Number(feeWei) * 15 * 1e-9;
-            const feeUsd = feeEth * Number(ethUsdPrice);
-
-            approvalFeeGwei = `${txResult.receipt.gasUsed} units`;
-            approvalFeeUsd = `$${feeUsd.toFixed(2)}`;
-            swapFeeGwei = `${txResult.receipt.gasUsed} units`;
-            swapFeeUsd = `$${feeUsd.toFixed(2)}`;
-        }
+        const payedFeeInEth = txResult.actualFeeWei ? ethers.formatEther(txResult.actualFeeWei) : 0;
+        const swapFeeUsd = ethUsdPrice && payedFeeInEth ? Number(payedFeeInEth) * ethUsdPrice : null;
 
         postToParentIframe({
             type: MessageType.PROCESSING_STATUS, payload: {
@@ -137,8 +135,8 @@ export const Swap = memo(function Swap() {
                 txBlockHash: txResult.receipt?.blockHash as `0x${string}`,
                 transactionId: txResult.response?.hash,
                 fees: {
-                    swap: approvalFeeGwei && approvalFeeUsd ? approvalFeeUsd : null,
-                    approval: swapFeeGwei && swapFeeUsd ? `${approvalFeeGwei}` : null,
+                    swap: swapFeeUsd ? `$${swapFeeUsd.toFixed(2)}` : null,
+                    approval: null,
                 },
                 fromTokenSymbol: uiDirection === 'toXtm' ? ethTokenDisplay?.symbol : xtmTokenDisplay?.symbol,
                 fromTokenAmount: formatNumberWithCommas(uiDirection === 'toXtm' ? ethTokenAmount : wxtmAmount),
@@ -147,15 +145,6 @@ export const Swap = memo(function Swap() {
             }
         });
     };
-
-    const networkFeeUsd = useMemo(() => {
-        if (transaction.networkFee && ethUsdPrice) {
-            const feeEth = Number(transaction.networkFee) * 15 * 1e-9;
-            const feeUsd = feeEth * Number(ethUsdPrice);
-            return `$${feeUsd.toFixed(2)}`;
-        }
-        return null;
-    }, [transaction, ethUsdPrice]);
 
     const handleReviewSwap = () => {
         if (connectedAccount.address) {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useAccount, useBalance, useReadContracts } from 'wagmi';
+import { useAccount, useBalance, useEstimateFeesPerGas, useReadContracts } from 'wagmi';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { formatUnits as viemFormatUnits, parseUnits as viemParseUnits, erc20Abi as viemErc20Abi } from 'viem';
+import { formatUnits as viemFormatUnits, parseUnits as viemParseUnits, erc20Abi as viemErc20Abi, parseUnits } from 'viem';
 import { Token, NativeCurrency, Ether, ChainId } from '@uniswap/sdk-core';
 import {
     ENABLED_TOKEN_ADDRESSES,
@@ -19,6 +19,7 @@ import { SwapExecutionProps, useUniswapV3Interactions } from '@/ui-shared/hooks/
 import { V3TradeDetails, SwapField, SwapTransaction } from '@/ui-shared/hooks/swap/lib/types';
 import { useTokenDisplayInfo } from './helpers/useTokenInfo';
 import { cleanFormattedNumber, formatNumberWithCommas } from './helpers/formatNumberInputValues';
+import { ethers } from 'ethers';
 
 export type TokenSymbol = EnabledTokensEnum;
 export interface SelectableTokenInfo {
@@ -37,6 +38,7 @@ export interface SelectableTokenInfo {
 export const useSwapData = () => {
     const connectedAccount = useAccount();
     const [ethUsdPrice, setEthUsdPrice] = useState<number | undefined>();
+
 
     const [ethTokenAmount, setEthTokenAmount] = useState<string>('');
     const [wxtmAmount, setWxtmAmount] = useState<string>('');
@@ -78,6 +80,8 @@ export const useSwapData = () => {
         () => connectedAccount.chain?.id || defaultChainId,
         [connectedAccount.chain, defaultChainId]
     );
+
+    const { data: feeData } = useEstimateFeesPerGas({ chainId: currentChainId });
 
     const fromUiTokenDefinition = useMemo(
         () => (direction === 'toXtm' ? swapEngineInputToken : swapEngineOutputToken),
@@ -352,7 +356,14 @@ export const useSwapData = () => {
 
                 if (details && details.inputAmount && details.outputAmount) {
                     setPriceImpact(details.priceImpactPercent ? `${details.priceImpactPercent}%` : null);
-                    setNetworkFee(details.estimatedGasFeeNative || null);
+                    const estimatedGasUnits = BigInt(details.estimatedGasFeeNative || 0);
+                    const gasPrice = feeData?.gasPrice || feeData?.maxFeePerGas; // This is the dynamic gas price from the network
+                    const estimatedFeeInWei = estimatedGasUnits * (gasPrice || 0n);
+
+                    // Format it into native currency string (e.g., "0.0015")
+                    const feeInNative = viemFormatUnits(estimatedFeeInWei, 18);
+                    setNetworkFee(feeInNative);
+
                     // if (details.minimumReceived && details.minimumReceived.currency.symbol) {
                     //     setMinimumReceivedDisplay(
                     //         `${formatAmountSmartly(details.minimumReceived)} ${details.minimumReceived.currency.symbol}`
@@ -404,7 +415,7 @@ export const useSwapData = () => {
                 }
             }
         },
-        [fromUiTokenDefinition, toUiTokenDefinition, lastUpdatedField, ethTokenAmount, wxtmAmount, clearCalculatedDetails, getTradeDetails, currentChainId]
+        [lastUpdatedField, ethTokenAmount, fromUiTokenDefinition, wxtmAmount, toUiTokenDefinition, clearCalculatedDetails, getTradeDetails, feeData?.gasPrice, feeData?.maxFeePerGas, currentChainId]
     );
 
     const calcAmountsFnRef = useRef(calcAmounts);
@@ -508,11 +519,10 @@ export const useSwapData = () => {
             setTransactionId(swapResult.response.hash);
             setTxBlockHash(swapResult.receipt.blockHash as `0x${string}`);
 
-            if (swapResult.receipt.gasUsed && swapResult.receipt.gasPrice && connectedAccount.chain) {
-                const swapFee = swapResult.receipt.gasUsed * swapResult.receipt.gasPrice;
-                setPaidTransactionFee(
-                    `${utilFormatNativeGasFee(swapFee, connectedAccount.chain.nativeCurrency.decimals, connectedAccount.chain.nativeCurrency.symbol)}`
-                );
+            if (swapResult?.actualFeeWei && connectedAccount.chain) {
+                const feeInEth = ethers.formatEther(swapResult.actualFeeWei);
+                console.log('Parsed Fee:', feeInEth);
+                setPaidTransactionFee(feeInEth);
             }
 
             setEthTokenAmount('');

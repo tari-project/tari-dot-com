@@ -9,6 +9,7 @@ import {
     TransactionReceipt,
     zeroPadValue,
     TransactionRequest as EthersTransactionRequest,
+    ethers,
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
@@ -235,7 +236,7 @@ export const useUniswapV3Interactions = () => {
             { tradeDetails, onApproveRequest, onApproveSuccess, onSuccess, onFailure }: {
                 tradeDetails: V3TradeDetails,
             } & SwapExecutionProps
-        ): Promise<{ response: TransactionResponse; receipt: TransactionReceipt } | null> => {
+        ): Promise<{ response: TransactionResponse; receipt: TransactionReceipt; actualFeeWei?: bigint } | null> => {
             setErrorHook(null);
             setIsLoadingHook(true);
 
@@ -301,7 +302,7 @@ export const useUniswapV3Interactions = () => {
 
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
                     onSuccess?.(txResult);
-                    return { response: txResult.response, receipt: txResult.receipt };
+                    return { response: txResult.response, receipt: txResult.receipt, actualFeeWei: txResult.actualFeeWei };
                 } else {
                     const failureMsg = txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.';
                     onFailure?.(failureMsg);
