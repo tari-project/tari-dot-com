@@ -140,9 +140,9 @@ export const Swap = memo(function Swap() {
                     approval: swapFeeGwei && swapFeeUsd ? `${approvalFeeGwei}` : null,
                 },
                 fromTokenSymbol: uiDirection === 'toXtm' ? ethTokenDisplay?.symbol : xtmTokenDisplay?.symbol,
-                fromTokenAmount: uiDirection === 'toXtm' ? ethTokenAmount : wxtmAmount,
+                fromTokenAmount: formatNumberWithCommas(uiDirection === 'toXtm' ? ethTokenAmount : wxtmAmount),
                 toTokenSymbol: uiDirection === 'toXtm' ? xtmTokenDisplay?.symbol : ethTokenDisplay?.symbol,
-                toTokenAmount: uiDirection === 'toXtm' ? wxtmAmount : ethTokenAmount,
+                toTokenAmount: formatNumberWithCommas(uiDirection === 'toXtm' ? wxtmAmount : ethTokenAmount),
             }
         });
     };

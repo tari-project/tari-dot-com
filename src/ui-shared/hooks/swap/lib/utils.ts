@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { WalletClient, formatUnits as viemFormatUnits } from 'viem';
 import { BrowserProvider, Signer as EthersSigner } from 'ethers';
-import { ChainId, CurrencyAmount, Token, NativeCurrency } from '@uniswap/sdk-core';
+import { CurrencyAmount, Token, NativeCurrency } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
+import { formatNumberWithCommas } from '@/sites/Swap/helpers/formatNumberInputValues';
 
 export async function walletClientToSigner(walletClient: WalletClient): Promise<EthersSigner | null> {
     const { account, chain, transport } = walletClient;
@@ -146,7 +147,7 @@ export function formatAmountSmartly(
     const valueNum = parseFloat(valueStr);
 
     if (isNaN(valueNum)) return '';
-    if (valueNum === 0) return amount.toFixed(fixedDecimalsForBig);
+    if (valueNum === 0) return formatNumberWithCommas(amount.toFixed(fixedDecimalsForBig));
 
     const absValueNum = Math.abs(valueNum);
 
@@ -158,8 +159,8 @@ export function formatAmountSmartly(
         if (numFracDigitsInThreshold > 0) return `< 0.${'0'.repeat(numFracDigitsInThreshold - 1)}1`;
         return `< ${displayThresholdMinVal}`;
     }
-    if (absValueNum >= bigNumberThreshold) return amount.toFixed(fixedDecimalsForBig);
-    return amount.toSignificant(significantDigitsForSmall);
+    if (absValueNum >= bigNumberThreshold) return formatNumberWithCommas(amount.toFixed(fixedDecimalsForBig));
+    return formatNumberWithCommas(amount.toSignificant(significantDigitsForSmall));
 }
 
 export function encodePath(tokens: `0x${string}`[], fees: FeeAmount[]): `0x${string}` {

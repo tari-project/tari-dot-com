@@ -18,7 +18,7 @@ import {
 import { SwapExecutionProps, useUniswapV3Interactions } from '@/ui-shared/hooks/swap/useSwapV3';
 import { V3TradeDetails, SwapField, SwapTransaction } from '@/ui-shared/hooks/swap/lib/types';
 import { useTokenDisplayInfo } from './helpers/useTokenInfo';
-import { cleanFormattedNumber } from './helpers/formatNumberInputValues';
+import { cleanFormattedNumber, formatNumberWithCommas } from './helpers/formatNumberInputValues';
 
 export type TokenSymbol = EnabledTokensEnum;
 export interface SelectableTokenInfo {
@@ -364,7 +364,7 @@ export const useSwapData = () => {
                         const quoteToken = details.executionPrice.quoteCurrency;
                         if (baseToken.symbol && quoteToken.symbol) {
                             setExecutionPriceDisplay(
-                                `1 ${baseToken.symbol} = ${details.executionPrice.toSignificant(6)} ${quoteToken.symbol}`
+                                `1 ${baseToken.symbol} = ${formatNumberWithCommas(details.executionPrice.toSignificant(6))} ${quoteToken.symbol}`
                             );
                         } else setExecutionPriceDisplay(null);
                     } else setExecutionPriceDisplay(null);
@@ -530,8 +530,8 @@ export const useSwapData = () => {
 
     const transactionForDisplay: SwapTransaction = useMemo(
         () => ({
-            amount: direction === 'toXtm' ? ethTokenAmount : wxtmAmount,
-            targetAmount: direction === 'toXtm' ? wxtmAmount : ethTokenAmount,
+            amount: formatNumberWithCommas(direction === 'toXtm' ? ethTokenAmount : wxtmAmount),
+            targetAmount: formatNumberWithCommas(direction === 'toXtm' ? wxtmAmount : ethTokenAmount),
             direction: direction,
             slippage,
             networkFee,
