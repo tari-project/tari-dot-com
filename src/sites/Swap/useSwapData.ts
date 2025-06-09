@@ -18,6 +18,7 @@ import {
 import { SwapExecutionProps, useUniswapV3Interactions } from '@/ui-shared/hooks/swap/useSwapV3';
 import { V3TradeDetails, SwapField, SwapTransaction } from '@/ui-shared/hooks/swap/lib/types';
 import { useTokenDisplayInfo } from './helpers/useTokenInfo';
+import { cleanFormattedNumber } from './helpers/formatNumberInputValues';
 
 export type TokenSymbol = EnabledTokensEnum;
 export interface SelectableTokenInfo {
@@ -425,8 +426,10 @@ export const useSwapData = () => {
         }, 500);
     }, []);
 
-    const handleNumberInput = (value: string, field: SwapField) => {
+    const handleNumberInput = (rawValue: string, field: SwapField) => {
         clearCalculatedDetails();
+        const value = cleanFormattedNumber(rawValue);
+
 
         const currentUiTokenDef = field === 'ethTokenField' ? fromUiTokenDefinition : toUiTokenDefinition;
         const maxDecimals = currentUiTokenDef?.decimals ?? 18;

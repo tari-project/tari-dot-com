@@ -1,5 +1,5 @@
 'use client';
-import { SelectableTokenInfo } from "@/sites/tari-dot-com/pages/Swap/useSwapData";
+import { SelectableTokenInfo } from "@/sites/Swap/useSwapData";
 import { useEffect } from "react";
 import { SwapDirection } from "./lib/types";
 

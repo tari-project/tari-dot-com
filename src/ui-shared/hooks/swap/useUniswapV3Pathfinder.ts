@@ -414,7 +414,7 @@ export const useUniswapV3Pathfinder = ({ currentChainId, uiToken0, uiToken1, use
                 return { tradeDetails, error: null, isLoading: false };
             } catch (e: any) {
                 if (e instanceof Error && e.message.includes('Aborted')) {
-                    return { ...emptyPathfinderReturn, isLoading: false, error: 'Operation aborted by user.' };
+                    return { ...emptyPathfinderReturn, isLoading: false, error: '' };
                 }
                 console.error("Error in getBestTradeForAmount:", e);
                 return { ...emptyPathfinderReturn, error: 'Failed to get trade details.', isLoading: false };

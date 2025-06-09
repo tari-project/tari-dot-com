@@ -1,5 +1,5 @@
 'use client';
-import { Swap } from "@/sites/tari-dot-com/pages/Swap/Swap";
+import { Swap } from "@/sites/Swap/Swap";
 import WagmiProviderWrapper from "@/ui-shared/layouts/Providers/WagmiProvider";
 
 export const runtime = 'edge';

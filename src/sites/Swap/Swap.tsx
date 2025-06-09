@@ -27,7 +27,7 @@ import { useAccount } from 'wagmi';
 import { useAppKitWallet } from '@reown/appkit-wallet-button/react';
 import { useSwapData } from './useSwapData';
 import { useAdaptiveFontSize } from '@/ui-shared/hooks/useAdaptiveFontSize';
-import { truncateMiddle } from '../../utils/truncateMiddle';
+import { truncateMiddle } from '../tari-dot-com/utils/truncateMiddle';
 import { EnabledTokensEnum } from '@/ui-shared/hooks/swap/lib/constants';
 import { TokenSelection } from './SwapDialogs/sections/TokenSelection/TokenSelection';
 import { WalletContents } from './SwapDialogs/sections/WalletContents/WalletContents';
@@ -39,6 +39,7 @@ import { TransactionResponse, TransactionReceipt } from 'ethers';
 import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 import { useUIStore } from '@/stores/useUiStore';
 import { getCurrencyIcon } from './SwapDialogs/helpers/getIcon';
+import { formatNumberWithCommas } from './helpers/formatNumberInputValues';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
@@ -261,7 +262,7 @@ export const Swap = memo(function Swap() {
                         inputMode="decimal"
                         placeholder="0.00"
                         onChange={(e) => setTargetAmount(e.target.value)}
-                        value={wxtmAmount}
+                        value={formatNumberWithCommas(wxtmAmount)}
                         $dynamicFontSize={toInputFontSize} // Pass dynamic font size
                     />
                     <SwapOptionCurrencyContianer>
@@ -304,7 +305,7 @@ export const Swap = memo(function Swap() {
                         inputMode="decimal"
                         placeholder="0.00"
                         onChange={(e) => setFromAmount(e.target.value)}
-                        value={ethTokenAmount}
+                        value={formatNumberWithCommas(ethTokenAmount)}
                         $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
                     />
                     <SwapOptionCurrencyContianer>
