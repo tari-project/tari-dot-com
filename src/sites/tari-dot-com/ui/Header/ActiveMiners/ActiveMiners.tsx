@@ -1,3 +1,5 @@
+'use client';
+
 import { useMinerStats } from '@/services/api/useMinerStats';
 import { Dot, TextWrapper, Text, NumberWrapper } from './styles';
 import { useEffect, useRef, useState } from 'react';
