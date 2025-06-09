@@ -53,7 +53,7 @@ export const useSwapData = () => {
     const [paidTransactionFee, setPaidTransactionFee] = useState<string | null>(null);
     const [txBlockHash, setTxBlockHash] = useState<`0x${string}` | null>(null);
     const [uiError, setUiError] = useState<string | null>(null);
-    const [minimumReceivedDisplay, setMinimumReceivedDisplay] = useState<string | null>(null);
+    // const [minimumReceivedDisplay, setMinimumReceivedDisplay] = useState<string | null>(null);
     const [executionPriceDisplay, setExecutionPriceDisplay] = useState<string | null>(null);
 
     const [tradeDetails, setTradeDetails] = useState<V3TradeDetails | null>(null);
@@ -308,7 +308,7 @@ export const useSwapData = () => {
         setPriceImpact(null);
         setNetworkFee(null);
         setSlippage(null);
-        setMinimumReceivedDisplay(null);
+        // setMinimumReceivedDisplay(null);
         setExecutionPriceDisplay(null);
     }, []);
 
@@ -353,11 +353,11 @@ export const useSwapData = () => {
                 if (details && details.inputAmount && details.outputAmount) {
                     setPriceImpact(details.priceImpactPercent ? `${details.priceImpactPercent}%` : null);
                     setNetworkFee(details.estimatedGasFeeNative || null);
-                    if (details.minimumReceived && details.minimumReceived.currency.symbol) {
-                        setMinimumReceivedDisplay(
-                            `${formatAmountSmartly(details.minimumReceived)} ${details.minimumReceived.currency.symbol}`
-                        );
-                    } else setMinimumReceivedDisplay(null);
+                    // if (details.minimumReceived && details.minimumReceived.currency.symbol) {
+                    //     setMinimumReceivedDisplay(
+                    //         `${formatAmountSmartly(details.minimumReceived)} ${details.minimumReceived.currency.symbol}`
+                    //     );
+                    // } else setMinimumReceivedDisplay(null);
 
                     if (details.executionPrice) {
                         const baseToken = details.executionPrice.baseCurrency;
