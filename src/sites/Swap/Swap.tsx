@@ -40,6 +40,7 @@ import { TransactionState } from '@/ui-shared/hooks/swap/lib/providers';
 import { useUIStore } from '@/stores/useUiStore';
 import { getCurrencyIcon } from './SwapDialogs/helpers/getIcon';
 import { formatNumberWithCommas } from './helpers/formatNumberInputValues';
+// import { GasIcon } from './SwapDialogs/icons/gasIcon';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
@@ -147,6 +148,15 @@ export const Swap = memo(function Swap() {
         });
     };
 
+    const networkFeeUsd = useMemo(() => {
+        if (transaction.networkFee && ethUsdPrice) {
+            const feeEth = Number(transaction.networkFee) * 15 * 1e-9;
+            const feeUsd = feeEth * Number(ethUsdPrice);
+            return `$${feeUsd.toFixed(2)}`;
+        }
+        return null;
+    }, [transaction, ethUsdPrice]);
+
     const handleReviewSwap = () => {
         if (connectedAccount.address) {
             let { amount, targetAmount } = transaction;
@@ -155,19 +165,12 @@ export const Swap = memo(function Swap() {
                 targetAmount = transaction.amount;
             }
 
-            let networkFeeUsd = null;
-            if (transaction.networkFee && ethUsdPrice) {
-                const feeEth = Number(transaction.networkFee) * 15 * 1e-9;
-                const feeUsd = feeEth * Number(ethUsdPrice);
-                networkFeeUsd = `$${feeUsd.toFixed(2)}`;
-            }
-
             postToParentIframe({
                 type: MessageType.CONFIRM_REQUEST, payload: {
                     toTokenDisplay: xtmTokenDisplay,
                     fromTokenDisplay: ethTokenDisplay, transaction: {
                         ...transaction, amount, targetAmount,
-                        networkFee: transaction.networkFee ? networkFeeUsd : null,
+                        networkFee: networkFeeUsd,
                         networkFeeNative: transaction.networkFee,
                     }, toTokenSymbol: xtmTokenDisplay?.symbol,
                 }
@@ -367,7 +370,17 @@ export const Swap = memo(function Swap() {
             )}
             {transaction.executionPrice && Number(ethTokenAmount) > 0 && Number(wxtmAmount) > 0 ? (
                 <SwapInfo>
-                    {transaction.executionPrice}
+                    <span>
+                        {transaction.executionPrice}
+                    </span>
+                    {
+                        // <span>
+                        //     {networkFeeUsd ? <>
+                        //         <GasIcon width={15} />
+                        //         {networkFeeUsd}
+                        //     </> : null}
+                        // </span>
+                    }
                 </SwapInfo>
             ) : null}
             {error && <SwapErrorMessage> {error} </SwapErrorMessage>}

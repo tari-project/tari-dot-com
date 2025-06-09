@@ -290,6 +290,12 @@ export const SwapInfo = styled.div`
     color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
     font-size: 12px;
     margin-top: 10px;
-    padding-left: 20px;
+    padding: 0 20px;
     display: flex;
+    justify-content: space-between;
+    span {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
 `;

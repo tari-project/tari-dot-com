@@ -537,14 +537,14 @@ export const useSwapData = () => {
             networkFee,
             priceImpact,
             destinationAddress: connectedAccount.address,
-            minimumReceived: minimumReceivedDisplay,
+            minimumReceived: null,//  minimumReceivedDisplay,
             executionPrice: executionPriceDisplay,
             transactionId,
             txBlockHash,
             paidTransactionFeeApproval: null,
             paidTransactionFeeSwap: paidTransactionFee,
         }),
-        [direction, ethTokenAmount, wxtmAmount, slippage, networkFee, priceImpact, connectedAccount.address, minimumReceivedDisplay, executionPriceDisplay, transactionId, txBlockHash, paidTransactionFee]
+        [direction, ethTokenAmount, wxtmAmount, slippage, networkFee, priceImpact, connectedAccount.address, executionPriceDisplay, transactionId, txBlockHash, paidTransactionFee]
     );
 
     const handleSelectFromToken = useCallback(
