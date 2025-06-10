@@ -71,6 +71,7 @@ export const useSwapData = () => {
         setDirection: setSwapEngineDirection,
         setPairTokenAddress,
         getTradeDetails,
+        addXtmToWallet,
         executeSwap,
         insufficientLiquidity: insufficientLiquidityFromHook,
         error: swapEngineError,
@@ -594,6 +595,7 @@ export const useSwapData = () => {
         lastUpdatedField,
         addLiquidityV3,
         ethUsdPrice,
+        addXtmToWallet,
         setFromAmount: (val: string) => handleNumberInput(val, 'ethTokenField'),
         setTargetAmount: (val: string) => handleNumberInput(val, 'wxtmField'),
     };

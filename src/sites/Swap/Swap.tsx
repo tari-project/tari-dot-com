@@ -179,6 +179,9 @@ export const Swap = memo(function Swap() {
                 if (!event.data.payload.theme) return;
                 setTheme(event.data.payload.theme);
                 break;
+            case 'ADD_XTM_TO_WALLET':
+                addXtmToWallet();
+                break;
         }
     });
 

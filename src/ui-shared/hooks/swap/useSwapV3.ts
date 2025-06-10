@@ -11,7 +11,7 @@ import {
     TransactionRequest as EthersTransactionRequest,
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
-import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
+import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, WalletClient, zeroAddress } from 'viem';
 import {
     QUOTER_ADDRESSES_V3,
     XTM_SDK_TOKEN,
@@ -555,6 +555,27 @@ export const useUniswapV3Interactions = () => {
         }
     }, [sdkToken0, sdkToken1, accountAddress, currentChainId, signer, publicClient]);
 
+    const addXtmToWallet = async () => {
+        const token = XTM_SDK_TOKEN[ChainId.MAINNET] as Token;
+        try {
+            return walletClient?.request({
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20',
+                    options: {
+                        address: token.address as `0x${string}`,
+                        symbol: token.symbol as string,
+                        decimals: token.decimals as number,
+                        // Note: The wallet may ignore this and use its own icon source.
+                        image: 'https://tari.com/favicon.png?v=1'
+                    },
+                },
+            });
+        } catch (error) {
+            console.error('Failed to ask wallet to watch asset:', error);
+            return false;
+        }
+    };
 
     return {
         addLiquidityV3: addLiquidityAndCreatePoolIfNeeded,
@@ -569,6 +590,7 @@ export const useUniswapV3Interactions = () => {
         isFetchingPool: isFetchingPoolHook,
         error: errorHook,
         insufficientLiquidity: insufficientLiquidityHook,
+        addXtmToWallet,
         getTradeDetails,
         executeSwap: executeSwapWithV3Router02,
         isReady: !!publicClient && !!currentChainId && !!quoterAddressV3 && !!signer && !!accountAddress && isConnected,
