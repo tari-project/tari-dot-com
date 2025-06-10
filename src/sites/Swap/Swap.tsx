@@ -78,6 +78,7 @@ export const Swap = memo(function Swap() {
         error,
         lastUpdatedField,
         ethUsdPrice,
+        addXtmToWallet,
         setFromAmount,
         setTargetAmount,
         handleToggleUiDirection,
@@ -178,6 +179,9 @@ export const Swap = memo(function Swap() {
             case 'SET_THEME':
                 if (!event.data.payload.theme) return;
                 setTheme(event.data.payload.theme);
+                break;
+            case 'ADD_XTM_TO_WALLET':
+                addXtmToWallet();
                 break;
         }
     });

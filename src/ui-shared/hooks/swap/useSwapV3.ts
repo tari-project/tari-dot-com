@@ -555,6 +555,25 @@ export const useUniswapV3Interactions = () => {
         }
     }, [sdkToken0, sdkToken1, accountAddress, currentChainId, signer, publicClient]);
 
+    const addXtmToWallet = async () => {
+        try {
+            return walletClient?.request({
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20',
+                    options: {
+                        address: "0xfD36fA88bb3feA8D1264fc89d70723b6a2B56958",
+                        symbol: 'wXTM',
+                        decimals: 18,
+                        image: 'https://tari.com/favicon.png?v=1'
+                    },
+                },
+            })
+        } catch (error) {
+            console.error('Failed to ask wallet to watch asset:', error);
+            return false;
+        }
+    };
 
     return {
         addLiquidityV3: addLiquidityAndCreatePoolIfNeeded,
@@ -569,6 +588,7 @@ export const useUniswapV3Interactions = () => {
         isFetchingPool: isFetchingPoolHook,
         error: errorHook,
         insufficientLiquidity: insufficientLiquidityHook,
+        addXtmToWallet,
         getTradeDetails,
         executeSwap: executeSwapWithV3Router02,
         isReady: !!publicClient && !!currentChainId && !!quoterAddressV3 && !!signer && !!accountAddress && isConnected,
