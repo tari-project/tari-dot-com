@@ -38,13 +38,15 @@ interface Props {
     textColor?: string;
     showIconBackground?: boolean;
     subTextComponent?: React.ReactNode;
+    glow?: boolean;
 }
 
 export default function DownloadButton({
     backgroundColor,
     textColor,
-    showIconBackground = false,
     subTextComponent,
+    showIconBackground = false,
+    glow = false,
 }: Props) {
     const [hovering, setHovering] = useState(false);
 
@@ -72,6 +74,7 @@ export default function DownloadButton({
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
                 $backgroundColor={backgroundColor}
+                $glow={glow}
             >
                 <TextGroup>
                     <AnimatePresence mode="popLayout">
