@@ -8,6 +8,7 @@ import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './
 import { AnimatePresence } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
+import { useUIStore } from '@/stores/useUiStore';
 
 const containerVariants = {
     visible: {
@@ -47,7 +48,14 @@ export default function DownloadButton({
 }: Props) {
     const [hovering, setHovering] = useState(false);
 
+    const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
+
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleDownloadClick(e);
+        setShowDownloadModal(true);
+    };
 
     return (
         <Wrapper
@@ -60,7 +68,7 @@ export default function DownloadButton({
             <Button
                 as={Link}
                 href="/downloads"
-                onClick={handleDownloadClick}
+                onClick={handleClick}
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
                 $backgroundColor={backgroundColor}
