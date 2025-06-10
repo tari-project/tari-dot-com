@@ -78,6 +78,7 @@ export const Swap = memo(function Swap() {
         error,
         lastUpdatedField,
         ethUsdPrice,
+        addXtmToWallet,
         setFromAmount,
         setTargetAmount,
         handleToggleUiDirection,

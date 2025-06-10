@@ -11,7 +11,7 @@ import {
     TransactionRequest as EthersTransactionRequest,
 } from 'ethers';
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
-import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, WalletClient, zeroAddress } from 'viem';
+import { erc20Abi, parseUnits, PublicClient as ViemPublicClient, zeroAddress } from 'viem';
 import {
     QUOTER_ADDRESSES_V3,
     XTM_SDK_TOKEN,
@@ -556,21 +556,19 @@ export const useUniswapV3Interactions = () => {
     }, [sdkToken0, sdkToken1, accountAddress, currentChainId, signer, publicClient]);
 
     const addXtmToWallet = async () => {
-        const token = XTM_SDK_TOKEN[ChainId.MAINNET] as Token;
         try {
             return walletClient?.request({
                 method: 'wallet_watchAsset',
                 params: {
                     type: 'ERC20',
                     options: {
-                        address: token.address as `0x${string}`,
-                        symbol: token.symbol as string,
-                        decimals: token.decimals as number,
-                        // Note: The wallet may ignore this and use its own icon source.
+                        address: "0xfD36fA88bb3feA8D1264fc89d70723b6a2B56958",
+                        symbol: 'wXTM',
+                        decimals: 18,
                         image: 'https://tari.com/favicon.png?v=1'
                     },
                 },
-            });
+            })
         } catch (error) {
             console.error('Failed to ask wallet to watch asset:', error);
             return false;
