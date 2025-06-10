@@ -8,6 +8,7 @@ import TrustedBySection from './sections/TrustedBySection/TrustedBySection';
 import { EcosystemWrapper, FaqWrapper, Wrapper } from './styles';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import EcosystemSection from '@/sites/tari-dot-com/pages/HomePage/sections/EcosystemSection/EcosystemSection';
+import Modals from '@/sites/tari-dot-com/ui/Modals/Modals';
 
 export default function ExchangePage() {
     const { data: exchange } = useExchangeData({});
@@ -28,6 +29,7 @@ export default function ExchangePage() {
             <FaqWrapper>
                 <FAQSection maxEntries={5} />
             </FaqWrapper>
+            <Modals />
         </Wrapper>
     );
 }
