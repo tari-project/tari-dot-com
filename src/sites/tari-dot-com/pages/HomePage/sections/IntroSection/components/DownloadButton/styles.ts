@@ -104,6 +104,10 @@ export const Icons = styled.div<{ $showIconBackground?: boolean }>`
         css`
             background: rgba(0, 0, 0, 0.2);
         `}
+
+    @media (max-width: 430px) {
+        gap: 2px;
+    }
 `;
 
 export const HoverGradient = styled(motion.div)`

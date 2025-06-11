@@ -27,7 +27,11 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const isSmallScreen = useMedia('(max-width: 1220px)');
 
     const [videoSrc, setVideoSrc] = useState(
-        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/d3fee8562a139ee49012fc31d7a8f195/manifest/video.m3u8'
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+    );
+
+    const [posterSrc, setPosterSrc] = useState(
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
     );
 
     useEffect(() => {
@@ -35,9 +39,15 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
             setVideoSrc(
                 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/manifest/video.m3u8'
             );
+            setPosterSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/thumbnails/thumbnail.jpg?time=&height=600'
+            );
         } else {
             setVideoSrc(
-                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/d3fee8562a139ee49012fc31d7a8f195/manifest/video.m3u8'
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+            );
+            setPosterSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
             );
         }
     }, [isSmallScreen]);
@@ -47,11 +57,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
             <VideoWrapper>
                 <TopSlope />
                 <BottomSlope />
-                <VideoPlayer
-                    src={videoSrc}
-                    loop={true}
-                    poster="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/d3fee8562a139ee49012fc31d7a8f195/thumbnails/thumbnail.jpg?time=&height=600"
-                />
+                <VideoPlayer src={videoSrc} loop={true} poster={posterSrc} />
             </VideoWrapper>
 
             <TextWrapper>
