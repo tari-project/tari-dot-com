@@ -45,8 +45,8 @@ export const ContentWrapper = styled.div`
     }
 
     @media (max-width: 980px) {
-        padding: 20px 0px;
+        padding: 40px 0px 20px 0px;
 
-        gap: 20px;
+        gap: 0px;
     }
 `;
