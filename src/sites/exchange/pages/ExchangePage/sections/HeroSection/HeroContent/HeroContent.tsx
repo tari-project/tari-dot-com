@@ -7,7 +7,7 @@ import {
     BottomWrapper,
     WhiteText,
     YellowText,
-    //VideoWrapper,
+    VideoWrapper,
     Shadow,
 } from './styles';
 import bgImage from './images/background.png';
@@ -47,13 +47,13 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
 
             <Shadow />
 
-            {/* <VideoWrapper>
+            <VideoWrapper>
                 <iframe
                     src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2Ff6417f9ea7e749608329faf2d214a242%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
                     allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                     allowFullScreen={true}
                 ></iframe>
-            </VideoWrapper> */}
+            </VideoWrapper>
         </Wrapper>
     );
 }
