@@ -14,7 +14,7 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
     position: relative;
 
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
     overflow: hidden;
 
@@ -43,6 +43,7 @@ export const TextWrapper = styled.div`
     gap: 20px;
     z-index: 2;
     max-width: 600px;
+    padding-top: 30px;
 
     @media (max-width: 1220px) {
         align-items: center;
