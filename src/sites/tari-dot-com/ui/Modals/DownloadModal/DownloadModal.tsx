@@ -1,3 +1,4 @@
+'use client';
 import { useUIStore } from '@/stores/useUiStore';
 import BaseModal from '../BaseModal/BaseModal';
 import {
@@ -22,9 +23,14 @@ import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
+import { useState } from 'react';
+import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 
 export default function DownloadModal() {
     const { showDownloadModal, setShowDownloadModal } = useUIStore();
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const { mutate: subscribeNewsletter } = useSubscribeNewsletter();
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -32,7 +38,9 @@ export default function DownloadModal() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('submit');
+        if (email && name) {
+            subscribeNewsletter({ email, name });
+        }
     };
 
     return (
@@ -46,8 +54,14 @@ export default function DownloadModal() {
 
                     <Form onSubmit={handleSubmit}>
                         <FormFields>
-                            <Input type="text" placeholder="Name" />
-                            <Input type="email" placeholder="Email" required={true} />
+                            <Input type="text" placeholder="Name"
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
+                            />
+                            <Input type="email" placeholder="Email" required={true}
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
                         </FormFields>
                         <SubmitButton type="submit">
                             <span>
