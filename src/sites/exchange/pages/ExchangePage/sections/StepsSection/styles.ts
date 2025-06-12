@@ -18,8 +18,8 @@ export const Wrapper = styled.div`
         gap: 60px;
     }
 
-    @media (max-width: 660px) {
-        padding: 100px 10px 100px 10px;
+    @media (max-width: 535px) {
+        padding: 160px 10px 100px 10px;
         gap: 40px;
     }
 `;
@@ -45,7 +45,7 @@ export const TitleWrapper = styled.div`
     gap: 20px;
     width: 100%;
 
-    @media (max-width: 660px) {
+    @media (max-width: 535px) {
         gap: 10px;
     }
 `;
@@ -57,12 +57,12 @@ export const StepsWrapper = styled.div`
     gap: 15px;
     width: 100%;
 
-    @media (max-width: 1266px) {
-        flex-direction: column;
-        gap: 20px;
+    @media (max-width: 1602px) {
+        flex-wrap: wrap;
+        gap: 40px;
     }
 
-    @media (max-width: 660px) {
+    @media (max-width: 1266px) {
         flex-direction: column;
         gap: 20px;
     }
@@ -70,6 +70,8 @@ export const StepsWrapper = styled.div`
 
 export const Step = styled.div`
     position: relative;
+    max-width: 574px;
+    width: 100%;
 `;
 
 export const StepInside = styled.div`
@@ -95,8 +97,8 @@ export const StepTitle = styled.div`
     letter-spacing: 0.35px;
     text-transform: uppercase;
 
-    @media (max-width: 1628px) {
-        font-size: 30px;
+    @media (max-width: 535px) {
+        font-size: 24px;
     }
 `;
 
@@ -111,15 +113,11 @@ export const StepTitleWrapper = styled.div`
     bottom: 40px;
     left: 40px;
 
-    @media (max-width: 1628px) {
-        gap: 20px;
-
-        bottom: 30px;
-        left: 20px;
-    }
-
-    @media (max-width: 660px) {
-        padding-right: 20px;
+    @media (max-width: 535px) {
+        padding: 20px;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
     }
 `;
 
@@ -140,9 +138,8 @@ export const FieldWrapper = styled.div`
     left: 0;
     right: 0;
 
-    @media (max-width: 1545px) {
-        top: 40%;
-        padding: 0 20px;
+    @media (max-width: 535px) {
+        padding: 0px 20px;
     }
 `;
 
@@ -157,10 +154,6 @@ export const FieldBox = styled.div`
     backdrop-filter: blur(12px);
 
     padding: 24px 32px;
-
-    @media (max-width: 1545px) {
-        padding: 16px 24px;
-    }
 `;
 
 export const FieldTitle = styled.div`
@@ -172,7 +165,7 @@ export const FieldTitle = styled.div`
     line-height: normal;
     letter-spacing: -0.48px;
 
-    @media (max-width: 1545px) {
+    @media (max-width: 535px) {
         font-size: 14px;
     }
 `;
@@ -205,7 +198,7 @@ export const LogoImage = styled.img`
     left: 50%;
     transform: translateX(-50%);
 
-    @media (max-width: 1545px) {
+    @media (max-width: 535px) {
         width: 100px;
         height: 100px;
     }
@@ -228,6 +221,12 @@ export const StepPill = styled.div<{ $color: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 535px) {
+        font-size: 12px;
+        height: 20px;
+        padding: 0px 8px;
+    }
 `;
 
 export const StepRowWrapper = styled(StepTitleWrapper)`
@@ -239,5 +238,15 @@ export const StepRowWrapper = styled(StepTitleWrapper)`
 
     ${StepTitle} {
         max-width: 250px;
+    }
+
+    @media (max-width: 535px) {
+        gap: 10px;
+        align-items: flex-end;
+        justify-content: flex-start;
+
+        ${StepTitle} {
+            max-width: 100%;
+        }
     }
 `;

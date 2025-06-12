@@ -8,6 +8,7 @@ import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './
 import { AnimatePresence } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
+import { useUIStore } from '@/stores/useUiStore';
 
 const containerVariants = {
     visible: {
@@ -37,17 +38,26 @@ interface Props {
     textColor?: string;
     showIconBackground?: boolean;
     subTextComponent?: React.ReactNode;
+    glow?: boolean;
 }
 
 export default function DownloadButton({
     backgroundColor,
     textColor,
-    showIconBackground = false,
     subTextComponent,
+    showIconBackground = false,
+    glow = false,
 }: Props) {
     const [hovering, setHovering] = useState(false);
 
+    const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
+
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleDownloadClick(e);
+        setShowDownloadModal(true);
+    };
 
     return (
         <Wrapper
@@ -60,10 +70,11 @@ export default function DownloadButton({
             <Button
                 as={Link}
                 href="/downloads"
-                onClick={handleDownloadClick}
+                onClick={handleClick}
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
                 $backgroundColor={backgroundColor}
+                $glow={glow}
             >
                 <TextGroup>
                     <AnimatePresence mode="popLayout">
