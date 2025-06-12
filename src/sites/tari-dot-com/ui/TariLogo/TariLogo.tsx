@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState, useRef } from 'react';
@@ -16,7 +17,7 @@ interface ContextMenuProps {
 }
 
 function ContextMenu({ x, y, onClose }: ContextMenuProps) {
-    const downloadFile = (filename: string, displayName: string) => {
+    const downloadFile = (filename: string, _displayName: string) => {
         const link = document.createElement('a');
         link.href = `/branding/${filename}`;
         link.download = filename;
