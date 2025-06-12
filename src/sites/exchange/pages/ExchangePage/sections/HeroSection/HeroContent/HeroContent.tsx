@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     TextWrapper,
     Wrapper,
@@ -7,8 +7,10 @@ import {
     BottomWrapper,
     WhiteText,
     YellowText,
-    //VideoWrapper,
+    VideoWrapper,
     Shadow,
+    TopSlope,
+    BottomSlope,
 } from './styles';
 import bgImage from './images/background.png';
 import DownloadButton from '@/sites/tari-dot-com/pages/HomePage/sections/IntroSection/components/DownloadButton/DownloadButton';
@@ -16,13 +18,48 @@ import MetaInfo from './components/MetaInfo/MetaInfo';
 import { Exchange } from '@/sites/exchange/types/exchange';
 import { getValidHexColor, getTextColorForBg } from '@/sites/exchange/utils';
 import SeasonTimerInButton from './components/SeasonTimerInButton/SeasonTimerInButton';
+import VideoPlayer from '@/sites/tari-dot-com/pages/HomePage/sections/IntroSection/components/VideoPlayer/VideoPlayer';
+import { useMedia } from 'react-use';
 
 export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const color = getValidHexColor(exchange?.primary_colour);
     const textColor = getTextColorForBg(color);
+    const isSmallScreen = useMedia('(max-width: 1220px)');
+
+    const [videoSrc, setVideoSrc] = useState(
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+    );
+
+    const [posterSrc, setPosterSrc] = useState(
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
+    );
+
+    useEffect(() => {
+        if (isSmallScreen) {
+            setVideoSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/manifest/video.m3u8'
+            );
+            setPosterSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/thumbnails/thumbnail.jpg?time=&height=600'
+            );
+        } else {
+            setVideoSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+            );
+            setPosterSrc(
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
+            );
+        }
+    }, [isSmallScreen]);
 
     return (
         <Wrapper $bgImage={bgImage.src}>
+            <VideoWrapper>
+                <TopSlope />
+                <BottomSlope />
+                <VideoPlayer src={videoSrc} loop={true} poster={posterSrc} />
+            </VideoWrapper>
+
             <TextWrapper>
                 <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
                 <Title>
@@ -33,6 +70,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                     backgroundColor={color}
                     textColor={textColor}
                     showIconBackground={true}
+                    glow={true}
                     subTextComponent={
                         exchange?.reward_expiry_date ? (
                             <SeasonTimerInButton date={new Date(exchange.reward_expiry_date)} />
@@ -46,14 +84,6 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
             </BottomWrapper>
 
             <Shadow />
-
-            {/* <VideoWrapper>
-                <iframe
-                    src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2Ff6417f9ea7e749608329faf2d214a242%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
-                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                    allowFullScreen={true}
-                ></iframe>
-            </VideoWrapper> */}
         </Wrapper>
     );
 }

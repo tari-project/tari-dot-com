@@ -18,7 +18,7 @@ export const Wrapper = styled(motion.div)<{ $subTextComponent?: boolean }>`
     }
 `;
 
-export const Button = styled.button<{ $backgroundColor?: string }>`
+export const Button = styled.button<{ $backgroundColor?: string; $glow?: boolean }>`
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -36,6 +36,7 @@ export const Button = styled.button<{ $backgroundColor?: string }>`
 
     border-radius: 70px;
     overflow: hidden;
+    transition: transform 0.5s ease;
 
     background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
@@ -46,8 +47,15 @@ export const Button = styled.button<{ $backgroundColor?: string }>`
             background: ${$backgroundColor};
         `}
 
+    ${({ $glow }) =>
+        $glow &&
+        css`
+            box-shadow: 0px 0px 54px 0px rgba(143, 188, 255, 0.5);
+        `}
+
     &:hover {
         text-decoration: none;
+        transform: scale(1.05);
     }
 
     @media (max-width: 430px) {
@@ -96,6 +104,10 @@ export const Icons = styled.div<{ $showIconBackground?: boolean }>`
         css`
             background: rgba(0, 0, 0, 0.2);
         `}
+
+    @media (max-width: 430px) {
+        gap: 2px;
+    }
 `;
 
 export const HoverGradient = styled(motion.div)`

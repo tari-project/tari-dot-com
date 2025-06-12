@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
 
     position: relative;
     z-index: 1;
+
+    @media (max-width: 430px) {
+        font-size: 10px;
+    }
 `;
 
 export const TimeLeft = styled.span`

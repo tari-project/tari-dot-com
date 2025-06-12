@@ -65,8 +65,23 @@ export const LogoWrapper = styled.div`
     justify-content: center;
     gap: 14px;
 
-    svg {
+    svg,
+    img {
         flex-shrink: 0;
+        height: 38px;
+        width: auto;
+    }
+
+    @media (max-width: 980px) {
+        svg,
+        img {
+            height: 30px;
+        }
+    }
+
+    .cross-icon {
+        width: 6px;
+        height: 6px;
     }
 `;
 
