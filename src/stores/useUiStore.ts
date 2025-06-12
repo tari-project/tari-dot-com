@@ -7,7 +7,7 @@ type UIStoreState = {
 
 const initialState: UIStoreState = {
     theme: 'light',
-    showDownloadModal: true,
+    showDownloadModal: false,
 };
 
 type UIStoreStore = UIStoreState & {
