@@ -22,9 +22,21 @@ import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
+import { useExchangeData } from '@/services/api/useExchangeData';
 
 export default function DownloadModal() {
     const { showDownloadModal, setShowDownloadModal } = useUIStore();
+    const { data: exchange } = useExchangeData();
+
+    const windowsLink =
+        exchange?.download_link_win ||
+        'https://airdrop.tari.com/api/miner/download/windows?universeReferral=tari-dot-com';
+    const macLink =
+        exchange?.download_link_mac ||
+        'https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com';
+    const linuxLink =
+        exchange?.download_link_linux ||
+        'https://airdrop.tari.com/api/miner/download/linux?universeReferral=tari-dot-com';
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -78,22 +90,13 @@ export default function DownloadModal() {
                 </Divider>
 
                 <DownloadButtons>
-                    <DownloadButton
-                        href="https://airdrop.tari.com/api/miner/download/windows?universeReferral=tari-dot-com"
-                        onClick={() => handleClick('windows')}
-                    >
+                    <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
                         WINDOWS <WindowsIcon fill="#fff" />
                     </DownloadButton>
-                    <DownloadButton
-                        href="https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com"
-                        onClick={() => handleClick('macos')}
-                    >
+                    <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
                         MAC <MacIcon fill="#fff" />
                     </DownloadButton>
-                    <DownloadButton
-                        href="https://airdrop.tari.com/api/miner/download/linux?universeReferral=tari-dot-com"
-                        onClick={() => handleClick('linux')}
-                    >
+                    <DownloadButton href={linuxLink} onClick={() => handleClick('linux')}>
                         Linux <LinuxIcon fill="#fff" />
                     </DownloadButton>
                 </DownloadButtons>

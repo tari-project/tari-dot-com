@@ -29,11 +29,11 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
             is_hidden: false,
             // Download links
             download_link_linux:
-                'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-linux-x86_64-v0.1.0.tar.gz',
+                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             download_link_mac:
-                'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-macos-x86_64-v0.1.0.tar.gz',
+                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             download_link_win:
-                'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-windows-x86_64-v0.1.0.zip',
+                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             // Reward missing fields
             reward_image:
                 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-windows-x86_64-v0.1.0.zip',
