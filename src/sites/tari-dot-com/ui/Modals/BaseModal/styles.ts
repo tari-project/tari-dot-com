@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Padding = styled.div`
+    width: 100%;
     padding: 140px 40px 140px 40px;
 
     @media (max-width: 796px) {
@@ -62,6 +63,8 @@ export const BoxWrapper = styled(motion.div)`
     flex-direction: column;
     justify-content: flex-end;
     gap: 40px;
+
+    margin: 0 auto;
 
     max-width: 798px;
     padding: 80px;

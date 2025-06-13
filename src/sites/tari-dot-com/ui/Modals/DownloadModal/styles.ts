@@ -5,6 +5,7 @@ export const ContentGroup = styled.div`
     flex-direction: column;
     gap: 60px;
     padding-top: 80px;
+    width: 100%;
 
     @media (max-width: 768px) {
         gap: 30px;
@@ -221,5 +222,19 @@ export const SubmitButton = styled.button`
         span {
             transform: scale(1);
         }
+    }
+`;
+
+export const SuccessMessage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 40px 40px;
+    width: 100%;
+
+    ${Text} {
+        max-width: 440px;
     }
 `;
