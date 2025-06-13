@@ -39,10 +39,13 @@ export const useDownloadUniverse = () => {
         if (exchange) {
             if (platform === 'macos' && macLink) {
                 window.open(macLink, '_blank');
+                return;
             } else if (platform === 'linux' && linuxLink) {
                 window.open(linuxLink, '_blank');
+                return;
             } else if (platform === 'windows' && winLink) {
                 window.open(winLink, '_blank');
+                return;
             }
         }
 
