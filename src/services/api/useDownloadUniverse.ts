@@ -29,13 +29,13 @@ export const useDownloadUniverse = () => {
             platform = getPlatform();
         }
         const url = `https://airdrop.tari.com/api/miner/download/${platform}?universeReferral=tari-dot-com`;
-        sendGTMEvent({ event: 'download_button_clicked', platform: platform });
         const {
             download_link_mac: macLink,
             download_link_linux: linuxLink,
             download_link_win: winLink,
         } = exchange || {};
 
+        sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchange?.name });
         if (exchange) {
             if (platform === 'macos' && macLink) {
                 window.open(macLink, '_blank');
