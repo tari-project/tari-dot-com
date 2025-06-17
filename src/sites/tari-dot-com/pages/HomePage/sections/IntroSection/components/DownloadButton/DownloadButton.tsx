@@ -4,10 +4,11 @@ import { useState } from 'react';
 import AppleIcon from './icons/AppleIcon';
 import LinuxIcon from './icons/LinuxIcon';
 import WindowsIcon from './icons/WindowsIcon';
-import { Button, HoverGradient, Icons, Text, Word, Wrapper } from './styles';
+import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './styles';
 import { AnimatePresence } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
+import { useUIStore } from '@/stores/useUiStore';
 
 const containerVariants = {
     visible: {
@@ -32,10 +33,31 @@ const wordVariants = {
     },
 };
 
-export default function DownloadButton() {
+interface Props {
+    backgroundColor?: string;
+    textColor?: string;
+    showIconBackground?: boolean;
+    subTextComponent?: React.ReactNode;
+    glow?: boolean;
+}
+
+export default function DownloadButton({
+    backgroundColor,
+    textColor,
+    subTextComponent,
+    showIconBackground = false,
+    glow = false,
+}: Props) {
     const [hovering, setHovering] = useState(false);
 
+    const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
+
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleDownloadClick(e);
+        setShowDownloadModal(true);
+    };
 
     return (
         <Wrapper
@@ -43,29 +65,48 @@ export default function DownloadButton() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ delay: 0.5 }}
+            $subTextComponent={!!subTextComponent}
         >
             <Button
                 as={Link}
                 href="/downloads"
-                onClick={handleDownloadClick}
+                onClick={handleClick}
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
+                $backgroundColor={backgroundColor}
+                $glow={glow}
             >
-                <AnimatePresence mode="popLayout">
-                    {!hovering && (
-                        <Text key="default" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-                            <Word variants={wordVariants}>Download</Word> <Word variants={wordVariants}>Tari</Word>{' '}
-                            <Word variants={wordVariants}>Universe</Word>
-                        </Text>
-                    )}
-                    {hovering && (
-                        <Text key="hover" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-                            <Word variants={wordVariants}>Start</Word> <Word variants={wordVariants}>Earning</Word>{' '}
-                            <Word variants={wordVariants}>XTM</Word> <Word variants={wordVariants}>Today</Word>
-                        </Text>
-                    )}
-                </AnimatePresence>
-                <Icons>
+                <TextGroup>
+                    <AnimatePresence mode="popLayout">
+                        {!hovering && (
+                            <Text
+                                key="default"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                $textColor={textColor}
+                            >
+                                <Word variants={wordVariants}>Download</Word> <Word variants={wordVariants}>Tari</Word>{' '}
+                                <Word variants={wordVariants}>Universe</Word>
+                            </Text>
+                        )}
+                        {hovering && (
+                            <Text
+                                key="hover"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                            >
+                                <Word variants={wordVariants}>Start</Word> <Word variants={wordVariants}>Earning</Word>{' '}
+                                <Word variants={wordVariants}>XTM</Word> <Word variants={wordVariants}>Today</Word>
+                            </Text>
+                        )}
+                    </AnimatePresence>
+                    {subTextComponent && subTextComponent}
+                </TextGroup>
+                <Icons $showIconBackground={showIconBackground}>
                     <WindowsIcon />
                     <AppleIcon />
                     <LinuxIcon />

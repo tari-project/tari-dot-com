@@ -1,4 +1,6 @@
 export type DownloadPlatform = 'windows' | 'macos' | 'linux';
+import { sendGTMEvent } from '@next/third-parties/google';
+import { useExchangeData } from './useExchangeData';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -21,11 +23,31 @@ const checkIsMobile = () => {
 };
 
 export const useDownloadUniverse = () => {
+    const { data: exchange } = useExchangeData();
     const handleDownload = (platform?: DownloadPlatform) => {
         if (!platform) {
             platform = getPlatform();
         }
         const url = `https://airdrop.tari.com/api/miner/download/${platform}?universeReferral=tari-dot-com`;
+        const {
+            download_link_mac: macLink,
+            download_link_linux: linuxLink,
+            download_link_win: winLink,
+        } = exchange || {};
+
+        sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchange?.name });
+        if (exchange) {
+            if (platform === 'macos' && macLink) {
+                window.open(macLink, '_blank');
+                return;
+            } else if (platform === 'linux' && linuxLink) {
+                window.open(linuxLink, '_blank');
+                return;
+            } else if (platform === 'windows' && winLink) {
+                window.open(winLink, '_blank');
+                return;
+            }
+        }
 
         window.open(url, '_blank');
     };

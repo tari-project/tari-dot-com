@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const rotateClockwise = keyframes`
   from {
@@ -21,13 +21,19 @@ const rotateCounterClockwise = keyframes`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $hideSupporters?: boolean }>`
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
+
+    ${({ $hideSupporters }) =>
+        $hideSupporters &&
+        css`
+            padding-bottom: 40px;
+        `}
 `;
 
 export const TextMiddle = styled.div`
