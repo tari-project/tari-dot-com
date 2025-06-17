@@ -29,15 +29,15 @@ export const Columns = styled.div`
     & > :nth-child(1) {
         width: 350px;
     }
+    & > :nth-child(2) {
+        flex: 1;
+    }
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 24px;
-    }
-    & > :nth-child(1) {
-        width: 100%;
-    }
-    & > :nth-child(2) {
-        flex: 1;
+        & > :nth-child(1) {
+            width: 100%;
+        }
     }
 `;
 
