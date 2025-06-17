@@ -11,14 +11,31 @@ export const Wrapper = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: center;
 
     pointer-events: all;
 
     overflow: hidden;
     overflow-y: auto;
 
-    padding: 10px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+`;
+
+export const Padding = styled.div`
+    width: 100%;
+    padding: 140px 40px 140px 40px;
+
+    @media (max-width: 796px) {
+        padding: 100px 40px 100px 40px;
+    }
+
+    @media (max-width: 688px) {
+        padding: 100px 20px 100px 20px;
+    }
 `;
 
 export const Cover = styled(motion.div)`
@@ -46,6 +63,8 @@ export const BoxWrapper = styled(motion.div)`
     flex-direction: column;
     justify-content: flex-end;
     gap: 40px;
+
+    margin: 0 auto;
 
     max-width: 798px;
     padding: 80px;

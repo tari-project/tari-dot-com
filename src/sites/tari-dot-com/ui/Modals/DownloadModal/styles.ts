@@ -5,6 +5,7 @@ export const ContentGroup = styled.div`
     flex-direction: column;
     gap: 60px;
     padding-top: 80px;
+    width: 100%;
 
     @media (max-width: 768px) {
         gap: 30px;
@@ -134,5 +135,106 @@ export const TariLogoImage = styled.img`
     @media (max-width: 768px) {
         width: 180px;
         top: -80px;
+    }
+`;
+
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    padding-top: 10px;
+`;
+
+export const FormFields = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
+
+export const Input = styled.input`
+    width: 100%;
+    height: 60px;
+    padding: 24px 42px;
+    color: #000;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    border-radius: 100px;
+    border: none;
+
+    &::placeholder {
+        color: #000;
+        opacity: 0.5;
+    }
+
+    &:focus {
+        outline: 2px solid #000;
+    }
+`;
+
+export const SubmitButton = styled.button`
+    width: 100%;
+    height: 60px;
+    padding: 10px 15px 10px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+
+    border-radius: 100px;
+    background: #ffbe40;
+
+    color: #000;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 94.2%;
+    letter-spacing: -0.75px;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+        span {
+            transform: scale(1.075);
+        }
+    }
+
+    &:active {
+        span {
+            transform: scale(1);
+        }
+    }
+`;
+
+export const SuccessMessage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 40px 40px;
+    width: 100%;
+
+    ${Text} {
+        max-width: 440px;
     }
 `;
