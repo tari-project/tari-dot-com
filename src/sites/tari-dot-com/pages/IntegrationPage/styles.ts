@@ -97,6 +97,7 @@ export const Holder = styled.div`
     ul,
     ol {
         margin-bottom: 24px;
+        font-size: 16px;
     }
 
     a {
@@ -106,7 +107,10 @@ export const Holder = styled.div`
     @media (max-width: 768px) {
         font-size: 14px;
 
-        p {
+        p,
+        ul,
+        ol {
+            font-size: 14px;
             margin-bottom: 20px;
         }
     }
@@ -197,6 +201,7 @@ export const Note = styled.div<{ $variant: 'default' | 'warning' | 'success' | '
     width: 100%;
     padding: 20px;
     border-radius: 30px;
+    font-size: 16px;
     border: 2px solid
         ${({ $variant }) =>
             $variant === 'warning'
@@ -214,6 +219,10 @@ export const Note = styled.div<{ $variant: 'default' | 'warning' | 'success' | '
             : $variant === 'info'
             ? '#E6F9FE'
             : '#FFF'};
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 `;
 
 export const NoteDivider = styled.div`

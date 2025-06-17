@@ -8,6 +8,9 @@ export const ContainerStyle = styled.div`
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
     position: relative;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
 `;
 
 export const PreStyle = styled.div`
