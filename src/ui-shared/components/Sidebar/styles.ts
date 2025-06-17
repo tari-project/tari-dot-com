@@ -33,7 +33,7 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
 
 export const MenuContainer = styled.div`
     display: flex;
-    width: 400px;
+    width: 100%;
     padding: 30px;
     flex-direction: column;
     align-items: flex-start;

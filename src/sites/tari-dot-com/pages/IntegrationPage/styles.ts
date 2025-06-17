@@ -20,23 +20,30 @@ export const Wrapper = styled.div`
 `;
 
 export const Columns = styled.div`
-    max-width: 1440px;
     display: flex;
-    flex-direction: row;
-    gap: 40px;
-    align-items: flex-start;
-    flex: 1 1 300px;
+    max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
+    gap: 40px;
 
+    & > :nth-child(1) {
+        width: 350px;
+    }
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 24px;
     }
+    & > :nth-child(1) {
+        width: 100%;
+    }
+    & > :nth-child(2) {
+        flex: 1;
+    }
 `;
 
 export const SidebarHolder = styled.div`
-    width: 400px;
-    position: sticky;
+    width: 100%;
+    /* position: sticky; */
     top: 0;
 
     @media (max-width: ${sidebarBreakpoint}px) {
@@ -47,9 +54,7 @@ export const SidebarHolder = styled.div`
 
 export const Holder = styled.div`
     min-height: 889px;
-    max-width: 867px;
     width: 100%;
-    margin: auto;
     font-size: 16px;
     font-weight: 400;
     line-height: 160%;

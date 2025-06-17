@@ -14,6 +14,7 @@ import {
     Image,
     Date,
     Explainer,
+    SidebarHolder,
 } from './styles';
 import Sidebar from '@/ui-shared/components/Sidebar/Sidebar';
 import { devtoolsTabs } from './data/devtoolsSetup';
@@ -41,7 +42,9 @@ export default function IntegrationPage() {
     return (
         <Wrapper>
             <Columns>
-                <Sidebar menuTitle="Table of Contents" menuItems={menuItems} />
+                <SidebarHolder>
+                    <Sidebar menuTitle="Table of Contents" menuItems={menuItems} />
+                </SidebarHolder>
                 <Holder>
                     <TitleHolder>
                         <h1>Complete Tari Exchange Integration Guide</h1>

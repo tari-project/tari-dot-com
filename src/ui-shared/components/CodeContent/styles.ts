@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerStyle = styled.div`
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 16px;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
@@ -19,6 +19,7 @@ export const PreStyle = styled.div`
     color: #474747;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+    overflow-x: auto;
 `;
 
 export const CopyBoxWrapper = styled.div`
