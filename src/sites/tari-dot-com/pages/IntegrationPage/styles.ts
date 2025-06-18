@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
 export const Columns = styled.div`
     display: flex;
-    max-width: 1240px;
+    max-width: 1150px;
     width: 100%;
     margin: 0 auto;
     gap: 40px;
