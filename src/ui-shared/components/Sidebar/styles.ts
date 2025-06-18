@@ -11,7 +11,7 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
     text-align: left;
     border: none;
     color: ${({ $isActive }) => ($isActive ? '#813bf5' : '#111')};
-    padding: 16px;
+    padding: 12px;
     cursor: pointer;
     outline: none;
     border-radius: 16px;
@@ -34,7 +34,7 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
 export const MenuContainer = styled.div`
     display: flex;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 30px;
@@ -55,4 +55,5 @@ export const MenuTitle = styled.h2`
     font-weight: 600;
     color: #111;
     margin-bottom: 10px;
+    padding: 0 12px;
 `;
