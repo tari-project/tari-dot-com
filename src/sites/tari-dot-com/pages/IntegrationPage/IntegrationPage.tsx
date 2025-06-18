@@ -33,6 +33,7 @@ import { commonIssues } from './data/commonIssues';
 import { walletAPIMethods } from './data/walletAPIMethods';
 import { basenodeAPIMethods } from './data/basenodeAPIMethods';
 import { menuItems } from './data/menuItems';
+import Card from './components/Card';
 import Image1 from './images/overview.svg';
 import Image2 from './images/architecture.svg';
 import Image3 from './images/depositflow.svg';
@@ -163,7 +164,6 @@ export default function IntegrationPage() {
                         and a secure cold storage wallet for processing withdrawals.
                     </Note>
 
-                    <h3>🔐 Wallet Architecture</h3>
                     <Image src={Image2.src} alt="Wallet Architecture" />
                     <h4>
                         <NumberIcon>1</NumberIcon>Create Monitoring Wallet
@@ -287,8 +287,9 @@ export default function IntegrationPage() {
                     <h3>⛓️ Base Node API Methods</h3>
                     <Tabs tabs={basenodeAPIMethods} />
 
+                    <SectionDivider />
                     <Note $variant="success">
-                        <strong>🎉 Congratulations!</strong>
+                        <h3>🎉 Congratulations!</h3>
                         <NoteDivider />
                         You&apos;ve completed the comprehensive Tari exchange integration guide with pseudocode
                         explanations and grpcurl testing examples. You now have all the tools and knowledge needed to
@@ -296,45 +297,18 @@ export default function IntegrationPage() {
                         understanding of each operation.
                     </Note>
 
+                    <SectionDivider />
                     <h3>📞 Support and Resources</h3>
-
-                    <ul>
-                        <li>
-                            <strong>Documentation:</strong>{' '}
-                            <a href="https://rfc.tari.com" target="_blank">
-                                https://rfc.tari.com
-                            </a>
-                        </li>
-                        <li>
-                            <strong>GitHub Repository:</strong>{' '}
-                            <a href="https://github.com/tari-project/tari" target="_blank">
-                                https://github.com/tari-project/tari
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Discord Community:</strong>{' '}
-                            <a href="https://discord.gg/tari" target="_blank">
-                                https://discord.gg/tari
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Downloads:</strong>{' '}
-                            <a href="https://tari.com/downloads/" target="_blank">
-                                https://tari.com/downloads/
-                            </a>
-                        </li>
-                        <li>
-                            <strong>grpcurl Documentation:</strong>{' '}
-                            <a href="https://github.com/fullstorydev/grpcurl" target="_blank">
-                                https://github.com/fullstorydev/grpcurl
-                            </a>
-                        </li>
-                    </ul>
+                    <Card />
 
                     <Note $variant="info">
-                        <strong>💡 Next Steps:</strong>
+                        <h3>💡 Next Steps:</h3>
                         <NoteDivider />
-                        <ul>
+                        <ul
+                            style={{
+                                marginBottom: 0,
+                            }}
+                        >
                             <li>Test all pseudocode logic before implementing</li>
                             <li>Use grpcurl examples to validate your gRPC setup</li>
                             <li>Test the integration thoroughly on testnet</li>

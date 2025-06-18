@@ -14,7 +14,7 @@ export const ContainerStyle = styled.div`
 `;
 
 export const PreStyle = styled.div`
-    white-space: break-spaces;
+    white-space: pre;
     margin: 0;
     color: #474747;
     font-family: 'Courier New', Courier, monospace;
