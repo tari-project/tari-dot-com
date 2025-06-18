@@ -21,34 +21,55 @@ export const Wrapper = styled.div`
 
 export const Columns = styled.div`
     display: flex;
-    max-width: 1440px;
+    max-width: 1240px;
     width: 100%;
     margin: 0 auto;
     gap: 40px;
 
     & > :nth-child(1) {
-        width: 350px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 350px;
     }
     & > :nth-child(2) {
         flex: 1;
+        flex-basis: 0;
+        flex-grow: 1;
+        min-width: 0;
     }
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 24px;
         & > :nth-child(1) {
             width: 100%;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+        & > :nth-child(2) {
+            width: 100%;
+            flex: 1;
+            flex-basis: 100%;
+            flex-grow: 1;
+            min-width: 0;
+            margin-top: 24px;
         }
     }
 `;
 
 export const SidebarHolder = styled.div`
     width: 100%;
-    /* position: sticky; */
-    top: 0;
+    display: block;
 
     @media (max-width: ${sidebarBreakpoint}px) {
+        display: none;
+    }
+`;
+
+export const SidebarMobileHolder = styled.div`
+    display: none;
+    @media (max-width: ${sidebarBreakpoint}px) {
+        display: block;
         width: 100%;
-        position: static;
     }
 `;
 
@@ -143,7 +164,6 @@ export const Date = styled.div`
 
 export const Image = styled.img`
     width: 100%;
-    margin-bottom: 40px;
 `;
 
 export const NetworkPillContainer = styled.div`

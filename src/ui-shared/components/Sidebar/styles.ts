@@ -41,12 +41,11 @@ export const MenuContainer = styled.div`
     background: #fff;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
     position: sticky;
-    top: 200px;
+    top: 120px;
 
     @media (max-width: ${sidebarBreakpoint}px) {
         width: 100%;
         position: static;
-        top: 0;
         padding: 20px;
     }
 `;

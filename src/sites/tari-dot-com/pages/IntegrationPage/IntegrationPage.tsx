@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import {
     Holder,
     Note,
@@ -15,6 +16,7 @@ import {
     Date,
     Explainer,
     SidebarHolder,
+    SidebarMobileHolder,
 } from './styles';
 import Sidebar from '@/ui-shared/components/Sidebar/Sidebar';
 import { devtoolsTabs } from './data/devtoolsSetup';
@@ -64,7 +66,9 @@ export default function IntegrationPage() {
                         credential management (environment variables, secrets managers) in production. Never use
                         hardcoded credentials.
                     </Note>
-
+                    <SidebarMobileHolder>
+                        <Sidebar menuTitle="Table of Contents" menuItems={menuItems} />
+                    </SidebarMobileHolder>
                     <SectionDivider />
                     <h2 id="overview-architecture">🏗️ 1. Overview & Architecture</h2>
                     <Image src={Image1.src} alt="Overview and Architecture" />

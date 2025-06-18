@@ -58,7 +58,7 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
         if (anchor) {
             const rect = anchor.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const top = rect.top + scrollTop - 200;
+            const top = rect.top + scrollTop - 150;
             window.scrollTo({ top, behavior: 'smooth' });
         }
         if (onNavigate) {

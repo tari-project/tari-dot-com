@@ -33,4 +33,5 @@ export const CopiedPopup = styled.div<{ $visible: boolean }>`
     transition: opacity 0.3s;
     will-change: opacity;
     z-index: 1;
+    font-family: var(--font-poppins);
 `;
