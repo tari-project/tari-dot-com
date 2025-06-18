@@ -8,6 +8,11 @@ export const CardHolder = styled.button`
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    a,
+    h3 {
+        color: #111;
+    }
 
     &:hover {
         transform: scale(1.02);
@@ -18,8 +23,8 @@ export const CardHolder = styled.button`
 export const CardTitle = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
     align-items: center;
-    cursor: pointer;
     margin-bottom: 10px;
 `;
 
