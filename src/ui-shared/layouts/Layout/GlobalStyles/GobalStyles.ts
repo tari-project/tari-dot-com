@@ -15,6 +15,10 @@ const styles = css`
         position: relative;
         overflow-x: hidden;
         overflow-y: scroll;
+
+        @media (max-width: 768px) {
+            overscroll-behavior: none;
+        }
     }
 `;
 
