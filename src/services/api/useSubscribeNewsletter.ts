@@ -1,15 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
 
-async function subscribeNewsletter(email: string, name: string) {
+type Props = {
+    email: string;
+    name?: string;
+    token: string;
+    veera: boolean;
+};
+async function subscribeNewsletter(props: Props) {
     const response = await fetch('https://rwa.y.at/miner/exchanges/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            email,
-            name,
-        }),
+        body: JSON.stringify(props),
     });
 
     if (!response.ok) {
@@ -21,6 +24,6 @@ async function subscribeNewsletter(email: string, name: string) {
 
 export function useSubscribeNewsletter() {
     return useMutation({
-        mutationFn: ({ email, name }: { email: string; name: string }) => subscribeNewsletter(email, name),
+        mutationFn: (props: Props) => subscribeNewsletter(props),
     });
 }

@@ -23,7 +23,6 @@ export default function VeraMobileDownload() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         sendDownloadLink({ email, token }).then((r) => {
-            console.log(r);
             if (r.success) {
                 setSubmitSuccess(true);
             } else {

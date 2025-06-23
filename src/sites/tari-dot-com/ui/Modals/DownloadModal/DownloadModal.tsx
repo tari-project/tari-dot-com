@@ -27,15 +27,17 @@ import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import { useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
+import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 
 export default function DownloadModal() {
-    const { showDownloadModal, setShowDownloadModal } = useUIStore();
+    const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
     const { data: exchange } = useExchangeData();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const { mutateAsync: subscribeNewsletter, } = useSubscribeNewsletter();
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { token, markup, reset } = useCaptcha();
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -55,12 +57,17 @@ export default function DownloadModal() {
         e.preventDefault();
         setIsLoading(true);
         try {
-            if (email && name) {
-                await subscribeNewsletter({ email, name }).then(() => {
-                    setIsSuccess(true);
+            if (email && name && token) {
+                await subscribeNewsletter({ email, name, token, veera: isVeera }).then((r) => {
+                    if (r.success) {
+                        setIsSuccess(true);
+                    } else {
+                        reset();
+                    }
                 });
             }
         } catch (error) {
+            reset();
             console.error(error);
         }
         setIsLoading(false);
@@ -85,6 +92,7 @@ export default function DownloadModal() {
                                     value={email}
                                 />
                             </FormFields>
+                            {markup}
                             <SubmitButton type="submit" disabled={isLoading}>
                                 <span>
                                     Let’s do it!{' '}
