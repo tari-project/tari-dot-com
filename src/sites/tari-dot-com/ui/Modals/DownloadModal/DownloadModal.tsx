@@ -1,3 +1,4 @@
+'use client';
 import { useUIStore } from '@/stores/useUiStore';
 import BaseModal from '../BaseModal/BaseModal';
 import {
@@ -25,11 +26,16 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import { useState } from 'react';
+import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 
 export default function DownloadModal() {
     const { showDownloadModal, setShowDownloadModal } = useUIStore();
     const { data: exchange } = useExchangeData();
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const { mutateAsync: subscribeNewsletter, } = useSubscribeNewsletter();
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -45,9 +51,19 @@ export default function DownloadModal() {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSuccess(true);
+        setIsLoading(true);
+        try {
+            if (email && name) {
+                await subscribeNewsletter({ email, name }).then(() => {
+                    setIsSuccess(true);
+                });
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        setIsLoading(false);
     };
 
     return (
@@ -58,15 +74,18 @@ export default function DownloadModal() {
                 {!isSuccess && (
                     <TextGroup>
                         <Title>your download has started</Title>
-
-                        <Text>Now, stay up to date with the latest Tari news, contests, and drops.</Text>
-
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
-                                <Input type="text" placeholder="Name" />
-                                <Input type="email" placeholder="Email" required={true} />
+                                <Input type="text" placeholder="Name"
+                                    onChange={(e) => setName(e.target.value)}
+                                    value={name}
+                                />
+                                <Input type="email" placeholder="Email" required={true}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
+                                />
                             </FormFields>
-                            <SubmitButton type="submit">
+                            <SubmitButton type="submit" disabled={isLoading}>
                                 <span>
                                     Let’s do it!{' '}
                                     <svg

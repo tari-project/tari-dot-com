@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled(motion.div)<{ $subTextComponent?: boolean }>`
+export const Wrapper = styled(motion.div)<{ $subTextComponent?: boolean; $isVera?: boolean }>`
     position: relative;
     width: 368px;
 
@@ -15,6 +15,11 @@ export const Wrapper = styled(motion.div)<{ $subTextComponent?: boolean }>`
 
     @media (max-width: 430px) {
         width: 100%;
+        ${({ $isVera }) =>
+            $isVera &&
+            css`
+                display: none;
+            `}
     }
 `;
 

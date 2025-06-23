@@ -25,6 +25,11 @@ const PoppinsFont = localFont({
 const DrukFont = localFont({
     src: [
         {
+            path: '../../assets/fonts/Druk/DrukLCG-BoldItalic.ttf',
+            weight: '700',
+            style: 'italic',
+        },
+        {
             path: '../../assets/fonts/Druk/DrukLCG-Bold.ttf',
             weight: '700',
             style: 'normal',
@@ -41,6 +46,11 @@ const DrukFont = localFont({
 
 const DrukWideFont = localFont({
     src: [
+        {
+            path: '../../assets/fonts/Druk/DrukWideLCG-BoldItalic.ttf',
+            weight: '800',
+            style: 'italic',
+        },
         {
             path: '../../assets/fonts/Druk/DrukWideLCG-Bold.ttf',
             weight: '700',

@@ -9,20 +9,29 @@ import { EcosystemWrapper, FaqWrapper, Wrapper } from './styles';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import EcosystemSection from '@/sites/tari-dot-com/pages/HomePage/sections/EcosystemSection/EcosystemSection';
 import Modals from '@/sites/tari-dot-com/ui/Modals/Modals';
+import { Exchange } from '../../types/exchange';
 
-export default function ExchangePage() {
-    const { data: exchange } = useExchangeData({});
+type Props = {
+    customData?: Exchange
+};
+export default function ExchangePage({ customData }: Props) {
+    const { data: exchange } = useExchangeData({ disabled: !!customData });
+    const data = customData || exchange;
 
-    if (!exchange) {
+    if (!data) {
         return <Wrapper />;
     }
 
+    const isVera = customData?.id === 'vera';
+
     return (
         <Wrapper>
-            <HeroSection exchange={exchange} />
-            <StepsSection exchange={exchange} />
-            <TrustedBySection />
-            <ExploreTariSection exchange={exchange} />
+            <HeroSection exchange={data} />
+            {isVera ? null : <>
+                <StepsSection exchange={data} />
+                <TrustedBySection />
+            </>}
+            <ExploreTariSection exchange={data} />
             <EcosystemWrapper>
                 <EcosystemSection hideSupporters={true} />
             </EcosystemWrapper>

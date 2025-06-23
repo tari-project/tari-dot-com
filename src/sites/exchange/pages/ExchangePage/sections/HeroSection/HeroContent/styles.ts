@@ -1,6 +1,6 @@
 'use client';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div<{ $bgImage: string }>`
     width: 100%;
@@ -81,7 +81,7 @@ export const Eyebrow = styled.div`
     }
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<{ $isVera?: boolean }>`
     color: #fff;
     font-family: var(--font-druk-wide), sans-serif;
 
@@ -90,6 +90,7 @@ export const Title = styled.div`
     font-weight: 700;
     line-height: 101%;
     text-transform: uppercase;
+    text-wrap: balance;
 
     @media (max-width: 1263px) {
         font-size: 48px;
@@ -105,6 +106,16 @@ export const Title = styled.div`
 
     @media (max-width: 700px) {
         font-size: 30px;
+        ${({ $isVera }) =>
+        $isVera &&
+        css`
+            font-family: var(--font-druk), sans-serif;
+            font-size: 62px;
+            align-items: start;
+            text-align: start;
+            padding: 0 20px;
+            line-height: 85%;
+        `}
     }
 `;
 
@@ -112,9 +123,22 @@ export const WhiteText = styled.span`
     color: #fff;
 `;
 
-export const YellowText = styled.span<{ $color: string }>`
+export const YellowText = styled.span<{ $color: string; $isVera?: boolean }>`
     color: ${({ $color }) => $color};
     font-style: italic;
+    font-weight: 800;
+    ${({ $isVera }) =>
+        $isVera &&
+        css`
+            font-style: normal;
+            color: #fff;
+        `}
+`;
+
+export const GradientText = styled.span`
+    background: linear-gradient(90.41deg, #CB01D2 3.46%, #FEB501 92.97%);
+    background-clip: text;
+    color: transparent;
     font-weight: 800;
 `;
 
@@ -144,7 +168,7 @@ export const BottomWrapper = styled.div`
     }
 `;
 
-export const VideoWrapper = styled.div`
+export const VideoWrapper = styled.div<{$isVera?: boolean}>`
     position: absolute;
     top: 0;
     left: 0;
@@ -156,6 +180,7 @@ export const VideoWrapper = styled.div`
         position: relative;
         height: 400px;
         object-fit: unset;
+        max-height: 35vh;
     }
 `;
 
