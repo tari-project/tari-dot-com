@@ -1,3 +1,4 @@
+'use client';
 import { useUIStore } from '@/stores/useUiStore';
 import BaseModal from '../BaseModal/BaseModal';
 import {
@@ -25,11 +26,18 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import { useState } from 'react';
+import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
+import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 
 export default function DownloadModal() {
-    const { showDownloadModal, setShowDownloadModal } = useUIStore();
+    const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
     const { data: exchange } = useExchangeData();
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const { mutateAsync: subscribeNewsletter, } = useSubscribeNewsletter();
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { token, markup, reset } = useCaptcha();
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -45,9 +53,26 @@ export default function DownloadModal() {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(isVeera);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSuccess(true);
+        setIsLoading(true);
+        try {
+            if (email && token) {
+                await subscribeNewsletter({ email, name, token, veera: isVeera }).then((r) => {
+                    if (r.success) {
+                        setIsSuccess(true);
+                    } else {
+                        reset();
+                    }
+                });
+            }
+        } catch (error) {
+            reset();
+            console.error(error);
+        }
+        setIsLoading(false);
     };
 
     return (
@@ -58,15 +83,24 @@ export default function DownloadModal() {
                 {!isSuccess && (
                     <TextGroup>
                         <Title>your download has started</Title>
-
-                        <Text>Now, stay up to date with the latest Tari news, contests, and drops.</Text>
-
+                        {isVeera ?
+                            <Text>Submit your Veera email to start earning rewards.</Text>
+                            :
+                            <Text>Now, stay up to date with the latest Tari news, contests, and drops.</Text>
+                        }
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
-                                <Input type="text" placeholder="Name" />
-                                <Input type="email" placeholder="Email" required={true} />
+                                <Input type="text" placeholder="Name"
+                                    onChange={(e) => setName(e.target.value)}
+                                    value={name}
+                                />
+                                <Input type="email" placeholder="Email" required={true}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
+                                />
                             </FormFields>
-                            <SubmitButton type="submit">
+                            {markup}
+                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token}>
                                 <span>
                                     Let’s do it!{' '}
                                     <svg
@@ -90,12 +124,20 @@ export default function DownloadModal() {
                 )}
 
                 {isSuccess && (
-                    <SuccessMessage>
-                        <Text>
-                            <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
-                        </Text>
-                    </SuccessMessage>
-                )}
+                    isVeera ?
+                        <SuccessMessage>
+                            <Text>
+                                <strong>You’re all set!</strong>
+                            </Text>
+                        </SuccessMessage>
+                        :
+                        <SuccessMessage>
+                            <Text>
+                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
+                            </Text>
+                        </SuccessMessage>
+                )
+                }
 
                 <Divider>
                     <DividerLine />

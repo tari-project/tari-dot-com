@@ -7,6 +7,7 @@ import {
     BottomWrapper,
     WhiteText,
     YellowText,
+    GradientText,
     VideoWrapper,
     Shadow,
     TopSlope,
@@ -20,11 +21,13 @@ import { getValidHexColor, getTextColorForBg } from '@/sites/exchange/utils';
 import SeasonTimerInButton from './components/SeasonTimerInButton/SeasonTimerInButton';
 import VideoPlayer from '@/sites/tari-dot-com/pages/HomePage/sections/IntroSection/components/VideoPlayer/VideoPlayer';
 import { useMedia } from 'react-use';
+import VeraMobileDownload from './components/VeraMobileDownload/VeraMobileDownload';
 
 export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const color = getValidHexColor(exchange?.primary_colour);
     const textColor = getTextColorForBg(color);
     const isSmallScreen = useMedia('(max-width: 1220px)');
+    const isVera = exchange.id === 'vera';
 
     const [videoSrc, setVideoSrc] = useState(
         'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
@@ -54,19 +57,36 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
 
     return (
         <Wrapper $bgImage={bgImage.src}>
-            <VideoWrapper>
+            <VideoWrapper $isVera={isVera}>
                 <TopSlope />
                 <BottomSlope />
                 <VideoPlayer src={videoSrc} loop={true} poster={posterSrc} />
             </VideoWrapper>
 
             <TextWrapper>
-                <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
-                <Title>
-                    <WhiteText>Mine to {exchange?.name} & Earn</WhiteText>
-                    <YellowText $color={color}>{exchange.reward_percentage}% Bonus XTM</YellowText>
-                </Title>
+                {isVera ?
+                    <Title $isVera={isVera}>
+                        <YellowText $color={color} $isVera>
+                            Download
+                            Tari Universe
+                            and{' '}
+                        </YellowText>
+                        <GradientText>
+                            earn rewards
+                        </GradientText>
+                        <YellowText $color={color} $isVera>
+                            {' '}on Veera
+                        </YellowText>
+                    </Title>
+                    : <>
+                        <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
+                        <Title>
+                            <WhiteText>Mine to {exchange?.name} & Earn</WhiteText>
+                            <YellowText $color={color}>{exchange.reward_percentage}% Bonus XTM</YellowText>
+                        </Title>
+                    </>}
                 <DownloadButton
+                    isVera={isVera}
                     backgroundColor={color}
                     textColor={textColor}
                     showIconBackground={true}
@@ -77,6 +97,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                         ) : null
                     }
                 />
+                {isVera ? <VeraMobileDownload /> : null}
             </TextWrapper>
 
             <BottomWrapper>

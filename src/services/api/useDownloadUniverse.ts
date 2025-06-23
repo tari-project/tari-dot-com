@@ -35,7 +35,13 @@ export const useDownloadUniverse = () => {
             download_link_win: winLink,
         } = exchange || {};
 
-        sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchange?.name });
+        // Check if current path contains "vera"
+        let exchangeName = exchange?.name;
+        if (typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('vera')) {
+            exchangeName = 'vera';
+        }
+
+        sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchangeName });
         if (exchange) {
             if (platform === 'macos' && macLink) {
                 window.open(macLink, '_blank');
@@ -47,6 +53,11 @@ export const useDownloadUniverse = () => {
                 window.open(winLink, '_blank');
                 return;
             }
+        }
+
+        const formattedUrl = new URL(url);
+        if (exchange?.name) {
+            formattedUrl.searchParams.set('exchange', exchange?.id || '');
         }
 
         window.open(url, '_blank');

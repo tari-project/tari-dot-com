@@ -39,6 +39,7 @@ interface Props {
     showIconBackground?: boolean;
     subTextComponent?: React.ReactNode;
     glow?: boolean;
+    isVera?: boolean;
 }
 
 export default function DownloadButton({
@@ -47,6 +48,7 @@ export default function DownloadButton({
     subTextComponent,
     showIconBackground = false,
     glow = false,
+    isVera = false,
 }: Props) {
     const [hovering, setHovering] = useState(false);
 
@@ -66,6 +68,7 @@ export default function DownloadButton({
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ delay: 0.5 }}
             $subTextComponent={!!subTextComponent}
+            $isVera={isVera}
         >
             <Button
                 as={Link}
