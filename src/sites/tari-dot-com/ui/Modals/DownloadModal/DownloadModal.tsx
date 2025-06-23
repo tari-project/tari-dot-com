@@ -53,11 +53,13 @@ export default function DownloadModal() {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
     };
 
+    console.log(isVeera);
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            if (email && name && token) {
+            if (email && token) {
                 await subscribeNewsletter({ email, name, token, veera: isVeera }).then((r) => {
                     if (r.success) {
                         setIsSuccess(true);
@@ -81,6 +83,11 @@ export default function DownloadModal() {
                 {!isSuccess && (
                     <TextGroup>
                         <Title>your download has started</Title>
+                        {isVeera ?
+                            <Text>Submit your Veera email to start earning rewards.</Text>
+                            :
+                            <Text>Now, stay up to date with the latest Tari news, contests, and drops.</Text>
+                        }
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
                                 <Input type="text" placeholder="Name"
@@ -93,7 +100,7 @@ export default function DownloadModal() {
                                 />
                             </FormFields>
                             {markup}
-                            <SubmitButton type="submit" disabled={isLoading}>
+                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token}>
                                 <span>
                                     Let’s do it!{' '}
                                     <svg
@@ -117,12 +124,20 @@ export default function DownloadModal() {
                 )}
 
                 {isSuccess && (
-                    <SuccessMessage>
-                        <Text>
-                            <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
-                        </Text>
-                    </SuccessMessage>
-                )}
+                    isVeera ?
+                        <SuccessMessage>
+                            <Text>
+                                <strong>You’re all set!</strong>
+                            </Text>
+                        </SuccessMessage>
+                        :
+                        <SuccessMessage>
+                            <Text>
+                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
+                            </Text>
+                        </SuccessMessage>
+                )
+                }
 
                 <Divider>
                     <DividerLine />
