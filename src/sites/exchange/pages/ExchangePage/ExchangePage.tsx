@@ -18,7 +18,7 @@ type Props = {
 export default function ExchangePage({ customData }: Props) {
     const { data: exchange } = useExchangeData({ disabled: !!customData });
     const data = customData || exchange;
-    const isVera = useMemo(() => data?.id === 'vera', [data]);
+    const isVera = useMemo(() => data?.id === 'veera', [data]);
     const setIsVeera = useUIStore((s) => s.setVeera);
     useEffect(() => {
         if (isVera) {

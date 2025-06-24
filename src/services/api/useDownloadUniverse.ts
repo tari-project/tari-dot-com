@@ -37,8 +37,8 @@ export const useDownloadUniverse = () => {
 
         // Check if current path contains "vera"
         let exchangeName = exchange?.name;
-        if (typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('vera')) {
-            exchangeName = 'vera';
+        if (typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('veera')) {
+            exchangeName = 'veera';
         }
 
         sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchangeName });
