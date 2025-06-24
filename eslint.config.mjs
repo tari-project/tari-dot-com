@@ -18,7 +18,7 @@ const eslintConfig = [
             "react/no-unescaped-entities": "error",
 
             // General JavaScript/TypeScript rules
-            "no-console": "warn",
+            "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
             "no-debugger": "error",
             "no-unused-vars": "off", // Handled by TypeScript
             "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
