@@ -85,8 +85,8 @@ export const LogoWrapper = styled.div`
     }
 `;
 
-export const LogoImage = styled.img<{$isVeera?: boolean}>`
+export const LogoImage = styled.img<{ $isVeera?: boolean }>`
     height: 38px;
     color: #fff;
-    ${({$isVeera}) => $isVeera && 'padding: 5px 0;'}
+    ${({ $isVeera }) => $isVeera && 'padding: 5px 0;'}
 `;

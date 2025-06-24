@@ -12,14 +12,14 @@ On Thursday, the Tari community gathered to analyze different ways to make sure 
 
 One way to achieve a high security second layer is to require Validator Nodes to register themselves on the Base layer. This achieves:
 
-* Sybil resistance (if we require a fee / deposit to be paid)
-* A register of known VNs
+- Sybil resistance (if we require a fee / deposit to be paid)
+- A register of known VNs
 
 At a high level, the registration process could look something like this:
 
-* The Validator Node posts a MW transaction with a flag marking it as a VN registration TX.
-* The tx contains a time-locked output for at least the registration fee amount that is *paid back to the VN owner*
-* This time lock could be for say, 6 months
+- The Validator Node posts a MW transaction with a flag marking it as a VN registration TX.
+- The tx contains a time-locked output for at least the registration fee amount that is _paid back to the VN owner_
+- This time lock could be for say, 6 months
 
 Another great thing about the refundable deposit model of registration is that the Active VN register is self-maintaining. You need to re-register every 6 months (ala SSL certificates) rather than requiring de-registration.
 
@@ -115,13 +115,13 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 4:59 AM ⇐ bordecraft quit (~bordecraf@37.165.118.246) Ping timeout: 250 seconds
 5:04 AM <Hansie> Yes, makes sense. So this could also take care of topping up the collateral, as the new Tx can combine the old collateral with a new input, or making it less.
 5:07 AM <Hansie> So maybe the 'VN registration TX' could also employ a simple counter in the registration meta data that increases every time a re-registration is done without a lapse in active service?
-5:16 AM ↔ oneiric_ nipped out  
+5:16 AM ↔ oneiric_ nipped out
 5:18 AM <mikethetike> > yeah, it would have to sit in the mempool
 5:18 AM <mikethetike> I think it has to be on the blockchain, but locked up like a coinbase
 5:18 AM <mikethetike> No autospend, although the VN could choose to create the autospend if they wished
 5:19 AM <mikethetike> The registration can't actually be in the mempool, because then the locked up funds are not confirmed
 5:19 AM <mikethetike> Unless I'm wrong
 5:20 AM <mikethetike> or I have misunderstood what the registration tx is
-5:21 AM — mikethetike reads previous messages 
+5:21 AM — mikethetike reads previous messages
 5:30 AM <neonknight> registration is on baselayer, but autospending needs to live in mempool
 ```

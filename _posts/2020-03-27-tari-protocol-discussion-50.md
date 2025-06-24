@@ -7,18 +7,19 @@ thumbnail: assets/img/posts/protocol-discussion-50.png
 lead: Making privacy tech mainstream
 class: subpage
 topics:
-- In times of crisis what happens to privacy?
-- How do we avoid oblique surveillance and enter oblique privacy?
+    - In times of crisis what happens to privacy?
+    - How do we avoid oblique surveillance and enter oblique privacy?
 ---
 
 On Friday the Tari community discussed how to bring privacy-enhancing technologies such as Monero and Tari into the mainstream. Especially in light of public mass surveillance to reduce the spread of COVID-19.
 
 Please feel free to keep the conversation going by joining the discussion thread on [Reddit](https://www.reddit.com/r/tari/comments/fps2e2/tari_discussion_how_do_privacyenhancing/).
 
-
 ### Transcript of Friday discussion
+
 Please note that unlike Telegram or IRC, Reddit threads are a living document. This is a snapshot taken 19:11:37 UTC
 Friday, March 27, 2020.
+
 ```
 [–]tarilabs[S]
 Relaying questions from Telegram: (From: Ad-Lib) (This time the discussion is on Reddit, therefore moving Telegram question to Reddit)

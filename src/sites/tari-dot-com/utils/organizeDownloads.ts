@@ -65,19 +65,22 @@ export function getLatestDownload(organizedDownloads: OrganizedDownloads): {
 } {
     const getLatestByGroup = (downloads: Download[]): { [key: string]: Download | null } => {
         const filteredDownloads = downloads.filter((download) => !download.url.endsWith('.sha256'));
-        const grouped: { [key: string]: Download[] } = filteredDownloads.reduce((acc, download) => {
-            const key = `${download.network}-${download.arch}`;
-            if (!acc[key]) {
-                acc[key] = [];
-            }
-            acc[key].push(download);
-            return acc;
-        }, {} as { [key: string]: Download[] });
+        const grouped: { [key: string]: Download[] } = filteredDownloads.reduce(
+            (acc, download) => {
+                const key = `${download.network}-${download.arch}`;
+                if (!acc[key]) {
+                    acc[key] = [];
+                }
+                acc[key].push(download);
+                return acc;
+            },
+            {} as { [key: string]: Download[] },
+        );
 
         const latestByGroup: { [key: string]: Download | null } = {};
         for (const key in grouped) {
             latestByGroup[key] = grouped[key].reduce((latest, current) =>
-                new Date(latest.lastModified) > new Date(current.lastModified) ? latest : current
+                new Date(latest.lastModified) > new Date(current.lastModified) ? latest : current,
             );
         }
 

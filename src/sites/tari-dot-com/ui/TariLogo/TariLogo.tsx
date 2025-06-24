@@ -39,39 +39,39 @@ function ContextMenu({ x, y, onClose }: ContextMenuProps) {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                 zIndex: 9999,
                 minWidth: '180px',
-                color: '#333'
+                color: '#333',
             }}
             onClick={(e) => e.stopPropagation()}
         >
             <div
                 style={{ padding: '8px 12px', cursor: 'pointer', borderBottom: '1px solid #eee', color: '#333' }}
                 onClick={() => downloadFile('tari-white.svg', 'download logo (white)')}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}
             >
                 download logo (white)
             </div>
             <div
                 style={{ padding: '8px 12px', cursor: 'pointer', borderBottom: '1px solid #eee', color: '#333' }}
                 onClick={() => downloadFile('tari-black.svg', 'download logo (black)')}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}
             >
                 download logo (black)
             </div>
             <div
                 style={{ padding: '8px 12px', cursor: 'pointer', borderBottom: '1px solid #eee', color: '#333' }}
                 onClick={() => downloadFile('xtm.svg', 'download XTM logo')}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}
             >
                 download XTM logo
             </div>
             <div
                 style={{ padding: '8px 12px', cursor: 'pointer', color: '#333' }}
                 onClick={() => downloadFile('brandkit.zip', 'download brand kit')}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}
             >
                 download brand kit
             </div>
@@ -140,13 +140,7 @@ export default function TariLogo({ href, onClick }: Props) {
                     logo
                 )}
             </Wrapper>
-            {contextMenu && (
-                <ContextMenu
-                    x={contextMenu.x}
-                    y={contextMenu.y}
-                    onClose={closeContextMenu}
-                />
-            )}
+            {contextMenu && <ContextMenu x={contextMenu.x} y={contextMenu.y} onClose={closeContextMenu} />}
         </>
     );
 }

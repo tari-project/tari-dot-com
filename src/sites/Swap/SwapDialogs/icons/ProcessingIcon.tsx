@@ -29,4 +29,3 @@ const ProcessingIcon: React.FC = () => {
 };
 
 export default ProcessingIcon;
-

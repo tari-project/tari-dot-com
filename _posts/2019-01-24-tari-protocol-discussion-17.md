@@ -12,10 +12,10 @@ On Thursday’s architecture discussion, the Tari community examined the ways in
 
 Asset issuers can register a namespace for identifying ownership of assets. How might the mechanics of these IDs work?
 
-* Shorter namespaces could be more expensive than longer ones to reduce name-squatting
-* Registering a namespace could have some additional tx fee associated with it
-* Refundable time-locks and token burning are two possible fee mechanisms
-* Must consider possible security implications of a static namespace key that never changes
+- Shorter namespaces could be more expensive than longer ones to reduce name-squatting
+- Registering a namespace could have some additional tx fee associated with it
+- Refundable time-locks and token burning are two possible fee mechanisms
+- Must consider possible security implications of a static namespace key that never changes
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -29,7 +29,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 
 ### Transcript of Thursday’s discussion
 
-```
+````
 4:03 AM <@cjs77> mikethetike posed a good question earlier
 4:03 AM <@cjs77> > I'd like to see how some of the 2nd layer stuff gets squished in
 4:04 AM <@cjs77> So this is a good time to put some proposals forward that lead into this question.
@@ -135,4 +135,4 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 6:48 AM <Blackwolfsa> You only problem you have is that the value is not directly related to the circulation
 6:48 AM <@cjs77> he he, scratch that -- making dynamic fees prop to supply is probably not a good idea -- but I do think it would be useful to think in terms of it when decided on what fees to charge.
 6:50 AM <@cjs77> It could be something that gets adjusted in network upgrades, but this is something that must be approached with real caution -- the idea of messing with economic parameters makes me nervous
-```
+````

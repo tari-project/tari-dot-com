@@ -23,7 +23,6 @@ export const generateMetadata = async () => {
     };
 };
 
-
 const VERA_DATA = {
     id: 'veera',
     name: 'Veera',

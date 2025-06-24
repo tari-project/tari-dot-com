@@ -68,7 +68,6 @@ export const useDownloadUniverse = () => {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-
         } catch (error) {
             console.error('Download failed:', error);
             // Fallback to original method
@@ -78,7 +77,7 @@ export const useDownloadUniverse = () => {
 
     const handleDownloadClick = (
         e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        platform?: DownloadPlatform
+        platform?: DownloadPlatform,
     ) => {
         const isMobile = checkIsMobile();
 

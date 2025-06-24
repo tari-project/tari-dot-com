@@ -13,13 +13,15 @@ Yesterday, the Tari community discussed the trade-offs needed for the Tari proto
 This is the TL;DR of yesterday’s conversation (full transcript included below):
 
 Speed vs. decentralization trade-off
-* Every second layer node doesn’t need to execute every asset’s instructions (instructions refer to digital asset state changes)
-* Speed is valuable for digital assets — even if it comes at the expense of some second layer decentralization
+
+- Every second layer node doesn’t need to execute every asset’s instructions (instructions refer to digital asset state changes)
+- Speed is valuable for digital assets — even if it comes at the expense of some second layer decentralization
 
 Syncing first and second layers by invoking collateral requirements
-* Helps punish bad actors
-* Makes it expensive to run a sybil attack
-* How long should collateral be locked up?
+
+- Helps punish bad actors
+- Makes it expensive to run a sybil attack
+- How long should collateral be locked up?
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

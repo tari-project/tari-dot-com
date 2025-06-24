@@ -14,4 +14,3 @@ const CompletedIcon: React.FC = () => {
 };
 
 export default CompletedIcon;
-

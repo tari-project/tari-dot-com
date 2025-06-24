@@ -10,16 +10,16 @@ class: subpage
 
 On Monday, the Tari community gathered to assess tools needed to prevent bad actors from participating as validator nodes on the Tari network. Below is the TL;DR on Monday's conversation (full transcript included below):
 
-One way to discourage bad actors on the Tari network is to simply make it more expensive to try and game the system than to just do what is required to manage a particular digital asset. 
+One way to discourage bad actors on the Tari network is to simply make it more expensive to try and game the system than to just do what is required to manage a particular digital asset.
 
 Something like a strong BFT consensus could work here, where one only gets paid fees if there is evidence of participation and they voted with the BFT consensus group.
 
 A few game theory concepts to consider implementing on the Tari network:
 
-* VNs can only get paid their fees for 'with BFT votes' and not 'against BFT votes'.
-* No recourse for attempted bad acting other than loss of income.
-* VNs guilty of bad acting can/should be banned from a committee.
-* VNs guilty of bad acting will not be known for such outside of the committee where it occured.
+- VNs can only get paid their fees for 'with BFT votes' and not 'against BFT votes'.
+- No recourse for attempted bad acting other than loss of income.
+- VNs guilty of bad acting can/should be banned from a committee.
+- VNs guilty of bad acting will not be known for such outside of the committee where it occured.
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -114,7 +114,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 11:41 AM <stanimal> Good point
 11:42 AM <Blackwolfsa> It would be great if the asset issuer doesn't have to be
 11:43 AM <Blackwolfsa> I think we could design it so that he doesn't have to be
-11:44 AM → mikethetike joined  ⇐ el00ruobuob quit  
+11:44 AM → mikethetike joined  ⇐ el00ruobuob quit
 11:47 AM <simian_za> oneiric_: Not sure how steemit was set up but most the non-PoW coins use some sort of proof of stake mixed with including their own trusted nodes in the mix
 11:47 AM <simian_za> both factors work because of the centralization
 11:48 AM <stanimal> So the current deterrents we have are: loss of fees and the cost of mounting an attack on a committee (network selected would make it hard & expensive to become part of any particular committee) - for any high value assets, the safety net is to use permissioned nodes - is that right?

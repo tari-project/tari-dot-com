@@ -12,14 +12,14 @@ On Monday, the Tari community discussed how Directed Acyclic Graphs might play a
 
 DAGs on the Tari Network
 
-* Should be on the asset layer (second layer) 
-* Used as a tool to converge on asset state 
+- Should be on the asset layer (second layer)
+- Used as a tool to converge on asset state
 
 Questions to Consider
 
-* Should single instructions be executed as nodes in the DAG?
-* Should sets of instructions be aggregated in a block and then have DAG rules applied to the block?
-* How should instructions be ordered?
+- Should single instructions be executed as nodes in the DAG?
+- Should sets of instructions be aggregated in a block and then have DAG rules applied to the block?
+- How should instructions be ordered?
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -130,4 +130,3 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 1:17 PM <neonknight> I don't think VNs should send anything unless it is request of them. You could ask a VN to send you the verification messages as soon as it has enough signatures, but it is different from submitting an instruction. Every VN in a committee doesn't have a P2P channel open with the wallet, it could only be one.
 2:12 PM <Blackwolfsa> From a user experience stand point, I think VNs should push back. Once when it accepts, second when threshold is reached.
 ```
-

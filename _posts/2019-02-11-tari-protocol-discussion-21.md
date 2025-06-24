@@ -12,15 +12,15 @@ On Monday, the Tari community discussed how namespaces might be registered by di
 
 Name registration:
 
-* DA issuer namespaces are publicly registered on the Tari base layer
-* They are transferable
-* There's a cost associated with registering
-* The cost should have an inverse relationship with namespace length
+- DA issuer namespaces are publicly registered on the Tari base layer
+- They are transferable
+- There's a cost associated with registering
+- The cost should have an inverse relationship with namespace length
 
 Asset creation:
 
-* Are Tari tokens burned or moved at asset creation?
-* Will Tari use MimbleWimble to transfer Tari native tokens?
+- Are Tari tokens burned or moved at asset creation?
+- Will Tari use MimbleWimble to transfer Tari native tokens?
 
 Join us for our next discussion on Freenode in #tari-dev.
 

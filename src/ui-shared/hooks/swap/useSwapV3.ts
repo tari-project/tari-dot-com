@@ -29,11 +29,15 @@ import { useUniswapV3Pathfinder } from './useUniswapV3Pathfinder';
 import { sendTransactionWithWagmiSigner, TransactionState } from './lib/providers';
 
 export type SwapExecutionProps = {
-    onApproveRequest?: () => void,
-    onApproveSuccess?: () => void,
-    onFailure?: (message?: string) => void,
-    onSuccess?: (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState }) => void,
-}
+    onApproveRequest?: () => void;
+    onApproveSuccess?: () => void;
+    onFailure?: (message?: string) => void;
+    onSuccess?: (txResult: {
+        response?: TransactionResponse;
+        receipt?: TransactionReceipt;
+        status?: TransactionState;
+    }) => void;
+};
 
 export const useUniswapV3Interactions = () => {
     const [pairTokenAddress, setPairTokenAddress] = useState<`0x${string}` | null>(null);
@@ -53,12 +57,13 @@ export const useUniswapV3Interactions = () => {
 
     const quoterAddressV3 = useMemo(
         () => (currentChainId ? QUOTER_ADDRESSES_V3[currentChainId as keyof typeof QUOTER_ADDRESSES_V3] : undefined),
-        [currentChainId]
+        [currentChainId],
     );
 
     const v3SwapRouter02Address = useMemo(
-        () => (currentChainId ? V3_SWAP_ROUTER_ADDRESS[currentChainId as keyof typeof V3_SWAP_ROUTER_ADDRESS] : undefined),
-        [currentChainId]
+        () =>
+            currentChainId ? V3_SWAP_ROUTER_ADDRESS[currentChainId as keyof typeof V3_SWAP_ROUTER_ADDRESS] : undefined,
+        [currentChainId],
     );
 
     const [signer, setSigner] = useState<EthersSigner | null>(null);
@@ -94,9 +99,8 @@ export const useUniswapV3Interactions = () => {
                 if (currentWeth && lowerCaseAddress === currentWeth.address.toLowerCase()) {
                     selectedPairSideTokenForSwapUi = Ether.onChain(currentChainId);
                 } else {
-                    selectedPairSideTokenForSwapUi = KNOWN_SDK_TOKENS[currentChainId as keyof typeof KNOWN_SDK_TOKENS]?.[
-                        lowerCaseAddress
-                    ];
+                    selectedPairSideTokenForSwapUi =
+                        KNOWN_SDK_TOKENS[currentChainId as keyof typeof KNOWN_SDK_TOKENS]?.[lowerCaseAddress];
                 }
             }
 
@@ -110,7 +114,7 @@ export const useUniswapV3Interactions = () => {
             setSdkToken0(_uiInputToken);
             setSdkToken1(_uiOutputToken);
         },
-        []
+        [],
     );
 
     const handeSetPairTokenAddress = useCallback(
@@ -118,7 +122,7 @@ export const useUniswapV3Interactions = () => {
             setPairTokenAddress(pairTokenAddress as `0x${string}` | null);
             handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
         },
-        [direction, currentChainId, handleUpdateSdkTokens]
+        [direction, currentChainId, handleUpdateSdkTokens],
     );
 
     const handleSetDirection = useCallback(
@@ -126,13 +130,12 @@ export const useUniswapV3Interactions = () => {
             setDirection(direction);
             handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
         },
-        [pairTokenAddress, currentChainId, handleUpdateSdkTokens]
+        [pairTokenAddress, currentChainId, handleUpdateSdkTokens],
     );
 
     useEffect(() => {
         handleUpdateSdkTokens(pairTokenAddress, direction, currentChainId);
     }, [currentChainId, handleUpdateSdkTokens, pairTokenAddress, direction]);
-
 
     const abortController = useRef<AbortController | null>(null);
 
@@ -146,7 +149,7 @@ export const useUniswapV3Interactions = () => {
         currentChainId,
         uiToken0: sdkToken0,
         uiToken1: sdkToken1,
-        userAccountAddress: accountAddress
+        userAccountAddress: accountAddress,
     });
 
     const getTradeDetails = useCallback(
@@ -165,10 +168,12 @@ export const useUniswapV3Interactions = () => {
                 setInsufficientLiquidityHook(true); // Also set this if error from pathfinder
             }
             const outputAmountQuotient = result.tradeDetails?.outputAmount?.quotient;
-            if (!result.error && (outputAmountQuotient === undefined || BigInt(outputAmountQuotient.toString()) === 0n)) {
+            if (
+                !result.error &&
+                (outputAmountQuotient === undefined || BigInt(outputAmountQuotient.toString()) === 0n)
+            ) {
                 setInsufficientLiquidityHook(true);
             }
-
 
             const defaultInputCurrency = sdkToken0 || (currentChainId ? Ether.onChain(currentChainId) : undefined);
             const defaultOutputCurrency = sdkToken1 || (currentChainId ? Ether.onChain(currentChainId) : undefined);
@@ -192,11 +197,17 @@ export const useUniswapV3Interactions = () => {
             };
             return result.tradeDetails || defaultTrade;
         },
-        [getPathfinderTradeDetails, sdkToken0, currentChainId, sdkToken1]
+        [getPathfinderTradeDetails, sdkToken0, currentChainId, sdkToken1],
     );
 
     const approveTokenForV3Router02 = useCallback(
-        async (token: Token, amount: bigint, spender: string, onApproveRequest?: () => void, onApproveSuccess?: () => void) => {
+        async (
+            token: Token,
+            amount: bigint,
+            spender: string,
+            onApproveRequest?: () => void,
+            onApproveSuccess?: () => void,
+        ) => {
             if (!signer || !accountAddress) throw new Error('Wallet not connected for approval');
             setIsApprovingHook(true);
             setErrorHook(null);
@@ -227,15 +238,23 @@ export const useUniswapV3Interactions = () => {
                 return false;
             }
         },
-        [signer, accountAddress, publicClient]
+        [signer, accountAddress, publicClient],
     );
 
     const executeSwapWithV3Router02 = useCallback(
-        async (
-            { tradeDetails, onApproveRequest, onApproveSuccess, onSuccess, onFailure }: {
-                tradeDetails: V3TradeDetails,
-            } & SwapExecutionProps
-        ): Promise<{ response: TransactionResponse; receipt: TransactionReceipt; actualFeeWei?: bigint } | null> => {
+        async ({
+            tradeDetails,
+            onApproveRequest,
+            onApproveSuccess,
+            onSuccess,
+            onFailure,
+        }: {
+            tradeDetails: V3TradeDetails;
+        } & SwapExecutionProps): Promise<{
+            response: TransactionResponse;
+            receipt: TransactionReceipt;
+            actualFeeWei?: bigint;
+        } | null> => {
             setErrorHook(null);
             setIsLoadingHook(true);
 
@@ -270,7 +289,7 @@ export const useUniswapV3Interactions = () => {
                         amountInBigInt,
                         v3SwapRouter02Address, // Approve the router
                         onApproveRequest,
-                        onApproveSuccess
+                        onApproveSuccess,
                     );
                     if (!approvalSuccess) {
                         setIsLoadingHook(false);
@@ -301,9 +320,15 @@ export const useUniswapV3Interactions = () => {
 
                 if (txResult.state === TransactionState.Sent && txResult.receipt && txResult.response) {
                     onSuccess?.(txResult);
-                    return { response: txResult.response, receipt: txResult.receipt, actualFeeWei: txResult.actualFeeWei };
+                    return {
+                        response: txResult.response,
+                        receipt: txResult.receipt,
+                        actualFeeWei: txResult.actualFeeWei,
+                    };
                 } else {
-                    const failureMsg = txResult.receipt ? 'Swap transaction failed on-chain.' : 'Swap transaction submission failed.';
+                    const failureMsg = txResult.receipt
+                        ? 'Swap transaction failed on-chain.'
+                        : 'Swap transaction submission failed.';
                     onFailure?.(failureMsg);
                     setErrorHook(failureMsg);
                     return null;
@@ -318,7 +343,7 @@ export const useUniswapV3Interactions = () => {
                 return null;
             }
         },
-        [signer, accountAddress, isConnected, v3SwapRouter02Address, currentChainId, approveTokenForV3Router02]
+        [signer, accountAddress, isConnected, v3SwapRouter02Address, currentChainId, approveTokenForV3Router02],
     );
 
     const addLiquidityAndCreatePoolIfNeeded = useCallback(async () => {
@@ -340,18 +365,26 @@ export const useUniswapV3Interactions = () => {
         const finalRecipient = accountAddress;
 
         if (!sdkToken0 || !sdkToken1 || !currentChainId || !signer || !accountAddress || !publicClient) {
-            setErrorHook('Cannot add liquidity. Please ensure your wallet is connected and all required fields are filled.');
+            setErrorHook(
+                'Cannot add liquidity. Please ensure your wallet is connected and all required fields are filled.',
+            );
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
 
         const nftPositionManagerAddr = currentChainId
-            ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[currentChainId as keyof typeof NONFUNGIBLE_POSITION_MANAGER_ADDRESSES]
+            ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[
+                  currentChainId as keyof typeof NONFUNGIBLE_POSITION_MANAGER_ADDRESSES
+              ]
             : undefined;
-        const factoryAddr = currentChainId ? FACTORY_ADDRESSES_V3[currentChainId as keyof typeof FACTORY_ADDRESSES_V3] : undefined;
+        const factoryAddr = currentChainId
+            ? FACTORY_ADDRESSES_V3[currentChainId as keyof typeof FACTORY_ADDRESSES_V3]
+            : undefined;
 
         if (!nftPositionManagerAddr || !nonfungiblePositionManagerAbi || !factoryAddr || !uniswapV3FactoryAbi) {
-            setErrorHook('This network is not supported for liquidity operations. Please switch to a supported network.');
+            setErrorHook(
+                'This network is not supported for liquidity operations. Please switch to a supported network.',
+            );
             setIsLoadingHook(false);
             return { state: TransactionState.Failed };
         }
@@ -375,37 +408,33 @@ export const useUniswapV3Interactions = () => {
         let nftTokenId: bigint | undefined;
 
         try {
-            const [tokenA_pool, tokenB_pool] = (sdkToken0.wrapped.sortsBefore(sdkToken1.wrapped))
+            const [tokenA_pool, tokenB_pool] = sdkToken0.wrapped.sortsBefore(sdkToken1.wrapped)
                 ? [sdkToken0, sdkToken1]
                 : [sdkToken1, sdkToken0];
 
             const amountADesired_pool = parseUnits(
                 tokenA_pool.equals(sdkToken0) ? amountUiToken0DesiredStr : amountUiToken1DesiredStr,
-                tokenA_pool.decimals
+                tokenA_pool.decimals,
             );
             const amountBDesired_pool = parseUnits(
                 tokenB_pool.equals(sdkToken0) ? amountUiToken0DesiredStr : amountUiToken1DesiredStr,
-                tokenB_pool.decimals
+                tokenB_pool.decimals,
             );
             const amountAMin_pool = parseUnits(
                 tokenA_pool.equals(sdkToken0) ? amountUiToken0MinStr : amountUiToken1MinStr,
-                tokenA_pool.decimals
+                tokenA_pool.decimals,
             );
             const amountBMin_pool = parseUnits(
                 tokenB_pool.equals(sdkToken0) ? amountUiToken0MinStr : amountUiToken1MinStr,
-                tokenB_pool.decimals
+                tokenB_pool.decimals,
             );
 
-            const poolAddressOnFactory = await publicClient.readContract({
+            const poolAddressOnFactory = (await publicClient.readContract({
                 address: factoryAddr,
                 abi: uniswapV3FactoryAbi,
                 functionName: 'getPool',
-                args: [
-                    tokenA_pool.wrapped.address as `0x${string}`,
-                    tokenB_pool.wrapped.address as `0x${string}`,
-                    fee
-                ],
-            }) as `0x${string}`;
+                args: [tokenA_pool.wrapped.address as `0x${string}`, tokenB_pool.wrapped.address as `0x${string}`, fee],
+            })) as `0x${string}`;
 
             if (poolAddressOnFactory === zeroAddress) {
                 setIsLoadingHook(true);
@@ -423,7 +452,7 @@ export const useUniswapV3Interactions = () => {
                         tokenA_pool.wrapped.address,
                         tokenB_pool.wrapped.address,
                         fee,
-                        BigInt(sqrtPriceX96.toString())
+                        BigInt(sqrtPriceX96.toString()),
                     );
                 createPoolPopulatedTx.gasLimit = 2000000n;
 
@@ -460,7 +489,7 @@ export const useUniswapV3Interactions = () => {
                     const tokenContract = new Contract(token.address, erc20Abi, signer);
                     const approveTxPopulated = await tokenContract.approve.populateTransaction(
                         nftPositionManagerAddr,
-                        amount
+                        amount,
                     );
                     approveTxPopulated.gasLimit = 100000n;
                     const approveTxResult = await sendTransactionWithWagmiSigner(signer, approveTxPopulated);
@@ -507,8 +536,8 @@ export const useUniswapV3Interactions = () => {
                             log.address.toLowerCase() === nftPositionManagerAddr?.toLowerCase() &&
                             log.topics[0] === transferTopic &&
                             log.topics[1].toLowerCase() ===
-                            zeroPadValue('0x0000000000000000000000000000000000000000', 32).toLowerCase() &&
-                            log.topics[2].toLowerCase() === zeroPadValue(finalRecipient!, 32).toLowerCase()
+                                zeroPadValue('0x0000000000000000000000000000000000000000', 32).toLowerCase() &&
+                            log.topics[2].toLowerCase() === zeroPadValue(finalRecipient!, 32).toLowerCase(),
                     );
                     if (mintEventLog && mintEventLog.topics[3]) {
                         nftTokenId = BigInt(mintEventLog.topics[3]);
@@ -562,13 +591,13 @@ export const useUniswapV3Interactions = () => {
                 params: {
                     type: 'ERC20',
                     options: {
-                        address: "0xfD36fA88bb3feA8D1264fc89d70723b6a2B56958",
+                        address: '0xfD36fA88bb3feA8D1264fc89d70723b6a2B56958',
                         symbol: 'wXTM',
                         decimals: 18,
-                        image: 'https://tari.com/favicon.png?v=1'
+                        image: 'https://tari.com/favicon.png?v=1',
                     },
                 },
-            })
+            });
         } catch (error) {
             console.error('Failed to ask wallet to watch asset:', error);
             return false;

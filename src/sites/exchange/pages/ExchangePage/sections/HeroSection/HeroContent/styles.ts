@@ -107,15 +107,15 @@ export const Title = styled.div<{ $isVera?: boolean }>`
     @media (max-width: 700px) {
         font-size: 30px;
         ${({ $isVera }) =>
-        $isVera &&
-        css`
-            font-family: var(--font-druk), sans-serif;
-            font-size: 62px;
-            align-items: start;
-            text-align: start;
-            padding: 0 20px;
-            line-height: 85%;
-        `}
+            $isVera &&
+            css`
+                font-family: var(--font-druk), sans-serif;
+                font-size: 62px;
+                align-items: start;
+                text-align: start;
+                padding: 0 20px;
+                line-height: 85%;
+            `}
     }
 `;
 
@@ -136,7 +136,7 @@ export const YellowText = styled.span<{ $color: string; $isVera?: boolean }>`
 `;
 
 export const GradientText = styled.span`
-    background: linear-gradient(90.41deg, #CB01D2 3.46%, #FEB501 92.97%);
+    background: linear-gradient(90.41deg, #cb01d2 3.46%, #feb501 92.97%);
     background-clip: text;
     color: transparent;
     font-weight: 800;
@@ -168,7 +168,7 @@ export const BottomWrapper = styled.div`
     }
 `;
 
-export const VideoWrapper = styled.div<{$isVera?: boolean}>`
+export const VideoWrapper = styled.div<{ $isVera?: boolean }>`
     position: absolute;
     top: 0;
     left: 0;

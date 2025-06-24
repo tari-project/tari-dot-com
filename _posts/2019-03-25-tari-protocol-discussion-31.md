@@ -12,9 +12,9 @@ On Monday, the Tari community discussed various methods for sending messages on 
 
 Serializing messages the Tari communication network
 
-* Proposed solution is to use MessagePack for wire serialization, JSON and Base64 for human-facing interfaces 
-* gRPC is a schema-driven serialization protocol, and is unnecessary with ZeroMQ as a message delivery system
-* ZeroMQ allows for multi-frame messages, supporting metadata in messages
+- Proposed solution is to use MessagePack for wire serialization, JSON and Base64 for human-facing interfaces
+- gRPC is a schema-driven serialization protocol, and is unnecessary with ZeroMQ as a message delivery system
+- ZeroMQ allows for multi-frame messages, supporting metadata in messages
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -27,6 +27,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday’s discussion
+
 ```
 12:04 PM <@cjs77> Another Monday night, another dev chat!
 12:06 PM <@cjs77> I'd like to chat about serialisation quickly. There's a still WIP RFC on github that has some ideas: https://github.com/tari-project/tari/pull/182

@@ -126,20 +126,21 @@ export default function DownloadModal() {
                     </TextGroup>
                 )}
 
-                {isSuccess && (
-                    isVeera ?
+                {isSuccess &&
+                    (isVeera ? (
                         <SuccessMessage>
                             <Text>
                                 <strong>You’re all set!</strong>
                             </Text>
                         </SuccessMessage>
-                        :
+                    ) : (
                         <SuccessMessage>
                             <Text>
-                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
+                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and
+                                drops.
                             </Text>
                         </SuccessMessage>
-                )}
+                    ))}
 
                 <Divider>
                     <DividerLine />

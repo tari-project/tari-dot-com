@@ -13,7 +13,7 @@ import { Exchange } from '../../types/exchange';
 import { useUIStore } from '@/stores/useUiStore';
 
 type Props = {
-    customData?: Exchange
+    customData?: Exchange;
 };
 export default function ExchangePage({ customData }: Props) {
     const { data: exchange } = useExchangeData({ disabled: !!customData });
@@ -30,14 +30,15 @@ export default function ExchangePage({ customData }: Props) {
         return <Wrapper />;
     }
 
-
     return (
         <Wrapper>
             <HeroSection exchange={data} />
-            {isVera ? null : <>
-                <StepsSection exchange={data} />
-                <TrustedBySection />
-            </>}
+            {isVera ? null : (
+                <>
+                    <StepsSection exchange={data} />
+                    <TrustedBySection />
+                </>
+            )}
             <ExploreTariSection exchange={data} />
             <EcosystemWrapper>
                 <EcosystemSection hideSupporters={true} />

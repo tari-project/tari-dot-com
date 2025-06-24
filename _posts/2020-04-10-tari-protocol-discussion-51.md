@@ -7,25 +7,27 @@ thumbnail: assets/img/posts/protocol-discussion-51.png
 lead: What is digital asset ownership?
 class: subpage
 topics:
-- Do you own the digital component of physical goods you own?
-- What rights do owners have over digital assets?
+    - Do you own the digital component of physical goods you own?
+    - What rights do owners have over digital assets?
 ---
 
 On Friday the Tari community discussed the meaning of digital asset ownership, what does it mean to own something that is digital in nature. Some highlights below.
 
-* There are cases where an individual will own the physical item but not the software that runs in it, this has created conflict over the "right to repair".
-* People want to own digital assets without having the current hassles of blockchain interaction (i.e. paying for transaction fees), blockchain abstraction seems to be the trend. Providing security and provable scarcity in a seamless UX.
-* What is the edge between digital asset and physical asset ownership?
-* People enjoy the concept of "portability" how one owns their asset independently of the game or world it was designed in, the asset lives on even if no one plays the game anymore.
+- There are cases where an individual will own the physical item but not the software that runs in it, this has created conflict over the "right to repair".
+- People want to own digital assets without having the current hassles of blockchain interaction (i.e. paying for transaction fees), blockchain abstraction seems to be the trend. Providing security and provable scarcity in a seamless UX.
+- What is the edge between digital asset and physical asset ownership?
+- People enjoy the concept of "portability" how one owns their asset independently of the game or world it was designed in, the asset lives on even if no one plays the game anymore.
 
 Please feel free to keep the conversation going by joining the discussion thread on [Telegram](https://t.me/tariproject) or #Tari on Freenode.
 
 ### Transcript of Friday discussion
+
 Please note that unlike Telegram or IRC, Reddit threads are a living document. This is a snapshot taken 01:00:00 UTC
 Tuesday, April 14, 2020.
+
 ```
 lsquared, [10.04.20 07:09]
-Tari discussion in several hours. 
+Tari discussion in several hours.
 
 Please join us to share your thoughts on digital ownership and anything related to Tari. (16:00 UTC, 9:00 PDT, 18:00 SADT).
 
@@ -52,7 +54,7 @@ Naveen Jain, [10.04.20 08:08]
 There are many ways for someone to be a bad actor. For example someone could create an asset that works in a particular way, and then create a new version of that same asset and demand that users pay or perform some action to get the new version. Ultimately a protocol cannot change the trust paradigm between users and creators. Creators that are bad actors shouldn't be supported by users.
 
 Yevhenii Kurtov, [10.04.20 08:10]
-ideally - yes 🙂 
+ideally - yes 🙂
 it's also interesting how far marketing can go  - can "own your collectibles" be a strong selling point or not?
 
 Naveen Jain, [10.04.20 08:20]
@@ -60,7 +62,7 @@ Naveen Jain, [10.04.20 08:20]
 The goal is for the protocol to eventually enable ownership of digital assets. Just like in the real world, if you buy something to own from a someone with low integrity, it doesnt matter if you own it. Eg. if you buy a poorly made physical product, does it matter that you own it? Or if you buy a physical product, and the social contract changes around the physical product, how would the user feel? In other words, there is the goal for the Tari protocol to one day support digital asset issuance, and ownership. And then there is the future trust paradigm between the digital asset issuer and the collector or purchaser of said asset.
 
 Yevhenii Kurtov, [10.04.20 08:30]
-ok, ok. I think we are getting to the core here, bear with me please :)) 
+ok, ok. I think we are getting to the core here, bear with me please :))
 
 let's look at a scenario when issuer decided to flip the table by coming up with unreasonable rules and decisions.
 will users be able to migrate their collectibles to another platform?
@@ -210,11 +212,11 @@ Robin Rath, [10.04.20 09:48]
 Nice, what is launching?
 
 Richard Nava, [10.04.20 09:50]
-After playing blockchain based games like Gods Unchained, Relentless, Axie Infinity, along with digital ownership apps like Quidd and Topps, its difficult to truly feel a connection/owner to the asset. 
+After playing blockchain based games like Gods Unchained, Relentless, Axie Infinity, along with digital ownership apps like Quidd and Topps, its difficult to truly feel a connection/owner to the asset.
 
-For Quidd, its really just an art gallery. I “own” a 3D Render of a limited edition Pop! Figure, but its nowhere near as satisfying as owning it in a physical space. 
+For Quidd, its really just an art gallery. I “own” a 3D Render of a limited edition Pop! Figure, but its nowhere near as satisfying as owning it in a physical space.
 
-The other blockchain based games were difficult to connect with mostly because the games werent exciting and the lack of a mobile app experience. 
+The other blockchain based games were difficult to connect with mostly because the games werent exciting and the lack of a mobile app experience.
 
 PokemonGo is the closet to feeling ive had to a true ownership of a digital collectible asset.
 
@@ -403,7 +405,7 @@ Alfred, [11.04.20 08:24]
 [In reply to Naveen Jain]
 That's what I thought too.
 This seem to me, to be one the biggest hurdle for adoption NTFs.
-As long as you keep using only custodial services then the need for Tari can be abstracted away from the user. 
+As long as you keep using only custodial services then the need for Tari can be abstracted away from the user.
 But can we realistically ask them to have to care about getting some cryptocurrency when all they want to do is playing their favorite card game?
 Is this issue tackled, or what steps can we take to make it as abstract and frictionless for users as possible, the ideal scenario being that they never need to know anything about Tari to use tari-based tokens
 

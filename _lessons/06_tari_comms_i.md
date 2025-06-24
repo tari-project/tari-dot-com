@@ -30,8 +30,8 @@ Underlying the Tari network are two crates, namely `tari_comms` and `tari_comms_
 
 At it's core, `tari_comms` is responsible for
 
--   keeping a peer list and
--   establishing/accepting secure connections to/from those peers.
+- keeping a peer list and
+- establishing/accepting secure connections to/from those peers.
 
 The `tari_comms_dht` crate contains the Tari DHT code and uses `tari_comms` to form a DHT network.
 
@@ -43,13 +43,13 @@ that processes message envelopes flowing to/from peers.
 
 The `tari_comms` crate makes use of these wonderful technologies:
 
--   TCP, Tor and SOCKS5 transports for reliable communcation,
--   [`Multiaddr`](https://multiformats.io/multiaddr/) for self-describing and future-proof addressing of peers,
--   the [noise protocol](https://noiseprotocol.org/noise.html) for encrypted peer connections and authentication,
--   [`yamux`](https://github.com/hashicorp/yamux/blob/master/spec.md) for multiplexed communication over a single transport-level connection,
--   [`LMDB`](http://www.lmdb.tech/doc/) for peer storage. In the near future, this may be replaced with SQLite to facilitate more complex queries,
--   [`Protobuf`](https://developers.google.com/protocol-buffers) for structured data serialization over the wire,
--   [`tokio`](https://docs.rs/tokio/) and [`futures-rs`](https://docs.rs/futures) for concurrency.
+- TCP, Tor and SOCKS5 transports for reliable communcation,
+- [`Multiaddr`](https://multiformats.io/multiaddr/) for self-describing and future-proof addressing of peers,
+- the [noise protocol](https://noiseprotocol.org/noise.html) for encrypted peer connections and authentication,
+- [`yamux`](https://github.com/hashicorp/yamux/blob/master/spec.md) for multiplexed communication over a single transport-level connection,
+- [`LMDB`](http://www.lmdb.tech/doc/) for peer storage. In the near future, this may be replaced with SQLite to facilitate more complex queries,
+- [`Protobuf`](https://developers.google.com/protocol-buffers) for structured data serialization over the wire,
+- [`tokio`](https://docs.rs/tokio/) and [`futures-rs`](https://docs.rs/futures) for concurrency.
 
 ## Building a Comms Stack
 
@@ -128,36 +128,36 @@ It exposes two functions, namely `listen` and `dial`. Both of these functions ta
 
 Every implementation of this trait needs to provide the code required to
 
--   connect to an address (it's called `dial` to remind you to phone your grandmother)
--   listen on the given address.
+- connect to an address (it's called `dial` to remind you to phone your grandmother)
+- listen on the given address.
 
 Of course, not every kind of address is supported by every transport and the transport will error if given an address it does not know how to deal with. This is ok and part of the
 `Transport` contract.
 
 The following `Transport` implementations are provided:
 
--   `TcpTransport`
+- `TcpTransport`
 
 The `TcpTransport` listens on and establishes connections over TCP. Under the hood, it uses `tokio`'s asynchonous
 [`TcpStream`](https://docs.rs/tokio/0.1.12/tokio/net/struct.TcpStream.html).
 
 It supports speaking the TCP protocol at IPv4 and IPv6 endpoints. In multi-address format, examples are `/ip4/1.2.3.4/tcp/18141` or `/ip6/::1/tcp/8080`.
 
--   `SocksTransport`
+- `SocksTransport`
 
 This transport speaks the SOCKS5 protocol at the configured TCP address. Calls to `connect` are requested via the SOCKS5 protocol.
 
 When a Tari node is configured with the "tor" transport, it is actually using a `SocksTransport` that has been configured automatically
 to work with the tor proxy without the user having to configure it.
 
--   `TcpWithTorTransport`
+- `TcpWithTorTransport`
 
 This transport composes the Tcp and Socks transport to allow nodes that are configured to connect and listen over TCP to communicate
 with nodes that advertise Tor onion addresses exclusively.
 
 All .onion addresses are routed through the `SocksTransport` and all TCP addresses are routed through the `TcpTransport`.
 
--   `MemoryTransport`
+- `MemoryTransport`
 
 The `MemoryTransport` mimics an internet socket without any I/O and is used extensively in unit and integration tests. Under the hood it uses `future-rs` mpsc channels and
 therefore it can only transport data in-process. If you've used zeroMQ this is similar to the `inproc` transport.

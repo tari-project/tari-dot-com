@@ -14,27 +14,26 @@ On Thursday, the Tari community gathered for a discussion on payment time-locks.
 
 Pros:
 
-* It's simpler - no change to basic MW is required
-* Could possibly make payments to different people (like a stokvel)
-* Any payment schedule formula is possible (linear, exponential, sinusoidal)
+- It's simpler - no change to basic MW is required
+- Could possibly make payments to different people (like a stokvel)
+- Any payment schedule formula is possible (linear, exponential, sinusoidal)
 
 Cons:
 
-* One huge transaction upfront
-* It's less granular because of TX size (limited to ~10 - 100 payouts)
+- One huge transaction upfront
+- It's less granular because of TX size (limited to ~10 - 100 payouts)
 
 **Single UTXO approach**
 
 Pros:
 
-* Standard TX size
-* Maturity schedule is very finely grained; receivers can spend as little or as much of their entitlement as they wish
+- Standard TX size
+- Maturity schedule is very finely grained; receivers can spend as little or as much of their entitlement as they wish
 
 Cons:
 
-* Requires new feature to MW UTXO set
-* Each schedule type requires a new implementation (linear, exponential etc.)
-
+- Requires new feature to MW UTXO set
+- Each schedule type requires a new implementation (linear, exponential etc.)
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -104,12 +103,12 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 4:37 AM <simian_za>  The schedule will need to be attached to UTXO in some non-confedential way so the miners can see it?
 4:37 AM <simian_za> or can you maybe construct a series of rangeproof conditions ahead of time?
 4:38 AM <Blackwolfsa> Stupid example:
-You have 100 Tari. 
-you lock the funds with y = x -10000. 
-This means every block after block 10000 you can extract 1 tari. 
-Transaction is mined with rangeproof saying there is more than 99 in the output. 
-When you extrat funds at block 10050 worth 30 tari. 
-You leave the remaining 70 Tari with a rangeproof of more than 50. 
+You have 100 Tari.
+you lock the funds with y = x -10000.
+This means every block after block 10000 you can extract 1 tari.
+Transaction is mined with rangeproof saying there is more than 99 in the output.
+When you extrat funds at block 10050 worth 30 tari.
+You leave the remaining 70 Tari with a rangeproof of more than 50.
 4:40 AM <Hansie> So the lower limit of the series of range proofs must be linked to every payout? `[100 - 2^64]`, `[99 - 2^64]`, `[98 - 2^64]`, etc.  Right?
 4:41 AM <Hansie> Then there is no confidentiality, really.
 4:41 AM <Blackwolfsa> no you have
@@ -132,12 +131,12 @@ You leave the remaining 70 Tari with a rangeproof of more than 50.
 4:48 AM <Hansie> <mikethetike> you described the multi UTXO approach
 4:49 AM <@cjs77> Just on simplicity alone, I think the MultiUTXO case is the stringer of the two.
 4:49 AM <@cjs77> stronger*
-4:49 AM <Blackwolfsa> You have 100 Tari. 
-you lock the funds with y = x -10000. 
-This means every block after block 10000 you can extract 1 tari. You dont know how much is locked away? You only have a  lower limit of the amount left in the funds. 
-When you extract funds at block 10050 worth 30 tari. 
+4:49 AM <Blackwolfsa> You have 100 Tari.
+you lock the funds with y = x -10000.
+This means every block after block 10000 you can extract 1 tari. You dont know how much is locked away? You only have a  lower limit of the amount left in the funds.
+When you extract funds at block 10050 worth 30 tari.
 You leave the remaining 70 Tari with a rangeproof of more than 50. From a external perspective, you only know the user extracted somewhere between 0.00000000001 > 50 Tari.
-It could be anyvalue between that. 
+It could be anyvalue between that.
 4:49 AM <mikethetike> you can't prevent people from using the multiUTXO method
 4:50 AM <Blackwolfsa> I made a mistake, in the previous snippet, when you commit the initial one, you dont have to say how much funds are in the transaction
 4:50 AM <simian_za> It is simpler but the number of installments is quite a limiting factor

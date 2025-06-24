@@ -87,7 +87,7 @@ function DropDown({ options, selected, onChange, label }: DropDownProps) {
                                 <DropdownOption key={option.value} onClick={() => handleOptionClick(option.value)}>
                                     <span>{option.label}</span>
                                 </DropdownOption>
-                            )
+                            ),
                         )}
                     </DropdownOptions>
                 )}

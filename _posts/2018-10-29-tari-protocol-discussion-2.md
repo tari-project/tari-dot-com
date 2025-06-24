@@ -16,40 +16,43 @@ These digital assets will define and contain asset tokens. For example, in a tic
 The Tari network must manage and execute asset instructions, including asset creation, token transfers and state changes.
 
 The critical must have requirements for digital assets and their token are:
-* Security
-* Speed (perhaps in the order of 1,000 TPS)
-* Scalable (think millions of in-game items + metadata)
+
+- Security
+- Speed (perhaps in the order of 1,000 TPS)
+- Scalable (think millions of in-game items + metadata)
 
 The following features would be highly desirable and add to the Tari protocol’s value proposition:
-* Opt-in privacy (depending on the needs of the asset issuer)
-* Configurable decentralisation (depending on the needs of the asset issuer)
+
+- Opt-in privacy (depending on the needs of the asset issuer)
+- Configurable decentralisation (depending on the needs of the asset issuer)
 
 For example, a given issuer might want only their node(s) be allowed to execute asset instructions (a permissioned system), whereas others will prefer completely decentralised management of their assets (permissionless).
 
 These broad requirements are in some ways mutually exclusive. Consider the distributed system trilemma of wanting a network to be:
-* Fast
-* Cheap
-* Secure
+
+- Fast
+- Cheap
+- Secure
 
 but only being able to pick at most two.
 
 This suggests the partitioning of the Tari network into two layers:
 
-|  | Base Layer | Second Layer 
---- | --- | ---
-Speed | Slow | Fast
-Scalability | Moderate | Very high
-Security | High | Mod (High with fallback)
-Decentralization | High | Low - Med
-Processes Tari token tx | Yes | No
-Processes digital asset instructions | Only checkpoints | Yes 
-
+|                                      | Base Layer       | Second Layer             |
+| ------------------------------------ | ---------------- | ------------------------ |
+| Speed                                | Slow             | Fast                     |
+| Scalability                          | Moderate         | Very high                |
+| Security                             | High             | Mod (High with fallback) |
+| Decentralization                     | High             | Low - Med                |
+| Processes Tari token tx              | Yes              | No                       |
+| Processes digital asset instructions | Only checkpoints | Yes                      |
 
 Questions to think about:
-* Configurable privacy in digital Assets? What are some use cases for private DAs in a public network?
-* Which configuration of network overlay & consensus algorithm will be the simplest, and still work?
-* How will the 2nd layer and base layer interact?
-* Long-lived vs short-lived digital assets? How does this influence the incentive/funding model?
+
+- Configurable privacy in digital Assets? What are some use cases for private DAs in a public network?
+- Which configuration of network overlay & consensus algorithm will be the simplest, and still work?
+- How will the 2nd layer and base layer interact?
+- Long-lived vs short-lived digital assets? How does this influence the incentive/funding model?
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

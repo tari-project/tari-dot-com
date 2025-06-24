@@ -10,8 +10,8 @@ class: subpage
 
 On Thursday, the Tari community discussed the Validator Node committee selection strategy. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* Asset issuer has full control
-* Selects VN's he wants for his/her asset
+- Asset issuer has full control
+- Selects VN's he wants for his/her asset
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -24,6 +24,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Thursday’s discussion
+
 ```
 11:00 <@CjS77>  It's dev chat time - Today's topic: Validator Node committee selection
 11:01 <@CjS77>  See https://rfc.tari.com/RFC-0311_AssetTemplates.html for some context on VN committee selection options RFC-0311: Digital Asset templates - The Tari Network: RFC library The Tari network RFC library and documentation

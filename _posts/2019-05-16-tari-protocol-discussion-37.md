@@ -10,9 +10,9 @@ class: subpage
 
 On Monday, the Tari community discussed the Validator Node registration. Below is the TL;DR on Monday's conversation (full transcript included below):
 
-* Require some timelocked funds to be sybil resistant
-* It needs to be renewable
-* Validator nodes require random IDs
+- Require some timelocked funds to be sybil resistant
+- It needs to be renewable
+- Validator nodes require random IDs
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -25,6 +25,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Thursday’s discussion
+
 ```
 18:09 <Hansie>  Hi there
 18:10 <Hansie>  We have not discussed VN registration in a long time
@@ -58,7 +59,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:29 <stanimal>  Join as a wallet, pay the registration, obtain the NodeId and rejoin with the new NodeId - correct, the base layer is a random oracle
 18:31 <simian_za>  So that's really the main use case here, is to make sure that the NodeID that they are using when accepting and sending messages as part of an Asset committee comes from a NodeID that was fairly chosen by the random oracle
 18:31 <Hansie>  Makes sense
-18:32 <Blackwolfsa>  It's only the VNs that need that random ID right? 
+18:32 <Blackwolfsa>  It's only the VNs that need that random ID right?
 18:32 <simian_za>  it needs to cost something so that its expensive to try "mine" a NodeID for malicious purposes
 18:33 <Hansie>  I would say properly registered and identifiable, not really 'fairly chosen by the random oracle'
 18:33 <stanimal>  Exactly, prevent adaptive join/leave attacks and help randomize network topology - which benefits the network as a whole (base layer included)
@@ -69,8 +70,8 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:35 <simian_za>  I can't think of another entity right now that would need the random NodeID
 18:35 <neonknight64>  Blackwolf.. Wallets, Token Wallets, Base Nodes and Validator Nodes need random ids
 18:35 <neonknight64>  but only VNs need to register for them
-18:35 <Blackwolfsa>  Why would they need random ID? 
-18:35 <Blackwolfsa>  They could chose their own ids they just need to be unique? 
+18:35 <Blackwolfsa>  Why would they need random ID?
+18:35 <Blackwolfsa>  They could chose their own ids they just need to be unique?
 18:36 <stanimal>  However, all except VNs are currently trusted to create a random ID
 18:36 <simian_za>  the registration process is the only way to ensure the NodeID is properly random. It would be ideal for them all to properly random though but can't really be enforeced
 18:37 <stanimal>  Ye without some kind of enforceable distributed RNG
@@ -80,8 +81,8 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:38 <simian_za>  Hansie: Yes
 18:38 <Hansie>  So what happens when the lock expires?
 18:38 <stanimal>  neonknight64 That would mean a cost for anyone joining the network?
-18:39 <Blackwolfsa>  I think we need to allow them to extend the registration 
-18:40 <Blackwolfsa>  But if that expires they should be seen as unregistered 
+18:39 <Blackwolfsa>  I think we need to allow them to extend the registration
+18:40 <Blackwolfsa>  But if that expires they should be seen as unregistered
 18:40 <stanimal>  oh nm, reread your comment - keypair OR registration ;)
 18:40 <simian_za>  I guess they can spend that UTXO, how will they be able to maintain their registration to keep their NodeID?
 18:40 <simian_za>  Maybe we should define what metadata the UTXO has? It is not just a plain mimblewimble UTXO
@@ -111,7 +112,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:57 <simian_za>  Obviously, we could just ensure that these kind of TXs are not pruned but that is not ideal at all
 19:01 <Blackwolfsa>  But I think we should try out at best to avoid that
 19:05 <stanimal>  This may be dumb, but couldn't you hash the kernel for the nodeID - since there will be a base layer fee the miners choose the blinding factor making the kernel random each time (i.e not chosen by the VN)
-19:09 <Blackwolfsa>  But then it changes every time if I understand you correctly 
+19:09 <Blackwolfsa>  But then it changes every time if I understand you correctly
 19:10 <simian_za>  Could reference the first kernel some how, that doesn't get pruned
-19:11 <Blackwolfsa>  That could work.. 
+19:11 <Blackwolfsa>  That could work..
 ```

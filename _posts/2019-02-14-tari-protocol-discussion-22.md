@@ -12,14 +12,14 @@ On Monday, the Tari community held a brief discussion continuing on the topic of
 
 Proposal 1:
 
-* Asset issuers claim text identifiers that are registered on the base layer
-* Easily readable
-* Suffers from domain squatting attacks
+- Asset issuers claim text identifiers that are registered on the base layer
+- Easily readable
+- Suffers from domain squatting attacks
 
 Proposal 2:
 
-* RAINs are random text labels  that are mapped to IRL entities using an out of band lookup mechanism, such as Open Alias
-* Open Alias doesn't support reverse lookups
+- RAINs are random text labels that are mapped to IRL entities using an out of band lookup mechanism, such as Open Alias
+- Open Alias doesn't support reverse lookups
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -57,7 +57,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 9:31 AM <sammy007> moneromooo assuming you wanna buy a PONY asset, you wouldn't trust RAIN anyway, you will go and validate it on internet, go to website and check if this asset is valid, just like with any erc20 where we can see tons of DAOs and only one is authentic, the openalias could help you to add that asset into your own registry in a wallet (just like with erc20 and MEW) bc you will know that issuer is running a website on mylittlepony.biz domain
 9:33 AM <sammy007> or check for shitcointalk ANN thread, etc. Otherwise I can claim AMZN on chain and phish people with my fake shares for example
 9:35 AM — moneromooo is just the peanut gallery here
-9:37 AM ↔ rottensox nipped out  
+9:37 AM ↔ rottensox nipped out
 9:39 AM <@fluffypony> yeah you'd hit like Disney.com and it would pull the record from there
 9:39 AM <@fluffypony> if you go in that route then namespaces almost doesn't matter
 ```

@@ -30,27 +30,27 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const isVeera = exchange.id === 'veera';
 
     const [videoSrc, setVideoSrc] = useState(
-        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8',
     );
 
     const [posterSrc, setPosterSrc] = useState(
-        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
+        'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600',
     );
 
     useEffect(() => {
         if (isSmallScreen) {
             setVideoSrc(
-                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/manifest/video.m3u8'
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/manifest/video.m3u8',
             );
             setPosterSrc(
-                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/thumbnails/thumbnail.jpg?time=&height=600'
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/f6417f9ea7e749608329faf2d214a242/thumbnails/thumbnail.jpg?time=&height=600',
             );
         } else {
             setVideoSrc(
-                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8',
             );
             setPosterSrc(
-                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600'
+                'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/thumbnails/thumbnail.jpg?time=&height=600',
             );
         }
     }, [isSmallScreen]);
@@ -64,27 +64,26 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
             </VideoWrapper>
 
             <TextWrapper>
-                {isVeera ?
+                {isVeera ? (
                     <Title $isVera={isVeera}>
                         <YellowText $color={color} $isVera>
-                            Download
-                            Tari Universe
-                            and{' '}
+                            Download Tari Universe and{' '}
                         </YellowText>
-                        <GradientText>
-                            earn rewards
-                        </GradientText>
+                        <GradientText>earn rewards</GradientText>
                         <YellowText $color={color} $isVera>
-                            {' '}on Veera
+                            {' '}
+                            on Veera
                         </YellowText>
                     </Title>
-                    : <>
+                ) : (
+                    <>
                         <Eyebrow>Tari $xtM is on {exchange?.name}</Eyebrow>
                         <Title>
                             <WhiteText>Mine to {exchange?.name} & Earn</WhiteText>
                             <YellowText $color={color}>{exchange.reward_percentage}% Bonus XTM</YellowText>
                         </Title>
-                    </>}
+                    </>
+                )}
                 <DownloadButton
                     isSticky={isVeera}
                     isVeera={isVeera}

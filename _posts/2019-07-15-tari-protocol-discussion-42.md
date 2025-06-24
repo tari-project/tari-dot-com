@@ -7,15 +7,14 @@ thumbnail: assets/img/posts/protocol-discussion-42.png
 lead: UTXO commitment
 class: subpage
 topics:
-- We only require a TXO, but a UTXO can be beneficial
-- A MMR looks to be the best compromise between the ways to commit a UTXO
+    - We only require a TXO, but a UTXO can be beneficial
+    - A MMR looks to be the best compromise between the ways to commit a UTXO
 ---
 
 On Monday, the Tari community discussed UTXO commitment. Below is the TL;DR on Monday's conversation (full transcript included below):
 
-* We only require a TXO, but a UTXO can be beneficial 
-* A MMR looks to be the best compromise between the ways to commit a UTXO
-
+- We only require a TXO, but a UTXO can be beneficial
+- A MMR looks to be the best compromise between the ways to commit a UTXO
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -28,6 +27,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 14:05 <Blackwolfsa>  Hi Everyone, I thought perhaps we can talk a bit about the need to commit to the UTXO set for later's discussion at 16:00 UTC
 14:06 <Blackwolfsa>  If you want a bit more background info on this, these are good reads to quickly get some good info: https://sanket1729.github.io/utxo-commitments

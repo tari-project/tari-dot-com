@@ -12,9 +12,9 @@ On Monday, the Tari community discussed the mempool RFC. Below is the TL;DR on M
 
 RFC 0190 Mempool
 
-* Proposed to use 4 mempools: ransaction Pool, Pending Pool, Orphan Pool and Reorg Pool
-* The mempools should be ordered with a priority
-* Transactions should be ordered with a priority
+- Proposed to use 4 mempools: ransaction Pool, Pending Pool, Orphan Pool and Reorg Pool
+- The mempools should be ordered with a priority
+- Transactions should be ordered with a priority
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -27,6 +27,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday’s discussion
+
 ```
 18:00 <neonknight64>  Hello, I wonder if we can't talk about RFC0190 - Mempool: https://github.com/tari-project/tari/pull/229
 18:02 <neonknight64>  The basic idea is that the Mempool consist of four sub pools: Transaction Pool, Pending Pool, Orphan Pool and Reorg Pool.

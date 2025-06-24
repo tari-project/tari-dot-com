@@ -12,11 +12,11 @@ On Thursday, the Tari community examined the Tari Network Communication Protocol
 
 Tari Network Communication Protocol Elements
 
-* A communication Node is a Validator Node or Base Node 
-* A communication Client is a Wallet or Asset Manager 
-* CNs propagate data messages such as discovery requests
-* CCs make use of the network but don't propagate anything
-* Network allows for sending encrypted/unencrypted messages between nodes and clients
+- A communication Node is a Validator Node or Base Node
+- A communication Client is a Wallet or Asset Manager
+- CNs propagate data messages such as discovery requests
+- CCs make use of the network but don't propagate anything
+- Network allows for sending encrypted/unencrypted messages between nodes and clients
 
 Join us for our next discussion on Freenode in #tari-dev.
 

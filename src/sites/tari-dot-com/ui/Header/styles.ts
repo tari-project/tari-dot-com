@@ -135,9 +135,8 @@ export const HeaderLight = styled(HeaderDark)`
     z-index: 8;
     clip-path: inset(100% 0 0 0);
 
-    ${({ $isLightTheme }) =>
-        css`
-            animation: ${$isLightTheme ? lightFromTopAnimation : hideTopAnimation} 0.7s cubic-bezier(0.15, 0, 0, 0.97)
-                forwards;
-        `}
+    ${({ $isLightTheme }) => css`
+        animation: ${$isLightTheme ? lightFromTopAnimation : hideTopAnimation} 0.7s cubic-bezier(0.15, 0, 0, 0.97)
+            forwards;
+    `}
 `;

@@ -10,11 +10,11 @@ class: subpage
 
 On Thursday’s architecture discussion, the Tari community analyzed the different protocols - or communication networks - that might be useful to satisfy the goals of the Tari ecosystem. This is the TL;DR on the topics that were covered (full transcript included below):
 
-* Which communication networks are well-suited for processes like tx transmission, checkpoint validation, and node discovery?
-* The importance of building different protocols - or communication networks - for the different actors in the Tari ecosystem (base nodes, wallets, miners, validator nodes, asset managers)
-* Weighing the different needs (speed, discoverability, privacy, security) of different actors in the Tari ecosystem 
-* How end-users can maintain their privacy while making digital asset transactions
-* The process by which asset issuers and wallets will discover network nodes
+- Which communication networks are well-suited for processes like tx transmission, checkpoint validation, and node discovery?
+- The importance of building different protocols - or communication networks - for the different actors in the Tari ecosystem (base nodes, wallets, miners, validator nodes, asset managers)
+- Weighing the different needs (speed, discoverability, privacy, security) of different actors in the Tari ecosystem
+- How end-users can maintain their privacy while making digital asset transactions
+- The process by which asset issuers and wallets will discover network nodes
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -84,9 +84,9 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 5:27 AM <@cjs77> Of course one of the nicest things about all this is that you kinda get Bitcoin-like address functionality on Mimblewimble
 5:29 AM <Hansie> We may also summarize somewhere how Grin and Beam do all of this for the applicable parts, as a reference.
 5:47 AM <@cjs77> hansie: To add to the answer to your Q, So using the same approach as BNs to use a small whitelist and build a list of peers from that; and then randomly select some nodes to communicate to would work too if you trust random nodes
-5:47 AM <@cjs77> and +1 on the Grin?Beam comparison 
+5:47 AM <@cjs77> and +1 on the Grin?Beam comparison
 5:52 AM <@cjs77> Added - https://github.com/tari-project/tari/issues/66
-6:48 AM <Blackwolfsa> One thing we might need to look for, that a DHT might solve, is that we might have a lot of discovery request from wallets to find VNs 
+6:48 AM <Blackwolfsa> One thing we might need to look for, that a DHT might solve, is that we might have a lot of discovery request from wallets to find VNs
 7:37 AM <stanimal> Found it interesting to look at how a bit torrent client bootstraps the DHT - This rust implementation configures a bootstrap node (https://github.com/Luminarys/synapse/blob/257961614024f2fdfd6999b0b4ba8895689ce8e6/example_config.toml#L31) and if the routing table isn't bootstrapped it adds it to the route table (https://github.com/Luminarys/synapse/blob/257961614024f2fdfd6999b0b4ba8895689ce8e6/src/tracker/dht/mod.rs#L53) -
 7:37 AM <stanimal> seems in many/all implementations you need a bootstrap node for DHTs
 7:49 AM <mikethetike> Maybe we can use DNS seeds for the bootstrap?

@@ -10,9 +10,9 @@ class: subpage
 
 On Thursday, the Tari community discussed the config strategy. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* Use config-rs
-* Use TOML file format
-* Use clap-rs for command line integration
+- Use config-rs
+- Use TOML file format
+- Use clap-rs for command line integration
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -25,6 +25,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Thursday’s discussion
+
 ```
 17:55 <Blackwolfsa>  Hi everyone, I thought we could talk about configs a bit, anyone have any options on them
 18:02 <simian_za>  ini files?
@@ -39,7 +40,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:09 <Blackwolfsa>  Ini
 18:09 <simian_za>  Woot!
 18:12 <neonknight64>  If more than one format is used, then samples for each type should be provided.
-18:13 <Blackwolfsa>  As far as I know it works on a key value lookup. It even supports multiple formats at the same time if you want to be crazy 
+18:13 <Blackwolfsa>  As far as I know it works on a key value lookup. It even supports multiple formats at the same time if you want to be crazy
 18:13 <simian_za>  Should probably just settle on one and run with it. Yaml and toml is better than json I think
 18:15 <stanimal>  I suggest the precedence for configuration would be command line flags (for some config items perhaps), configuration file(s) and then environment variables - running software in docker would imply it's good to support environment variables, although configuration solely through environment variables may be unwieldy and it's completely fine to use
 18:15 <stanimal>  a configuration file with docker
@@ -59,7 +60,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:31 <Hansie>  Balckwolfsa, config-rs seems pretty solid.
 18:31 <Hansie>  Blackwolfsa ^
 18:32 <stanimal>  Agreed - looks great
-18:32 <Blackwolfsa>  So looks like to toml has majority 
+18:32 <Blackwolfsa>  So looks like to toml has majority
 18:33 <stanimal>  What about a command line handler - I've used https://github.com/clap-rs/clap in the past
 clap-rs/clap
 A full featured, fast Command Line Argument Parser for Rust - clap-rs/clap
@@ -72,5 +73,5 @@ A full featured, fast Command Line Argument Parser for Rust - clap-rs/clap
 18:52 <stanimal>  There's an issue for this: https://github.com/tari-project/tari/issues/250 - nice one to take if you're looking to start contributing. A good PR could be to add some code to base_layer to read from a given config file and deserialize to an empty config struct
 Tari config file · Issue #250 · tari-project/tari
 Design and build an easy to use and configure ConfigurationFile. Maybe there's a crate that can do this for us? TOML, YAML, JSON? Discuss
-18:54 <Blackwolfsa>  Looking at the examples that would be a very easy issue if you want to contribute 
+18:54 <Blackwolfsa>  Looking at the examples that would be a very easy issue if you want to contribute
 ```

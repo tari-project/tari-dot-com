@@ -5,7 +5,7 @@ date: 2020-04-21 12:00
 author: Cayle Sharrock
 thumbnail: learn-how-tari-works-2.png
 lead: A deeper dive into the world of tari and how it works
-subtitle: 
+subtitle:
 class: subpage
 ---
 
@@ -39,7 +39,6 @@ very fast. You’ll notice this when you first send Tari to a new contact (e.g. 
 code), it may take 30s - 60s before the transaction appears in your transaction list. But the second and subsequent
 times you send Tari, the response is essentially instantaneous.
 
-
 ### Sending Tari from Aurora
 
 When Alice sends Tari to Bob, she:
@@ -48,8 +47,8 @@ When Alice sends Tari to Bob, she:
 2. taps in the amount,
 3. clicks send.
 
- After a few seconds the transaction will appear in both their transaction pending lists and after a minute or two the
- transaction will be finalized.
+After a few seconds the transaction will appear in both their transaction pending lists and after a minute or two the
+transaction will be finalized.
 
 From a user perspective this is a seamless and very natural process that is actually fairly unique amongst
 cryptocurrency projects. For Tari Aurora we have focused heavily on user experience to make the sending and receiving of
@@ -96,5 +95,6 @@ been mined into the blockchain. As main net approaches and users become more fam
 consider expanding the definition of transaction finality to something that is more accurate in terms of traditional
 proof of work blockchain terminology.
 
-[^6]: Wallets can employ a variety of UTXO selection algorithms. Presently, the Tari wallet library has two very simple
-selection algorithms: Spend smallest first; and spend oldest first. “Spend oldest” first is the default algorithm.
+[^6]:
+    Wallets can employ a variety of UTXO selection algorithms. Presently, the Tari wallet library has two very simple
+    selection algorithms: Spend smallest first; and spend oldest first. “Spend oldest” first is the default algorithm.

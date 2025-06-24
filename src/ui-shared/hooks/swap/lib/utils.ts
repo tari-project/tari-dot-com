@@ -1,4 +1,3 @@
-
 import { WalletClient, formatUnits as viemFormatUnits } from 'viem';
 import { BrowserProvider, Signer as EthersSigner } from 'ethers';
 import { CurrencyAmount, Token, NativeCurrency } from '@uniswap/sdk-core';
@@ -45,16 +44,14 @@ export const formatNativeGasFee = (
     }
 };
 
-export const fetchTokenPriceUSD = async (
-    tokenSymbol: string,
-): Promise<number | undefined> => {
+export const fetchTokenPriceUSD = async (tokenSymbol: string): Promise<number | undefined> => {
     if (tokenSymbol !== 'ETH') return undefined;
     return fetch('https://rwa.y.at/miner/exchange-prices/hourly?instruments=ETH-USD')
-        .then(response => response.json())
-        .then(data => {
-            return data['ETH-USD']
+        .then((response) => response.json())
+        .then((data) => {
+            return data['ETH-USD'];
         })
-        .catch(error => {
+        .catch((error) => {
             console.error('Error fetching token price:', error);
         });
 };
@@ -70,7 +67,7 @@ export const formatDisplayBalanceForSelectable = (
     rawBalance: bigint | undefined,
     decimals: number,
     symbol: string,
-    options?: FormatBalanceOptions
+    options?: FormatBalanceOptions,
 ): string => {
     const {
         minimumFractionDigits = 2,
@@ -131,7 +128,7 @@ export function formatAmountSmartly(
         fixedDecimalsForBig?: number;
         bigNumberThreshold?: number;
         displayThresholdMinVal?: number;
-    }
+    },
 ): string {
     if (!amount) {
         return '';

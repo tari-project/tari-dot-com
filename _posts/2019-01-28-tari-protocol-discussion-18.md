@@ -12,14 +12,14 @@ On Monday’s architecture discussion, one subset of the Tari community looked i
 
 Including tx cut-through as part of the blockchain consensus:
 
-* Should cut-throughs be required for a block to be valid?
-* Cut-throughs can increase privacy and reduce block sizes
-* What's the gain of a cut-through vs immediately pruning when you get the block?
+- Should cut-throughs be required for a block to be valid?
+- Cut-throughs can increase privacy and reduce block sizes
+- What's the gain of a cut-through vs immediately pruning when you get the block?
 
 Tax implications for privacy coins:
 
-* If private currencies gain significant every-day adoption, how might a government collect tax?
-* Governments could incentivize for submission of expense proofs and reverse-engineer taxable income
+- If private currencies gain significant every-day adoption, how might a government collect tax?
+- Governments could incentivize for submission of expense proofs and reverse-engineer taxable income
 
 Join us for our next discussion on Freenode in #tari-dev.
 

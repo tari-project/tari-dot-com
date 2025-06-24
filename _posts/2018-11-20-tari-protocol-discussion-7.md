@@ -20,7 +20,6 @@ Right now there are 4 rough architecture ideas on GitHub for the Tari community 
 
 [Base Layer Architecture Proposals](https://github.com/tari-project/RFC/blob/master/proposals/181107-base-layer-architecture.md)
 
-
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:
 

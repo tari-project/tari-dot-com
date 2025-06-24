@@ -25,7 +25,7 @@ export const SwapOption = styled.div<{ $paddingBottom?: number }>`
     height: 100%;
 
     > span {
-    color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
+        color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};
         font-size: 10px;
     }
 `;
@@ -82,7 +82,7 @@ export const SwapOptionCurrency = styled.div<{ $clickable?: boolean }>`
 export const SwapLabel = styled.span`
     margin-bottom: 10px;
     font-size: 12px !important;
-`
+`;
 
 export const SwapDirection = styled.div`
     width: 100%;
@@ -121,7 +121,7 @@ export const SwapAmountInput = styled.input<{
     ${({ $error }) =>
         $error &&
         css`
-            color: #E60256;
+            color: #e60256;
         `}
 
     ${({ $loading }) =>
@@ -263,13 +263,12 @@ export const MaxButton = styled.button`
     border-radius: 43px;
     padding: 2px 8px;
     border-width: 1px;
-    border: 1px solid #0000002E;
+    border: 1px solid #0000002e;
     color: ${({ theme }) => theme.palette.text.primary};
     font-size: 10px;
     cursor: pointer;
     pointer-events: all;
-`
-
+`;
 
 export const BottomWrapper = styled.div`
     width: 100%;
@@ -284,7 +283,7 @@ export const BottomWrapper = styled.div`
         text-align: right;
         white-space: nowrap;
     }
-`
+`;
 
 export const SwapInfo = styled.div`
     color: ${({ theme }) => theme.palette.text.secondary || '#8f91a1'};

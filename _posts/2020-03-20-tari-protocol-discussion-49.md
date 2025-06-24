@@ -7,21 +7,21 @@ thumbnail: assets/img/posts/protocol-discussion-49.png
 lead: Tari use cases
 class: subpage
 topics:
-- What unique functionality does Tari grant digital asset issuers?
-- How will the protocol scale as there are more digital assets issued on Tari?
+    - What unique functionality does Tari grant digital asset issuers?
+    - How will the protocol scale as there are more digital assets issued on Tari?
 ---
 
 On Friday the Tari community discussed potential use cases of the Tari blockchain. Below are a few questions from today’s discussion along with a complete transcript further below.
 
-* What unique functionality does Tari grant digital asset issuers?
-* Why will Monero miners merge mine with Tari?
-* How will the protocol scale as there are more digital assets issued on Tari?
-* What is the transaction throughput of Tari?
+- What unique functionality does Tari grant digital asset issuers?
+- Why will Monero miners merge mine with Tari?
+- How will the protocol scale as there are more digital assets issued on Tari?
+- What is the transaction throughput of Tari?
 
 Please feel free to keep the conversation going by joining the Tari [Telegram](https://t.me/tariproject) or #Tari on Freenode.
 
-
 ### Transcript of Friday discussion
+
 ```
 10:30
 👉Tari Use Case Discussion👈

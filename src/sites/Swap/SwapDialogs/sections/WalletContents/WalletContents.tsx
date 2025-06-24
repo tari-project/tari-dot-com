@@ -51,11 +51,7 @@ export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) =>
     }, [accountAddress]);
 
     return (
-        <TransactionModal
-            show={isOpen}
-            handleClose={() => setIsOpen(false)}
-            title="Wallet Connected"
-        >
+        <TransactionModal show={isOpen} handleClose={() => setIsOpen(false)} title="Wallet Connected">
             <WalletContentsContainer>
                 <ConnectedWalletWrapper>
                     <WalletButton variant="error" onClick={handleDisconnect} size="small">

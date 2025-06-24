@@ -35,9 +35,7 @@ export default function MobileHeader() {
                 <Inside>
                     <HeaderTop $open={showMobileMenu}>
                         <TariLogo href="/" onClick={handleLinkClick} />
-                        {showMobileMenu ? null :
-                            <ActiveMiners theme="dark" />
-                        }
+                        {showMobileMenu ? null : <ActiveMiners theme="dark" />}
                         <MobileMenuButton />
                     </HeaderTop>
                 </Inside>

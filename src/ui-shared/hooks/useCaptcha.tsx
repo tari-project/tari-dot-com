@@ -18,4 +18,3 @@ export const useCaptcha = (theme?: 'light' | 'dark') => {
 
     return { token, markup, reset: turnstile?.reset };
 };
-

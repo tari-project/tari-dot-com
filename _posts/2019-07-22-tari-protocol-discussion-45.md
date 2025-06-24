@@ -7,8 +7,8 @@ thumbnail: assets/img/posts/protocol-discussion-45.png
 lead: Multiparty payment channels
 class: subpage
 topics:
-- How to achieve scalability in a MW protocol
-- How to enable payment channels in MW
+    - How to achieve scalability in a MW protocol
+    - How to enable payment channels in MW
 ---
 
 On Monday, the Tari community discussed multiparty payment channels
@@ -24,6 +24,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 18:03 <@CjS77> Evening, everyone
 18:03 <Hansie> W.r.t. scaling, I am not overly optimistic that the MW base layer can sustain a vibrant DAN.

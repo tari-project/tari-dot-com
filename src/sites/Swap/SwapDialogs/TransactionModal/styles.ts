@@ -11,12 +11,12 @@ export const Wrapper = styled('div')`
     justify-content: center;
     align-items: center;
     pointer-events: all;
-    background: ${({ theme }) => theme.mode === 'dark' ? '#2e2e2e' : '#e9e9e9'};
+    background: ${({ theme }) => (theme.mode === 'dark' ? '#2e2e2e' : '#e9e9e9')};
     color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
 `;
 
-export const Cover = styled(m.div) <{ $noClose?: boolean }>`
+export const Cover = styled(m.div)<{ $noClose?: boolean }>`
     position: fixed;
     width: 100%;
     height: 100%;

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
     display: none;
@@ -28,7 +28,7 @@ export const CtaContainer = styled.div`
 
 export const CtaWrapper = styled.div`
     display: flex;
-    background: linear-gradient(95.93deg, #9A0AED 14.32%, #CE0EC2 109.86%);
+    background: linear-gradient(95.93deg, #9a0aed 14.32%, #ce0ec2 109.86%);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -44,7 +44,7 @@ export const CTAContent = styled.div`
 
 export const CTAEyebrow = styled.div`
     font-family: var(--font-poppins), sans-serif;
-    color: #F9A414;
+    color: #f9a414;
     font-size: 14px;
     font-weight: 700;
     display: flex;
@@ -79,7 +79,7 @@ const circeStyle = css`
     transform: translate(50%, -50%);
     border-radius: 50%;
     background: #ffffff1a;
-`
+`;
 
 export const CirclesBG = styled.div`
     ${circeStyle}
@@ -107,7 +107,6 @@ export const RobotImage = styled.img`
     object-fit: cover;
 `;
 
-
 export const CopyDivider = styled.div`
     display: flex;
     align-items: center;
@@ -126,7 +125,7 @@ export const CopyDivider = styled.div`
 
 export const GradientText = styled.span`
     text-align: center;
-    background: linear-gradient(90deg, #FF7DFC 62.68%, #429DFF 100%);
+    background: linear-gradient(90deg, #ff7dfc 62.68%, #429dff 100%);
     background-clip: text;
     color: transparent;
     font-weight: 800;
@@ -159,7 +158,7 @@ export const EmailInput = styled.input`
     height: 40px;
     padding: 25px;
     border: none;
-    background: #FFFFFF1A;
+    background: #ffffff1a;
     border-radius: 65px;
     font-family: var(--font-poppins), sans-serif;
     font-size: 16px;
@@ -177,7 +176,7 @@ export const EmailButton = styled.button`
     padding: 20px;
     line-height: 100%;
     border-radius: 65px;
-    background: #9A0AED;
+    background: #9a0aed;
     border: none;
     font-family: var(--font-poppins), sans-serif;
     font-size: 16px;
@@ -185,7 +184,7 @@ export const EmailButton = styled.button`
     color: white;
 
     &:disabled {
-        background: #9A0AED;
+        background: #9a0aed;
         opacity: 0.5;
     }
 `;

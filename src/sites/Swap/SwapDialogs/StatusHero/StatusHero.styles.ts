@@ -39,4 +39,3 @@ export const Text = styled.div`
     font-weight: 400;
     line-height: 116.7%;
 `;
-

@@ -7,15 +7,14 @@ thumbnail: assets/img/posts/protocol-discussion-41.png
 lead: RFC-340 consensus
 class: subpage
 topics:
-- HotStuff looks promising for the DAN's BFT
-- DAG is not required as there cannot be conflicting states
+    - HotStuff looks promising for the DAN's BFT
+    - DAG is not required as there cannot be conflicting states
 ---
 
 On Monday, the Tari community discussed RFC-340. Below is the TL;DR on Monday's conversation (full transcript included below):
 
-* HotStuff looks promising for the DAN's BFT.
-* DAG is not required as there cannot be conflicting states
-
+- HotStuff looks promising for the DAN's BFT.
+- DAG is not required as there cannot be conflicting states
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -28,6 +27,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 17:56 <@CjS77>  I propose we discuss the proposal ni https://github.com/tari-project/tari/pull/475 tonight
 RFC-340 VN Consensus overview by CjS77 · Pull Request #475 · tari-project/tari
@@ -49,12 +49,12 @@ Description Provide an overview for a proposal for smart contract consensus in T
 18:17 <@CjS77>  yes
 18:17 <simian_za>  I see
 18:17 <@CjS77>  Yeah, it's quite slick
-18:17 <Blackwolfsa>  Only problem there I acn see is with branching... 
-18:17 <Blackwolfsa>  But that should be minor 
+18:17 <Blackwolfsa>  Only problem there I acn see is with branching...
+18:17 <Blackwolfsa>  But that should be minor
 18:18 <@CjS77>  Branching?
 18:18 <Hansie>  Seems to me `super-majority of these messages` will be the collection of instructions for a next block, am I right?
-18:19 <Blackwolfsa>  What Cpus do with if statements 
-18:19 <Blackwolfsa>  Eg it makes an assumption on a future state based on the current state 
+18:19 <Blackwolfsa>  What Cpus do with if statements
+18:19 <Blackwolfsa>  Eg it makes an assumption on a future state based on the current state
 18:20 <@CjS77>  We require that Every replica must deterministically get the same state when running the same input over  the same smart contract. Therefore they'll all select the same branches on conditionals, surely
 18:20 <Blackwolfsa>  Yes but of we try to run the states in a pipeline
 18:21 <Blackwolfsa>  If it's run single staged, it should never give issues
@@ -77,14 +77,14 @@ Description Provide an overview for a proposal for smart contract consensus in T
 18:30 <simian_za>  Think you can get away without a full array of sigs but you will need a list of which members signed to produce a given sig but that could be a list of member indices or something much smaller than sigs
 18:31 <Hansie>  Yip, the signature scheme must be as efficient as possible while still being secure
 18:31 <@CjS77>  Agreed. HotStuff leaves that implementation detail out
-18:31 <Blackwolfsa>  Personally I think we should keep the multiple stages as a later rivision and not 1st release 
+18:31 <Blackwolfsa>  Personally I think we should keep the multiple stages as a later rivision and not 1st release
 18:34 <Hansie>  Just to be clear, no DAGs anymore?
 18:34 <@CjS77>  I recommend everyone go and read the HotStuff paper. You get the gist on the first reading; I'm still synthesising some of the nuances myself; but it resonates on an intuitive level
 18:35 <tar1b0t>  [mattermost] <stringhandler> Tried to find an ELI5 of it
 18:35 <@CjS77>  I spent a lot of time on my vacation thinking about DAGs, and I cam to the conclusion that this achieves almost the same degree of performance and throughput while being way simpler
-18:36 <Blackwolfsa>  Agreed... 
+18:36 <Blackwolfsa>  Agreed...
 18:36 <neonknight64>  A great property of using the XOR Metric(Not Hamming Distance) for distance is that you can never have duplicate distances except if they have the same Node ID
-18:36 <Blackwolfsa>  Dag might have a get a simple mayorrity and not bft and still be secure. But this has alot less messages and is much simpler 
+18:36 <Blackwolfsa>  Dag might have a get a simple mayorrity and not bft and still be secure. But this has alot less messages and is much simpler
 18:36 <Hansie>  cjs77: Seems like a reasonable conclusion yes
 18:36 <stanimal>  "the leader expects a set of `NewView` messages from the other replicas" - will read the paper but what is the purpose of the NewView message? Could there be a disagreement in leader election?
 18:37 <@CjS77>  The problem I always came up against with DAG was how to effectively re-order things when branches were being joined;

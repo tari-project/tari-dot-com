@@ -66,8 +66,6 @@ export default function DownloadButton({
         setShowDownloadModal(true);
     };
 
-    console.log({ isOutOfView });
-
     // Intersection Observer to detect if button is out of view
     useEffect(() => {
         if (!isSticky) return;
@@ -78,7 +76,7 @@ export default function DownloadButton({
             ([entry]) => {
                 setIsOutOfView(!entry.isIntersecting);
             },
-            { threshold: 0.01 }
+            { threshold: 0.01 },
         );
         observer.observe(ref);
 
@@ -114,13 +112,7 @@ export default function DownloadButton({
                         </Text>
                     )}
                     {hovering && (
-                        <Text
-                            key="hover"
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                        >
+                        <Text key="hover" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                             <Word variants={wordVariants}>Start</Word> <Word variants={wordVariants}>Earning</Word>{' '}
                             <Word variants={wordVariants}>XTM</Word> <Word variants={wordVariants}>Today</Word>
                         </Text>
@@ -149,7 +141,7 @@ export default function DownloadButton({
     return (
         <>
             <Wrapper
-                key='wrapper'
+                key="wrapper"
                 ref={isSticky ? buttonRef : undefined}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -160,10 +152,12 @@ export default function DownloadButton({
             >
                 {ButtonContent}
             </Wrapper>
-            {isSticky && isOutOfView && typeof window !== 'undefined' &&
+            {isSticky &&
+                isOutOfView &&
+                typeof window !== 'undefined' &&
                 createPortal(
                     <Wrapper
-                        key='sticky-wrapper'
+                        key="sticky-wrapper"
                         style={{
                             position: 'fixed',
                             left: 0,
@@ -184,9 +178,8 @@ export default function DownloadButton({
                     >
                         {ButtonContent}
                     </Wrapper>,
-                    document.body
-                )
-            }
+                    document.body,
+                )}
         </>
     );
 }

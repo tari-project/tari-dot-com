@@ -10,9 +10,9 @@ class: subpage
 
 On Thursday, the Tari community discussed the storage strategy surrounding UTXO's. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* Use LMDB
-* UTXO's stored in a MMR
-* Pruning should be carefully looked at
+- Use LMDB
+- UTXO's stored in a MMR
+- Pruning should be carefully looked at
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -25,6 +25,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Thursday’s discussion
+
 ```
 10:32 <@CjS77>  IRC dev chat in 30 - we'll be chatting about persistence strategy for Tari
 11:01 <Hansie>  Hi, what shall we chat about?

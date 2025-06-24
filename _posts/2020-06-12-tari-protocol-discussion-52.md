@@ -7,7 +7,7 @@ thumbnail: assets/img/posts/protocol-discussion-52.png
 lead: What is digital asset ownership?
 class: subpage
 topics:
-- What does the proof-of-work algorithm for Tari mainnet look like?
+    - What does the proof-of-work algorithm for Tari mainnet look like?
 ---
 
 On Friday the Tari community discussed the Tari Proof of Work algorithm for mainnet on the Tari [Telegram](https://t.me/tariproject) (bridged to #Tari on Freenode).
@@ -15,7 +15,6 @@ On Friday the Tari community discussed the Tari Proof of Work algorithm for main
 The primary question discussed was **“What does the proof-of-work algorithm for Tari mainnet look like?”**
 
 The following options were proposed by Cayle Sharrock.
-
 
 1. Merge mine with Monero only.
 2. Hybrid mining, with 50% - 75% of blocks being mined through Monero merge mining and the remainder using a CPU/GPU-friendly algorithm to mine Tari directly.
@@ -34,10 +33,9 @@ _May I propose the next step would be for the dev community to continue the disc
 
 Below is a full transcript of the conversation.
 
-
 ### **Transcript of Friday discussion**
 
-This is a snapshot taken of the Telegram conversation (bridged to #Tari on Freenode)  on Friday, June 12, 2020.
+This is a snapshot taken of the Telegram conversation (bridged to #Tari on Freenode) on Friday, June 12, 2020.
 
 ```
 Cayle, [12.06.20 11:00]
@@ -72,7 +70,7 @@ Testnet is already a Tari-only Proof-of-work chain. Mainnet could mitigate the m
 
 The choice of algorithm, and overall contribution to the block emission is yet to be decided. Testnet uses a double Blake hashing algorithm, but this isn’t an optimal choice for several reasons.
 
-A better choice would be a “memory hard” hashing algorithm, like Argon2; or go in the opposite direction and choose one that is likely to become an ASIC-based commodity in future, like SHA-3. 
+A better choice would be a “memory hard” hashing algorithm, like Argon2; or go in the opposite direction and choose one that is likely to become an ASIC-based commodity in future, like SHA-3.
 
 Algorithms that already have high hash rates on other coins, including SHA-256, Ethash, Scrypt and Equihash are not good choices (because you could buy an attack on nicehash).
 
@@ -190,13 +188,13 @@ So @hansieodendaal, for everyone that’s not going to read that thesis right no
 
 Hansie Odendaal, [12.06.20 11:11]
 
-Double spend; alter history: 
+Double spend; alter history:
 
 - needs >50% hash power
 
-Selfish mining; Eclipse attacks: 
+Selfish mining; Eclipse attacks:
 
-- needs >33% hash power for a poorly connected attacker (at ~10% network connectivity) 
+- needs >33% hash power for a poorly connected attacker (at ~10% network connectivity)
 
 - needs >25% hash power for a well connected attacker (at ~50% network connectivity)
 
@@ -246,7 +244,7 @@ Yes, one cannot control who will do merge mining
 
 Cayle, [12.06.20 11:16]
 
-Basically, as @Lsquared pointed out, a large pool can come in and attempt a 51% attack, but _because it’s merge mined_ their opportuntity cost is relatively low. Normally if you attempt a 51% attack and fail, you lose all the block rewards that you would have received by just playing along. 
+Basically, as @Lsquared pointed out, a large pool can come in and attempt a 51% attack, but _because it’s merge mined_ their opportuntity cost is relatively low. Normally if you attempt a 51% attack and fail, you lose all the block rewards that you would have received by just playing along.
 
 By attacking the child chain in merge mining, the attacker does not risk the parent chain rewards
 
@@ -290,7 +288,7 @@ https://github.com/jtgrassie/monero-pool/blob/master/stratum-ss.md
 
 Cayle, [12.06.20 11:20]
 
-So hybrid mining is an attempt to remedy that drawback. 
+So hybrid mining is an attempt to remedy that drawback.
 
 In it’s simplest incarnation, half of blocks on average go to one chain (e.g. merge-mined XMR) and half to another (say, independent PoW)
 
@@ -356,7 +354,7 @@ sw, [12.06.20 11:23]
 
 [In reply to Hansie Odendaal]
 
-Short of this is, on merge mine. You need to prove the mined monero header. Then you need to prove the hash of your header is in the data that was just mined for monero. 
+Short of this is, on merge mine. You need to prove the mined monero header. Then you need to prove the hash of your header is in the data that was just mined for monero.
 
 Thats why you need the coinbase, and then the proof the coinbase is that mined monero block
 
@@ -598,7 +596,7 @@ Hansie Odendaal, [12.06.20 11:34]
 
 Personally I like Myriacoin's approach to hybrid mining the best:
 
-- merged mined (sha256d, scrypt); 
+- merged mined (sha256d, scrypt);
 
 - independent (groestl, yescript, argon2d).
 
@@ -682,13 +680,13 @@ yes
 
 sw, [12.06.20 11:44]
 
-There might be some problems with the difficulty on the merge-mining. 
+There might be some problems with the difficulty on the merge-mining.
 
-Currently we have 2 min blocks, same as monero. 
+Currently we have 2 min blocks, same as monero.
 
-I am just putting this at 50% for ease of use explaining. 
+I am just putting this at 50% for ease of use explaining.
 
-That means we have one monero block every 4 min. This means that our difficulty will be much higher than the monero one. If we get all of the miners in. This wont be the case, I know. 
+That means we have one monero block every 4 min. This means that our difficulty will be much higher than the monero one. If we get all of the miners in. This wont be the case, I know.
 
 But the problem is that if we have a higher diff than monero, the miner will find a monero block before a tari one. That means that the miner will start mining a new monero block. And start over mining again. Unless he gets lucky he will never find a tari block
 
@@ -744,7 +742,7 @@ sw, [12.06.20 12:00]
 
 [In reply to TariIRCBouncer]
 
-Not per say? Because you are mining monero at the monero diff. 
+Not per say? Because you are mining monero at the monero diff.
 
 The idea being that if you find a monero header at a tari diff, you submit that to the tari chain as pow.
 
@@ -764,7 +762,7 @@ Recieved some tips, thanks guys/girls😀🚀👍
 
 Cayle, [12.06.20 12:09]
 
-We need to wrap up the formal part of this discussion. 
+We need to wrap up the formal part of this discussion.
 
 While there hasn’t been a firm decision for the affirmative; I haven’t seen any screaming hate towards either the original proposal, or any of the tweaks that have been proposed here tonight.
 

@@ -7,8 +7,8 @@ thumbnail: assets/img/posts/protocol-discussion-47.png
 lead: Proof of work for the tari chain
 class: subpage
 topics:
-- How to prevent 51% attacks on a new chain
-- How merge mining prevents 51% attacks on new chains
+    - How to prevent 51% attacks on a new chain
+    - How merge mining prevents 51% attacks on new chains
 ---
 
 On Monday, the Tari community discussed proof of work strategies.
@@ -24,6 +24,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 18:02 <@CjS77> Hi everybody
 18:03 <simian_za> Heya
@@ -59,10 +60,10 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:20 <@CjS77> How does their algo work?
 18:20 <Hansie> Each of the 5 algos has equal probability to solve the PoW
 18:20 <Hansie> Difficulty adjusted to 5 min for each
-18:20 <Blackwolfsa> Having block times that almost 50% in the low end opens you up toe other attacks 
+18:20 <Blackwolfsa> Having block times that almost 50% in the low end opens you up toe other attacks
 18:20 <Hansie> Target block rate at 1 min
 18:21 <Hansie> Any algo can build on top of the longest chain, even consecutively
-18:21 <Blackwolfsa> We need to simulate it too see if it's more stable if it's more active 
+18:21 <Blackwolfsa> We need to simulate it too see if it's more stable if it's more active
 18:22 <@CjS77> Ok, so the consensus rules just accept any PoW at the requisite difficulty
 18:22 <Hansie> So with the 5 algos, any 1 pool can only achieve 20% of the efficient hash rate
 18:22 <Hansie> Yes cjs77
@@ -98,10 +99,10 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:33 <Hansie> Thanks sarang, will definately look at it
 18:35 <@CjS77> If we assume merge miners don't want to leave the parent chain; and the fact that GPU PoW algos are pretty fungible, so you can grab 66% of the hashrate in a 1-2 split. Whereas in a 1-1 split, you have at most 50%.
 18:36 <@CjS77> In a 2-1 split, you have at most 33%
-18:37 <Blackwolfsa> You just have to whatch that each pow has enough pow to keep it secure... 
+18:37 <Blackwolfsa> You just have to whatch that each pow has enough pow to keep it secure...
 18:37 <Hansie> And it works the other way round as well, depending on which pools will do the mining
 18:38 <tar1b0t_> [mattermost] <simian> That'd only if the algos are run in sequence if any algo can solve a given block and the difficulty retargeting is applied correctly I don't think those assumptions are strictly correct
-18:38 <Blackwolfsa> If a pow has too little one can easily mine a few blocks in a row cheaply... 
+18:38 <Blackwolfsa> If a pow has too little one can easily mine a few blocks in a row cheaply...
 18:39 <tar1b0t_> [mattermost] <stringhandler> The difficulty would need to be adjusted every block to stop 6 blocks being mined by the same algo
 18:39 <Hansie> See here for dangers of merged mining: https://tlu.tarilabs.com/merged-mining/merged-mining-scene/MergedMiningIntroduction.html#analysis-of-mining-power-centralization-issues
 18:40 <tar1b0t_> [mattermost] <stringhandler> You actually want consensus to be achieved only when every algo has a block
@@ -117,7 +118,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:45 <tar1b0t_> [mattermost] <stringhandler> But I'm saying that if you have 7 algos then 6 blocks is not enough for consensus
 18:46 <tar1b0t_> [mattermost] <stringhandler> Just my gut feeling though
 18:47 <Hansie> Ok, so you are talking about confirmation times. Makes sense
-18:47 <Blackwolfsa> I think I follow your reasoning 
+18:47 <Blackwolfsa> I think I follow your reasoning
 18:47 <Blackwolfsa> And I tend to agree
 18:48 <Hansie> I have to run, thanks for the chat
 19:17 <moneromooo> Would someone not need 50% of the monero network to double spend on tari if it were merged mined ?

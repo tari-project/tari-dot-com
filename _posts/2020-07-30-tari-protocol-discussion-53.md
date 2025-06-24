@@ -7,30 +7,26 @@ thumbnail: assets/img/posts/protocol-discussion-53.png
 lead: Aurora Improvement Community Discussion
 class: subpage
 topics:
-- What features would make Aurora even better?
+    - What features would make Aurora even better?
 ---
 
 On Thursday the Tari community discussed potential improvements or new features for the Tari Aurora wallet, which serves as a reference-design for Tari. Some highlights below.
 
-
-*   Ability to log in without using biometrics on devices with biometrics enabled was suggested and well received.
-*   Potential ways to approach one-sided transactions were discussed 
-*   Chat functionality that would allow people to send messages back and forth in app was well received by the community.
+- Ability to log in without using biometrics on devices with biometrics enabled was suggested and well received.
+- Potential ways to approach one-sided transactions were discussed
+- Chat functionality that would allow people to send messages back and forth in app was well received by the community.
 
 Please feel free to keep the conversation going by joining the discussion thread on [Telegram](https://t.me/tariproject) or #Tari on Freenode.
 
-
-
 Below is a full transcript of the conversation.
-
 
 ### **Transcript of Thursday discussion**
 
-This is a snapshot taken of the Telegram conversation (bridged to #Tari on Freenode)  on Thursday, July 30th, 2020.
+This is a snapshot taken of the Telegram conversation (bridged to #Tari on Freenode) on Thursday, July 30th, 2020.
 
 ```
 Ю ○三 🐙＼(ₑ₂̑Ꮘↂͩ ₂̑ₑ), [Jul 30, 2020, 11:01:25 AM]:
-aurora discussion? 
+aurora discussion?
 pls builds on fdroid soonish, thnx
 
 Riccardo Spagni, [Jul 30, 2020, 11:02:13 AM]:
@@ -250,7 +246,7 @@ TariIRCBouncer, [Jul 30, 2020, 11:47:24 AM]:
 [irc] <stringhandler> No need to try compete with Telegram or Whatsapp, but I like the idea that if I send you money you can reply with a thumbs up or "Thanks"
 
 IdontKnow, [Jul 30, 2020, 11:47:59 AM]:
-some sent msgs in txs that later where cancelled. 
+some sent msgs in txs that later where cancelled.
 how long for a tx to be non-cancellable?
 
 🆗I guess it would be untill block found?
@@ -399,7 +395,7 @@ Tari isn't a legal entity
 it's a protocol
 
 Blue, [Jul 30, 2020, 12:43:15 PM]:
-Can you make it so a 1 time small fee allows unlimited message transfer between users. 
+Can you make it so a 1 time small fee allows unlimited message transfer between users.
 If you must spend tari and possibly wait 2 minutes for the block to confirm every time you want to send a single message, the only thing people would use it for is to send PGP keys. Hardly worth the development cost.
 
 Kutsal, [Jul 30, 2020, 12:45:42 PM]:

@@ -7,7 +7,7 @@ thumbnail: assets/img/posts/protocol-discussion-46.png
 lead: Verification times of multiparty payment channels
 class: subpage
 topics:
-- Validation times for checkpoint transactions
+    - Validation times for checkpoint transactions
 ---
 
 On Monday, the Tari community discussed potential verification times of multiparty payment channels.
@@ -23,6 +23,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 18:03 <Hansie> Hi there, time for our Monday dev chat.
 18:04 <Hansie> We have explored bounding cases for checkpoint transactions w.r.t. block size. There are also validation time and data transmission size limitations.
