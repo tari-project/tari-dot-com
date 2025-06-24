@@ -313,30 +313,25 @@ export default function TokenomicsPage() {
                 </p>
                 <p>
                     <span>
-                        In the coming weeks, we will be sharing details about Tari mainnet launch and the community
-                        incentive programs. In preparation for Tari mainnet, you can get ready to mine the Tari mainnet
-                        by
+                        Tari mainnet is here! 🎉 You can now mine Tari with Tari Universe—the easiest, most beautiful
+                        mining app ever created. Simply download it for Mac, PC, or Linux, install it, and start mining
+                        immediately.
                     </span>
-                    <a href="https://www.tari.com/launchpad/" rel="">
-                        {' '}
-                        mining Tari NextNet (our latest test network) with our one-click miner
-                    </a>
+                    <br />
                     <span>
-                        . If you have any issues with the miner or just want to complement our slick miner CLI UI, hop
-                        in our
-                    </span>
-                    <a href="https://t.me/tariproject" rel="">
+                        You can also earn precious gems and maximize your rewards through the
                         {' '}
-                        Telegram chat
-                    </a>
-                    <span>
-                        , and we’d be happy to chat about Tari, testnet Tari, or that new movie you just saw that blew
-                        your mind.&nbsp;
+                        <a href="https://airdrop.tari.com/" rel="">
+                            Tari Airdrop
+                        </a>
+                        {' '}
+                        game by inviting friends to mine. Questions or just want to chat? Join our
+                        {' '}
+                        <a href="https://t.me/tariproject" rel="">
+                            Telegram community
+                        </a>
+                        —we’d love to talk Tari, mining tips, or even your favorite movies.
                     </span>
-                </p>
-                <p>
-                    We’re excited for you to join us on this journey, and we can’t wait for the day when the “wen”s
-                    change to “wow”s, but until that day…Soon!
                 </p>
                 <p>
                     <strong>Thank you</strong>
