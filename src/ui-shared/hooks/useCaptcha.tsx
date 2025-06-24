@@ -2,14 +2,13 @@
 import { useState } from 'react';
 import Turnstile, { useTurnstile } from 'react-turnstile';
 
-console.log('key', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
-export const useCaptcha = () => {
+export const useCaptcha = (theme?: 'light' | 'dark') => {
     const [token, setToken] = useState('');
     const turnstile = useTurnstile();
 
     const markup = (
         <Turnstile
-            theme="dark"
+            theme={theme || 'dark'}
             sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
             onVerify={(token) => {
                 setToken(token);

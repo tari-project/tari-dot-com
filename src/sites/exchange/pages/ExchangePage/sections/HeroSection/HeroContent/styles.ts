@@ -16,7 +16,7 @@ export const Wrapper = styled.div<{ $bgImage: string }>`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    overflow: hidden;
+    // overflow: hidden;
 
     @media (max-width: 1220px) {
         flex-direction: column;

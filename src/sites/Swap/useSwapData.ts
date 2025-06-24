@@ -522,7 +522,6 @@ export const useSwapData = () => {
 
             if (swapResult?.actualFeeWei && connectedAccount.chain) {
                 const feeInEth = ethers.formatEther(swapResult.actualFeeWei);
-                console.log('Parsed Fee:', feeInEth);
                 setPaidTransactionFee(feeInEth);
             }
 
