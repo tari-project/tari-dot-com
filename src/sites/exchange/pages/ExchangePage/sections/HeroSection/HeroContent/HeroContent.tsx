@@ -27,7 +27,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const color = getValidHexColor(exchange?.primary_colour);
     const textColor = getTextColorForBg(color);
     const isSmallScreen = useMedia('(max-width: 1220px)');
-    const isVera = exchange.id === 'veera';
+    const isVeera = exchange.id === 'veera';
 
     const [videoSrc, setVideoSrc] = useState(
         'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'
@@ -57,15 +57,15 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
 
     return (
         <Wrapper $bgImage={bgImage.src}>
-            <VideoWrapper $isVera={isVera}>
+            <VideoWrapper $isVera={isVeera}>
                 <TopSlope />
                 <BottomSlope />
                 <VideoPlayer src={videoSrc} loop={true} poster={posterSrc} />
             </VideoWrapper>
 
             <TextWrapper>
-                {isVera ?
-                    <Title $isVera={isVera}>
+                {isVeera ?
+                    <Title $isVera={isVeera}>
                         <YellowText $color={color} $isVera>
                             Download
                             Tari Universe
@@ -86,7 +86,8 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                         </Title>
                     </>}
                 <DownloadButton
-                    isVera={isVera}
+                    isSticky={isVeera}
+                    isVeera={isVeera}
                     backgroundColor={color}
                     textColor={textColor}
                     showIconBackground={true}
@@ -97,7 +98,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                         ) : null
                     }
                 />
-                {isVera ? <VeraMobileDownload /> : null}
+                {isVeera ? <VeraMobileDownload /> : null}
             </TextWrapper>
 
             <BottomWrapper>

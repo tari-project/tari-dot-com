@@ -180,7 +180,7 @@ export const EmailButton = styled.button`
     background: #9A0AED;
     border: none;
     font-family: var(--font-poppins), sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
     color: white;
 

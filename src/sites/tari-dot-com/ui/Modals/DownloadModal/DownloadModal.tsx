@@ -37,7 +37,7 @@ export default function DownloadModal() {
     const { mutateAsync: subscribeNewsletter, } = useSubscribeNewsletter();
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { token, markup, reset } = useCaptcha();
+    const { token, markup, reset } = useCaptcha('light');
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -52,8 +52,6 @@ export default function DownloadModal() {
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
     };
-
-    console.log(isVeera);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const ContentGroup = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 60px;
-    padding-top: 80px;
+    gap: 30px;
+    padding-top: 30px;
     width: 100%;
 
     @media (max-width: 768px) {
@@ -125,10 +125,10 @@ export const DownloadButton = styled.a`
 `;
 
 export const TariLogoImage = styled.img`
-    width: 283px;
+    width: 190px;
 
     position: absolute;
-    top: -114px;
+    top: -90px;
     left: 50%;
     transform: translateX(-50%);
 

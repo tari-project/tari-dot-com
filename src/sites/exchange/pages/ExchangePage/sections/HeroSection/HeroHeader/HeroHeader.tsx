@@ -7,7 +7,6 @@ import { isValidImage } from '@/sites/exchange/utils';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     const isVeera = exchange.id === 'veera';
-    console.log({ isVeera });
     return (
         <Wrapper>
             <LogoWrapper>

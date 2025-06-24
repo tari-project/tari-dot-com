@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     pointer-events: all;
 
@@ -46,7 +47,7 @@ export const Cover = styled(motion.div)`
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 0;
-    cursor: pointer;
+    // cursor: pointer;
     backdrop-filter: blur(4px);
 `;
 
@@ -67,7 +68,7 @@ export const BoxWrapper = styled(motion.div)`
     margin: 0 auto;
 
     max-width: 798px;
-    padding: 80px;
+    padding: 60px;
 
     @media (max-width: 796px) {
         padding: 40px;
