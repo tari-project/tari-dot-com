@@ -34,20 +34,20 @@ export default function DownloadModal() {
     const { data: exchange } = useExchangeData();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
-    const { mutateAsync: subscribeNewsletter, } = useSubscribeNewsletter();
+    const { mutateAsync: subscribeNewsletter } = useSubscribeNewsletter();
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { token, markup, reset } = useCaptcha('light');
 
     const windowsLink =
         exchange?.download_link_win ||
-        'https://airdrop.tari.com/api/miner/download/windows?universeReferral=tari-dot-com';
+        `https://airdrop.tari.com/api/miner/download/windows?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
     const macLink =
         exchange?.download_link_mac ||
-        'https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com';
+        `https://airdrop.tari.com/api/miner/download/macos?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
     const linuxLink =
         exchange?.download_link_linux ||
-        'https://airdrop.tari.com/api/miner/download/linux?universeReferral=tari-dot-com';
+        `https://airdrop.tari.com/api/miner/download/linux?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -81,18 +81,23 @@ export default function DownloadModal() {
                 {!isSuccess && (
                     <TextGroup>
                         <Title>your download has started</Title>
-                        {isVeera ?
-                            <Text>Submit your Veera email to start earning rewards.</Text>
-                            :
-                            <Text>Now, stay up to date with the latest Tari news, contests, and drops.</Text>
-                        }
+                        <Text>
+                            {isVeera
+                                ? 'Submit your Veera email to start earning rewards.'
+                                : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
+                        </Text>
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
-                                <Input type="text" placeholder="Name"
+                                <Input
+                                    type="text"
+                                    placeholder="Name"
                                     onChange={(e) => setName(e.target.value)}
                                     value={name}
                                 />
-                                <Input type="email" placeholder="Email" required={true}
+                                <Input
+                                    type="email"
+                                    placeholder="Email"
+                                    required
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
                                 />
@@ -134,8 +139,7 @@ export default function DownloadModal() {
                                 <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
                             </Text>
                         </SuccessMessage>
-                )
-                }
+                )}
 
                 <Divider>
                     <DividerLine />
