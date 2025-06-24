@@ -60,7 +60,20 @@ export const useDownloadUniverse = () => {
             formattedUrl.searchParams.set('exchange', exchange?.id || '');
         }
 
-        window.open(url, '_blank');
+        try {
+            // Then trigger the download directly
+            const link = document.createElement('a');
+            link.href = formattedUrl.toString();
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        } catch (error) {
+            console.error('Download failed:', error);
+            // Fallback to original method
+            window.open(formattedUrl.toString(), '_blank');
+        }
     };
 
     const handleDownloadClick = (
