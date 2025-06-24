@@ -27,7 +27,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
     const color = getValidHexColor(exchange?.primary_colour);
     const textColor = getTextColorForBg(color);
     const isSmallScreen = useMedia('(max-width: 1220px)');
-    const isVera = exchange.id === 'vera';
+    const isVera = exchange.id === 'veera';
 
     const [videoSrc, setVideoSrc] = useState(
         'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/cd0baf3c3ee19a2534c9fb2f4fa72cec/manifest/video.m3u8'

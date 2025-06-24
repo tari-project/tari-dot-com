@@ -10,7 +10,7 @@ import { Exchange } from '@/sites/exchange/types/exchange';
 import { getValidHexColor } from '@/sites/exchange/utils';
 
 export default function HeroSection({ exchange }: { exchange: Exchange }) {
-    const isVera = exchange.id === 'vera';
+    const isVera = exchange.id === 'veera';
     const color = getValidHexColor(exchange?.primary_colour);
 
     return (
