@@ -162,7 +162,7 @@ export const EmailInput = styled.input`
     border-radius: 65px;
     font-family: var(--font-poppins), sans-serif;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 800;
     color: white;
     &::placeholder {
         color: white;

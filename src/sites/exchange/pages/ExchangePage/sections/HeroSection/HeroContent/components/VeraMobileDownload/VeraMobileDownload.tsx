@@ -61,6 +61,11 @@ export default function VeraMobileDownload() {
                 {showEmail ? (
                     <motion.div {...animations} key="email">
                         <EmailForm onSubmit={handleSubmit}>
+                            <FormCopy>
+                                <i>
+                                    Use your email ID associated with Veera.
+                                </i>
+                            </FormCopy>
                             <EmailInput
                                 type="email"
                                 placeholder="Email address"
