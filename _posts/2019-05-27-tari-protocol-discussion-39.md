@@ -10,9 +10,9 @@ class: subpage
 
 On Monday, the Tari community discussed the Tari Digital Assets Network. Below is the TL;DR on Monday's conversation (full transcript included below, only edited for spelling):
 
-* Comprises exist between speed and decentralisation
-* Should try and minimize communication
-* Dag's seem promising
+- Comprises exist between speed and decentralisation
+- Should try and minimize communication
+- Dag's seem promising
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -25,6 +25,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday’s discussion
+
 ```
 Today's dev chat should be pretty interesting
 18:02 <@CjS77>  For those not familiar with the idea, the Tari Digital Assets Network is our proposed smart contracts platform as described here: https://rfc.tari.com/RFC-0300_DAN.html
@@ -41,7 +42,7 @@ Today's dev chat should be pretty interesting
 18:11 <Hansie>  Yes, there is the communication angle as well.
 18:12 <@CjS77>  IRC  RFC-0172 covers that
 18:13  * simian_za reminds himself
-18:14 <Blackwolfsa>  But 100 nodes would take long to reach consensus 
+18:14 <Blackwolfsa>  But 100 nodes would take long to reach consensus
 18:14  * @CjS77 A quick scan of 172 suggests it hasn't been explicitly stated there
 18:14 <Hansie>  I think we can assume the way wallets will communicate with committees will be independent of the consensus mechanism they employ
 18:15 <@CjS77>  ^ Yes.
@@ -139,7 +140,7 @@ Today's dev chat should be pretty interesting
 19:06 <@CjS77>  Perhaps in our next meeting :)
 19:07 <simian_za>  Awesome, the leader based method does seem like the way forward to me
 19:07 <@CjS77>  My initial aversion to LB methods is abating somewhat; but only because there's a very elegant way to pick a new leader very quickly
-19:08 <Blackwolfsa>  But what do we do if you keep attacking the leader? 
+19:08 <Blackwolfsa>  But what do we do if you keep attacking the leader?
 19:09 <simian_za>  indeed, the leader needs to be very transient but a mediator simplifies many parts of the protocol
 19:10 <Hansie>  What about leaderless BFT protocols?
 19:10 <Hansie>  "The protocols differ from the traditional consensus protocols and the Nakamoto consensus protocols by not requiring an elected leader. Instead, the protocol simply guides all the nodes to consensus."
@@ -152,7 +153,7 @@ Today's dev chat should be pretty interesting
 19:14 <@CjS77>  and complexity is the enemy of good (or whatever) )
 19:14 <Hansie>  True
 19:15 <@CjS77>  lol. My typing. Blackwolfsa -- maybe you should run this transcript through a spell checker before posting as a blog :)
-19:16 <Blackwolfsa>  Will do, my vscode has one, will fix spelling 
+19:16 <Blackwolfsa>  Will do, my vscode has one, will fix spelling
 19:18 <@CjS77>  Here's a reference for HotStuff: https://ui.adsabs.harvard.edu/abs/2018arXiv180305069Y/abstract
 19:19 <@CjS77>  Here's a better one: https://arxiv.org/abs/1803.05069
 ```

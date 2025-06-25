@@ -61,13 +61,13 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 11:45 AM <simian_za> and then also to keep track of the shares due
 11:46 AM <mikethetike> regarding transactions on the base layer, I think we should try jot down some initial data structure layouts as a reference for what can and can't be done
 11:46 AM <mikethetike> I've seen some code in the repo, but I'd like to see how some of the 2nd layer stuff gets squished in
-12:01 PM → el00ruobuob_[m] and learninandlurkin joined  
+12:01 PM → el00ruobuob_[m] and learninandlurkin joined
 1:54 PM <@cjs77> That's not a bad idea
 1:56 PM ⇐ lurkinandlearnin quit (~lurkinand@2a02:c7d:b7d8:4100:3de7:325e:878f:215f) Ping timeout: 252 seconds
 2:31 PM <@cjs77> Looking at some crypto backend implementations; what does the crypto community generally use to express keys - little, or big endian? i.e. would k=5 as a 32 byte hex string be `0x101000....000` or `0x000....000101`?
 2:32 PM <@cjs77> lol, I mean `0x05...00` vs `0x00..05`?
 2:33 PM <@cjs77> I've been assuming big-endian, but dalek uses little-endian (which makes sense if most CPUs are AMDs these days)
-2:40 PM → lurkinandlearnin joined  ⇐ learninandlurkin quit  
+2:40 PM → lurkinandlearnin joined  ⇐ learninandlurkin quit
 2:48 PM <moneromooo> Monero's are little endian. OpenSSL is big endian by default IIRC.
 2:55 PM <@cjs77> Cool, so we should stick to little endian to reduce confusion then.
 2:56 PM <@cjs77> I think the asset template RFC uses big-endian examples, so I should switch that around

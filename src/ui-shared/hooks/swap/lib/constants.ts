@@ -72,14 +72,14 @@ const handleSetupToken = (token: EnabledTokensEnum, decimals = 18, name: string)
             ENABLED_TOKEN_ADDRESSES[token as keyof typeof ENABLED_TOKEN_ADDRESSES][ChainId.MAINNET],
             decimals,
             token,
-            name
+            name,
         ),
         [ChainId.SEPOLIA]: new Token(
             ChainId.SEPOLIA,
             ENABLED_TOKEN_ADDRESSES[token as keyof typeof ENABLED_TOKEN_ADDRESSES][ChainId.SEPOLIA],
             decimals,
             token,
-            name
+            name,
         ),
     };
 };
@@ -97,7 +97,7 @@ export const TOKEN_DEFINITIONS = {
 // ---
 
 export const KNOWN_SDK_TOKENS: Record<ChainId, Record<`0x${string}`, Token>> = Object.keys(
-    ENABLED_TOKEN_ADDRESSES
+    ENABLED_TOKEN_ADDRESSES,
 ).reduce(
     (acc, key) => {
         const tokenAddresses = ENABLED_TOKEN_ADDRESSES[key as keyof typeof ENABLED_TOKEN_ADDRESSES];
@@ -115,5 +115,5 @@ export const KNOWN_SDK_TOKENS: Record<ChainId, Record<`0x${string}`, Token>> = O
 
         return acc;
     },
-    {} as Record<ChainId, Record<`0x${string}`, Token>>
+    {} as Record<ChainId, Record<`0x${string}`, Token>>,
 );

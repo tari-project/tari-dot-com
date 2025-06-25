@@ -90,7 +90,10 @@ export function useTokenDisplayInfo({
         }
 
         const effectiveDefinition =
-            def || fallbackDefinition || (chainId ? Ether.onChain(chainId) : undefined) || XTM_SDK_TOKEN[chainId as keyof typeof XTM_SDK_TOKEN];
+            def ||
+            fallbackDefinition ||
+            (chainId ? Ether.onChain(chainId) : undefined) ||
+            XTM_SDK_TOKEN[chainId as keyof typeof XTM_SDK_TOKEN];
 
         return {
             label:

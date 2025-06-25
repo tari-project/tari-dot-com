@@ -12,11 +12,11 @@ On Monday, the Tari community compared the pros and cons of different Multisig a
 
 Considerations for multisig approaches
 
-* N-of-N scenarios can be solved with aggregated schnorr signatures
-* They are flexible, small, and confidential between parties
+- N-of-N scenarios can be solved with aggregated schnorr signatures
+- They are flexible, small, and confidential between parties
 
-* N-of-M scenarios could leverage Shamir's secret sharding
-* How do you tie final assembly of the secret to a transaction that all parties have agreed to without requiring the asset issuer to always be online?
+- N-of-M scenarios could leverage Shamir's secret sharding
+- How do you tie final assembly of the secret to a transaction that all parties have agreed to without requiring the asset issuer to always be online?
 
 Join us for our next discussion on Freenode in #tari-dev.
 

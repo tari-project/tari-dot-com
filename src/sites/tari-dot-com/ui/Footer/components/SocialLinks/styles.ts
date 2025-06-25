@@ -23,7 +23,9 @@ export const SocialIcon = styled(Link)`
     align-items: center;
     justify-content: center;
     opacity: 0.75;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 
     svg {
         height: 20px;

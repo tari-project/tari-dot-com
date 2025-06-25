@@ -10,10 +10,10 @@ class: subpage
 
 Monday’s Tari protocol architecture discussion was all about the base layer modules of [Tari’s architecture proposal](https://github.com/tari-project/RFC/blob/master/proposals/181107-base-layer-architecture.md). Specifically, a few questions needed to be answered, as the above architecture proposal is only a rough draft. Questions like:
 
-* Are the main moving parts of the base layer covered in the architecture proposal?
-* Should the design layout for the code be grouped by function or by software stack?
-* Does the Tari protocol architecture align with the folder structure proposal?
-* Are Tari’s base layer modules sufficiently decoupled from each other?
+- Are the main moving parts of the base layer covered in the architecture proposal?
+- Should the design layout for the code be grouped by function or by software stack?
+- Does the Tari protocol architecture align with the folder structure proposal?
+- Are Tari’s base layer modules sufficiently decoupled from each other?
 
 The full discussion was one of the most vibrant Tari community discussions to date, and set the stage for a Thursday discussion on 2nd layer protocol architecture.
 

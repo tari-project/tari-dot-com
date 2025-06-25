@@ -103,7 +103,9 @@ export const StyledLink = styled(Link)`
     line-height: 140%;
 
     opacity: 0.75;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
     text-decoration: none;
 
     &:hover {

@@ -39,7 +39,6 @@ export const useSwapData = () => {
     const connectedAccount = useAccount();
     const [ethUsdPrice, setEthUsdPrice] = useState<number | undefined>();
 
-
     const [ethTokenAmount, setEthTokenAmount] = useState<string>('');
     const [wxtmAmount, setWxtmAmount] = useState<string>('');
 
@@ -79,34 +78,28 @@ export const useSwapData = () => {
 
     const currentChainId = useMemo(
         () => connectedAccount.chain?.id || defaultChainId,
-        [connectedAccount.chain, defaultChainId]
+        [connectedAccount.chain, defaultChainId],
     );
 
     const { data: feeData } = useEstimateFeesPerGas({ chainId: currentChainId });
 
     const fromUiTokenDefinition = useMemo(
         () => (direction === 'toXtm' ? swapEngineInputToken : swapEngineOutputToken),
-        [direction, swapEngineInputToken, swapEngineOutputToken]
+        [direction, swapEngineInputToken, swapEngineOutputToken],
     );
     const toUiTokenDefinition = useMemo(
         () => (direction === 'toXtm' ? swapEngineOutputToken : swapEngineInputToken),
-        [direction, swapEngineInputToken, swapEngineOutputToken]
+        [direction, swapEngineInputToken, swapEngineOutputToken],
     );
 
-    const {
-        tokenDisplayInfo: ethTokenDisplay,
-        refetch: refetchFromToken,
-    } = useTokenDisplayInfo({
+    const { tokenDisplayInfo: ethTokenDisplay, refetch: refetchFromToken } = useTokenDisplayInfo({
         uiTokenDefinition: fromUiTokenDefinition,
         chainId: currentChainId,
         accountAddress: connectedAccount.address,
         fallbackDefinition: currentChainId ? Ether.onChain(currentChainId) : undefined,
     });
 
-    const {
-        tokenDisplayInfo: xtmTokenDisplay,
-        refetch: refetchToToken,
-    } = useTokenDisplayInfo({
+    const { tokenDisplayInfo: xtmTokenDisplay, refetch: refetchToToken } = useTokenDisplayInfo({
         uiTokenDefinition: toUiTokenDefinition,
         chainId: currentChainId,
         accountAddress: connectedAccount.address,
@@ -119,7 +112,13 @@ export const useSwapData = () => {
 
     const notEnoughBalance = useMemo(() => {
         if (direction === 'toXtm') {
-            if (!ethTokenDisplay?.rawBalance || !ethTokenAmount || !ethTokenDisplay.decimals || Number(ethTokenAmount) <= 0) return false;
+            if (
+                !ethTokenDisplay?.rawBalance ||
+                !ethTokenAmount ||
+                !ethTokenDisplay.decimals ||
+                Number(ethTokenAmount) <= 0
+            )
+                return false;
             try {
                 const amountBigInt = viemParseUnits(ethTokenAmount, ethTokenDisplay.decimals);
                 return amountBigInt > ethTokenDisplay.rawBalance;
@@ -127,7 +126,8 @@ export const useSwapData = () => {
                 return true;
             }
         } else {
-            if (!xtmTokenDisplay?.rawBalance || !wxtmAmount || !xtmTokenDisplay.decimals || Number(wxtmAmount) <= 0) return false;
+            if (!xtmTokenDisplay?.rawBalance || !wxtmAmount || !xtmTokenDisplay.decimals || Number(wxtmAmount) <= 0)
+                return false;
             try {
                 const amountBigInt = viemParseUnits(wxtmAmount, xtmTokenDisplay.decimals);
                 return amountBigInt > xtmTokenDisplay.rawBalance;
@@ -214,7 +214,7 @@ export const useSwapData = () => {
                         abi: viemErc20Abi,
                         functionName: 'balanceOf',
                         args: [connectedAccount.address as `0x${string}`],
-                    }) as const
+                    }) as const,
             );
     }, [connectedAccount.address, baseSelectableTokensForList]);
 
@@ -262,7 +262,7 @@ export const useSwapData = () => {
                         : undefined;
                 } else {
                     const contractIndex = selectableTokensContracts.findIndex(
-                        (c) => c.address.toLowerCase() === baseToken.address?.toLowerCase()
+                        (c) => c.address.toLowerCase() === baseToken.address?.toLowerCase(),
                     );
                     const balanceResult =
                         contractIndex !== -1 && erc20BalancesData ? erc20BalancesData[contractIndex] : undefined;
@@ -376,7 +376,7 @@ export const useSwapData = () => {
                         const quoteToken = details.executionPrice.quoteCurrency;
                         if (baseToken.symbol && quoteToken.symbol) {
                             setExecutionPriceDisplay(
-                                `1 ${baseToken.symbol} = ${formatNumberWithCommas(details.executionPrice.toSignificant(6))} ${quoteToken.symbol}`
+                                `1 ${baseToken.symbol} = ${formatNumberWithCommas(details.executionPrice.toSignificant(6))} ${quoteToken.symbol}`,
                             );
                         } else setExecutionPriceDisplay(null);
                     } else setExecutionPriceDisplay(null);
@@ -386,9 +386,7 @@ export const useSwapData = () => {
                         } else {
                             setEthTokenAmount(formatAmountSmartly(details.outputAmount));
                         }
-                    }
-
-                    else {
+                    } else {
                         if (lastUpdatedField === 'ethTokenField') {
                             setWxtmAmount(formatAmountSmartly(details.outputAmount));
                         } else {
@@ -405,7 +403,7 @@ export const useSwapData = () => {
                 if (error.name === 'AbortError') {
                     return;
                 }
-                console.error("Error in calcAmounts: ", error);
+                console.error('Error in calcAmounts: ', error);
                 setUiError('Failed to fetch quote. Please try again.');
                 if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
                 else if (lastUpdatedField === 'wxtmField' && ethTokenAmount !== '') setEthTokenAmount('');
@@ -416,7 +414,18 @@ export const useSwapData = () => {
                 }
             }
         },
-        [lastUpdatedField, ethTokenAmount, fromUiTokenDefinition, wxtmAmount, toUiTokenDefinition, clearCalculatedDetails, getTradeDetails, feeData?.gasPrice, feeData?.maxFeePerGas, currentChainId]
+        [
+            lastUpdatedField,
+            ethTokenAmount,
+            fromUiTokenDefinition,
+            wxtmAmount,
+            toUiTokenDefinition,
+            clearCalculatedDetails,
+            getTradeDetails,
+            feeData?.gasPrice,
+            feeData?.maxFeePerGas,
+            currentChainId,
+        ],
     );
 
     const calcAmountsFnRef = useRef(calcAmounts);
@@ -442,14 +451,15 @@ export const useSwapData = () => {
         clearCalculatedDetails();
         const value = cleanFormattedNumber(rawValue);
 
-
         const currentUiTokenDef = field === 'ethTokenField' ? fromUiTokenDefinition : toUiTokenDefinition;
         const maxDecimals = currentUiTokenDef?.decimals ?? 18;
         let processedValue = value;
 
-        const isEffectivelyZeroOrInvalid = processedValue === '' || processedValue === '.' || Number(processedValue) <= 0;
+        const isEffectivelyZeroOrInvalid =
+            processedValue === '' || processedValue === '.' || Number(processedValue) <= 0;
 
-        if (isEffectivelyZeroOrInvalid && processedValue !== "0.") { // Allow "0." to continue for typing "0.X"
+        if (isEffectivelyZeroOrInvalid && processedValue !== '0.') {
+            // Allow "0." to continue for typing "0.X"
             if (field === 'ethTokenField') {
                 setEthTokenAmount(processedValue);
                 if (wxtmAmount !== '') setWxtmAmount('');
@@ -547,14 +557,26 @@ export const useSwapData = () => {
             networkFee,
             priceImpact,
             destinationAddress: connectedAccount.address,
-            minimumReceived: null,//  minimumReceivedDisplay,
+            minimumReceived: null, //  minimumReceivedDisplay,
             executionPrice: executionPriceDisplay,
             transactionId,
             txBlockHash,
             paidTransactionFeeApproval: null,
             paidTransactionFeeSwap: paidTransactionFee,
         }),
-        [direction, ethTokenAmount, wxtmAmount, slippage, networkFee, priceImpact, connectedAccount.address, executionPriceDisplay, transactionId, txBlockHash, paidTransactionFee]
+        [
+            direction,
+            ethTokenAmount,
+            wxtmAmount,
+            slippage,
+            networkFee,
+            priceImpact,
+            connectedAccount.address,
+            executionPriceDisplay,
+            transactionId,
+            txBlockHash,
+            paidTransactionFee,
+        ],
     );
 
     const handleSelectFromToken = useCallback(
@@ -567,7 +589,7 @@ export const useSwapData = () => {
             clearCalculatedDetails();
             debounceCalc();
         },
-        [setPairTokenAddress, clearCalculatedDetails, debounceCalc]
+        [setPairTokenAddress, clearCalculatedDetails, debounceCalc],
     );
 
     const combinedError = uiError || swapEngineError;

@@ -10,9 +10,9 @@ class: subpage
 
 On Thursday, the Tari community discussed one particular aspect of asset issuer namespace registration. Specifically, Thursday's conversation was all about RAIN_IDs, and the ways digital asset issuers might register assets on the DAN. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* What is the optimal RAIN_ID length?
-* Do digital asset issuers require multiple RAIN_IDs?
-* Is a prior block hash required in the RAIN_ID string?
+- What is the optimal RAIN_ID length?
+- Do digital asset issuers require multiple RAIN_IDs?
+- Is a prior block hash required in the RAIN_ID string?
 
 Join us for our next discussion on Freenode in #tari-dev.
 

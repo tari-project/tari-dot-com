@@ -1,6 +1,7 @@
 export type DownloadPlatform = 'windows' | 'macos' | 'linux';
 import { sendGTMEvent } from '@next/third-parties/google';
 import { useExchangeData } from './useExchangeData';
+import { useSearchParams } from 'next/navigation';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -24,6 +25,8 @@ const checkIsMobile = () => {
 
 export const useDownloadUniverse = () => {
     const { data: exchange } = useExchangeData();
+    const searchParams = useSearchParams();
+
     const handleDownload = (platform?: DownloadPlatform) => {
         if (!platform) {
             platform = getPlatform();
@@ -57,7 +60,11 @@ export const useDownloadUniverse = () => {
 
         const formattedUrl = new URL(url);
         if (exchange?.name) {
-            formattedUrl.searchParams.set('exchange', exchange?.id || '');
+            formattedUrl.searchParams.set('universeReferral', exchange?.id || '');
+        }
+        const veeraEmailRef = searchParams.get('veeraEmailRef');
+        if (veeraEmailRef) {
+            formattedUrl.searchParams.set('veeraEmailRef', veeraEmailRef);
         }
 
         try {
@@ -68,7 +75,6 @@ export const useDownloadUniverse = () => {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-
         } catch (error) {
             console.error('Download failed:', error);
             // Fallback to original method
@@ -78,7 +84,7 @@ export const useDownloadUniverse = () => {
 
     const handleDownloadClick = (
         e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        platform?: DownloadPlatform
+        platform?: DownloadPlatform,
     ) => {
         const isMobile = checkIsMobile();
 

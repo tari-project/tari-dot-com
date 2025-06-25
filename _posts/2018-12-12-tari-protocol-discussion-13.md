@@ -12,11 +12,11 @@ Thursday’s Tari protocol architecture discussion covered Tari’s second layer
 
 Thursday’s discussion examined:
 
-* How second layer validator nodes might earn fees for their work
-* How the base and second layers might achieve consensus with each other using merkle-root checkpoints
-* The benefits of non-Turing complete digital asset contracts (smaller attack surface, ease of use, no halting problem)
+- How second layer validator nodes might earn fees for their work
+- How the base and second layers might achieve consensus with each other using merkle-root checkpoints
+- The benefits of non-Turing complete digital asset contracts (smaller attack surface, ease of use, no halting problem)
 
-The full discussion set the stage for a Monday discussion on how various block times and block sizes might support the second layer ‘digital assets network’. 
+The full discussion set the stage for a Monday discussion on how various block times and block sizes might support the second layer ‘digital assets network’.
 
 Join us for our next discussion on Freenode in #tari-dev.
 

@@ -33,7 +33,8 @@ export const TokenList = styled.div`
     padding: 8px 0;
     display: flex;
     flex-direction: column;
-    background: ${({ theme }) => theme.mode === 'dark' ? theme.palette.background.accent : theme.palette.background.paper};
+    background: ${({ theme }) =>
+        theme.mode === 'dark' ? theme.palette.background.accent : theme.palette.background.paper};
 `;
 
 export const TokenItem = styled.div`
@@ -90,8 +91,8 @@ export const TokenItemRight = styled.div`
     font-size: 14px;
     .balance {
         font-size: 12px;
-        font-weight: ${({ theme }) => theme.mode === 'dark' ? '500' : '700'};
-        color: ${({ theme }) => theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary};
+        font-weight: ${({ theme }) => (theme.mode === 'dark' ? '500' : '700')};
+        color: ${({ theme }) => (theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary)};
         border-radius: 100px;
         background: ${({ theme }) => theme.palette.background.accent};
         border: 1px solid ${({ theme }) => theme.palette.divider};
@@ -146,7 +147,7 @@ export const CopyText = styled(motion.div)`
     font-size: 14px;
     line-height: 26px;
     border-radius: 15px;
-    background: #36C475;
+    background: #36c475;
     color: white;
     z-index: 1;
 `;

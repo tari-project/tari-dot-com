@@ -63,7 +63,7 @@ export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, stagge
                         </WordAnimation>
                         <WordSpacer>{segment}</WordSpacer>
                     </WordWrapper>
-                )
+                ),
             )}
         </Wrapper>
     );

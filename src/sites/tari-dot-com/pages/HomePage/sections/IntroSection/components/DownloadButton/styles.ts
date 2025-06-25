@@ -43,7 +43,8 @@ export const Button = styled.button<{ $backgroundColor?: string; $glow?: boolean
     overflow: hidden;
     transition: transform 0.5s ease;
 
-    background: linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
+    background:
+        linear-gradient(90deg, #5a63d3 0%, #3342ff 48.5%, #23297c 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
 
     ${({ $backgroundColor }) =>
@@ -118,7 +119,8 @@ export const Icons = styled.div<{ $showIconBackground?: boolean }>`
 export const HoverGradient = styled(motion.div)`
     position: absolute;
     inset: 0;
-    background: linear-gradient(270deg, #6656d3 1.03%, #d080cf 49.03%, #e88f5b 100%),
+    background:
+        linear-gradient(270deg, #6656d3 1.03%, #d080cf 49.03%, #e88f5b 100%),
         linear-gradient(0deg, #813bf5 0%, #813bf5 100%), #262140;
     z-index: 0;
 

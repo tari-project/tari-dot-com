@@ -12,12 +12,12 @@ Thursday’s architecture discussion examined the possible names for the differe
 
 Names for VN Committees:
 
-* Must be intuitive and reflect the systems governing the Tari network
-* What is the optimal way to refer to a committee assigned by an asset issuer vs one that is algorithmically determined?
+- Must be intuitive and reflect the systems governing the Tari network
+- What is the optimal way to refer to a committee assigned by an asset issuer vs one that is algorithmically determined?
 
 Node syncing:
 
-* Should Tari build off the system Grin uses for node syncing and handling re-orgs?
+- Should Tari build off the system Grin uses for node syncing and handling re-orgs?
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -89,6 +89,6 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 8:17 AM <@cjs77> if the committee is selected algorithmically, there'll be another field to indicate the choice of algorithm (e.g. totally random vs, required minimum collateral vs some other identifier)
 8:24 AM <moneromooo> creator_assigned/network_assigned (if I'm muddying things, say so and I'll go away)
 8:28 AM <@cjs77> ^ actually I like that a lot. less typing ftw :)
-8:39 AM <simian_za> +1 network_assigned 
+8:39 AM <simian_za> +1 network_assigned
 1:42 PM <@cjs77> Let's get https://github.com/tari-project/tari/pull/78 merged in. The idea is to cover the main talking points of the DAN and reserve some RFC numbers. I think that goal is accomplished  -- thanks to everyone who picked up some obvious gaps in the original submission. As soon as it's merged, I can create issues for each RFC and anyone who wants to pick up the topic can get some input here and then write up the doc.
 ```

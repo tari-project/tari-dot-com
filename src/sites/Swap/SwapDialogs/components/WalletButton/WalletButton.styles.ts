@@ -40,7 +40,7 @@ export const WalletActionButton = styled.button<{
                 `;
             case 'error':
                 return css`
-                    background: #FF3636BF;
+                    background: #ff3636bf;
                     color: white;
                 `;
             default:

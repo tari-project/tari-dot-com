@@ -56,13 +56,10 @@ export const Swap = memo(function Swap() {
         postToParentIframe({ type: MessageType.WALLET_CONNECT, payload: { open: false } });
     };
 
-
-    const { connect } = useAppKitWallet(
-        {
-            onSuccess: onCloseWalletConnect,
-            onError: onCloseWalletConnect,
-        }
-    );
+    const { connect } = useAppKitWallet({
+        onSuccess: onCloseWalletConnect,
+        onError: onCloseWalletConnect,
+    });
 
     const {
         notEnoughBalance,
@@ -108,7 +105,7 @@ export const Swap = memo(function Swap() {
     };
 
     useEffect(() => {
-        const isOpen = tokenSelectOpen || openWallet
+        const isOpen = tokenSelectOpen || openWallet;
         postToParentIframe({ type: MessageType.SET_FULLSCREEN, payload: { open: isOpen } });
     }, [openWallet, tokenSelectOpen]);
 
@@ -122,7 +119,12 @@ export const Swap = memo(function Swap() {
         return null;
     }, [transaction.networkFee, ethUsdPrice]);
 
-    const onSuccess = (txResult: { response?: TransactionResponse; receipt?: TransactionReceipt; status?: TransactionState; actualFeeWei?: bigint }) => {
+    const onSuccess = (txResult: {
+        response?: TransactionResponse;
+        receipt?: TransactionReceipt;
+        status?: TransactionState;
+        actualFeeWei?: bigint;
+    }) => {
         setFromAmount('');
         setTargetAmount('');
 
@@ -130,7 +132,8 @@ export const Swap = memo(function Swap() {
         const swapFeeUsd = ethUsdPrice && payedFeeInEth ? Number(payedFeeInEth) * ethUsdPrice : null;
 
         postToParentIframe({
-            type: MessageType.PROCESSING_STATUS, payload: {
+            type: MessageType.PROCESSING_STATUS,
+            payload: {
                 status: 'success',
                 txBlockHash: txResult.receipt?.blockHash as `0x${string}`,
                 transactionId: txResult.response?.hash,
@@ -142,7 +145,7 @@ export const Swap = memo(function Swap() {
                 fromTokenAmount: formatNumberWithCommas(uiDirection === 'toXtm' ? ethTokenAmount : wxtmAmount),
                 toTokenSymbol: uiDirection === 'toXtm' ? xtmTokenDisplay?.symbol : ethTokenDisplay?.symbol,
                 toTokenAmount: formatNumberWithCommas(uiDirection === 'toXtm' ? wxtmAmount : ethTokenAmount),
-            }
+            },
         });
     };
 
@@ -155,18 +158,23 @@ export const Swap = memo(function Swap() {
             }
 
             postToParentIframe({
-                type: MessageType.CONFIRM_REQUEST, payload: {
+                type: MessageType.CONFIRM_REQUEST,
+                payload: {
                     toTokenDisplay: xtmTokenDisplay,
-                    fromTokenDisplay: ethTokenDisplay, transaction: {
-                        ...transaction, amount, targetAmount,
+                    fromTokenDisplay: ethTokenDisplay,
+                    transaction: {
+                        ...transaction,
+                        amount,
+                        targetAmount,
                         networkFee: networkFeeUsd,
                         networkFeeNative: transaction.networkFee,
-                    }, toTokenSymbol: xtmTokenDisplay?.symbol,
-                }
+                    },
+                    toTokenSymbol: xtmTokenDisplay?.symbol,
+                },
             });
         } else {
             connect('walletConnect');
-            onOpenWalletConnect()
+            onOpenWalletConnect();
         }
     };
 
@@ -213,7 +221,10 @@ export const Swap = memo(function Swap() {
 
         const notifyParent = () => {
             if (containerRef.current && containerRef.current.offsetHeight) {
-                postToParentIframe({ type: MessageType.SWAP_HEIGHT_CHANGE, payload: { height: containerRef.current.offsetHeight + 10 } });
+                postToParentIframe({
+                    type: MessageType.SWAP_HEIGHT_CHANGE,
+                    payload: { height: containerRef.current.offsetHeight + 10 },
+                });
             }
         };
 
@@ -235,52 +246,63 @@ export const Swap = memo(function Swap() {
     const fromInputFontSize = useAdaptiveFontSize({
         inputValue: ethTokenAmount,
         inputRef: fromInputRef,
-        maxFontSize: 36
+        maxFontSize: 36,
     });
 
     const toInputFontSize = useAdaptiveFontSize({
         inputValue: wxtmAmount,
         inputRef: toInputRef,
-        maxFontSize: 36
+        maxFontSize: 36,
     });
 
     const xtmTokenInputMarkup = useMemo(() => {
-        return <OptionContainer>
-            <SwapOption>
-                <SwapLabel>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</SwapLabel>
-                <SwapOptionAmount>
-                    <SwapAmountInput
-                        ref={toInputRef} // Assign ref
-                        type="text"
-                        $error={uiDirection === 'fromXtm' ? notEnoughBalance : false}
-                        $loading={isLoading && lastUpdatedField === 'ethTokenField'}
-                        inputMode="decimal"
-                        placeholder="0.00"
-                        onChange={(e) => setTargetAmount(e.target.value)}
-                        value={formatNumberWithCommas(wxtmAmount)}
-                        $dynamicFontSize={toInputFontSize} // Pass dynamic font size
-                    />
-                    <SwapOptionCurrencyContianer>
-                        <SwapOptionCurrency>
-                            {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
-                            <span>{'wXTM'}</span>
-                            <span />
-                        </SwapOptionCurrency>
-                    </SwapOptionCurrencyContianer>
-                </SwapOptionAmount>
-                <BottomWrapper>
-                    <div />
-                    <span>
-                        {xtmTokenDisplay?.balance}
+        return (
+            <OptionContainer>
+                <SwapOption>
+                    <SwapLabel>{uiDirection === 'toXtm' ? 'Receive (estimated)' : 'Sell'}</SwapLabel>
+                    <SwapOptionAmount>
+                        <SwapAmountInput
+                            ref={toInputRef} // Assign ref
+                            type="text"
+                            $error={uiDirection === 'fromXtm' ? notEnoughBalance : false}
+                            $loading={isLoading && lastUpdatedField === 'ethTokenField'}
+                            inputMode="decimal"
+                            placeholder="0.00"
+                            onChange={(e) => setTargetAmount(e.target.value)}
+                            value={formatNumberWithCommas(wxtmAmount)}
+                            $dynamicFontSize={toInputFontSize} // Pass dynamic font size
+                        />
+                        <SwapOptionCurrencyContianer>
+                            <SwapOptionCurrency>
+                                {getCurrencyIcon({ symbol: EnabledTokensEnum.WXTM, width: 25 })}
+                                <span>{'wXTM'}</span>
+                                <span />
+                            </SwapOptionCurrency>
+                        </SwapOptionCurrencyContianer>
+                    </SwapOptionAmount>
+                    <BottomWrapper>
+                        <div />
+                        <span>
+                            {xtmTokenDisplay?.balance}
 
-                        {
-                            // {uiDirection === 'fromXtm' && toTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
-                        }
-                    </span>
-                </BottomWrapper>
-            </SwapOption>
-        </OptionContainer>
-    }, [isLoading, lastUpdatedField, notEnoughBalance, setTargetAmount, toInputFontSize, xtmTokenDisplay, uiDirection, wxtmAmount]);
+                            {
+                                // {uiDirection === 'fromXtm' && toTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
+                            }
+                        </span>
+                    </BottomWrapper>
+                </SwapOption>
+            </OptionContainer>
+        );
+    }, [
+        isLoading,
+        lastUpdatedField,
+        notEnoughBalance,
+        setTargetAmount,
+        toInputFontSize,
+        xtmTokenDisplay,
+        uiDirection,
+        wxtmAmount,
+    ]);
 
     const ethTokenInputMarkup = useMemo(() => {
         let usdValue = 0;
@@ -288,47 +310,58 @@ export const Swap = memo(function Swap() {
             usdValue = ethUsdPrice * Number(ethTokenAmount);
         }
 
-        return <OptionContainer>
-            <SwapOption $paddingBottom={25}>
-                <SwapLabel>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</SwapLabel>
-                <SwapOptionAmount>
-                    <SwapAmountInput
-                        ref={fromInputRef} // Assign ref
-                        type="text"
-                        $error={uiDirection === 'toXtm' ? notEnoughBalance : false}
-                        $loading={isLoading && lastUpdatedField === 'wxtmField'}
-                        inputMode="decimal"
-                        placeholder="0.00"
-                        onChange={(e) => setFromAmount(e.target.value)}
-                        value={formatNumberWithCommas(ethTokenAmount)}
-                        $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
-                    />
-                    <SwapOptionCurrencyContianer>
-                        <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
-                            {getCurrencyIcon({ symbol: ethTokenDisplay?.symbol || EnabledTokensEnum.ETH, width: 25 })}
-                            <span>{ethTokenDisplay?.symbol || 'ETH'}</span>
-                            <ChevronSVG width={8} />
-                        </SwapOptionCurrency>
-                    </SwapOptionCurrencyContianer>
-                </SwapOptionAmount>
-                <BottomWrapper>
-                    {usdValue > 0 ? (
+        return (
+            <OptionContainer>
+                <SwapOption $paddingBottom={25}>
+                    <SwapLabel>{uiDirection === 'toXtm' ? 'Sell' : 'Receive (estimated)'}</SwapLabel>
+                    <SwapOptionAmount>
+                        <SwapAmountInput
+                            ref={fromInputRef} // Assign ref
+                            type="text"
+                            $error={uiDirection === 'toXtm' ? notEnoughBalance : false}
+                            $loading={isLoading && lastUpdatedField === 'wxtmField'}
+                            inputMode="decimal"
+                            placeholder="0.00"
+                            onChange={(e) => setFromAmount(e.target.value)}
+                            value={formatNumberWithCommas(ethTokenAmount)}
+                            $dynamicFontSize={fromInputFontSize} // Pass dynamic font size
+                        />
+                        <SwapOptionCurrencyContianer>
+                            <SwapOptionCurrency $clickable={true} onClick={() => setTokenSelectOpen(true)}>
+                                {getCurrencyIcon({
+                                    symbol: ethTokenDisplay?.symbol || EnabledTokensEnum.ETH,
+                                    width: 25,
+                                })}
+                                <span>{ethTokenDisplay?.symbol || 'ETH'}</span>
+                                <ChevronSVG width={8} />
+                            </SwapOptionCurrency>
+                        </SwapOptionCurrencyContianer>
+                    </SwapOptionAmount>
+                    <BottomWrapper>
+                        {usdValue > 0 ? <span>${usdValue.toFixed(2)}</span> : <div> </div>}
                         <span>
-                            ${usdValue.toFixed(2)}
+                            {ethTokenDisplay?.balance}
+
+                            {
+                                //{uiDirection === 'toXtm' && fromTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
+                            }
                         </span>
-                    ) : (<div> </div>)}
-                    <span>
-                        {ethTokenDisplay?.balance}
-
-                        {
-                            //{uiDirection === 'toXtm' && fromTokenDisplay?.balance && <MaxButton onClick={onMaxClick}>MAX</MaxButton>}
-                        }
-                    </span>
-                </BottomWrapper>
-            </SwapOption>
-        </OptionContainer >
-    }, [ethTokenAmount, ethUsdPrice, fromInputFontSize, ethTokenDisplay, isLoading, lastUpdatedField, notEnoughBalance, setFromAmount, setTokenSelectOpen, uiDirection]);
-
+                    </BottomWrapper>
+                </SwapOption>
+            </OptionContainer>
+        );
+    }, [
+        ethTokenAmount,
+        ethUsdPrice,
+        fromInputFontSize,
+        ethTokenDisplay,
+        isLoading,
+        lastUpdatedField,
+        notEnoughBalance,
+        setFromAmount,
+        setTokenSelectOpen,
+        uiDirection,
+    ]);
 
     return (
         <SwapsContainer ref={containerRef}>
@@ -362,9 +395,7 @@ export const Swap = memo(function Swap() {
             )}
             {transaction.executionPrice && Number(ethTokenAmount) > 0 && Number(wxtmAmount) > 0 ? (
                 <SwapInfo>
-                    <span>
-                        {transaction.executionPrice}
-                    </span>
+                    <span>{transaction.executionPrice}</span>
                     {
                         // <span>
                         //     {networkFeeUsd ? <>
@@ -400,4 +431,3 @@ export const Swap = memo(function Swap() {
         </SwapsContainer>
     );
 });
-

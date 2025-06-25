@@ -13,7 +13,8 @@ export const TokenList = styled.div`
     overflow-y: auto;
     border-radius: 8px;
     padding: 8px;
-    background: ${({ theme }) => theme.mode === 'dark' ? theme.palette.background.accent : theme.palette.background.paper};
+    background: ${({ theme }) =>
+        theme.mode === 'dark' ? theme.palette.background.accent : theme.palette.background.paper};
     border-radius: 25px;
 `;
 
@@ -61,12 +62,12 @@ export const TokenValue = styled.div`
     }
     .balance {
         font-size: 0.875rem;
-        color: ${({ theme }) => theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary};
+        color: ${({ theme }) => (theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary)};
         border-radius: 100px;
         background: ${({ theme }) => theme.palette.background.accent};
         border: 1px solid ${({ theme }) => theme.palette.divider};
         padding: 2px 8px;
         margin-top: 4px;
-        font-weight: ${({ theme }) => theme.mode === 'dark' ? '500' : '700'};
+        font-weight: ${({ theme }) => (theme.mode === 'dark' ? '500' : '700')};
     }
 `;

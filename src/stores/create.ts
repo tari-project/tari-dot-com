@@ -20,4 +20,3 @@ export const create = (<T>() => {
         return store;
     };
 }) as typeof _create;
-

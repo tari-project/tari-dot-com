@@ -5,50 +5,56 @@ date: 2024-10-04 12:00
 author: Solivagant
 thumbnail: learn-the-tari-codebase.png
 lead: A guide to Tari's localization system and how you can contribute new languages.
-subtitle: 
+subtitle:
 class: subpage
 ---
 
 At Tari, our approach has always leaned towards greater usability. Tari Universe, our desktop mining app, provides an easy entry point for those unfamiliar with the more complicated aspects of setting up and mining Tari. Right now, Tari Universe has a limited number of languages available; with your help, we’d like to expand the selection.
 
-Adding a new language is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills. Whether you're familiar with programming or are looking for a way to start familiarising yourself with development, this guide is for you. We’ll explain how to go about contributing new languages - or localizations - to Tari Universe. 
+Adding a new language is a great way to dip your feet into the world of open-source projects, and requires minimal programming skills. Whether you're familiar with programming or are looking for a way to start familiarising yourself with development, this guide is for you. We’ll explain how to go about contributing new languages - or localizations - to Tari Universe.
 
 # Getting started
+
 To contribute a localization, you’ll need these at the bare minimum:
 
-* A GitHub account
-* A fork of the Tari Universe repository.
-* Git
+- A GitHub account
+- A fork of the Tari Universe repository.
+- Git
 
 However, this guide assumes the use of VS Code as your integrated development environment (IDE). This has some additional prerequisites, such as installing the IDE itself and supporting applications such as Git, nvm, Rust, and more.
 
 Most of the above is covered in our [“Setting up your development environment” guide](/lessons/08_setting_up_development_environment.html). If you're not already familiar with development practices and tools, this is a good place to start.
 
 In this guide, we’ll cover the following:
-* Creating a GitHub account
-* Checking whether the localization you want to add already exists
-* Creating a fork of the Tari Universe project and new branch within your fork to begin working on the new localization.
-* Explain how localization works in Tari Universe
-* Explain the purpose of the different localization files and factors to keep in mind when translating.
-* Committing your localization for review and inclusion in Tari Universe via a pull request.
+
+- Creating a GitHub account
+- Checking whether the localization you want to add already exists
+- Creating a fork of the Tari Universe project and new branch within your fork to begin working on the new localization.
+- Explain how localization works in Tari Universe
+- Explain the purpose of the different localization files and factors to keep in mind when translating.
+- Committing your localization for review and inclusion in Tari Universe via a pull request.
 
 ## Step 1 - Create a GitHub account
+
 If you already have a GitHub account, you can skip this step. To sign up to GitHub, follow the instructions provided [at GitHub’s documentation site](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 
 While the steps may vary over time, you will need to perform the following actions:
-* Provide your desired username, password, and email address
-* Verify your email address
+
+- Provide your desired username, password, and email address
+- Verify your email address
 
 Once you’re done, you’ll be redirected to the GitHub dashboard.
 
 A useful introduction to basic development concepts is the [Hello World tutorial provided by GitHub](https://docs.github.com/en/get-started/start-your-journey/hello-world). This tutorial introduces new users to the basics of development within GitHub and covers basic concepts such as repos, branches, commits, and more.
 
 ## Step 2 - Check the current localizations
+
 Before you start working, you need to check if the localization you want to add already exists or not. Go to the [Tari Universe project](https://github.com/tari-project/universe/tree/main/public/locales) and browse through the locales folders for currently available localizations.
 
 If the one you wanted to add already exists, you can still contribute! Localization requires writers, proofreaders, and editors; all are necessary to ensure quality translations. You can simply work on an existing localization you're interested in. We’ll explain this in more detail from Step 5.
 
 ## Step 3 - Forking the Tari Universe repo
+
 Next, we will fork the Tari Universe repo. Forking the Tari repo allows you to create your copy of the Tari Universe codebase, independent of the original project. This will allow you to safely modify the codebase without impacting the main project.
 
 Make sure you are logged into your GitHub account, then navigate to the Tari Universe repo **[here](https://github.com/tari-project/universe)**. Look to the top-right corner of the screen for the **Fork** button.
@@ -60,10 +66,11 @@ Click on the drop-down and note the forks available. It should be blank. Click o
 <img src="../assets/lessons/img/adding-languages/new_fork_form.png" width=600>
 
 When filling out the form, keep the following in mind:
-* The owner should be your GitHub username
-* The repo name will be automatically filled in based on the repo name from the existing project. Leave it as is.
-* You can provide a description of the project. Descriptions and comments are a good habit to get into, so fill this out with a suitable description.
-* Make sure the **Copy the main branch only** option is checked. If you uncheck the option, you will copy all available branches from the existing repo, which will make things difficult to manage.
+
+- The owner should be your GitHub username
+- The repo name will be automatically filled in based on the repo name from the existing project. Leave it as is.
+- You can provide a description of the project. Descriptions and comments are a good habit to get into, so fill this out with a suitable description.
+- Make sure the **Copy the main branch only** option is checked. If you uncheck the option, you will copy all available branches from the existing repo, which will make things difficult to manage.
 
 Click the **Create fork** button to continue.
 
@@ -72,18 +79,20 @@ Once you’ve done so, there’ll be a brief delay while GitHub creates the fork
 <img src="../assets/lessons/img/adding-languages/new_fork_created.png" width=600>
 
 ## Step 4 - Creating a new branch for your localization work
+
 Now that you have your own fork of the project, you will need to create a new branch. Branching creates a copy of the code at a specific point in time, allowing you to work on your changes without impacting the work of others.
 
 Open up VS Code, and ensure you have your repository open. If you're not sure what is meant by this, be sure to check out the [“How to Become a Tari Contributor” guide](/lessons/how_to_become_a_tari_contributor.html) and confirm you've completed the necessary steps before continuing.
 
-* At the bottom-left corner of VS Code’s status bar, click on the “main” branch. In the Command Palette at the top of VS Code, you will see that you have the option to create a new branch.
-* Select the **Create Branch** option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization” or "editing-french-airdrop-json".
-* Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch.
-* Click on the little cloud upload button next to the branch. In the Command Palette, you will have the option of publishing it to **Origin** or **Upstream**. Select **Origin**. You will now see the new branch in your list.
+- At the bottom-left corner of VS Code’s status bar, click on the “main” branch. In the Command Palette at the top of VS Code, you will see that you have the option to create a new branch.
+- Select the **Create Branch** option and give it an appropriate name. The standard convention is to avoid spaces and use hyphens in their place; for example, “new-localization-esperanto”. If you are editing an existing localization, this might change to, for example, “proofreading-french-localization” or "editing-french-airdrop-json".
+- Once you’ve created the branch, you will notice that the status bar’s branch has been updated to whatever you called your new branch. However, you will still need to publish the new branch.
+- Click on the little cloud upload button next to the branch. In the Command Palette, you will have the option of publishing it to **Origin** or **Upstream**. Select **Origin**. You will now see the new branch in your list.
 
 Congratulations! You’re now ready to start working on your localization.
 
 ## Step 5 - Getting to grips with Tari Universe's language system
+
 When launching for the first time, Tari Universe uses the user's system locale to determine which language the application should display. If the system locale is unavailable, the initial language displayed will be English.
 
 Available languages for Tari Universe are available in a drop-down within the **Settings → General Settings** section of the application. The user can also select to use the system’s language (or locale) to determine which language Tari Universe will use.
@@ -191,21 +200,23 @@ i18n.use(HttpBackend)
 ```
 
 So there are four areas you would need to edit:
-* Within **export enum Language**, you will need to add your new localization's language code. You can do so by matching the two-letter code you noted in previous steps.
-* Within **switch (languageCode)**, you need to add the various regional locales that might map to your localization. This is usually a combination of the language code and the country code (derived from the ISO-3166(https://en.wikipedia.org/wiki/ISO_3166-1 codes). So for example, English would have 'en', 'en-GB', 'en-US' and so on to represent the variations available. This is appended **return Language.[YourCode]** which you defined in **export enum Language**
-* Within **export const LanguageList**, you'll need to include a line that tells the system what it should call the language in the Languages drop-down list. 
-* Lastly, inside **supportedLngs:**, you'll need to add your language to the list.
+
+- Within **export enum Language**, you will need to add your new localization's language code. You can do so by matching the two-letter code you noted in previous steps.
+- Within **switch (languageCode)**, you need to add the various regional locales that might map to your localization. This is usually a combination of the language code and the country code (derived from the ISO-3166(https://en.wikipedia.org/wiki/ISO_3166-1 codes). So for example, English would have 'en', 'en-GB', 'en-US' and so on to represent the variations available. This is appended **return Language.[YourCode]** which you defined in **export enum Language**
+- Within **export const LanguageList**, you'll need to include a line that tells the system what it should call the language in the Languages drop-down list.
+- Lastly, inside **supportedLngs:**, you'll need to add your language to the list.
 
 If you're concerned or feel uncomfortable editing any of the above, you can skip it; the project maintainers will, if the localization is accepted, hook up your language in the system.
 
 ## Step 6 - Duplicate an existing locale folder
+
 The easiest way to get started is to duplicate one of the existing locale folders. You can skip this step if you are simply going to be editing an existing localization.
 
 First, check what the ISO-639 Set 1 code is for the language you are adding. You can get a [full list here](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes).
 
 Right-click on the locale folder in VS Code's Explorer and select the **Create Folder** option. You will see a new, blank folder is created. Enter the two-letter code you noted earlier to create the folder.
 
-Next, select all the files in the **en** folder, right-click, and select **Copy**. Then, open your newly created folder, right-click, and select **Paste**. The files will be copied into the folder as new files. 
+Next, select all the files in the **en** folder, right-click, and select **Copy**. Then, open your newly created folder, right-click, and select **Paste**. The files will be copied into the folder as new files.
 
 Note that each of these files has a **"U"** against it. You need to commit these changes to your local repository so that VS Code can start tracking changes against the files.
 
@@ -220,11 +231,13 @@ You’ll be warned that this is not a staged commit and asked if you wish to com
 > **_TIP:_** While not necessary, Tari uses the conventional commits standard for commits. [A quick cheatsheet is available here](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13). You will likely be mostly using feat, fix, and chore.
 
 ## Step 7 - Edit the JSON files
+
 If you have started a new localization, open the files created in the previous step. Otherwise, locate the existing localization you would like to edit and open those files. Regardless of the activity, as you work, save frequently and commit your changes, syncing as necessary. In addition, please keep the following guidelines in mind:
-* Avoid machine translation where possible. While workable, being fluent in the language is preferable.
-* Proofread your work to catch any errors you may introduce.
-* Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
-* Do not change any text that is within braces e.g. {{version}}
+
+- Avoid machine translation where possible. While workable, being fluent in the language is preferable.
+- Proofread your work to catch any errors you may introduce.
+- Do not translate specific references to underlying services, applications, or technologies. For example, xmrig and p2pool should be referred to as such regardless of the language being used.
+- Do not change any text that is within braces e.g. {{version}}
 
 Below, you can find a description of what each JSON file affects within Tari Universe:
 |**File**|**Description**|
@@ -239,6 +252,7 @@ Below, you can find a description of what each JSON file affects within Tari Uni
 |tribes-view.json| The title for the Squad View section in Settings. |
 
 ## Step 8 - Creating a pull request (PR) for your localization
+
 Once you’ve completed your localization changes, you will need to submit them via a pull request (PR) - essentially, an official Git request that asks the main project maintainers to review and incorporate your localization into the main project.
 
 Before you begin this process, confirm that you have committed and synced all of your changes and double-check that no new locale variables have been added to the JSON files that you need to account for.
@@ -252,9 +266,10 @@ Click on the **Compare & Pull Request** button to open the **Open a Pull Request
 <img src="../assets/lessons/img/adding-languages/pull_request_form.png" width=600>
 
 Below this is the form for capturing details about the PR. Follow these conventions when providing information:
-* The title of the PR should read, “Feat: added new localization for [your language]”
-* By default, GitHub has a standard template for capturing details against the PR. It’s best to follow the template when capturing info. You can refer to [this PR](https://github.com/tari-project/universe/pull/715) as a good example of the typical information provided.
-* Below the form and submission button is a summary of the changes that are being made.
+
+- The title of the PR should read, “Feat: added new localization for [your language]”
+- By default, GitHub has a standard template for capturing details against the PR. It’s best to follow the template when capturing info. You can refer to [this PR](https://github.com/tari-project/universe/pull/715) as a good example of the typical information provided.
+- Below the form and submission button is a summary of the changes that are being made.
 
 Once you have completed the form, press the **Create pull request** button. This will both create a pull request and notify the maintainers that your code should be reviewed.
 
@@ -263,7 +278,5 @@ Once you have completed the form, press the **Create pull request** button. This
 If the maintainers are happy with your additions, they will accept the PR and merge it into the main project. It might still be some time until the localization is incorporated into the main interface, though, so if it has been accepted, please be patient!
 
 # Conclusion
+
 Adding new localizations, or improving existing ones, ensures Tari Universe is easily useable by a wide audience.
-
-
-

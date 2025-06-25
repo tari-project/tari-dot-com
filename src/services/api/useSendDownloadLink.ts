@@ -8,7 +8,7 @@ async function sendDownloadLink(email: string, token: string) {
         },
         body: JSON.stringify({
             email,
-            token
+            token,
         }),
     });
 

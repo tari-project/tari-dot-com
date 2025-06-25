@@ -319,14 +319,11 @@ export default function TokenomicsPage() {
                     </span>
                     <br />
                     <span>
-                        You can also earn precious gems and maximize your rewards through the
-                        {' '}
+                        You can also earn precious gems and maximize your rewards through the{' '}
                         <a href="https://airdrop.tari.com/" rel="">
                             Tari Airdrop
-                        </a>
-                        {' '}
-                        game by inviting friends to mine. Questions or just want to chat? Join our
-                        {' '}
+                        </a>{' '}
+                        game by inviting friends to mine. Questions or just want to chat? Join our{' '}
                         <a href="https://t.me/tariproject" rel="">
                             Telegram community
                         </a>

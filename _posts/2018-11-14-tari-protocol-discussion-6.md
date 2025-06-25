@@ -8,14 +8,15 @@ lead: Second layer validator nodes and their role in executing digital asset ins
 class: subpage
 ---
 
-Monday’s Tari protocol architecture discussions focused on validator nodes and their role in executing Tari digital asset instructions. 
+Monday’s Tari protocol architecture discussions focused on validator nodes and their role in executing Tari digital asset instructions.
 
 This is the TL;DR of Monday’s conversation (full transcript included below):
 
 Validator nodes
-* Can a single validator node perform digital asset instructions on its own or should there always be a number of them that work together?
-* What transaction fee models might work best?
-* Under what circumstances would it be more profitable to be a base layer miner node vs. a second layer asset validator node?
+
+- Can a single validator node perform digital asset instructions on its own or should there always be a number of them that work together?
+- What transaction fee models might work best?
+- Under what circumstances would it be more profitable to be a base layer miner node vs. a second layer asset validator node?
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

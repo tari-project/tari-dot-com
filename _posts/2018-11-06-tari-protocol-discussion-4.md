@@ -13,22 +13,26 @@ The Tari community examined merge-mining pool implementations, wire protocol cho
 This is the TL;DR on what was covered (full transcript included below):
 
 How will Monero mining pools get the tools they need in order to support Tari merge-mining?
-* PRs are submitted or someone has to fork the OSS mining pool software
-* Closed source pools would need to do it themselves or talk to someone in the Tari community
+
+- PRs are submitted or someone has to fork the OSS mining pool software
+- Closed source pools would need to do it themselves or talk to someone in the Tari community
 
 Which wire protocols should be considered?
-* In-process, ZeroMQ looks interesting
-* Still looking at gRPC / http / hand-rolled also as some alternatives
+
+- In-process, ZeroMQ looks interesting
+- Still looking at gRPC / http / hand-rolled also as some alternatives
 
 What are possible in-process communication options & threading models?
-* ZeroMQ is the preferred choice
-* actix, Rust native (mpsc), tokio, mio, hand-rolled message brokers are possible alternatives
-* More testing is needed to check speed of inprocess comms for ZeroMQ
+
+- ZeroMQ is the preferred choice
+- actix, Rust native (mpsc), tokio, mio, hand-rolled message brokers are possible alternatives
+- More testing is needed to check speed of inprocess comms for ZeroMQ
 
 How should code dependencies be handled?
-* Audit every dependency
-* Evaluate whether the risks < benefits, and go for battle-hardened, proven technologies where available
-* It’s hubris to reinvent libraries that have millions of CPU hours behind them, but also it’s folly to chuck in a lib with 50 dependencies just to save 2 lines of boilerplate code
+
+- Audit every dependency
+- Evaluate whether the risks < benefits, and go for battle-hardened, proven technologies where available
+- It’s hubris to reinvent libraries that have millions of CPU hours behind them, but also it’s folly to chuck in a lib with 50 dependencies just to save 2 lines of boilerplate code
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

@@ -18,13 +18,12 @@ cuddly one. Not only that, but I heard that it's impossible to send coins using 
 being online.
 
 \- Well yes, Tari makes use of the Mimblewimble protocol under the hood. But contrary to common belief, both parties
-   don’t need to be online simultaneously in order to transact in Tari. And you can reuse that same emoji ID that you
-   know and love over and over, without compromising your privacy or revealing your identity.
+don’t need to be online simultaneously in order to transact in Tari. And you can reuse that same emoji ID that you
+know and love over and over, without compromising your privacy or revealing your identity.
 
 \- Let’s see how Tari achieves this.
 
 [^1]: Names have been changed to protect the victims of tragic boating accidents.
-
 
 ## The Tari DHT network
 
@@ -72,7 +71,6 @@ take up to 60 seconds, especially with the added complexity of Tor thrown into t
 
 [^2]: An earlier version of the comms stack used symmetric encryption with a shared Diffie-Hellman key, which meant that the sender had to share his public key with the message; so everyone one would know that Alice was sending a message to Bob. We got tired of the gossip and speculation that there was something going on between those two, so we switched to the more private method.
 
-
 ### Tari and Tor
 
 Tor is [The Onion Router](https://www.torproject.org/).
@@ -105,7 +103,6 @@ The drawback of using Tor, as we mentioned above is that all this bouncing aroun
 significantly slower. But you know what? It’s a bit like those cosmetics products: worth it.
 
 [^3]: We haven’t solved it fully; wallets do need to talk to a node to obtain blockchain information for some things, including watching for transaction confirmations, but we have some ideas on how to reduce this in the future.
-
 
 ## How do we have “addresses”? I thought Tari used Mimblewimble.
 

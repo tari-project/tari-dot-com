@@ -19,8 +19,7 @@ export const TokenSelection = ({ isOpen, setIsOpen, availableTokens, onSelectTok
 
     return (
         <TransactionModal show={isOpen} handleClose={() => setIsOpen(false)} title={'Select a token'}>
-            <ModalContent
-            >
+            <ModalContent>
                 <TokenList role="listbox" aria-label={'Select a token'}>
                     {availableTokens.map((token) =>
                         token.symbol.toLowerCase() === 'wxtm' ? null : (
@@ -48,7 +47,7 @@ export const TokenSelection = ({ isOpen, setIsOpen, availableTokens, onSelectTok
                                     {token.balance && <span className="balance">{token.balance}</span>}
                                 </TokenValue>
                             </TokenItem>
-                        )
+                        ),
                     )}
                     {availableTokens.length === 0 && (
                         <div style={{ padding: '20px', textAlign: 'center', color: '#a0a0b0' }}>

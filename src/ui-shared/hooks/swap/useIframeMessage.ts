@@ -1,7 +1,7 @@
 'use client';
-import { SelectableTokenInfo } from "@/sites/Swap/useSwapData";
-import { useEffect } from "react";
-import { SwapDirection } from "./lib/types";
+import { SelectableTokenInfo } from '@/sites/Swap/useSwapData';
+import { useEffect } from 'react';
+import { SwapDirection } from './lib/types';
 
 export enum MessageType {
     ERROR = 'ERROR',
@@ -33,7 +33,7 @@ interface SwapHeightChangeMessage {
     type: MessageType.SWAP_HEIGHT_CHANGE;
     payload: {
         height: number;
-    }
+    };
 }
 
 type SwapConfirmation = {
@@ -55,31 +55,31 @@ type SwapConfirmation = {
             transactionId?: string | null;
             paidTransactionFee?: string | null;
         };
-    }
-}
+    };
+};
 
 type ApproveMessage = {
     type: MessageType.APPROVE_REQUEST;
-}
+};
 
 type ApproveSuccessMessage = {
     type: MessageType.APPROVE_SUCCESS;
-}
+};
 
 type ErrorMessage = {
     type: MessageType.ERROR;
     payload: {
         message: string;
-    }
-}
+    };
+};
 
 type SuccessMessage = {
     type: MessageType.SUCCESS;
     payload: {
         status: 'pending' | 'success' | 'error';
         txId?: string;
-    }
-}
+    };
+};
 
 type SwapStatus = 'processingapproval' | 'processingswap' | 'success' | 'error';
 
@@ -95,8 +95,8 @@ type ProcessingMessage = {
         fromTokenAmount?: string;
         toTokenSymbol?: string;
         toTokenAmount?: string;
-    }
-}
+    };
+};
 
 export type IframeMessage =
     | ApproveMessage
@@ -107,8 +107,7 @@ export type IframeMessage =
     | SuccessMessage
     | ProcessingMessage
     | SetFullscreenMessage
-    | SwapHeightChangeMessage
-    ;
+    | SwapHeightChangeMessage;
 
 // Post a message to the parent window
 export function postToParentIframe(message: IframeMessage, targetOrigin: string = '*') {

@@ -92,4 +92,3 @@ export const useAdaptiveFontSize = ({
 
     return dynamicFontSize;
 };
-

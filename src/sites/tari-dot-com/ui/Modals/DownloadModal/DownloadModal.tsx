@@ -25,9 +25,10 @@ import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
 import { useExchangeData } from '@/services/api/useExchangeData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
+import { useSearchParams } from 'next/navigation';
 
 export default function DownloadModal() {
     const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
@@ -38,6 +39,15 @@ export default function DownloadModal() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { token, markup, reset } = useCaptcha('light');
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const veeraEmailRef = searchParams.get('veeraEmailRef');
+        if (!isSuccess && veeraEmailRef) {
+            setIsSuccess(true);
+        }
+    }, [isSuccess, searchParams]);
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -60,7 +70,45 @@ export default function DownloadModal() {
             if (email && token) {
                 await subscribeNewsletter({ email, name, token, veera: isVeera }).then((r) => {
                     if (r.success) {
+                        const veeraEmailRef = r.veeraEmailRef;
                         setIsSuccess(true);
+                        
+                        // Update URL search params with veeraEmailRef
+                        if (isVeera && veeraEmailRef) {
+                            const url = new URL(window.location.href);
+                            url.searchParams.set('veeraEmailRef', veeraEmailRef);
+                            window.history.pushState({}, '', url.toString());
+                        }
+
+                        // Auto-download for Veera after successful email submission
+                        if (isVeera) {
+                            // Detect user's platform and trigger download
+                            const userAgent = navigator.userAgent.toLowerCase();
+                            let downloadUrl = '';
+
+                            if (userAgent.includes('win')) {
+                                downloadUrl = windowsLink;
+                            } else if (userAgent.includes('mac')) {
+                                downloadUrl = macLink;
+                            } else {
+                                downloadUrl = linuxLink;
+                            }
+
+                            // Trigger download
+                            const link = document.createElement('a');
+                            const url = new URL(downloadUrl);
+                            url.searchParams.set('veeraEmailRef', veeraEmailRef);
+                            url.searchParams.set('universeReferral', 'veera');
+
+                            link.href = downloadUrl;
+                            link.download = '';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+
+                            const platform = userAgent.includes('win') ? 'windows' : userAgent.includes('mac') ? 'macos' : 'linux';
+                            sendGTMEvent({ event: 'download_button_clicked', platform, exchange: 'veera' });
+                        }
                     } else {
                         reset();
                     }
@@ -80,10 +128,10 @@ export default function DownloadModal() {
 
                 {!isSuccess && (
                     <TextGroup>
-                        <Title>your download has started</Title>
+                        <Title>{isVeera ? 'Ready to start earning?' : 'your download has started'}</Title>
                         <Text>
                             {isVeera
-                                ? 'Submit your Veera email to start earning rewards.'
+                                ? 'Submit your email ID associated with Veera to start earning rewards'
                                 : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
                         </Text>
                         <Form onSubmit={handleSubmit}>
@@ -126,38 +174,44 @@ export default function DownloadModal() {
                     </TextGroup>
                 )}
 
-                {isSuccess && (
-                    isVeera ?
+                {isSuccess &&
+                    (isVeera ? (
                         <SuccessMessage>
+                            <Title>{'Your download has started'}</Title>
                             <Text>
-                                <strong>You’re all set!</strong>
+                                <strong>You’re all set!</strong> your <strong>Veera</strong> rewards are on the way.
                             </Text>
                         </SuccessMessage>
-                        :
+                    ) : (
                         <SuccessMessage>
                             <Text>
-                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
+                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and
+                                drops.
                             </Text>
                         </SuccessMessage>
+                    ))}
+
+                {(!isVeera || isSuccess) && (
+                    <>
+                        <Divider>
+                            <DividerLine />
+                            <DividerText>Having trouble? Here are your download links.</DividerText>
+                            <DividerLine />
+                        </Divider>
+
+                        <DownloadButtons>
+                            <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
+                                WINDOWS <WindowsIcon fill="#fff" />
+                            </DownloadButton>
+                            <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
+                                MAC <MacIcon fill="#fff" />
+                            </DownloadButton>
+                            <DownloadButton href={linuxLink} onClick={() => handleClick('linux')}>
+                                Linux <LinuxIcon fill="#fff" />
+                            </DownloadButton>
+                        </DownloadButtons>
+                    </>
                 )}
-
-                <Divider>
-                    <DividerLine />
-                    <DividerText>Having trouble? Here are your download links.</DividerText>
-                    <DividerLine />
-                </Divider>
-
-                <DownloadButtons>
-                    <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
-                        WINDOWS <WindowsIcon fill="#fff" />
-                    </DownloadButton>
-                    <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
-                        MAC <MacIcon fill="#fff" />
-                    </DownloadButton>
-                    <DownloadButton href={linuxLink} onClick={() => handleClick('linux')}>
-                        Linux <LinuxIcon fill="#fff" />
-                    </DownloadButton>
-                </DownloadButtons>
             </ContentGroup>
         </BaseModal>
     );

@@ -53,7 +53,7 @@ export default function Pagination({ currentPage, totalPages }: Props) {
                         <PageNumber key={page} href={`/updates?page=${page}`} $active={page === currentPage}>
                             {page}
                         </PageNumber>
-                    )
+                    ),
                 )}
             </PageNumbers>
 

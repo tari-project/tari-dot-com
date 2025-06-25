@@ -10,4 +10,3 @@ export const ChevronSVG = ({ width = '30', height = '30', title = 'Chevron' }: P
         <path d="M20 13.6667L18.4375 12L15 15.6667L11.5625 12L10 13.6667L15 19L20 13.6667Z" fill="currentColor" />
     </svg>
 );
-

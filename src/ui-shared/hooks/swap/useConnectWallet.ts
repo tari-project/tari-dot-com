@@ -32,7 +32,7 @@ export const useConnectWallet = ({
 
                 provider.on('proposal_expire', () => {
                     setError?.(
-                        'Wallet Connect failed. Please try again with a different Ethereum wallet. If you continue to face challenges, please connect with Tari contributors on Telegram or Discord.'
+                        'Wallet Connect failed. Please try again with a different Ethereum wallet. If you continue to face challenges, please connect with Tari contributors on Telegram or Discord.',
                     );
                 });
 
@@ -63,7 +63,5 @@ export const useConnectWallet = ({
         }
     }, [connectors, isOpen, setError, setIsOpen]);
 
-
-    return { handleConnect }
+    return { handleConnect };
 };
-

@@ -7,15 +7,14 @@ thumbnail: assets/img/posts/protocol-discussion-43.png
 lead: What needs committing
 class: subpage
 topics:
-- What Tari needs to commit to range proofs
-- Why Tari needs to commit to UTXO's not TXO's
+    - What Tari needs to commit to range proofs
+    - Why Tari needs to commit to UTXO's not TXO's
 ---
 
 On Thursday, the Tari community discussed what we need to commit to. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* We need to commit to rangeproofs
-* We need to commit to UTXO's and not TXO's
-
+- We need to commit to rangeproofs
+- We need to commit to UTXO's and not TXO's
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -28,9 +27,10 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 11:06 <@CjS77>  Welcome to Thursday's dev discussion
-11:08 <Blackwolfsa>  are we continuing monday's discussion? 
+11:08 <Blackwolfsa>  are we continuing monday's discussion?
 11:08  * Kellanved (~Kellanved@41.217.127.241) has joined the channel
 11:11 <@CjS77>  Yes, let's wrap up a few points on that
 11:11 <Blackwolfsa>  I have a proposal to ensure that we commit to the UTXO set and not the TXo set
@@ -57,13 +57,13 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 
 Remove the range proof MMR · Issue #627 · mimblewimble/grin
 It occurred to me today that committing to range proof hashes in a MMR doesn&#39;t really help us for anything except malleability. And that we didn&#39;t really care about range proof malleability...
-11:56 <Blackwolfsa>  my opinion of this is, we need to commit to them as well. 
+11:56 <Blackwolfsa>  my opinion of this is, we need to commit to them as well.
 12:03 <Hansie>  Blackwolfsa: Committing to range proofs seems to be a good idea yes, as per info above, specifically Apoelstra's comment.
 12:06 <Hansie>  And the overlay of TXO Merkle tree with Roaring Bitmap and committing to it seems like a great idea as well. Can be really usable functionally.
 12:08 <tar1b0t>  [mattermost] <stringhandler> Whatever you commit to you will have to transfer over the network at some point
 12:08 <tar1b0t>  [mattermost] <stringhandler> are we saying we will transfer the full roaring bitmap on the network?
 12:18 <@CjS77>  Yes, you have to commit to the range-proofs, but I believe you only need to commit to the proofs *per block*; comitting to every single range proof in every block is overkill imo
 14:15 <Blackwolfsa>  stringhandler: you only need full bitmap when syncing...
-14:15 <Blackwolfsa>  If you sync and the block was constructed correctly the bitmaps should sync up. 
+14:15 <Blackwolfsa>  If you sync and the block was constructed correctly the bitmaps should sync up.
 
 ```

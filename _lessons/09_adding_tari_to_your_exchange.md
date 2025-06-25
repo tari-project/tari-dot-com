@@ -10,10 +10,10 @@ thumbnail: placeholder-thumbnail.jpg
 
 In this guide, we will cover the basics of getting a Minotari node operational and explain the process of setting up the associated wallets required to run Minotari on your exchange securely:
 
--   We will set up your own Minotari node
--   We will cover the creation of a Minotari wallet as the store of funds, as well as a corresponding read-only wallet for use by the exchange for monitoring transactions
--   We will discuss how to monitor the blockchain for transactions
--   We will cover both the depositing and withdrawal of funds to the wallet
+- We will set up your own Minotari node
+- We will cover the creation of a Minotari wallet as the store of funds, as well as a corresponding read-only wallet for use by the exchange for monitoring transactions
+- We will discuss how to monitor the blockchain for transactions
+- We will cover both the depositing and withdrawal of funds to the wallet
 
 This guide assumes that the node will not be used for mining.
 
@@ -39,13 +39,13 @@ The Minotari node is the base layer node required to receive and monitor transca
 
 The following binaries will be available.
 
--   minotari_console_wallet
--   minotari_merge_mining_proxy
--   minotari_miner
--   minotari_node
--   randomx-benchmark
--   randomx-codegen
--   randomx-tests
+- minotari_console_wallet
+- minotari_merge_mining_proxy
+- minotari_miner
+- minotari_node
+- randomx-benchmark
+- randomx-codegen
+- randomx-tests
 
 The two required for the exchange are the **minotari_node** and **minotari_console_wallet**
 
@@ -61,9 +61,9 @@ If a node has not yet been created, it will inform you that a node config file d
 
 Once done, the Minotari base node will boot up. You'll see a splash page with a list of the various Command Mode (accessible via Ctrl+C) commands available to you. Some useful ones are:
 
--   `watch status`: returns you to the auto-refresh status from the Command Mode
--   `version`: which version of the Minotari Node you are running
--   `whoami`: provides address information related to the node
+- `watch status`: returns you to the auto-refresh status from the Command Mode
+- `version`: which version of the Minotari Node you are running
+- `whoami`: provides address information related to the node
 
 5. Type `whoami` and press enter. You'll see your Public Key, Node ID and Public Address, along with a QR Code. You should copy this data to a file or secure location for future reference.
 
@@ -344,7 +344,7 @@ call.on('status', (status) => {
 
 This is a basic implementation; some additional items you may want to consider for a production environment are:
 
--   Using `grpc.credentials.createSsl()` to secure the connection between the wallet and any application calling it. We'll not discuss the process of creating a server key or certificate here; you can read more about the process [here](https://www.ibm.com/docs/en/api-connect/10.0.x?topic=profile-generating-self-signed-certificate-using-openssl). Below is an example:
+- Using `grpc.credentials.createSsl()` to secure the connection between the wallet and any application calling it. We'll not discuss the process of creating a server key or certificate here; you can read more about the process [here](https://www.ibm.com/docs/en/api-connect/10.0.x?topic=profile-generating-self-signed-certificate-using-openssl). Below is an example:
 
 ```javascript
 // Load the protobuf definition
@@ -467,6 +467,6 @@ Exchanges should not allow clients to provide interactive Tari Addresses. This c
 
 To break it down:
 
--   The value is 01 (hexadecimal)
--   In binary, this is 00000001
--   The least significant bit (rightmost bit) is 1, indicating support for interactive transactions
+- The value is 01 (hexadecimal)
+- In binary, this is 00000001
+- The least significant bit (rightmost bit) is 1, indicating support for interactive transactions

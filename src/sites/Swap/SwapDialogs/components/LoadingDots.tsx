@@ -31,4 +31,3 @@ const LoadingDots: React.FC = () => {
 };
 
 export default LoadingDots;
-

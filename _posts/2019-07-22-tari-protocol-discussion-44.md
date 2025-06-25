@@ -7,7 +7,7 @@ thumbnail: assets/img/posts/protocol-discussion-44.png
 lead: proofs
 class: subpage
 topics:
-- Cryptographic proofs and Tari
+    - Cryptographic proofs and Tari
 ---
 
 On Monday, the Tari community discussed a few technical things around proofs.
@@ -23,6 +23,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 17:51 <Hansie>  Hi there
 17:52 <Hansie>  I thought we could open the floor tonight for any off the cuff or other tar-dev related matter to be discussed
@@ -57,8 +58,8 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:29 <sarang>  Are you assuming a single range proof by someone with knowledge of all commitment secret data?
 18:29 <sarang>  Or an MPC bulletproof
 18:29 <sarang>  Which has very tricky security properties
-18:30 <Blackwolfsa>  a singe rangeproof. 
-18:31 <Blackwolfsa>  I am trying to see if there is a way to calculate such a rangeproof, without providing the verifier all the commitments and their individual rangeproofs 
+18:30 <Blackwolfsa>  a singe rangeproof.
+18:31 <Blackwolfsa>  I am trying to see if there is a way to calculate such a rangeproof, without providing the verifier all the commitments and their individual rangeproofs
 18:31 <sarang>  Depends on how you want to aggregate the proof
 18:31 <Blackwolfsa>  is there a way?
 18:32 <Blackwolfsa>  I am trying to find a way that can be done.
@@ -71,7 +72,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:33 <Blackwolfsa>  the verifier does not care about the individual ones, he only cares about the aggregated one
 18:36 <sarang>  What does the prover know?
 18:36 <sarang>  If you sum a bunch of commitments and know _all_ secret data, you can of course construct a range proof showing the value sum is within a given range, but nothing more
-18:36 <Blackwolfsa>  he can see the individual commitments and their rangeproofs. 
+18:36 <Blackwolfsa>  he can see the individual commitments and their rangeproofs.
 18:36 <sarang>  If the prover only has the individual commitments and bulletproofs, you can't do anything
 18:37 <sarang>  The closest you can come is an MPC on the individual commitments, but it's interactive
 18:37 <sarang>  (and, again, perilous)
@@ -82,7 +83,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:39 <Blackwolfsa>  well first I want it to be secure and useable... :P
 18:39 <sarang>  But no, I don't see a way it's possible to generate such a rangeproof with access to no secret data
 18:40 <sarang>  or interactivity among the original committers
-18:43 <Blackwolfsa>  darn it, because the prover should not have access to those values, since they become vulnerable. 
+18:43 <Blackwolfsa>  darn it, because the prover should not have access to those values, since they become vulnerable.
 18:45 <sarang>  I would love such a technique for Monero too...
 18:45 <sarang>  even ignoring the idea of summing commitments, of course
 18:45 <sarang>  We have a whole block of bulletproofs

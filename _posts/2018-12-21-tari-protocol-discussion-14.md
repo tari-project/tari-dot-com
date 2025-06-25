@@ -10,10 +10,10 @@ class: subpage
 
 Monday’s architecture discussion was a debate on the optimal block size and block time for Tari’s base layer to support its second layer ‘digital assets network’. The key questions up for debate included:
 
-* What is the minimum viable block interval for Tari’s base layer?
-* How might block propagation time constrain the possible range of block intervals?
-* How should the Tari protocol balance the speed requirements of the second layer ‘digital assets network’ with block orphan rates?
-* Should the base layer have a ‘transactions per second’ upper limit?
+- What is the minimum viable block interval for Tari’s base layer?
+- How might block propagation time constrain the possible range of block intervals?
+- How should the Tari protocol balance the speed requirements of the second layer ‘digital assets network’ with block orphan rates?
+- Should the base layer have a ‘transactions per second’ upper limit?
 
 The full discussion introduced many possible block implementations including a proposal for a testnet experiment to ascertain the optimal block interval & size. After the architecture discussion, this [Medium article](https://medium.facilelogin.com/the-mystery-behind-block-time-63351e35603a?gi=a4ffa0c4fa20) and this [Bitcoin data](https://drive.google.com/file/d/12zNSpyoaA5avTiTVngK6wSEmtB3eA2Kt/view) was presented on Freenode to help the Tari community understand the fundamentals of block times and network latency.
 

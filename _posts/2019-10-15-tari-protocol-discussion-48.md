@@ -7,8 +7,8 @@ thumbnail: assets/img/posts/protocol-discussion-48.png
 lead: Proof of work for the tari chain
 class: subpage
 topics:
-- What should Tari's POW algorithm be?
-- What will Tari have to do when Monero changes their POW algo?
+    - What should Tari's POW algorithm be?
+    - What will Tari have to do when Monero changes their POW algo?
 ---
 
 On Monday, the Tari community discussed proof of work strategies.
@@ -24,6 +24,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Monday discussion
+
 ```
 18:04 <Hansie> Hi there
 18:04 <@CjS77> Hi everyone
@@ -63,7 +64,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 18:37 <@CjS77> Contentious forks are very bad. Luckily in Monero, there haven't been many of them
 18:37 <Hansie> So if we do merged mining with say Monero and SHA256d, I guess the stable hash rate will come from SHA256d
 18:38 <Hansie> And we would only need to dove tail Monero's mining strategy
-18:39 <Blackwolfsa> Ja, hard forks kan have bad consequences.. 
+18:39 <Blackwolfsa> Ja, hard forks kan have bad consequences..
 18:46 <Hansie> Looking at some stats for Myriad: SHA->7,540.17 Ph/s   |    Scrypt->85.19 Th/s   |   Yescrypt->2.79 Mh/s
 18:46 <Hansie> Could not find the other 2 quickly
 18:49 <moneromooo> With a traditional merge mining scheme, you are free to mine the merged mined coin only, right ? Mining the "parent" is optional AFAIK, but I just have this notion from general background, not having looked at it myself.

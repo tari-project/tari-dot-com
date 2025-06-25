@@ -18,4 +18,3 @@ export function StatusHero({ icon, title, children }: StatusHeroProps) {
         </Wrapper>
     );
 }
-

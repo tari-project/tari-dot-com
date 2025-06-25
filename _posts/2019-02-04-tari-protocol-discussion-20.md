@@ -12,13 +12,13 @@ On Monday, the Tari community discussed how pruned and archival nodes might sync
 
 Archival nodes:
 
-* Necessary as a safety backstop
-* At least one honest archival node required to recover from a deep re-org (a deep re-org is one that goes further back than a node's pruning horizon)
+- Necessary as a safety backstop
+- At least one honest archival node required to recover from a deep re-org (a deep re-org is one that goes further back than a node's pruning horizon)
 
-Pruned nodes: 
+Pruned nodes:
 
-* Maintain a subset of all past blocks
-* How many blocks should pruned nodes track before pruning (pruning horizon)?
+- Maintain a subset of all past blocks
+- How many blocks should pruned nodes track before pruning (pruning horizon)?
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -107,7 +107,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 11:45 AM <Blackwolfsa> What do you do?
 11:46 AM <Blackwolfsa> He can only supply you with one node? This seems to me a vector for attack and he should just be ignored
 11:46 AM <@cjs77> You mean supply me with one block?
-11:47 AM <ixside> Why would a node have a horizon of 1? 
+11:47 AM <ixside> Why would a node have a horizon of 1?
 11:47 AM <Blackwolfsa> That's my point, if he has a horizon that small, he is most likely an attacker
 11:48 AM <@cjs77> If the reorg is beyond my pruning horizon, the RFC says I must get blocks from a node with  longer horizon or an archoval node (infinite horizon), so by that logic, yes, I ignore the node with horizon 1
 11:48 AM <@cjs77> That makes sense to me, unless I'm missing something

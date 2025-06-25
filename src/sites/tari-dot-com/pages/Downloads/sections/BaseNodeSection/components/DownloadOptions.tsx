@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import { OptionsWrapper } from './styles';
 import DropDown from '@/ui-shared/components/DropDown/DropDown';
 import DownloadButton from '@/ui-shared/components/DownloadButton/DownloadButton';
-import { Network, MacArch, WindowsArch, LinuxArch } from '@/ui-shared/types/downloadTypes';
+import { Network, MacArch, WindowsArch, LinuxArch, Os } from '@/ui-shared/types/downloadTypes';
 import { networkOptions, architectureOptions } from '@/ui-shared/hooks/useSetDownloads';
 import { useDownloadStore } from '@/services/stores/useDownloadStore';
 import { useDownloads } from '@/services/api/useDownloads';
 import { getLatestDownload } from '@/sites/tari-dot-com/utils/organizeDownloads';
-import { Os } from '@/ui-shared/types/downloadTypes';
 
 function DownloadSelector() {
     const [isDisabled, setIsDisabled] = useState(false);

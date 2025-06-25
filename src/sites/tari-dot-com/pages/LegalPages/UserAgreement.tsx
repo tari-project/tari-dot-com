@@ -141,13 +141,13 @@ export default function UserAgreement() {
 
                     <p>
                         <strong>Tari Universe</strong> means the open-source desktop application (located at{' '}
-                        <a href="https://github.com/tari-project/universe" target="_blank">
+                        <a href="https://github.com/tari-project/universe" target="_blank" rel="noreferrer">
                             https://github.com/tari-project/universe
                         </a>
                         ) which enables users to mine XTM, manage a non-custodial wallet, and interact with applications
                         built on or integrated with the Tari Network. It is offered for personal, non-commercial use
                         subject to a license agreement located at{' '}
-                        <a href="https://github.com/tari-project/universe/blob/main/LICENSE.md" target="_blank">
+                        <a href="https://github.com/tari-project/universe/blob/main/LICENSE.md" target="_blank" rel="noreferrer">
                             https://github.com/tari-project/universe/blob/main/LICENSE.md
                         </a>
                         .

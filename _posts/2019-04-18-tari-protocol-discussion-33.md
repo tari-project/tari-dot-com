@@ -10,8 +10,8 @@ class: subpage
 
 On Thursday, the Tari community discussed the aggregating bulletproofs for transactions. Below is the TL;DR on Thursday's conversation (full transcript included below):
 
-* Concerns where risen about reducing the security
-* Aggregating bulletproofs reduces size dramatically
+- Concerns where risen about reducing the security
+- Aggregating bulletproofs reduces size dramatically
 
 Join us for our next discussion on Freenode in #tari-dev.
 
@@ -24,6 +24,7 @@ Discussion times proposed by the Tari community:
 To keep up with the latest Tari developments, you can follow the project on [Twitter](https://twitter.com/tari).
 
 ### Transcript of Thursday’s discussion
+
 ```
 11:03 <@CjS77>  Proof aggregation is possible already actually
 11:04 <@CjS77>  On the point of bullet proof range proofs (I just call them range proofs, or RPs from now on), as many of you know, you get space savings for aggregating multiple proofs together.
@@ -37,7 +38,7 @@ To keep up with the latest Tari developments, you can follow the project on [Twi
 11:21 <Blackwolfsa>  The only positives I can see is that they might reduce transaction costs
 11:21 <Blackwolfsa>  if you have multiple utxo's and if they are in multiples of 2
 11:33 <neonknight64>  When 2 or more outputs share a RP, that RP with linking data will have to live as long as the last unspent output. I think it adds unnecessary complexity for that amount of space saving.
-11:38 <Blackwolfsa>  that is true as well, you cant prune one output as long as its linked to another. 
+11:38 <Blackwolfsa>  that is true as well, you cant prune one output as long as its linked to another.
 11:42 <Hansie>  I kind of like the idea that we can have aggregate-able RPs, apart from all the counter arguments here and possible implementation challenges. It depends on how Tx fees will be calculated; this could mean much cheaper Txs for end users and could reduce blockchain size.
 11:44 <Hansie>  Imagine the amount of collective savings in fees if an employer wants to pay 10s or 100s of employees in one Tx.
 11:57 <Blackwolfsa>  if you have 128 (used this cuz the bulletproof paper has agg sizes on this) outputs the total bytes for the output is 90624 bytes, if you aggregated them you required 541796 bytes

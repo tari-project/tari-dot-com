@@ -28,12 +28,9 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
             hero_img_url: '/mock-hero-img.png',
             is_hidden: false,
             // Download links
-            download_link_linux:
-                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-            download_link_mac:
-                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-            download_link_win:
-                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            download_link_linux: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            download_link_mac: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            download_link_win: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             // Reward missing fields
             reward_image:
                 'https://github.com/tari-project/tari-universe/releases/download/v0.1.0/tari-universe-windows-x86_64-v0.1.0.zip',
@@ -57,8 +54,8 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
         throw new Error(
             `Failed to fetch miner stats: ${response.status} ${response.statusText}. Body: ${errorBody.substring(
                 0,
-                500
-            )}`
+                500,
+            )}`,
         );
     }
     return response.json();

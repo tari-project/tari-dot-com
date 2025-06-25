@@ -8,15 +8,15 @@ lead: A Counterparty type model for second layer instructions and the value of b
 class: subpage
 ---
 
-Yesterday’s Tari protocol discussion covered key points highlighted in the rough [GitHub documents](https://github.com/tari-project/RFC/tree/master/proposals) that were presented during last discussion. 
+Yesterday’s Tari protocol discussion covered key points highlighted in the rough [GitHub documents](https://github.com/tari-project/RFC/tree/master/proposals) that were presented during last discussion.
 
 This is the TL;DR of yesterday's conversation (full transcript included below):
 
-* How well could a Counterparty type model fit for instruction-transactions on the 2nd layer — where some things have to go via the base layer?
+- How well could a Counterparty type model fit for instruction-transactions on the 2nd layer — where some things have to go via the base layer?
 
-* Will base layer primitives help if we have a second layer failure where the checkpoints are not good enough to recover the second layer state?
+- Will base layer primitives help if we have a second layer failure where the checkpoints are not good enough to recover the second layer state?
 
-* What kind of info should be on the base layer that could provide value to the second layer beyond what checkpoints provide?
+- What kind of info should be on the base layer that could provide value to the second layer beyond what checkpoints provide?
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

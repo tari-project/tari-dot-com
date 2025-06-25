@@ -10,6 +10,7 @@ import { AnimatePresence } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
 import { useUIStore } from '@/stores/useUiStore';
+import { useSearchParams } from 'next/navigation';
 
 const containerVariants = {
     visible: {
@@ -56,17 +57,19 @@ export default function DownloadButton({
     const [hovering, setHovering] = useState(false);
     const [isOutOfView, setIsOutOfView] = useState(false);
     const buttonRef = useRef<HTMLDivElement>(null);
+    const searchParams = useSearchParams();
 
     const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
-        handleDownloadClick(e);
+        const veeraEmailRef = searchParams.get('veeraEmailRef');
+        if (!isVeera || veeraEmailRef) {
+            handleDownloadClick(e);
+        }
         setShowDownloadModal(true);
     };
-
-    console.log({ isOutOfView });
 
     // Intersection Observer to detect if button is out of view
     useEffect(() => {
@@ -78,7 +81,7 @@ export default function DownloadButton({
             ([entry]) => {
                 setIsOutOfView(!entry.isIntersecting);
             },
-            { threshold: 0.01 }
+            { threshold: 0.01 },
         );
         observer.observe(ref);
 
@@ -114,13 +117,7 @@ export default function DownloadButton({
                         </Text>
                     )}
                     {hovering && (
-                        <Text
-                            key="hover"
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                        >
+                        <Text key="hover" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                             <Word variants={wordVariants}>Start</Word> <Word variants={wordVariants}>Earning</Word>{' '}
                             <Word variants={wordVariants}>XTM</Word> <Word variants={wordVariants}>Today</Word>
                         </Text>
@@ -149,7 +146,7 @@ export default function DownloadButton({
     return (
         <>
             <Wrapper
-                key='wrapper'
+                key="wrapper"
                 ref={isSticky ? buttonRef : undefined}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -160,10 +157,12 @@ export default function DownloadButton({
             >
                 {ButtonContent}
             </Wrapper>
-            {isSticky && isOutOfView && typeof window !== 'undefined' &&
+            {isSticky &&
+                isOutOfView &&
+                typeof window !== 'undefined' &&
                 createPortal(
                     <Wrapper
-                        key='sticky-wrapper'
+                        key="sticky-wrapper"
                         style={{
                             position: 'fixed',
                             left: 0,
@@ -184,9 +183,8 @@ export default function DownloadButton({
                     >
                         {ButtonContent}
                     </Wrapper>,
-                    document.body
-                )
-            }
+                    document.body,
+                )}
         </>
     );
 }

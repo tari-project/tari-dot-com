@@ -12,16 +12,16 @@ On Thursday, the Tari community discussed the lifespan of digital assets on the 
 
 How will the economics work for old tickets?
 
-* Tickets from a show that has already passed might have been redeemed, but the ticket stubs might still be useful
-* But that asset will now have very little movement and thus pay minimal fees
-* How will the Tari network incentivize VNs after redemption to keep the asset state of the stubs for other services that might value that data?
+- Tickets from a show that has already passed might have been redeemed, but the ticket stubs might still be useful
+- But that asset will now have very little movement and thus pay minimal fees
+- How will the Tari network incentivize VNs after redemption to keep the asset state of the stubs for other services that might value that data?
 
 Retiring a digital asset
 
-* If an asset issuer wants to retire an asset, they can 
-* Retiring an asset involves a final checkpoint and a freeze period where interested parties can copy and store the state of the asset and check it against the final checkpoint
-* After this period, the asset ceases to exist on the DAN
-* Merkle proofs of specific states will still be possible against the base layer
+- If an asset issuer wants to retire an asset, they can
+- Retiring an asset involves a final checkpoint and a freeze period where interested parties can copy and store the state of the asset and check it against the final checkpoint
+- After this period, the asset ceases to exist on the DAN
+- Merkle proofs of specific states will still be possible against the base layer
 
 Join us for our next discussion on Freenode in #tari-dev.
 

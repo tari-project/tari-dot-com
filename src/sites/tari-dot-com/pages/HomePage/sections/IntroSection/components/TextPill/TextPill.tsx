@@ -114,12 +114,15 @@ export default function TextPill() {
         const initialTimeout = setTimeout(() => {
             cycleWord();
 
-            animationTimeoutRef.current = setTimeout(() => {
-                intervalRef.current = setInterval(
-                    cycleWord,
-                    WORD_DISPLAY_DURATION + EXIT_ANIMATION_DURATION + ENTRANCE_ANIMATION_DURATION + TRANSITION_GAP
-                );
-            }, EXIT_ANIMATION_DURATION + ENTRANCE_ANIMATION_DURATION + TRANSITION_GAP);
+            animationTimeoutRef.current = setTimeout(
+                () => {
+                    intervalRef.current = setInterval(
+                        cycleWord,
+                        WORD_DISPLAY_DURATION + EXIT_ANIMATION_DURATION + ENTRANCE_ANIMATION_DURATION + TRANSITION_GAP,
+                    );
+                },
+                EXIT_ANIMATION_DURATION + ENTRANCE_ANIMATION_DURATION + TRANSITION_GAP,
+            );
         }, INITIAL_WORD_DISPLAY_DURATION);
 
         return () => {

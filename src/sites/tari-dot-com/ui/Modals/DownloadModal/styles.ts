@@ -229,12 +229,8 @@ export const SuccessMessage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 20px;
 
-    padding: 40px 40px;
     width: 100%;
-
-    ${Text} {
-        max-width: 440px;
-    }
 `;

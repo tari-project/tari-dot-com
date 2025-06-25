@@ -8,22 +8,25 @@ lead: Use cases for private digital assets on public networks and MimbleWimble i
 class: subpage
 ---
 
-The two main ideas discussed during today's Tari protocol architecture discussion were possible use cases for private digital assets on public networks and possible MimbleWimble implementations. 
+The two main ideas discussed during today's Tari protocol architecture discussion were possible use cases for private digital assets on public networks and possible MimbleWimble implementations.
 
 This is the TL;DR on what we covered (full transcript included below):
 
 The ideas that were covered in this discussion were:
-* A continuation of the philosophical / high-level discussion around the 2nd layer and how that might work
-* Soliciting some opinions on some MimbleWimble implementation specifics
+
+- A continuation of the philosophical / high-level discussion around the 2nd layer and how that might work
+- Soliciting some opinions on some MimbleWimble implementation specifics
 
 The 2nd layer discussion revolved around the following core questions:
-* Configurable privacy in digital Assets
-* What are some use cases for private DAs in a public network?
+
+- Configurable privacy in digital Assets
+- What are some use cases for private DAs in a public network?
 
 While the MimbleWimble implementation discussion tackled the following ideas:
-* Choice of ECC curve
-* In-memory DB and persistence strategy / DB choice
-* Wire protocol choice
+
+- Choice of ECC curve
+- In-memory DB and persistence strategy / DB choice
+- Wire protocol choice
 
 Join us for our next discussion on Freenode in #tari-dev.
 Discussion times proposed by the Tari community:

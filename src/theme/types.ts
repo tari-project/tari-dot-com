@@ -1,10 +1,21 @@
-import { Colours } from "./palettes/colors";
-import { ColoursAlpha } from "./palettes/colorsAlpha";
+import { Colours } from './palettes/colors';
+import { ColoursAlpha } from './palettes/colorsAlpha';
 
 type ThemeTuple = 'light' | 'dark';
 export type Theme = ThemeTuple[number];
 
-type ColourTypes = 'main' | 'dark' | 'light' | 'shadow' | 'wisp' | 'primary' | 'secondary' | 'disabled' | 'contrast' | 'accent' | 'default';
+type ColourTypes =
+    | 'main'
+    | 'dark'
+    | 'light'
+    | 'shadow'
+    | 'wisp'
+    | 'primary'
+    | 'secondary'
+    | 'disabled'
+    | 'contrast'
+    | 'accent'
+    | 'default';
 type ColourTuple = 'primary' | 'secondary' | 'default' | ColourTypes;
 type ColourKey = ColourTuple[number];
 
