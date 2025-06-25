@@ -72,7 +72,7 @@ export default function DownloadModal() {
                     if (r.success) {
                         const veeraEmailRef = r.veeraEmailRef;
                         setIsSuccess(true);
-                        
+
                         // Update URL search params with veeraEmailRef
                         if (isVeera && veeraEmailRef) {
                             const url = new URL(window.location.href);
@@ -100,7 +100,7 @@ export default function DownloadModal() {
                             url.searchParams.set('veeraEmailRef', veeraEmailRef);
                             url.searchParams.set('universeReferral', 'veera');
 
-                            link.href = downloadUrl;
+                            link.href = url.toString();
                             link.download = '';
                             document.body.appendChild(link);
                             link.click();
