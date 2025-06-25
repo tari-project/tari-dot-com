@@ -103,7 +103,6 @@ export default function DownloadModal() {
                             url.searchParams.set('universeReferral', 'veera');
 
                             link.href = url.toString();
-                            console.log(url.toString());
                             link.download = '';
                             document.body.appendChild(link);
                             link.click();
