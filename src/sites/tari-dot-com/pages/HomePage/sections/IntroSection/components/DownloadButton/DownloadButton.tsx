@@ -10,6 +10,7 @@ import { AnimatePresence } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
 import { useUIStore } from '@/stores/useUiStore';
+import { useSearchParams } from 'next/navigation';
 
 const containerVariants = {
     visible: {
@@ -56,13 +57,17 @@ export default function DownloadButton({
     const [hovering, setHovering] = useState(false);
     const [isOutOfView, setIsOutOfView] = useState(false);
     const buttonRef = useRef<HTMLDivElement>(null);
+    const searchParams = useSearchParams();
 
     const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
-        handleDownloadClick(e);
+        const veeraEmailRef = searchParams.get('veeraEmailRef');
+        if (!isVeera || veeraEmailRef) {
+            handleDownloadClick(e);
+        }
         setShowDownloadModal(true);
     };
 
