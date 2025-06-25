@@ -29,7 +29,6 @@ import { useEffect, useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSearchParams } from 'next/navigation';
-import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 
 export default function DownloadModal() {
     const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
@@ -40,7 +39,6 @@ export default function DownloadModal() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { token, markup, reset } = useCaptcha('light');
-    const { handleDownloadClick } = useDownloadUniverse();
 
     const searchParams = useSearchParams();
 
