@@ -25,6 +25,8 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSendDownloadLink } from '@/services/api/useSendDownloadLink';
+import { Exchange } from '@/sites/exchange/types/exchange';
+import Image from 'next/image';
 
 const animations = {
     initial: { opacity: 0, x: 20 },
@@ -32,7 +34,12 @@ const animations = {
     exit: { opacity: 0, x: -20 },
 };
 
-export default function VeraMobileDownload() {
+type Props = {
+    veeraData: Exchange
+};
+export default function VeraMobileDownload(
+    { veeraData }: Props
+) {
     const [showEmail, setShowEmail] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const { mutateAsync: sendDownloadLink, isPending } = useSendDownloadLink();
@@ -61,11 +68,6 @@ export default function VeraMobileDownload() {
                 {showEmail ? (
                     <motion.div {...animations} key="email">
                         <EmailForm onSubmit={handleSubmit}>
-                            <FormCopy>
-                                <i>
-                                    Use your email ID associated with Veera.
-                                </i>
-                            </FormCopy>
                             <EmailInput
                                 type="email"
                                 placeholder="Email address"
@@ -80,9 +82,16 @@ export default function VeraMobileDownload() {
                                     ✅ <strong>Almost there!</strong> Check your inbox to confirm your email.
                                 </FormCopy>
                             ) : (
-                                <EmailButton type="submit" disabled={submitIsDisabled}>
-                                    Send Download Link
-                                </EmailButton>
+                                <>
+                                    <FormCopy>
+                                        <i>
+                                            Use your email ID associated with <Image src={veeraData.logo_img_url} height={13} width={39} alt="veera" />
+                                        </i>
+                                    </FormCopy>
+                                    <EmailButton type="submit" disabled={submitIsDisabled}>
+                                        Send Download Link
+                                    </EmailButton>
+                                </>
                             )}
                             <FormCopy>
                                 {' '}
