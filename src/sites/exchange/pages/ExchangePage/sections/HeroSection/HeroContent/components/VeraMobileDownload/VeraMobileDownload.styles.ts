@@ -196,6 +196,15 @@ export const FormCopy = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     overflow-wrap: anywhere;
+    i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        img {
+            padding-bottom: 2px;
+        }
+    }
 `;
 
 export const CaptcahWrapper = styled.div`

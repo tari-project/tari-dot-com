@@ -97,7 +97,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                         ) : null
                     }
                 />
-                {isVeera ? <VeraMobileDownload /> : null}
+                {isVeera ? <VeraMobileDownload veeraData={exchange} /> : null}
             </TextWrapper>
 
             <BottomWrapper>
