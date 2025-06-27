@@ -151,7 +151,7 @@ export default function DownloadModal() {
                                 />
                             </FormFields>
                             {markup}
-                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token}>
+                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token} id={isVeera ? 'universe-download-button' : undefined}>
                                 <span>
                                     Let’s do it!{' '}
                                     <svg
