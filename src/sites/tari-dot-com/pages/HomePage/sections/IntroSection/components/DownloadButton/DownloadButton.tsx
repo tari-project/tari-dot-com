@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import AppleIcon from './icons/AppleIcon';
 import LinuxIcon from './icons/LinuxIcon';
@@ -62,14 +62,15 @@ export default function DownloadButton({
     const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse();
 
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const shouldDownload = useMemo(() => !isVeera || searchParams.get('veeraEmailRef'), [isVeera, searchParams]);
+
+    const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
-        const veeraEmailRef = searchParams.get('veeraEmailRef');
-        if (!isVeera || veeraEmailRef) {
+        if (shouldDownload) {
             handleDownloadClick(e);
         }
         setShowDownloadModal(true);
-    };
+    }, [handleDownloadClick, setShowDownloadModal, shouldDownload]);
 
     // Intersection Observer to detect if button is out of view
     useEffect(() => {
@@ -96,6 +97,7 @@ export default function DownloadButton({
             as={Link}
             href="/downloads"
             onClick={handleClick}
+            id={shouldDownload ? 'universe-download-button' : undefined}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             $backgroundColor={backgroundColor}
