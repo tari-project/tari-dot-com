@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Variants, useInView } from 'motion/react';
-import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper } from './styles';
+import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper, ScreenReaderText } from './styles';
 
 interface Props {
     text: string;
@@ -9,6 +9,7 @@ interface Props {
     className?: string;
     color?: string;
     staggerDelay?: number;
+    role?: string;
 }
 
 const wordVariants: Variants = {
@@ -40,7 +41,7 @@ const containerVariants: Variants = {
     }),
 };
 
-export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, staggerDelay = 0.03 }) => {
+export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, staggerDelay = 0.03, role }) => {
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true, amount: 'all' });
     const words = useMemo(() => text.split(/(\s+)/).filter((segment) => segment.length > 0), [text]);
@@ -52,19 +53,24 @@ export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, stagge
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
             custom={{ delay: initialDelay / 1000, staggerDelay }}
+            aria-label={text}
+            {...(role && { role })}
         >
-            {words.map((segment, i) =>
-                segment.trim().length === 0 ? (
-                    <Space key={`space-${i}`}>&nbsp;</Space>
-                ) : (
-                    <WordWrapper key={`word-${i}`}>
-                        <WordAnimation variants={wordVariants} custom={i}>
-                            {segment}
-                        </WordAnimation>
-                        <WordSpacer>{segment}</WordSpacer>
-                    </WordWrapper>
-                ),
-            )}
+            <ScreenReaderText>{text}</ScreenReaderText>
+            <span aria-hidden="true">
+                {words.map((segment, i) =>
+                    segment.trim().length === 0 ? (
+                        <Space key={`space-${i}`}>&nbsp;</Space>
+                    ) : (
+                        <WordWrapper key={`word-${i}`}>
+                            <WordAnimation variants={wordVariants} custom={i}>
+                                {segment}
+                            </WordAnimation>
+                            <WordSpacer>{segment}</WordSpacer>
+                        </WordWrapper>
+                    ),
+                )}
+            </span>
         </Wrapper>
     );
 };
