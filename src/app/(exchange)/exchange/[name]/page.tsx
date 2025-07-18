@@ -3,9 +3,16 @@ import { fetchExchangeData } from '@/services/api/fetchExchangeData';
 
 export const runtime = 'edge';
 
-export const generateMetadata = async ({ params }: { params: Promise<{ name: string }> }) => {
+export const generateMetadata = async ({ 
+    params, 
+    searchParams 
+}: { 
+    params: Promise<{ name: string }>; 
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
     const { name } = await params;
-    const exchange = await fetchExchangeData(name);
+    const { password } = await searchParams;
+    const exchange = await fetchExchangeData(name, password as string);
 
     return {
         title: `Tari x ${exchange.name}`,
