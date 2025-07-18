@@ -1,8 +1,8 @@
-import { Exchange } from '@/sites/exchange/types/exchange';
 import logoHeader from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoHeader.svg';
 import logoSquare from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
+import type { Exchange } from '@/sites/exchange/types/exchange';
 
-export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
+export async function fetchExchangeData(exchangeId: string, password?: string): Promise<Exchange> {
     if (!exchangeId) {
         throw new Error('Exchange ID is required');
     }
@@ -38,15 +38,13 @@ export async function fetchExchangeData(exchangeId: string): Promise<Exchange> {
         };
     }
 
-    const response = await fetch(`https://rwa.y.at/miner/exchanges/${exchangeId}`, {
-        headers: {
-            'User-Agent':
-                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            Accept: 'application/json, text/plain, */*',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept-Encoding': 'gzip, deflate, br',
-        },
-    });
+    let url = `https://rwa.y.at/miner/exchanges/${exchangeId}`;
+
+    if (password) {
+        url += `?password=${password}`;
+    }
+
+    const response = await fetch(url);
 
     if (!response.ok) {
         const errorBody = await response.text();
