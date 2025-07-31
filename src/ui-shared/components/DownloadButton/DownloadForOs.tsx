@@ -1,6 +1,5 @@
 import { OsButton, ButtonsWrapper } from './styles';
 import MacIcon from '../Icons/MacIcon';
-import LinuxIcon from '../Icons/LinuxIcon';
 import WindowsIcon from '../Icons/WindowsIcon';
 import Typography from '../Typography/Typography';
 import { sendGTMEvent } from '@next/third-parties/google';
@@ -26,13 +25,6 @@ function DownloadForOs() {
                 >
                     Windows
                     <WindowsIcon fill="#000" />
-                </OsButton>
-                <OsButton
-                    href="https://airdrop.tari.com/api/miner/download/linux?universeReferral=tari-dot-com"
-                    onClick={() => handleClick('linux')}
-                >
-                    Linux
-                    <LinuxIcon fill="#000" />
                 </OsButton>
             </ButtonsWrapper>
         </>
