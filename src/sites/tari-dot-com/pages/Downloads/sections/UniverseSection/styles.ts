@@ -4,13 +4,14 @@ export const SectionHolder = styled.div`
     width: 100%;
     min-height: 100vh;
     padding: 160px 20px 70px 20px;
+    background-color: #fbf7ef;
 `;
 
 export const InfoWrapper = styled.div`
     display: flex;
     gap: 50px;
     width: 100%;
-    padding: 75px 0;
+    padding: 50px 0;
     align-items: center;
 
     @media (max-width: 768px) {

@@ -8,9 +8,12 @@ function DownloadForOs() {
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
     };
+    const theme = 'light';
     return (
         <>
-            <Typography $variant="h5">Download Tari Universe now</Typography>
+            <Typography $variant="h5" $theme={theme}>
+                Download Tari Universe now
+            </Typography>
             <ButtonsWrapper>
                 <OsButton
                     href="https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com"
