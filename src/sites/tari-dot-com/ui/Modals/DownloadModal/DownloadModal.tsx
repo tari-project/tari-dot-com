@@ -30,7 +30,7 @@ import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSearchParams } from 'next/navigation';
 
 export default function DownloadModal() {
-    const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
+    const { showDownloadModal, setShowDownloadModal, isVeera, isLinux } = useUIStore();
     const { data: exchange } = useExchangeData();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -122,11 +122,19 @@ export default function DownloadModal() {
 
                 {!isSuccess && (
                     <TextGroup>
-                        <Title>{isVeera ? 'Ready to start earning?' : 'your download has started'}</Title>
+                        <Title>
+                            {isVeera
+                                ? 'Ready to start earning?'
+                                : isLinux
+                                  ? 'Not available for Linux'
+                                  : 'your download has started'}
+                        </Title>
                         <Text>
                             {isVeera
                                 ? 'Submit your email ID associated with Veera to start earning rewards'
-                                : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
+                                : isLinux
+                                  ? `Tari Universe isn't available on Linux for now, but stay in the loop for news, contests, and drops.`
+                                  : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
                         </Text>
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
@@ -193,7 +201,11 @@ export default function DownloadModal() {
                     <>
                         <Divider>
                             <DividerLine />
-                            <DividerText>Having trouble? Here are your download links.</DividerText>
+                            <DividerText>
+                                {isLinux
+                                    ? 'Looking for a different OS? Download it here.'
+                                    : 'Having trouble? Here are your download links.'}
+                            </DividerText>
                             <DividerLine />
                         </Divider>
 

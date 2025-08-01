@@ -3,6 +3,8 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import { useExchangeData } from './useExchangeData';
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
+import { useDownloadStore } from '../stores/useDownloadStore';
+import { useUIStore } from '@/stores/useUiStore';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -27,18 +29,23 @@ const checkIsMobile = () => {
 export const useDownloadUniverse = () => {
     const { data: exchange } = useExchangeData();
     const searchParams = useSearchParams();
+    const setIsLinux = useUIStore((state) => state.setIsLinux);
 
     const handleDownload = useCallback(
         (platform?: DownloadPlatform) => {
             if (!platform) {
                 platform = getPlatform();
             }
+            if (platform === 'linux') {
+                setIsLinux(true);
+                console.log('Linux platform detected');
+                return;
+            } else {
+                setIsLinux(false);
+            }
+
             const url = `https://airdrop.tari.com/api/miner/download/${platform}?universeReferral=tari-dot-com`;
-            const {
-                download_link_mac: macLink,
-                download_link_linux: linuxLink,
-                download_link_win: winLink,
-            } = exchange || {};
+            const { download_link_mac: macLink, download_link_win: winLink } = exchange || {};
 
             // Check if current path contains "vera"
             let exchangeName = exchange?.name;
@@ -50,9 +57,6 @@ export const useDownloadUniverse = () => {
             if (exchange) {
                 if (platform === 'macos' && macLink) {
                     window.open(macLink, '_blank');
-                    return;
-                } else if (platform === 'linux' && linuxLink) {
-                    window.open(linuxLink, '_blank');
                     return;
                 } else if (platform === 'windows' && winLink) {
                     window.open(winLink, '_blank');

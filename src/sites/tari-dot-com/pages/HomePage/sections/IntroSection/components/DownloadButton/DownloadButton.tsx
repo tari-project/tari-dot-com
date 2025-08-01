@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import AppleIcon from './icons/AppleIcon';
-import LinuxIcon from './icons/LinuxIcon';
 import WindowsIcon from './icons/WindowsIcon';
 import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './styles';
 import { AnimatePresence } from 'motion/react';
@@ -64,13 +63,16 @@ export default function DownloadButton({
 
     const shouldDownload = useMemo(() => !isVeera || searchParams.get('veeraEmailRef'), [isVeera, searchParams]);
 
-    const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
-        if (shouldDownload) {
-            handleDownloadClick(e);
-        }
-        setShowDownloadModal(true);
-    }, [handleDownloadClick, setShowDownloadModal, shouldDownload]);
+    const handleClick = useCallback(
+        (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+            e.preventDefault();
+            if (shouldDownload) {
+                handleDownloadClick(e);
+            }
+            setShowDownloadModal(true);
+        },
+        [handleDownloadClick, setShowDownloadModal, shouldDownload],
+    );
 
     // Intersection Observer to detect if button is out of view
     useEffect(() => {
@@ -130,7 +132,6 @@ export default function DownloadButton({
             <Icons $showIconBackground={showIconBackground}>
                 <WindowsIcon />
                 <AppleIcon />
-                <LinuxIcon />
             </Icons>
             <AnimatePresence>
                 {hovering && (
