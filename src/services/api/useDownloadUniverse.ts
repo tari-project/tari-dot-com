@@ -3,7 +3,6 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import { useExchangeData } from './useExchangeData';
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
-import { useDownloadStore } from '../stores/useDownloadStore';
 import { useUIStore } from '@/stores/useUiStore';
 
 export const getPlatform = () => {
@@ -38,7 +37,6 @@ export const useDownloadUniverse = () => {
             }
             if (platform === 'linux') {
                 setIsLinux(true);
-                console.log('Linux platform detected');
                 return;
             } else {
                 setIsLinux(false);
@@ -87,7 +85,7 @@ export const useDownloadUniverse = () => {
                 window.open(formattedUrl.toString(), '_blank');
             }
         },
-        [exchange, searchParams],
+        [exchange, searchParams, setIsLinux],
     );
 
     const handleDownloadClick = (
