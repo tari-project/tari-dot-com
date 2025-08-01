@@ -20,7 +20,6 @@ import {
 } from './styles';
 import WindowsIcon from '@/ui-shared/components/Icons/WindowsIcon';
 import MacIcon from '@/ui-shared/components/Icons/MacIcon';
-import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
@@ -31,7 +30,7 @@ import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSearchParams } from 'next/navigation';
 
 export default function DownloadModal() {
-    const { showDownloadModal, setShowDownloadModal, isVeera } = useUIStore();
+    const { showDownloadModal, setShowDownloadModal, isVeera, isLinux } = useUIStore();
     const { data: exchange } = useExchangeData();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -55,9 +54,6 @@ export default function DownloadModal() {
     const macLink =
         exchange?.download_link_mac ||
         `https://airdrop.tari.com/api/miner/download/macos?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
-    const linuxLink =
-        exchange?.download_link_linux ||
-        `https://airdrop.tari.com/api/miner/download/linux?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -88,10 +84,8 @@ export default function DownloadModal() {
 
                             if (userAgent.includes('win')) {
                                 downloadUrl = windowsLink;
-                            } else if (userAgent.includes('mac')) {
-                                downloadUrl = macLink;
                             } else {
-                                downloadUrl = linuxLink;
+                                downloadUrl = macLink;
                             }
 
                             // Trigger download
@@ -106,7 +100,7 @@ export default function DownloadModal() {
                             link.click();
                             document.body.removeChild(link);
 
-                            const platform = userAgent.includes('win') ? 'windows' : userAgent.includes('mac') ? 'macos' : 'linux';
+                            const platform = userAgent.includes('win') ? 'windows' : 'macos';
                             sendGTMEvent({ event: 'download_button_clicked', platform, exchange: 'veera' });
                         }
                     } else {
@@ -128,11 +122,19 @@ export default function DownloadModal() {
 
                 {!isSuccess && (
                     <TextGroup>
-                        <Title>{isVeera ? 'Ready to start earning?' : 'your download has started'}</Title>
+                        <Title>
+                            {isVeera
+                                ? 'Ready to start earning?'
+                                : isLinux
+                                  ? 'Not available for Linux'
+                                  : 'your download has started'}
+                        </Title>
                         <Text>
                             {isVeera
                                 ? 'Submit your email ID associated with Veera to start earning rewards'
-                                : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
+                                : isLinux
+                                  ? `Tari Universe isn't available on Linux for now, but stay in the loop for news, contests, and drops.`
+                                  : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
                         </Text>
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
@@ -151,7 +153,11 @@ export default function DownloadModal() {
                                 />
                             </FormFields>
                             {markup}
-                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token} id={isVeera ? 'universe-download-button' : undefined}>
+                            <SubmitButton
+                                type="submit"
+                                disabled={isLoading || isSuccess || !token}
+                                id={isVeera ? 'universe-download-button' : undefined}
+                            >
                                 <span>
                                     Let’s do it!{' '}
                                     <svg
@@ -195,7 +201,11 @@ export default function DownloadModal() {
                     <>
                         <Divider>
                             <DividerLine />
-                            <DividerText>Having trouble? Here are your download links.</DividerText>
+                            <DividerText>
+                                {isLinux
+                                    ? 'Looking for a different OS? Download it here.'
+                                    : 'Having trouble? Here are your download links.'}
+                            </DividerText>
                             <DividerLine />
                         </Divider>
 
@@ -205,9 +215,6 @@ export default function DownloadModal() {
                             </DownloadButton>
                             <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
                                 MAC <MacIcon fill="#fff" />
-                            </DownloadButton>
-                            <DownloadButton href={linuxLink} onClick={() => handleClick('linux')}>
-                                Linux <LinuxIcon fill="#fff" />
                             </DownloadButton>
                         </DownloadButtons>
                     </>

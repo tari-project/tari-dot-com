@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const Divider = styled.hr`
     width: 100%;
-    border: 1px solid #d9d9d9;
+    /* border: 1px solid #d9d9d9; */
+    border: 1px solid rgba(155, 155, 155, 0.8);
     opacity: 0.1;
 `;
