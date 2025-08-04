@@ -9,7 +9,7 @@ export interface Exchange {
     campaign_description: string;
     wallet_label: string;
     hero_img: string;
-    slug: string;
+    slug?: string;
     primary_colour: string;
     secondary_colour: string;
     logo_img_url: string;

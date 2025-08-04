@@ -33,7 +33,6 @@ const VERA_DATA = {
     campaign_description: '',
     wallet_label: '',
     hero_img: '',
-    exchange_id: '',
     primary_colour: '#8E7AFF',
     secondary_colour: '#161616',
     logo_img_url: logoHeader.src,
