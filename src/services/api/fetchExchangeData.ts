@@ -20,7 +20,6 @@ export async function fetchExchangeData(exchangeId: string, password?: string): 
             campaign_description: 'This is a mock campaign for development.',
             wallet_label: 'Mock Wallet',
             hero_img: '/mock-hero.png',
-            exchange_id: exchangeId,
             primary_colour: '#8E7AFF',
             secondary_colour: '#161616',
             logo_img_url: logoHeader.src,
