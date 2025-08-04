@@ -9,11 +9,13 @@ export interface Exchange {
     campaign_description: string;
     wallet_label: string;
     hero_img: string;
-    exchange_id: string;
+    slug: string;
     primary_colour: string;
     secondary_colour: string;
     logo_img_url: string;
+    dark_logo_img_url: string;
     logo_img_small_url: string;
+    dark_logo_img_small_url: string;
     hero_img_url: string;
     is_hidden?: boolean;
     download_link_mac?: string;
@@ -22,4 +24,11 @@ export interface Exchange {
     reward_image?: string;
     reward_expiry_date?: string;
     reward_percentage?: number;
+    exchange_url: string;
+    address_help_link: string;
+    wallet_app_label: string;
+    wallet_app_link: string;
+    password: string;
+    wxtm_mode: boolean;
+    admin_only: boolean;
 }
