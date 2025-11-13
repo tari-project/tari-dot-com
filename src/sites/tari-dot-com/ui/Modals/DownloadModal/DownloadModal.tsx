@@ -26,6 +26,7 @@ import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
 import { useExchangeData } from '@/services/api/useExchangeData';
 import { useEffect, useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
+import { API_ENDPOINTS } from '@/config/api';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSearchParams } from 'next/navigation';
 
@@ -50,10 +51,10 @@ export default function DownloadModal() {
 
     const windowsLink =
         exchange?.download_link_win ||
-        `https://airdrop.tari.com/api/miner/download/windows?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
+        `${API_ENDPOINTS.MINER_DOWNLOAD}/windows?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
     const macLink =
         exchange?.download_link_mac ||
-        `https://airdrop.tari.com/api/miner/download/macos?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
+        `${API_ENDPOINTS.MINER_DOWNLOAD}/macos?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
