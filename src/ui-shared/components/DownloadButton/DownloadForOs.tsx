@@ -3,6 +3,7 @@ import MacIcon from '../Icons/MacIcon';
 import WindowsIcon from '../Icons/WindowsIcon';
 import Typography from '../Typography/Typography';
 import { sendGTMEvent } from '@next/third-parties/google';
+import { API_ENDPOINTS } from '@/config/api';
 
 function DownloadForOs() {
     const handleClick = (platform?: string) => {
@@ -16,14 +17,14 @@ function DownloadForOs() {
             </Typography>
             <ButtonsWrapper>
                 <OsButton
-                    href="https://airdrop.tari.com/api/miner/download/macos?universeReferral=tari-dot-com"
+                    href={`${API_ENDPOINTS.MINER_DOWNLOAD}/macos?universeReferral=tari-dot-com`}
                     onClick={() => handleClick('macos')}
                 >
                     Mac
                     <MacIcon fill="#000" />
                 </OsButton>
                 <OsButton
-                    href="https://airdrop.tari.com/api/miner/download/windows?universeReferral=tari-dot-com"
+                    href={`${API_ENDPOINTS.MINER_DOWNLOAD}/windows?universeReferral=tari-dot-com`}
                     onClick={() => handleClick('windows')}
                 >
                     Windows

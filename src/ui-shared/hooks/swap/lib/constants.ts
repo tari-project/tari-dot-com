@@ -1,6 +1,7 @@
 import { ChainId, Token, Percent } from '@uniswap/sdk-core';
 
 import erc20Abi from '../abi/erc20.json';
+import { API_ENDPOINTS } from '@/config/api';
 
 // V3 ABIs - You'll need to get these ABI files
 import uniswapV3QuoterV2Abi from '../abi/IQuoterV2.json';
@@ -61,8 +62,8 @@ export const ENABLED_TOKEN_ADDRESSES = {
 } as const;
 
 export const RPC_URLS: Partial<Record<ChainId, string>> = {
-    [ChainId.MAINNET]: 'https://airdrop.tari.com/api/miner/rpc/mainnet',
-    [ChainId.SEPOLIA]: 'https://airdrop.tari.com/api/miner/rpc/sepolia',
+    [ChainId.MAINNET]: `${API_ENDPOINTS.MINER_RPC}/mainnet`,
+    [ChainId.SEPOLIA]: `${API_ENDPOINTS.MINER_RPC}/sepolia`,
 };
 
 const handleSetupToken = (token: EnabledTokensEnum, decimals = 18, name: string): Partial<Record<ChainId, Token>> => {

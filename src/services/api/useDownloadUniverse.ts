@@ -4,6 +4,7 @@ import { useExchangeData } from './useExchangeData';
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { useUIStore } from '@/stores/useUiStore';
+import { API_ENDPOINTS } from '@/config/api';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -42,7 +43,7 @@ export const useDownloadUniverse = () => {
                 setIsLinux(false);
             }
 
-            const url = `https://airdrop.tari.com/api/miner/download/${platform}?universeReferral=tari-dot-com`;
+            const url = `${API_ENDPOINTS.MINER_DOWNLOAD}/${platform}?universeReferral=tari-dot-com`;
             const { download_link_mac: macLink, download_link_win: winLink } = exchange || {};
 
             // Check if current path contains "vera"
