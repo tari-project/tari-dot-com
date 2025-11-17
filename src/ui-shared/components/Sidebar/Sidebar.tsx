@@ -66,6 +66,12 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
             return;
         }
         
+        // Check if it's a page navigation (starts with /)
+        if (link.startsWith('/')) {
+            window.location.href = link;
+            return;
+        }
+        
         const anchor = document.getElementById(link.replace('#', ''));
         if (anchor) {
             const rect = anchor.getBoundingClientRect();
@@ -118,8 +124,14 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
                             </MenuItem>
                         ) : (
                             <div>
-                                <MenuItem $isActive={false} tabIndex={-1}>
-                                    <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
+                                <MenuItem 
+                                    $isActive={false} 
+                                    tabIndex={-1}
+                                    style={{ 
+                                        fontWeight: item.label === 'Appendix' ? '600' : 'normal' 
+                                    }}
+                                >
+                                    {item.label !== 'Appendix' && <span style={{ minWidth: '12px' }}>{index + 1}.</span>} {item.label}
                                 </MenuItem>
                                 {item.items?.map((subItem) => (
                                     <MenuItem
