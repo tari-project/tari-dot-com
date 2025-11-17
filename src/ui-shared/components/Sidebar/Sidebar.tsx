@@ -82,47 +82,67 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
     return (
         <MenuContainer>
             <MenuTitle>{menuTitle}</MenuTitle>
-            {menuItems.map((item, index) => (
-                <div key={item.link || item.label}>
-                    {item.link ? (
-                        <MenuItem
-                            $isActive={activeSection === item.link}
-                            tabIndex={0}
-                            aria-current={activeSection === item.link ? 'page' : undefined}
-                            onClick={() => handleClick(item.link!)}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    handleClick(item.link!);
-                                }
-                            }}
-                        >
-                            <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
-                        </MenuItem>
-                    ) : (
-                        <div>
-                            <MenuItem $isActive={false} tabIndex={-1}>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    @media (max-height: 800px) {
+                        .sidebar-compact {
+                            font-size: 14px !important;
+                            line-height: 1.3 !important;
+                        }
+                        .sidebar-compact > div > div {
+                            padding: 6px 12px !important;
+                        }
+                        .sidebar-compact .sub-item {
+                            font-size: 12px !important;
+                            padding: 4px 12px !important;
+                        }
+                    }
+                `
+            }} />
+            <div className="sidebar-compact">
+                {menuItems.map((item, index) => (
+                    <div key={item.link || item.label}>
+                        {item.link ? (
+                            <MenuItem
+                                $isActive={activeSection === item.link}
+                                tabIndex={0}
+                                aria-current={activeSection === item.link ? 'page' : undefined}
+                                onClick={() => handleClick(item.link!)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        handleClick(item.link!);
+                                    }
+                                }}
+                            >
                                 <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
                             </MenuItem>
-                            {item.items?.map((subItem) => (
-                                <MenuItem
-                                    key={subItem.link}
-                                    $isActive={false}
-                                    tabIndex={0}
-                                    style={{ marginLeft: '20px', fontSize: '14px' }}
-                                    onClick={() => handleClick(subItem.link, subItem.external)}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') {
-                                            handleClick(subItem.link, subItem.external);
-                                        }
-                                    }}
-                                >
-                                    {subItem.label}
+                        ) : (
+                            <div>
+                                <MenuItem $isActive={false} tabIndex={-1}>
+                                    <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
                                 </MenuItem>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            ))}
+                                {item.items?.map((subItem) => (
+                                    <MenuItem
+                                        key={subItem.link}
+                                        $isActive={false}
+                                        tabIndex={0}
+                                        className="sub-item"
+                                        style={{ marginLeft: '20px', fontSize: '14px' }}
+                                        onClick={() => handleClick(subItem.link, subItem.external)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                handleClick(subItem.link, subItem.external);
+                                            }
+                                        }}
+                                    >
+                                        {subItem.label}
+                                    </MenuItem>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
         </MenuContainer>
     );
 }
