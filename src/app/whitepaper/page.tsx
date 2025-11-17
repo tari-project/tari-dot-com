@@ -1,20 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
+import Header from '@/sites/tari-dot-com/ui/Header/Header';
+import Footer from '@/sites/tari-dot-com/ui/Footer/Footer';
+
+export const dynamic = 'force-dynamic';
 
 export default function WhitepaperPage() {
   useEffect(() => {
     // Hide banner and modify header on mount
     const hideBannerAndModifyHeader = () => {
-      // Hide banner by finding element with specific background color
-      const bannerElements = Array.from(document.querySelectorAll('div')).filter(el => {
-        const style = getComputedStyle(el);
-        return style.backgroundColor === 'rgb(30, 30, 37)'; // #1e1e25
-      });
-      bannerElements.forEach(el => {
-        (el as HTMLElement).style.display = 'none';
-      });
-
       // Make header not sticky
       const stickyElements = Array.from(document.querySelectorAll('div')).filter(el => {
         const style = getComputedStyle(el);
@@ -32,17 +27,6 @@ export default function WhitepaperPage() {
     
     // Also run after a short delay in case elements are rendered later
     setTimeout(hideBannerAndModifyHeader, 100);
-    
-    // Cleanup function to restore original styles when component unmounts
-    return () => {
-      const bannerElements = Array.from(document.querySelectorAll('div')).filter(el => {
-        const style = getComputedStyle(el);
-        return style.display === 'none' && el.innerHTML.includes('Tari Mainnet');
-      });
-      bannerElements.forEach(el => {
-        (el as HTMLElement).style.display = '';
-      });
-    };
   }, []);
 
   return (
@@ -65,6 +49,11 @@ export default function WhitepaperPage() {
           }
         `
       }} />
+      
+      <Suspense fallback={<div>Loading header...</div>}>
+        <Header />
+      </Suspense>
+      
       <div className="whitepaper-container">
         <iframe
           src="/wxtm-whitepaper-mica.pdf"
@@ -78,6 +67,8 @@ export default function WhitepaperPage() {
           title="wXTM Crypto-asset Whitepaper under MiCA"
         />
       </div>
+      
+      <Footer />
     </>
   );
 }
