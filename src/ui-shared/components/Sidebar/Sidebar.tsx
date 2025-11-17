@@ -5,8 +5,13 @@ import { MenuItem, MenuContainer, MenuTitle } from './styles';
 
 interface MenuItemProps {
     label: string;
-    link: string;
+    link?: string;
     isActive?: boolean;
+    items?: {
+        label: string;
+        link: string;
+        external?: boolean;
+    }[];
 }
 
 interface SidebarProps {
@@ -27,7 +32,9 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
             return;
         }
 
-        const sectionIds = menuItems.map((item) => item.link.replace('#', ''));
+        const sectionIds = menuItems
+            .filter((item) => item.link)
+            .map((item) => item.link!.replace('#', ''));
         const handleIntersect = (entries: IntersectionObserverEntry[]) => {
             const visibleSections = entries
                 .filter((entry) => entry.isIntersecting)
@@ -53,7 +60,12 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
         };
     }, [menuItems, propActiveSection]);
 
-    const handleClick = (link: string) => {
+    const handleClick = (link: string, external?: boolean) => {
+        if (external) {
+            window.open(link, '_blank', 'noopener,noreferrer');
+            return;
+        }
+        
         const anchor = document.getElementById(link.replace('#', ''));
         if (anchor) {
             const rect = anchor.getBoundingClientRect();
@@ -71,20 +83,45 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
         <MenuContainer>
             <MenuTitle>{menuTitle}</MenuTitle>
             {menuItems.map((item, index) => (
-                <MenuItem
-                    key={item.link}
-                    $isActive={activeSection === item.link}
-                    tabIndex={0}
-                    aria-current={activeSection === item.link ? 'page' : undefined}
-                    onClick={() => handleClick(item.link)}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            handleClick(item.link);
-                        }
-                    }}
-                >
-                    <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
-                </MenuItem>
+                <div key={item.link || item.label}>
+                    {item.link ? (
+                        <MenuItem
+                            $isActive={activeSection === item.link}
+                            tabIndex={0}
+                            aria-current={activeSection === item.link ? 'page' : undefined}
+                            onClick={() => handleClick(item.link!)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    handleClick(item.link!);
+                                }
+                            }}
+                        >
+                            <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
+                        </MenuItem>
+                    ) : (
+                        <div>
+                            <MenuItem $isActive={false} tabIndex={-1}>
+                                <span style={{ minWidth: '12px' }}>{index + 1}.</span> {item.label}
+                            </MenuItem>
+                            {item.items?.map((subItem) => (
+                                <MenuItem
+                                    key={subItem.link}
+                                    $isActive={false}
+                                    tabIndex={0}
+                                    style={{ marginLeft: '20px', fontSize: '14px' }}
+                                    onClick={() => handleClick(subItem.link, subItem.external)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            handleClick(subItem.link, subItem.external);
+                                        }
+                                    }}
+                                >
+                                    {subItem.label}
+                                </MenuItem>
+                            ))}
+                        </div>
+                    )}
+                </div>
             ))}
         </MenuContainer>
     );

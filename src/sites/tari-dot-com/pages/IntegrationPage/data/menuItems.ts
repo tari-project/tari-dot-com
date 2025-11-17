@@ -39,4 +39,14 @@ export const menuItems = [
         label: 'Complete API Reference',
         link: '#complete-api-reference',
     },
+    {
+        label: 'Appendix',
+        items: [
+            {
+                label: 'White Paper wXTM',
+                link: '/whitepaper',
+                external: true,
+            },
+        ],
+    },
 ];
