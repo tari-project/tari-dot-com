@@ -34,7 +34,7 @@ export default function Footer() {
                             <Title>Participate</Title>
                             <Links>
                                 <StyledLink href="/downloads">Mine</StyledLink>
-                                <StyledLink href="https://airdrop.tari.com/" target="_blank">
+                                <StyledLink href="https://airdrop.tari.com/?src=taricom" target="_blank">
                                     Airdrop
                                 </StyledLink>
                                 <StyledLink href="/tokenomics">Tokenomics</StyledLink>

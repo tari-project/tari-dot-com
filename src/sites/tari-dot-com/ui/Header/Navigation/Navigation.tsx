@@ -66,7 +66,7 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
 
             <NavLink
                 as={Link}
-                href={`https://airdrop.tari.com/`}
+                href={`https://airdrop.tari.com/?src=taricom`}
                 target="_blank"
                 onMouseEnter={() => handleMouseEnter(3)}
                 onMouseLeave={handleMouseLeave}
