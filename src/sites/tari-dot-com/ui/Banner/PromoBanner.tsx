@@ -1,5 +1,6 @@
 'use client';
 
+import { useASICModalStore } from '@/stores/useASICModalStore';
 import {
     NewBannerWrapper,
     BannerContent,
@@ -18,13 +19,13 @@ type Props = {
 };
 
 export default function PromoBanner({ _children, onClick }: Props) {
+    const { openModal } = useASICModalStore();
+
     const handleClick = () => {
         if (onClick) {
             onClick();
         } else {
-            // Dispatch event to open modal
-            const event = new CustomEvent('openASICPromoModal');
-            window.dispatchEvent(event);
+            openModal();
         }
     };
 

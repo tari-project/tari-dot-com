@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
-import {
+import { useASICModalStore } from '@/stores/useASICModalStore';
+import { 
     ModalOverlay,
     ModalWrapper,
     ModalBox,
@@ -16,40 +17,19 @@ import {
     PromoSection,
     PromoText,
     PromoCodeBadge,
-    ASICImage,
+    ASICImage
 } from './styles';
 
-const ASIC_PROMO_KEY = 'tari_asic_promo_shown';
-
 export default function ASICPromoModal() {
-    const [show, setShow] = useState(false);
+    const { isOpen, closeModal, initAutoOpen } = useASICModalStore();
 
     useEffect(() => {
-        // Check if promo has been shown before
-        const hasBeenShown = localStorage.getItem(ASIC_PROMO_KEY);
-
-        if (!hasBeenShown) {
-            // Auto-open modal after 3 seconds
-            const timer = setTimeout(() => {
-                setShow(true);
-                localStorage.setItem(ASIC_PROMO_KEY, 'true');
-            }, 3000);
-
-            return () => clearTimeout(timer);
-        }
-
-        // Listen for manual modal trigger
-        const handleOpenModal = () => {
-            setShow(true);
-        };
-
-        window.addEventListener('openASICPromoModal', handleOpenModal);
-        return () => window.removeEventListener('openASICPromoModal', handleOpenModal);
-    }, []);
+        initAutoOpen();
+    }, [initAutoOpen]);
 
     return (
         <AnimatePresence>
-            {show && (
+            {isOpen && (
                 <ModalOverlay
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -61,53 +41,54 @@ export default function ASICPromoModal() {
                             initial={{ opacity: 0, y: 50, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 50, scale: 0.95 }}
-                            transition={{ duration: 0.4, ease: 'easeOut' }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                            <CloseButton onClick={() => setShow(false)}>
-                                <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18 6L6 18M6 6L18 18"
-                                        stroke="currentColor"
-                                        strokeWidth="3"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
+                            <CloseButton onClick={closeModal}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </CloseButton>
 
                             <ContentArea>
-                                <Title>
-                                    The First Tari
-                                    <br />
-                                    ASIC Has Arrived
-                                </Title>
+                                <div>
+                                    <Title>
+                                        The First Tari<br />
+                                        ASIC Has Arrived
+                                    </Title>
+                                    
+                                    <Description>
+                                        <strong>Tari block rewards will never be higher than they are right now.</strong> Maximize your XTM earnings with the <strong>Goldshell XT</strong>, which delivers <strong>20x better mining performance</strong> than GPUs.
+                                    </Description>
 
-                                <Description>
-                                    <strong>Tari block rewards will never be higher than they are right now.</strong>{' '}
-                                    Maximize your XTM earnings with the <strong>Goldshell XT</strong>, which delivers{' '}
-                                    <strong>20x better mining performance</strong> than GPUs.
-                                </Description>
+                                    <EmojiText>💜🐢</EmojiText>
+                                </div>
 
-                                <EmojiText>💜🐢</EmojiText>
+                                <div>
+                                    <CTAButton 
+                                        as="a"
+                                        href="https://www.goldshell.com/gsaf/Tari/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={closeModal}
+                                    >
+                                        Buy the Goldshell XT
+                                    </CTAButton>
 
-                                <CTAButton
-                                    as="a"
-                                    href="https://www.goldshell.com/gsaf/Tari/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => setShow(false)}
-                                >
-                                    Buy the Goldshell XT
-                                </CTAButton>
-
-                                <PromoSection>
-                                    <PromoText>
-                                        <strong>20% OFF</strong> When you use promo code
-                                    </PromoText>
-                                    <PromoCodeBadge as="a" href="/privacy_policy" onClick={() => setShow(false)}>
-                                        PRIVACY
-                                    </PromoCodeBadge>
-                                </PromoSection>
+                                    <PromoSection>
+                                        <PromoText>
+                                            <strong>20% OFF</strong> When you use promo code
+                                        </PromoText>
+                                        <PromoCodeBadge 
+                                            as="a"
+                                            href="/privacy_policy"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={closeModal}
+                                        >
+                                            PRIVACY
+                                        </PromoCodeBadge>
+                                    </PromoSection>
+                                </div>
                             </ContentArea>
 
                             <ImageArea>
