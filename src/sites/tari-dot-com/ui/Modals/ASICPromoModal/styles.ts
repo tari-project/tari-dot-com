@@ -41,9 +41,9 @@ export const ModalBox = styled(motion.div)`
 
 export const CloseButton = styled.button`
     position: absolute;
-    top: 15px;
+    top: 18px;
     z-index: 10;
-    right: 15px;
+    right: 18px;
     width: 40px;
     height: 40px;
     border: none;
@@ -97,9 +97,10 @@ export const ContentArea = styled.div`
 
 export const ImageArea = styled.div`
     width: 424px;
-    height: 100%;
+    height: 609px;
     position: relative;
     background: #1a1a1a;
+    margin: 3px 3px 3px 0;
     border-radius: 0 16px 16px 0;
     overflow: hidden;
 
@@ -260,6 +261,7 @@ export const PromoCodeBadge = styled.div`
 `;
 
 export const ASICImage = styled.img`
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
