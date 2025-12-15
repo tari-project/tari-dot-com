@@ -13,11 +13,11 @@ import {
 } from './promo-styles';
 
 type Props = {
-    children?: React.ReactNode;
+    _children?: React.ReactNode;
     onClick?: () => void;
 };
 
-export default function PromoBanner({ children, onClick }: Props) {
+export default function PromoBanner({ _children, onClick }: Props) {
     const handleClick = () => {
         if (onClick) {
             onClick();
