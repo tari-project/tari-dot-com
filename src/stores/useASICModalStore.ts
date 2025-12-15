@@ -15,34 +15,40 @@ export const useASICModalStore = create<ASICModalState>((set, get) => ({
     isOpen: false,
     hasAutoOpened: false,
     isClient: false,
-    
+
     openModal: () => set({ isOpen: true }),
-    
+
     closeModal: () => set({ isOpen: false }),
-    
+
     initAutoOpen: () => {
-        const { hasAutoOpened, isClient } = get();
-        
+        // const { hasAutoOpened, isClient } = get();
+        const { isOpen } = get();
+
         // Only run on client side after hydration
         if (typeof window === 'undefined') {
             return;
         }
-        
-        if (!isClient) {
-            set({ isClient: true });
+        if (!isOpen) {
+            setTimeout(() => {
+                set({ isOpen: true, hasAutoOpened: true });
+                localStorage.setItem(ASIC_PROMO_KEY, 'true');
+            }, 1000);
         }
-        
-        if (!hasAutoOpened && isClient) {
-            const hasBeenShown = localStorage.getItem(ASIC_PROMO_KEY);
-            
-            if (!hasBeenShown) {
-                setTimeout(() => {
-                    set({ isOpen: true, hasAutoOpened: true });
-                    localStorage.setItem(ASIC_PROMO_KEY, 'true');
-                }, 3000);
-            }
-            
-            set({ hasAutoOpened: true });
-        }
-    }
+
+        // if (!isClient) {
+        //     set({ isClient: true });
+        // }
+        //
+        // if (!hasAutoOpened && isClient) {
+        //     const hasBeenShown = localStorage.getItem(ASIC_PROMO_KEY);
+        //
+        //     if (!hasBeenShown) {
+        //         setTimeout(() => {
+        //             set({ isOpen: true, hasAutoOpened: true });
+        //             localStorage.setItem(ASIC_PROMO_KEY, 'true');
+        //         }, 1000);
+        //     }
+        //
+        //     set({ hasAutoOpened: true });
+    },
 }));
