@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { useASICModalStore } from '@/stores/useASICModalStore';
 import { 
@@ -17,15 +17,24 @@ import {
     PromoSection,
     PromoText,
     PromoCodeBadge,
+    CopiedPopup,
     ASICImage
 } from './styles';
 
 export default function ASICPromoModal() {
     const { isOpen, closeModal, initAutoOpen } = useASICModalStore();
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         initAutoOpen();
     }, [initAutoOpen]);
+
+    const handleCopyPromoCode = () => {
+        navigator.clipboard.writeText('PRIVACY').then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
 
     return (
         <AnimatePresence>
@@ -66,7 +75,7 @@ export default function ASICPromoModal() {
                                 <div>
                                     <CTAButton 
                                         as="a"
-                                        href="https://www.goldshell.com/gsaf/Tari/"
+                                        href="https://www.goldshell.com/product/goldshell-xt-box/gsaf/Tari/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={closeModal}
@@ -76,16 +85,11 @@ export default function ASICPromoModal() {
 
                                     <PromoSection>
                                         <PromoText>
-                                            <strong>20% OFF</strong> When you use promo code
+                                            <strong>Get $199 off</strong> with promo code
                                         </PromoText>
-                                        <PromoCodeBadge 
-                                            as="a"
-                                            href="/privacy_policy"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={closeModal}
-                                        >
-                                            PRIVACY
+                                        <PromoCodeBadge onClick={handleCopyPromoCode}>
+                                        <CopiedPopup $visible={copied}>Copied!</CopiedPopup>
+                                        PRIVACY
                                         </PromoCodeBadge>
                                     </PromoSection>
                                 </div>

@@ -247,6 +247,7 @@ export const PromoCodeBadge = styled.div`
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
 
     &:hover {
         background: #333;
@@ -258,6 +259,25 @@ export const PromoCodeBadge = styled.div`
         padding: 8px 16px;
         min-width: 140px;
     }
+`;
+
+export const CopiedPopup = styled.div<{ $visible: boolean }>`
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    white-space: nowrap;
 `;
 
 export const ASICImage = styled.img`
