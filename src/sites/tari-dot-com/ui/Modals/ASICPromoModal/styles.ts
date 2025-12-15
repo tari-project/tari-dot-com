@@ -41,9 +41,9 @@ export const ModalBox = styled(motion.div)`
 
 export const CloseButton = styled.button`
     position: absolute;
-    top: 18px;
+    top: 15px;
     z-index: 10;
-    right: 18px;
+    right: 15px;
     width: 40px;
     height: 40px;
     border: none;
