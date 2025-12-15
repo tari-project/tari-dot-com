@@ -97,10 +97,9 @@ export const ContentArea = styled.div`
 
 export const ImageArea = styled.div`
     width: 424px;
-    height: 609px;
+    height: 100%;
     position: relative;
     background: #1a1a1a;
-    margin: 3px 3px 3px 0;
     border-radius: 0 16px 16px 0;
     overflow: hidden;
 
@@ -261,7 +260,6 @@ export const PromoCodeBadge = styled.div`
 `;
 
 export const ASICImage = styled.img`
-    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
