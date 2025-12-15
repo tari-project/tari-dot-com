@@ -2,7 +2,7 @@ import Providers from '../Providers/Providers';
 import GlobalStyles from './GlobalStyles/GobalStyles';
 
 import { fontString } from './Fonts';
-import Banner from '@/sites/tari-dot-com/ui/Banner/Banner';
+import PromoBanner from '@/sites/tari-dot-com/ui/Banner/PromoBanner';
 import Header from '@/sites/tari-dot-com/ui/Header/Header';
 import Footer from '@/sites/tari-dot-com/ui/Footer/Footer';
 import GradientBackground from '@/sites/tari-dot-com/ui/GradientBackground/GradientBackground';
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </Head>
                 <body>
                     <AppWrapper>
-                        <Banner />
+                        <PromoBanner />
                         <Header />
                         {children}
                         <Footer />

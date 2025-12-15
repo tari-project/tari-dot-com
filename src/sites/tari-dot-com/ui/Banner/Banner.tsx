@@ -2,13 +2,18 @@
 
 import { Wrapper, Holder, Text, GradientText } from './styles';
 
-export default function Banner() {
+type Props = {
+    children?: React.ReactNode;
+};
+export default function Banner({ children }: Props) {
     return (
         <Wrapper>
             <Holder>
-                <Text>
-                    Tari Mainnet <GradientText>is live</GradientText>
-                </Text>
+                {children || (
+                    <Text>
+                        Tari Mainnet <GradientText>is live</GradientText>
+                    </Text>
+                )}
             </Holder>
         </Wrapper>
     );
