@@ -85,7 +85,7 @@ export default function ASICPromoModal() {
 
                                     <PromoSection>
                                         <PromoText>
-                                            <strong>Get $199 off</strong> with promo code
+                                            <strong>Get $450 off</strong> with promo code
                                         </PromoText>
                                         <PromoCodeBadge onClick={handleCopyPromoCode}>
                                         <CopiedPopup $visible={copied}>Copied!</CopiedPopup>
