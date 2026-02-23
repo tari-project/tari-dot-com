@@ -44,7 +44,7 @@ export const menuItems = [
         items: [
             {
                 label: 'White Paper wXTM',
-                link: '/whitepaper',
+                link: '/mica-whitepaper',
                 external: true,
             },
         ],

@@ -8,6 +8,15 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
+    async redirects() {
+        return [
+            {
+                source: '/whitepaper',
+                destination: '/mica-whitepaper',
+                permanent: true,
+            },
+        ];
+    },
     async rewrites() {
         return [
             {
