@@ -249,7 +249,7 @@ export default function TokenomicsPage() {
                     <span>
                         Before Tari was a protocol, it was a vision. Participants are the early supporters such as
                         Blockchain Capital, Collab+Currency, gmoney, loomdart, DCF GOD, DV Chain, Kamal Ravikant, Bryan
-                        Pellegrino, Ayon, Messi, Pantera, Hack VC, Paris Hilton, eGirl Capital, CMT Digital, Kilowatt,
+                        Pellegrino, Ayon, Messi, Pantera, Hack VC, Paris Hilton, eGirl Capital, Kilowatt,
                         Redpoint, Trinity, and many others who stepped up to help make Tari a reality.{' '}
                     </span>
                     <strong>12%</strong>
