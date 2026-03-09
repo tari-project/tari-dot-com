@@ -182,10 +182,7 @@ export default function TokenomicsPage() {
 
                 <Image src={Image5.src} alt="" />
 
-                <p>
-                    We were going to add a tiny slice for &quot;that one guy who always asks about token distribution in
-                    the chat,&quot; but fluffypony shot down that idea.
-                </p>
+            
                 <p>
                     <strong>Community</strong>
                 </p>
