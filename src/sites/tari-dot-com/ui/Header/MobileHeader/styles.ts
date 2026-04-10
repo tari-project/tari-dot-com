@@ -70,7 +70,7 @@ export const HeaderTop = styled(motion.div)<{ $open: boolean }>`
 `;
 
 export const Menu = styled(motion.div)`
-    --menu-top-offset: var(--promo-banner-height, 57px);
+    --menu-top-offset: var(--promo-banner-height, 0px);
 
     box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
     background: #0c0718;
