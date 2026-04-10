@@ -42,7 +42,7 @@ export default function MobileNavigation() {
                         </NavLink>
                         <NavLink
                             as={Link}
-                            href={`https://universe.tari.com/?src=taricom`}
+                            href={`https://airdrop.tari.com/?src=taricom`}
                             target="_blank"
                             onClick={handleLinkClick}
                         >
