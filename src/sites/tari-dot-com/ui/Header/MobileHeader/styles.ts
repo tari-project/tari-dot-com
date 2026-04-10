@@ -70,21 +70,25 @@ export const HeaderTop = styled(motion.div)<{ $open: boolean }>`
 `;
 
 export const Menu = styled(motion.div)`
+    --menu-top-offset: var(--promo-banner-height, 57px);
+
     box-shadow: 10px 10px 75px 0px rgba(0, 0, 0, 0.35);
     background: #0c0718;
     background-image: url(${headerBgImage.src});
     background-repeat: repeat;
     background-color: #0c0718;
     width: 100%;
-    height: 100dvh;
+    height: calc(100dvh - var(--menu-top-offset));
 
     position: fixed;
-    top: 0;
+    top: var(--menu-top-offset);
     left: 0;
     z-index: 98;
 
     padding: 30px;
-    padding-top: 100px;
+    padding-top: 45px;
+
+    overflow-y: auto;
 `;
 
 export const MenuHolder = styled.div`
