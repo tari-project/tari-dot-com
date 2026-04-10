@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
+export const TRACK_GAP_SIZE_MOBILE = 20;
+export const TRACK_GAP_SIZE_DESKTOP = 62;
+
 export const Wrapper = styled(motion.div)`
     width: 100%;
     padding-top: 40px;
@@ -52,15 +55,15 @@ export const TrackWidth = styled.div`
 export const Track = styled(motion.div)`
     display: flex;
     align-items: center;
-    gap: 62px;
+    gap: ${TRACK_GAP_SIZE_DESKTOP}px;
 
     min-width: max-content;
 
-    padding-left: 62px;
+    padding-left: ${TRACK_GAP_SIZE_DESKTOP}px;
 
     @media (max-width: 768px) {
-        gap: 20px;
-        padding-left: 20px;
+        gap: ${TRACK_GAP_SIZE_MOBILE}px;
+        padding-left: ${TRACK_GAP_SIZE_MOBILE}px;
     }
 `;
 
