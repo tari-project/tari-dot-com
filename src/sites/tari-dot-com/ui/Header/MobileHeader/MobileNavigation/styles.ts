@@ -14,7 +14,7 @@ export const Wrapper = styled(motion.div)<{ $showGroupTwo: boolean }>`
 
     padding: 20px 0;
     overflow: hidden;
-    height: 193px;
+    height: 258px;
 
     transition: height 0.3s ease;
 
