@@ -4,6 +4,9 @@ if (process.env.NODE_ENV === 'development') {
     await setupDevPlatform();
 }
 
+const COMMUNITY_TEMPLATES_URL =
+    process.env.COMMUNITY_TEMPLATES_URL ?? 'https://ootle-templates-esme.tari.com';
+
 const nextConfig = {
     compiler: {
         styledComponents: true,
@@ -26,6 +29,14 @@ const nextConfig = {
             {
                 source: '/lessons/:slug.html',
                 destination: '/lessons/:slug',
+            },
+            {
+                source: '/ootle/community-templates',
+                destination: `${COMMUNITY_TEMPLATES_URL}/ootle/community-templates`,
+            },
+            {
+                source: '/ootle/community-templates/:path*',
+                destination: `${COMMUNITY_TEMPLATES_URL}/ootle/community-templates/:path*`,
             },
         ];
     },
