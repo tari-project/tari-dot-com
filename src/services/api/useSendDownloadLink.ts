@@ -1,10 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
 import { RWA_API } from '@/config/api';
 
+type SendDownloadLinkResponse = {
+    success: boolean;
+    message?: string;
+};
+
 // Mutation: POSTs a fresh body built from current args every call, so no
 // `cache` hint is needed — browsers do not cache POST by default, and the
 // body cannot go stale because it is constructed from the caller's arguments.
-async function sendDownloadLink(email: string, token: string) {
+async function sendDownloadLink(email: string, token: string): Promise<SendDownloadLinkResponse> {
     const response = await fetch(`${RWA_API}/miner/exchanges/user/veera-download`, {
         method: 'POST',
         headers: {
@@ -20,7 +25,7 @@ async function sendDownloadLink(email: string, token: string) {
         throw new Error('Failed to send download link');
     }
 
-    return response.json();
+    return response.json() as Promise<SendDownloadLinkResponse>;
 }
 
 export function useSendDownloadLink() {

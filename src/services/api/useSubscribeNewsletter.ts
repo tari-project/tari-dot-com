@@ -8,10 +8,16 @@ type Props = {
     veera: boolean;
 };
 
+type SubscribeNewsletterResponse = {
+    success: boolean;
+    veeraEmailRef: string;
+    message?: string;
+};
+
 // Mutation: POSTs a fresh body per call. No `cache` hint needed — POST is
 // not cached by browsers, and the body is built from the caller's args so
 // it cannot go stale.
-async function subscribeNewsletter(props: Props) {
+async function subscribeNewsletter(props: Props): Promise<SubscribeNewsletterResponse> {
     const response = await fetch(`${RWA_API}/miner/exchanges/user`, {
         method: 'POST',
         headers: {
@@ -24,7 +30,7 @@ async function subscribeNewsletter(props: Props) {
         throw new Error('Failed to subscribe to newsletter');
     }
 
-    return response.json();
+    return response.json() as Promise<SubscribeNewsletterResponse>;
 }
 
 export function useSubscribeNewsletter() {

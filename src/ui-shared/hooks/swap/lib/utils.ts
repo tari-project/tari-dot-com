@@ -48,12 +48,13 @@ export const formatNativeGasFee = (
 export const fetchTokenPriceUSD = async (tokenSymbol: string): Promise<number | undefined> => {
     if (tokenSymbol !== 'ETH') return undefined;
     return fetch(`${RWA_API}/miner/exchange-prices/hourly?instruments=ETH-USD`)
-        .then((response) => response.json())
+        .then((response) => response.json() as Promise<Record<string, number>>)
         .then((data) => {
             return data['ETH-USD'];
         })
         .catch((error) => {
             console.error('Error fetching token price:', error);
+            return undefined;
         });
 };
 
