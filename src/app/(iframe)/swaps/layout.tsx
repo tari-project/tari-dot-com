@@ -1,10 +1,9 @@
-import { fontString } from '@/ui-shared/layouts/Layout/Fonts';
 import Providers from '@/ui-shared/layouts/Providers/Providers';
 
 export default function SwapsLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={fontString}>
-            <body
+        <Providers>
+            <div
                 style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -14,10 +13,11 @@ export default function SwapsLayout({ children }: { children: React.ReactNode })
                     margin: 0,
                     padding: 0,
                     marginTop: '10px',
+                    minHeight: '100vh',
                 }}
             >
-                <Providers>{children}</Providers>
-            </body>
-        </html>
+                {children}
+            </div>
+        </Providers>
     );
 }
