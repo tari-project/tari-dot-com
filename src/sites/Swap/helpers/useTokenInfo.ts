@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useBalance } from 'wagmi';
+import { useBalance, useReadContract } from 'wagmi';
 import { Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
-import { formatUnits } from 'viem';
+import { formatUnits, erc20Abi } from 'viem';
 import { TokenSymbol } from '../useSwapData';
 import { XTM_SDK_TOKEN } from '@/ui-shared/hooks/swap/lib/constants';
 import { fetchTokenPriceUSD, formatDisplayBalanceForSelectable } from '@/ui-shared/hooks/swap/lib/utils';
@@ -35,15 +35,44 @@ export function useTokenDisplayInfo({
     const [tokenPrice, setTokenPrice] = useState<number | undefined>();
     const [isFetchingPrice, setIsFetchingPrice] = useState<boolean>(false);
 
+    const isNative = uiTokenDefinition?.isNative ?? false;
+    const tokenAddress = isNative ? undefined : ((uiTokenDefinition as Token | undefined)?.address as `0x${string}` | undefined);
+
     const {
-        data: rawBalanceData,
-        isLoading: isLoadingBalance,
-        refetch: refetchBalance,
+        data: nativeBalanceData,
+        isLoading: isLoadingNativeBalance,
+        refetch: refetchNativeBalance,
     } = useBalance({
-        address: accountAddress,
-        token: uiTokenDefinition?.isNative ? undefined : (uiTokenDefinition?.address as `0x${string}`),
+        address: isNative ? accountAddress : undefined,
         chainId: chainId,
     });
+
+    const {
+        data: erc20BalanceData,
+        isLoading: isLoadingErc20Balance,
+        refetch: refetchErc20Balance,
+    } = useReadContract({
+        address: !isNative ? tokenAddress : undefined,
+        abi: erc20Abi,
+        functionName: 'balanceOf',
+        args: accountAddress ? [accountAddress] : undefined,
+        chainId: chainId,
+        query: { enabled: !isNative && !!tokenAddress && !!accountAddress },
+    });
+
+    const rawBalanceData = useMemo(() => {
+        if (isNative) {
+            return nativeBalanceData
+                ? { value: nativeBalanceData.value, decimals: nativeBalanceData.decimals, symbol: nativeBalanceData.symbol }
+                : undefined;
+        }
+        if (erc20BalanceData !== undefined) {
+            return { value: erc20BalanceData as bigint, decimals: uiTokenDefinition?.decimals || 18, symbol: uiTokenDefinition?.symbol };
+        }
+        return undefined;
+    }, [isNative, nativeBalanceData, erc20BalanceData, uiTokenDefinition]);
+
+    const isLoadingBalance = isNative ? isLoadingNativeBalance : isLoadingErc20Balance;
 
     const fetchPrice = useCallback(async () => {
         if (uiTokenDefinition?.symbol && chainId) {
@@ -113,10 +142,10 @@ export function useTokenDisplayInfo({
     }, [rawBalanceData, uiTokenDefinition, chainId, tokenPrice, fallbackDefinition]);
 
     const refetch = useCallback(async () => {
-        const pricePromise = fetchPrice(); // Re-trigger price fetch
-        const balancePromise = refetchBalance?.(); // Re-trigger balance fetch (if available)
+        const pricePromise = fetchPrice();
+        const balancePromise = isNative ? refetchNativeBalance() : refetchErc20Balance();
         await Promise.all([pricePromise, balancePromise]);
-    }, [fetchPrice, refetchBalance]);
+    }, [fetchPrice, isNative, refetchNativeBalance, refetchErc20Balance]);
 
     return {
         tokenDisplayInfo,

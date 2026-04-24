@@ -42,6 +42,7 @@ const ExploreTariSection = forwardRef<HTMLDivElement, { exchange: Exchange }>(({
                         loading="lazy"
                         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                         allowFullScreen={true}
+                        suppressHydrationWarning
                     ></iframe>
                 </VideoPlayer>
             </Holder>

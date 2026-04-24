@@ -1,6 +1,5 @@
 import UserAgreement from '@/sites/tari-dot-com/pages/LegalPages/UserAgreement';
 
-export const runtime = 'edge';
 
 export const generateMetadata = async () => {
     const metadata = {

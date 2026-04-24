@@ -15,6 +15,7 @@ export default function WhitepaperPage() {
           padding: 0
         }}
         title="wXTM Crypto-asset Whitepaper under MiCA"
+        suppressHydrationWarning
       />
     </div>
   );

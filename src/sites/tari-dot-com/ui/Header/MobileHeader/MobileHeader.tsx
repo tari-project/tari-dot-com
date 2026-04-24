@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { HeaderTop, Inside, Menu, MenuHolder, SocialLinks, Wrapper } from './styles';
 import TariLogo from '../../TariLogo/TariLogo';
 import MobileMenuButton from '../MobileMenuButton/MobileMenuButton';
@@ -44,7 +44,9 @@ export default function MobileHeader() {
                 <Menu>
                     <MenuHolder>
                         <MobileNavigation />
-                        <MinersCTA theme="dark" buttonText={`Download`} />
+                        <Suspense fallback={null}>
+                            <MinersCTA theme="dark" buttonText={`Download`} />
+                        </Suspense>
                         <SocialLinks>
                             <SocialIconButtons />
                         </SocialLinks>

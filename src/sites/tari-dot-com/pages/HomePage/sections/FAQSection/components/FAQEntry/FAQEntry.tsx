@@ -27,7 +27,7 @@ export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps)
         },
         animate: { opacity: 1, scaleY: 1, height: 'auto', y: -10 },
         exit: { opacity: 0, scaleY: 0, height: 0, y: -10 },
-        transition: { duration: 0.3, ease: [0.15, 0, 0, 0.97] },
+        transition: { duration: 0.3, ease: [0.15, 0, 0, 0.97] as [number, number, number, number] },
     };
 
     return (

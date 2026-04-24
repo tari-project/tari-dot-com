@@ -17,28 +17,42 @@ function HLSPlayer({ src, autoPlay = true, muted = true, loop = true, playsInlin
         if (!videoElement) return;
 
         let hls: Hls | null = null;
+        let cancelled = false;
+
+        const tryPlay = () => {
+            if (cancelled || !autoPlay) return;
+            const playPromise = videoElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch((error: unknown) => {
+                    // Ignore expected interruptions:
+                    // - AbortError: play() interrupted by pause, src change, unmount, or
+                    //   browser power-save pausing background/offscreen video.
+                    // - NotAllowedError: autoplay policy (muted autoplay should normally
+                    //   be allowed, but log as warning if it isn't).
+                    if (error instanceof DOMException) {
+                        if (error.name === 'AbortError') return;
+                        if (error.name === 'NotAllowedError') {
+                            console.warn('Autoplay blocked by browser policy:', error.message);
+                            return;
+                        }
+                    }
+                    console.error('Failed to autoplay video:', error);
+                });
+            }
+        };
 
         if (Hls.isSupported()) {
             hls = new Hls();
             hls.loadSource(src);
             hls.attachMedia(videoElement);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                if (autoPlay) {
-                    videoElement.play().catch((error) => {
-                        console.error('Failed to autoplay video:', error);
-                    });
-                }
-            });
+            hls.on(Hls.Events.MANIFEST_PARSED, tryPlay);
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
             videoElement.src = src;
-            if (autoPlay) {
-                videoElement.play().catch((error) => {
-                    console.error('Failed to autoplay video:', error);
-                });
-            }
+            tryPlay();
         }
 
         return () => {
+            cancelled = true;
             if (hls) {
                 hls.destroy();
             }

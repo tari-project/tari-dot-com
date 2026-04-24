@@ -1,12 +1,13 @@
-import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
-
-if (process.env.NODE_ENV === 'development') {
-    await setupDevPlatform();
-}
-
 const nextConfig = {
     compiler: {
         styledComponents: true,
+    },
+    turbopack: {
+        resolveAlias: {
+            porto: './src/empty.ts',
+            'porto/internal': './src/empty.ts',
+            accounts: './src/empty.ts',
+        },
     },
     async redirects() {
         return [
@@ -32,3 +33,6 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+initOpenNextCloudflareForDev();

@@ -1,8 +1,7 @@
+import { Suspense } from 'react';
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
 import logoHeader from '@/sites/exchange/pages/ExchangePage/images/vera/veraLogo.png';
 import logoSquare from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
-
-export const runtime = 'edge';
 
 export const generateMetadata = async () => {
     return {
@@ -40,5 +39,9 @@ const VERA_DATA = {
     hero_img_url: '',
 };
 export default function Page() {
-    return <ExchangePage customData={VERA_DATA} />;
+    return (
+        <Suspense>
+            <ExchangePage customData={VERA_DATA} />
+        </Suspense>
+    );
 }

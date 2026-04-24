@@ -91,6 +91,7 @@ export default function TikTokBubble({
                                 }}
                                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                                 allowFullScreen={true}
+                                suppressHydrationWarning
                             ></iframe>
                         ) : image ? (
                             <Image src={image} alt={`${username} content`} />

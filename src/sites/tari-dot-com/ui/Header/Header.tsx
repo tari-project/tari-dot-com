@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { Suspense, useEffect, useState, useRef } from 'react';
 import { useScroll } from 'motion/react';
 import { HeaderDark, HeaderLight, Holder, Wrapper } from './styles';
 import Navigation from './Navigation/Navigation';
@@ -39,7 +39,9 @@ export default function Header() {
         <>
             <TariLogo href="/" />
             <Navigation theme={theme} />
-            <MinersCTA theme={theme} buttonText={`Download`} hoverText={`Download Tari Universe`} />
+            <Suspense fallback={null}>
+                <MinersCTA theme={theme} buttonText={`Download`} hoverText={`Download Tari Universe`} />
+            </Suspense>
         </>
     );
 

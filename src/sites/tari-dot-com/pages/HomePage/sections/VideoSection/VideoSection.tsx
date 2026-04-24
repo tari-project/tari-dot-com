@@ -29,6 +29,7 @@ export default function VideoSection() {
                         loading="lazy"
                         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                         allowFullScreen={true}
+                        suppressHydrationWarning
                     ></iframe>
                 </VideoPlayer>
             </Holder>

@@ -151,6 +151,7 @@ export default function UniverseSection() {
                                 loading="eager"
                                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
                                 allowFullScreen
+                                suppressHydrationWarning
                             ></iframe>
                         </VideoPlayer>
                     )}
