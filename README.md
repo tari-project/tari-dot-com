@@ -37,7 +37,7 @@ npm run dev            # http://localhost:3000
 | `npm run prebuild-all` | Regenerate `src/generated/*.json` from markdown |
 | `npm run lint` / `lint:fix` | ESLint |
 | `npm run format` / `format:check` | Prettier |
-| `npm run pages:build` | OpenNext Worker build (name is legacy; see tasks/todo.md Phase 10) |
+| `npm run worker:build` | OpenNext Cloudflare Worker build |
 | `npm run preview` | OpenNext build + local Worker preview |
 | `npm run deploy` | OpenNext build + deploy to Cloudflare |
 | `npm run cf-typegen` | Regenerate `cloudflare-env.d.ts` from `wrangler.toml` |

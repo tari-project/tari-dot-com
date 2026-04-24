@@ -10,7 +10,7 @@
         "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.mjs --fix",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
         "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-        "pages:build": "opennextjs-cloudflare build",
+        "worker:build": "opennextjs-cloudflare build",
         "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
         "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
         "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",

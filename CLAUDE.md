@@ -16,7 +16,7 @@ Guidance for Claude Code (and other AI agents) working in this repository. See `
 - `npm run dev` — Next dev server (Turbopack)
 - `npm run build` — Next production build
 - `npm run start` — serve the Next build
-- `npm run pages:build` — OpenNext Cloudflare Worker build (legacy script name; a rename to `worker:build` is tracked in `tasks/todo.md` Phase 10)
+- `npm run worker:build` — OpenNext Cloudflare Worker build
 - `npm run preview` — OpenNext build + local Worker preview
 - `npm run deploy` — OpenNext build + deploy
 - `npm run cf-typegen` — regenerate `cloudflare-env.d.ts` from `wrangler.toml`
@@ -92,7 +92,7 @@ Markdown in `_lessons/` and `_updates/` is compiled to JSON by `scripts/generate
 - Prefer server components; opt into `'use client'` only for interactive islands
 - Use `generateStaticParams` and `'use cache'` for content routes known at build time
 - Put explicit cache policy (`cache`, `next.revalidate`, `no-store`) on every server-side `fetch`
-- Worker runtime constraints apply: no Node APIs outside the Node compat shim; no internal `fetch` when `global_fetch_strictly_public` is on — use service bindings instead
+- Worker runtime constraints apply: no Node APIs outside the Node compat shim; no internal `fetch` when `global_fetch_strictly_public` is on — use service bindings instead. See `docs/cloudflare-constraints.md` for the full list.
 - `src/proxy.ts` replaces `middleware.ts`; keep its matcher narrow
 
 ## Ongoing Remediation
