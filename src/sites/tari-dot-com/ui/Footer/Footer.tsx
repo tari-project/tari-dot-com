@@ -1,5 +1,3 @@
-'use client';
-
 import TariLogo from '../TariLogo/TariLogo';
 import SocialLinks from './components/SocialLinks/SocialLinks';
 
