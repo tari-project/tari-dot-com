@@ -17,7 +17,9 @@ interface DownloadLinks {
 }
 
 async function fetchDownloads(): Promise<Download[]> {
-    const response = await fetch('https://gh-cache.tari.com/s3');
+    // Build artifact catalog is slow-moving; let the browser HTTP cache serve
+    // repeat visits within a session.
+    const response = await fetch('https://gh-cache.tari.com/s3', { cache: 'force-cache' });
 
     if (!response.ok) {
         throw new Error('Failed to fetch download links');
@@ -33,6 +35,9 @@ export function useDownloads() {
             const downloadLinks = await fetchDownloads();
             return organizeDownloads(downloadLinks);
         },
-        refetchOnWindowFocus: true,
+        // Keep results fresh for 60s before React Query will refetch. Combined
+        // with the HTTP force-cache above, this dedupes refetch chatter.
+        staleTime: 60_000,
+        refetchOnWindowFocus: false,
     });
 }

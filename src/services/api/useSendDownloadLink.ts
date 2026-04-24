@@ -1,5 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 
+// Mutation: POSTs a fresh body built from current args every call, so no
+// `cache` hint is needed — browsers do not cache POST by default, and the
+// body cannot go stale because it is constructed from the caller's arguments.
 async function sendDownloadLink(email: string, token: string) {
     const response = await fetch('https://rwa.y.at/miner/exchanges/user/veera-download', {
         method: 'POST',
@@ -13,7 +16,7 @@ async function sendDownloadLink(email: string, token: string) {
     });
 
     if (!response.ok) {
-        throw new Error('Failed to fetch miner stats');
+        throw new Error('Failed to send download link');
     }
 
     return response.json();

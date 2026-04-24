@@ -26,6 +26,10 @@ const checkIsMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 };
 
+// Orchestrates platform-detection + GTM event + direct-link navigation for the
+// Universe download button. There is no fetch() in this hook: the actual
+// download is triggered via window.open or an anchor click, so no cache hint
+// is applicable here. Exchange-scoped fetch happens in useExchangeData.
 export const useDownloadUniverse = () => {
     const { data: exchange } = useExchangeData();
     const searchParams = useSearchParams();

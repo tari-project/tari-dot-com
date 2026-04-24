@@ -6,6 +6,10 @@ type Props = {
     token: string;
     veera: boolean;
 };
+
+// Mutation: POSTs a fresh body per call. No `cache` hint needed — POST is
+// not cached by browsers, and the body is built from the caller's args so
+// it cannot go stale.
 async function subscribeNewsletter(props: Props) {
     const response = await fetch('https://rwa.y.at/miner/exchanges/user', {
         method: 'POST',
@@ -16,7 +20,7 @@ async function subscribeNewsletter(props: Props) {
     });
 
     if (!response.ok) {
-        throw new Error('Failed to fetch miner stats');
+        throw new Error('Failed to subscribe to newsletter');
     }
 
     return response.json();

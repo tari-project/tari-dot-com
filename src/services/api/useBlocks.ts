@@ -35,7 +35,9 @@ export interface BlockData {
 }
 
 async function fetchBlockStats(): Promise<BlocksStats> {
-    const response = await fetch(`${address}/?json`);
+    // Live chain data: bypass the browser HTTP cache so every React Query
+    // refetch hits the origin. React Query owns freshness via refetchInterval.
+    const response = await fetch(`${address}/?json`, { cache: 'no-store' });
 
     if (!response.ok) {
         throw new Error('Failed to fetch blocks');
@@ -58,7 +60,10 @@ export function useBlocks() {
                 isSolved: false,
             }));
         },
-        refetchOnWindowFocus: true,
-        refetchInterval: 30000,
+        refetchInterval: 30_000,
+        // Stop polling when the tab is hidden; resume on focus via
+        // refetchOnReconnect. Saves Worker budget + user bandwidth.
+        refetchIntervalInBackground: false,
+        refetchOnWindowFocus: false,
     });
 }

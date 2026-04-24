@@ -1,29 +1,39 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import type HlsType from 'hls.js';
 
-const HLS_SCRIPT_URL = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.14/hls.min.js';
-
-export const useHlsScript = () => {
-    const [hlsLoaded, setHlsLoaded] = useState(false);
+/**
+ * Dynamically imports the bundled `hls.js` dependency on the client.
+ *
+ * Previously this hook injected a <script> tag pointing at cdnjs at runtime
+ * and exposed the result via `window.Hls`. That duplicated a dep we already
+ * ship in package.json, cost an extra third-party network round-trip, and
+ * left consumers depending on a global.
+ *
+ * Now consumers receive the Hls class directly and can construct players
+ * without a window global:
+ *
+ *   const Hls = useHlsScript();
+ *   if (!Hls) return null;
+ *   const player = new Hls();
+ *
+ * Returns `null` until the dynamic import resolves.
+ */
+export const useHlsScript = (): typeof HlsType | null => {
+    const [Hls, setHls] = useState<typeof HlsType | null>(null);
 
     useEffect(() => {
-        if (window.Hls) {
-            setHlsLoaded(true);
-            return;
-        }
-
-        const script = document.createElement('script');
-        script.src = HLS_SCRIPT_URL;
-        script.async = true;
-        script.onload = () => setHlsLoaded(true);
-
-        document.body.appendChild(script);
-
+        let cancelled = false;
+        void import('hls.js').then((mod) => {
+            if (!cancelled) {
+                setHls(() => mod.default);
+            }
+        });
         return () => {
-            document.body.removeChild(script);
+            cancelled = true;
         };
     }, []);
 
-    return hlsLoaded;
+    return Hls;
 };
