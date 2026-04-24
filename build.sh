@@ -16,4 +16,5 @@ else
 fi
 set +a
 
-npx @cloudflare/next-on-pages@1
+npm run prebuild-all
+npx opennextjs-cloudflare build
