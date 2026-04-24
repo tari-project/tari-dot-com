@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { HeaderTop, Inside, Menu, MenuHolder, SocialLinks, Wrapper } from './styles';
 import TariLogo from '../../TariLogo/TariLogo';
 import MobileMenuButton from '../MobileMenuButton/MobileMenuButton';
-import { useMainStore } from '@/services/stores/useMainStore';
+import { useMainStore } from '@/stores/useMainStore';
 import MinersCTA from '../MinersCTA/MinersCTA';
 import { SocialIconButtons } from '../../Footer/components/SocialLinks/SocialLinks';
 import MobileNavigation from './MobileNavigation/MobileNavigation';

@@ -6,7 +6,7 @@ import DropDown from '@/ui-shared/components/DropDown/DropDown';
 import DownloadButton from '@/ui-shared/components/DownloadButton/DownloadButton';
 import { Network, MacArch, WindowsArch, LinuxArch, Os } from '@/ui-shared/types/downloadTypes';
 import { networkOptions, architectureOptions } from '@/ui-shared/hooks/useSetDownloads';
-import { useDownloadStore } from '@/services/stores/useDownloadStore';
+import { useDownloadStore } from '@/stores/useDownloadStore';
 import { useDownloads } from '@/services/api/useDownloads';
 import { getLatestDownload } from '@/sites/tari-dot-com/utils/organizeDownloads';
 

@@ -15,7 +15,7 @@ import {
 } from './styles';
 import tariImage from '../images/tari-built.png';
 import Link from 'next/link';
-import { useMainStore } from '@/services/stores/useMainStore';
+import { useMainStore } from '@/stores/useMainStore';
 import { AnimatePresence, motion } from 'motion/react';
 
 export default function SuperMenu() {

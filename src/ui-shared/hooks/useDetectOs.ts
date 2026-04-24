@@ -1,5 +1,5 @@
 import { Os } from '@/ui-shared/types/downloadTypes';
-import { useDownloadStore } from '@/services/stores/useDownloadStore';
+import { useDownloadStore } from '@/stores/useDownloadStore';
 
 const useDetectOs = () => {
     const setDetectedOs = useDownloadStore((state) => state.setDetectedOs);

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { IconContainer, Line, Wrapper } from './styles';
-import { useMainStore } from '@/services/stores/useMainStore';
+import { useMainStore } from '@/stores/useMainStore';
 
 const topLineVariants = {
     closed: {

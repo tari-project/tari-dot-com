@@ -16,7 +16,7 @@ import Typography from '@/ui-shared/components/Typography/Typography';
 import OsSelector from './components/OsSelector';
 import { Os } from '@/ui-shared/types/downloadTypes';
 import DownloadOptions from './components/DownloadOptions';
-import { useDownloadStore } from '@/services/stores/useDownloadStore';
+import { useDownloadStore } from '@/stores/useDownloadStore';
 import Image from 'next/image';
 
 export default function BaseNodeSection() {

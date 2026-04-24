@@ -1,4 +1,4 @@
-import { create } from './create';
+import { create } from 'zustand';
 
 type UIStoreState = {
     theme: 'light' | 'dark';
@@ -21,18 +21,10 @@ type UIStoreStore = UIStoreState & {
     setIsLinux: (isLinux: boolean) => void;
 };
 
-export const useUIStore = create<UIStoreStore>()(() => ({
+export const useUIStore = create<UIStoreStore>()((set) => ({
     ...initialState,
-    setTheme: (theme: 'light' | 'dark') => {
-        useUIStore.setState({ theme });
-    },
-    setVeera: (isVeera: boolean) => {
-        useUIStore.setState({ isVeera });
-    },
-    setShowDownloadModal: (show: boolean) => {
-        useUIStore.setState({ showDownloadModal: show });
-    },
-    setIsLinux: (isLinux: boolean) => {
-        useUIStore.setState({ isLinux });
-    },
+    setTheme: (theme: 'light' | 'dark') => set({ theme }),
+    setVeera: (isVeera: boolean) => set({ isVeera }),
+    setShowDownloadModal: (show: boolean) => set({ showDownloadModal: show }),
+    setIsLinux: (isLinux: boolean) => set({ isLinux }),
 }));

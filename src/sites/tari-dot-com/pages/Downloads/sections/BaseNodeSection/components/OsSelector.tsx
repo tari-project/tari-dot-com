@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { OsButton, OsLabel, OsWrapper as Wrapper, ButtonsWrapper } from './styles';
 import { Os, MacArch, WindowsArch, LinuxArch } from '@/ui-shared/types/downloadTypes';
-import { useDownloadStore } from '@/services/stores/useDownloadStore';
+import { useDownloadStore } from '@/stores/useDownloadStore';
 import MacIcon from '@/ui-shared/components/Icons/MacIcon';
 import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 import WindowsIcon from '@/ui-shared/components/Icons/WindowsIcon';

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Chip, GroupOne, GroupTwo, NavLink, Wrapper } from './styles';
 import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
-import { useMainStore } from '@/services/stores/useMainStore';
+import { useMainStore } from '@/stores/useMainStore';
 
 const ChevronRight = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">

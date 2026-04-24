@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { HoverBox, NavLink, Wrapper } from './styles';
 import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
-import { useMainStore } from '@/services/stores/useMainStore';
+import { useMainStore } from '@/stores/useMainStore';
 
 interface NavigationProps {
     theme?: 'dark' | 'light';
