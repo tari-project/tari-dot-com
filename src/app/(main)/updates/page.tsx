@@ -1,7 +1,6 @@
 import { getAllUpdates } from '@/services/lib/updates';
 import UpdatesPage from '@/sites/tari-dot-com/pages/UpdatesPage/UpdatesPage';
 
-export const runtime = 'edge';
 
 export const generateMetadata = async () => {
     const metadata = {

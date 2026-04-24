@@ -1,9 +1,13 @@
-import { getUpdatesBySlug, getAllUpdates } from '@/services/lib/updates';
+import { getAllUpdateSlugs, getSortedUpdates, getUpdatesBySlug } from '@/services/lib/updates';
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
+
+export async function generateStaticParams() {
+    const slugs = await getAllUpdateSlugs();
+    return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
@@ -40,12 +44,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             notFound();
         }
 
-        const allPosts = await getAllUpdates();
+        const sortedPosts = await getSortedUpdates();
 
-        const nextPosts = allPosts
-            .filter((p) => p.slug !== slug)
-            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, 3);
+        const nextPosts = sortedPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
         return <PostPage post={post} nextPosts={nextPosts} />;
     } catch (error) {

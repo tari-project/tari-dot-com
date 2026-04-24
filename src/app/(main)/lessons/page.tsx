@@ -1,7 +1,6 @@
-import { getAllLessons } from '@/services/lib/lessons';
+import { getSortedLessons } from '@/services/lib/lessons';
 import LessonsPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonsPage';
 
-export const runtime = 'edge';
 
 export const generateMetadata = async () => {
     const metadata = {
@@ -16,9 +15,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
     const currentPage = resolvedParams.page ? parseInt(resolvedParams.page) : 1;
     const lessonsPerPage = 15;
 
-    const allLessons = await getAllLessons();
-    // Sort lessons by order
-    const sortedLessons = allLessons.sort((a, b) => a.order - b.order);
+    const sortedLessons = await getSortedLessons();
     const totalLessons = sortedLessons.length;
     const totalPages = Math.ceil(totalLessons / lessonsPerPage);
 

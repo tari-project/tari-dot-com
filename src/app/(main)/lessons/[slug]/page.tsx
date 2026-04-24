@@ -1,9 +1,13 @@
-import { getLessonBySlug, getSortedLessons } from '@/services/lib/lessons';
+import { getAllLessonSlugs, getLessonBySlug, getSortedLessons } from '@/services/lib/lessons';
 import LessonPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonPage';
 
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
+
+export async function generateStaticParams() {
+    const slugs = await getAllLessonSlugs();
+    return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
