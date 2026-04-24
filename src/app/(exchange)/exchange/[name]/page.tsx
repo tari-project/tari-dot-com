@@ -1,18 +1,22 @@
+import { cache, Suspense } from 'react';
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
 import { fetchExchangeData } from '@/services/api/fetchExchangeData';
 
-export const runtime = 'edge';
+// React.cache dedupes calls with the same arguments within a single request,
+// so generateMetadata and the page body share one upstream fetch.
+const getExchange = cache((name: string, password: string | undefined) =>
+    fetchExchangeData(name, password),
+);
 
-export const generateMetadata = async ({ 
-    params, 
-    searchParams 
-}: { 
-    params: Promise<{ name: string }>; 
+type PageProps = {
+    params: Promise<{ name: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
+};
+
+export const generateMetadata = async ({ params, searchParams }: PageProps) => {
     const { name } = await params;
     const { password } = await searchParams;
-    const exchange = await fetchExchangeData(name, password as string);
+    const exchange = await getExchange(name, password as string | undefined);
 
     return {
         title: `Tari x ${exchange.name}`,
@@ -32,6 +36,14 @@ export const generateMetadata = async ({
     };
 };
 
-export default function Page() {
-    return <ExchangePage />;
+export default async function Page({ params, searchParams }: PageProps) {
+    const { name } = await params;
+    const { password } = await searchParams;
+    const initialExchangeData = await getExchange(name, password as string | undefined);
+
+    return (
+        <Suspense>
+            <ExchangePage initialExchangeData={initialExchangeData} />
+        </Suspense>
+    );
 }

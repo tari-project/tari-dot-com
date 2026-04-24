@@ -14,9 +14,18 @@ import { useUIStore } from '@/stores/useUiStore';
 
 type Props = {
     customData?: Exchange;
+    /**
+     * Server-fetched exchange payload used to seed React Query. Avoids a
+     * duplicate client fetch on first render. Ignored when `customData`
+     * short-circuits the hook.
+     */
+    initialExchangeData?: Exchange;
 };
-export default function ExchangePage({ customData }: Props) {
-    const { data: exchange } = useExchangeData({ disabled: !!customData });
+export default function ExchangePage({ customData, initialExchangeData }: Props) {
+    const { data: exchange } = useExchangeData({
+        disabled: !!customData,
+        initialData: initialExchangeData,
+    });
     const data = customData || exchange;
     const isVera = useMemo(() => data?.id === 'veera', [data]);
     const setIsVeera = useUIStore((s) => s.setVeera);

@@ -40,10 +40,17 @@ export async function fetchExchangeData(exchangeId: string, password?: string): 
     let url = `https://rwa.y.at/miner/exchanges/${exchangeId}`;
 
     if (password) {
-        url += `?password=${password}`;
+        // encodeURIComponent is intentional: exchange pages are accessed via
+        // shareable links where the password may contain reserved URL chars
+        // (spaces, +, &, =, etc.). Product requirement: the raw password must
+        // round-trip through the query string without corruption.
+        url += `?password=${encodeURIComponent(password)}`;
     }
 
-    const response = await fetch(url);
+    // no-store: exchange data is live (reward percentages, campaign state,
+    // download URLs can change server-side at any time). Avoid caching on
+    // the Next.js data cache so every request hits the upstream API.
+    const response = await fetch(url, { cache: 'no-store' });
 
     if (!response.ok) {
         const errorBody = await response.text();
