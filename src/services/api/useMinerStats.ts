@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { RWA_API } from '@/config/api';
 
 export const MINER_STATS_QUERY_KEY = ['minerStats'];
 
@@ -9,7 +10,7 @@ interface MinerStats {
 async function fetchMinerStats(): Promise<MinerStats> {
     // Live miner count: bypass the browser HTTP cache so every React Query
     // refetch hits the origin.
-    const response = await fetch('https://rwa.y.at/miner/stats', { cache: 'no-store' });
+    const response = await fetch(`${RWA_API}/miner/stats`, { cache: 'no-store' });
 
     if (!response.ok) {
         throw new Error('Failed to fetch miner stats');

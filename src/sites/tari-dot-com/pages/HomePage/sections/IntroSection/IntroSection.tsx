@@ -1,5 +1,6 @@
 'use client';
 
+import ReactDOM from 'react-dom';
 import {
     Wrapper,
     EyebrowWrapper,
@@ -20,7 +21,24 @@ import DownloadButton from './components/DownloadButton/DownloadButton';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import BlockExplorerMini from '@/sites/tari-dot-com/ui/BlockExplorerMini/BlockExplorerMini';
 
+// Cloudflare Stream HLS manifests used on the home page (intro hero + block explorer).
+// Preloaded here so they race with hydration instead of being blocked on it.
+const CF_STREAM_HOST = 'https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com';
+const HOME_VIDEO_MANIFESTS = [
+    `${CF_STREAM_HOST}/d47e48d7d48b9a0a6835af9546075d88/manifest/video.m3u8`,
+    `${CF_STREAM_HOST}/3ed05f3d4fbfd3eec7c4bb911915d1c2/manifest/video.m3u8`,
+    `${CF_STREAM_HOST}/852dac0dc91d50d399a7349dcc7316a1/manifest/video.m3u8`,
+];
+
 export default function IntroSection() {
+    for (const href of HOME_VIDEO_MANIFESTS) {
+        ReactDOM.preload(href, {
+            as: 'fetch',
+            type: 'application/vnd.apple.mpegurl',
+            crossOrigin: 'anonymous',
+        });
+    }
+
     return (
         <Wrapper>
             <Padding>

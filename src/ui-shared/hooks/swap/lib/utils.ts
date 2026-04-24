@@ -3,6 +3,7 @@ import { BrowserProvider, Signer as EthersSigner } from 'ethers';
 import { CurrencyAmount, Token, NativeCurrency } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { formatNumberWithCommas } from '@/sites/Swap/helpers/formatNumberInputValues';
+import { RWA_API } from '@/config/api';
 
 export async function walletClientToSigner(walletClient: WalletClient): Promise<EthersSigner | null> {
     const { account, chain, transport } = walletClient;
@@ -46,7 +47,7 @@ export const formatNativeGasFee = (
 
 export const fetchTokenPriceUSD = async (tokenSymbol: string): Promise<number | undefined> => {
     if (tokenSymbol !== 'ETH') return undefined;
-    return fetch('https://rwa.y.at/miner/exchange-prices/hourly?instruments=ETH-USD')
+    return fetch(`${RWA_API}/miner/exchange-prices/hourly?instruments=ETH-USD`)
         .then((response) => response.json())
         .then((data) => {
             return data['ETH-USD'];

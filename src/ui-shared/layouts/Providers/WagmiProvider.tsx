@@ -15,7 +15,10 @@ const metadata = {
     icons: ['https://tari.com/assets/img/node-icon-alt.svg'],
 };
 
-const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID || 'c523cd3d3e0246530115c1dc2c016852';
+const PROJECT_ID =
+    process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
+    process.env.NEXT_PUBLIC_PROJECT_ID ||
+    'c523cd3d3e0246530115c1dc2c016852';
 
 const networks: [AppKitNetwork, ...AppKitNetwork[]] = [mainnet, sepolia];
 

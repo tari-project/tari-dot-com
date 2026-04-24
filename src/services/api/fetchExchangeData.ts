@@ -1,6 +1,7 @@
 import logoHeader from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoHeader.svg';
 import logoSquare from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
 import type { Exchange } from '@/sites/exchange/types/exchange';
+import { RWA_API } from '@/config/api';
 
 export async function fetchExchangeData(exchangeId: string, password?: string): Promise<Exchange> {
     if (!exchangeId) {
@@ -37,7 +38,7 @@ export async function fetchExchangeData(exchangeId: string, password?: string): 
         };
     }
 
-    let url = `https://rwa.y.at/miner/exchanges/${exchangeId}`;
+    let url = `${RWA_API}/miner/exchanges/${exchangeId}`;
 
     if (password) {
         // encodeURIComponent is intentional: exchange pages are accessed via

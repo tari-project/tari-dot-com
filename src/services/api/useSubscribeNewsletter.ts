@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { RWA_API } from '@/config/api';
 
 type Props = {
     email: string;
@@ -11,7 +12,7 @@ type Props = {
 // not cached by browsers, and the body is built from the caller's args so
 // it cannot go stale.
 async function subscribeNewsletter(props: Props) {
-    const response = await fetch('https://rwa.y.at/miner/exchanges/user', {
+    const response = await fetch(`${RWA_API}/miner/exchanges/user`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
