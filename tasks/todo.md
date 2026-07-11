@@ -1,5 +1,15 @@
 # Cloudflare Pages to Workers migration
 
+## Workers self-reference binding
+
+- [x] Match the self-service binding to the Worker deployed by Workers Builds.
+- [x] Validate the generated Wrangler configuration without deploying.
+
+### Review
+
+- Workers Builds deploys `tari-dot-com`; the self-service binding previously referenced the non-existent `tari-dot-com-2025` Worker.
+- `wrangler deploy --dry-run` accepts the corrected `WORKER_SELF_REFERENCE (tari-dot-com)` binding.
+
 ## CI lockfile verification
 
 - [x] Reproduce the reported Cloudflare npm 10 lockfile validation failure from the current checkout.

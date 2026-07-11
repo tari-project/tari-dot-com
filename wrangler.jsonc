@@ -11,7 +11,7 @@
     "services": [
         {
             "binding": "WORKER_SELF_REFERENCE",
-            "service": "tari-dot-com-2025",
+            "service": "tari-dot-com",
         },
     ],
     "images": {
