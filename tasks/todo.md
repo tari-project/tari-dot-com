@@ -55,3 +55,15 @@
 - Browser verification passed for rendering `/swaps`, opening and cancelling the WalletConnect modal, and emitting parent iframe states `{ open: true }` followed by `{ open: false }`.
 - Worker upload fell from 3,231.56 KiB to 2,600.26 KiB gzip, with 435 static assets. Production audit findings fell from 42 to 22 (10 low, 9 moderate, 3 high, no critical).
 - A real wallet pairing, persisted reconnect, Sepolia authorization, disconnect, and signed swap were not exercised. The final deployment origin must remain authorized for the WalletConnect project ID.
+
+## CI lockfile repair
+
+- [x] Reproduce the Cloudflare `npm ci` lockfile validation failure with npm 10.
+- [x] Repair the package lock without changing the declared dependency set.
+- [x] Verify `npm ci`, the Worker build, and the deployment dry-run.
+
+### Review
+
+- Cloudflare uses npm 10.9.2, while the prior lockfile was generated with npm 11.6.2 and omitted transitive dependencies required by Wagmi's optional connector graph.
+- Regenerated `package-lock.json` with npm 10.9.2; `npm@10.9.2 ci --dry-run` now succeeds.
+- A full npm 10.9.2 clean install, OpenNext Worker build, and Wrangler deployment dry-run all pass.
