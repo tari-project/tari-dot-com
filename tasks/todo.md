@@ -1,5 +1,30 @@
 # Cloudflare Pages to Workers migration
 
+## CI lockfile verification
+
+- [x] Reproduce the reported Cloudflare npm 10 lockfile validation failure from the current checkout.
+- [x] Identify the source of any package manifest/lockfile divergence and repair it if present.
+- [x] Verify the clean install path used by Cloudflare Pages.
+
+### Review
+
+- The reported missing Safe packages are absent from the parent of `2a696c8`; that commit regenerates the lockfile for npm 10.9.2.
+- `npx npm@10.9.2 ci --progress=false` succeeds on `bump` at `2a696c8` (the same npm version Cloudflare uses).
+- `origin/main` still points to `52bab3e`; configure the deployment to build `bump` or merge `2a696c8` into the branch Cloudflare builds before retrying.
+
+## CI npm resolver compatibility
+
+- [x] Compare the npm 11 GitHub Actions and npm 10 Cloudflare lockfile requirements.
+- [x] Regenerate the dependency lockfile with Cloudflare's npm 10.9.2.
+- [x] Align GitHub Actions with Cloudflare's npm version and verify the CI path.
+
+### Review
+
+- npm 11.6.2 and npm 10.9.2 generate incompatible lockfile shapes for Wagmi's optional connector graph. npm 11 requires Safe package records that npm 10 omits; npm 10 requires Solana-related records that npm 11 omits.
+- Restored the npm 10.9.2 lockfile format used by Cloudflare and added the missing Safe package records.
+- GitHub Actions now installs npm 10.9.2 before `npm ci`, so both environments use the same resolver.
+- Verified a clean npm 10.9.2 install, lint (one existing image warning), TypeScript, and OpenNext Worker build.
+
 - [x] Inspect the existing Next.js, Cloudflare Pages, build, and CI configuration.
 - [x] Verify current OpenNext Cloudflare and Cloudflare Workers guidance and package compatibility.
 - [x] Replace `@cloudflare/next-on-pages` with a compatible current `@opennextjs/cloudflare` and Wrangler toolchain.
