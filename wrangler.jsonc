@@ -1,6 +1,6 @@
 {
     "$schema": "./node_modules/wrangler/config-schema.json",
-    "name": "tari-dot-com-2025",
+    "name": "tari-dot-com",
     "main": ".open-next/worker.js",
     "compatibility_date": "2026-07-11",
     "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
