@@ -48,11 +48,20 @@ export const fetchTokenPriceUSD = async (tokenSymbol: string): Promise<number | 
     if (tokenSymbol !== 'ETH') return undefined;
     return fetch('https://rwa.y.at/miner/exchange-prices/hourly?instruments=ETH-USD')
         .then((response) => response.json())
-        .then((data) => {
+        .then((data: unknown) => {
+            if (typeof data !== 'object' || data === null || !('ETH-USD' in data)) {
+                throw new Error('Invalid token price response');
+            }
+
+            if (typeof data['ETH-USD'] !== 'number') {
+                throw new Error('Invalid ETH-USD price');
+            }
+
             return data['ETH-USD'];
         })
         .catch((error) => {
             console.error('Error fetching token price:', error);
+            return undefined;
         });
 };
 

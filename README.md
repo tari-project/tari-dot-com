@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tari.com
 
-## Getting Started
+## Getting started
 
-First, run the development server:
+Install dependencies, create the local Workers environment file, and start Next.js:
 
 ```bash
+npm ci
+cp .dev.vars.example .dev.vars
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Cloudflare Workers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The production application is built for Cloudflare Workers with the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare/).
 
-## Learn More
+```bash
+npm run build:worker  # Build .open-next/worker.js and static assets
+npm run preview       # Build and run in the local Workers runtime
+npm run deploy        # Build and deploy the Worker
+npm run upload        # Build and upload a version without promoting it
+npm run cf-typegen     # Regenerate Cloudflare binding types
+```
 
-To learn more about Next.js, take a look at the following resources:
+For Cloudflare Workers Builds, use:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Build command: `npm run build:worker`
+- Deploy command: `npx wrangler deploy`
+- Non-production deploy command: `npx wrangler versions upload`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in `.dev.vars` for local development and as a Workers Builds build variable for deployments. Configure `COMMUNITY_TEMPLATES_URL` as a Worker runtime variable only when overriding its source-code default. Enable Cloudflare Images for the zone because the Worker uses an `IMAGES` binding for Next.js image optimization.
 
-## Deploy on Vercel
+Validate the Worker preview before attaching the `tari.com` and `www.tari.com` custom domains. Keep the Pages deployment available for rollback until the domain cutover is verified.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content generation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run `npm run prebuild-all` after editing markdown in `_updates`, `_lessons`, or `_posts` so the generated content maps remain current.

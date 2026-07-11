@@ -29,3 +29,6 @@ jobs:
       
     - name: Run TypeScript check
       run: npx tsc --noEmit
+
+    - name: Build Cloudflare Worker
+      run: npm run build:worker

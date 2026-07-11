@@ -3,8 +3,6 @@ import LessonPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonPage';
 
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
         const { slug } = await params;

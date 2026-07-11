@@ -23,8 +23,7 @@ import {
     SwapInfo,
     // MaxButton,
 } from './Swap.styles';
-import { useAccount } from 'wagmi';
-import { useAppKitWallet } from '@reown/appkit-wallet-button/react';
+import { useConnect, useConnection, useConnectors } from 'wagmi';
 import { useSwapData } from './useSwapData';
 import { useAdaptiveFontSize } from '@/ui-shared/hooks/useAdaptiveFontSize';
 import { truncateMiddle } from '../tari-dot-com/utils/truncateMiddle';
@@ -44,7 +43,9 @@ import { formatNumberWithCommas } from './helpers/formatNumberInputValues';
 
 export const Swap = memo(function Swap() {
     const [openWallet, setOpenWallet] = useState(false);
-    const connectedAccount = useAccount();
+    const connectedAccount = useConnection();
+    const connectors = useConnectors();
+    const connect = useConnect();
 
     const { setTheme } = useUIStore();
 
@@ -55,11 +56,6 @@ export const Swap = memo(function Swap() {
     const onCloseWalletConnect = () => {
         postToParentIframe({ type: MessageType.WALLET_CONNECT, payload: { open: false } });
     };
-
-    const { connect } = useAppKitWallet({
-        onSuccess: onCloseWalletConnect,
-        onError: onCloseWalletConnect,
-    });
 
     const {
         notEnoughBalance,
@@ -173,7 +169,16 @@ export const Swap = memo(function Swap() {
                 },
             });
         } else {
-            connect('walletConnect');
+            const connector = connectors.find(({ id }) => id === 'walletConnect');
+            if (!connector) return;
+
+            connect.mutate(
+                { connector },
+                {
+                    onSuccess: onCloseWalletConnect,
+                    onError: onCloseWalletConnect,
+                },
+            );
             onOpenWalletConnect();
         }
     };

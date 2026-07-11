@@ -1,15 +1,12 @@
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
 import { fetchExchangeData } from '@/services/api/fetchExchangeData';
 
-export const runtime = 'edge';
-
-export const generateMetadata = async ({ 
-    params, 
-    searchParams 
-}: { 
-    params: Promise<{ name: string }>; 
+type PageProps = {
+    params: Promise<{ name: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
+};
+
+export const generateMetadata = async ({ params, searchParams }: PageProps) => {
     const { name } = await params;
     const { password } = await searchParams;
     const exchange = await fetchExchangeData(name, password as string);
@@ -32,6 +29,10 @@ export const generateMetadata = async ({
     };
 };
 
-export default function Page() {
-    return <ExchangePage />;
+export default async function Page({ params, searchParams }: PageProps) {
+    const { name } = await params;
+    const { password } = await searchParams;
+    const exchange = await fetchExchangeData(name, password as string);
+
+    return <ExchangePage customData={exchange} />;
 }

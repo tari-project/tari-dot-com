@@ -3,8 +3,6 @@ import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
         const { slug } = await params;

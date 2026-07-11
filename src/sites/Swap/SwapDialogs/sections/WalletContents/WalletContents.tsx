@@ -1,4 +1,4 @@
-import { useAccount, useDisconnect } from 'wagmi';
+import { useConnection, useDisconnect } from 'wagmi';
 import { WalletButton } from '../../components/WalletButton/WalletButton';
 import {
     ConnectedWalletWrapper,
@@ -30,14 +30,14 @@ interface Props {
 }
 
 export const WalletContents = ({ isOpen, setIsOpen, availableTokens }: Props) => {
-    const { disconnect } = useDisconnect();
-    const { address: accountAddress } = useAccount();
+    const disconnect = useDisconnect();
+    const { address: accountAddress } = useConnection();
 
     const [copied, setCopied] = useState(false);
 
     const handleDisconnect = useCallback(() => {
         if (accountAddress) {
-            disconnect();
+            disconnect.mutate();
         }
         setIsOpen(false);
     }, [accountAddress, disconnect, setIsOpen]);

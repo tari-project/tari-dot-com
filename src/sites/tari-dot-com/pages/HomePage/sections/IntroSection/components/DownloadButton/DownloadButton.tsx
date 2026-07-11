@@ -1,17 +1,17 @@
 'use client';
 
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import AppleIcon from './icons/AppleIcon';
 import WindowsIcon from './icons/WindowsIcon';
 import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './styles';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, type Variants } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import Link from 'next/link';
 import { useUIStore } from '@/stores/useUiStore';
-import { useSearchParams } from 'next/navigation';
+import type { Exchange } from '@/sites/exchange/types/exchange';
 
-const containerVariants = {
+const containerVariants: Variants = {
     visible: {
         transition: { staggerChildren: 0.1, delayChildren: 0.3 },
     },
@@ -20,7 +20,7 @@ const containerVariants = {
     },
 };
 
-const wordVariants = {
+const wordVariants: Variants = {
     hidden: { y: 15, opacity: 0 },
     visible: {
         y: 0,
@@ -35,6 +35,7 @@ const wordVariants = {
 };
 
 interface Props {
+    exchange?: Exchange;
     backgroundColor?: string;
     textColor?: string;
     showIconBackground?: boolean;
@@ -45,6 +46,7 @@ interface Props {
 }
 
 export default function DownloadButton({
+    exchange,
     backgroundColor,
     textColor,
     subTextComponent,
@@ -55,13 +57,27 @@ export default function DownloadButton({
 }: Props) {
     const [hovering, setHovering] = useState(false);
     const [isOutOfView, setIsOutOfView] = useState(false);
+    const [veeraEmailRef, setVeeraEmailRef] = useState<string | null>(null);
     const buttonRef = useRef<HTMLDivElement>(null);
-    const searchParams = useSearchParams();
 
     const { setShowDownloadModal } = useUIStore();
-    const { handleDownloadClick } = useDownloadUniverse();
+    const { handleDownloadClick } = useDownloadUniverse(exchange);
 
-    const shouldDownload = useMemo(() => !isVeera || searchParams.get('veeraEmailRef'), [isVeera, searchParams]);
+    const shouldDownload = !isVeera || Boolean(veeraEmailRef);
+
+    useEffect(() => {
+        const updateVeeraEmailRef = () => {
+            setVeeraEmailRef(new URLSearchParams(window.location.search).get('veeraEmailRef'));
+        };
+
+        updateVeeraEmailRef();
+        window.addEventListener('popstate', updateVeeraEmailRef);
+        window.addEventListener('veera-email-ref-change', updateVeeraEmailRef);
+        return () => {
+            window.removeEventListener('popstate', updateVeeraEmailRef);
+            window.removeEventListener('veera-email-ref-change', updateVeeraEmailRef);
+        };
+    }, []);
 
     const handleClick = useCallback(
         (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {

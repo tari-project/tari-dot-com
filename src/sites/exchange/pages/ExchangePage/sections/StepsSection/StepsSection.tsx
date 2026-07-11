@@ -48,7 +48,12 @@ export default function StepsSection({ exchange }: { exchange: Exchange }) {
                     <StepInside>
                         <StepTitleWrapper>
                             <StepTitle>Install TARI UNIVERSE</StepTitle>
-                            <DownloadButton backgroundColor={color} textColor={textColor} showIconBackground={true} />
+                            <DownloadButton
+                                exchange={exchange}
+                                backgroundColor={color}
+                                textColor={textColor}
+                                showIconBackground={true}
+                            />
                         </StepTitleWrapper>
                         <BgImage src={step1Image.src} alt="step1" />
                     </StepInside>

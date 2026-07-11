@@ -1,7 +1,5 @@
 import FaqPage from '@/sites/tari-dot-com/pages/FaqPage/FaqPage';
 
-export const runtime = 'edge';
-
 export const generateMetadata = async () => {
     const metadata = {
         title: 'Tari / Faq',
