@@ -1,5 +1,21 @@
 # Cloudflare Pages to Workers migration
 
+## PR #96 GitHub Actions failure diagnosis
+
+- [x] Inspect the failed job and isolate the exact failing command and error.
+- [x] Map the failure to the PR diff, workflow configuration, and current branch state.
+- [x] Decide whether the failure is transient, expected, or requires a code/configuration fix.
+- [x] Record the evidence and recommended next action.
+- [x] Generate Next.js types before the CI TypeScript check and verify the clean-checkout path.
+
+### Review
+
+- Job `86531730692` completes checkout, dependency installation, ESLint, and the warning-only Prettier step, then fails at `npx tsc --noEmit` with TS2307 errors for static image imports.
+- PR commit `12b8933` replaced `next lint` with plain `eslint`; clean checkouts no longer generate the ignored `next-env.d.ts` before TypeScript runs.
+- A clean archive reproduces the image-import errors. `next typegen` generates `next-env.d.ts`, after which the same TypeScript check passes.
+- The CI type-check command now runs `next typegen` before `tsc --noEmit`. `next-env.d.ts` remains ignored, as recommended by Next.js.
+- This is a CI bootstrap issue, not missing assets: the assets are tracked and the separate Workers Build succeeds. The Cloudflare Pages check is obsolete after the Workers migration and fails separately.
+
 ## Workers self-reference binding
 
 - [x] Match the self-service binding to the Worker deployed by Workers Builds.

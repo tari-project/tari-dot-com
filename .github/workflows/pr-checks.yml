@@ -32,7 +32,7 @@ jobs:
         run: npm run format:check || echo "Prettier formatting issues found but allowing warnings"
 
       - name: Run TypeScript check
-        run: npx tsc --noEmit
+        run: npx next typegen && npx tsc --noEmit
 
       - name: Build Cloudflare Worker
         run: npm run build:worker
