@@ -15,6 +15,9 @@
 
 # production
 /build
+/.open-next
+/.wrangler
+/worker-startup.cpuprofile
 
 # misc
 .DS_Store
@@ -38,3 +41,4 @@ next-env.d.ts
 # Sentry Config File
 .sentryclirc
 .env
+.dev.vars

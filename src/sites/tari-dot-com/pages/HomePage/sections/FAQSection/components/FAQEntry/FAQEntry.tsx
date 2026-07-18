@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Wrapper, Question, Answer, ToggleIcon, AnswerPadding, QuestionText } from './styles';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, type MotionProps } from 'motion/react';
 
 export interface FAQEntryProps {
     question: string;
@@ -18,7 +18,7 @@ export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps)
         setIsOpen(!isOpen);
     };
 
-    const answerMotionProps = {
+    const answerMotionProps: MotionProps = {
         initial: {
             opacity: 0,
             scaleY: 0,

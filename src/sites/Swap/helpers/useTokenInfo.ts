@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useBalance } from 'wagmi';
+import { useBalance, useReadContract } from 'wagmi';
 import { Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
-import { formatUnits } from 'viem';
+import { erc20Abi, formatUnits } from 'viem';
 import { TokenSymbol } from '../useSwapData';
 import { XTM_SDK_TOKEN } from '@/ui-shared/hooks/swap/lib/constants';
 import { fetchTokenPriceUSD, formatDisplayBalanceForSelectable } from '@/ui-shared/hooks/swap/lib/utils';
@@ -34,16 +34,43 @@ export function useTokenDisplayInfo({
 }: UseTokenDisplayInfoProps) {
     const [tokenPrice, setTokenPrice] = useState<number | undefined>();
     const [isFetchingPrice, setIsFetchingPrice] = useState<boolean>(false);
+    const definition = uiTokenDefinition || fallbackDefinition;
+    const isNative = definition?.isNative ?? true;
+    const tokenAddress = definition && 'address' in definition ? (definition.address as `0x${string}`) : undefined;
 
     const {
-        data: rawBalanceData,
-        isLoading: isLoadingBalance,
-        refetch: refetchBalance,
+        data: nativeBalanceData,
+        isLoading: isLoadingNativeBalance,
+        refetch: refetchNativeBalance,
     } = useBalance({
         address: accountAddress,
-        token: uiTokenDefinition?.isNative ? undefined : (uiTokenDefinition?.address as `0x${string}`),
         chainId: chainId,
+        query: { enabled: Boolean(accountAddress && isNative) },
     });
+
+    const {
+        data: tokenBalance,
+        isLoading: isLoadingTokenBalance,
+        refetch: refetchTokenBalance,
+    } = useReadContract({
+        address: tokenAddress,
+        abi: erc20Abi,
+        functionName: 'balanceOf',
+        args: accountAddress ? [accountAddress] : undefined,
+        chainId,
+        query: { enabled: Boolean(accountAddress && tokenAddress) },
+    });
+
+    const rawBalanceData = useMemo(() => {
+        if (isNative) return nativeBalanceData;
+        if (tokenBalance === undefined) return undefined;
+
+        return {
+            value: tokenBalance,
+            decimals: definition?.decimals || 18,
+            symbol: definition?.symbol || '',
+        };
+    }, [definition?.decimals, definition?.symbol, isNative, nativeBalanceData, tokenBalance]);
 
     const fetchPrice = useCallback(async () => {
         if (uiTokenDefinition?.symbol && chainId) {
@@ -114,13 +141,13 @@ export function useTokenDisplayInfo({
 
     const refetch = useCallback(async () => {
         const pricePromise = fetchPrice(); // Re-trigger price fetch
-        const balancePromise = refetchBalance?.(); // Re-trigger balance fetch (if available)
+        const balancePromise = isNative ? refetchNativeBalance() : refetchTokenBalance();
         await Promise.all([pricePromise, balancePromise]);
-    }, [fetchPrice, refetchBalance]);
+    }, [fetchPrice, isNative, refetchNativeBalance, refetchTokenBalance]);
 
     return {
         tokenDisplayInfo,
-        isLoading: isLoadingBalance || isFetchingPrice,
+        isLoading: (isNative ? isLoadingNativeBalance : isLoadingTokenBalance) || isFetchingPrice,
         refetch,
         rawBalanceData,
         tokenPrice,

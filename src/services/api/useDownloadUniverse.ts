@@ -1,10 +1,9 @@
 export type DownloadPlatform = 'windows' | 'macos' | 'linux';
 import { sendGTMEvent } from '@next/third-parties/google';
-import { useExchangeData } from './useExchangeData';
-import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { useUIStore } from '@/stores/useUiStore';
 import { API_ENDPOINTS } from '@/config/api';
+import type { Exchange } from '@/sites/exchange/types/exchange';
 
 export const getPlatform = () => {
     const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent : '';
@@ -26,9 +25,7 @@ const checkIsMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 };
 
-export const useDownloadUniverse = () => {
-    const { data: exchange } = useExchangeData();
-    const searchParams = useSearchParams();
+export const useDownloadUniverse = (exchange?: Exchange) => {
     const setIsLinux = useUIStore((state) => state.setIsLinux);
 
     const handleDownload = useCallback(
@@ -67,7 +64,7 @@ export const useDownloadUniverse = () => {
             if (exchange?.name) {
                 formattedUrl.searchParams.set('universeReferral', exchange?.id || '');
             }
-            const veeraEmailRef = searchParams.get('veeraEmailRef');
+            const veeraEmailRef = new URLSearchParams(window.location.search).get('veeraEmailRef');
             if (veeraEmailRef) {
                 formattedUrl.searchParams.set('veeraEmailRef', veeraEmailRef);
             }
@@ -86,7 +83,7 @@ export const useDownloadUniverse = () => {
                 window.open(formattedUrl.toString(), '_blank');
             }
         },
-        [exchange, searchParams, setIsLinux],
+        [exchange, setIsLinux],
     );
 
     const handleDownloadClick = (

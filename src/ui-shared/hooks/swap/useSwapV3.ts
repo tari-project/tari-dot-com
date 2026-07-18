@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Token, WETH9, Ether, NativeCurrency, CurrencyAmount, ChainId, Price } from '@uniswap/sdk-core'; // Added Percent, Price
 import { encodeSqrtRatioX96, FeeAmount, TickMath } from '@uniswap/v3-sdk';
-import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
+import { useConnection, usePublicClient, useWalletClient } from 'wagmi';
 import {
     Contract,
     Signer as EthersSigner,
@@ -48,7 +48,7 @@ export const useUniswapV3Interactions = () => {
     const [isApprovingHook, setIsApprovingHook] = useState(false);
     const [isFetchingPoolHook, setIsFetchingPoolHook] = useState(false);
 
-    const { address: accountAddress, isConnected, chain } = useAccount();
+    const { address: accountAddress, isConnected, chain } = useConnection();
     const { data: walletClient } = useWalletClient();
 
     const defaultChainId = ChainId.MAINNET;

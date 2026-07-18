@@ -20,6 +20,7 @@ yarn-error.log*
 
 # Auto-generated files
 .wrangler/
+cloudflare-env.d.ts
 *.tsbuildinfo
 
 # GitHub workflows

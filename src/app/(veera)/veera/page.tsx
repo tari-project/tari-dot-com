@@ -2,8 +2,6 @@ import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
 import logoHeader from '@/sites/exchange/pages/ExchangePage/images/vera/veraLogo.png';
 import logoSquare from '@/sites/exchange/pages/ExchangePage/images/TariBank/logoSquare.svg';
 
-export const runtime = 'edge';
-
 export const generateMetadata = async () => {
     return {
         title: `Tari x Veera`,

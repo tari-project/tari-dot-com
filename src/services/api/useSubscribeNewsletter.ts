@@ -6,6 +6,12 @@ type Props = {
     token: string;
     veera: boolean;
 };
+
+type SubscribeNewsletterResponse = {
+    success: boolean;
+    veeraEmailRef?: string;
+};
+
 async function subscribeNewsletter(props: Props) {
     const response = await fetch('https://rwa.y.at/miner/exchanges/user', {
         method: 'POST',
@@ -19,7 +25,20 @@ async function subscribeNewsletter(props: Props) {
         throw new Error('Failed to fetch miner stats');
     }
 
-    return response.json();
+    const data: unknown = await response.json();
+    if (typeof data !== 'object' || data === null || !('success' in data) || typeof data.success !== 'boolean') {
+        throw new Error('Invalid newsletter response');
+    }
+
+    const rawVeeraEmailRef = 'veeraEmailRef' in data ? data.veeraEmailRef : undefined;
+    if (rawVeeraEmailRef !== null && rawVeeraEmailRef !== undefined && typeof rawVeeraEmailRef !== 'string') {
+        throw new Error('Invalid newsletter response');
+    }
+
+    return {
+        success: data.success,
+        veeraEmailRef: typeof rawVeeraEmailRef === 'string' ? rawVeeraEmailRef : undefined,
+    } satisfies SubscribeNewsletterResponse;
 }
 
 export function useSubscribeNewsletter() {

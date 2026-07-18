@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useAccount, useBalance, useEstimateFeesPerGas, useReadContracts } from 'wagmi';
+import { useBalance, useConnection, useEstimateFeesPerGas, useReadContracts } from 'wagmi';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { formatUnits as viemFormatUnits, parseUnits as viemParseUnits, erc20Abi as viemErc20Abi } from 'viem';
 import { Token, NativeCurrency, Ether, ChainId } from '@uniswap/sdk-core';
@@ -36,7 +36,7 @@ export interface SelectableTokenInfo {
 }
 
 export const useSwapData = () => {
-    const connectedAccount = useAccount();
+    const connectedAccount = useConnection();
     const [ethUsdPrice, setEthUsdPrice] = useState<number | undefined>();
 
     const [ethTokenAmount, setEthTokenAmount] = useState<string>('');

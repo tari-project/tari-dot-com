@@ -23,16 +23,14 @@ import MacIcon from '@/ui-shared/components/Icons/MacIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
-import { useExchangeData } from '@/services/api/useExchangeData';
 import { useEffect, useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { API_ENDPOINTS } from '@/config/api';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
-import { useSearchParams } from 'next/navigation';
+import type { Exchange } from '@/sites/exchange/types/exchange';
 
-export default function DownloadModal() {
+export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
     const { showDownloadModal, setShowDownloadModal, isVeera, isLinux } = useUIStore();
-    const { data: exchange } = useExchangeData();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const { mutateAsync: subscribeNewsletter } = useSubscribeNewsletter();
@@ -40,14 +38,12 @@ export default function DownloadModal() {
     const [isLoading, setIsLoading] = useState(false);
     const { token, markup, reset } = useCaptcha('light');
 
-    const searchParams = useSearchParams();
-
     useEffect(() => {
-        const veeraEmailRef = searchParams.get('veeraEmailRef');
+        const veeraEmailRef = new URLSearchParams(window.location.search).get('veeraEmailRef');
         if (!isSuccess && veeraEmailRef) {
             setIsSuccess(true);
         }
-    }, [isSuccess, searchParams]);
+    }, [isSuccess]);
 
     const windowsLink =
         exchange?.download_link_win ||
@@ -75,10 +71,11 @@ export default function DownloadModal() {
                             const url = new URL(window.location.href);
                             url.searchParams.set('veeraEmailRef', veeraEmailRef);
                             window.history.pushState({}, '', url.toString());
+                            window.dispatchEvent(new Event('veera-email-ref-change'));
                         }
 
                         // Auto-download for Veera after successful email submission
-                        if (isVeera) {
+                        if (isVeera && veeraEmailRef) {
                             // Detect user's platform and trigger download
                             const userAgent = navigator.userAgent.toLowerCase();
                             let downloadUrl = '';

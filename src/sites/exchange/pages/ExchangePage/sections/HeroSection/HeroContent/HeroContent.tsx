@@ -85,6 +85,7 @@ export default function HeroContent({ exchange }: { exchange: Exchange }) {
                     </>
                 )}
                 <DownloadButton
+                    exchange={exchange}
                     isSticky={isVeera}
                     isVeera={isVeera}
                     backgroundColor={color}

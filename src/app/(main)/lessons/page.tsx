@@ -1,8 +1,6 @@
 import { getAllLessons } from '@/services/lib/lessons';
 import LessonsPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonsPage';
 
-export const runtime = 'edge';
-
 export const generateMetadata = async () => {
     const metadata = {
         title: 'Tari / Lessons',
