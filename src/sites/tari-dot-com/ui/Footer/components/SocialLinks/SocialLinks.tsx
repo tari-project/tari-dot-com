@@ -3,7 +3,6 @@
 import { useMainStore } from '@/services/stores/useMainStore';
 import DiscordIcon from './icons/DiscordIcon';
 import GithubIcon from './icons/GithubIcon';
-import InstagramIcon from './icons/InstagramIcon';
 import TelegramIcon from './icons/TelegramIcon';
 import TikTokIcon from './icons/TikTokIcon';
 import XIcon from './icons/XIcon';
@@ -45,20 +44,12 @@ export const SocialIconButtons = () => {
                 <GithubIcon />
             </SocialIcon>
             <SocialIcon
-                href="https://www.youtube.com/channel/UCFjcsEiAtr9mC1Yt0uJ-3xA"
+                href="https://www.youtube.com/@taricommunity"
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
             >
                 <YoutubeIcon />
-            </SocialIcon>
-            <SocialIcon
-                href="https://www.instagram.com/tari_xtm"
-                target="_blank"
-                rel="noreferrer"
-                onClick={handleLinkClick}
-            >
-                <InstagramIcon />
             </SocialIcon>
         </>
     );

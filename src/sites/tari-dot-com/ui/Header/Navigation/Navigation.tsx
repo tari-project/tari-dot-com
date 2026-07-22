@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { HoverBox, NavLink, Wrapper } from './styles';
-import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
 import { useMainStore } from '@/services/stores/useMainStore';
 
@@ -11,21 +10,31 @@ interface NavigationProps {
 }
 
 export default function Navigation({ theme = 'dark' }: NavigationProps) {
-    const [hoveredLink, setHoveredLink] = useState<number | null>(null);
-    const { showSuperMenu, setShowSuperMenu } = useMainStore();
+    const {
+        showSuperMenu,
+        setShowSuperMenu,
+        showCommunityMenu,
+        setShowCommunityMenu,
+        showBuildMenu,
+        setShowBuildMenu,
+    } = useMainStore();
 
     const handleAboutEnter = () => {
-        setHoveredLink(1);
         setShowSuperMenu(true);
+        setShowCommunityMenu(false);
+        setShowBuildMenu(false);
     };
 
-    const handleMouseEnter = (index: number) => {
-        setHoveredLink(index);
+    const handleBuildEnter = () => {
+        setShowBuildMenu(true);
         setShowSuperMenu(false);
+        setShowCommunityMenu(false);
     };
 
-    const handleMouseLeave = () => {
-        setHoveredLink(null);
+    const handleCommunityEnter = () => {
+        setShowCommunityMenu(true);
+        setShowSuperMenu(false);
+        setShowBuildMenu(false);
     };
 
     return (
@@ -44,16 +53,10 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
                 </AnimatePresence>
             </NavLink>
 
-            <NavLink
-                as={Link}
-                onMouseEnter={() => handleMouseEnter(2)}
-                onMouseLeave={handleMouseLeave}
-                $theme={theme}
-                href="/#how-it-works"
-            >
-                <span>How it works</span>
+            <NavLink onMouseEnter={handleBuildEnter} $active={showBuildMenu} $theme={theme}>
+                <span>Build</span>
                 <AnimatePresence>
-                    {hoveredLink === 2 && (
+                    {showBuildMenu && (
                         <HoverBox
                             $theme={theme}
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -64,17 +67,10 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
                 </AnimatePresence>
             </NavLink>
 
-            <NavLink
-                as={Link}
-                href={`https://airdrop.tari.com/?src=taricom`}
-                target="_blank"
-                onMouseEnter={() => handleMouseEnter(3)}
-                onMouseLeave={handleMouseLeave}
-                $theme={theme}
-            >
-                <span>Airdrop</span>
+            <NavLink onMouseEnter={handleCommunityEnter} $active={showCommunityMenu} $theme={theme}>
+                <span>Community</span>
                 <AnimatePresence>
-                    {hoveredLink === 3 && (
+                    {showCommunityMenu && (
                         <HoverBox
                             $theme={theme}
                             initial={{ opacity: 0, scale: 0.9 }}

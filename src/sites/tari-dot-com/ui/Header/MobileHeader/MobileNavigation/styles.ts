@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled(motion.div)<{ $showGroupTwo: boolean }>`
+export const Wrapper = styled(motion.div)<{ $activeGroup: 'main' | 'about' | 'community' | 'build' }>`
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -18,10 +18,22 @@ export const Wrapper = styled(motion.div)<{ $showGroupTwo: boolean }>`
 
     transition: height 0.3s ease;
 
-    ${({ $showGroupTwo }) =>
-        $showGroupTwo &&
+    ${({ $activeGroup }) =>
+        $activeGroup === 'about' &&
         css`
             height: 401px;
+        `}
+
+    ${({ $activeGroup }) =>
+        $activeGroup === 'community' &&
+        css`
+            height: 453px;
+        `}
+
+    ${({ $activeGroup }) =>
+        $activeGroup === 'build' &&
+        css`
+            height: 405px;
         `}
 `;
 

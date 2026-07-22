@@ -48,8 +48,14 @@ export default function Footer() {
                         <Column>
                             <Title>Build</Title>
                             <Links>
+                                <StyledLink href="https://ootle.tari.com/" target="_blank">
+                                    Build on Ootle
+                                </StyledLink>
+                                <StyledLink href="https://ootle.tari.com/community-templates" target="_blank">
+                                    Tari Templates
+                                </StyledLink>
                                 <StyledLink href="https://rfc.tari.com/" target="_blank">
-                                    Docs
+                                    Protocol RFCs
                                 </StyledLink>
                                 <StyledLink href="https://tlu.tarilabs.com/" target="_blank">
                                     Tari Labs University
@@ -61,9 +67,20 @@ export default function Footer() {
                         <Column>
                             <Title>Community</Title>
                             <Links>
-                                <StyledLink href="/updates">Developer Updates</StyledLink>
-                                <StyledLink href="https://store.tarilabs.com/" target="_blank">
-                                    Tari Genesis Store
+                                <StyledLink href="https://community.tari.com/" target="_blank">
+                                    Governance
+                                </StyledLink>
+                                <StyledLink
+                                    href="https://github.com/tari-project/rfcs/blob/main/src/TIP-0002_tari_community_charter.md"
+                                    target="_blank"
+                                >
+                                    Tari Community Charter
+                                </StyledLink>
+                                <StyledLink
+                                    href="https://github.com/tari-project/rfcs/blob/main/src/Process/TIP-PROC-0006_core_contributor_program.md"
+                                    target="_blank"
+                                >
+                                    Core Contributor Program
                                 </StyledLink>
                             </Links>
                         </Column>

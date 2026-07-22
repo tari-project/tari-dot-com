@@ -43,7 +43,7 @@ export const Holder = styled.div`
 `;
 
 export const Middle = styled.div`
-    max-width: 643px;
+    max-width: 720px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@ export const LinksWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 86px;
-    max-width: 624px;
+    max-width: 700px;
     padding-bottom: 62px;
     flex-wrap: wrap;
 

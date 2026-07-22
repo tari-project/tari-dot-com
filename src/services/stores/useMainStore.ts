@@ -7,6 +7,10 @@ interface Store {
     setShowMobileMenu: (showMobileMenu: boolean) => void;
     showSuperMenu: boolean;
     setShowSuperMenu: (showSuperMenu: boolean) => void;
+    showCommunityMenu: boolean;
+    setShowCommunityMenu: (showCommunityMenu: boolean) => void;
+    showBuildMenu: boolean;
+    setShowBuildMenu: (showBuildMenu: boolean) => void;
 }
 
 export const useMainStore = create<Store>()((set) => ({
@@ -16,4 +20,8 @@ export const useMainStore = create<Store>()((set) => ({
     setShowMobileMenu: (showMobileMenu: boolean) => set({ showMobileMenu }),
     showSuperMenu: false,
     setShowSuperMenu: (showSuperMenu: boolean) => set({ showSuperMenu }),
+    showCommunityMenu: false,
+    setShowCommunityMenu: (showCommunityMenu: boolean) => set({ showCommunityMenu }),
+    showBuildMenu: false,
+    setShowBuildMenu: (showBuildMenu: boolean) => set({ showBuildMenu }),
 }));
