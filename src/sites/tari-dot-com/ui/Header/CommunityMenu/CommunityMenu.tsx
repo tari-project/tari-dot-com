@@ -51,18 +51,12 @@ export default function CommunityMenu() {
             }
         };
 
-        if (showCommunityMenu) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showCommunityMenu, setShowCommunityMenu]);
-
-    useEffect(() => {
-        setShowCommunityMenu(false);
-    }, [setShowCommunityMenu]);
+    }, []);
 
     return (
         <AnimatePresence>
@@ -87,7 +81,7 @@ export default function CommunityMenu() {
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Governance</LinkTitle>
+                                    <LinkTitle>Forum</LinkTitle>
                                     <LinkText>Shape the protocol and vote on proposals</LinkText>
                                 </LinkButton>
 

@@ -16,7 +16,7 @@ export default function HomePage() {
             <VideoSection />
             <EcosystemSection />
             <TariSection />
-            <FAQSection id="faq" maxEntries={5} />
+            <FAQSection maxEntries={5} />
             <Modals />
         </Wrapper>
     );

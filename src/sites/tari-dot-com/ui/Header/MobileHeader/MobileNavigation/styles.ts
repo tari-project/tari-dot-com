@@ -33,7 +33,7 @@ export const Wrapper = styled(motion.div)<{ $activeGroup: 'main' | 'about' | 'co
     ${({ $activeGroup }) =>
         $activeGroup === 'build' &&
         css`
-            height: 405px;
+            height: 353px;
         `}
 `;
 

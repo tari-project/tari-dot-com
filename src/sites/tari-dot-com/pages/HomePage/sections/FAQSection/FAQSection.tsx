@@ -130,14 +130,13 @@ const faqData = [
 ];
 
 interface Props {
-    id?: string;
     lightMode?: boolean;
     maxWidth?: number;
     maxEntries?: number;
     disableAnimation?: boolean;
 }
 
-export default function FAQSection({ id, lightMode, maxWidth, maxEntries, disableAnimation }: Props) {
+export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAnimation }: Props) {
     const [showAll, setShowAll] = useState(false);
 
     const handleSeeAllClick = (e: React.MouseEvent) => {
@@ -149,7 +148,7 @@ export default function FAQSection({ id, lightMode, maxWidth, maxEntries, disabl
     const hiddenEntries = maxEntries !== undefined ? faqData.slice(maxEntries) : [];
 
     return (
-        <Wrapper id={id} $lightMode={lightMode}>
+        <Wrapper id="faq" $lightMode={lightMode}>
             <Holder $maxWidth={maxWidth}>
                 <Title>Frequently asked questions</Title>
 

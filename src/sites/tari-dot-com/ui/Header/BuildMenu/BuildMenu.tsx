@@ -52,18 +52,12 @@ export default function BuildMenu() {
             }
         };
 
-        if (showBuildMenu) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showBuildMenu, setShowBuildMenu]);
-
-    useEffect(() => {
-        setShowBuildMenu(false);
-    }, [setShowBuildMenu]);
+    }, []);
 
     return (
         <AnimatePresence>
@@ -111,7 +105,7 @@ export default function BuildMenu() {
                                     onClick={handleLinkClick}
                                 >
                                     <LinkTitle>GitHub</LinkTitle>
-                                    <LinkText>{`Explore Tari's codebase (it's open source!)`}</LinkText>
+                                    <LinkText>Explore Tari's codebase (it's open source!)</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="/integration-guide" onClick={handleLinkClick}>
@@ -127,11 +121,6 @@ export default function BuildMenu() {
                                 >
                                     <LinkTitle>Developer Bounties</LinkTitle>
                                     <LinkText>Pick an issue, ship code and earn XTM</LinkText>
-                                </LinkButton>
-
-                                <LinkButton as={Link} href="/updates" onClick={handleLinkClick}>
-                                    <LinkTitle>Developer Updates</LinkTitle>
-                                    <LinkText>Get the latest updates from Tari contributors</LinkText>
                                 </LinkButton>
                             </Links>
 

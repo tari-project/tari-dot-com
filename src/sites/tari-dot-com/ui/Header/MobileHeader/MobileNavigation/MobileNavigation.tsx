@@ -58,9 +58,9 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="https://store.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            <span>
+                            <>
                                 Tari Genesis Store <Chip>coming soon</Chip>
-                            </span>
+                            </>
                         </NavLink>
 
                         <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
@@ -94,7 +94,7 @@ export default function MobileNavigation() {
                             target="_blank"
                             onClick={handleLinkClick}
                         >
-                            Governance
+                            Forum
                         </NavLink>
 
                         <NavLink
@@ -189,10 +189,6 @@ export default function MobileNavigation() {
                             onClick={handleLinkClick}
                         >
                             Developer Bounties
-                        </NavLink>
-
-                        <NavLink as={Link} href="/updates" onClick={handleLinkClick}>
-                            Developer Updates
                         </NavLink>
                     </GroupTwo>
                 )}
