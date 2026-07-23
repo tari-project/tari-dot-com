@@ -57,16 +57,6 @@ export default function MobileNavigation() {
                             Block Explorer
                         </NavLink>
 
-                        <NavLink as={Link} href="https://store.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            <span>
-                                Tari Genesis Store <Chip>coming soon</Chip>
-                            </span>
-                        </NavLink>
-
-                        <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            Tari Labs University
-                        </NavLink>
-
                         <NavLink as={Link} href="/downloads" onClick={handleLinkClick}>
                             Downloads
                         </NavLink>

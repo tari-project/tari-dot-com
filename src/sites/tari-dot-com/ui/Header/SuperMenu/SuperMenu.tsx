@@ -11,7 +11,6 @@ import {
     LinkText,
     TariImage,
     ContentBox,
-    Chip,
 } from './styles';
 import tariImage from '../images/tari-built.png';
 import Link from 'next/link';
@@ -110,28 +109,6 @@ export default function SuperMenu() {
                                 <LinkButton as={Link} href="/downloads" onClick={handleLinkClick}>
                                     <LinkTitle>Downloads</LinkTitle>
                                     <LinkText>Get the latest Tari Universe releases</LinkText>
-                                </LinkButton>
-
-                                <LinkButton
-                                    as={Link}
-                                    href="https://tlu.tarilabs.com/"
-                                    target="_blank"
-                                    onClick={handleLinkClick}
-                                >
-                                    <LinkTitle>Tari Labs University</LinkTitle>
-                                    <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
-                                </LinkButton>
-
-                                <LinkButton
-                                    as={Link}
-                                    href="https://store.tarilabs.com/"
-                                    target="_blank"
-                                    onClick={handleLinkClick}
-                                >
-                                    <LinkTitle>
-                                        Tari Genesis Store <Chip>coming soon</Chip>
-                                    </LinkTitle>
-                                    <LinkText>Buy limited edition Tari merch with XTM</LinkText>
                                 </LinkButton>
                             </Links>
 

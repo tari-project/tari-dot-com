@@ -56,6 +56,8 @@ export const Links = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     width: 100%;
+    align-self: flex-start;
+    align-content: start;
 `;
 
 export const LinkTitle = styled.div`

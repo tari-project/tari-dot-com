@@ -4,7 +4,6 @@ import { useMainStore } from '@/services/stores/useMainStore';
 import DiscordIcon from './icons/DiscordIcon';
 import GithubIcon from './icons/GithubIcon';
 import TelegramIcon from './icons/TelegramIcon';
-import TikTokIcon from './icons/TikTokIcon';
 import XIcon from './icons/XIcon';
 import YoutubeIcon from './icons/YoutubeIcon';
 import { Wrapper, SocialIcon } from './styles';
@@ -26,14 +25,6 @@ export const SocialIconButtons = () => {
             </SocialIcon>
             <SocialIcon href="https://discord.gg/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
                 <DiscordIcon />
-            </SocialIcon>
-            <SocialIcon
-                href="https://www.tiktok.com/@tari_xtm"
-                target="_blank"
-                rel="noreferrer"
-                onClick={handleLinkClick}
-            >
-                <TikTokIcon />
             </SocialIcon>
             <SocialIcon
                 href="https://github.com/tari-project"
