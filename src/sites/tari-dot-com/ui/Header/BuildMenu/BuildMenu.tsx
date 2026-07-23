@@ -122,6 +122,16 @@ export default function BuildMenu() {
                                     <LinkTitle>Developer Bounties</LinkTitle>
                                     <LinkText>Pick an issue, ship code and earn XTM</LinkText>
                                 </LinkButton>
+
+                                <LinkButton
+                                    as={Link}
+                                    href="https://rfc.tari.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>Documentation</LinkTitle>
+                                    <LinkText>Read the Tari protocol RFCs and docs</LinkText>
+                                </LinkButton>
                             </Links>
 
                             <TariImage src={tariImage.src} alt="Built for tinkerers" />

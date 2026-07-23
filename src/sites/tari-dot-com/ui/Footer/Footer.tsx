@@ -55,7 +55,7 @@ export default function Footer() {
                                     Tari Templates
                                 </StyledLink>
                                 <StyledLink href="https://rfc.tari.com/" target="_blank">
-                                    Protocol RFCs
+                                    Docs
                                 </StyledLink>
                                 <StyledLink href="https://tlu.tarilabs.com/" target="_blank">
                                     Tari Labs University

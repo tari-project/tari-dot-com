@@ -88,6 +88,10 @@ export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
 `;
 
 export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
     color: #71ee73;
     font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
@@ -176,11 +180,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
 
 export const NumberWrapper = styled.span`
     display: inline-block;
-    text-align: right;
-    margin-right: 4px;
     margin-left: 24px;
     text-transform: lowercase;
-
-    transition: width 0.3s ease;
-    min-width: 34px;
+    flex-shrink: 0;
 `;

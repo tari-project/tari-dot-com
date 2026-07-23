@@ -58,9 +58,9 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="https://store.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            <>
+                            <span>
                                 Tari Genesis Store <Chip>coming soon</Chip>
-                            </>
+                            </span>
                         </NavLink>
 
                         <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
@@ -162,24 +162,11 @@ export default function MobileNavigation() {
 
                         <NavLink
                             as={Link}
-                            href="https://ootle.tari.com/community-templates"
-                            target="_blank"
-                            onClick={handleLinkClick}
-                        >
-                            Explore Tari Templates
-                        </NavLink>
-
-                        <NavLink
-                            as={Link}
                             href="https://github.com/tari-project"
                             target="_blank"
                             onClick={handleLinkClick}
                         >
                             GitHub
-                        </NavLink>
-
-                        <NavLink as={Link} href="/integration-guide" onClick={handleLinkClick}>
-                            Exchange Integration Guide
                         </NavLink>
 
                         <NavLink
@@ -189,6 +176,23 @@ export default function MobileNavigation() {
                             onClick={handleLinkClick}
                         >
                             Developer Bounties
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://ootle.tari.com/community-templates"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Explore Tari Templates
+                        </NavLink>
+
+                        <NavLink as={Link} href="/integration-guide" onClick={handleLinkClick}>
+                            Exchange Integration Guide
+                        </NavLink>
+
+                        <NavLink as={Link} href="https://rfc.tari.com/" target="_blank" onClick={handleLinkClick}>
+                            Documentation
                         </NavLink>
                     </GroupTwo>
                 )}
