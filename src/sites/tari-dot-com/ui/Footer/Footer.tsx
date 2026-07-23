@@ -57,9 +57,6 @@ export default function Footer() {
                                 <StyledLink href="https://rfc.tari.com/" target="_blank">
                                     Docs
                                 </StyledLink>
-                                <StyledLink href="https://tlu.tarilabs.com/" target="_blank">
-                                    Tari Labs University
-                                </StyledLink>
                                 <StyledLink href="/integration-guide/">Integration Guide</StyledLink>
                             </Links>
                         </Column>
