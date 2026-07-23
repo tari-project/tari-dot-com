@@ -110,6 +110,16 @@ export default function SuperMenu() {
                                     <LinkTitle>Downloads</LinkTitle>
                                     <LinkText>Get the latest Tari Universe releases</LinkText>
                                 </LinkButton>
+
+                                <LinkButton
+                                    as={Link}
+                                    href="https://tlu.tarilabs.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>Tari Labs University</LinkTitle>
+                                    <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
+                                </LinkButton>
                             </Links>
 
                             <TariImage src={tariImage.src} alt="Built for tinkerers" />

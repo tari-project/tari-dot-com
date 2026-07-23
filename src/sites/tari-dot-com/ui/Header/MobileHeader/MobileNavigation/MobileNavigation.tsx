@@ -57,12 +57,16 @@ export default function MobileNavigation() {
                             Block Explorer
                         </NavLink>
 
-                        <NavLink as={Link} href="/downloads" onClick={handleLinkClick}>
-                            Downloads
+                        <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
+                            Tari Labs University
                         </NavLink>
 
                         <NavLink as={Link} href="/branding/brandkit.zip" target="_blank" onClick={handleLinkClick}>
                             Brand Guidelines
+                        </NavLink>
+
+                        <NavLink as={Link} href="/downloads" onClick={handleLinkClick}>
+                            Downloads
                         </NavLink>
                     </GroupTwo>
                 )}
@@ -182,7 +186,7 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="https://rfc.tari.com/" target="_blank" onClick={handleLinkClick}>
-                            Documentation
+                            RFCs and Proposals
                         </NavLink>
                     </GroupTwo>
                 )}

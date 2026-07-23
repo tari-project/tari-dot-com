@@ -129,7 +129,7 @@ export default function BuildMenu() {
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Documentation</LinkTitle>
+                                    <LinkTitle>RFCs and Proposals</LinkTitle>
                                     <LinkText>Read the Tari protocol RFCs and docs</LinkText>
                                 </LinkButton>
                             </Links>

@@ -21,7 +21,7 @@ export const Wrapper = styled(motion.div)<{ $activeGroup: 'main' | 'about' | 'co
     ${({ $activeGroup }) =>
         $activeGroup === 'about' &&
         css`
-            height: 301px;
+            height: 353px;
         `}
 
     ${({ $activeGroup }) =>
