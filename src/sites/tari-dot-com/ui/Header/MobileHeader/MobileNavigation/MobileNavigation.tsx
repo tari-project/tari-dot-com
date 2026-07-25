@@ -186,7 +186,7 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="https://rfc.tari.com/" target="_blank" onClick={handleLinkClick}>
-                            RFCs and Proposals
+                            Protocol Docs
                         </NavLink>
                     </GroupTwo>
                 )}
