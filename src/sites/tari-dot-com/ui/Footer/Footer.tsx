@@ -71,7 +71,7 @@ export default function Footer() {
                                     Forum
                                 </StyledLink>
                                 <StyledLink
-                                    href="https://github.com/tari-project/rfcs/blob/main/src/TIP-0002_tari_community_charter.md"
+                                    href="https://rfc.tari.com/TIP-0002_tari_community_charter"
                                     target="_blank"
                                 >
                                     Tari Community Charter
