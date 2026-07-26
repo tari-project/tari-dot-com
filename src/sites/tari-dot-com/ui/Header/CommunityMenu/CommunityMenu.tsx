@@ -87,7 +87,7 @@ export default function CommunityMenu() {
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://github.com/tari-project/rfcs/blob/main/src/TIP-0002_tari_community_charter.md"
+                                    href="https://rfc.tari.com/TIP-0002_tari_community_charter"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
