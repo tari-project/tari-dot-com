@@ -37,9 +37,12 @@ export default function MobileNavigation() {
                         <NavLink as={Link} href={`/#how-it-works`} onClick={handleLinkClick}>
                             How it works
                         </NavLink>
+                        <NavLink as={Link} href={`https://ootle.tari.com`} target="_blank" onClick={handleLinkClick}>
+                            Ootle (L2)
+                        </NavLink>
                         <NavLink
                             as={Link}
-                            href={`https://universe.tari.com/`}
+                            href={`https://airdrop.tari.com/?src=taricom`}
                             target="_blank"
                             onClick={handleLinkClick}
                         >

@@ -66,15 +66,36 @@ export default function Navigation({ theme = 'dark' }: NavigationProps) {
 
             <NavLink
                 as={Link}
+                onMouseEnter={() => handleMouseEnter(3)}
+                onMouseLeave={handleMouseLeave}
+                $theme={theme}
+                href={`https://ootle.tari.com`}
+                target="_blank"
+            >
+                <span>Ootle (L2)</span>
+                <AnimatePresence>
+                    {hoveredLink === 3 && (
+                        <HoverBox
+                            $theme={theme}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                        />
+                    )}
+                </AnimatePresence>
+            </NavLink>
+
+            <NavLink
+                as={Link}
                 href={`https://airdrop.tari.com/?src=taricom`}
                 target="_blank"
-                onMouseEnter={() => handleMouseEnter(3)}
+                onMouseEnter={() => handleMouseEnter(4)}
                 onMouseLeave={handleMouseLeave}
                 $theme={theme}
             >
                 <span>Airdrop</span>
                 <AnimatePresence>
-                    {hoveredLink === 3 && (
+                    {hoveredLink === 4 && (
                         <HoverBox
                             $theme={theme}
                             initial={{ opacity: 0, scale: 0.9 }}

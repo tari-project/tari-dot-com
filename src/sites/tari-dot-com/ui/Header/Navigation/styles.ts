@@ -29,6 +29,10 @@ export const NavLink = styled.button<{ $active?: boolean; $theme?: 'dark' | 'lig
     justify-content: center;
     user-select: none;
 
+    @media (max-width: 1134px) {
+        padding: 0 14px;
+    }
+
     color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
 
     span {
