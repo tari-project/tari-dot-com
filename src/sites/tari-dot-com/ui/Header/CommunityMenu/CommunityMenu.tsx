@@ -5,20 +5,20 @@ import {
     Wrapper,
     SectionTitle,
     ContentHolder,
-    Links,
     LinkButton,
     LinkTitle,
     LinkText,
-    TariImage,
     ContentBox,
-} from './styles';
+    TariImage,
+} from '../SuperMenu/styles';
+import { CommunityLinks } from './styles';
 import tariImage from '../images/tari-built.png';
 import Link from 'next/link';
 import { useMainStore } from '@/services/stores/useMainStore';
 import { AnimatePresence, motion } from 'motion/react';
 
-export default function SuperMenu() {
-    const { showSuperMenu, setShowSuperMenu } = useMainStore();
+export default function CommunityMenu() {
+    const { showCommunityMenu, setShowCommunityMenu } = useMainStore();
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,7 @@ export default function SuperMenu() {
         }
 
         timeoutRef.current = setTimeout(() => {
-            setShowSuperMenu(false);
+            setShowCommunityMenu(false);
             timeoutRef.current = null;
         }, 250);
     };
@@ -41,32 +41,26 @@ export default function SuperMenu() {
     };
 
     const handleLinkClick = () => {
-        setShowSuperMenu(false);
+        setShowCommunityMenu(false);
     };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-                setShowSuperMenu(false);
+                setShowCommunityMenu(false);
             }
         };
 
-        if (showSuperMenu) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showSuperMenu, setShowSuperMenu]);
-
-    useEffect(() => {
-        setShowSuperMenu(false);
-    }, [setShowSuperMenu]);
+    }, []);
 
     return (
         <AnimatePresence>
-            {showSuperMenu && (
+            {showCommunityMenu && (
                 <Wrapper
                     ref={wrapperRef}
                     as={motion.div}
@@ -77,50 +71,70 @@ export default function SuperMenu() {
                     onMouseEnter={handleEnter}
                 >
                     <ContentBox>
-                        <SectionTitle>About Tari</SectionTitle>
+                        <SectionTitle>Community</SectionTitle>
 
                         <ContentHolder>
-                            <Links>
-                                <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
-                                    <LinkTitle>Tokenomics</LinkTitle>
-                                    <LinkText>Learn about the Tari XTM token</LinkText>
+                            <CommunityLinks>
+                                <LinkButton
+                                    as={Link}
+                                    href="https://community.tari.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>Forum</LinkTitle>
+                                    <LinkText>Shape the protocol and vote on proposals</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="/branding/brandkit.zip"
+                                    href="https://rfc.tari.com/TIP-0002_tari_community_charter"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Brand Guidelines</LinkTitle>
-                                    <LinkText>Logos, colors and brand assets</LinkText>
+                                    <LinkTitle>Tari Community Charter</LinkTitle>
+                                    <LinkText>Read the community principles and values</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://explore.tari.com/"
+                                    href="https://rfc.tari.com/Process/TIP-PROC-0006_core_contributor_program.html"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Block Explorer</LinkTitle>
-                                    <LinkText>View Tari network activity</LinkText>
-                                </LinkButton>
-
-                                <LinkButton as={Link} href="/downloads" onClick={handleLinkClick}>
-                                    <LinkTitle>Downloads</LinkTitle>
-                                    <LinkText>Get the latest Tari Universe releases</LinkText>
+                                    <LinkTitle>Core Contributor Program</LinkTitle>
+                                    <LinkText>Become a core contributor to Tari</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://tlu.tarilabs.com/"
+                                    href="https://x.com/tari"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Tari Labs University</LinkTitle>
-                                    <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
+                                    <LinkTitle>X (@tari)</LinkTitle>
+                                    <LinkText>Follow along in real time</LinkText>
                                 </LinkButton>
-                            </Links>
+
+                                <LinkButton
+                                    as={Link}
+                                    href="https://discord.com/invite/tari"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>Discord</LinkTitle>
+                                    <LinkText>Where the Tari community hangs out</LinkText>
+                                </LinkButton>
+
+                                <LinkButton
+                                    as={Link}
+                                    href="https://www.youtube.com/@taricommunity"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>YouTube</LinkTitle>
+                                    <LinkText>Watch videos from the Tari community</LinkText>
+                                </LinkButton>
+                            </CommunityLinks>
 
                             <TariImage src={tariImage.src} alt="Built for tinkerers" />
                         </ContentHolder>

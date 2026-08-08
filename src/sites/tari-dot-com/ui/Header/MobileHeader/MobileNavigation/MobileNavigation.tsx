@@ -20,35 +20,32 @@ const ChevronLeft = () => (
 
 export default function MobileNavigation() {
     const { setShowMobileMenu } = useMainStore();
-    const [showGroupTwo, setShowGroupTwo] = useState(false);
+    const [activeGroup, setActiveGroup] = useState<'main' | 'about' | 'community' | 'build'>('main');
 
     const handleLinkClick = () => {
         setShowMobileMenu(false);
     };
 
     return (
-        <Wrapper $showGroupTwo={showGroupTwo}>
+        <Wrapper $activeGroup={activeGroup}>
             <AnimatePresence mode="popLayout">
-                {!showGroupTwo ? (
+                {activeGroup === 'main' && (
                     <GroupOne initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="group-one">
-                        <NavLink onClick={() => setShowGroupTwo(true)}>
+                        <NavLink onClick={() => setActiveGroup('about')}>
                             About Tari <ChevronRight />
                         </NavLink>
-                        <NavLink as={Link} href={`/#how-it-works`} onClick={handleLinkClick}>
-                            How it works
+                        <NavLink onClick={() => setActiveGroup('build')}>
+                            Build <ChevronRight />
                         </NavLink>
-                        <NavLink
-                            as={Link}
-                            href={`https://universe.tari.com/`}
-                            target="_blank"
-                            onClick={handleLinkClick}
-                        >
-                            Airdrop
+                        <NavLink onClick={() => setActiveGroup('community')}>
+                            Community <ChevronRight />
                         </NavLink>
                     </GroupOne>
-                ) : (
+                )}
+
+                {activeGroup === 'about' && (
                     <GroupTwo initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="group-two">
-                        <NavLink onClick={() => setShowGroupTwo(false)}>
+                        <NavLink onClick={() => setActiveGroup('main')}>
                             <ChevronLeft />
                         </NavLink>
 
@@ -60,6 +57,103 @@ export default function MobileNavigation() {
                             Block Explorer
                         </NavLink>
 
+                        <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
+                            Tari Labs University
+                        </NavLink>
+
+                        <NavLink as={Link} href="/branding/brandkit.zip" target="_blank" onClick={handleLinkClick}>
+                            Brand Guidelines
+                        </NavLink>
+
+                        <NavLink as={Link} href="/downloads" onClick={handleLinkClick}>
+                            Downloads
+                        </NavLink>
+                    </GroupTwo>
+                )}
+
+                {activeGroup === 'community' && (
+                    <GroupTwo
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        key="group-community"
+                    >
+                        <NavLink onClick={() => setActiveGroup('main')}>
+                            <ChevronLeft />
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://community.tari.com/"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Forum
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://rfc.tari.com/TIP-0002_tari_community_charter"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Tari Community Charter
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://rfc.tari.com/Process/TIP-PROC-0006_core_contributor_program.html"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Core Contributor Program
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://discord.com/invite/tari"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Discord
+                        </NavLink>
+
+                        <NavLink as={Link} href="https://x.com/tari" target="_blank" onClick={handleLinkClick}>
+                            X (@tari)
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://www.reddit.com/r/tari/"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Reddit
+                        </NavLink>
+
+                        <NavLink
+                            as={Link}
+                            href="https://www.youtube.com/@taricommunity"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            YouTube
+                        </NavLink>
+                    </GroupTwo>
+                )}
+
+                {activeGroup === 'build' && (
+                    <GroupTwo initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="group-build">
+                        <NavLink onClick={() => setActiveGroup('main')}>
+                            <ChevronLeft />
+                        </NavLink>
+
+                        <NavLink as={Link} href="https://ootle.tari.com/" target="_blank" onClick={handleLinkClick}>
+                            <span>
+                                Build on Ootle <Chip>testnet</Chip>
+                            </span>
+                        </NavLink>
+
                         <NavLink
                             as={Link}
                             href="https://github.com/tari-project"
@@ -69,18 +163,30 @@ export default function MobileNavigation() {
                             GitHub
                         </NavLink>
 
-                        <NavLink as={Link} href="https://store.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            <span>
-                                Tari Genesis Store <Chip>coming soon</Chip>
-                            </span>
+                        <NavLink
+                            as={Link}
+                            href="https://github.com/tari-project/bounties"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Developer Bounties
                         </NavLink>
 
-                        <NavLink as={Link} href="https://tlu.tarilabs.com/" target="_blank" onClick={handleLinkClick}>
-                            Tari Labs University
+                        <NavLink
+                            as={Link}
+                            href="https://ootle.tari.com/community-templates"
+                            target="_blank"
+                            onClick={handleLinkClick}
+                        >
+                            Explore Tari Templates
                         </NavLink>
 
-                        <NavLink as={Link} href="/updates" onClick={handleLinkClick}>
-                            Developer Updates
+                        <NavLink as={Link} href="/integration-guide" onClick={handleLinkClick}>
+                            Exchange Integration Guide
+                        </NavLink>
+
+                        <NavLink as={Link} href="https://rfc.tari.com/" target="_blank" onClick={handleLinkClick}>
+                            Protocol Docs
                         </NavLink>
                     </GroupTwo>
                 )}

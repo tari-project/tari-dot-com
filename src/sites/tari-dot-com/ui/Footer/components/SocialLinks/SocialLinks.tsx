@@ -1,11 +1,11 @@
 'use client';
 
 import { useMainStore } from '@/services/stores/useMainStore';
+import BlueskyIcon from './icons/BlueskyIcon';
 import DiscordIcon from './icons/DiscordIcon';
 import GithubIcon from './icons/GithubIcon';
-import InstagramIcon from './icons/InstagramIcon';
+import MastodonIcon from './icons/MastodonIcon';
 import TelegramIcon from './icons/TelegramIcon';
-import TikTokIcon from './icons/TikTokIcon';
 import XIcon from './icons/XIcon';
 import YoutubeIcon from './icons/YoutubeIcon';
 import { Wrapper, SocialIcon } from './styles';
@@ -22,19 +22,27 @@ export const SocialIconButtons = () => {
             <SocialIcon href="https://twitter.com/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
                 <XIcon />
             </SocialIcon>
+            <SocialIcon
+                href="https://bsky.app/profile/tariproject.bsky.social"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+            >
+                <BlueskyIcon />
+            </SocialIcon>
+            <SocialIcon
+                href="https://mastodon.social/@tariproject"
+                target="_blank"
+                rel="me noreferrer"
+                onClick={handleLinkClick}
+            >
+                <MastodonIcon />
+            </SocialIcon>
             <SocialIcon href="https://t.me/tariproject" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
                 <TelegramIcon />
             </SocialIcon>
             <SocialIcon href="https://discord.gg/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
                 <DiscordIcon />
-            </SocialIcon>
-            <SocialIcon
-                href="https://www.tiktok.com/@tari_xtm"
-                target="_blank"
-                rel="noreferrer"
-                onClick={handleLinkClick}
-            >
-                <TikTokIcon />
             </SocialIcon>
             <SocialIcon
                 href="https://github.com/tari-project"
@@ -45,20 +53,12 @@ export const SocialIconButtons = () => {
                 <GithubIcon />
             </SocialIcon>
             <SocialIcon
-                href="https://www.youtube.com/channel/UCFjcsEiAtr9mC1Yt0uJ-3xA"
+                href="https://www.youtube.com/@taricommunity"
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
             >
                 <YoutubeIcon />
-            </SocialIcon>
-            <SocialIcon
-                href="https://www.instagram.com/tari_xtm"
-                target="_blank"
-                rel="noreferrer"
-                onClick={handleLinkClick}
-            >
-                <InstagramIcon />
             </SocialIcon>
         </>
     );

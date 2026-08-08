@@ -7,6 +7,8 @@ import Navigation from './Navigation/Navigation';
 import MinersCTA from './MinersCTA/MinersCTA';
 import TariLogo from '../TariLogo/TariLogo';
 import SuperMenu from './SuperMenu/SuperMenu';
+import CommunityMenu from './CommunityMenu/CommunityMenu';
+import BuildMenu from './BuildMenu/BuildMenu';
 import MobileHeader from './MobileHeader/MobileHeader';
 
 export default function Header() {
@@ -54,6 +56,8 @@ export default function Header() {
                         {renderHeaderContent('light')}
                     </HeaderLight>
                     <SuperMenu />
+                    <CommunityMenu />
+                    <BuildMenu />
                 </Holder>
             </Wrapper>
 

@@ -148,7 +148,7 @@ export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAni
     const hiddenEntries = maxEntries !== undefined ? faqData.slice(maxEntries) : [];
 
     return (
-        <Wrapper $lightMode={lightMode}>
+        <Wrapper id="faq" $lightMode={lightMode}>
             <Holder $maxWidth={maxWidth}>
                 <Title>Frequently asked questions</Title>
 

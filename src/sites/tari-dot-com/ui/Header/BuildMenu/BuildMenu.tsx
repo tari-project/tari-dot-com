@@ -9,16 +9,17 @@ import {
     LinkButton,
     LinkTitle,
     LinkText,
-    TariImage,
     ContentBox,
-} from './styles';
+    TariImage,
+    Chip,
+} from '../SuperMenu/styles';
 import tariImage from '../images/tari-built.png';
 import Link from 'next/link';
 import { useMainStore } from '@/services/stores/useMainStore';
 import { AnimatePresence, motion } from 'motion/react';
 
-export default function SuperMenu() {
-    const { showSuperMenu, setShowSuperMenu } = useMainStore();
+export default function BuildMenu() {
+    const { showBuildMenu, setShowBuildMenu } = useMainStore();
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +29,7 @@ export default function SuperMenu() {
         }
 
         timeoutRef.current = setTimeout(() => {
-            setShowSuperMenu(false);
+            setShowBuildMenu(false);
             timeoutRef.current = null;
         }, 250);
     };
@@ -41,32 +42,26 @@ export default function SuperMenu() {
     };
 
     const handleLinkClick = () => {
-        setShowSuperMenu(false);
+        setShowBuildMenu(false);
     };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-                setShowSuperMenu(false);
+                setShowBuildMenu(false);
             }
         };
 
-        if (showSuperMenu) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showSuperMenu, setShowSuperMenu]);
-
-    useEffect(() => {
-        setShowSuperMenu(false);
-    }, [setShowSuperMenu]);
+    }, []);
 
     return (
         <AnimatePresence>
-            {showSuperMenu && (
+            {showBuildMenu && (
                 <Wrapper
                     ref={wrapperRef}
                     as={motion.div}
@@ -77,48 +72,65 @@ export default function SuperMenu() {
                     onMouseEnter={handleEnter}
                 >
                     <ContentBox>
-                        <SectionTitle>About Tari</SectionTitle>
+                        <SectionTitle>Build</SectionTitle>
 
                         <ContentHolder>
                             <Links>
-                                <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
-                                    <LinkTitle>Tokenomics</LinkTitle>
-                                    <LinkText>Learn about the Tari XTM token</LinkText>
+                                <LinkButton
+                                    as={Link}
+                                    href="https://ootle.tari.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>
+                                        Build on Ootle <Chip>testnet</Chip>
+                                    </LinkTitle>
+                                    <LinkText>Explore the docs and start building applications.</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="/branding/brandkit.zip"
+                                    href="https://ootle.tari.com/community-templates"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Brand Guidelines</LinkTitle>
-                                    <LinkText>Logos, colors and brand assets</LinkText>
+                                    <LinkTitle>Explore Tari Templates</LinkTitle>
+                                    <LinkText>Discover templates built by the Tari community.</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://explore.tari.com/"
+                                    href="https://github.com/tari-project"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Block Explorer</LinkTitle>
-                                    <LinkText>View Tari network activity</LinkText>
+                                    <LinkTitle>GitHub</LinkTitle>
+                                    <LinkText>Explore Tari's codebase (it's open source!)</LinkText>
                                 </LinkButton>
 
-                                <LinkButton as={Link} href="/downloads" onClick={handleLinkClick}>
-                                    <LinkTitle>Downloads</LinkTitle>
-                                    <LinkText>Get the latest Tari Universe releases</LinkText>
+                                <LinkButton as={Link} href="/integration-guide" onClick={handleLinkClick}>
+                                    <LinkTitle>Exchange Integration Guide</LinkTitle>
+                                    <LinkText>Integrate Tari (XTM) into your exchange</LinkText>
                                 </LinkButton>
 
                                 <LinkButton
                                     as={Link}
-                                    href="https://tlu.tarilabs.com/"
+                                    href="https://github.com/tari-project/bounties"
                                     target="_blank"
                                     onClick={handleLinkClick}
                                 >
-                                    <LinkTitle>Tari Labs University</LinkTitle>
-                                    <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
+                                    <LinkTitle>Developer Bounties</LinkTitle>
+                                    <LinkText>Pick an issue, ship code and earn XTM</LinkText>
+                                </LinkButton>
+
+                                <LinkButton
+                                    as={Link}
+                                    href="https://rfc.tari.com/"
+                                    target="_blank"
+                                    onClick={handleLinkClick}
+                                >
+                                    <LinkTitle>Protocol Docs</LinkTitle>
+                                    <LinkText>Read the Tari protocol RFCs and docs</LinkText>
                                 </LinkButton>
                             </Links>
 
