@@ -2,6 +2,7 @@
     "name": "tari-dot-com-2025",
     "version": "0.1.0",
     "private": true,
+    "packageManager": "pnpm@11.9.0",
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
@@ -32,8 +33,10 @@
         "@uniswap/v3-sdk": "^3.25.2",
         "@walletconnect/ethereum-provider": "^2.23.10",
         "ethers": "^6.14.3",
+        "framer-motion": "^13.1.0",
         "gray-matter": "^4.0.3",
         "hls.js": "^1.6.2",
+        "jsbi": "^3.1.4",
         "motion": "^12.5.0",
         "next": "16.2.10",
         "react": "^19.2.0",
