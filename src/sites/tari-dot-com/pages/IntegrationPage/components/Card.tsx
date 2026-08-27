@@ -7,22 +7,24 @@ interface CardProps {
     title: string;
     link: string;
 }
+
+function Card({ title, link }: CardProps) {
+    return (
+        <CardHolder onClick={() => window.open(link, '_blank')}>
+            <CardTitle>
+                <h3>{title}</h3>
+                <img src={Arrow.src} alt="arrow" height="24px" width="24px" />
+            </CardTitle>
+            <CardLink>
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                    {link}
+                </a>
+            </CardLink>
+        </CardHolder>
+    );
+}
+
 function Cards() {
-    function Card({ title, link }: CardProps) {
-        return (
-            <CardHolder onClick={() => window.open(link, '_blank')}>
-                <CardTitle>
-                    <h3>{title}</h3>
-                    <img src={Arrow.src} alt="arrow" height="24px" width="24px" />
-                </CardTitle>
-                <CardLink>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                        {link}
-                    </a>
-                </CardLink>
-            </CardHolder>
-        );
-    }
     return (
         <CardsContainer>
             <Card title="Documentation" link="https://rfc.tari.com" />
