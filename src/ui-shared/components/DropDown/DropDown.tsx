@@ -10,7 +10,7 @@ import {
 import chevronDown from './images/chevron-down.svg';
 import checkMark from './images/checkmark.svg';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 
 interface Option {
     value: string;

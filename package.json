@@ -19,7 +19,7 @@
         "prebuild-updates": "node scripts/generate-updates-data.js",
         "prebuild-lessons": "node scripts/generate-lessons-data.js",
         "prebuild-posts": "node scripts/generate-posts-data.js",
-        "prebuild-all": "npm run prebuild-updates && npm run prebuild-lessons && npm run prebuild-posts"
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.5",
@@ -33,7 +33,6 @@
         "@uniswap/v3-sdk": "^3.25.2",
         "@walletconnect/ethereum-provider": "^2.23.10",
         "ethers": "^6.14.3",
-        "framer-motion": "^13.1.0",
         "gray-matter": "^4.0.3",
         "hls.js": "^1.6.2",
         "jsbi": "^3.1.4",

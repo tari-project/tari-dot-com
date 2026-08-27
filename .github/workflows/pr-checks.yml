@@ -31,7 +31,7 @@ jobs:
         run: pnpm run format:check || echo "Prettier formatting issues found but allowing warnings"
 
       - name: Run TypeScript check
-        run: pnpm dlx next typegen && pnpm exec tsc --noEmit
+        run: pnpm exec next typegen && pnpm exec tsc --noEmit
 
       - name: Build Cloudflare Worker
         run: pnpm run build:worker

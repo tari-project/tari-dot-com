@@ -80,4 +80,4 @@ allLessons.forEach((lesson) => {
 
 fs.writeFileSync(path.join(outputDir, 'lessons-map.json'), JSON.stringify(lessonsMap, null, 2));
 
-console.log(`Generated _lessons data at ${outputDir}`);  // eslint-disable-line no-console
+console.log(`Generated _lessons data at ${outputDir}`);

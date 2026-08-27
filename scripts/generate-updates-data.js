@@ -75,4 +75,4 @@ sortedPosts.forEach((post) => {
 
 fs.writeFileSync(path.join(outputDir, 'updates-map.json'), JSON.stringify(postsMap, null, 2));
 
-console.log(`Generated _updates data at ${outputDir}`);  // eslint-disable-line no-console
+console.log(`Generated _updates data at ${outputDir}`);

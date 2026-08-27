@@ -87,4 +87,4 @@ allPosts.forEach((post) => {
 
 fs.writeFileSync(path.join(outputDir, 'posts-map.json'), JSON.stringify(postsMap, null, 2));
 
-console.log(`Generated _posts data at ${outputDir}`);  // eslint-disable-line no-console
+console.log(`Generated _posts data at ${outputDir}`);

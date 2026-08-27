@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import playStoreButton from '../images/PlayStoreButton.svg';
 import appStoreButton from '../images/AppStoreButton.svg';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { QRButton, QRPopupContainer, QRPopupContent } from './styles';
 
 export default function QRPopup({ os }: { os: 'Android' | 'iOS' }) {
