@@ -22,7 +22,7 @@ import {
 import RobotDownload from './robotDownload.png';
 import MacIcon from '@/ui-shared/components/Icons/MacIcon';
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import { useSendDownloadLink } from '@/services/api/useSendDownloadLink';
 import { Exchange } from '@/sites/exchange/types/exchange';

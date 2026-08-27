@@ -1,6 +1,6 @@
 'use client';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export const DropdownContainer = styled.div`
     position: relative;

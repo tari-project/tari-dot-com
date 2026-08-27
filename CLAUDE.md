@@ -6,28 +6,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Build & Development
 
-- `npm run dev` - Start development server with Next.js Turbopack
-- `npm run build` - Build production version
-- `npm run build:worker` - Build the OpenNext Cloudflare Worker
-- `npm run start` - Start production server
-- `npm run preview` - Preview the Worker locally
-- `npm run deploy` - Build and deploy the Worker
-- `npm run upload` - Build and upload a Worker version without promoting it
-- `npm run cf-typegen` - Regenerate Cloudflare binding types
+- `pnpm run dev` - Start development server with Next.js Turbopack
+- `pnpm run build` - Build production version
+- `pnpm run build:worker` - Build the OpenNext Cloudflare Worker
+- `pnpm run start` - Start production server
+- `pnpm run preview` - Preview the Worker locally
+- `pnpm run deploy` - Build and deploy the Worker
+- `pnpm run upload` - Build and upload a Worker version without promoting it
+- `pnpm run cf-typegen` - Regenerate Cloudflare binding types
 
 ### Code Quality
 
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Run ESLint with auto-fix
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check Prettier formatting
+- `pnpm run lint` - Run ESLint
+- `pnpm run lint:fix` - Run ESLint with auto-fix
+- `pnpm run format` - Format code with Prettier
+- `pnpm run format:check` - Check Prettier formatting
 
 ### Content Generation
 
-- `npm run prebuild-updates` - Generate updates metadata
-- `npm run prebuild-lessons` - Generate lessons metadata
-- `npm run prebuild-posts` - Generate posts metadata
-- `npm run prebuild-all` - Generate all content metadata
+- `pnpm run prebuild-updates` - Generate updates metadata
+- `pnpm run prebuild-lessons` - Generate lessons metadata
+- `pnpm run prebuild-posts` - Generate posts metadata
+- `pnpm run prebuild-all` - Generate all content metadata
 
 ## Project Architecture
 

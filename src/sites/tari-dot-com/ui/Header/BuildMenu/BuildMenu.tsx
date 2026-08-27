@@ -105,7 +105,7 @@ export default function BuildMenu() {
                                     onClick={handleLinkClick}
                                 >
                                     <LinkTitle>GitHub</LinkTitle>
-                                    <LinkText>Explore Tari's codebase (it's open source!)</LinkText>
+                                    <LinkText>Explore Tari&apos;s codebase (it&apos;s open source!)</LinkText>
                                 </LinkButton>
 
                                 <LinkButton as={Link} href="/integration-guide" onClick={handleLinkClick}>

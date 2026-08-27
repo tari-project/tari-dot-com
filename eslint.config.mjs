@@ -58,6 +58,7 @@ const eslintConfig = [
             '@typescript-eslint/no-require-imports': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
             'no-unused-vars': 'off',
+            'no-console': 'off',
         },
     },
     {

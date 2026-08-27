@@ -2,6 +2,7 @@
     "name": "tari-dot-com-2025",
     "version": "0.1.0",
     "private": true,
+    "packageManager": "pnpm@11.9.0",
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
@@ -18,7 +19,7 @@
         "prebuild-updates": "node scripts/generate-updates-data.js",
         "prebuild-lessons": "node scripts/generate-lessons-data.js",
         "prebuild-posts": "node scripts/generate-posts-data.js",
-        "prebuild-all": "npm run prebuild-updates && npm run prebuild-lessons && npm run prebuild-posts"
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.5",
@@ -34,6 +35,7 @@
         "ethers": "^6.14.3",
         "gray-matter": "^4.0.3",
         "hls.js": "^1.6.2",
+        "jsbi": "^3.1.4",
         "motion": "^12.5.0",
         "next": "16.2.10",
         "react": "^19.2.0",
