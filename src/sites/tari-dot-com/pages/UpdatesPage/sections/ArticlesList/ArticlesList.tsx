@@ -17,7 +17,7 @@ export default function ArticlesList({ posts, pagination }: ArticlesListProps) {
     return (
         <Wrapper>
             <Holder>
-                <PageTitle>Developer updates</PageTitle>
+                <PageTitle>Project Updates</PageTitle>
 
                 {posts.map((post) => (
                     <ArticleEntry key={post.slug} post={post} />

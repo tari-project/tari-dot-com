@@ -67,6 +67,7 @@ export default function Footer() {
                         <Column>
                             <Title>Community</Title>
                             <Links>
+                                <StyledLink href="/updates">Project Updates</StyledLink>
                                 <StyledLink href="https://community.tari.com/" target="_blank">
                                     Forum
                                 </StyledLink>
