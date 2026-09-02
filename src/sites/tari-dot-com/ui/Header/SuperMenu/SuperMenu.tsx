@@ -120,6 +120,11 @@ export default function SuperMenu() {
                                     <LinkTitle>Tari Labs University</LinkTitle>
                                     <LinkText>Learn all about how Tari (and blockchains) work</LinkText>
                                 </LinkButton>
+
+                                <LinkButton as={Link} href="/updates" onClick={handleLinkClick}>
+                                    <LinkTitle>Project Updates</LinkTitle>
+                                    <LinkText>Get the latest updates from Tari contributors</LinkText>
+                                </LinkButton>
                             </Links>
 
                             <TariImage src={tariImage.src} alt="Built for tinkerers" />

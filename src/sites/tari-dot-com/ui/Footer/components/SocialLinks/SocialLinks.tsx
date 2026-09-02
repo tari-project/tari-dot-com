@@ -4,7 +4,6 @@ import { useMainStore } from '@/services/stores/useMainStore';
 import BlueskyIcon from './icons/BlueskyIcon';
 import DiscordIcon from './icons/DiscordIcon';
 import GithubIcon from './icons/GithubIcon';
-import MastodonIcon from './icons/MastodonIcon';
 import TelegramIcon from './icons/TelegramIcon';
 import XIcon from './icons/XIcon';
 import YoutubeIcon from './icons/YoutubeIcon';
@@ -29,14 +28,6 @@ export const SocialIconButtons = () => {
                 onClick={handleLinkClick}
             >
                 <BlueskyIcon />
-            </SocialIcon>
-            <SocialIcon
-                href="https://mastodon.social/@tariproject"
-                target="_blank"
-                rel="me noreferrer"
-                onClick={handleLinkClick}
-            >
-                <MastodonIcon />
             </SocialIcon>
             <SocialIcon href="https://t.me/tariproject" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
                 <TelegramIcon />

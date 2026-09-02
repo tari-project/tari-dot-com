@@ -68,6 +68,10 @@ export default function MobileNavigation() {
                         <NavLink as={Link} href="/downloads" onClick={handleLinkClick}>
                             Downloads
                         </NavLink>
+
+                        <NavLink as={Link} href="/updates" onClick={handleLinkClick}>
+                            Project Updates
+                        </NavLink>
                     </GroupTwo>
                 )}
 
