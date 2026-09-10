@@ -28,7 +28,7 @@ jobs:
         run: pnpm run lint --max-warnings=999
 
       - name: Check Prettier formatting
-        run: pnpm run format:check || echo "Prettier formatting issues found but allowing warnings"
+        run: pnpm run format:check
 
       - name: Run TypeScript check
         run: pnpm exec next typegen && pnpm exec tsc --noEmit
