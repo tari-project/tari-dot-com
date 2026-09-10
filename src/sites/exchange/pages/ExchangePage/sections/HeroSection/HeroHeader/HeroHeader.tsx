@@ -7,7 +7,7 @@ import { isValidImage } from '@/sites/exchange/utils';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
     const isVeera = exchange.id === 'veera';
-    const logoUrl = exchange?.dark_logo_img_url || exchange?.logo_img_url
+    const logoUrl = exchange?.dark_logo_img_url || exchange?.logo_img_url;
     return (
         <Wrapper>
             <LogoWrapper>

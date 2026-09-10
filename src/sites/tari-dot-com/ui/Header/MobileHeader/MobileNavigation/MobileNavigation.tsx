@@ -86,12 +86,7 @@ export default function MobileNavigation() {
                             <ChevronLeft />
                         </NavLink>
 
-                        <NavLink
-                            as={Link}
-                            href="https://community.tari.com/"
-                            target="_blank"
-                            onClick={handleLinkClick}
-                        >
+                        <NavLink as={Link} href="https://community.tari.com/" target="_blank" onClick={handleLinkClick}>
                             Forum
                         </NavLink>
 

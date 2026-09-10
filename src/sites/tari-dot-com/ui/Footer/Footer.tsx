@@ -71,10 +71,7 @@ export default function Footer() {
                                 <StyledLink href="https://community.tari.com/" target="_blank">
                                     Forum
                                 </StyledLink>
-                                <StyledLink
-                                    href="https://rfc.tari.com/TIP-0002_tari_community_charter"
-                                    target="_blank"
-                                >
+                                <StyledLink href="https://rfc.tari.com/TIP-0002_tari_community_charter" target="_blank">
                                     Tari Community Charter
                                 </StyledLink>
                                 <StyledLink

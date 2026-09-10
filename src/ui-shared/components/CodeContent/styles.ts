@@ -39,22 +39,22 @@ export const Note = styled.div<{ $variant: 'default' | 'warning' | 'success' | '
             $variant === 'warning'
                 ? '#FFB938'
                 : $variant === 'success'
-                ? '#10C115'
-                : $variant === 'info'
-                ? '#00AAD9'
-                : $variant === 'secondary'
-                ? '#B0D636'
-                : '#f9f9f9'};
+                  ? '#10C115'
+                  : $variant === 'info'
+                    ? '#00AAD9'
+                    : $variant === 'secondary'
+                      ? '#B0D636'
+                      : '#f9f9f9'};
     background-color: ${({ $variant }) =>
         $variant === 'warning'
             ? '#FFF6E5'
             : $variant === 'success'
-            ? '#EFFFF0'
-            : $variant === 'info'
-            ? '#E6F9FE'
-            : $variant === 'secondary'
-            ? '#F4F3F7'
-            : '#F4F3F7'};
+              ? '#EFFFF0'
+              : $variant === 'info'
+                ? '#E6F9FE'
+                : $variant === 'secondary'
+                  ? '#F4F3F7'
+                  : '#F4F3F7'};
 `;
 
 export const NoteDivider = styled.div`

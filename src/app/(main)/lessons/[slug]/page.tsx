@@ -52,15 +52,12 @@ const InnerPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
     }
 
     return <LessonPage lesson={lesson} nextLessons={nextLessons} />;
-}
+};
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    return <ErrorBoundary
-        fallbackRender={({error}) => (
-            <div>{error + ''}</div>
-        )}
-        onError={pageError}
-    >
-        <InnerPage params={params} />
-    </ErrorBoundary>
+    return (
+        <ErrorBoundary fallbackRender={({ error }) => <div>{error + ''}</div>} onError={pageError}>
+            <InnerPage params={params} />
+        </ErrorBoundary>
+    );
 }

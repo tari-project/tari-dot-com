@@ -15,7 +15,9 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
     cursor: pointer;
     outline: none;
     border-radius: 16px;
-    transition: background 0.2s, color 0.2s;
+    transition:
+        background 0.2s,
+        color 0.2s;
     will-change: background, color;
     background: ${({ $isActive }) => ($isActive ? 'rgba(0,0,0,0.02)' : 'transparent')};
 

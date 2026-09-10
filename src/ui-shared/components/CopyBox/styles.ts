@@ -11,7 +11,9 @@ export const CopyBoxContainer = styled.div`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     padding: 8px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
     position: relative;
     &:hover {
         cursor: pointer;

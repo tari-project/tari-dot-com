@@ -32,9 +32,7 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
             return;
         }
 
-        const sectionIds = menuItems
-            .filter((item) => item.link)
-            .map((item) => item.link!.replace('#', ''));
+        const sectionIds = menuItems.filter((item) => item.link).map((item) => item.link!.replace('#', ''));
         const handleIntersect = (entries: IntersectionObserverEntry[]) => {
             const visibleSections = entries
                 .filter((entry) => entry.isIntersecting)
@@ -65,7 +63,7 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
             window.open(link, '_blank', 'noopener,noreferrer');
             return;
         }
-        
+
         const anchor = document.getElementById(link.replace('#', ''));
         if (anchor) {
             const rect = anchor.getBoundingClientRect();
@@ -82,8 +80,9 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
     return (
         <MenuContainer>
             <MenuTitle>{menuTitle}</MenuTitle>
-            <style dangerouslySetInnerHTML={{
-                __html: `
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
                     @media (max-height: 800px) {
                         .sidebar-compact {
                             font-size: 14px !important;
@@ -97,8 +96,9 @@ function Sidebar({ menuTitle, menuItems, activeSection: propActiveSection, onNav
                             padding: 4px 12px !important;
                         }
                     }
-                `
-            }} />
+                `,
+                }}
+            />
             <div className="sidebar-compact">
                 {menuItems.map((item, index) => (
                     <div key={item.link || item.label}>

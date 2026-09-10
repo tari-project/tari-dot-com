@@ -35,11 +35,9 @@ const animations = {
 };
 
 type Props = {
-    veeraData: Exchange
+    veeraData: Exchange;
 };
-export default function VeraMobileDownload(
-    { veeraData }: Props
-) {
+export default function VeraMobileDownload({ veeraData }: Props) {
     const [showEmail, setShowEmail] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const { mutateAsync: sendDownloadLink, isPending } = useSendDownloadLink();
@@ -85,7 +83,8 @@ export default function VeraMobileDownload(
                                 <>
                                     <FormCopy>
                                         <i>
-                                            Use your email ID associated with <Image src={veeraData.logo_img_url} height={13} width={39} alt="veera" />
+                                            Use your email ID associated with{' '}
+                                            <Image src={veeraData.logo_img_url} height={13} width={39} alt="veera" />
                                         </i>
                                     </FormCopy>
                                     <EmailButton type="submit" disabled={submitIsDisabled}>

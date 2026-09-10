@@ -13,6 +13,7 @@
 ### Task 1: Install dependencies
 
 **Files:**
+
 - Modify: `package.json`
 
 **Step 1: Install @opennextjs/cloudflare and latest wrangler**
@@ -42,6 +43,7 @@ git commit -m "chore: install @opennextjs/cloudflare and latest wrangler"
 ### Task 2: Update next.config.mjs
 
 **Files:**
+
 - Modify: `next.config.mjs`
 
 Replace the `@cloudflare/next-on-pages/next-dev` setup with `initOpenNextCloudflareForDev`.
@@ -96,6 +98,7 @@ git commit -m "chore: replace next-on-pages dev setup with opennextjs"
 ### Task 3: Replace wrangler.toml
 
 **Files:**
+
 - Modify: `wrangler.toml`
 
 `@opennextjs/cloudflare` targets Cloudflare **Workers** (not Pages). The output is `.open-next/worker.js` with assets at `.open-next/assets`.
@@ -129,6 +132,7 @@ git commit -m "chore: update wrangler.toml for opennextjs-cloudflare"
 ### Task 4: Add open-next.config.ts
 
 **Files:**
+
 - Create: `open-next.config.ts`
 
 **Step 1: Create open-next.config.ts**
@@ -151,6 +155,7 @@ git commit -m "chore: add open-next.config.ts"
 ### Task 5: Add .dev.vars
 
 **Files:**
+
 - Create: `.dev.vars`
 
 **Step 1: Create .dev.vars**
@@ -177,6 +182,7 @@ git commit -m "chore: add .dev.vars for opennextjs local dev"
 ### Task 6: Update package.json scripts
 
 **Files:**
+
 - Modify: `package.json`
 
 **Step 1: Update scripts**
@@ -205,6 +211,7 @@ git commit -m "chore: update package.json scripts for opennextjs-cloudflare"
 ### Task 7: Update build.sh
 
 **Files:**
+
 - Modify: `build.sh`
 
 The Cloudflare Pages CI build script needs to call `opennextjs-cloudflare build` instead of `npx @cloudflare/next-on-pages@1`.
@@ -244,6 +251,7 @@ git commit -m "chore: update build.sh to use opennextjs-cloudflare"
 ### Task 8: Remove export const runtime = 'edge' from all route files
 
 **Files to modify (15 files):**
+
 - `src/app/(exchange)/exchange/[name]/page.tsx`
 - `src/app/(main)/faq/page.tsx`
 - `src/app/(main)/lessons/[slug]/page.tsx`
@@ -301,6 +309,7 @@ git commit -m "chore: remove export const runtime = 'edge' (not supported by ope
 ### Task 9: Remove @cloudflare/next-on-pages
 
 **Files:**
+
 - Modify: `package.json`
 
 **Step 1: Uninstall**
@@ -329,6 +338,7 @@ git commit -m "chore: remove @cloudflare/next-on-pages"
 ### Task 10: Update .gitignore
 
 **Files:**
+
 - Modify: `.gitignore`
 
 **Step 1: Add .open-next**
@@ -369,6 +379,7 @@ Check `src/middleware.ts` — `NextResponse.rewrite()` is supported by `@opennex
 ### Task 12: Update middleware to use NextResponse.rewrite (already done)
 
 **Files:**
+
 - `src/middleware.ts` — already updated to use `NextResponse.rewrite(upstreamUrl)`. No action needed, just verify.
 
 ```bash
@@ -382,11 +393,12 @@ Expected: proxy block uses `return NextResponse.rewrite(upstreamUrl)`.
 ### Task 13: Add static asset cache headers
 
 **Files:**
+
 - Create: `public/_headers`
 
 Required by `@opennextjs/cloudflare` for correct static asset caching.
 
-**Step 1: Create public/_headers**
+**Step 1: Create public/\_headers**
 
 ```
 /_next/static/*

@@ -232,18 +232,18 @@ export const Note = styled.div<{ $variant: 'default' | 'warning' | 'success' | '
             $variant === 'warning'
                 ? '#FFB938'
                 : $variant === 'success'
-                ? '#10C115'
-                : $variant === 'info'
-                ? '#00AAD9'
-                : '#E3E1ED'};
+                  ? '#10C115'
+                  : $variant === 'info'
+                    ? '#00AAD9'
+                    : '#E3E1ED'};
     background-color: ${({ $variant }) =>
         $variant === 'warning'
             ? '#FFF6E5'
             : $variant === 'success'
-            ? '#EFFFF0'
-            : $variant === 'info'
-            ? '#E6F9FE'
-            : '#FFF'};
+              ? '#EFFFF0'
+              : $variant === 'info'
+                ? '#E6F9FE'
+                : '#FFF'};
 
     @media (max-width: 768px) {
         font-size: 14px;

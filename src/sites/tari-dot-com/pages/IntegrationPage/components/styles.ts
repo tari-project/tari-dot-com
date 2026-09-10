@@ -7,7 +7,9 @@ export const CardHolder = styled.button`
     padding: 20px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     cursor: pointer;
     a,
     h3 {

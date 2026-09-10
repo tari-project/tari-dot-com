@@ -47,15 +47,12 @@ const InnerPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
         .slice(0, 3);
 
     return <PostPage post={post} nextPosts={nextPosts} />;
-}
+};
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    return <ErrorBoundary
-        fallbackRender={({error}) => (
-            <div>{error + ''}</div>
-        )}
-        onError={pageError}
-    >
-        <InnerPage params={params} />
-    </ErrorBoundary>
+    return (
+        <ErrorBoundary fallbackRender={({ error }) => <div>{error + ''}</div>} onError={pageError}>
+            <InnerPage params={params} />
+        </ErrorBoundary>
+    );
 }

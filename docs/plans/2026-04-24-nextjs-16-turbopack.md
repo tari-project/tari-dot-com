@@ -13,26 +13,33 @@
 ### Task 1: Bump package versions
 
 **Files:**
+
 - Modify: `package.json`
 
 **Step 1: Update next, eslint-config-next, and @next/third-parties to 16.2.4**
 
 In `package.json`, change:
+
 ```json
 "@next/third-parties": "^15.5.15",
 "next": "^15.5.15",
 ```
+
 to:
+
 ```json
 "@next/third-parties": "^16.2.4",
 "next": "^16.2.4",
 ```
 
 And in devDependencies:
+
 ```json
 "eslint-config-next": "^15.5.15",
 ```
+
 to:
+
 ```json
 "eslint-config-next": "^16.2.4",
 ```
@@ -59,6 +66,7 @@ git commit -m "chore: bump Next.js to 16.2.4 and related packages"
 ### Task 2: Clean up next.config.mjs
 
 **Files:**
+
 - Modify: `next.config.mjs`
 
 **Step 1: Remove the webpack block and --turbopack flag from dev script**
@@ -115,10 +123,13 @@ initOpenNextCloudflareForDev();
 In Next.js 16, Turbopack is the default — the `--turbopack` flag is no longer necessary (but still harmless). Remove it for cleanliness:
 
 Change:
+
 ```json
 "dev": "next dev --turbopack",
 ```
+
 to:
+
 ```json
 "dev": "next dev",
 ```
@@ -135,6 +146,7 @@ git commit -m "chore: remove webpack config block, Turbopack is now default in N
 ### Task 3: Rename middleware.ts to proxy.ts
 
 **Files:**
+
 - Rename: `src/middleware.ts` → `src/proxy.ts`
 
 `middleware.ts` is deprecated in Next.js 16 in favour of `proxy.ts`. The exported function must also be renamed from `middleware` to `proxy`.
@@ -146,8 +158,7 @@ New content of `src/proxy.ts`:
 ```ts
 import { NextRequest, NextResponse } from 'next/server';
 
-const COMMUNITY_TEMPLATES_URL =
-    process.env.COMMUNITY_TEMPLATES_URL ?? 'https://ootle-templates-esme.tari.com';
+const COMMUNITY_TEMPLATES_URL = process.env.COMMUNITY_TEMPLATES_URL ?? 'https://ootle-templates-esme.tari.com';
 
 export async function proxy(request: NextRequest) {
     const { pathname: urlPath, origin } = request.nextUrl;
@@ -162,10 +173,7 @@ export async function proxy(request: NextRequest) {
     // (@cloudflare/next-on-pages uses _worker.js which bypasses the rewrite engine
     // for external origins). Middleware runs inside the Worker and can fetch() freely.
     if (urlPath.startsWith('/ootle/community-templates')) {
-        const upstreamUrl = new URL(
-            request.nextUrl.pathname + request.nextUrl.search,
-            COMMUNITY_TEMPLATES_URL,
-        );
+        const upstreamUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, COMMUNITY_TEMPLATES_URL);
 
         return NextResponse.rewrite(upstreamUrl);
     }

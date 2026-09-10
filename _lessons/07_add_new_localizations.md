@@ -240,16 +240,17 @@ If you have started a new localization, open the files created in the previous s
 - Do not change any text that is within braces e.g. {{version}}
 
 Below, you can find a description of what each JSON file affects within Tari Universe:
-|**File**|**Description**|
-|--------|---------------|
-|airdrop.json| Fields related to the Tari Airdrop game integration in Tari Universe|
-|common.json | Common terms used across the application, such as "version" and "hashrate" |
-|components.json| Component failure messages |
-|mining-view.json| UI of the main screen, and the status of the mining button |
-|settings.json| Text related to the Settings component of Tari Universe |
-|setup-view.json| Messages displayed when Tari Universe is booting up |
-|sidebar.json| UI elements in the sidebar of the main Tari Universe screen |
-|tribes-view.json| The title for the Squad View section in Settings. |
+
+| **File**         | **Description**                                                            |
+| ---------------- | -------------------------------------------------------------------------- |
+| airdrop.json     | Fields related to the Tari Airdrop game integration in Tari Universe       |
+| common.json      | Common terms used across the application, such as "version" and "hashrate" |
+| components.json  | Component failure messages                                                 |
+| mining-view.json | UI of the main screen, and the status of the mining button                 |
+| settings.json    | Text related to the Settings component of Tari Universe                    |
+| setup-view.json  | Messages displayed when Tari Universe is booting up                        |
+| sidebar.json     | UI elements in the sidebar of the main Tari Universe screen                |
+| tribes-view.json | The title for the Squad View section in Settings.                          |
 
 ## Step 8 - Creating a pull request (PR) for your localization
 

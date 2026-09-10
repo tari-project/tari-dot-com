@@ -1,8 +1,9 @@
 export default function WhitepaperLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <style dangerouslySetInnerHTML={{
-        __html: `
+    return (
+        <>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
           html, body {
             margin: 0 !important;
             padding: 0 !important;
@@ -10,9 +11,10 @@ export default function WhitepaperLayout({ children }: { children: React.ReactNo
             height: 100vh !important;
             width: 100vw !important;
           }
-        `
-      }} />
-      {children}
-    </>
-  );
+        `,
+                }}
+            />
+            {children}
+        </>
+    );
 }
