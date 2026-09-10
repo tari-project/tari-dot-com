@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const COMMUNITY_TEMPLATES_URL = process.env.COMMUNITY_TEMPLATES_URL ?? 'https://ootle-templates-esme.tari.com';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const { pathname: urlPath, origin } = request.nextUrl;
 
     if (urlPath.includes('/launchpad')) {
