@@ -25,7 +25,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run ESLint
-        run: pnpm run lint --max-warnings=999
+        run: pnpm run lint --max-warnings=18
 
       - name: Check Prettier formatting
         run: pnpm run format:check
