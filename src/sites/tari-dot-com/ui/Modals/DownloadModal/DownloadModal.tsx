@@ -22,7 +22,7 @@ import WindowsIcon from '@/ui-shared/components/Icons/WindowsIcon';
 import MacIcon from '@/ui-shared/components/Icons/MacIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
-import ActiveMiners from '../../Header/ActiveMiners/ActiveMiners';
+import ActiveNodes from '../../Header/ActiveNodes/ActiveNodes';
 import { useEffect, useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { API_ENDPOINTS } from '@/config/api';
@@ -173,7 +173,7 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                                 </span>
                             </SubmitButton>
 
-                            <ActiveMiners theme="light" />
+                            <ActiveNodes theme="light" />
                         </Form>
                     </TextGroup>
                 )}

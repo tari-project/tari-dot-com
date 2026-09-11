@@ -5,7 +5,7 @@ import { Button, ButtonWrapper, Wrapper } from './styles';
 import ArrowIcon from './ArrowIcon';
 
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
-import ActiveMiners from '../ActiveMiners/ActiveMiners';
+import ActiveNodes from '../ActiveNodes/ActiveNodes';
 import { useUIStore } from '@/stores/useUiStore';
 
 interface Props {
@@ -28,7 +28,7 @@ export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
 
     return (
         <Wrapper $theme={theme} $noBackground={noBackground}>
-            <ActiveMiners theme={theme} />
+            <ActiveNodes theme={theme} />
             <ButtonWrapper>
                 <Button $theme={theme} href="/downloads" onClick={handleClick}>
                     <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />
