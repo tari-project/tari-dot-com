@@ -1,9 +1,7 @@
-import { getUpdatesBySlug, getAllUpdates } from '@/services/lib/updates';
+import { getUpdatesBySlug, getAllUpdates, Update } from '@/services/lib/updates';
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
-import { ErrorBoundary } from 'react-error-boundary';
-import { pageError } from '@/app/utils';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
@@ -26,33 +24,33 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 }
 
-const InnerPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
-    const { slug } = await params;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+    let post: Update | undefined;
+    let nextPosts: Update[] = [];
 
-    if (!slug) {
+    try {
+        const { slug } = await params;
+
+        if (!slug) {
+            notFound();
+        }
+
+        post = await getUpdatesBySlug(slug);
+
+        if (!post) {
+            notFound();
+        }
+
+        const allPosts = await getAllUpdates();
+
+        nextPosts = allPosts
+            .filter((p) => p.slug !== slug)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(0, 3);
+    } catch (error) {
+        console.error('Error fetching post:', error);
         notFound();
     }
-
-    const post = await getUpdatesBySlug(slug);
-
-    if (!post) {
-        notFound();
-    }
-
-    const allPosts = await getAllUpdates();
-
-    const nextPosts = allPosts
-        .filter((p) => p.slug !== slug)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 3);
 
     return <PostPage post={post} nextPosts={nextPosts} />;
-};
-
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    return (
-        <ErrorBoundary fallbackRender={({ error }) => <div>{error + ''}</div>} onError={pageError}>
-            <InnerPage params={params} />
-        </ErrorBoundary>
-    );
 }
