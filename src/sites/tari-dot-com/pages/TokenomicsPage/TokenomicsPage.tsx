@@ -92,18 +92,18 @@ export default function TokenomicsPage() {
                 </p>
                 <p>
                     <span>
-                        Network rewards are split 50/50, with half of the Tari block reward going towards merge mining
-                        performed with the RandomX hashing algorithm and{' '}
+                        Network rewards are split evenly across Tari&apos;s four proof of work lanes: RandomX
+                        merge-mined with Monero (RxM), Tari-native RandomX (RxT), SHA3x, and Cuckaroo (C29). Each lane
+                        targets{' '}
                     </span>
-                    <strong>50%</strong>
+                    <strong>25%</strong>
                     {` `}
                     <span>
-                        of the block rewards going to Tari standalone miners using the SHA3x hashing algorithm. RandomX
-                        is a proof of work (PoW) algorithm designed to be ASIC-resistant by optimizing for
-                        general-purpose CPUs, ensuring fairer, more accessible, and more decentralized mining. The
-                        merge-mining aspect of Tari will enable existing RandomX miners to increase their revenue and
-                        keep them successfully mining both the RandomX chain and Tari for the foreseeable future. The
-                        Tari protocol bakes this 50/50 distribution into the consensus rules.
+                        of the block rewards, and the Tari protocol bakes this equal distribution into the consensus
+                        rules. RandomX is a proof of work (PoW) algorithm designed to be ASIC-resistant by optimizing
+                        for general-purpose CPUs, ensuring fairer, more accessible, and more decentralized mining. The
+                        merge-mining aspect of Tari enables existing RandomX miners to increase their revenue and keep
+                        them successfully mining both the Monero chain and Tari for the foreseeable future.
                     </span>
                 </p>
                 <p>
