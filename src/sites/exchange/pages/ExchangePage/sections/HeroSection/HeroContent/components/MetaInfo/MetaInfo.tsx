@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconGroup, Wrapper, ContentWrapper, Divider, GradientText } from './styles';
-import ActiveMiners from '@/sites/tari-dot-com/ui/Header/ActiveMiners/ActiveMiners';
+import ActiveNodes from '@/sites/tari-dot-com/ui/Header/ActiveNodes/ActiveNodes';
 import BlueCheckIcon from './icons/BlueCheckIcon';
 import GithubIcon from './icons/GithubIcon';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ export default function MetaInfo() {
                         View on GitHub
                     </IconGroup>
                     <Divider />
-                    <ActiveMiners theme="dark" />
+                    <ActiveNodes theme="dark" />
                 </ContentWrapper>
             </Wrapper>
 

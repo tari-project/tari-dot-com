@@ -18,14 +18,6 @@ const faqData = [
         question: `Is this safe?`,
         answer: `Yes. Tari is developed by a talented group of technologists, and designers with a unique vision for the future of money. Tari Universe (and all software associated with the Tari protocol) is open source (meaning anyone can inspect and use the source code). It doesn't access your files and puts you in control of how much computational power you want it to use.`,
     },
-
-    {
-        question: `What is the network “warm-up” period, and what does that mean for miners?`,
-        answer: `<p>The birth of a proof-of-work network is special. In the early days, the network needs time to stabilize and find its rhythm. We call this the “warm-up phase.”</p>
-        <p>Contributors and early supporters of the Tari network (like exchanges and infrastructure partners) expect the warm-up phase to last ~15 days (until ~May 20, 2025). After that, the network will transition to a more stable state.</p>
-        <p>During the warm-up phase, some quirks are normal. You might see block time fluctuations, temporary disconnections, syncing delays, or even short-lived forks that require your node to reconnect to the main chain.</p>
-        <p>The warm-up phase is a great time to mine because rewards are highest per block. We hope the early days of the Tari network are rewarding for you. </p>`,
-    },
     {
         question: `What are the minimum system requirements to mine Tari?`,
         answer: `<p>To mine effectively with Tari Universe, you’ll need a reasonably modern computer with enough memory, storage, and internet bandwidth. Here’s what we recommend:</p>
@@ -85,31 +77,6 @@ const faqData = [
         answer: `You can be up and running in minutes! Download the app, install it, and run it, and you'll be mining Tari in no time.`,
     },
     {
-        question: `What is Mainnet, and when does it launch?`,
-        answer: `Tari mainnet has launched! It's the network that'll process countless transactions and enable millions of people to participate. Mainnet is now live, so this is your chance to get involved early, earn rewards, and be part of the Tari movement from the very beginning!`,
-    },
-    {
-        question: `I was part of the original Tari Universe test. Can I use the seed phrase that I had for the testnet Tari Universe for mainnet Tari Universe?`,
-        answer: `You can use the seed phrase from the testnet version of Tari Universe, but we <strong>don’t recommend it</strong>, and here’s why:
-        <br />
-        <br />
-        <strong>Embedded Birthday</strong>: Tari embeds the wallet’s creation date into the seed phrase (this is known as the birthday). If your seed was created before the mainnet launch, your wallet will think it needs to sync from before mainnet’s genesis block — which isn't possible.
-        <br />
-        <br />
-        <strong>Longer Sync Times</strong>: As a result, the wallet will default to scanning from the genesis block. This can lead to <strong>unnecessarily long sync or import times</strong>, especially on slower devices.
-        <br />
-        <br />
-        <strong>New Address</strong>: Even though you’re using the same seed phrase, the resulting wallet will have a different Tari address. It <strong>won’t restore</strong> your old testnet wallet or funds.
-        <br />
-        <br />  
-        This won’t affect your ability to receive or hold new Tari on mainnet— your balance and future earnings will still be fully functional. However, for the best performance and user experience, we recommend <strong>generating a fresh wallet and seed phrase</strong> on mainnet, and backing it up securely.
-        `,
-    },
-    {
-        question: `How do I win rewards (gems, hammers, etc)?`,
-        answer: `During the test period, participants could earn and win gems through both mining and inviting new participants to the testnet for Tari Universe. Now that mainnet is live, the only way to earn gems is via the Invite system.`,
-    },
-    {
         question: `How do I get started?`,
         answer: `<ol>
         <li>Download the Tari Universe app</li>
@@ -118,14 +85,6 @@ const faqData = [
         </ol>
         <br />
         <p>Sometimes you're the early bird. The person who discovers something new before it becomes the next big thing. This is one of those times. Get started with Tari Universe now, and let's build the future of crypto together!</p>`,
-    },
-    {
-        question: `What is the Testnet?`,
-        answer: `Testnet is Tari's pre-launch environment where users can mine Tari coins in a risk-free setting. It helps stress test the network and ensure everything runs smoothly, or deployed for testing major upcoming changes.`,
-    },
-    {
-        question: `Why should I mine on Testnet?`,
-        answer: `Before new blockchains launch, extensive testing is required. Miners on the Tari testnet can earn Tari token rewards, cash prizes, ultra-fast GPUs, swag, and more! The testnet provides a safe environment for testing while offering real rewards for participation.`,
     },
 ];
 

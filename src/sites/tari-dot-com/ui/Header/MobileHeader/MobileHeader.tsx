@@ -8,7 +8,7 @@ import { useMainStore } from '@/services/stores/useMainStore';
 import MinersCTA from '../MinersCTA/MinersCTA';
 import { SocialIconButtons } from '../../Footer/components/SocialLinks/SocialLinks';
 import MobileNavigation from './MobileNavigation/MobileNavigation';
-import ActiveMiners from '../ActiveMiners/ActiveMiners';
+import ActiveNodes from '../ActiveNodes/ActiveNodes';
 
 export default function MobileHeader() {
     const { showMobileMenu, setShowMobileMenu } = useMainStore();
@@ -35,7 +35,7 @@ export default function MobileHeader() {
                 <Inside>
                     <HeaderTop $open={showMobileMenu}>
                         <TariLogo href="/" onClick={handleLinkClick} />
-                        {showMobileMenu ? null : <ActiveMiners theme="dark" />}
+                        {showMobileMenu ? null : <ActiveNodes theme="dark" />}
                         <MobileMenuButton />
                     </HeaderTop>
                 </Inside>
