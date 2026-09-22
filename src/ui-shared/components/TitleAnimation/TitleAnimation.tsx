@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Variants, useInView } from 'motion/react';
-import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper, ScreenReaderText } from './styles';
+import { Space, WordAnimation, WordSpacer, WordWrapper, Wrapper, ScreenReaderHeader } from './styles';
 
 interface Props {
     text: string;
@@ -53,10 +53,9 @@ export const TitleAnimation: React.FC<Props> = ({ text, initialDelay = 0, stagge
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
             custom={{ delay: initialDelay / 1000, staggerDelay }}
-            aria-label={text}
             {...(role && { role })}
         >
-            <ScreenReaderText>{text}</ScreenReaderText>
+            <ScreenReaderHeader>{text}</ScreenReaderHeader>
             <span aria-hidden="true">
                 {words.map((segment, i) =>
                     segment.trim().length === 0 ? (

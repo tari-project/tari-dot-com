@@ -21,7 +21,7 @@ export const WordSpacer = styled.span`
 
 export const Space = styled.span``;
 
-export const ScreenReaderText = styled.span`
+export const ScreenReaderHeader = styled.h1`
     position: absolute;
     width: 1px;
     height: 1px;
