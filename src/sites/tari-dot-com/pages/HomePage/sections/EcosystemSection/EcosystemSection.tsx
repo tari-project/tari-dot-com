@@ -27,6 +27,7 @@ import tiktok4Img from './images/Udi-2.jpeg';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import Community from './components/Community/Community';
 import { useMedia } from 'react-use';
+import { ScreenReaderH2, ScreenReaderP } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 const textBubbleData: {
     text: string;
@@ -128,15 +129,16 @@ export default function EcosystemSection({ hideSupporters }: { hideSupporters?: 
             <FloatingElements>
                 <TextMiddle>
                     <Eyebrow>
-                        <TitleAnimation text={`PEOPLE ❤️ MINING TARI`} />
+                        <TitleAnimation text={`PEOPLE ❤️ MINING TARI`} readerComponent={ScreenReaderH2} />
                     </Eyebrow>
                     <Title>
-                        <TitleAnimation text={`700,000+ people like you love Tari`} />
+                        <TitleAnimation text={`700,000+ people like you love Tari`} readerComponent={ScreenReaderP} />
                     </Title>
                     <Text>
                         <TitleAnimation
                             text={`People from all walks of life are mining and earning Tari. Join us. The water is warm (we promise!)`}
                             staggerDelay={0.01}
+                            readerComponent={ScreenReaderP}
                         />
                     </Text>
                 </TextMiddle>

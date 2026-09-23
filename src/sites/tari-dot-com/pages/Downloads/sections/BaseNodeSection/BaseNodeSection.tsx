@@ -19,6 +19,8 @@ import DownloadOptions from './components/DownloadOptions';
 import { useDownloadStore } from '@/services/stores/useDownloadStore';
 import Image from 'next/image';
 
+import { ScreenReaderH2 } from '@/ui-shared/components/ScreenReaderContent/styles';
+
 export default function BaseNodeSection() {
     const downloadOptions = useDownloadStore((state) => state.downloadOptions);
     const sourceLink = 'https://github.com/tari-project/tari/releases';
@@ -36,7 +38,7 @@ export default function BaseNodeSection() {
         <SectionHolder>
             <Container>
                 <Typography $variant="sectionTitle" $theme={theme}>
-                    <TitleAnimation text={`Tari Base Node`} />
+                    <TitleAnimation text={`Tari Base Node`} readerComponent={ScreenReaderH2} />
                 </Typography>
                 <InfoWrapper>
                     <TextWrapper>

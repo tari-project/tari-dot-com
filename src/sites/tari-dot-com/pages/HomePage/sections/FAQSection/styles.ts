@@ -45,7 +45,7 @@ export const Holder = styled.div<{ $maxWidth?: number }>`
         `}
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
     font-family: var(--font-druk), sans-serif;
     font-size: 95px;
     font-style: normal;

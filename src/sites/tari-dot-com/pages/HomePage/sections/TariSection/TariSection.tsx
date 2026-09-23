@@ -4,6 +4,7 @@ import { Container, Wrapper, Eyebrow, MainText, Text, Middle } from './styles';
 import ImageSpinner from './components/ImageSpinner/ImageSpinner';
 import MinersCTA from '@/sites/tari-dot-com/ui/Header/MinersCTA/MinersCTA';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import { ScreenReaderH2, ScreenReaderP } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 export default function TariSection() {
     return (
@@ -11,7 +12,7 @@ export default function TariSection() {
             <Container>
                 <Middle>
                     <Eyebrow>
-                        <TitleAnimation text={`THIS IS TARI`} />
+                        <TitleAnimation text={`THIS IS TARI`} readerComponent={ScreenReaderH2} />
                     </Eyebrow>
 
                     <MainText>
@@ -33,6 +34,7 @@ export default function TariSection() {
                         <TitleAnimation
                             text={`Tari is a revolutionary blockchain protocol powered by you. Proof of work. Default confidential. And for the first time, easy to use. Tari Universe puts all the power of Tari in your hands.`}
                             staggerDelay={0.009}
+                            readerComponent={ScreenReaderP}
                         />
                     </Text>
 
