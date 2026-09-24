@@ -45,7 +45,7 @@ export const Holder = styled.div<{ $maxWidth?: number }>`
         `}
 `;
 
-export const Title = styled.h1`
+const titleStyle = `
     font-family: var(--font-druk), sans-serif;
     font-size: 95px;
     font-style: normal;
@@ -65,6 +65,24 @@ export const Title = styled.h1`
         font-size: 55px;
     }
 `;
+
+export const Title = styled.h1``;
+
+export const titleLevel = (level: number) => {
+    // @ts-expect-error: Dynamic key to select header level
+    return styled[`h${level}`]`
+        ${titleStyle}
+    `;
+};
+
+// Need this to avoid recreating the component on each render.
+export const TITLE_LEVELS = {
+    1: titleLevel(1),
+    2: titleLevel(2),
+    3: titleLevel(3),
+    4: titleLevel(4),
+    5: titleLevel(5),
+} as const;
 
 export const List = styled.div`
     display: flex;

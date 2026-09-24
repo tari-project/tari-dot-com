@@ -31,7 +31,7 @@ export const Question = styled.div`
     }
 `;
 
-export const QuestionText = styled.div`
+export const QuestionText = styled.span`
     font-family: var(--font-poppins), sans-serif;
     font-size: 36px;
     font-style: normal;
