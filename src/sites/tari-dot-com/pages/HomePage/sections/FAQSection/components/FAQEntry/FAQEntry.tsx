@@ -1,22 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { Wrapper, Question, Answer, ToggleIcon, AnswerPadding, QuestionText } from './styles';
 import { AnimatePresence, type MotionProps } from 'motion/react';
+import { ScreenReaderDiv } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 export interface FAQEntryProps {
     question: string;
     answer: string;
     lightMode?: boolean;
     disableAnimation?: boolean;
+    level?: number;
 }
 
-export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps) {
+export default function FAQEntry({ question, answer, lightMode, level = 2 }: FAQEntryProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     };
+
+    const HeaderComponent = `h${level}` as keyof JSX.IntrinsicElements;
 
     const answerMotionProps: MotionProps = {
         initial: {
@@ -33,9 +37,11 @@ export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps)
     return (
         <Wrapper $lightMode={lightMode}>
             <Question onClick={toggleOpen}>
-                <QuestionText>{question}</QuestionText>
+                <HeaderComponent>
+                    <QuestionText>{question}</QuestionText>
+                </HeaderComponent>
 
-                <ToggleIcon>
+                <ToggleIcon aria-hidden="true">
                     {isOpen ? (
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" fill="none">
                             <circle cx="25.5" cy="25.5" r="25" stroke="currentColor" />
@@ -54,11 +60,11 @@ export default function FAQEntry({ question, answer, lightMode }: FAQEntryProps)
                         </svg>
                     )}
                 </ToggleIcon>
+                <ScreenReaderDiv dangerouslySetInnerHTML={{ __html: answer }}></ScreenReaderDiv>
             </Question>
-
             <AnimatePresence>
                 {isOpen && (
-                    <Answer {...answerMotionProps}>
+                    <Answer {...answerMotionProps} aria-hidden="true">
                         <AnswerPadding dangerouslySetInnerHTML={{ __html: answer }} />
                     </Answer>
                 )}

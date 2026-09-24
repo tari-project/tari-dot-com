@@ -27,7 +27,7 @@ export const Holder = styled.div`
     margin: auto;
 `;
 
-export const PageTitle = styled.div`
+export const PageTitle = styled.h1`
     color: #111;
     font-family: var(--font-druk), sans-serif;
     font-size: 80px;

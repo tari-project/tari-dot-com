@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import FAQEntry from './components/FAQEntry/FAQEntry';
-import { Holder, Wrapper, Title, List, SeeAllButton, ShowMoreList } from './styles';
+import { Holder, Wrapper, List, SeeAllButton, ShowMoreList, TITLE_LEVELS } from './styles';
 import { AnimatePresence } from 'motion/react';
 
 const faqData = [
@@ -93,9 +93,10 @@ interface Props {
     maxWidth?: number;
     maxEntries?: number;
     disableAnimation?: boolean;
+    level?: keyof typeof TITLE_LEVELS;
 }
 
-export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAnimation }: Props) {
+export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAnimation, level = 1 }: Props) {
     const [showAll, setShowAll] = useState(false);
 
     const handleSeeAllClick = (e: React.MouseEvent) => {
@@ -105,6 +106,7 @@ export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAni
 
     const visibleEntries = maxEntries !== undefined ? faqData.slice(0, maxEntries) : faqData;
     const hiddenEntries = maxEntries !== undefined ? faqData.slice(maxEntries) : [];
+    const Title = TITLE_LEVELS[level];
 
     return (
         <Wrapper id="faq" $lightMode={lightMode}>
@@ -120,6 +122,7 @@ export default function FAQSection({ lightMode, maxWidth, maxEntries, disableAni
                                 answer={answer}
                                 lightMode={lightMode}
                                 disableAnimation={disableAnimation}
+                                level={level + 1}
                             />
                         );
                     })}

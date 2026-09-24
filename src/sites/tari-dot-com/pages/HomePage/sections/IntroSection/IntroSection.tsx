@@ -20,6 +20,8 @@ import DownloadButton from './components/DownloadButton/DownloadButton';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import BlockExplorerMini from '@/sites/tari-dot-com/ui/BlockExplorerMini/BlockExplorerMini';
 
+import { ScreenReaderH1 } from '@/ui-shared/components/ScreenReaderContent/styles';
+
 export default function IntroSection() {
     return (
         <Wrapper>
@@ -36,7 +38,10 @@ export default function IntroSection() {
 
                         <TitleWrapper>
                             <Title>
-                                <TitleAnimation text={`Turn Your Computer Into a Money Machine`} />
+                                <TitleAnimation
+                                    text={`Turn Your Computer Into a Money Machine`}
+                                    readerComponent={ScreenReaderH1}
+                                />
                             </Title>
 
                             <Text>

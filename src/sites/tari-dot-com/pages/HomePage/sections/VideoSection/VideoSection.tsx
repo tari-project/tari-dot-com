@@ -2,6 +2,7 @@
 
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
 import { Wrapper, TextWrapper, Title, Text, Holder, VideoPlayer } from './styles';
+import { ScreenReaderH2, ScreenReaderP } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 export default function VideoSection() {
     return (
@@ -9,12 +10,13 @@ export default function VideoSection() {
             <Holder>
                 <TextWrapper>
                     <Title>
-                        <TitleAnimation text={`Run Tari Universe. Earn Tari (XTM)`} />
+                        <TitleAnimation text={`Run Tari Universe. Earn Tari (XTM)`} readerComponent={ScreenReaderH2} />
                     </Title>
                     <Text>
                         <TitleAnimation
                             text={`Our Tari Universe mining application is stunningly beautiful, safe and easy to use. When its running, you’re helping to secure the Tari network. This is no free lunch. You’ll earn XTM tokens for your (computer's!) hard work.`}
                             staggerDelay={0.01}
+                            readerComponent={ScreenReaderP}
                         />
                     </Text>
                 </TextWrapper>

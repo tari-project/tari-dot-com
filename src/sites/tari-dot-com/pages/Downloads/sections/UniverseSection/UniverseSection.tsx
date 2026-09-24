@@ -17,13 +17,15 @@ import QRPopup from './components/QRPopup';
 import Star from './images/star.svg';
 import DownloadForOs from '@/ui-shared/components/DownloadButton/DownloadForOs';
 
+import { ScreenReaderH2 } from '@/ui-shared/components/ScreenReaderContent/styles';
+
 export default function UniverseSection() {
     const theme = 'light';
     return (
         <SectionHolder>
             <Container>
                 <Typography $variant="sectionTitle" $theme={theme}>
-                    <TitleAnimation text={`Tari Universe`} />
+                    <TitleAnimation text={`Tari Universe`} readerComponent={ScreenReaderH2} />
                 </Typography>
                 <InfoWrapper>
                     <UniverseImageHolder>

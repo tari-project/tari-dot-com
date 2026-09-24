@@ -27,6 +27,7 @@ import runIcon from './images/run-icon.png';
 import earnIcon from './images/earn-icon.png';
 import tariIconLarge from './images/tari-icon-large.png';
 import TitleAnimation from '@/ui-shared/components/TitleAnimation/TitleAnimation';
+import { ScreenReaderH2, ScreenReaderP } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 export default function UniverseSection() {
     const [activeStep, setActiveStep] = useState(1);
@@ -82,12 +83,16 @@ export default function UniverseSection() {
             <StickyHolder>
                 <TextWrapper>
                     <Title>
-                        <TitleAnimation text={`Get Rewarded for Helping Secure the Network`} />
+                        <TitleAnimation
+                            text={`Get Rewarded for Helping Secure the Network`}
+                            readerComponent={ScreenReaderH2}
+                        />
                     </Title>
                     <Text>
                         <TitleAnimation
                             text={`Tari Universe is the easiest-to-use tool in the web3 space. Earn XTM in 3 clicks and you don’t have to give up your personal information.`}
                             staggerDelay={0.01}
+                            readerComponent={ScreenReaderP}
                         />
                     </Text>
                 </TextWrapper>
