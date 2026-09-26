@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
+        with:
+          # Need to get the full history to validate modification times in
+          # sitemap.
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v6
 

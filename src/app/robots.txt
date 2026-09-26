@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /swaps
+Disallow: /exchange
+
+Sitemap: https://tari.com/sitemap.xml

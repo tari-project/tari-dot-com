@@ -2,6 +2,7 @@
     "name": "tari-dot-com-2025",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "packageManager": "pnpm@11.9.0",
     "scripts": {
         "dev": "next dev --turbopack",
@@ -21,7 +22,8 @@
         "prebuild-updates": "TZ=utc node scripts/generate-updates-data.js",
         "prebuild-lessons": "TZ=utc node scripts/generate-lessons-data.js",
         "prebuild-posts": "TZ=utc node scripts/generate-posts-data.js",
-        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run format"
+        "prebuild-sitemap": "TZ=utc node scripts/generate-sitemap.ts",
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run prebuild-sitemap && pnpm run format"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",

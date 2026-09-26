@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 function formatDate(date) {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
