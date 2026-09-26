@@ -21,7 +21,7 @@
         "prebuild-updates": "node scripts/generate-updates-data.js",
         "prebuild-lessons": "node scripts/generate-lessons-data.js",
         "prebuild-posts": "node scripts/generate-posts-data.js",
-        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts"
+        "prebuild-all": "export TZ=utc && pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run format"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",
