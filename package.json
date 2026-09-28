@@ -18,10 +18,10 @@
         "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
         "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
         "cf-typegen": "wrangler types --env-file .env.typegen --env-interface CloudflareEnv cloudflare-env.d.ts",
-        "prebuild-updates": "node scripts/generate-updates-data.js",
-        "prebuild-lessons": "node scripts/generate-lessons-data.js",
-        "prebuild-posts": "node scripts/generate-posts-data.js",
-        "prebuild-all": "export TZ=utc && pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run format"
+        "prebuild-updates": "TZ=utc node scripts/generate-updates-data.js",
+        "prebuild-lessons": "TZ=utc node scripts/generate-lessons-data.js",
+        "prebuild-posts": "TZ=utc node scripts/generate-posts-data.js",
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run format"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",
