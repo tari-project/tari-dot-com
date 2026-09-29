@@ -4,8 +4,8 @@ import { readFile, writeFile } from 'fs/promises';
 
 const ROOT = path.dirname(import.meta.filename) + '/../';
 
-const gitLastModified = async (path: string): Promise<Date> => {
-    let { stdout } = await sh('git', ['log', '-1', '--pretty=format:%cI', path]);
+const gitLastModified = async (pathName: string): Promise<Date> => {
+    let { stdout } = await sh('git', ['log', '-1', '--pretty=format:%cI', pathName]);
     stdout = stdout.trim();
     return new Date(stdout);
 };
@@ -55,11 +55,11 @@ const lastModifiedInPaths = async (paths: string[]): Promise<Date> => {
             return gitLastModified(path);
         }),
     );
-    return dates.sort((a, b) => a.getTime() - b.getTime())[0];
+    return dates.sort((a, b) => b.getTime() - a.getTime())[0];
 };
 
-const routesFromJSON = async (prefix: string, path: string, fallbackDate: Date = new Date()): Promise<Route[]> => {
-    const entries: PageEntryMap = JSON.parse(await readFile(path, 'utf8'));
+const routesFromJSON = async (prefix: string, pathName: string, fallbackDate: Date = new Date()): Promise<Route[]> => {
+    const entries: PageEntryMap = JSON.parse(await readFile(pathName, 'utf8'));
     return Object.entries(entries).map(([slug, entry]) => ({
         url: `${prefix}/${slug}`,
         lastModified: new Date(entry.date || fallbackDate),

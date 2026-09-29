@@ -42,3 +42,7 @@ next-env.d.ts
 .sentryclirc
 .env
 .dev.vars
+
+# Generated file
+src/generated/
+src/app/sitemap.xml
