@@ -33,6 +33,9 @@ jobs:
       - name: Run TypeScript check
         run: pnpm exec next typegen && pnpm exec tsc --noEmit
 
+      - name: Verify no uncommitted changes to pregeneration files
+        run: pnpm run prebuild-all && git diff --exit-code
+
       - name: Build Cloudflare Worker
         run: pnpm run build:worker
 
