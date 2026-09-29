@@ -21,9 +21,8 @@
         "cf-typegen": "wrangler types --env-file .env.typegen --env-interface CloudflareEnv cloudflare-env.d.ts",
         "prebuild-updates": "TZ=UTC node scripts/generate-updates-data.js",
         "prebuild-lessons": "TZ=UTC node scripts/generate-lessons-data.js",
-        "prebuild-posts": "TZ=UTC node scripts/generate-posts-data.js",
         "prebuild-sitemap": "TZ=UTC node scripts/generate-sitemap.ts",
-        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run prebuild-sitemap"
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-sitemap"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",

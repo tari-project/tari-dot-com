@@ -10,14 +10,14 @@ const gitLastModified = async (pathName: string): Promise<Date> => {
     return new Date(stdout);
 };
 
-declare interface Route {
+interface Route {
     url: string;
     lastModified: Date;
     changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
     priority: number;
 }
 
-declare interface PageEntry {
+interface PageEntry {
     // Not bothering with the rest of the data here.
     date?: string;
 }
@@ -147,7 +147,6 @@ const buildRoutes = async (): Promise<Route[]> => {
             'src/generated/lessons-map.json',
             await lastModifiedInPaths(['_lessons']),
         )),
-        ...(await routesFromJSON('https://tari.com/posts', 'src/generated/posts-map.json')),
     ];
 };
 
