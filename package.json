@@ -2,6 +2,7 @@
     "name": "tari-dot-com-2025",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "packageManager": "pnpm@11.9.0",
     "scripts": {
         "dev": "next dev --turbopack",
@@ -13,15 +14,15 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,mts,mjs}\"",
         "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md,mts,mjs}\"",
-        "build:worker": "opennextjs-cloudflare build",
-        "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-        "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-        "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+        "build:worker": "pnpm run prebuild-all && opennextjs-cloudflare build",
+        "preview": "pnpm run prebuild-all && opennextjs-cloudflare build && opennextjs-cloudflare preview",
+        "deploy": "pnpm run prebuild-all && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+        "upload": "pnpm run prebuild-all && opennextjs-cloudflare build && opennextjs-cloudflare upload",
         "cf-typegen": "wrangler types --env-file .env.typegen --env-interface CloudflareEnv cloudflare-env.d.ts",
-        "prebuild-updates": "TZ=utc node scripts/generate-updates-data.js",
-        "prebuild-lessons": "TZ=utc node scripts/generate-lessons-data.js",
-        "prebuild-posts": "TZ=utc node scripts/generate-posts-data.js",
-        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-posts && pnpm run format"
+        "prebuild-updates": "TZ=UTC node scripts/generate-updates-data.js",
+        "prebuild-lessons": "TZ=UTC node scripts/generate-lessons-data.js",
+        "prebuild-sitemap": "TZ=UTC node scripts/generate-sitemap.ts",
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-sitemap"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",
