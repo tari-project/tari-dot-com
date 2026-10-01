@@ -26,7 +26,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `pnpm run prebuild-updates` - Generate updates metadata
 - `pnpm run prebuild-lessons` - Generate lessons metadata
-- `pnpm run prebuild-posts` - Generate posts metadata
 - `pnpm run prebuild-all` - Generate all content metadata
 
 ## Project Architecture
