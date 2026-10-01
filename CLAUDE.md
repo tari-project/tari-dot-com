@@ -37,7 +37,6 @@ This is a Next.js 15 application with TypeScript and styled-components, serving 
 - `(main)` - Main Tari website (tari.com)
 - `(exchange)` - Exchange-related pages
 - `(iframe)` - Embedded swap functionality
-- `(veera)` - Veera-specific pages
 
 ### Key Directories
 

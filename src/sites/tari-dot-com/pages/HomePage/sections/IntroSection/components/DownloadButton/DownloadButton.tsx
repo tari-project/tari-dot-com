@@ -41,7 +41,6 @@ interface Props {
     showIconBackground?: boolean;
     subTextComponent?: React.ReactNode;
     glow?: boolean;
-    isVeera?: boolean;
     isSticky?: boolean;
 }
 
@@ -52,42 +51,22 @@ export default function DownloadButton({
     subTextComponent,
     showIconBackground = false,
     glow = false,
-    isVeera = false,
     isSticky = false,
 }: Props) {
     const [hovering, setHovering] = useState(false);
     const [isOutOfView, setIsOutOfView] = useState(false);
-    const [veeraEmailRef, setVeeraEmailRef] = useState<string | null>(null);
     const buttonRef = useRef<HTMLDivElement>(null);
 
     const { setShowDownloadModal } = useUIStore();
     const { handleDownloadClick } = useDownloadUniverse(exchange);
 
-    const shouldDownload = !isVeera || Boolean(veeraEmailRef);
-
-    useEffect(() => {
-        const updateVeeraEmailRef = () => {
-            setVeeraEmailRef(new URLSearchParams(window.location.search).get('veeraEmailRef'));
-        };
-
-        updateVeeraEmailRef();
-        window.addEventListener('popstate', updateVeeraEmailRef);
-        window.addEventListener('veera-email-ref-change', updateVeeraEmailRef);
-        return () => {
-            window.removeEventListener('popstate', updateVeeraEmailRef);
-            window.removeEventListener('veera-email-ref-change', updateVeeraEmailRef);
-        };
-    }, []);
-
     const handleClick = useCallback(
         (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
             e.preventDefault();
-            if (shouldDownload) {
-                handleDownloadClick(e);
-            }
+            handleDownloadClick(e);
             setShowDownloadModal(true);
         },
-        [handleDownloadClick, setShowDownloadModal, shouldDownload],
+        [handleDownloadClick, setShowDownloadModal],
     );
 
     // Intersection Observer to detect if button is out of view
@@ -115,7 +94,7 @@ export default function DownloadButton({
             as={Link}
             href="/downloads"
             onClick={handleClick}
-            id={shouldDownload ? 'universe-download-button' : undefined}
+            id="universe-download-button"
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             $backgroundColor={backgroundColor}
@@ -172,7 +151,6 @@ export default function DownloadButton({
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ delay: 0.5 }}
                 $subTextComponent={!!subTextComponent}
-                $isVera={isVeera}
             >
                 {ButtonContent}
             </Wrapper>
@@ -198,7 +176,6 @@ export default function DownloadButton({
                         exit={{ y: 100, opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                         $subTextComponent={!!subTextComponent}
-                        $isVera={isVeera}
                     >
                         {ButtonContent}
                     </Wrapper>,

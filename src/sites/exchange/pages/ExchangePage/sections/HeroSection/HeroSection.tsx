@@ -10,21 +10,20 @@ import { Exchange } from '@/sites/exchange/types/exchange';
 import { getValidHexColor } from '@/sites/exchange/utils';
 
 export default function HeroSection({ exchange }: { exchange: Exchange }) {
-    const isVera = exchange.id === 'veera';
     const color = getValidHexColor(exchange?.primary_colour);
 
     return (
         <Wrapper>
-            {!isVera && <HeroLeftBorder color={color} />}
+            <HeroLeftBorder color={color} />
             <MiddleWrapper>
-                {!isVera && <HeroTopBorder color={color} />}
+                <HeroTopBorder color={color} />
                 <ContentWrapper>
                     <HeroHeader exchange={exchange} />
                     <HeroContent exchange={exchange} />
                 </ContentWrapper>
-                {!isVera && <HeroBottomBorder color={color} />}
+                <HeroBottomBorder color={color} />
             </MiddleWrapper>
-            {!isVera && <HeroRightBorder color={color} />}
+            <HeroRightBorder color={color} />
         </Wrapper>
     );
 }
