@@ -1,12 +1,17 @@
 import { getAllLessons } from '@/services/lib/lessons';
 import LessonsPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonsPage';
+import { Metadata } from 'next';
 
-export const generateMetadata = async () => {
-    const metadata = {
-        title: 'Tari / Lessons',
-    };
-
-    return metadata;
+export const metadata: Metadata = {
+    title: 'Lessons',
+    description:
+        'Learn about Tari, how it works, and how programmable privacy unlocks real utility for individuals, businesses, and agents.',
+    alternates: {
+        canonical: '/lessons',
+    },
+    openGraph: {
+        url: '/lessons',
+    },
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ page?: string }> }) {

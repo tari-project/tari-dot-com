@@ -2,25 +2,32 @@ import { getLessonBySlug, getSortedLessons, Lesson } from '@/services/lib/lesson
 import LessonPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonPage';
 
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     try {
         const { slug } = await params;
 
         if (!slug) {
-            return { title: 'Tari / Lessons / Lesson Not Found' };
+            return { title: 'Lessons / Lesson Not Found' };
         }
 
         const lesson = await getLessonBySlug(slug);
 
         if (!lesson) {
-            return { title: 'Tari / Lessons / Lesson Not Found' };
+            return { title: 'Lessons / Lesson Not Found' };
         }
 
-        return { title: `Tari / Lessons / ${lesson.title}` };
+        return {
+            title: `Lessons / ${lesson.title}`,
+            description: lesson.excerpt || lesson.subtitle || lesson.lead,
+            alternates: {
+                canonical: `/lessons/${slug}`,
+            },
+        };
     } catch (error) {
         console.error('Error in generateMetadata:', error);
-        return { title: 'Tari / Lessons' };
+        return { title: 'Lessons' };
     }
 }
 

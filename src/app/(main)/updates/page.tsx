@@ -1,12 +1,16 @@
 import { getAllUpdates } from '@/services/lib/updates';
 import UpdatesPage from '@/sites/tari-dot-com/pages/UpdatesPage/UpdatesPage';
+import { Metadata } from 'next';
 
-export const generateMetadata = async () => {
-    const metadata = {
-        title: 'Tari / Updates',
-    };
-
-    return metadata;
+export const metadata: Metadata = {
+    title: 'Updates',
+    description: "Follow the Tari project and learn what's happening in the world of programmable privacy.",
+    alternates: {
+        canonical: '/updates',
+    },
+    openGraph: {
+        url: '/updates',
+    },
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
