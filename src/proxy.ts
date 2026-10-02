@@ -13,6 +13,10 @@ export async function proxy(request: NextRequest) {
         // Old collab thing that fell through and mostly had the same content as the index anyway.
         return NextResponse.redirect(origin);
     }
+    if (urlPath.startsWith('/faq')) {
+        // FAQ page no longer has links to it. Everything's on the front page.
+        return NextResponse.redirect(origin);
+    }
 
     // Proxy /ootle/community-templates to the external app from the Worker.
     if (urlPath.startsWith('/ootle/community-templates')) {
