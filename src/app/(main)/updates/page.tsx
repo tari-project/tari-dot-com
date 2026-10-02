@@ -1,12 +1,8 @@
 import { getAllUpdates } from '@/services/lib/updates';
 import UpdatesPage from '@/sites/tari-dot-com/pages/UpdatesPage/UpdatesPage';
 
-export const generateMetadata = async () => {
-    const metadata = {
-        title: 'Tari / Updates',
-    };
-
-    return metadata;
+export const metadata = {
+    title: 'Updates',
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ page?: string }> }) {

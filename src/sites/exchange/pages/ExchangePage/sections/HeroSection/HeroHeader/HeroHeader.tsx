@@ -6,7 +6,6 @@ import { Exchange } from '@/sites/exchange/types/exchange';
 import { isValidImage } from '@/sites/exchange/utils';
 
 export default function HeroHeader({ exchange }: { exchange: Exchange }) {
-    const isVeera = exchange.id === 'veera';
     const logoUrl = exchange?.dark_logo_img_url || exchange?.logo_img_url;
     return (
         <Wrapper>
@@ -14,7 +13,7 @@ export default function HeroHeader({ exchange }: { exchange: Exchange }) {
                 <TariLogo />
                 <CrossIcon />
                 {isValidImage(logoUrl) ? (
-                    <LogoImage src={logoUrl} alt={exchange?.name} $isVeera={isVeera} />
+                    <LogoImage src={logoUrl} alt={exchange?.name} />
                 ) : (
                     <div style={{ width: 121, height: 38, background: '#444', borderRadius: 8 }} />
                 )}

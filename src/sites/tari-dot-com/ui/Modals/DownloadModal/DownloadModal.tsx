@@ -23,14 +23,14 @@ import MacIcon from '@/ui-shared/components/Icons/MacIcon';
 import tariLogoImage from './images/tariLogo.png';
 import { sendGTMEvent } from '@next/third-parties/google';
 import ActiveNodes from '../../Header/ActiveNodes/ActiveNodes';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { API_ENDPOINTS } from '@/config/api';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import type { Exchange } from '@/sites/exchange/types/exchange';
 
 export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
-    const { showDownloadModal, setShowDownloadModal, isVeera, isLinux } = useUIStore();
+    const { showDownloadModal, setShowDownloadModal, isLinux } = useUIStore();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const { mutateAsync: subscribeNewsletter } = useSubscribeNewsletter();
@@ -38,19 +38,10 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
     const [isLoading, setIsLoading] = useState(false);
     const { token, markup, reset } = useCaptcha('light');
 
-    useEffect(() => {
-        const veeraEmailRef = new URLSearchParams(window.location.search).get('veeraEmailRef');
-        if (!isSuccess && veeraEmailRef) {
-            setIsSuccess(true);
-        }
-    }, [isSuccess]);
-
     const windowsLink =
-        exchange?.download_link_win ||
-        `${API_ENDPOINTS.MINER_DOWNLOAD}/windows?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
+        exchange?.download_link_win || `${API_ENDPOINTS.MINER_DOWNLOAD}/windows?universeReferral=tari-dot-com`;
     const macLink =
-        exchange?.download_link_mac ||
-        `${API_ENDPOINTS.MINER_DOWNLOAD}/macos?universeReferral=${isVeera ? 'veera' : 'tari-dot-com'}`;
+        exchange?.download_link_mac || `${API_ENDPOINTS.MINER_DOWNLOAD}/macos?universeReferral=tari-dot-com`;
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -61,46 +52,9 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
         setIsLoading(true);
         try {
             if (email && token) {
-                await subscribeNewsletter({ email, name, token, veera: isVeera }).then((r) => {
+                await subscribeNewsletter({ email, name, token }).then((r) => {
                     if (r.success) {
-                        const veeraEmailRef = r.veeraEmailRef;
                         setIsSuccess(true);
-
-                        // Update URL search params with veeraEmailRef
-                        if (isVeera && veeraEmailRef) {
-                            const url = new URL(window.location.href);
-                            url.searchParams.set('veeraEmailRef', veeraEmailRef);
-                            window.history.pushState({}, '', url.toString());
-                            window.dispatchEvent(new Event('veera-email-ref-change'));
-                        }
-
-                        // Auto-download for Veera after successful email submission
-                        if (isVeera && veeraEmailRef) {
-                            // Detect user's platform and trigger download
-                            const userAgent = navigator.userAgent.toLowerCase();
-                            let downloadUrl = '';
-
-                            if (userAgent.includes('win')) {
-                                downloadUrl = windowsLink;
-                            } else {
-                                downloadUrl = macLink;
-                            }
-
-                            // Trigger download
-                            const link = document.createElement('a');
-                            const url = new URL(downloadUrl);
-                            url.searchParams.set('veeraEmailRef', veeraEmailRef);
-                            url.searchParams.set('universeReferral', 'veera');
-
-                            link.href = url.toString();
-                            link.download = '';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-
-                            const platform = userAgent.includes('win') ? 'windows' : 'macos';
-                            sendGTMEvent({ event: 'download_button_clicked', platform, exchange: 'veera' });
-                        }
                     } else {
                         reset();
                     }
@@ -120,19 +74,11 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
 
                 {!isSuccess && (
                     <TextGroup>
-                        <Title>
-                            {isVeera
-                                ? 'Ready to start earning?'
-                                : isLinux
-                                  ? 'Not available for Linux'
-                                  : 'your download has started'}
-                        </Title>
+                        <Title>{isLinux ? 'Not available for Linux' : 'your download has started'}</Title>
                         <Text>
-                            {isVeera
-                                ? 'Submit your email ID associated with Veera to start earning rewards'
-                                : isLinux
-                                  ? `Tari Universe isn't available on Linux for now, but stay in the loop for news, contests, and drops.`
-                                  : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
+                            {isLinux
+                                ? `Tari Universe isn't available on Linux for now, but stay in the loop for news, contests, and drops.`
+                                : 'Now, stay up to date with the latest Tari news, contests, and drops.'}
                         </Text>
                         <Form onSubmit={handleSubmit}>
                             <FormFields>
@@ -151,11 +97,7 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                                 />
                             </FormFields>
                             {markup}
-                            <SubmitButton
-                                type="submit"
-                                disabled={isLoading || isSuccess || !token}
-                                id={isVeera ? 'universe-download-button' : undefined}
-                            >
+                            <SubmitButton type="submit" disabled={isLoading || isSuccess || !token}>
                                 <span>
                                     Let’s do it!{' '}
                                     <svg
@@ -178,24 +120,15 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                     </TextGroup>
                 )}
 
-                {isSuccess &&
-                    (isVeera ? (
-                        <SuccessMessage>
-                            <Title>{'Your download has started'}</Title>
-                            <Text>
-                                <strong>You’re all set!</strong> your <strong>Veera</strong> rewards are on the way.
-                            </Text>
-                        </SuccessMessage>
-                    ) : (
-                        <SuccessMessage>
-                            <Text>
-                                <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and
-                                drops.
-                            </Text>
-                        </SuccessMessage>
-                    ))}
+                {isSuccess && (
+                    <SuccessMessage>
+                        <Text>
+                            <strong>You’re all set!</strong> We’ll send you the latest Tari news, contests, and drops.
+                        </Text>
+                    </SuccessMessage>
+                )}
 
-                {(!isVeera || isSuccess) && (
+                {isSuccess && (
                     <>
                         <Divider>
                             <DividerLine />

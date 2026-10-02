@@ -3,7 +3,7 @@ import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
     try {
         const { slug } = await params;
 
@@ -17,12 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             return { title: 'Tari / Updates / Post Not Found' };
         }
 
-        return { title: `Tari / Updates / ${post.title}` };
+        return {
+            title: `Updates / ${post.title}`,
+        };
     } catch (error) {
         console.error('Error in generateMetadata:', error);
         return { title: 'Tari / Updates' };
     }
-}
+};
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     let post: Update | undefined;
