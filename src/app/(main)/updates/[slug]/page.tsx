@@ -3,6 +3,7 @@ import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { canonicalUrl } from '@/utils/metadata';
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
     try {
@@ -20,12 +21,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
         return {
             title: `Updates / ${post.title}`,
             description: post.excerpt || `Project update for ${post.date}`,
-            alternates: {
-                canonical: `/updates/${slug}`,
-            },
-            openGraph: {
-                url: `/updates/${slug}`,
-            },
+            ...canonicalUrl(`/updates/${slug}`),
         };
     } catch (error) {
         console.error('Error in generateMetadata:', error);

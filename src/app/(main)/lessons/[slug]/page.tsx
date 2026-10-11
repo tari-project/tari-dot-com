@@ -3,6 +3,7 @@ import LessonPage from '@/sites/tari-dot-com/pages/LessonsPage/LessonPage';
 
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { canonicalUrl } from '@/utils/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     try {
@@ -21,9 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         return {
             title: `Lessons / ${lesson.title}`,
             description: lesson.excerpt || lesson.subtitle || lesson.lead,
-            alternates: {
-                canonical: `/lessons/${slug}`,
-            },
+            ...canonicalUrl(`/lessons/${slug}`),
         };
     } catch (error) {
         console.error('Error in generateMetadata:', error);

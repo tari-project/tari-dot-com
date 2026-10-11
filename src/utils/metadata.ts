@@ -23,3 +23,12 @@ export const postToLd = (post: Update | Lesson): Article => {
         ...publishedInfo,
     };
 };
+
+export const canonicalUrl = (url: string) => ({
+    alternates: {
+        canonical: url,
+    },
+    openGraph: {
+        url,
+    },
+});

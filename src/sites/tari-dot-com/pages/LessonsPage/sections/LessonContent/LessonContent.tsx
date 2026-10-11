@@ -3,8 +3,8 @@ import { Holder, Wrapper, LessonTitle, LessonInfo, LessonBody, LessonImage, Back
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import NextLessons from './components/NextLessons/NextLessons';
-import { StructuredData } from '@/config/StructuredData';
-import { postToLd } from '@/config/dataUtils';
+import { StructuredData } from '@/utils/StructuredData';
+import { postToLd } from '@/utils/metadata';
 
 interface LessonContentProps {
     lesson: Lesson;

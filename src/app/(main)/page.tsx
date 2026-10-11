@@ -1,14 +1,10 @@
 import HomePage from '@/sites/tari-dot-com/pages/HomePage/HomePage';
 import { Metadata } from 'next';
+import { canonicalUrl } from '@/utils/metadata';
 
 // Defaults pulled from ./layout.tsx
 export const metadata: Metadata = {
-    alternates: {
-        canonical: '/',
-    },
-    openGraph: {
-        url: '/',
-    },
+    ...canonicalUrl('/'),
 };
 
 export default function Page() {

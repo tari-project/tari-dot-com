@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import ArticleDate from '../ArticlesList/components/ArticleEntry/ArticleDate';
 import Link from 'next/link';
 import NextArticles from './components/NextArticles/NextArticles';
-import { StructuredData } from '@/config/StructuredData';
-import { postToLd } from '@/config/dataUtils';
+import { StructuredData } from '@/utils/StructuredData';
+import { postToLd } from '@/utils/metadata';
 
 interface PostContentProps {
     post: Update;
