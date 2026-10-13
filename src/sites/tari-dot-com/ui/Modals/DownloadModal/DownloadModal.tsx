@@ -28,6 +28,7 @@ import { useSubscribeNewsletter } from '@/services/api/useSubscribeNewsletter';
 import { API_ENDPOINTS } from '@/config/api';
 import { useCaptcha } from '@/ui-shared/hooks/useCaptcha';
 import type { Exchange } from '@/sites/exchange/types/exchange';
+import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 
 export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
     const { showDownloadModal, setShowDownloadModal, isLinux } = useUIStore();
@@ -42,6 +43,8 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
         exchange?.download_link_win || `${API_ENDPOINTS.MINER_DOWNLOAD}/windows?universeReferral=tari-dot-com`;
     const macLink =
         exchange?.download_link_mac || `${API_ENDPOINTS.MINER_DOWNLOAD}/macos?universeReferral=tari-dot-com`;
+    const linuxLink =
+        exchange?.download_link_mac || `${API_ENDPOINTS.MINER_DOWNLOAD}/linux?universeReferral=tari-dot-com`;
 
     const handleClick = (platform?: string) => {
         sendGTMEvent({ event: 'download_button_clicked', platform: platform });
@@ -128,28 +131,27 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                     </SuccessMessage>
                 )}
 
-                {isSuccess && (
-                    <>
-                        <Divider>
-                            <DividerLine />
-                            <DividerText>
-                                {isLinux
-                                    ? 'Looking for a different OS? Download it here.'
-                                    : 'Having trouble? Here are your download links.'}
-                            </DividerText>
-                            <DividerLine />
-                        </Divider>
+                <Divider>
+                    <DividerLine />
+                    <DividerText>
+                        {isLinux
+                            ? 'Looking for a different OS? Download it here.'
+                            : 'Having trouble? Here are your download links.'}
+                    </DividerText>
+                    <DividerLine />
+                </Divider>
 
-                        <DownloadButtons>
-                            <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
-                                WINDOWS <WindowsIcon fill="#fff" />
-                            </DownloadButton>
-                            <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
-                                MAC <MacIcon fill="#fff" />
-                            </DownloadButton>
-                        </DownloadButtons>
-                    </>
-                )}
+                <DownloadButtons>
+                    <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
+                        WINDOWS <WindowsIcon fill="#fff" />
+                    </DownloadButton>
+                    <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
+                        MAC <MacIcon fill="#fff" />
+                    </DownloadButton>
+                    <DownloadButton href={linuxLink} onClick={() => handleClick('linux')}>
+                        LINUX <LinuxIcon fill="#fff" />
+                    </DownloadButton>
+                </DownloadButtons>
             </ContentGroup>
         </BaseModal>
     );

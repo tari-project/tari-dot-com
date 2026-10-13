@@ -1,12 +1,13 @@
 import ExchangePage from '@/sites/exchange/pages/ExchangePage/ExchangePage';
 import { fetchExchangeData } from '@/services/api/fetchExchangeData';
+import { Metadata } from 'next';
 
 type PageProps = {
     params: Promise<{ name: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export const generateMetadata = async ({ params, searchParams }: PageProps) => {
+export const generateMetadata = async ({ params, searchParams }: PageProps): Promise<Metadata> => {
     const { name } = await params;
     const { password } = await searchParams;
     const exchange = await fetchExchangeData(name, password as string);

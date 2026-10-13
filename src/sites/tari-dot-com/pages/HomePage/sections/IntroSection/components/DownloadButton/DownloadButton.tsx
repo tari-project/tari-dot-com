@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import AppleIcon from './icons/AppleIcon';
 import WindowsIcon from './icons/WindowsIcon';
+import LinuxIcon from './icons/LinuxIcon';
 import { Button, HoverGradient, Icons, Text, TextGroup, Word, Wrapper } from './styles';
 import { AnimatePresence, type Variants } from 'motion/react';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
@@ -127,6 +128,7 @@ export default function DownloadButton({
             <Icons $showIconBackground={showIconBackground}>
                 <WindowsIcon />
                 <AppleIcon />
+                <LinuxIcon />
             </Icons>
             <AnimatePresence>
                 {hovering && (

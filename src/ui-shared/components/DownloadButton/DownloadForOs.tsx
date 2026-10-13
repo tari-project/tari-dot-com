@@ -4,6 +4,7 @@ import WindowsIcon from '../Icons/WindowsIcon';
 import Typography from '../Typography/Typography';
 import { sendGTMEvent } from '@next/third-parties/google';
 import { API_ENDPOINTS } from '@/config/api';
+import LinuxIcon from '@/ui-shared/components/Icons/LinuxIcon';
 
 function DownloadForOs() {
     const handleClick = (platform?: string) => {
@@ -29,6 +30,13 @@ function DownloadForOs() {
                 >
                     Windows
                     <WindowsIcon fill="#000" />
+                </OsButton>
+                <OsButton
+                    href={`${API_ENDPOINTS.MINER_DOWNLOAD}/linux?universeReferral=tari-dot-com`}
+                    onClick={() => handleClick('linux')}
+                >
+                    Linux
+                    <LinuxIcon fill="#000" />
                 </OsButton>
             </ButtonsWrapper>
         </>
