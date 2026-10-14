@@ -7,7 +7,7 @@ const HTTP_PERMANENT_REDIRECT = 308;
 export async function proxy(request: NextRequest) {
     const { pathname: urlPath, origin } = request.nextUrl;
 
-    if (urlPath.includes('/launchpad', 308)) {
+    if (urlPath.includes('/launchpad')) {
         const url = new URL(origin + '/downloads');
         return NextResponse.redirect(url, HTTP_PERMANENT_REDIRECT);
     }
