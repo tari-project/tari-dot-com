@@ -10,7 +10,7 @@ export const generateMetadata = async ({ params, searchParams }: PageProps) => {
     const { name } = await params;
     const { password } = await searchParams;
     const exchange = await fetchExchangeData(name, password as string);
-    const url = `exchange/${name}`;
+    const url = `/exchange/${encodeURIComponent(name)}`;
 
     return {
         title: `Tari x ${exchange.name}`,

@@ -7,6 +7,7 @@ export type Update = {
     thumbnail: string;
     og_image: string;
     tag: string;
+    author: string;
 };
 
 export type UpdatesMap = {

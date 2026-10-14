@@ -128,28 +128,24 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                     </SuccessMessage>
                 )}
 
-                {isSuccess && (
-                    <>
-                        <Divider>
-                            <DividerLine />
-                            <DividerText>
-                                {isLinux
-                                    ? 'Looking for a different OS? Download it here.'
-                                    : 'Having trouble? Here are your download links.'}
-                            </DividerText>
-                            <DividerLine />
-                        </Divider>
+                <Divider>
+                    <DividerLine />
+                    <DividerText>
+                        {isLinux
+                            ? 'Looking for a different OS? Download it here.'
+                            : 'Having trouble? Here are your download links.'}
+                    </DividerText>
+                    <DividerLine />
+                </Divider>
 
-                        <DownloadButtons>
-                            <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
-                                WINDOWS <WindowsIcon fill="#fff" />
-                            </DownloadButton>
-                            <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
-                                MAC <MacIcon fill="#fff" />
-                            </DownloadButton>
-                        </DownloadButtons>
-                    </>
-                )}
+                <DownloadButtons>
+                    <DownloadButton href={windowsLink} onClick={() => handleClick('windows')}>
+                        WINDOWS <WindowsIcon fill="#fff" />
+                    </DownloadButton>
+                    <DownloadButton href={macLink} onClick={() => handleClick('macos')}>
+                        MAC <MacIcon fill="#fff" />
+                    </DownloadButton>
+                </DownloadButtons>
             </ContentGroup>
         </BaseModal>
     );

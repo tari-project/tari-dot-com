@@ -7,7 +7,7 @@ export type Lesson = {
     order: number;
     excerpt?: string;
     thumbnail?: string;
-    author?: string;
+    author: string;
 };
 
 export type LessonsMap = {
