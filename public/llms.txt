@@ -1,0 +1,27 @@
+# Tari
+
+Tari is the L1 protocol powered by you. Proof of work and an ingenious app
+platform to put all of its power in your hands.
+
+## Key Pages
+- [Homepage](https://tari.com/) — Protocol overview and value proposition
+- [Tokenomics](https://tari.com/tokenomics) — XTM token economics and distribution
+- [Updates](https://tari.com/updates) — Development updates and changelogs
+- [Lessons](https://tari.com/lessons) — Educational content about Tari
+- [Integration Guide](https://tari.com/integration-guide) — Developer integration docs
+- [FAQ](https://tari.com/faq) — Frequently asked questions
+- [MiCA Whitepaper](https://tari.com/mica-whitepaper) — Regulatory whitepaper
+- [Downloads](https://tari.com/downloads) — Wallet and node downloads
+
+## Content Sections
+- Development Updates
+- Lessons & Tutorials
+- Tokenomics
+- Integration Documentation
+- Legal & Compliance
+
+## About Tari
+Tari is a layer-1 blockchain protocol that combines proof-of-work consensus with
+an application platform designed to put power in the hands of users. The protocol
+supports merge mining, stealth addresses for privacy, and a flexible scripting
+environment for building decentralized applications.
