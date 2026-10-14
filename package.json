@@ -22,8 +22,7 @@
         "prebuild-updates": "TZ=UTC node scripts/generate-updates-data.js",
         "prebuild-lessons": "TZ=UTC node scripts/generate-lessons-data.js",
         "prebuild-sitemap": "TZ=UTC node scripts/generate-sitemap.ts",
-        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-sitemap && pnpm run prebuild-llms",
-        "prebuild-llms": "node scripts/generate-llms-full.js"
+        "prebuild-all": "pnpm run prebuild-updates && pnpm run prebuild-lessons && pnpm run prebuild-sitemap"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.20",

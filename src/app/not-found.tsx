@@ -1,101 +1,41 @@
-import Link from 'next/link';
+import Layout from '@/ui-shared/layouts/Layout/Layout';
 
 export default function NotFound() {
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '100vh',
-                padding: '2rem',
-                textAlign: 'center',
-                fontFamily: 'system-ui, -apple-system, sans-serif',
-            }}
-        >
-            <h1
-                style={{
-                    fontSize: '6rem',
-                    fontWeight: 800,
-                    margin: 0,
-                    color: '#111',
-                    lineHeight: 1,
-                }}
-            >
-                404
-            </h1>
-            <p
-                style={{
-                    fontSize: '1.25rem',
-                    color: '#555',
-                    margin: '1rem 0 2rem',
-                    maxWidth: '480px',
-                }}
-            >
-                This page could not be found. It may have been moved or no longer exists.
-            </p>
-            <nav
+        <Layout>
+            <div
                 style={{
                     display: 'flex',
-                    gap: '1rem',
-                    flexWrap: 'wrap',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                     justifyContent: 'center',
+                    minHeight: '60vh',
+                    padding: '4rem 2rem',
+                    textAlign: 'center',
+                    color: '#111',
                 }}
             >
-                <Link
-                    href="/"
+                <h1
                     style={{
-                        padding: '0.75rem 1.5rem',
-                        background: '#111',
-                        color: '#fff',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        fontWeight: 600,
+                        fontSize: '6rem',
+                        fontWeight: 800,
+                        margin: 0,
+                        lineHeight: 1,
                     }}
                 >
-                    Home
-                </Link>
-                <Link
-                    href="/updates"
+                    404
+                </h1>
+                <p
                     style={{
-                        padding: '0.75rem 1.5rem',
-                        background: '#f3f4f6',
-                        color: '#111',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        fontWeight: 600,
+                        fontSize: '1.25rem',
+                        color: '#555',
+                        margin: '1rem 0 0',
+                        maxWidth: '480px',
                     }}
                 >
-                    Updates
-                </Link>
-                <Link
-                    href="/lessons"
-                    style={{
-                        padding: '0.75rem 1.5rem',
-                        background: '#f3f4f6',
-                        color: '#111',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        fontWeight: 600,
-                    }}
-                >
-                    Lessons
-                </Link>
-                <Link
-                    href="/tokenomics"
-                    style={{
-                        padding: '0.75rem 1.5rem',
-                        background: '#f3f4f6',
-                        color: '#111',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        fontWeight: 600,
-                    }}
-                >
-                    Tokenomics
-                </Link>
-            </nav>
-        </div>
+                    This page could not be found. It may have been moved or no longer exists.
+                </p>
+            </div>
+        </Layout>
     );
 }

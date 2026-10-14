@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { orgData } from '@/utils/metadata';
+import { StructuredData } from '@/utils/StructuredData';
+import type { Article, WithContext } from 'schema-dts';
 
 export const metadata: Metadata = {
     title: 'MiCA Whitepaper',
@@ -9,24 +12,19 @@ export const metadata: Metadata = {
     },
 };
 
-const articleSchema = {
+const articleSchema: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: 'wXTM Crypto-asset Whitepaper under MiCA',
     description:
         "Tari's regulatory compliance whitepaper for the European market under the Markets in Crypto-Assets regulation.",
-    publisher: {
-        '@type': 'Organization',
-        name: 'Tari',
-        logo: { '@type': 'ImageObject', url: 'https://tari.com/favicon.png?v=1' },
-    },
-    mainEntityOfPage: 'https://tari.com/mica-whitepaper',
+    publisher: orgData(),
 };
 
 export default function WhitepaperPage() {
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+            <StructuredData data={articleSchema} />
             <div
                 style={{
                     position: 'fixed',
