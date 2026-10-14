@@ -6,17 +6,16 @@ export default function PrivacyPolicy() {
     return (
         <Wrapper>
             <Holder>
+                <h1>Privacy Policy</h1>
+
                 <p>Last Modified: April 23, 2025</p>
 
-                <h1>Tari Labs Privacy Policy</h1>
-
                 <p>
-                    Tari Labs (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) recognizes that
-                    people who use our website, <b>desktop applications</b> and/or mobile applications (collectively,
-                    the &quot;Services&quot;) value their privacy. This privacy policy (the &quot;Policy&quot;)
-                    describes how the Services made available by Tari Labs collect, use, share, and store personal
-                    information of users of the Services. This Policy applies to the Services on or in which it is
-                    posted, linked, or referenced.
+                    Tari (“Company”, “we”, “our”, or “us”) recognizes that people who use our website, desktop
+                    applicationsand/or mobile applications (collectively, the “Services”) value their privacy. This
+                    privacy policy (the “Policy”) describes how the Services made available by Tari collect, use, share,
+                    and store personal information of users of the Services. This Policy applies to the Services on or
+                    in which it is posted, linked, or referenced.
                 </p>
 
                 <p>
@@ -41,93 +40,60 @@ export default function PrivacyPolicy() {
                 </p>
 
                 <ul>
-                    <li>
-                        <a href="#what-we-collect">What we collect</a>
-                        <ul>
-                            <li>
-                                <a href="#self-custody-of-personal-and-transaction-data">
-                                    Self-Custody of Personal and Transaction Data
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#active-collection-of-information">Active Collection of Information</a>
-                            </li>
-                            <li>
-                                <a href="#passive-collection-of-information">Passive Collection of Information</a>
-                            </li>
-                            <li>
-                                <a href="#collection-of-telemetry-and-miner-analytics-in-tari-universe">
-                                    Collection of Telemetry and Miner Analytics in Tari Universe
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#use-of-personal-information">Use of personal information</a>
-                    </li>
-                    <li>
-                        <a href="#sharing-of-personal-information">Sharing of personal information</a>
-                    </li>
-                    <li>
-                        <a href="#international-transfer">International transfer</a>
-                    </li>
-                    <li>
-                        <a href="#how-information-is-secured">How information is secured</a>
-                    </li>
-                    <li>
-                        <a href="#information-choices-and-changes">Information choices and changes</a>
-                    </li>
-                    <li>
-                        <a href="#contact-information">Contact information</a>
-                    </li>
-                    <li>
-                        <a href="#changes-to-this-privacy-policy">Changes to this privacy policy</a>
-                    </li>
-                    <li>
-                        <a href="#eligibility">Eligibility</a>
-                    </li>
-                    <li>
-                        <a href="#notice-to-california-residents">Notice to California residents</a>
-                    </li>
-                    <li>
-                        <a href="#notice-to-eu-data-subjects">Notice to EU data subjects</a>
-                    </li>
-                    <li>
-                        <a href="#your-rights">Your rights</a>
-                    </li>
+                    <li>Use of personal information</li>
+
+                    <li>Sharing of personal information</li>
+
+                    <li>International transfer</li>
+
+                    <li>How information is secured</li>
+
+                    <li>Information choices and changes</li>
+
+                    <li>Contact information</li>
+
+                    <li>Changes to this privacy policy</li>
+
+                    <li>Eligibility</li>
+
+                    <li>Notice to California residents</li>
+
+                    <li>Notice to EU data subjects</li>
+
+                    <li>Your rights</li>
                 </ul>
 
                 <h2>WHAT WE COLLECT</h2>
 
-                <h3>Self-Custody of Personal and Transaction Data</h3>
+                <h2>Self-Custody of Personal and Transaction Data</h2>
 
                 <p>
-                    We offer the Services to enable you to self-custody your Tari <b>tokens</b> and similarly seek for
-                    you to self-custody your personal information and transaction history. Accordingly, the information
-                    we collect about you is very limited and generally for the purpose of providing and improving the
+                    We offer the Services to enable you to self-custody your Tari tokens and similarly seek for you to
+                    self-custody your personal information and transaction history. Accordingly, the information we
+                    collect about you is very limited and generally for the purpose of providing and improving the
                     Services we offer to you.
                 </p>
 
-                <h3>Active Collection of Information</h3>
+                <h2>Active Collection of Information</h2>
 
                 <p>
-                    We may collect certain information that you voluntarily provide to us which may contain personal
-                    information. For example, if you opt in to receiving communications from Tari Labs via email, we may
+                    We may collect certain information that you voluntarily provide to us, which may contain personal
+                    information. For example, if you opt in to receiving communications from Tari via email, we may
                     collect your name and email address. We retain this information until you ask to be unsubscribed
-                    from our list(s). If you purchase any products from Tari Labs, we may collect shipping information
-                    (such as name and mailing address) from you in order to ship the products to you. We do not sell or
+                    from our list(s). If you purchase any products from Tari, we may collect shipping information (such
+                    as name and mailing address) from you in order to ship the products to you. We do not sell or
                     otherwise transmit any such actively-collected personal information to third parties other than to
                     third party service providers discussed in Section 4.
                 </p>
 
-                <h3>Passive Collection of Information</h3>
+                <h2>Passive Collection of Information</h2>
 
                 <p>
                     When you use the Services, some information about your visit is automatically collected. This
-                    information includes your IP address, access times, browser type and language, and referring web
-                    site addresses. We collect this information to troubleshoot technical issues, understand how
-                    visitors use the Services, provide an experience relevant to the general location associated with
-                    your IP address, and to make improvements to our website.
+                    information includes your IP address, access times, browser type and language, and referring website
+                    addresses. We collect this information to troubleshoot technical issues, understand how visitors use
+                    the Services, provide an experience relevant to the general location associated with your IP
+                    address, and to make improvements to our website.
                 </p>
 
                 <p>
@@ -135,7 +101,7 @@ export default function PrivacyPolicy() {
                     visit from that link.
                 </p>
 
-                <h3>Collection of Telemetry and Miner Analytics in Tari Universe</h3>
+                <h2>Collection of Telemetry and Miner Analytics in Tari Universe</h2>
 
                 <p>
                     If you opt in to allow Tari Universe to use analytics to improve your experience, we collect
@@ -143,20 +109,7 @@ export default function PrivacyPolicy() {
                     data may include:
                 </p>
 
-                <ul>
-                    <li>Hardware specifications (CPU/GPU model, core/thread count)</li>
-                    <li>Available memory and storage</li>
-                    <li>Network throughput and bandwidth usage</li>
-                    <li>Hash rate performance and runtime behavior</li>
-                </ul>
-
                 <p>We do not collect any information related to your Tari (XTM) wallet, including:</p>
-
-                <ul>
-                    <li>Wallet balances</li>
-                    <li>Transaction history</li>
-                    <li>Private keys or seed phrases</li>
-                </ul>
 
                 <p>
                     If analytics is enabled, your anonymized application ID may be cryptographically hashed into the
@@ -177,21 +130,11 @@ export default function PrivacyPolicy() {
 
                 <h2>USE OF PERSONAL INFORMATION</h2>
 
-                <h3>To provide the Services</h3>
+                <h2>To provide the Services</h2>
 
                 <p>We will use your personal information in the following ways:</p>
 
-                <ul>
-                    <li>To enable you to access and use the Services.</li>
-                    <li>To optimize your user experience.</li>
-                    <li>To provide and deliver products and services that you may request.</li>
-                    <li>
-                        To measure interest in and develop the Services, diagnose technical problems and to generally
-                        administer the Services.
-                    </li>
-                </ul>
-
-                <h3>To comply with law</h3>
+                <h2>To comply with law</h2>
 
                 <p>
                     We use your personal information as we believe necessary or appropriate to comply with applicable
@@ -199,26 +142,26 @@ export default function PrivacyPolicy() {
                     authorities.
                 </p>
 
-                <h3>To communicate with you</h3>
+                <h2>To communicate with you</h2>
 
                 <p>
                     We use your personal information to provide you with information regarding the Services if you sign
                     up for our mailing list.
                 </p>
 
-                <h3>With your consent</h3>
+                <h2>With your consent</h2>
 
                 <p>
                     We may use or share your personal information with your consent, such as when you instruct us to
-                    take a specific action with respect to your personal information, or you opt into third party
+                    take a specific action with respect to your personal information, or you opt into third-party
                     marketing communications.
                 </p>
 
-                <h3>For compliance, fraud prevention, and safety</h3>
+                <h2>For compliance, fraud prevention, and safety</h2>
 
                 <p>
-                    We may use your personal information to protect, investigate, and deter against fraudulent,
-                    unauthorized, or illegal activity.
+                    We may use your personal information to protect, investigate, and deter fraudulent, unauthorized, or
+                    illegal activity.
                 </p>
 
                 <h2>SHARING OF PERSONAL INFORMATION</h2>
@@ -229,14 +172,14 @@ export default function PrivacyPolicy() {
                     information to third parties under the following circumstances:
                 </p>
 
-                <h3>Affiliates</h3>
+                <h2>Affiliates</h2>
 
                 <p>
                     We may disclose your personal information to our subsidiaries and corporate affiliates for purposes
                     consistent with this Privacy Policy.
                 </p>
 
-                <h3>Business Transfers</h3>
+                <h2>Business Transfers</h2>
 
                 <p>
                     We may share personal information when we do a business deal, or negotiate a business deal,
@@ -244,28 +187,15 @@ export default function PrivacyPolicy() {
                     any merger, financing, acquisition, or bankruptcy transaction or proceeding.
                 </p>
 
-                <h3>Compliance with Laws and Law Enforcement; Protection and Safety</h3>
+                <h2>Compliance with Laws and Law Enforcement; Protection and Safety</h2>
 
                 <p>We may share personal information for legal, protection, and safety purposes.</p>
 
-                <ul>
-                    <li>We may share information to comply with laws.</li>
-                    <li>We may share information to respond to lawful requests and legal processes.</li>
-                    <li>
-                        We may share information to protect the rights and property of the Company, our agents,
-                        customers, and others. This includes enforcing our agreements, policies, and terms of use.
-                    </li>
-                    <li>
-                        We may share information in an emergency. This includes protecting the safety of our employees
-                        and agents, our customers, or any person.
-                    </li>
-                </ul>
-
-                <h3>Professional Advisors and Service Providers</h3>
+                <h2>Professional Advisors and Service Providers</h2>
 
                 <p>
                     We may share information with those who need it to do work for us. These recipients may include
-                    third party companies and individuals to administer and provide the Services on our behalf (such as
+                    third-party companies and individuals to administer and provide the Services on our behalf (such as
                     customer support, hosting, email delivery and database management services), as well as lawyers,
                     bankers, auditors, and insurers. We will only provide these third parties with your personal
                     information to the limited extent necessary to deliver the services.
@@ -279,38 +209,7 @@ export default function PrivacyPolicy() {
                     include:
                 </p>
 
-                <ul>
-                    <li>
-                        <i>Google Analytics.</i> We use Google Analytics as one way to uniquely identify site visitors,
-                        and track page visits on our Sites.
-                    </li>
-                    <li>
-                        <i>Shopify.</i> We use Shopify&apos;s e-commerce platform to facilitate your purchases made from
-                        our website. Shopify stores your data on a secure server behind a firewall and encrypts your
-                        credit/debit card information in compliance with PCI DSS standards. You can review
-                        Shopify&apos;s privacy policy at{' '}
-                        <a href="http://www.shopify.com/legal/privacy">www.shopify.com/legal/privacy</a>. Shopify is
-                        certified under the EU-U.S. Privacy Shield and the Swiss-U.S. Privacy Shield.
-                    </li>
-                    <li>
-                        <i>Substack</i>. We use Substack to send newsletters and related communications when you sign up
-                        for a newsletter subscription. You can review Substack&apos;s privacy policy at{' '}
-                        <a href="https://substack.com/privacy">https://substack.com/privacy</a>.
-                    </li>
-                    <li>
-                        <i>Twilio</i>. We use Twilio to send SMS/text messages when you sign up for SMS notifications.
-                        You can review Twilio&apos;s privacy policy at{' '}
-                        <a href="https://www.twilio.com/legal/privacy">https://www.twilio.com/legal/privacy</a>. Twilio
-                        is certified under the EU-U.S. Privacy Shield and the Swiss-U.S. Privacy Shield.
-                    </li>
-                    <li>
-                        <i>Matoma</i>. We use Matoma to track usage of the Services. You can review Matoma&apos;s
-                        privacy policy at{' '}
-                        <a href="https://matomo.org/privacy-policy/">https://matomo.org/privacy-policy/</a>.
-                    </li>
-                </ul>
-
-                <h3>Other</h3>
+                <h2>Other</h2>
 
                 <p>
                     You may permit us to share your personal information with other companies or entities of your
@@ -359,7 +258,7 @@ export default function PrivacyPolicy() {
                     internet can never be guaranteed. We are not responsible for any interception or interruption of any
                     communications through the internet or for changes to or losses of data. Users of the Services are
                     responsible for maintaining the security of any user credentials or other form of authentication
-                    involved in obtaining access to password protected or secure areas of any of the Services. In order
+                    involved in obtaining access to password-protected or secure areas of any of the Services. In order
                     to protect you and your data, we may suspend your use of any of the Services, without notice,
                     pending an investigation, if any breach of security is suspected.
                 </p>
@@ -374,23 +273,23 @@ export default function PrivacyPolicy() {
 
                 <p>
                     If you wish to be informed about what personal information we hold about you and if you want it to
-                    be removed from our systems, please contact us at <b>privacy@tari.com</b>.
+                    be removed from our systems, please contact us at privacy@tari.com.
                 </p>
 
                 <p>In certain circumstances, you have the following data protection rights:</p>
 
                 <p>
-                    <b>The right to access, update or delete the information we have on you</b>. Whenever made possible,
-                    you can access, update or request deletion of your personal information directly within your account
+                    The right to access, update or delete the information we have on you. Whenever made possible, you
+                    can access, update or request deletion of your personal information directly within your account
                     settings section. If you are unable to perform these actions yourself, please contact us to assist
-                    you. <b>The right of rectification</b>. You have the right to have your information rectified if
-                    that information is inaccurate or incomplete. <b>The right to object</b>. You have the right to
-                    object to our processing of your personal information. <b>The right of restriction</b>. You have the
-                    right to request that we restrict the processing of your personal information.{' '}
-                    <b>The right to data portability</b>. You have the right to be provided with a copy of the
-                    information we have on you in a structured, machine-readable and commonly used format.{' '}
-                    <b>The right to withdraw consent</b>. You also have the right to withdraw your consent at any time
-                    where Tari Labs relied on your consent to process your personal information.
+                    you. The right of rectification. You have the right to have your information rectified if that
+                    information is inaccurate or incomplete. The right to object. You have the right to object to our
+                    processing of your personal information. The right of restriction. You have the right to request
+                    that we restrict the processing of your personal information. The right to data portability. You
+                    have the right to be provided with a copy of the information we have on you in a structured,
+                    machine-readable and commonly used format. The right to withdraw consent. You also have the right to
+                    withdraw your consent at any time where Tari Labs relied on your consent to process your personal
+                    information.
                 </p>
 
                 <p>Please note that we may ask you to verify your identity before responding to such requests.</p>
@@ -401,7 +300,7 @@ export default function PrivacyPolicy() {
                     the European Economic Area (EEA).
                 </p>
 
-                <h3>Tracking Technologies Generally</h3>
+                <h2>Tracking Technologies Generally</h2>
 
                 <p>
                     Regular cookies may generally be disabled or removed by tools available as part of most commercial
@@ -411,8 +310,8 @@ export default function PrivacyPolicy() {
                 <h2>CONTACT INFORMATION</h2>
 
                 <p>
-                    We welcome your comments or questions about this Policy, and you may contact us at:{' '}
-                    <b>privacy@tari.com</b>.
+                    We welcome your comments or questions about this Policy, and you may contact us
+                    at: privacy@tari.com.
                 </p>
 
                 <h2>CHANGES TO THIS PRIVACY POLICY</h2>
@@ -435,10 +334,10 @@ export default function PrivacyPolicy() {
                 <p>
                     If you are under the age of majority in your jurisdiction of residence, you may use the Services
                     only with the consent of or under the supervision of your parent or legal guardian. Consistent with
-                    the requirements of the Children&apos;s Online Privacy Protection Act (COPPA), if we learn that we
-                    have received any information directly from a child under age 13 without first receiving his or her
-                    parent&apos;s verified consent, we will use that information only to respond directly to that child
-                    (or his or her parent or legal guardian) to inform the child that he or she cannot use the Site and
+                    the requirements of the Children’s Online Privacy Protection Act (COPPA), if we learn that we have
+                    received any information directly from a child under age 13 without first receiving his or her
+                    parent’s verified consent, we will use that information only to respond directly to that child (or
+                    his or her parent or legal guardian) to inform the child that he or she cannot use the Site and
                     subsequently we will delete that information.
                 </p>
 
@@ -453,15 +352,15 @@ export default function PrivacyPolicy() {
 
                 <h2>NOTICE TO EU DATA SUBJECTS</h2>
 
-                <h3>Personal Information</h3>
+                <h2>Personal Information</h2>
 
                 <p>
-                    With respect to EU data subjects, &quot;personal information,&quot; as used in this Privacy Policy,
-                    is equivalent to &quot;personal information&quot; as defined in the European Union General Data
-                    Protection Regulation (GDPR).
+                    With respect to EU data subjects, “personal information,” as used in this Privacy Policy, is
+                    equivalent to “personal information” as defined in the European Union General Data Protection
+                    Regulation (GDPR).
                 </p>
 
-                <h3>Sensitive Data</h3>
+                <h2>Sensitive Data</h2>
 
                 <p>
                     Some of the information you provide us may constitute sensitive data as defined in the GDPR (also
@@ -469,53 +368,30 @@ export default function PrivacyPolicy() {
                     ethnicity on government-issued identification documents.
                 </p>
 
-                <h3>Legal Bases for Processing</h3>
+                <h2>Legal Bases for Processing</h2>
 
                 <p>
                     We only use your personal information as permitted by law. We are required to inform you of the
                     legal bases of our processing of your personal information, which are described below. If you have
-                    questions about the legal bases under which we process your personal information, contact us at{' '}
-                    <b>privacy@tari.com</b>.
+                    questions about the legal bases under which we process your personal information, contact us
+                    at privacy@tari.com.
                 </p>
 
-                <h3>Use of data</h3>
+                <h2>Use of data</h2>
 
                 <p>We use the collected data for various purposes:</p>
 
-                <ul>
-                    <li>To provide and maintain the Services;</li>
-                    <li>To notify you about changes to and/or news and information about the Services;</li>
-                    <li>
-                        To allow you to participate in interactive features of the Services when you choose to do so
-                    </li>
-                    <li>To provide customer support;</li>
-                    <li>To gather analysis or valuable information so that we can improve the Services</li>
-                    <li>To monitor the usage of the Services;</li>
-                    <li>To detect, prevent and address technical issues; and</li>
-                    <li>
-                        To provide you with news and general information about other goods, services and events which we
-                        offer that are similar to those that you have already used.
-                    </li>
-                </ul>
-
-                <h3>
+                <h2>
                     Legal basis for processing personal information under the General Data Protection Regulation (GDPR)
-                </h3>
+                </h2>
 
                 <p>
-                    If you are from the European Economic Area (EEA), Tari Labs&apos; legal basis for collecting and
-                    using the personal information described in this Privacy Policy depends on the information we
-                    collect and the specific context in which we collect it.
+                    If you are from the European Economic Area (EEA), Tari’s legal basis for collecting and using the
+                    personal information described in this Privacy Policy depends on the information we collect and the
+                    specific context in which we collect it.
                 </p>
 
                 <p>Tari Labs may process your personal information because:</p>
-
-                <ul>
-                    <li>We need to perform a contract with you;</li>
-                    <li>You have given us permission to do so;</li>
-                    <li>The processing is in our legitimate interests and it is not overridden by your rights; and</li>
-                    <li>To comply with the law.</li>
-                </ul>
 
                 <p>
                     These processing activities constitute our legitimate interests. We make sure we consider and
@@ -525,7 +401,7 @@ export default function PrivacyPolicy() {
                     consent or are otherwise required or permitted to by law).
                 </p>
 
-                <h3>Retention of data</h3>
+                <h2>Retention of data</h2>
 
                 <p>
                     Tari Labs will retain your personal information only for as long as is necessary for the purposes
@@ -541,7 +417,7 @@ export default function PrivacyPolicy() {
                     longer periods.
                 </p>
 
-                <h3>Use for New Purposes</h3>
+                <h2>Use for New Purposes</h2>
 
                 <p>
                     We may use your personal information for reasons not described in this Privacy Policy, where we are
@@ -559,54 +435,47 @@ export default function PrivacyPolicy() {
                 </p>
 
                 <p>
-                    <b>Opt-out</b>. Stop sending you direct marketing communications which you have previously consented
-                    to receive. We may continue to send you Service-related and other non-marketing communications.
+                    Opt-out. Stop sending you direct marketing communications which you have previously consented to
+                    receive. We may continue to send you Service-related and other non-marketing communications.
                 </p>
 
                 <p>
-                    <b>Access</b>. Provide you with information about our processing of your personal information and
-                    give you access to your personal information.
+                    Access. Provide you with information about our processing of your personal information and give you
+                    access to your personal information.
+                </p>
+
+                <p>Correct. Update or correct inaccuracies in your personal information.</p>
+
+                <p>Delete. Delete your personal information.</p>
+
+                <p>
+                    Transfer. Transfer a machine-readable copy of your personal information to you or a third party of
+                    your choice.
+                </p>
+
+                <p>Restrict. Restrict the processing of your personal information.</p>
+
+                <p>
+                    Object. Object to our reliance on our legitimate interests as the basis of our processing of your
+                    personal information that impacts your rights.
                 </p>
 
                 <p>
-                    <b>Correct</b>. Update or correct inaccuracies in your personal information.
+                    You can submit these requests by email to privacy@tari.com. We may request specific information from
+                    you to help us confirm your identity and process your request. Applicable law may require or permit
+                    us to decline your request. If we decline your request, we will tell you why, subject to legal
+                    restrictions. If you would like to submit a complaint about our use of your personal information or
+                    response to your requests regarding your personal information, you may contact us
+                    at privacy@tari.com or submit a complaint to the data protection regulator in your jurisdiction.
                 </p>
 
-                <p>
-                    <b>Delete</b>. Delete your personal information.
-                </p>
-
-                <p>
-                    <b>Transfer</b>. Transfer a machine-readable copy of your personal information to you or a third
-                    party of your choice.
-                </p>
-
-                <p>
-                    <b>Restrict</b>. Restrict the processing of your personal information.
-                </p>
-
-                <p>
-                    <b>Object</b>. Object to our reliance on our legitimate interests as the basis of our processing of
-                    your personal information that impacts your rights.
-                </p>
-
-                <p>
-                    You can submit these requests by email to <b>privacy@tari.com</b>. We may request specific
-                    information from you to help us confirm your identity and process your request. Applicable law may
-                    require or permit us to decline your request. If we decline your request, we will tell you why,
-                    subject to legal restrictions. If you would like to submit a complaint about our use of your
-                    personal information or response to your requests regarding your personal information, you may
-                    contact us at <b>privacy@tari.com</b> or submit a complaint to the data protection regulator in your
-                    jurisdiction.
-                </p>
-
-                <h3>Cross-Border Data Transfer</h3>
+                <h2>Cross-Border Data Transfer</h2>
 
                 <p>
                     Please be aware that your personal information will be transferred to, processed, and stored in the
                     U.S. Data protection laws in the U.S. may be different from those in your country of residence. You
-                    consent to the transfer of your information, including personal information, to the U.S. as set
-                    forth in this Privacy Policy.
+                    consent to the transfer of your information, including personal information, to the U.S. as outlined
+                    in this Privacy Policy.
                 </p>
 
                 <p>
