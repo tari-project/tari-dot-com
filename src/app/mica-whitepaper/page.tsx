@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { orgData } from '@/utils/metadata';
+import { canonicalUrl, orgData } from '@/utils/metadata';
 import { StructuredData } from '@/utils/StructuredData';
 import type { Article, WithContext } from 'schema-dts';
 
@@ -7,9 +7,7 @@ export const metadata: Metadata = {
     title: 'MiCA Whitepaper',
     description:
         "Read the wXTM Crypto-asset Whitepaper under MiCA. Tari's regulatory compliance document for the European market.",
-    alternates: {
-        canonical: '/mica-whitepaper',
-    },
+    ...canonicalUrl('/mica-whitepaper'),
 };
 
 const articleSchema: WithContext<Article> = {
