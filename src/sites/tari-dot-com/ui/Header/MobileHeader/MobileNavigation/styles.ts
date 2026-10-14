@@ -57,6 +57,13 @@ export const NavLink = styled.button`
         align-items: center;
         gap: 8px;
     }
+
+    &[target='_blank']::after {
+        content: '↗';
+        font-size: 14px;
+        opacity: 0.6;
+        margin-left: auto;
+    }
 `;
 
 export const GroupOne = styled(motion.div)`

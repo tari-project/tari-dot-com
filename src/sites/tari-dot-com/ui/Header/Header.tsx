@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { useScroll } from 'motion/react';
 import { HeaderDark, HeaderLight, Holder, Wrapper } from './styles';
 import Navigation from './Navigation/Navigation';
@@ -12,6 +13,8 @@ import BuildMenu from './BuildMenu/BuildMenu';
 import MobileHeader from './MobileHeader/MobileHeader';
 
 export default function Header() {
+    const pathname = usePathname();
+    const isOotlePage = pathname === '/ootle' || pathname === '/';
     const { scrollY } = useScroll();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [isInitialRender, setIsInitialRender] = useState(true);
@@ -41,7 +44,7 @@ export default function Header() {
         <>
             <TariLogo href="/" />
             <Navigation theme={theme} />
-            <MinersCTA theme={theme} buttonText={`Download`} hoverText={`Download Tari Universe`} />
+            {!isOotlePage && <MinersCTA theme={theme} buttonText={`Download`} hoverText={`Download Tari Universe`} />}
         </>
     );
 

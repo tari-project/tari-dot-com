@@ -1,4 +1,4 @@
-import HomePage from '@/sites/tari-dot-com/pages/HomePage/HomePage';
+import OotlePage from '@/sites/tari-dot-com/pages/OotlePage/OotlePage';
 import { Metadata } from 'next';
 import { canonicalUrl } from '@/utils/metadata';
 
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <HomePage />;
+    return <OotlePage />;
 }

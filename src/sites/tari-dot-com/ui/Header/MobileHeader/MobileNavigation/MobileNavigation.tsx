@@ -147,6 +147,10 @@ export default function MobileNavigation() {
                             <ChevronLeft />
                         </NavLink>
 
+                        <NavLink as={Link} href="/ootle" onClick={handleLinkClick}>
+                            <span>The Ootle</span>
+                        </NavLink>
+
                         <NavLink as={Link} href="https://ootle.tari.com/" target="_blank" onClick={handleLinkClick}>
                             <span>
                                 Build on Ootle <Chip>testnet</Chip>

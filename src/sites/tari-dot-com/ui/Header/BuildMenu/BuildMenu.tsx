@@ -108,6 +108,11 @@ export default function BuildMenu() {
                                     <LinkText>Explore Tari&apos;s codebase (it&apos;s open source!)</LinkText>
                                 </LinkButton>
 
+                                <LinkButton as={Link} href="/ootle" onClick={handleLinkClick}>
+                                    <LinkTitle>The Ootle</LinkTitle>
+                                    <LinkText>Tari&apos;s Layer 2 smart-contract network.</LinkText>
+                                </LinkButton>
+
                                 <LinkButton as={Link} href="/integration-guide" onClick={handleLinkClick}>
                                     <LinkTitle>Exchange Integration Guide</LinkTitle>
                                     <LinkText>Integrate Tari (XTM) into your exchange</LinkText>
