@@ -1,24 +1,18 @@
 import Layout from '@/ui-shared/layouts/Layout/Layout';
+import { Metadata } from 'next';
+import { defaultOgContent } from '@/utils/metadata';
 
-export const generateMetadata = async () => {
-    const metadata = {
-        title: 'Tari',
-        description:
-            'Tari is the L1 protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
-        icons: [{ url: 'https://tari.com/favicon.png?v=1', type: 'image/png' }],
-        openGraph: {
-            images: [
-                {
-                    url: 'https://tari.com/tari-og.png?v=2',
-                    width: 1200,
-                    height: 630,
-                    alt: 'Tari',
-                },
-            ],
-        },
-    };
-
-    return metadata;
+// When in Layout, Metadata propagates defaults for routes underneath. For all other cases, it should be in the
+// pages.tsx.
+export const metadata: Metadata = {
+    title: {
+        template: 'Tari / %s',
+        absolute: 'Tari',
+    },
+    description:
+        'Tari is the dual-layer protocol powered by you. Proof of work and an ingenious app platform to put all of its power in your hands.',
+    icons: [{ url: 'https://tari.com/favicon.png?v=1', type: 'image/png' }],
+    openGraph: defaultOgContent(),
 };
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {

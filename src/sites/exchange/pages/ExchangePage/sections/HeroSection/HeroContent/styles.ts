@@ -135,13 +135,6 @@ export const YellowText = styled.span<{ $color: string; $isVera?: boolean }>`
         `}
 `;
 
-export const GradientText = styled.span`
-    background: linear-gradient(90.41deg, #cb01d2 3.46%, #feb501 92.97%);
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-`;
-
 export const BottomWrapper = styled.div`
     display: flex;
     gap: 0px;

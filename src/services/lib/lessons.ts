@@ -1,6 +1,8 @@
 export type Lesson = {
     slug: string;
     title: string;
+    subtitle?: string;
+    lead?: string;
     content: string;
     order: number;
     excerpt?: string;

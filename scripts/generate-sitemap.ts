@@ -85,14 +85,6 @@ const buildRoutes = async (): Promise<Route[]> => {
             changeFrequency: 'weekly',
             priority: 0.5,
         },
-        // TODO: Should we remove this page? The front page has the same FAQ content, and it's
-        //       not linked anywhere in the nav.
-        {
-            url: 'https://tari.com/faq',
-            lastModified: await lastModifiedInPaths(['src/sites/tari-dot-com/pages/FaqPage']),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
         {
             url: 'https://tari.com/integration-guide',
             lastModified: await lastModifiedInPaths(['src/sites/tari-dot-com/pages/IntegrationPage']),

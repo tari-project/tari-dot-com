@@ -43,13 +43,7 @@ export const useDownloadUniverse = (exchange?: Exchange) => {
             const url = `${API_ENDPOINTS.MINER_DOWNLOAD}/${platform}?universeReferral=tari-dot-com`;
             const { download_link_mac: macLink, download_link_win: winLink } = exchange || {};
 
-            // Check if current path contains "vera"
-            let exchangeName = exchange?.name;
-            if (typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('veera')) {
-                exchangeName = 'veera';
-            }
-
-            sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchangeName });
+            sendGTMEvent({ event: 'download_button_clicked', platform: platform, exchange: exchange?.name });
             if (exchange) {
                 if (platform === 'macos' && macLink) {
                     window.open(macLink, '_blank');
@@ -63,10 +57,6 @@ export const useDownloadUniverse = (exchange?: Exchange) => {
             const formattedUrl = new URL(url);
             if (exchange?.name) {
                 formattedUrl.searchParams.set('universeReferral', exchange?.id || '');
-            }
-            const veeraEmailRef = new URLSearchParams(window.location.search).get('veeraEmailRef');
-            if (veeraEmailRef) {
-                formattedUrl.searchParams.set('veeraEmailRef', veeraEmailRef);
             }
 
             try {

@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import ArticleDate from '../ArticlesList/components/ArticleEntry/ArticleDate';
 import Link from 'next/link';
 import NextArticles from './components/NextArticles/NextArticles';
+import { StructuredData } from '@/utils/StructuredData';
+import { postToLd } from '@/utils/metadata';
 
 interface PostContentProps {
     post: Update;
@@ -17,6 +19,7 @@ export default function PostContent({ post, nextPosts = [] }: PostContentProps) 
                 <BackButton href="/updates" as={Link}>
                     &lt; Back to updates
                 </BackButton>
+                <StructuredData data={postToLd(post)} />
                 <PostImage src={post.thumbnail} alt={post.title} width="100%" />
                 <PostTitle>{post.title}</PostTitle>
                 <PostDate>

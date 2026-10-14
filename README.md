@@ -7,6 +7,7 @@ Install dependencies, create the local Workers environment file, and start Next.
 ```bash
 pnpm install --frozen-lockfile
 cp .dev.vars.example .dev.vars
+pnpm run prebuild-all
 pnpm run dev
 ```
 
@@ -36,4 +37,4 @@ Validate the Worker preview before attaching the `tari.com` and `www.tari.com` c
 
 ## Content generation
 
-Run `pnpm run prebuild-all` after editing markdown in `_updates`, `_lessons`, or `_posts` so the generated content maps remain current.
+Run `pnpm run prebuild-all` after editing markdown in `_updates`, `_lessons` so the generated content maps remain current.

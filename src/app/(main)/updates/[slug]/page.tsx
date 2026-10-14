@@ -2,27 +2,32 @@ import { getUpdatesBySlug, getAllUpdates, Update } from '@/services/lib/updates'
 import PostPage from '@/sites/tari-dot-com/pages/UpdatesPage/PostPage';
 
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { canonicalUrl } from '@/utils/metadata';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
     try {
         const { slug } = await params;
 
         if (!slug) {
-            return { title: 'Tari / Updates / Post Not Found' };
+            return { title: 'Post Not Found' };
         }
 
         const post = await getUpdatesBySlug(slug);
 
         if (!post) {
-            return { title: 'Tari / Updates / Post Not Found' };
+            return { title: 'Post Not Found' };
         }
-
-        return { title: `Tari / Updates / ${post.title}` };
+        return {
+            title: `Updates / ${post.title}`,
+            description: post.excerpt || `Project update for ${post.date}`,
+            ...canonicalUrl(`/updates/${slug}`),
+        };
     } catch (error) {
         console.error('Error in generateMetadata:', error);
-        return { title: 'Tari / Updates' };
+        return { title: 'Update' };
     }
-}
+};
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     let post: Update | undefined;

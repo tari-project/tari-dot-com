@@ -3,6 +3,8 @@ import { Holder, Wrapper, LessonTitle, LessonInfo, LessonBody, LessonImage, Back
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import NextLessons from './components/NextLessons/NextLessons';
+import { StructuredData } from '@/utils/StructuredData';
+import { postToLd } from '@/utils/metadata';
 
 interface LessonContentProps {
     lesson: Lesson;
@@ -16,6 +18,7 @@ export default function LessonContent({ lesson, nextLessons = [] }: LessonConten
                 <BackButton href="/lessons" as={Link}>
                     &lt; Back to lessons
                 </BackButton>
+                <StructuredData data={postToLd(lesson)} />
                 {lesson.thumbnail && <LessonImage src={lesson.thumbnail} alt={lesson.title} width="100%" />}
                 <LessonTitle>{lesson.title}</LessonTitle>
                 {lesson.author && <LessonInfo>By {lesson.author}</LessonInfo>}
