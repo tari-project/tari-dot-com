@@ -144,6 +144,13 @@ export const LinkButton = styled.div`
     &:active {
         transform: scale(0.95);
     }
+
+    &[target='_blank'] ${LinkTitle}::after {
+        content: '↗';
+        font-size: 12px;
+        opacity: 0.6;
+        color: inherit;
+    }
 `;
 
 export const TariImage = styled.img`
