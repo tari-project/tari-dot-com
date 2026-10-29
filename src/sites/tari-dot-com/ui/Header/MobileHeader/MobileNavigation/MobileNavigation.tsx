@@ -49,6 +49,10 @@ export default function MobileNavigation() {
                             <ChevronLeft />
                         </NavLink>
 
+                        <NavLink as={Link} href="/councils" onClick={handleLinkClick}>
+                            Council
+                        </NavLink>
+
                         <NavLink as={Link} href="/tokenomics" onClick={handleLinkClick}>
                             Tokenomics
                         </NavLink>

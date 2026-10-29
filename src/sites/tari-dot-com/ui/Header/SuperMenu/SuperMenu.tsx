@@ -81,6 +81,11 @@ export default function SuperMenu() {
 
                         <ContentHolder>
                             <Links>
+                                <LinkButton as={Link} href="/councils" onClick={handleLinkClick}>
+                                    <LinkTitle>Council</LinkTitle>
+                                    <LinkText>Meet the Tari Council members</LinkText>
+                                </LinkButton>
+
                                 <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
                                     <LinkTitle>Tokenomics</LinkTitle>
                                     <LinkText>Learn about the Tari XTM token</LinkText>
