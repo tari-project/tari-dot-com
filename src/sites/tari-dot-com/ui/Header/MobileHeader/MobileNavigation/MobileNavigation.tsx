@@ -49,8 +49,20 @@ export default function MobileNavigation() {
                             <ChevronLeft />
                         </NavLink>
 
+                        <NavLink as={Link} href="/councils" onClick={handleLinkClick}>
+                            Council
+                        </NavLink>
+
+                        <NavLink as={Link} href="/core-contributors" onClick={handleLinkClick}>
+                            Core Contributors
+                        </NavLink>
+
                         <NavLink as={Link} href="/tokenomics" onClick={handleLinkClick}>
                             Tokenomics
+                        </NavLink>
+
+                        <NavLink as={Link} href="/bug-bounty" onClick={handleLinkClick}>
+                            Bug Bounty
                         </NavLink>
 
                         <NavLink as={Link} href="https://explore.tari.com/" target="_blank" onClick={handleLinkClick}>
