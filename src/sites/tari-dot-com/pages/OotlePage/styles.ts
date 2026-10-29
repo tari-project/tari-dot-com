@@ -562,66 +562,6 @@ export const CardNum = styled.span`
     }
 `;
 
-export const Steps = styled.div`
-    margin-top: 60px;
-`;
-
-export const Step = styled.div`
-    display: grid;
-    grid-template-columns: 120px 1fr auto;
-    gap: 26px;
-    align-items: center;
-    padding: 34px 0;
-    border-bottom: 2px solid rgba(12, 7, 24, 0.22);
-
-    &:last-child {
-        border-bottom: none;
-    }
-
-    h3 {
-        font-family: var(--font-druk), sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-        margin-bottom: 6px;
-    }
-
-    p {
-        color: #4a4560;
-        font-size: 16px;
-        line-height: 1.55;
-        font-weight: 500;
-    }
-
-    @media (max-width: 700px) {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-`;
-
-export const StepBadge = styled.span`
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    font-size: 15px;
-    color: #5a1fd6;
-    letter-spacing: 2px;
-`;
-
-export const StepCode = styled.code`
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    background: #0c0718;
-    color: #813bf5;
-    padding: 10px 16px;
-    border-radius: 10px;
-    white-space: nowrap;
-    justify-self: start;
-
-    @media (min-width: 701px) {
-        justify-self: end;
-        margin-right: 40px;
-    }
-`;
-
 export const Contest = styled.div`
     margin: 0 auto 110px;
     max-width: 1300px;

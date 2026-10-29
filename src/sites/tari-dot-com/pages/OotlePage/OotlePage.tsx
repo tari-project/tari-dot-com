@@ -36,16 +36,12 @@ import {
     Card,
     CardIco,
     CardNum,
-    Steps,
-    Step,
-    StepBadge,
-    StepCode,
     Contest,
     Confetti,
     BackToTop,
 } from './styles';
 
-const LAUNCH_DATE = new Date('2026-11-11T00:00:00Z');
+const LAUNCH_DATE = new Date('2026-11-11T11:11:11Z');
 
 function pad(n: number) {
     return String(n).padStart(2, '0');
@@ -93,7 +89,7 @@ export default function OotlePage() {
                 <Band>
                     <BandText>
                         <strong>The Ootle</strong> — Tari&apos;s Layer 2 — launches November 11th.{' '}
-                        <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
+                        <a href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
                             Start building now
                         </a>
                     </BandText>
@@ -195,13 +191,13 @@ export default function OotlePage() {
                         </Kicker>
 
                         <Lede>
-                            Ootle is Tari&apos;s smart-contract layer — a WASM execution environment written in Rust,
-                            built for agentic payments, tapplets, and on-chain templates. Same privacy. Same fairness.
-                            Now programmable.
+                            Ootle is Tari&apos;s smart-contract layer for private money and on-chain assets. Built for
+                            agentic payments, tapplets, and confidential assets. Use existing templates or write your
+                            own to build whatever you like. Same privacy. Same fairness. Now programmable.
                         </Lede>
 
                         <CtaRow>
-                            <Button className="primary" href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
+                            <Button className="primary" href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
                                 Start building
                             </Button>
                             <Button
@@ -266,12 +262,11 @@ export default function OotlePage() {
             <Section>
                 <SecTag>What is the Ootle</SecTag>
                 <SecTitle>
-                    Smart contracts that feel like <em>Tari.</em>
+                    Smart contracts for real <em>Utility.</em>
                 </SecTitle>
                 <SecLede>
-                    The Ootle is Tari&apos;s Layer 2 execution environment. It brings programmability to the network
-                    without giving up what makes Tari different — no personal info, no gatekeepers, just you and the
-                    protocol.
+                    Make assets that are fully stealthy, confidential with auditability, or open for inspection, as the
+                    situation calls for. Program assets for real-world need without compromise.
                 </SecLede>
 
                 <Cards>
@@ -295,7 +290,8 @@ export default function OotlePage() {
                         <h3>Rust Native</h3>
                         <p>
                             Templates are written in Rust and compiled to WASM. Full type safety, real performance, and
-                            an ergonomic template library that handles resources and events for you.
+                            an ergonomic template library that handles resources and events for you. Create your own
+                            templates as you see fit.
                         </p>
                     </Card>
                     <Card className="accent">
@@ -316,8 +312,8 @@ export default function OotlePage() {
                         </CardIco>
                         <h3>Agentic Payments</h3>
                         <p>
-                            Built from day one for autonomous agents that pay each other, coordinate on-chain, and
-                            settle value — the Ootle&apos;s first-class use case is machines transacting.
+                            Ootle is built from day one for autonomous agents that pay each other, coordinate on-chain,
+                            and settle value — machines transacting is a first-class use case.
                         </p>
                     </Card>
                     <Card>
@@ -338,58 +334,11 @@ export default function OotlePage() {
                         </CardIco>
                         <h3>Security First</h3>
                         <p>
-                            Access control, event emission, and resource management are baked into the template library
-                            — the safe path is also the easy path.
+                            Access control, event emission, confidentiality, and resource management are baked into the
+                            core template library — everything you need to build exactly the contracts you want.
                         </p>
                     </Card>
                 </Cards>
-            </Section>
-
-            <Section style={{ paddingTop: 0, paddingBottom: 40 }}>
-                <SecTag>Get ready</SecTag>
-                <SecTitle>
-                    Three steps to <em>mainnet.</em>
-                </SecTitle>
-                <SecLede>
-                    Everything you need is live on the esmeralda testnet right now. Start before the launch and
-                    you&apos;ll launch with us.
-                </SecLede>
-
-                <Steps>
-                    <Step>
-                        <StepBadge>[ 01 ]</StepBadge>
-                        <div>
-                            <h3>Set up your wallet</h3>
-                            <p>
-                                Install a Tari wallet and connect to the esmeralda testnet. Required before publishing
-                                anything.
-                            </p>
-                        </div>
-                        <StepCode>esmeralda</StepCode>
-                    </Step>
-                    <Step>
-                        <StepBadge>[ 02 ]</StepBadge>
-                        <div>
-                            <h3>Write your template</h3>
-                            <p>
-                                Define state, resources, and transitions in Rust with <strong>tari_template_lib</strong>
-                                , then compile to WASM.
-                            </p>
-                        </div>
-                        <StepCode>cargo build --target wasm32</StepCode>
-                    </Step>
-                    <Step>
-                        <StepBadge>[ 03 ]</StepBadge>
-                        <div>
-                            <h3>Publish &amp; execute</h3>
-                            <p>
-                                Submit your compiled template to the network. Anyone can run it — your logic becomes the
-                                protocol&apos;s logic.
-                            </p>
-                        </div>
-                        <StepCode>ootle.tari.com</StepCode>
-                    </Step>
-                </Steps>
             </Section>
 
             <Contest>
@@ -398,7 +347,7 @@ export default function OotlePage() {
                 <Confetti className="c3 light">&#9673;</Confetti>
                 <Confetti className="c4">&#10023;</Confetti>
                 <h2>
-                    Build the first <span>Ootle tapplet.</span>
+                    Be among the first and <span>WIN BIG.</span>
                 </h2>
                 <p>
                     The Ootle launch contest is live. Templates, tapplets, and tools — bring your best work before
