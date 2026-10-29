@@ -86,6 +86,11 @@ export default function SuperMenu() {
                                     <LinkText>Learn about the Tari XTM token</LinkText>
                                 </LinkButton>
 
+                                <LinkButton as={Link} href="/bug-bounty" onClick={handleLinkClick}>
+                                    <LinkTitle>Bug Bounty</LinkTitle>
+                                    <LinkText>Report vulnerabilities and earn rewards</LinkText>
+                                </LinkButton>
+
                                 <LinkButton
                                     as={Link}
                                     href="/branding/brandkit.zip"

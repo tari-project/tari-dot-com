@@ -53,6 +53,10 @@ export default function MobileNavigation() {
                             Tokenomics
                         </NavLink>
 
+                        <NavLink as={Link} href="/bug-bounty" onClick={handleLinkClick}>
+                            Bug Bounty
+                        </NavLink>
+
                         <NavLink as={Link} href="https://explore.tari.com/" target="_blank" onClick={handleLinkClick}>
                             Block Explorer
                         </NavLink>
