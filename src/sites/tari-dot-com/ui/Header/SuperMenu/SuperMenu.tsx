@@ -86,6 +86,11 @@ export default function SuperMenu() {
                                     <LinkText>Meet the Tari Council members</LinkText>
                                 </LinkButton>
 
+                                <LinkButton as={Link} href="/core-contributors" onClick={handleLinkClick}>
+                                    <LinkTitle>Core Contributors</LinkTitle>
+                                    <LinkText>Meet the people building Tari</LinkText>
+                                </LinkButton>
+
                                 <LinkButton as={Link} href="/tokenomics" onClick={handleLinkClick}>
                                     <LinkTitle>Tokenomics</LinkTitle>
                                     <LinkText>Learn about the Tari XTM token</LinkText>

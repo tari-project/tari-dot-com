@@ -53,6 +53,10 @@ export default function MobileNavigation() {
                             Council
                         </NavLink>
 
+                        <NavLink as={Link} href="/core-contributors" onClick={handleLinkClick}>
+                            Core Contributors
+                        </NavLink>
+
                         <NavLink as={Link} href="/tokenomics" onClick={handleLinkClick}>
                             Tokenomics
                         </NavLink>
