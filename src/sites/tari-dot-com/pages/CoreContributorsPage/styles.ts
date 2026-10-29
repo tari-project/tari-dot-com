@@ -163,25 +163,6 @@ export const CategoryTitle = styled.h3`
     margin-bottom: 12px;
 `;
 
-export const Note = styled.div`
-    background: rgba(129, 59, 245, 0.08);
-    border: 1px solid rgba(129, 59, 245, 0.2);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-top: 24px;
-
-    p {
-        margin: 0;
-        font-size: 14px;
-        line-height: 150%;
-        color: rgba(0, 0, 0, 0.7);
-    }
-
-    strong {
-        color: #0c0718;
-    }
-`;
-
 export const ExternalLink = styled.a`
     color: #813bf5;
     text-decoration: none;

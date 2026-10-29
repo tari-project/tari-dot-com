@@ -9,7 +9,6 @@ import {
     MemberRole,
     MemberBio,
     CategoryTitle,
-    Note,
     ExternalLink,
 } from './styles';
 
@@ -193,13 +192,6 @@ export default function CoreContributorsPage() {
                             </MemberCard>
                         ))}
                     </MembersGrid>
-
-                    <Note>
-                        <p>
-                            <strong>Note:</strong> These icons are placeholders. Real avatars should be added when
-                            available. The roster reflects public induction information as of September 2026.
-                        </p>
-                    </Note>
                 </Section>
 
                 <Section>
