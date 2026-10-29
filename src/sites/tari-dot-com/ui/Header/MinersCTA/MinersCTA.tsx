@@ -10,13 +10,14 @@ import { useUIStore } from '@/stores/useUiStore';
 
 interface Props {
     theme: 'light' | 'dark';
+    variant?: 'main' | 'ootle';
     buttonText: string;
     hoverAnimation?: boolean;
     hoverText?: string;
     noBackground?: boolean;
 }
 
-export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
+export default function MinersCTA({ theme, buttonText, noBackground, variant }: Props) {
     const { handleDownloadClick } = useDownloadUniverse();
     const { setShowDownloadModal } = useUIStore();
 
@@ -28,7 +29,7 @@ export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
 
     return (
         <Wrapper $theme={theme} $noBackground={noBackground}>
-            <ActiveNodes theme={theme} />
+            <ActiveNodes theme={theme} variant={variant} />
             <ButtonWrapper>
                 <Button $theme={theme} href="/downloads" onClick={handleClick}>
                     <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />

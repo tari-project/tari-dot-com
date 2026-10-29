@@ -35,7 +35,6 @@ import {
     Cards,
     Card,
     CardIco,
-    CardNum,
     Contest,
     Confetti,
     BackToTop,
@@ -89,8 +88,8 @@ export default function OotlePage() {
                 <Band>
                     <BandText>
                         <strong>The Ootle</strong> — Tari&apos;s Layer 2 — launches November 11th.{' '}
-                        <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
-                            Start building now
+                        <a href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
+                            Get Ready
                         </a>
                     </BandText>
                 </Band>
@@ -197,8 +196,8 @@ export default function OotlePage() {
                         </Lede>
 
                         <CtaRow>
-                            <Button className="primary" href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
-                                Start building
+                            <Button className="primary" href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
+                                Get Ready
                             </Button>
                             <Button
                                 className="ghost"
@@ -233,7 +232,7 @@ export default function OotlePage() {
                             </CdCell>
                         </CdGrid>
                         <CdFoot>
-                            Already on <strong>esmeralda</strong> testnet — ship your template before the gun.{' '}
+                            Already on testnet — ship your template before the starting gun fires.{' '}
                             <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
                                 Read the docs &rarr;
                             </a>
@@ -271,7 +270,6 @@ export default function OotlePage() {
 
                 <Cards>
                     <Card>
-                        <CardNum>01</CardNum>
                         <CardIco>
                             <svg
                                 width="26"
@@ -295,7 +293,6 @@ export default function OotlePage() {
                         </p>
                     </Card>
                     <Card className="accent">
-                        <CardNum className="accent">02</CardNum>
                         <CardIco>
                             <svg
                                 width="26"
@@ -317,7 +314,6 @@ export default function OotlePage() {
                         </p>
                     </Card>
                     <Card>
-                        <CardNum>03</CardNum>
                         <CardIco>
                             <svg
                                 width="26"

@@ -61,10 +61,46 @@ export const TextWrapper = styled.div`
     position: relative;
 `;
 
-export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
+type ThemeProps = {
+    $theme: 'light' | 'dark';
+    $variant: 'main' | 'ootle';
+};
+
+const THEMES = {
+    light: {
+        main: {
+            color: '#26764e',
+            dotMain: '#0f9',
+            dotHighlight: '#b0d636',
+        },
+        ootle: {
+            color: '#5a1fd6',
+            dotMain: '#813bf5',
+            dotHighlight: '#5a1fd6',
+        },
+    },
+    dark: {
+        main: {
+            color: '#71ee73',
+            dotMain: '#0f9',
+            dotHighlight: '#b0d636',
+        },
+        ootle: {
+            color: '#813bf5',
+            dotMain: '#5a1fd6',
+            dotHighlight: '#813bf5',
+        },
+    },
+} as const;
+
+const linearGradient = ({ $theme, $variant }: ThemeProps) => {
+    return `linear-gradient(180deg, ${THEMES[$theme][$variant].dotMain} 0%, ${THEMES[$theme][$variant].dotHighlight} 100%)`;
+};
+
+export const Dot = styled.div<ThemeProps>`
     width: 11px;
     height: 11px;
-    background: linear-gradient(180deg, #0f9 0%, #b0d636 100%);
+    background: ${linearGradient};
     border-radius: 50%;
 
     position: absolute;
@@ -87,12 +123,15 @@ export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
     }
 `;
 
-export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
+const pickColor = ({ $theme, $variant }: ThemeProps) => {
+    return THEMES[$theme][$variant].color;
+};
+
+export const Text = styled.div<ThemeProps>`
     display: inline-flex;
     align-items: center;
     gap: 4px;
 
-    color: #71ee73;
     font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
     font-style: normal;
@@ -103,11 +142,7 @@ export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
     transform: translateY(1px);
     white-space: nowrap;
 
-    ${({ $theme }) =>
-        $theme === 'light' &&
-        css`
-            color: #26764e;
-        `}
+    color: ${pickColor};
 
     @media (max-width: 450px) {
         font-size: 14px;
