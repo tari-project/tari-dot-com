@@ -115,7 +115,7 @@ export default function DownloadModal({ exchange }: { exchange?: Exchange }) {
                                 </span>
                             </SubmitButton>
 
-                            <ActiveNodes theme="light" />
+                            <ActiveNodes theme="light" variant="main" />
                         </Form>
                     </TextGroup>
                 )}
