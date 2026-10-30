@@ -89,7 +89,7 @@ export default function OotlePage() {
                 <Band>
                     <BandText>
                         <strong>The Ootle</strong> — Tari&apos;s Layer 2 — launches November 11th.{' '}
-                        <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
+                        <a href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
                             Start building now
                         </a>
                     </BandText>
@@ -197,7 +197,7 @@ export default function OotlePage() {
                         </Lede>
 
                         <CtaRow>
-                            <Button className="primary" href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
+                            <Button className="primary" href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
                                 Start building
                             </Button>
                             <Button
