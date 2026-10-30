@@ -17,7 +17,7 @@ interface Props {
     noBackground?: boolean;
 }
 
-export default function MinersCTA({ theme, buttonText, noBackground, variant }: Props) {
+export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
     const { handleDownloadClick } = useDownloadUniverse();
     const { setShowDownloadModal } = useUIStore();
 
@@ -29,7 +29,7 @@ export default function MinersCTA({ theme, buttonText, noBackground, variant }: 
 
     return (
         <Wrapper $theme={theme} $noBackground={noBackground}>
-            <ActiveNodes theme={theme} variant={variant} />
+            <ActiveNodes theme={theme} />
             <ButtonWrapper>
                 <Button $theme={theme} href="/downloads" onClick={handleClick}>
                     <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />

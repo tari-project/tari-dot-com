@@ -86,15 +86,18 @@ const THEMES = {
             dotHighlight: '#b0d636',
         },
         ootle: {
-            color: '#813bf5',
+            color: '#a57bff',
             dotMain: '#5a1fd6',
             dotHighlight: '#813bf5',
         },
     },
 } as const;
 
+const getPalette = ({ $theme, $variant }: ThemeProps) => THEMES[$theme][$variant];
+
 const linearGradient = ({ $theme, $variant }: ThemeProps) => {
-    return `linear-gradient(180deg, ${THEMES[$theme][$variant].dotMain} 0%, ${THEMES[$theme][$variant].dotHighlight} 100%)`;
+    const palette = getPalette({ $theme, $variant });
+    return `linear-gradient(180deg, ${palette.dotMain} 0%, ${palette.dotHighlight} 100%)`;
 };
 
 export const Dot = styled.div<ThemeProps>`
@@ -124,7 +127,7 @@ export const Dot = styled.div<ThemeProps>`
 `;
 
 const pickColor = ({ $theme, $variant }: ThemeProps) => {
-    return THEMES[$theme][$variant].color;
+    return getPalette({ $theme, $variant }).color;
 };
 
 export const Text = styled.div<ThemeProps>`
