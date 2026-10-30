@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import styled, { keyframes, css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import headerBgImage from './images/header-bg.png';
 
 const darkToLightAnimation = keyframes`
@@ -140,3 +140,41 @@ export const HeaderLight = styled(HeaderDark)`
             forwards;
     `}
 `;
+
+export type ThemeProps = {
+    $theme: 'light' | 'dark';
+    $variant: 'main' | 'ootle';
+};
+
+export const THEMES = {
+    light: {
+        main: {
+            color: '#26764e',
+            dotMain: '#0f9',
+            dotHighlight: '#b0d636',
+        },
+        ootle: {
+            color: '#5a1fd6',
+            dotMain: '#813bf5',
+            dotHighlight: '#5a1fd6',
+        },
+    },
+    dark: {
+        main: {
+            color: '#71ee73',
+            dotMain: '#0f9',
+            dotHighlight: '#b0d636',
+        },
+        ootle: {
+            color: '#a57bff',
+            dotMain: '#5a1fd6',
+            dotHighlight: '#813bf5',
+        },
+    },
+} as const;
+
+export const getPalette = ({ $theme, $variant }: ThemeProps) => THEMES[$theme][$variant];
+
+export const pickColor = ({ $theme, $variant }: ThemeProps) => {
+    return getPalette({ $theme, $variant }).color;
+};

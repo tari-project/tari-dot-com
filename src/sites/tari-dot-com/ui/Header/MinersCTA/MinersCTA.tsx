@@ -7,9 +7,11 @@ import ArrowIcon from './ArrowIcon';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import ActiveNodes from '../ActiveNodes/ActiveNodes';
 import { useUIStore } from '@/stores/useUiStore';
+import { usePathname } from 'next/navigation';
 
 interface Props {
     theme: 'light' | 'dark';
+    variant?: 'main' | 'ootle';
     buttonText: string;
     hoverAnimation?: boolean;
     hoverText?: string;
@@ -19,6 +21,9 @@ interface Props {
 export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
     const { handleDownloadClick } = useDownloadUniverse();
     const { setShowDownloadModal } = useUIStore();
+    const pathname = usePathname();
+    const isOotlePage = pathname === '/ootle' || pathname === '/';
+    const variant = isOotlePage ? 'ootle' : 'main';
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
@@ -28,9 +33,9 @@ export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
 
     return (
         <Wrapper $theme={theme} $noBackground={noBackground}>
-            <ActiveNodes theme={theme} />
+            <ActiveNodes theme={theme} variant={variant} />
             <ButtonWrapper>
-                <Button $theme={theme} href="/downloads" onClick={handleClick}>
+                <Button $theme={theme} $variant={variant} href="/downloads" onClick={handleClick}>
                     <span>{buttonText}</span> <ArrowIcon className="arrow-icon" />
                 </Button>
             </ButtonWrapper>
