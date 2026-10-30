@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styled, { css, keyframes } from 'styled-components';
+import { getPalette, pickColor, ThemeProps } from '@/sites/tari-dot-com/ui/Header/styles';
 
 const radarPulse = keyframes`
     0% {
@@ -61,40 +62,6 @@ export const TextWrapper = styled.div`
     position: relative;
 `;
 
-type ThemeProps = {
-    $theme: 'light' | 'dark';
-    $variant: 'main' | 'ootle';
-};
-
-const THEMES = {
-    light: {
-        main: {
-            color: '#26764e',
-            dotMain: '#0f9',
-            dotHighlight: '#b0d636',
-        },
-        ootle: {
-            color: '#5a1fd6',
-            dotMain: '#813bf5',
-            dotHighlight: '#5a1fd6',
-        },
-    },
-    dark: {
-        main: {
-            color: '#71ee73',
-            dotMain: '#0f9',
-            dotHighlight: '#b0d636',
-        },
-        ootle: {
-            color: '#a57bff',
-            dotMain: '#5a1fd6',
-            dotHighlight: '#813bf5',
-        },
-    },
-} as const;
-
-const getPalette = ({ $theme, $variant }: ThemeProps) => THEMES[$theme][$variant];
-
 const linearGradient = ({ $theme, $variant }: ThemeProps) => {
     const palette = getPalette({ $theme, $variant });
     return `linear-gradient(180deg, ${palette.dotMain} 0%, ${palette.dotHighlight} 100%)`;
@@ -125,10 +92,6 @@ export const Dot = styled.div<ThemeProps>`
         animation: ${radarPulse} 2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
 `;
-
-const pickColor = ({ $theme, $variant }: ThemeProps) => {
-    return getPalette({ $theme, $variant }).color;
-};
 
 export const Text = styled.div<ThemeProps>`
     display: inline-flex;

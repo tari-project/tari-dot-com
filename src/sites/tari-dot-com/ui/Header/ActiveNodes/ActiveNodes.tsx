@@ -3,22 +3,18 @@
 import { useMinerStats } from '@/services/api/useMinerStats';
 import { Dot, TextWrapper, Text, NumberWrapper } from './styles';
 import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
 const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
     theme: 'light' | 'dark';
-    variant?: 'main' | 'ootle';
+    variant: 'main' | 'ootle';
 }
 
-export default function ActiveNodes({ theme }: Props) {
+export default function ActiveNodes({ theme, variant }: Props) {
     const { data, isError } = useMinerStats();
     // Start at 0, then very shortly afterward go to the real number,
     // Giving a neat roll-up effect.
     const countValue = data?.confirmed_nodes_24h ?? 0;
-    const pathname = usePathname();
-    const isOotlePage = pathname === '/ootle' || pathname === '/';
-    const variant = isOotlePage ? 'ootle' : 'main';
 
     return (
         <TextWrapper>
