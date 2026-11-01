@@ -7,9 +7,10 @@ const NumberFlow = dynamic(() => import('@number-flow/react'), { ssr: false });
 
 interface Props {
     theme: 'light' | 'dark';
+    variant: 'main' | 'ootle';
 }
 
-export default function ActiveNodes({ theme }: Props) {
+export default function ActiveNodes({ theme, variant }: Props) {
     const { data, isError } = useMinerStats();
     // Start at 0, then very shortly afterward go to the real number,
     // Giving a neat roll-up effect.
@@ -17,8 +18,8 @@ export default function ActiveNodes({ theme }: Props) {
 
     return (
         <TextWrapper>
-            <Dot $theme={theme} />
-            <Text $theme={theme}>
+            <Dot $theme={theme} $variant={variant} />
+            <Text $theme={theme} $variant={variant}>
                 <NumberWrapper>
                     {(isError && <span>???</span>) || (
                         <NumberFlow

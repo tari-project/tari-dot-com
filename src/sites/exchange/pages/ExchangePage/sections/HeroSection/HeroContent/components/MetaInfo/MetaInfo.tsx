@@ -23,7 +23,7 @@ export default function MetaInfo() {
                         View on GitHub
                     </IconGroup>
                     <Divider />
-                    <ActiveNodes theme="dark" />
+                    <ActiveNodes theme="dark" variant="main" />
                 </ContentWrapper>
             </Wrapper>
 

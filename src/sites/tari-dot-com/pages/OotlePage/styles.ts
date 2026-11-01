@@ -548,20 +548,6 @@ export const CardIco = styled.div`
     }
 `;
 
-export const CardNum = styled.span`
-    position: absolute;
-    top: 18px;
-    right: 24px;
-    font-family: var(--font-druk), sans-serif;
-    font-size: 56px;
-    color: rgba(12, 7, 24, 0.18);
-    line-height: 1;
-
-    &.accent {
-        color: rgba(251, 247, 239, 0.22);
-    }
-`;
-
 export const Contest = styled.div`
     margin: 0 auto 110px;
     max-width: 1300px;

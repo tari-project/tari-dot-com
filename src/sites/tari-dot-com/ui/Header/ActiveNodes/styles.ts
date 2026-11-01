@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styled, { css, keyframes } from 'styled-components';
+import { getPalette, pickColor, ThemeProps } from '@/sites/tari-dot-com/ui/Header/styles';
 
 const radarPulse = keyframes`
     0% {
@@ -61,10 +62,15 @@ export const TextWrapper = styled.div`
     position: relative;
 `;
 
-export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
+const linearGradient = ({ $theme, $variant }: ThemeProps) => {
+    const palette = getPalette({ $theme, $variant });
+    return `linear-gradient(180deg, ${palette.dotMain} 0%, ${palette.dotHighlight} 100%)`;
+};
+
+export const Dot = styled.div<ThemeProps>`
     width: 11px;
     height: 11px;
-    background: linear-gradient(180deg, #0f9 0%, #b0d636 100%);
+    background: ${linearGradient};
     border-radius: 50%;
 
     position: absolute;
@@ -87,12 +93,11 @@ export const Dot = styled.div<{ $theme: 'light' | 'dark' }>`
     }
 `;
 
-export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
+export const Text = styled.div<ThemeProps>`
     display: inline-flex;
     align-items: center;
     gap: 4px;
 
-    color: #71ee73;
     font-family: var(--font-poppins), sans-serif;
     font-size: 15px;
     font-style: normal;
@@ -103,11 +108,7 @@ export const Text = styled.div<{ $theme: 'light' | 'dark' }>`
     transform: translateY(1px);
     white-space: nowrap;
 
-    ${({ $theme }) =>
-        $theme === 'light' &&
-        css`
-            color: #26764e;
-        `}
+    color: ${pickColor};
 
     @media (max-width: 450px) {
         font-size: 14px;

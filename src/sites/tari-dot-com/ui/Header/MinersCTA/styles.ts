@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styled, { css, keyframes } from 'styled-components';
+import { getPalette, ThemeProps } from '@/sites/tari-dot-com/ui/Header/styles';
 
 const radarPulse = keyframes`
     0% {
@@ -115,7 +116,11 @@ export const ButtonWrapper = styled.div`
     z-index: 1;
 `;
 
-export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
+const pickGradientStartColor = ({ $theme, $variant }: ThemeProps) => {
+    return getPalette({ $theme, $variant }).buttonHover;
+};
+
+export const Button = styled(Link)<ThemeProps>`
     position: relative;
     z-index: 1;
     border-radius: 10px;
@@ -154,7 +159,7 @@ export const Button = styled(Link)<{ $theme: 'light' | 'dark' }>`
 
     &:hover {
         text-decoration: none;
-        background-image: linear-gradient(90deg, #c9eb00 0%, #fff 100%);
+        background-image: linear-gradient(90deg, ${pickGradientStartColor} 0%, #fff 100%);
 
         .arrow-icon {
             transform: rotate(0deg);
