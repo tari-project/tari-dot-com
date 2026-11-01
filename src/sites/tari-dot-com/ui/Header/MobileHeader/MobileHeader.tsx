@@ -9,13 +9,11 @@ import MinersCTA from '../MinersCTA/MinersCTA';
 import { SocialIconButtons } from '../../Footer/components/SocialLinks/SocialLinks';
 import MobileNavigation from './MobileNavigation/MobileNavigation';
 import ActiveNodes from '../ActiveNodes/ActiveNodes';
-import { usePathname } from 'next/navigation';
+import { useHeaderVariant } from '@/sites/tari-dot-com/ui/Header/hooks';
 
 export default function MobileHeader() {
     const { showMobileMenu, setShowMobileMenu } = useMainStore();
-    const pathname = usePathname();
-    const isOotlePage = pathname === '/ootle' || pathname === '/';
-    const variant = isOotlePage ? 'ootle' : 'main';
+    const variant = useHeaderVariant();
 
     useEffect(() => {
         if (showMobileMenu) {

@@ -152,11 +152,13 @@ export const THEMES = {
             color: '#26764e',
             dotMain: '#0f9',
             dotHighlight: '#b0d636',
+            buttonHover: '#000',
         },
         ootle: {
             color: '#5a1fd6',
             dotMain: '#813bf5',
             dotHighlight: '#5a1fd6',
+            buttonHover: '#000',
         },
     },
     dark: {
@@ -164,11 +166,13 @@ export const THEMES = {
             color: '#71ee73',
             dotMain: '#0f9',
             dotHighlight: '#b0d636',
+            buttonHover: '#71ee73',
         },
         ootle: {
             color: '#a57bff',
             dotMain: '#5a1fd6',
             dotHighlight: '#813bf5',
+            buttonHover: '#a57bff',
         },
     },
 } as const;

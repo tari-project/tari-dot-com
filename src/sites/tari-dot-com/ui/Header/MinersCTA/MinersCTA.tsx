@@ -7,11 +7,10 @@ import ArrowIcon from './ArrowIcon';
 import { useDownloadUniverse } from '@/services/api/useDownloadUniverse';
 import ActiveNodes from '../ActiveNodes/ActiveNodes';
 import { useUIStore } from '@/stores/useUiStore';
-import { usePathname } from 'next/navigation';
+import { useHeaderVariant } from '@/sites/tari-dot-com/ui/Header/hooks';
 
 interface Props {
     theme: 'light' | 'dark';
-    variant?: 'main' | 'ootle';
     buttonText: string;
     hoverAnimation?: boolean;
     hoverText?: string;
@@ -21,9 +20,7 @@ interface Props {
 export default function MinersCTA({ theme, buttonText, noBackground }: Props) {
     const { handleDownloadClick } = useDownloadUniverse();
     const { setShowDownloadModal } = useUIStore();
-    const pathname = usePathname();
-    const isOotlePage = pathname === '/ootle' || pathname === '/';
-    const variant = isOotlePage ? 'ootle' : 'main';
+    const variant = useHeaderVariant();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
