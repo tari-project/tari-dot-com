@@ -8,13 +8,13 @@ export default function PrivacyPolicy() {
             <Holder>
                 <p>Last Modified: April 23, 2025</p>
 
-                <h1>Tari Labs Privacy Policy</h1>
+                <h1>Tari Privacy Policy</h1>
 
                 <p>
-                    Tari Labs (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) recognizes that
+                    Tari (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) recognizes that
                     people who use our website, <b>desktop applications</b> and/or mobile applications (collectively,
                     the &quot;Services&quot;) value their privacy. This privacy policy (the &quot;Policy&quot;)
-                    describes how the Services made available by Tari Labs collect, use, share, and store personal
+                    describes how the Services made available by Tari collect, use, share, and store personal
                     information of users of the Services. This Policy applies to the Services on or in which it is
                     posted, linked, or referenced.
                 </p>
@@ -112,9 +112,9 @@ export default function PrivacyPolicy() {
 
                 <p>
                     We may collect certain information that you voluntarily provide to us which may contain personal
-                    information. For example, if you opt in to receiving communications from Tari Labs via email, we may
+                    information. For example, if you opt in to receiving communications from Tari via email, we may
                     collect your name and email address. We retain this information until you ask to be unsubscribed
-                    from our list(s). If you purchase any products from Tari Labs, we may collect shipping information
+                    from our list(s). If you purchase any products from Tari, we may collect shipping information
                     (such as name and mailing address) from you in order to ship the products to you. We do not sell or
                     otherwise transmit any such actively-collected personal information to third parties other than to
                     third party service providers discussed in Section 4.
@@ -285,14 +285,6 @@ export default function PrivacyPolicy() {
                         and track page visits on our Sites.
                     </li>
                     <li>
-                        <i>Shopify.</i> We use Shopify&apos;s e-commerce platform to facilitate your purchases made from
-                        our website. Shopify stores your data on a secure server behind a firewall and encrypts your
-                        credit/debit card information in compliance with PCI DSS standards. You can review
-                        Shopify&apos;s privacy policy at{' '}
-                        <a href="http://www.shopify.com/legal/privacy">www.shopify.com/legal/privacy</a>. Shopify is
-                        certified under the EU-U.S. Privacy Shield and the Swiss-U.S. Privacy Shield.
-                    </li>
-                    <li>
                         <i>Substack</i>. We use Substack to send newsletters and related communications when you sign up
                         for a newsletter subscription. You can review Substack&apos;s privacy policy at{' '}
                         <a href="https://substack.com/privacy">https://substack.com/privacy</a>.
@@ -368,7 +360,7 @@ export default function PrivacyPolicy() {
 
                 <p>
                     Tf you are a resident of the European Economic Area (EEA), you have certain data protection rights.
-                    Tari Labs aims to take reasonable steps to allow you to correct, amend, delete or limit the use of
+                    Tari aims to take reasonable steps to allow you to correct, amend, delete or limit the use of
                     your personal information.
                 </p>
 
@@ -390,7 +382,7 @@ export default function PrivacyPolicy() {
                     <b>The right to data portability</b>. You have the right to be provided with a copy of the
                     information we have on you in a structured, machine-readable and commonly used format.{' '}
                     <b>The right to withdraw consent</b>. You also have the right to withdraw your consent at any time
-                    where Tari Labs relied on your consent to process your personal information.
+                    where Tari relied on your consent to process your personal information.
                 </p>
 
                 <p>Please note that we may ask you to verify your identity before responding to such requests.</p>
@@ -503,12 +495,12 @@ export default function PrivacyPolicy() {
                 </h3>
 
                 <p>
-                    If you are from the European Economic Area (EEA), Tari Labs&apos; legal basis for collecting and
+                    If you are from the European Economic Area (EEA), Tari&apos; legal basis for collecting and
                     using the personal information described in this Privacy Policy depends on the information we
                     collect and the specific context in which we collect it.
                 </p>
 
-                <p>Tari Labs may process your personal information because:</p>
+                <p>Tari may process your personal information because:</p>
 
                 <ul>
                     <li>We need to perform a contract with you;</li>
@@ -528,14 +520,14 @@ export default function PrivacyPolicy() {
                 <h3>Retention of data</h3>
 
                 <p>
-                    Tari Labs will retain your personal information only for as long as is necessary for the purposes
+                    Tari will retain your personal information only for as long as is necessary for the purposes
                     set out in this Privacy Policy. We will retain and use your personal information to the extent
                     necessary to comply with our legal obligations (for example, if we are required to retain your data
                     to comply with applicable laws), resolve disputes and enforce our legal agreements and policies.
                 </p>
 
                 <p>
-                    Tari Labs will also retain Usage Data for internal analysis purposes. Usage Data is generally
+                    Tari will also retain Usage Data for internal analysis purposes. Usage Data is generally
                     retained for a shorter period of time, except when this data is used to strengthen the security or
                     to improve the functionality of our Service, or we are legally obligated to retain this data for
                     longer periods.
