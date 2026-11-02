@@ -2,14 +2,14 @@ import OotlePage from '@/sites/tari-dot-com/pages/OotlePage/OotlePage';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Tari / The Ootle',
+    title: 'The Ootle',
     description:
         'The Ootle, Tari’s Layer 2 smart-contract network, launches November 11th. Built for agentic payments, tapplets, and on-chain templates.',
     alternates: {
         canonical: '/ootle',
     },
     openGraph: {
-        title: 'Tari / The Ootle',
+        title: 'The Ootle',
         description:
             'The Ootle, Tari’s Layer 2 smart-contract network, launches November 11th. Built for agentic payments, tapplets, and on-chain templates.',
         images: [
