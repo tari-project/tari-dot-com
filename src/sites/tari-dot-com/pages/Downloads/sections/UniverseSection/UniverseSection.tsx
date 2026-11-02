@@ -7,6 +7,7 @@ import {
     ButtonsWrapper,
     TextWrapper,
     RatingsWrapper,
+    ResourceLink,
 } from './styles';
 import universe from './images/universe.png';
 import { Divider, Container } from '../../styles';
@@ -69,6 +70,22 @@ export default function UniverseSection() {
                                         <Image key={index} src={Star} alt="Star" width={24} height={24} />
                                     ))}
                             </RatingsWrapper>
+                            <TextInner>
+                                <Typography $variant="subTitle" $theme={theme}>
+                                    Get started with your wallet
+                                </Typography>
+                                <Typography $variant="p" $theme={theme}>
+                                    {`A Tari (XTM) wallet is required to receive your mining rewards. Follow our step-by-step guide to create one in minutes.`}
+                                </Typography>
+                                <ResourceLink
+                                    href="/lessons/tari_wallet_guide"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Read the guide on Tari
+                                    <span style={{ display: 'inline-block', marginLeft: 6 }}>→</span>
+                                </ResourceLink>
+                            </TextInner>
                         </TextInner>
                     </TextWrapper>
                 </InfoWrapper>
