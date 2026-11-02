@@ -76,22 +76,3 @@ export const RatingsWrapper = styled.div`
     gap: 5px;
     align-items: center;
 `;
-
-export const ResourceLink = styled.a`
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-poppins), sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #0066cc;
-    text-decoration: none;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 4px;
-    margin-top: 8px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-
-    &:hover {
-        color: #0055a5;
-        border-color: #0055a5;
-    }
-`;
