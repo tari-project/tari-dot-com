@@ -4,7 +4,7 @@ import { canonicalUrl } from '@/utils/metadata';
 
 export const metadata: Metadata = {
     title: 'User Agreement',
-    description: 'View the Tari Labs user agreement.',
+    description: 'View the Tari user agreement.',
     ...canonicalUrl('/user_agreement'),
 };
 

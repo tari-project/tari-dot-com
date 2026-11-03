@@ -12,24 +12,24 @@ export default function UserAgreement() {
 
                 <blockquote>
                     <p>
-                        This is an agreement between Tari Labs, LLC ("Tari Labs", "we", "us", or "our") and you
-                        (together with Tari Labs, the "Parties" and each a "Party"). By using any Tari Labs service,
-                        whether through Tari Labs, any associated website, API, or desktop or mobile application, you
+                        This is an agreement between Tari, LLC ("Tari", "we", "us", or "our") and you
+                        (together with Tari, the "Parties" and each a "Party"). By using any Tari service,
+                        whether through Tari, any associated website, API, or desktop or mobile application, you
                         agree that you have read, understood, and accept all of the terms and conditions contained
                         herein (the "User Agreement"), as well as our Privacy Policy available at{' '}
-                        <a href="http://www.tarilabs.com/privacy">www.tarilabs.com/privacy</a>.
+                        <a href="https://tari.com/privacy_policy">https://tari.com/privacy_policy</a>.
                     </p>
 
                     <p>
                         <strong>
-                            The Tari Labs service does not include the Tari Network, which is an open-source,
-                            decentralized layer 1 blockchain protocol. The Tari Network is not controlled by Tari Labs.
-                            Tari Labs does not control what third parties may build on the Tari Network, the activity of
+                            The Tari service does not include the Tari Network, which is an open-source,
+                            decentralized layer 1 blockchain protocol. The Tari Network is not controlled by Tari.
+                            Tari does not control what third parties may build on the Tari Network, the activity of
                             such parties, any user transacting on the Tari Network, or any data stored on the Tari
-                            Network itself, and Tari Labs does not take possession, custody, or control over any virtual
+                            Network itself, and Tari does not take possession, custody, or control over any virtual
                             currency or other digital asset on the Tari Network. You acknowledge and agree that Tari
                             Labs makes no representations or warranties with respect to the Tari Network, and that, if
-                            you use the Tari Network, you do so at your own risk. Tari Labs does not guarantee continued
+                            you use the Tari Network, you do so at your own risk. Tari does not guarantee continued
                             support for any particular Tari Network feature, application, or economic design. The Tari
                             Network may undergo upgrades, forks, or modifications which may materially change its
                             operation or use.
@@ -51,7 +51,7 @@ export default function UserAgreement() {
                         <p>Eligibility</p>
                         <blockquote>
                             <p>
-                                By using the Tari Labs Site and entering into this User Agreement, you affirm that you
+                                By using the Tari Site and entering into this User Agreement, you affirm that you
                                 are an individual, at least 13 years of age or older, are not barred from using the
                                 Services under applicable law, have the capacity to enter into this User Agreement and
                                 agree to be legally bound by the terms and conditions of this User Agreement, including
@@ -72,7 +72,7 @@ export default function UserAgreement() {
                             <li>
                                 <p>
                                     We may change the terms of this User Agreement at any time. Any such changes shall
-                                    take effect when posted on the Tari Labs Site, or when you use the Services. If you
+                                    take effect when posted on the Tari Site, or when you use the Services. If you
                                     have supplied us with an email address, we shall also attempt to notify you by email
                                     of changes to this User Agreement. If you disagree with any changes to this User
                                     Agreement, contact us.
@@ -102,14 +102,14 @@ export default function UserAgreement() {
 
                 <blockquote>
                     <p>
-                        <strong>Airdrop Program</strong> means the provision of virtual currency by Tari Labs at no cost
+                        <strong>Airdrop Program</strong> means the provision of virtual currency by Tari at no cost
                         and on the terms set forth in Section 9.
                     </p>
 
                     <p>
                         <strong>Fork</strong> means a change to the underlying protocol of the Tari Network that results
                         in more than one version of the Tari Network, the result of which may be one or more versions
-                        that are not supported by Tari Labs.
+                        that are not supported by Tari.
                     </p>
 
                     <p>
@@ -119,13 +119,13 @@ export default function UserAgreement() {
 
                     <p>
                         <strong>Services</strong> means one or more of the following services offered or provided by
-                        Tari Labs via website or local application (mobile, desktop, or otherwise), including the
-                        Wallet, the Airdrop Program and Tari Labs Site.
+                        Tari via website or local application (mobile, desktop, or otherwise), including the
+                        Wallet, the Airdrop Program and Tari Site.
                     </p>
 
                     <p>
-                        <strong>Tari Labs Site</strong> means the webpages and information made available by Tari Labs
-                        and any Tari Labs application.
+                        <strong>Tari Site</strong> means the webpages and information made available by Tari
+                        and any Tari application.
                     </p>
 
                     <p>
@@ -161,7 +161,7 @@ export default function UserAgreement() {
                     </p>
 
                     <p>
-                        <strong>Wallet</strong> means the wallet software published by Tari Labs, consisting of software
+                        <strong>Wallet</strong> means the wallet software published by Tari, consisting of software
                         that permits you to self-custody virtual currency, organize network addresses, view transaction
                         history and transact in virtual currency as set forth in Section 6.
                     </p>
@@ -176,7 +176,7 @@ export default function UserAgreement() {
 
                 <blockquote>
                     <p>
-                        Your relationship with Tari Labs and use of any of the Services may be subject to the laws,
+                        Your relationship with Tari and use of any of the Services may be subject to the laws,
                         regulations, and rules of governmental or regulatory authorities in your or our jurisdiction (
                         <strong>Applicable Law</strong>). By entering into this User Agreement, you agree to act in
                         compliance with and be legally bound to any and all Applicable Law.
@@ -190,7 +190,7 @@ export default function UserAgreement() {
 
                     <p>
                         We grant you a limited, nonexclusive, non-transferable license to access and use the Services
-                        and the Tari Labs Site solely in accordance with the terms of this Agreement.
+                        and the Tari Site solely in accordance with the terms of this Agreement.
                     </p>
                 </blockquote>
 
@@ -201,7 +201,7 @@ export default function UserAgreement() {
                             <p>
                                 You must keep secret all credentials associated with the Services. You are solely
                                 responsible for managing and maintaining the security of any information relating to
-                                such credentials and agree that Tari Labs shall not be held responsible (and you shall
+                                such credentials and agree that Tari shall not be held responsible (and you shall
                                 not hold us responsible) for any unauthorized access to the Services or any resulting
                                 harm you may suffer.
                             </p>
@@ -220,13 +220,13 @@ export default function UserAgreement() {
                         <p>Communications</p>
                         <blockquote>
                             <p>
-                                Any and all communications from Tari Labs may be provided to you via electronic mail at
-                                the address you may provide when accessing the Services. Tari Labs shall not be
+                                Any and all communications from Tari may be provided to you via electronic mail at
+                                the address you may provide when accessing the Services. Tari shall not be
                                 responsible for any harm you may suffer as a result of your failure to receive any
                                 notice provided to you in connection with this User Agreement or your use of Services so
-                                long as such notice is provided to such email address. Tari Labs may also communicate
+                                long as such notice is provided to such email address. Tari may also communicate
                                 with you through other methods, including via telephone call, instant messaging or chat
-                                applications either operated by Tari Labs or a third party.
+                                applications either operated by Tari or a third party.
                             </p>
                         </blockquote>
                     </li>
@@ -259,13 +259,13 @@ export default function UserAgreement() {
                         <p>Content Ownership, Responsibility and Removal</p>
                         <blockquote>
                             <p>
-                                Tari Labs does not claim any ownership rights in any User Content and nothing in the
+                                Tari does not claim any ownership rights in any User Content and nothing in the
                                 User Agreement will be deemed to restrict any rights that you may have to use and
                                 exploit your User Content.
                             </p>
 
                             <p>
-                                Subject to the foregoing, Tari Labs and its licensors exclusively own all right, title
+                                Subject to the foregoing, Tari and its licensors exclusively own all right, title
                                 and interest in and to the Services and Content, including all associated intellectual
                                 property rights. You acknowledge that the Services and Content are protected by
                                 copyright, trademark, and other laws of the United States and foreign countries. You
@@ -297,7 +297,7 @@ export default function UserAgreement() {
                         </blockquote>
                     </li>
                     <li>
-                        <p>Rights in Content Granted by Tari Labs</p>
+                        <p>Rights in Content Granted by Tari</p>
                         <blockquote>
                             <p>
                                 Subject to your compliance with this User Agreement, we grant you a limited,
@@ -349,7 +349,7 @@ export default function UserAgreement() {
                             <li>
                                 <p>
                                     As the owner of XTM in your Wallet, you shall bear all risk of loss of such XTM.
-                                    Tari Labs shall not have any liability for fluctuations in the fiat currency value
+                                    Tari shall not have any liability for fluctuations in the fiat currency value
                                     of XTM held in your Wallet.
                                 </p>
                             </li>
@@ -373,12 +373,12 @@ export default function UserAgreement() {
                                     be confirmed and recorded in the XTM ledger associated with the Tari Network and/or
                                     Tari Testnet. The Tari Network and Tari Testnet are decentralized, peer-to-peer
                                     networks supported by independent third parties, which are not owned, controlled or
-                                    operated by Tari Labs.
+                                    operated by Tari.
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Tari Labs has no control over the Tari Network and therefore cannot and does not
+                                    Tari has no control over the Tari Network and therefore cannot and does not
                                     ensure that any transaction details you submit via our Services will be confirmed on
                                     the Tari Network. The transaction details you submit via our Services may not be
                                     completed, or may be substantially delayed, by the Tari Network. We do not guarantee
@@ -389,7 +389,7 @@ export default function UserAgreement() {
                             <li>
                                 <p>
                                     Once transaction details have been submitted to the Tari Network, we cannot assist
-                                    you to cancel or otherwise modify your transaction or transaction details. Tari Labs
+                                    you to cancel or otherwise modify your transaction or transaction details. Tari
                                     has no control over the Tari Network and does not have the ability to facilitate any
                                     cancellation or modification requests.
                                 </p>
@@ -400,7 +400,7 @@ export default function UserAgreement() {
                         <p>Forks</p>
                         <blockquote>
                             <p>
-                                In the event of a Fork or other network disruption, Tari Labs may not be able to support
+                                In the event of a Fork or other network disruption, Tari may not be able to support
                                 activity related to your XTM. In the event of a Fork, the transactions may not be
                                 completed, completed partially, incorrectly completed, or substantially delayed. Tari
                                 Labs is not responsible for any loss incurred by you caused in whole or in part,
@@ -413,7 +413,7 @@ export default function UserAgreement() {
                         <ol>
                             <li>
                                 <p>
-                                    With respect to the Wallet, Tari Labs does not receive or store a backup of your
+                                    With respect to the Wallet, Tari does not receive or store a backup of your
                                     Wallet credentials, including, without limitation, your Emoji Id, passphrases,
                                     identifiers, backup phrases, private keys and network addresses or transaction
                                     history. We cannot assist you with Wallet credentials retrieval. You are solely
@@ -443,13 +443,13 @@ export default function UserAgreement() {
                         <p>Fees</p>
                         <blockquote>
                             <p>
-                                Tari Labs does not currently charge a fee for the Wallet receiving, sending or
+                                Tari does not currently charge a fee for the Wallet receiving, sending or
                                 controlling XTM. However, we reserve the right to do so in the future, and in such case
                                 shall display to you any applicable fees prior to you incurring the fee. Network fees
                                 (including, without limitation "miner's fees") required to use the Tari Network may
                                 apply to a transaction. We may attempt to calculate such a fee for you. Our calculation
                                 may not be sufficient, or it may be excessive. You may select a greater or lesser fee.
-                                You are solely responsible for selecting and paying any such fee and Tari Labs shall
+                                You are solely responsible for selecting and paying any such fee and Tari shall
                                 neither advance nor fund such a fee on your behalf, nor be responsible for any excess or
                                 insufficient fee calculation.
                             </p>
@@ -519,9 +519,9 @@ export default function UserAgreement() {
                         <blockquote>
                             <p>
                                 You do not own any tXTM that you may be allocated or that you may otherwise receive.
-                                Instead, you receive a limited license to use such tXTM on the Tari Testnet. Tari Labs
+                                Instead, you receive a limited license to use such tXTM on the Tari Testnet. Tari
                                 may terminate your license to use tXTM at any time and for any reason in its sole
-                                discretion without notice, refund, or compensation. Tari Labs is not responsible for
+                                discretion without notice, refund, or compensation. Tari is not responsible for
                                 replacing tXTM or providing you with any credit or refund in the event that your ability
                                 to use tXTM is terminated, lost or damaged, or for any other reason. You agree that Tari
                                 Labs will have no liability to you based on its exercise of its rights with respect to
@@ -647,7 +647,7 @@ export default function UserAgreement() {
                                         order to receive distributions. Additionally, Pool Operators may impose a
                                         deadline by which participants must achieve such a minimum balance. If the
                                         minimum balance is not reached by the specified deadline, the Pool Operator may
-                                        retain or redistribute the participant's accrued rewards. Tari Labs does not
+                                        retain or redistribute the participant's accrued rewards. Tari does not
                                         control these policies and shall not be responsible for the enforcement or
                                         consequences of such rules.
                                     </p>
@@ -664,14 +664,14 @@ export default function UserAgreement() {
                                 </blockquote>
                             </li>
                             <li>
-                                <p>No Liability of Tari Labs</p>
+                                <p>No Liability of Tari</p>
                                 <blockquote>
                                     <p>
                                         You understand and agree that participation in any mining pool is at your own
-                                        risk. Tari Labs is not a Pool Operator and does not manage or control the
+                                        risk. Tari is not a Pool Operator and does not manage or control the
                                         operation of any mining pool. Accordingly, you acknowledge and agree that Tari
                                         Labs shall have no liability whatsoever in connection with any mining pool or
-                                        related activity. Further, you waive and release all claims against Tari Labs
+                                        related activity. Further, you waive and release all claims against Tari
                                         arising out of or relating to participation in any mining pool, including but
                                         not limited to claims related to unpaid, delayed, lost, forfeited, or
                                         incorrectly allocated mining rewards.
@@ -684,7 +684,7 @@ export default function UserAgreement() {
                                     <p>
                                         Participation in a mining pool may be subject to separate terms and conditions
                                         imposed by the Pool Operator. You are solely responsible for reviewing and
-                                        understanding any such terms. Tari Labs does not endorse or guarantee the
+                                        understanding any such terms. Tari does not endorse or guarantee the
                                         performance or integrity of any Pool Operator.
                                     </p>
                                 </blockquote>
@@ -694,7 +694,7 @@ export default function UserAgreement() {
                                 <blockquote>
                                     <p>
                                         Pool participation rules, reward mechanics, fees, and distribution schedules are
-                                        subject to change by the Pool Operator at any time. Tari Labs reserves the right
+                                        subject to change by the Pool Operator at any time. Tari reserves the right
                                         to modify or discontinue support for mining pool functionality within the Tari
                                         Universe application at its sole discretion, without notice or liability.
                                     </p>
@@ -713,8 +713,8 @@ export default function UserAgreement() {
                             <p>
                                 We may offer you the opportunity to receive XTM at no cost (<strong>Airdrop</strong>),
                                 subject to the terms described in this section. The Airdrop Program is provided to you
-                                exclusively by Tari Labs. The XTM is delivered by us to you, but is manufactured,
-                                offered and supported by the Tari Network, and not by Tari Labs.
+                                exclusively by Tari. The XTM is delivered by us to you, but is manufactured,
+                                offered and supported by the Tari Network, and not by Tari.
                             </p>
                         </blockquote>
                     </li>
@@ -726,7 +726,7 @@ export default function UserAgreement() {
                                 <blockquote>
                                     <p>
                                         There is no purchase necessary to receive XTM in an Airdrop. However, you must
-                                        have a Wallet. Although Tari Labs does not charge a fee for participation in the
+                                        have a Wallet. Although Tari does not charge a fee for participation in the
                                         Airdrop Program, we reserve the right to do so in the future and shall provide
                                         prior notice to you in such case.
                                     </p>
@@ -743,10 +743,10 @@ export default function UserAgreement() {
                                 <blockquote>
                                     <p>
                                         An offer to receive XTM in an Airdrop is only available to you while supplies
-                                        last. Once the amount of XTM offered by Tari Labs in an Airdrop is exhausted,
+                                        last. Once the amount of XTM offered by Tari in an Airdrop is exhausted,
                                         any party who has either been placed on a waitlist, or has completed certain
                                         additional steps, but not yet received notice of award of XTM in such Airdrop,
-                                        shall no longer be eligible to receive XTM in that Airdrop. Tari Labs reserves
+                                        shall no longer be eligible to receive XTM in that Airdrop. Tari reserves
                                         the right, in our sole discretion, to modify or suspend any Airdrop requirements
                                         at any time without notice, including the amount previously advertised as
                                         available.
@@ -761,7 +761,7 @@ export default function UserAgreement() {
 
                 <p>
                     You may not be eligible to receive XTM from an Airdrop in your jurisdiction. In the event that you
-                    have multiple Wallets with Tari Labs, you are only eligible to receive XTM from an Airdrop in one
+                    have multiple Wallets with Tari, you are only eligible to receive XTM from an Airdrop in one
                     Wallet and for one user.
                 </p>
 
@@ -782,8 +782,8 @@ export default function UserAgreement() {
                         <p>No Obligation</p>
                         <blockquote>
                             <p>
-                                Tari Labs has no obligation to provide any XTM in connection with the Airdrop Program,
-                                even if participants have accrued a certain amount of rewards. Tari Labs reserves the
+                                Tari has no obligation to provide any XTM in connection with the Airdrop Program,
+                                even if participants have accrued a certain amount of rewards. Tari reserves the
                                 right to withhold or revoke rewards and/or XTM without consequences.
                             </p>
                         </blockquote>
@@ -812,13 +812,13 @@ export default function UserAgreement() {
                         a) Hardware, software or connections required to interact with the Tari Network and/or Tari
                         Testnet might fail, succumb to malware, unauthorized access or malicious attacks. Third parties
                         may obtain unauthorized access to the Services, including, but not limited to your public and
-                        private keys. Tari Labs shall not be responsible for any communication failures, disruptions,
+                        private keys. Tari shall not be responsible for any communication failures, disruptions,
                         errors, distortions or delays you may experience when using the Services, however caused.
                     </p>
 
                     <p>
                         b) Forks, unknown vulnerabilities in or unanticipated changes to the network protocol may cause
-                        losses to you or others. Tari Labs has no control over the Tari Network and/or Tari Testnet and
+                        losses to you or others. Tari has no control over the Tari Network and/or Tari Testnet and
                         shall not be responsible for any harm occurring as a result of the inability to reverse a
                         transaction, and any losses in connection therewith due to erroneous or fraudulent actions.
                     </p>
@@ -853,45 +853,45 @@ export default function UserAgreement() {
                             <li>
                                 <p>
                                     Unless otherwise indicated by us, all intellectual property rights and any content
-                                    provided in connection with the Tari Labs Site or the Services, are the property of
-                                    Tari Labs or our licensors or suppliers and are protected by applicable intellectual
+                                    provided in connection with the Tari Site or the Services, are the property of
+                                    Tari or our licensors or suppliers and are protected by applicable intellectual
                                     property laws. We do not give any implied license for the use of the contents of the
-                                    Tari Labs Site or the Services.
+                                    Tari Site or the Services.
                                 </p>
                             </li>
                             <li>
                                 <p>
                                     You accept and acknowledge that the material and content contained in or delivered
-                                    by the Tari Labs Site or the Services is made available for your personal, lawful,
+                                    by the Tari Site or the Services is made available for your personal, lawful,
                                     non-commercial use only and that you may only use such material and content for the
-                                    purpose of using the Tari Labs Site or the Services as set forth in this Agreement.
+                                    purpose of using the Tari Site or the Services as set forth in this Agreement.
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    You further acknowledge that any other use of content from the Tari Labs Site or the
+                                    You further acknowledge that any other use of content from the Tari Site or the
                                     Services is strictly prohibited and you agree not to infringe or enable others to
                                     infringe our intellectual property rights. You agree to retain all copyrighted and
-                                    other proprietary notices contained in the material provided via the Tari Labs Site
+                                    other proprietary notices contained in the material provided via the Tari Site
                                     or the Services on any copy you make of the material but failing to do so shall not
-                                    prejudice Tari Labs's intellectual property rights therein.
+                                    prejudice Tari's intellectual property rights therein.
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    You may not sell or modify materials derived or created from the Tari Labs Site or
+                                    You may not sell or modify materials derived or created from the Tari Site or
                                     the Services or reproduce, display, publicly perform, distribute or otherwise use
                                     the materials in any way for any public or commercial purpose. Your use of such
                                     materials on any other website or on a file- sharing or similar service for any
                                     purpose is strictly prohibited. You may not copy any material or content derived or
-                                    created from the Tari Labs Site or the Services without our express, written
+                                    created from the Tari Site or the Services without our express, written
                                     permission.
                                 </p>
                             </li>
                             <li>
                                 <p>
                                     Any rights not expressly granted herein to use the materials contained on or through
-                                    the Tari Labs Site or the Services are reserved by Tari Labs in full.
+                                    the Tari Site or the Services are reserved by Tari in full.
                                 </p>
                             </li>
                         </ol>
@@ -946,7 +946,7 @@ export default function UserAgreement() {
                         <p>Cooperation with Law Enforcement</p>
                         <blockquote>
                             <p>
-                                Tari Labs may, from time-to-time, respond to requests from third parties, courts, law
+                                Tari may, from time-to-time, respond to requests from third parties, courts, law
                                 enforcement, regulators and policymakers by producing certain information about or
                                 relating to your use of the Services.
                             </p>
@@ -956,7 +956,7 @@ export default function UserAgreement() {
                         <p>Recordkeeping</p>
                         <blockquote>
                             <p>
-                                Depending on the Services used by you, Tari Labs reserves the right, in our sole
+                                Depending on the Services used by you, Tari reserves the right, in our sole
                                 discretion, to create and maintain certain records of your activity and communications
                                 relating to your use of the Services.
                             </p>
@@ -972,7 +972,7 @@ export default function UserAgreement() {
                         <ol>
                             <li>
                                 <p>
-                                    Tari Labs strives to improve its Services to address feedback. If you have ideas or
+                                    Tari strives to improve its Services to address feedback. If you have ideas or
                                     suggestions regarding improvements or additions to the Services, we would like to
                                     hear them; however, any submission shall be subject to this User Agreement.
                                 </p>
@@ -980,15 +980,15 @@ export default function UserAgreement() {
                             <li>
                                 <p>
                                     Under no circumstances shall disclosure of any idea or feedback, or any related
-                                    material to Tari Labs be subject to any obligation of confidentiality or expectation
+                                    material to Tari be subject to any obligation of confidentiality or expectation
                                     of compensation.
                                 </p>
                             </li>
                             <li>
                                 <p>
                                     By submitting an idea or feedback or any related material that would be subject to
-                                    intellectual property rights (the <strong>Work</strong>) to Tari Labs, you grant to
-                                    Tari Labs, with respect to the Work submitted, a non-exclusive, perpetual, global,
+                                    intellectual property rights (the <strong>Work</strong>) to Tari, you grant to
+                                    Tari, with respect to the Work submitted, a non-exclusive, perpetual, global,
                                     royalty-free license to use all of the content of such ideas and feedback, for any
                                     purpose whatsoever.
                                 </p>
@@ -998,15 +998,15 @@ export default function UserAgreement() {
                                     By submitting Work, you are waiving any moral rights to the fullest extent permitted
                                     under law that you may have in the Work and are representing and warranting to Tari
                                     Labs that the Work originated with you, no one else has any rights in the Work, and
-                                    that Tari Labs is free of any royalty to implement the Work and to use the related
-                                    material if so desired, as provided or modified by Tari Labs, without obtaining
+                                    that Tari is free of any royalty to implement the Work and to use the related
+                                    material if so desired, as provided or modified by Tari, without obtaining
                                     permission or license from any third party.
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Tari Labs may sub-license in any way all Work and material you have submitted to
-                                    Tari Labs.
+                                    Tari may sub-license in any way all Work and material you have submitted to
+                                    Tari.
                                 </p>
                             </li>
                         </ol>
@@ -1039,7 +1039,7 @@ export default function UserAgreement() {
                         </blockquote>
                     </li>
                     <li>
-                        <p>Acceptable Use of Tari Labs Services</p>
+                        <p>Acceptable Use of Tari Services</p>
                         <blockquote>
                             <p>
                                 When accessing or using the Services, you agree that you are solely responsible for your
@@ -1048,7 +1048,7 @@ export default function UserAgreement() {
                             </p>
                         </blockquote>
                         <p>
-                            (a) Violate, misappropriate, or infringe the rights of Tari Labs, our users, or others,
+                            (a) Violate, misappropriate, or infringe the rights of Tari, our users, or others,
                             including privacy, publicity, intellectual property, or other proprietary rights;
                         </p>
 
@@ -1208,12 +1208,12 @@ export default function UserAgreement() {
                                 <p>Indemnification</p>
                                 <blockquote>
                                     <p>
-                                        You agree to indemnify and hold harmless Tari Labs, its affiliates,
+                                        You agree to indemnify and hold harmless Tari, its affiliates,
                                         subsidiaries, directors, managers, members, officers, and employees from any and
                                         all claims, demands, actions, damages, losses, costs or expenses, including
                                         without limitation, reasonable legal fees, arising out of or relating to your or
                                         any other person's use of your credentials or Wallet in connection with: (a) use
-                                        of the Tari Labs Site or Services; (b) breach of this User Agreement or any
+                                        of the Tari Site or Services; (b) breach of this User Agreement or any
                                         other policy;
                                     </p>
 
@@ -1221,8 +1221,8 @@ export default function UserAgreement() {
                                         (c) feedback or submissions you provide; (d) false, incomplete, or misleading
                                         information relied upon by us to verify your identity and source of funds, where
                                         applicable; or (e) violation of any rights of any other person or entity;
-                                        provided however, that you shall not indemnify Tari Labs for claims or losses
-                                        arising out of Tari Labs's gross negligence or willful misconduct. This
+                                        provided however, that you shall not indemnify Tari for claims or losses
+                                        arising out of Tari's gross negligence or willful misconduct. This
                                         indemnity shall apply to your successors and assigns and shall survive any
                                         termination or cancellation of this User Agreement.
                                     </p>
@@ -1247,10 +1247,10 @@ export default function UserAgreement() {
                         <p>Force Majeure</p>
                         <blockquote>
                             <p>
-                                If by reason in whole or in part of any Force Majeure Event, either you or Tari Labs is
+                                If by reason in whole or in part of any Force Majeure Event, either you or Tari is
                                 delayed or prevented from complying with this User Agreement, then such delay or
                                 non-compliance shall not be deemed to be a breach of this User Agreement and no loss or
-                                damage shall be claimed by you or Tari Labs by reason thereof. "Force Majeure Event"
+                                damage shall be claimed by you or Tari by reason thereof. "Force Majeure Event"
                                 means any event beyond the party's reasonable control, including, but not limited to,
                                 flood, extraordinary weather conditions, earthquake, or other act of God, fire, war,
                                 insurrection, riot, labor dispute, accident, action of government, communications, power
@@ -1266,7 +1266,7 @@ export default function UserAgreement() {
                             <p>
                                 It is your responsibility to determine what, if any, taxes apply due to your use of Tari
                                 Labs Services, and it is your responsibility to report and remit the correct tax to the
-                                appropriate tax authority. Tari Labs is not responsible for determining whether taxes
+                                appropriate tax authority. Tari is not responsible for determining whether taxes
                                 apply to your XTM transactions or for collecting, reporting, withholding or remitting
                                 any taxes arising from any virtual currency transactions.
                             </p>
@@ -1291,8 +1291,8 @@ export default function UserAgreement() {
                             <p>
                                 This User Agreement shall be binding on your successors, heirs, personal
                                 representatives, and assigns. You may not assign or transfer any of your rights or
-                                obligations under this User Agreement without prior written consent of Tari Labs, which
-                                may be withheld in Tari Labs's sole discretion. We may assign rights or delegate duties
+                                obligations under this User Agreement without prior written consent of Tari, which
+                                may be withheld in Tari's sole discretion. We may assign rights or delegate duties
                                 under this User Agreement in our sole discretion.
                             </p>
                         </blockquote>
@@ -1302,7 +1302,7 @@ export default function UserAgreement() {
                         <blockquote>
                             <p>
                                 Nothing in this User Agreement is intended to, nor shall create any partnership, joint
-                                venture, agency, consultancy or trusteeship. You and Tari Labs are independent
+                                venture, agency, consultancy or trusteeship. You and Tari are independent
                                 contractors for purposes of this User Agreement.
                             </p>
                         </blockquote>
@@ -1314,7 +1314,7 @@ export default function UserAgreement() {
                                 This User Agreement constitutes the entire agreement among the Parties with respect to
                                 the subject matter described herein and shall supersede all prior agreements and
                                 understandings, written or oral, among the Parties. Subsequent discussions or
-                                negotiations between you and Tari Labs or Tari Labs personnel shall only amend or become
+                                negotiations between you and Tari or Tari personnel shall only amend or become
                                 part of this User Agreement by way of a written amendment specifically referencing the
                                 last updated date and name of this User Agreement.
                             </p>
@@ -1328,7 +1328,7 @@ export default function UserAgreement() {
                                 mail or courier:
                             </p>
 
-                            <p>Tari Labs, LLC</p>
+                            <p>Tari, LLC</p>
 
                             <p>6339 Charlotte Pike #508</p>
 
