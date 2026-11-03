@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Viewport } from 'next';
+import { fontString } from '@/ui-shared/layouts/Layout/Fonts';
 
 export const viewport: Viewport = {
     themeColor: 'black',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
+        <html lang="en" className={fontString}>
             <body>{children}</body>
         </html>
     );

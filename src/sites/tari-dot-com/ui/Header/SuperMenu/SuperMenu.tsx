@@ -60,10 +60,6 @@ export default function SuperMenu() {
         };
     }, [showSuperMenu, setShowSuperMenu]);
 
-    useEffect(() => {
-        setShowSuperMenu(false);
-    }, [setShowSuperMenu]);
-
     return (
         <AnimatePresence>
             {showSuperMenu && (
