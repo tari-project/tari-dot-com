@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatXtm, shortCommitment } from '../format';
+import { formatXtm } from '../format';
 
 describe('formatXtm', () => {
     it('converts micro XTM strings to whole XTM', () => {
@@ -12,12 +12,5 @@ describe('formatXtm', () => {
 
     it('does not blow up on garbage', () => {
         expect(formatXtm('nope')).toBe('0');
-    });
-});
-
-describe('shortCommitment', () => {
-    it('truncates long commitments and leaves short ones alone', () => {
-        expect(shortCommitment('0123456789abcdef0123456789abcdef')).toBe('01234567…abcdef');
-        expect(shortCommitment('abc')).toBe('abc');
     });
 });

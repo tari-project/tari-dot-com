@@ -105,57 +105,7 @@ export const StatLabel = styled.div`
     margin-top: 10px;
 `;
 
-export const SectionTitle = styled.h2`
-    font-family: var(--font-druk), sans-serif;
-    text-transform: uppercase;
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 18px;
-`;
-
-export const Table = styled.table`
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    font-variant-numeric: tabular-nums;
-
-    th,
-    td {
-        text-align: left;
-        padding: 12px 10px;
-        border-bottom: 1px solid rgba(12, 7, 24, 0.15);
-        white-space: nowrap;
-    }
-
-    th {
-        font-size: 11px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(12, 7, 24, 0.55);
-        font-weight: 600;
-    }
-
-    td.mono {
-        font-family: 'JetBrains Mono', monospace;
-    }
-
-    @media (max-width: 700px) {
-        display: block;
-        overflow-x: auto;
-    }
-`;
-
-export const Status = styled.span<{ $confirmed: boolean }>`
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    background: ${({ $confirmed }) => ($confirmed ? '#5a1fd6' : 'rgba(12, 7, 24, 0.12)')};
-    color: ${({ $confirmed }) => ($confirmed ? '#fbf7ef' : '#0c0718')};
-`;
-
-export const Empty = styled.p`
+export const Note = styled.p`
     color: #3a3547;
     font-size: 16px;
 `;

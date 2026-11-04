@@ -2,14 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 
 export type BurnNetwork = 'mainnet' | 'esmeralda' | 'nextnet' | 'stagenet';
 
-export interface BurnRecord {
-    commitment: string;
-    amountMicroMinotari: number | string;
-    status: 'broadcast' | 'confirmed';
-    minedHeight: string | null;
-    createdAt: string;
-}
-
 export interface BurnStats {
     network: BurnNetwork;
     /** Burns the network has seen (in a mempool or mined). */
@@ -18,8 +10,6 @@ export interface BurnStats {
     totalMicroMinotari: string;
     /** Distinct Universe installs that burned. */
     uniqueBurners: number;
-    /** Newest first, at most 20. */
-    recent: BurnRecord[];
 }
 
 async function fetchBurnStats(network: BurnNetwork): Promise<BurnStats> {
@@ -32,7 +22,7 @@ async function fetchBurnStats(network: BurnNetwork): Promise<BurnStats> {
     return response.json();
 }
 
-/** Burn-to-L2 numbers reported by Tari Universe. The backend caches for a minute, so poll at that rate. */
+/** Burn-to-L2 totals reported by Tari Universe. The backend caches for a minute, so poll at that rate. */
 export function useBurnStats(network: BurnNetwork = 'mainnet') {
     return useQuery<BurnStats>({
         queryKey: ['burnStats', network],

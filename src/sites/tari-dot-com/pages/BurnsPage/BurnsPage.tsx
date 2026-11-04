@@ -1,25 +1,12 @@
 'use client';
 
 import { useBurnStats } from '@/services/api/useBurnStats';
-import { formatXtm, shortCommitment } from './format';
-import {
-    Wrapper,
-    Holder,
-    Tag,
-    Title,
-    Lede,
-    Stats,
-    Stat,
-    StatValue,
-    StatLabel,
-    SectionTitle,
-    Table,
-    Status,
-    Empty,
-} from './styles';
+import { formatXtm } from './format';
+import { Wrapper, Holder, Tag, Title, Lede, Stats, Stat, StatValue, StatLabel, Note } from './styles';
 
 export default function BurnsPage() {
-    const { data, isError, isLoading } = useBurnStats('mainnet');
+    const { data, isError } = useBurnStats('mainnet');
+    const show = (value: string | undefined) => value ?? (isError ? '???' : '…');
 
     return (
         <Wrapper>
@@ -37,55 +24,20 @@ export default function BurnsPage() {
 
                 <Stats>
                     <Stat>
-                        <StatValue>{data ? formatXtm(data.totalMicroMinotari) : isError ? '???' : '…'}</StatValue>
+                        <StatValue>{show(data && formatXtm(data.totalMicroMinotari))}</StatValue>
                         <StatLabel>XTM burned</StatLabel>
                     </Stat>
                     <Stat>
-                        <StatValue>{data ? data.burnCount.toLocaleString('en-US') : isError ? '???' : '…'}</StatValue>
+                        <StatValue>{show(data?.burnCount.toLocaleString('en-US'))}</StatValue>
                         <StatLabel>Burns</StatLabel>
                     </Stat>
                     <Stat>
-                        <StatValue>
-                            {data ? data.uniqueBurners.toLocaleString('en-US') : isError ? '???' : '…'}
-                        </StatValue>
+                        <StatValue>{show(data?.uniqueBurners.toLocaleString('en-US'))}</StatValue>
                         <StatLabel>Unique burners</StatLabel>
                     </Stat>
                 </Stats>
 
-                <SectionTitle>Recent burns</SectionTitle>
-                {isLoading && <Empty>Loading…</Empty>}
-                {isError && <Empty>Burn stats are unavailable right now. Try again in a minute.</Empty>}
-                {data && data.recent.length === 0 && <Empty>No burns reported yet.</Empty>}
-                {data && data.recent.length > 0 && (
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>When</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Height</th>
-                                <th>Commitment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.recent.map((burn) => (
-                                <tr key={burn.commitment}>
-                                    <td>
-                                        {new Date(burn.createdAt).toLocaleString('en-US', { timeZoneName: 'short' })}
-                                    </td>
-                                    <td className="mono">{formatXtm(burn.amountMicroMinotari)} XTM</td>
-                                    <td>
-                                        <Status $confirmed={burn.status === 'confirmed'}>{burn.status}</Status>
-                                    </td>
-                                    <td className="mono">{burn.minedHeight ?? '–'}</td>
-                                    <td className="mono" title={burn.commitment}>
-                                        {shortCommitment(burn.commitment)}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                )}
+                {isError && <Note>Burn stats are unavailable right now. Try again in a minute.</Note>}
             </Holder>
         </Wrapper>
     );
