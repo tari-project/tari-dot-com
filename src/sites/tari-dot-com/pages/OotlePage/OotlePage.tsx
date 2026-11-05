@@ -40,8 +40,9 @@ import {
     BackToTop,
 } from './styles';
 import BurnSection from './BurnSection/BurnSection';
+import { useLaunchTarget } from '@/services/api/useLaunchTarget';
 
-const LAUNCH_DATE = new Date('2026-11-11T11:11:11Z');
+const DEFAULT_LAUNCH_DATE = new Date('2026-11-11T11:11:11Z');
 
 function pad(n: number) {
     return String(n).padStart(2, '0');
@@ -67,7 +68,12 @@ function useCountdown(target: Date) {
 }
 
 export default function OotlePage() {
-    const { days, hours, mins, secs } = useCountdown(LAUNCH_DATE);
+    const [launchDate, setLaunchDate] = useState(DEFAULT_LAUNCH_DATE);
+    const { data: target } = useLaunchTarget();
+    if (target && new Date(target).getTime() !== launchDate.getTime()) {
+        setLaunchDate(new Date(target));
+    }
+    const { days, hours, mins, secs } = useCountdown(launchDate);
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
