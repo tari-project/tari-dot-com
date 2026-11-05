@@ -1,32 +1,50 @@
 import { useQuery } from '@tanstack/react-query';
 
-export type BurnNetwork = 'mainnet' | 'esmeralda' | 'nextnet' | 'stagenet';
-
 export interface BurnStats {
-    network: BurnNetwork;
-    /** Burns the network has seen (in a mempool or mined). */
+    micro: bigint;
+    burns: bigint;
+    people: bigint;
+}
+
+interface BurnStatsResponse {
+    network: string;
     burnCount: number;
-    /** Sum of those burns, in micro XTM, as a string to stay exact. */
     totalMicroMinotari: string;
-    /** Distinct Universe installs that burned. */
     uniqueBurners: number;
 }
 
-async function fetchBurnStats(network: BurnNetwork): Promise<BurnStats> {
-    const response = await fetch(`https://rwa.y.at/miner/burns/stats?network=${network}`);
+async function fetchBurnStats(): Promise<BurnStats> {
+    const response = await fetch('https://rwa.y.at/miner/burns/stats?network=mainnet');
 
     if (!response.ok) {
         throw new Error('Failed to fetch burn stats');
     }
 
-    return response.json();
+    const data: BurnStatsResponse = await response.json();
+    if (
+        data?.network !== 'mainnet' ||
+        !Number.isSafeInteger(data.burnCount) ||
+        data.burnCount < 0 ||
+        !Number.isSafeInteger(data.uniqueBurners) ||
+        data.uniqueBurners < 0 ||
+        typeof data.totalMicroMinotari !== 'string' ||
+        !/^\d+$/.test(data.totalMicroMinotari)
+    ) {
+        throw new Error('Invalid burn stats');
+    }
+
+    return {
+        micro: BigInt(data.totalMicroMinotari),
+        burns: BigInt(data.burnCount),
+        people: BigInt(data.uniqueBurners),
+    };
 }
 
-/** Burn-to-L2 totals reported by Tari Universe. The backend caches for a minute, so poll at that rate. */
-export function useBurnStats(network: BurnNetwork = 'mainnet') {
+export function useBurnStats() {
     return useQuery<BurnStats>({
-        queryKey: ['burnStats', network],
-        queryFn: () => fetchBurnStats(network),
+        queryKey: ['burnStats'],
+        queryFn: fetchBurnStats,
+        refetchOnWindowFocus: true,
         refetchInterval: 1000 * 60,
     });
 }

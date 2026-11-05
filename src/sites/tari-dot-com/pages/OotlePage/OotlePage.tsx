@@ -39,6 +39,7 @@ import {
     Confetti,
     BackToTop,
 } from './styles';
+import BurnSection from './BurnSection/BurnSection';
 
 const LAUNCH_DATE = new Date('2026-11-11T11:11:11Z');
 
@@ -257,6 +258,8 @@ export default function OotlePage() {
                     <span>&bull;</span>
                 </MarqueeTrack>
             </Marquee>
+
+            <BurnSection />
 
             <Section>
                 <SecTag>What is the Ootle</SecTag>

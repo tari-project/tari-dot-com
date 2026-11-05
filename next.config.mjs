@@ -13,6 +13,11 @@ const nextConfig = {
                 destination: '/mica-whitepaper',
                 permanent: true,
             },
+            {
+                source: '/burns',
+                destination: '/#burns',
+                permanent: false,
+            },
         ];
     },
     async rewrites() {
