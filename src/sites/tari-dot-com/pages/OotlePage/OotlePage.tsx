@@ -42,7 +42,7 @@ import {
 import BurnSection from './BurnSection/BurnSection';
 import { useLaunchTarget } from '@/services/api/useLaunchTarget';
 
-const DEFAULT_LAUNCH_DATE = new Date('2026-11-11T11:11:11Z');
+const DEFAULT_LAUNCH_DATE = new Date('2026-11-11T05:00:00Z');
 
 function pad(n: number) {
     return String(n).padStart(2, '0');

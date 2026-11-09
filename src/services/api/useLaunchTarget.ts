@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 async function fetchLaunchTarget(): Promise<number | null> {
-    const response = await fetch('https://rwa.yat.fyi/config', { cache: 'no-store' });
+    const response = await fetch('https://rwa.y.at/config', { cache: 'no-store' });
 
     if (!response.ok) {
         throw new Error('Failed to fetch launch config');
