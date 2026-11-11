@@ -6,7 +6,7 @@ export default function OotleAnnouncement() {
             <Band>
                 <Holder>
                     <div>
-                        <strong>The Ootle</strong>, Tari&apos;s Layer 2, launches on November 11th.&nbsp;
+                        <a href="/ootle">The Ootle</a>, Tari&apos;s Layer 2, is live!{' '}
                         <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
                             Start building now
                         </a>
