@@ -78,13 +78,13 @@ const faqData = [
     },
     {
         question: 'What is the Ootle, and what is TARI?',
-        answer: `<a href="/ootle">The Ootle</a> is Tari's Layer 2 protocol that allows for distributed applications (dApps) and on-chain assets with programmable confidentiality. The main token on the L2, TARI, is created 1 to 1 by burning XTM. This token is used as on the layer 2 to pay for transactions.`,
+        answer: `<a href="/ootle">The Ootle</a> is Tari's Layer 2 protocol that allows for distributed applications (dApps) and on-chain assets with programmable confidentiality. The main token on the L2, TARI, is created 1 to 1 by burning XTM. This token is used on the layer 2 to pay for transactions.`,
     },
     {
         question: `How do I get started?`,
         answer: `<ol>
         <li>Download the Tari Universe app</li>
-        <li>Start mining on to earn XTM.</li>
+        <li>Start mining to earn XTM.</li>
         <li>Use the Layer 2 panel to burn your XTM and claim TARI.</li>
         <li>Check out the <a href="https://lobby.tari.com/">Ootle Lobby</a> for links to projects you can use Tari with today!</li>
         <li>Join <a href="https://community.tari.com/">the community</a> for updates on events, giveaways, projects, and new features.</li>
