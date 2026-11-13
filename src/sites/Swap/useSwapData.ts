@@ -112,24 +112,31 @@ export const useSwapData = () => {
 
     const notEnoughBalance = useMemo(() => {
         if (direction === 'toXtm') {
+            const cleanEthAmount = cleanFormattedNumber(ethTokenAmount);
             if (
-                !ethTokenDisplay?.rawBalance ||
-                !ethTokenAmount ||
-                !ethTokenDisplay.decimals ||
-                Number(ethTokenAmount) <= 0
+                ethTokenDisplay?.rawBalance === undefined ||
+                !cleanEthAmount ||
+                ethTokenDisplay.decimals === undefined ||
+                Number(cleanEthAmount) <= 0
             )
                 return false;
             try {
-                const amountBigInt = viemParseUnits(ethTokenAmount, ethTokenDisplay.decimals);
+                const amountBigInt = viemParseUnits(cleanEthAmount, ethTokenDisplay.decimals);
                 return amountBigInt > ethTokenDisplay.rawBalance;
             } catch {
                 return true;
             }
         } else {
-            if (!xtmTokenDisplay?.rawBalance || !wxtmAmount || !xtmTokenDisplay.decimals || Number(wxtmAmount) <= 0)
+            const cleanWxtmAmount = cleanFormattedNumber(wxtmAmount);
+            if (
+                xtmTokenDisplay?.rawBalance === undefined ||
+                !cleanWxtmAmount ||
+                xtmTokenDisplay.decimals === undefined ||
+                Number(cleanWxtmAmount) <= 0
+            )
                 return false;
             try {
-                const amountBigInt = viemParseUnits(wxtmAmount, xtmTokenDisplay.decimals);
+                const amountBigInt = viemParseUnits(cleanWxtmAmount, xtmTokenDisplay.decimals);
                 return amountBigInt > xtmTokenDisplay.rawBalance;
             } catch {
                 return true;
@@ -257,9 +264,10 @@ export const useSwapData = () => {
 
                 if (baseToken.address === null) {
                     rawBalance = nativeTokenBalanceDataForList?.value;
-                    balanceStr = rawBalance
-                        ? formatDisplayBalanceForSelectable(rawBalance, baseToken.decimals, baseToken.symbol)
-                        : undefined;
+                    balanceStr =
+                        rawBalance !== undefined
+                            ? formatDisplayBalanceForSelectable(rawBalance, baseToken.decimals, baseToken.symbol)
+                            : undefined;
                 } else {
                     const contractIndex = selectableTokensContracts.findIndex(
                         (c) => c.address.toLowerCase() === baseToken.address?.toLowerCase(),
@@ -267,9 +275,10 @@ export const useSwapData = () => {
                     const balanceResult =
                         contractIndex !== -1 && erc20BalancesData ? erc20BalancesData[contractIndex] : undefined;
                     if (balanceResult?.status === 'success') rawBalance = balanceResult.result as bigint;
-                    balanceStr = rawBalance
-                        ? formatDisplayBalanceForSelectable(rawBalance, baseToken.decimals, baseToken.symbol)
-                        : undefined;
+                    balanceStr =
+                        rawBalance !== undefined
+                            ? formatDisplayBalanceForSelectable(rawBalance, baseToken.decimals, baseToken.symbol)
+                            : undefined;
                 }
 
                 const pricePerToken = baseToken.symbol ? tokenPrices[baseToken.symbol] : undefined;
@@ -289,15 +298,18 @@ export const useSwapData = () => {
             })
             .sort((a, b) => {
                 const valA =
-                    a.rawBalance && a.pricePerTokenUSD
+                    a.rawBalance !== undefined && a.pricePerTokenUSD !== undefined
                         ? parseFloat(viemFormatUnits(a.rawBalance, a.decimals)) * a.pricePerTokenUSD
                         : 0;
                 const valB =
-                    b.rawBalance && b.pricePerTokenUSD
+                    b.rawBalance !== undefined && b.pricePerTokenUSD !== undefined
                         ? parseFloat(viemFormatUnits(b.rawBalance, b.decimals)) * b.pricePerTokenUSD
                         : 0;
                 if (valB !== valA) return valB - valA;
-                return (b.rawBalance || 0n) > (a.rawBalance || 0n) ? 1 : -1;
+                const rawA = a.rawBalance ?? 0n;
+                const rawB = b.rawBalance ?? 0n;
+                if (rawB === rawA) return 0;
+                return rawB > rawA ? 1 : -1;
             });
     }, [
         baseSelectableTokensForList,
@@ -331,11 +343,12 @@ export const useSwapData = () => {
                 tokenUsedForParsingAmount = toUiTokenDefinition;
             }
 
+            const cleanAmountStr = cleanFormattedNumber(amountTypedByUserStr);
             if (
                 !tokenUsedForParsingAmount ||
-                !amountTypedByUserStr ||
-                Number.isNaN(Number(amountTypedByUserStr)) ||
-                Number(amountTypedByUserStr) <= 0
+                !cleanAmountStr ||
+                Number.isNaN(Number(cleanAmountStr)) ||
+                Number(cleanAmountStr) <= 0
             ) {
                 clearCalculatedDetails();
                 if (lastUpdatedField === 'ethTokenField' && wxtmAmount !== '') setWxtmAmount('');
@@ -346,7 +359,7 @@ export const useSwapData = () => {
 
             setIsCalculatingQuote(true);
             try {
-                const amountForCalcWei = viemParseUnits(amountTypedByUserStr, tokenUsedForParsingAmount.decimals);
+                const amountForCalcWei = viemParseUnits(cleanAmountStr, tokenUsedForParsingAmount.decimals);
                 const details = await getTradeDetails(amountForCalcWei.toString(), lastUpdatedField, signal);
 
                 if (signal.aborted) {
@@ -455,6 +468,9 @@ export const useSwapData = () => {
         const maxDecimals = currentUiTokenDef?.decimals ?? 18;
         let processedValue = value;
 
+        const regex = /^\d*\.?\d*$/;
+        if (!regex.test(processedValue) || (processedValue !== '.' && Number.isNaN(Number(processedValue)))) return;
+
         const isEffectivelyZeroOrInvalid =
             processedValue === '' || processedValue === '.' || Number(processedValue) <= 0;
 
@@ -473,9 +489,6 @@ export const useSwapData = () => {
             if (abortController.current) abortController.current.abort();
             return;
         }
-
-        const regex = /^\d*\.?\d*$/;
-        if (!regex.test(processedValue) || (processedValue !== '.' && Number.isNaN(Number(processedValue)))) return;
 
         if (processedValue.length > 1 && processedValue.startsWith('0') && !processedValue.startsWith('0.')) {
             processedValue = processedValue.substring(1);
