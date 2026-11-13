@@ -3,9 +3,6 @@
 import { useEffect, useState } from 'react';
 import {
     Wrapper,
-    Band,
-    BandFill,
-    BandText,
     Hero,
     HeroGlow,
     HeroGrid,
@@ -20,10 +17,6 @@ import {
     CountdownCard,
     CdLabel,
     CdDate,
-    CdGrid,
-    CdCell,
-    CdNum,
-    CdUnit,
     CdFoot,
     OrbitWrap,
     Marquee,
@@ -39,33 +32,9 @@ import {
     Confetti,
     BackToTop,
 } from './styles';
-import BurnSection from './BurnSection/BurnSection';
 import { useLaunchTarget } from '@/services/api/useLaunchTarget';
 
 const DEFAULT_LAUNCH_DATE = new Date('2026-11-11T05:00:00Z');
-
-function pad(n: number) {
-    return String(n).padStart(2, '0');
-}
-
-function useCountdown(target: Date) {
-    const [diff, setDiff] = useState(() => target.getTime() - Date.now());
-
-    useEffect(() => {
-        const update = () => setDiff(target.getTime() - Date.now());
-        update();
-        const id = setInterval(update, 1000);
-        return () => clearInterval(id);
-    }, [target]);
-
-    const total = Math.max(0, Math.floor(diff / 1000));
-    return {
-        days: pad(Math.floor(total / 86400)),
-        hours: pad(Math.floor((total % 86400) / 3600)),
-        mins: pad(Math.floor((total % 3600) / 60)),
-        secs: pad(total % 60),
-    };
-}
 
 export default function OotlePage() {
     const [launchDate, setLaunchDate] = useState(DEFAULT_LAUNCH_DATE);
@@ -73,7 +42,6 @@ export default function OotlePage() {
     if (target && new Date(target).getTime() !== launchDate.getTime()) {
         setLaunchDate(new Date(target));
     }
-    const { days, hours, mins, secs } = useCountdown(launchDate);
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
@@ -91,17 +59,6 @@ export default function OotlePage() {
 
     return (
         <Wrapper>
-            <BandFill>
-                <Band>
-                    <BandText>
-                        <strong>The Ootle</strong> — Tari&apos;s Layer 2 — launches November 11th.{' '}
-                        <a href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
-                            Get Ready
-                        </a>
-                    </BandText>
-                </Band>
-            </BandFill>
-
             <Hero>
                 <HeroGlow />
                 <HeroGrid />
@@ -189,11 +146,11 @@ export default function OotlePage() {
                             <br />
                             Ootle
                             <br />
-                            <span className="purple">Is Coming.</span>
+                            <span className="purple">Is Here.</span>
                         </Headline>
 
                         <Kicker>
-                            Layer 2 launches <span>November 11th</span>
+                            Layer 2 is <span>live</span>
                         </Kicker>
 
                         <Lede>
@@ -204,7 +161,7 @@ export default function OotlePage() {
 
                         <CtaRow>
                             <Button className="primary" href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
-                                Get Ready
+                                Join in
                             </Button>
                             <Button
                                 className="ghost"
@@ -218,28 +175,11 @@ export default function OotlePage() {
                     </div>
 
                     <CountdownCard>
-                        <CdLabel>Mainnet launch in</CdLabel>
+                        <CdLabel>Mainnet launched on</CdLabel>
                         <CdDate>November 11, 2026</CdDate>
-                        <CdGrid>
-                            <CdCell>
-                                <CdNum>{days}</CdNum>
-                                <CdUnit>Days</CdUnit>
-                            </CdCell>
-                            <CdCell>
-                                <CdNum>{hours}</CdNum>
-                                <CdUnit>Hours</CdUnit>
-                            </CdCell>
-                            <CdCell>
-                                <CdNum>{mins}</CdNum>
-                                <CdUnit>Minutes</CdUnit>
-                            </CdCell>
-                            <CdCell>
-                                <CdNum>{secs}</CdNum>
-                                <CdUnit>Seconds</CdUnit>
-                            </CdCell>
-                        </CdGrid>
                         <CdFoot>
-                            Already on testnet — ship your template before the starting gun fires.{' '}
+                            Build dApps with confidence and confidentiality
+                            <br />
                             <a href="https://ootle.tari.com/" target="_blank" rel="noreferrer">
                                 Read the docs &rarr;
                             </a>
@@ -264,8 +204,6 @@ export default function OotlePage() {
                     <span>&bull;</span>
                 </MarqueeTrack>
             </Marquee>
-
-            <BurnSection />
 
             <Section>
                 <SecTag>What is the Ootle</SecTag>
@@ -352,19 +290,11 @@ export default function OotlePage() {
                 <Confetti className="c3 light">&#9673;</Confetti>
                 <Confetti className="c4">&#10023;</Confetti>
                 <h2>
-                    Be among the first and <span>WIN BIG.</span>
+                    Join a community of <span>builders</span>
                 </h2>
-                <p>
-                    The Ootle launch contest is live. Templates, tapplets, and tools — bring your best work before
-                    November 11th and win big.
-                </p>
-                <Button
-                    className="primary"
-                    href="https://community.tari.com/t/ootle-launch-date-and-launch-contest-rules/323"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    See contest rules
+                <p>Visit the Ootle Lobby and join other builders and creators</p>
+                <Button className="primary" href="https://lobby.tari.com/" target="_blank" rel="noreferrer">
+                    Ready up
                 </Button>
             </Contest>
 

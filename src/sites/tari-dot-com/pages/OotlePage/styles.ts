@@ -16,51 +16,6 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const Band = styled.div`
-    background-color: #0c0718;
-    color: #fbf7ef;
-    text-align: center;
-    height: 82px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 500;
-
-    a {
-        font-weight: bold;
-        color: #813bf5;
-        margin: 0 2px;
-        pointer-events: auto;
-    }
-
-    @media (max-width: 666px) {
-        height: 72px;
-        font-size: 12px;
-        padding: 0 8px;
-    }
-`;
-
-export const BandText = styled.span`
-    display: inline;
-    pointer-events: auto;
-    line-height: 1.4;
-`;
-
-export const BandFill = styled.div`
-    background-color: #e4e3ec;
-    width: 100%;
-    padding: 140px 0 0 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -102px;
-    position: relative;
-    z-index: 100;
-`;
-
 export const Hero = styled.div`
     position: relative;
     min-height: 100vh;
@@ -291,43 +246,6 @@ export const CdDate = styled.div`
     margin-bottom: 26px;
     position: relative;
     z-index: 2;
-`;
-
-export const CdGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    position: relative;
-    z-index: 2;
-`;
-
-export const CdCell = styled.div`
-    background: rgba(251, 247, 239, 0.06);
-    border: 1px solid rgba(251, 247, 239, 0.12);
-    border-radius: 16px;
-    padding: 18px 6px 14px;
-    text-align: center;
-`;
-
-export const CdNum = styled.div`
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 1;
-    color: #fbf7ef;
-    font-variant-numeric: tabular-nums;
-
-    @media (max-width: 480px) {
-        font-size: 26px;
-    }
-`;
-
-export const CdUnit = styled.div`
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(251, 247, 239, 0.5);
-    margin-top: 8px;
 `;
 
 export const CdFoot = styled.div`

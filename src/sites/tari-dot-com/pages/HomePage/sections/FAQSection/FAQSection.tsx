@@ -8,7 +8,7 @@ import { AnimatePresence } from 'motion/react';
 const faqData = [
     {
         question: `What is Tari Universe?`,
-        answer: `Tari Universe is the beautifully simple app for mining Tari on Mac or PC. Tari Universe turns your computer into a money machine. It works by harnessing your computers computational power to solve blocks on the Tari network. In doing so, you're helping to secure the Tari network while earning Tari token (XTM) rewards.`,
+        answer: `Tari Universe is the beautifully simple app for mining Tari on Mac or PC. Tari Universe turns your computer into a money machine. It works by harnessing your computers computational power to solve blocks on the Tari network. In doing so, you're helping to secure the Tari network while earning Layer one (XTM) rewards. These rewards can then be redeemed 1:1 on the <a href="/ootle">Ootle</a>, the layer 2 tech for dApps and assets with programmable confidentiality.`,
     },
     {
         question: `What's the catch?`,
@@ -44,7 +44,7 @@ const faqData = [
     },
     {
         question: `Who is behind Tari?`,
-        answer: `Tari contributors are very blessed to have the support of high-profile investors, including Blockchain Capital, Pantera, Trinity, Redpoint, Slow Ventures, and many more.`,
+        answer: `Tari is a community project, run by contributors all over the world. Its initial development was sponsored by high-profile investors, including Blockchain Capital, Pantera, Trinity, Redpoint, Slow Ventures, and many more. Today, its ongoing development and governance is steered by the <a href="https://rfc.tari.com/TIP-0002_tari_community_charter">Tari Council</a> and the <a href="https://rfc.tari.com/Process/TIP-PROC-0006_core_contributor_program">Core Contributors</a> to the project.`,
     },
     {
         question: `Will this slow down my computer?`,
@@ -57,7 +57,7 @@ const faqData = [
     {
         question: `What makes Tari different from other crypto projects?`,
         answer: `
-            Tari is a new layer 1 blockchain protocol with a profound approach to building a massive on-chain user base. 
+            Tari is a new dual-layer blockchain protocol with a profound approach to building a massive on-chain user base. 
             <br />
             <br />
             Building a thriving, loyal, on-chain user base is one of the most challenging things to do in our industry. Other blockchain protocols struggle with this because airdropped tokens predominantly end up in the hands of farmers and bots. Their on-chain user bases evaporate rapidly as the farmers and bots sell their tokens and move on to the next protocol. Their only alternative is to route users through high friction and low conversion rate onramps. As a result, most blockchain protocols have few loyal users. 
@@ -69,7 +69,7 @@ const faqData = [
             Tari is the ultimate solution to this multifactorial problem. Tari is proof of work and uses an ASIC-resistant hashing algorithm. Anyone can download and run the Tari miner to mine Tari on their laptop or desktop. There is no complicated, multi-step onboarding process required. It is easier to become a native Tari user than it is to become a native user for any other blockchain protocol.
             <br />
             <br />
-            For developers, Tari introduces a revolutionary approach to app distribution. The Tari miner will have a built-in application launcher. Everyone who mines Tari will have instant access to every Tari application through an interface that looks and feels like an app store. With Tari's unique dual-layer system, developers get the distribution benefit and security of a Rust-based proof of work L1 with the scalability, fast finality, and low fees of a high-performance, native L2. The result is magical: a high-performance, low-fee blockchain protocol that will rapidly scale its on-chain user base to millions and enable developers to reach all of them.
+            For developers, Tari introduces a revolutionary approach to distributed app development. It provides a layer 2 protocol with programmable confidentiality, allowing the realization of many long-time promises in the cryptocurrency space. This highly practical layer encourages app building for both fun and real utility.
     `,
     },
     {
@@ -77,11 +77,17 @@ const faqData = [
         answer: `You can be up and running in minutes! Download the app, install it, and run it, and you'll be mining Tari in no time.`,
     },
     {
+        question: 'What is the Ootle, and what is TARI?',
+        answer: `<a href="/ootle">The Ootle</a> is Tari's Layer 2 protocol that allows for distributed applications (dApps) and on-chain assets with programmable confidentiality. The main token on the L2, TARI, is created 1 to 1 by burning XTM. This token is used on the layer 2 to pay for transactions.`,
+    },
+    {
         question: `How do I get started?`,
         answer: `<ol>
         <li>Download the Tari Universe app</li>
-        <li>Start mining on Testnet to earn rewards and raffle tickets</li>
-        <li>Join the community for updates on events, giveaways, and mainnet launch details</li>
+        <li>Start mining to earn XTM.</li>
+        <li>Use the Layer 2 panel to burn your XTM and claim TARI.</li>
+        <li>Check out the <a href="https://lobby.tari.com/">Ootle Lobby</a> for links to projects you can use Tari with today!</li>
+        <li>Join <a href="https://community.tari.com/">the community</a> for updates on events, giveaways, projects, and new features.</li>
         </ol>
         <br />
         <p>Sometimes you're the early bird. The person who discovers something new before it becomes the next big thing. This is one of those times. Get started with Tari Universe now, and let's build the future of crypto together!</p>`,

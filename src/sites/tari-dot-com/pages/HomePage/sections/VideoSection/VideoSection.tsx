@@ -10,11 +10,11 @@ export default function VideoSection() {
             <Holder>
                 <TextWrapper>
                     <Title>
-                        <TitleAnimation text={`Run Tari Universe. Earn Tari (XTM)`} readerComponent={ScreenReaderH2} />
+                        <TitleAnimation text={`Run Tari Universe. Earn Tari.`} readerComponent={ScreenReaderH2} />
                     </Title>
                     <Text>
                         <TitleAnimation
-                            text={`Our Tari Universe mining application is stunningly beautiful, safe and easy to use. When its running, you’re helping to secure the Tari network. This is no free lunch. You’ll earn XTM tokens for your (computer's!) hard work.`}
+                            text={`Our Tari Universe mining application is stunningly beautiful, safe and easy to use. When its running, you’re helping to secure the Tari network. This is no free lunch. You’ll earn XTM tokens for your (computer's!) hard work, and can redeem them for TARI on the Layer 2.`}
                             staggerDelay={0.01}
                             readerComponent={ScreenReaderP}
                         />
