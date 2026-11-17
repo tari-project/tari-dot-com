@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "type": "module",
-    "packageManager": "pnpm@11.9.0",
+    "packageManager": "pnpm@12.19.0",
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
@@ -28,7 +28,7 @@
         "@floating-ui/react": "^0.27.20",
         "@next/third-parties": "^16.3.4",
         "@number-flow/react": "^0.6.2",
-        "@opennextjs/cloudflare": "^1.20.6",
+        "@opennextjs/cloudflare": "^1.20.16",
         "@tanstack/react-query": "^5.102.8",
         "@uniswap/sdk-core": "^7.19.2",
         "@uniswap/v3-core": "^1.0.1",
@@ -40,7 +40,7 @@
         "hls.js": "^1.7.3",
         "jsbi": "^3.2.5",
         "motion": "^13.4.1",
-        "next": "16.2.10",
+        "next": "16.4.5",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
         "react-icons": "^5.7.0",
@@ -70,6 +70,6 @@
         "prettier": "^3.9.6",
         "typescript": "^5.9.3",
         "vitest": "^5.0.0",
-        "wrangler": "^4.132.0"
+        "wrangler": "^4.160.0"
     }
 }
