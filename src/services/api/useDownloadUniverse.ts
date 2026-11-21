@@ -12,7 +12,7 @@ export const getPlatform = () => {
         return 'macos';
     } else if (/Windows/i.test(userAgent)) {
         return 'windows';
-    } else if (/Linux/i.test(userAgent)) {
+    } else if (/Linux/i.test(userAgent) && !/Android/i.test(userAgent)) {
         return 'linux';
     } else {
         return 'macos';
@@ -55,8 +55,8 @@ export const useDownloadUniverse = (exchange?: Exchange) => {
             }
 
             const formattedUrl = new URL(url);
-            if (exchange?.name) {
-                formattedUrl.searchParams.set('universeReferral', exchange?.id || '');
+            if (exchange?.id || exchange?.name) {
+                formattedUrl.searchParams.set('universeReferral', exchange.id || exchange.name);
             }
 
             try {

@@ -37,10 +37,10 @@ export async function fetchExchangeData(exchangeId: string, password?: string): 
         };
     }
 
-    let url = `https://rwa.y.at/miner/exchanges/${exchangeId}`;
+    let url = `https://rwa.y.at/miner/exchanges/${encodeURIComponent(exchangeId)}`;
 
     if (password) {
-        url += `?password=${password}`;
+        url += `?password=${encodeURIComponent(password)}`;
     }
 
     const response = await fetch(url);
