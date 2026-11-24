@@ -65,7 +65,7 @@
         "@vitejs/plugin-react": "^6.1.1",
         "esbuild": "0.28.2",
         "eslint": "^9.39.5",
-        "eslint-config-next": "16.2.10",
+        "eslint-config-next": "16.4.6",
         "jsdom": "^30.0.1",
         "prettier": "^3.9.6",
         "typescript": "^5.9.3",
