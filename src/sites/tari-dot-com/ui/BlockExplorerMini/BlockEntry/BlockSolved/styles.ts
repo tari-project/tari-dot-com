@@ -72,7 +72,6 @@ export const MinersSolved = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    opacity: 0.5;
 `;
 
 export const MetaData = styled.div`
@@ -137,7 +136,6 @@ export const TimeAgo = styled.span`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    opacity: 0.5;
 `;
 
 export const BottomWrapper = styled.div`
