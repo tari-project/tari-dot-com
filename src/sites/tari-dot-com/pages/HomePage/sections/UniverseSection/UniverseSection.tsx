@@ -152,6 +152,7 @@ export default function UniverseSection() {
                             }}
                         >
                             <iframe
+                                title="Tari Universe mining application demo"
                                 src="https://customer-o6ocjyfui1ltpm5h.cloudflarestream.com/25949d56fb76cf8ddc29f61ca47af7e6/iframe?preload=true&loop=true&poster=https%3A%2F%2Fcustomer-o6ocjyfui1ltpm5h.cloudflarestream.com%2F25949d56fb76cf8ddc29f61ca47af7e6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&autoplay=true&muted=true"
                                 loading="eager"
                                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"

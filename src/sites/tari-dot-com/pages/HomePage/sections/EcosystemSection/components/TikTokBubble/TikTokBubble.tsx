@@ -80,6 +80,7 @@ export default function TikTokBubble({
                     <ImageWrapper>
                         {video ? (
                             <iframe
+                                title={username ? `${username} video` : 'Tari community video'}
                                 src={video}
                                 style={{
                                     border: 'none',

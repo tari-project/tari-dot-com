@@ -18,7 +18,13 @@ export const SocialIconButtons = () => {
 
     return (
         <>
-            <SocialIcon href="https://twitter.com/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <SocialIcon
+                href="https://twitter.com/tari"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="Tari on X"
+            >
                 <XIcon />
             </SocialIcon>
             <SocialIcon
@@ -26,13 +32,26 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="Tari on Bluesky"
             >
                 <BlueskyIcon />
             </SocialIcon>
-            <SocialIcon href="https://t.me/tariproject" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <SocialIcon
+                href="https://t.me/tariproject"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="Tari on Telegram"
+            >
                 <TelegramIcon />
             </SocialIcon>
-            <SocialIcon href="https://discord.gg/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <SocialIcon
+                href="https://discord.gg/tari"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="Tari on Discord"
+            >
                 <DiscordIcon />
             </SocialIcon>
             <SocialIcon
@@ -40,6 +59,7 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="Tari on GitHub"
             >
                 <GithubIcon />
             </SocialIcon>
@@ -48,6 +68,7 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="Tari on YouTube"
             >
                 <YoutubeIcon />
             </SocialIcon>

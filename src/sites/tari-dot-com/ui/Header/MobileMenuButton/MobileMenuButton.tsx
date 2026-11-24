@@ -42,7 +42,12 @@ export default function MobileMenuButton() {
     const { showMobileMenu, setShowMobileMenu } = useMainStore();
 
     return (
-        <Wrapper onClick={() => setShowMobileMenu(!showMobileMenu)}>
+        <Wrapper
+            type="button"
+            aria-label={showMobileMenu ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={showMobileMenu}
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
             <IconContainer>
                 <Line
                     variants={topLineVariants}

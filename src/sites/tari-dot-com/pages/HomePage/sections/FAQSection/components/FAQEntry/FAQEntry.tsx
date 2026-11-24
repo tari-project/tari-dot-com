@@ -41,9 +41,13 @@ export default function FAQEntry({ question, answer, lightMode, level = 2 }: FAQ
                     <QuestionText>{question}</QuestionText>
                 </HeaderComponent>
 
-                <ToggleIcon aria-hidden="true">
+                <ToggleIcon
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-label={isOpen ? `Collapse: ${question}` : `Expand: ${question}`}
+                >
                     {isOpen ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" fill="none" aria-hidden="true">
                             <circle cx="25.5" cy="25.5" r="25" stroke="currentColor" />
                             <path
                                 d="M31.945 26.8479H26.9794H23.5114H18.5459V23.6426H23.5114H26.9794H31.945V26.8479Z"
@@ -51,7 +55,7 @@ export default function FAQEntry({ question, answer, lightMode, level = 2 }: FAQ
                             />
                         </svg>
                     ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" fill="none" aria-hidden="true">
                             <circle cx="25.5" cy="25.5" r="25" stroke="currentColor" />
                             <path
                                 d="M31.945 26.8476H26.9794V31.9445H23.5114V26.8476H18.5459V23.6423H23.5114V18.5454H26.9794V23.6423H31.945V26.8476Z"

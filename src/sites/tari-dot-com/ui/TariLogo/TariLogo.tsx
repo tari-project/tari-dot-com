@@ -100,7 +100,7 @@ export default function TariLogo({ href, onClick }: Props) {
     }, [contextMenu]);
 
     const logo = (
-        <svg viewBox="0 0 121 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 121 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <g clipPath="url(#clip0_258_2)">
                 <path
                     d="M77.1523 6.73535L68.8486 31.2625H74.1612L75.9133 25.5915H83.1963L84.9483 31.2625H90.2609L81.9573 6.73535H77.1523ZM77.3288 20.9975L79.5557 13.6872L81.7826 20.9975H77.3306H77.3288Z"
@@ -132,7 +132,7 @@ export default function TariLogo({ href, onClick }: Props) {
         <>
             <Wrapper className="tari-logo" ref={logoRef} onContextMenu={handleContextMenu}>
                 {href ? (
-                    <Link href={href} onClick={onClick}>
+                    <Link href={href} onClick={onClick} aria-label="Tari home">
                         {logo}
                     </Link>
                 ) : (
