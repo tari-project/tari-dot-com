@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Chip, GroupOne, GroupTwo, NavLink, Wrapper } from './styles';
+import { GroupOne, GroupTwo, NavLink, Wrapper } from './styles';
 import Link from 'next/link';
 import { AnimatePresence } from 'motion/react';
 import { useMainStore } from '@/services/stores/useMainStore';
@@ -152,9 +152,7 @@ export default function MobileNavigation() {
                         </NavLink>
 
                         <NavLink as={Link} href="https://ootle.tari.com/" target="_blank" onClick={handleLinkClick}>
-                            <span>
-                                Build on Ootle <Chip>testnet</Chip>
-                            </span>
+                            <span>Build on Ootle</span>
                         </NavLink>
 
                         <NavLink
