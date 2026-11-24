@@ -130,7 +130,7 @@ export default function TariLogo({ href, onClick }: Props) {
 
     return (
         <>
-            <Wrapper className="tari-logo" ref={logoRef} onContextMenu={handleContextMenu}>
+            <Wrapper className="tari-logo" ref={logoRef} onContextMenu={handleContextMenu} aria-label="Tari">
                 {href ? (
                     <Link href={href} onClick={onClick}>
                         {logo}

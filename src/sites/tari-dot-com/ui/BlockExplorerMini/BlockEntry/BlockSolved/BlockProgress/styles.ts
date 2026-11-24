@@ -52,7 +52,6 @@ export const TextContainer = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    opacity: 0.5;
     text-align: center;
 `;
 

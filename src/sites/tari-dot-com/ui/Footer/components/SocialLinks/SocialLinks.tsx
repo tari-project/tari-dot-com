@@ -8,6 +8,7 @@ import TelegramIcon from './icons/TelegramIcon';
 import XIcon from './icons/XIcon';
 import YoutubeIcon from './icons/YoutubeIcon';
 import { Wrapper, SocialIcon } from './styles';
+import { ScreenReaderH3 } from '@/ui-shared/components/ScreenReaderContent/styles';
 
 export const SocialIconButtons = () => {
     const { setShowMobileMenu } = useMainStore();
@@ -18,7 +19,14 @@ export const SocialIconButtons = () => {
 
     return (
         <>
-            <SocialIcon href="https://twitter.com/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <ScreenReaderH3>Social Links</ScreenReaderH3>
+            <SocialIcon
+                href="https://x.com/tari"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="X"
+            >
                 <XIcon />
             </SocialIcon>
             <SocialIcon
@@ -26,13 +34,26 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="BlueSky"
             >
                 <BlueskyIcon />
             </SocialIcon>
-            <SocialIcon href="https://t.me/tariproject" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <SocialIcon
+                href="https://t.me/tariproject"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="Telegram"
+            >
                 <TelegramIcon />
             </SocialIcon>
-            <SocialIcon href="https://discord.gg/tari" target="_blank" rel="noreferrer" onClick={handleLinkClick}>
+            <SocialIcon
+                href="https://discord.gg/tari"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleLinkClick}
+                aria-label="Discord"
+            >
                 <DiscordIcon />
             </SocialIcon>
             <SocialIcon
@@ -40,6 +61,7 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="GitHub"
             >
                 <GithubIcon />
             </SocialIcon>
@@ -48,6 +70,7 @@ export const SocialIconButtons = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleLinkClick}
+                aria-label="YouTube"
             >
                 <YoutubeIcon />
             </SocialIcon>

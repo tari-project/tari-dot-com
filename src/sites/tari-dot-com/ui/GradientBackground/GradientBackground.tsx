@@ -1,11 +1,16 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { GradientCanvas, Wrapper, FallbackBackground } from './styles';
+import React, { useEffect, useRef, useState } from 'react';
+import { GradientCanvas, Wrapper, FallbackBackground, BackDrop } from './styles';
 
+/**
+ * NOTE: Changes to the coloring of this component and its associated styles MUST be synchronized with the
+ * background-color attribute of the AppWrapper, so we can get useful reports on accessibility checks.
+ */
 const GradientBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const animationFrameRef = useRef<number>(0);
+    const [supportsWebGl, setSupportsWebGl] = useState(true);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -32,6 +37,7 @@ const GradientBackground = () => {
 
         if (!gl) {
             console.error('WebGL not supported');
+            setSupportsWebGl(false);
             return;
         }
 
@@ -219,7 +225,13 @@ const GradientBackground = () => {
 
     return (
         <Wrapper>
-            <GradientCanvas ref={canvasRef} />
+            {supportsWebGl ? (
+                <BackDrop>
+                    <GradientCanvas ref={canvasRef} />
+                </BackDrop>
+            ) : (
+                <FallbackBackground />
+            )}
             <noscript>
                 <FallbackBackground />
             </noscript>

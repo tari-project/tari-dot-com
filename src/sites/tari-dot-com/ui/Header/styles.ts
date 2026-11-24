@@ -149,7 +149,7 @@ export type ThemeProps = {
 export const THEMES = {
     light: {
         main: {
-            color: '#26764e',
+            color: '#205f40',
             dotMain: '#0f9',
             dotHighlight: '#b0d636',
             buttonHover: '#000',
